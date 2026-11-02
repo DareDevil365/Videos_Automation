@@ -8,6 +8,8 @@ Agent work is separated into role folders under `agents/`. Each role README name
 
 `docs/categories/<category>/HOW_TO_CREATE.md` explains each implemented creation route. The category index also points to researched variants that still need implementation. `docs/CODE_WALKTHROUGH.md` covers the whole source tree. `docs/PROJECT_STATUS.md` is the current readiness/backlog reference. The root `PROJECT_GUIDE.md` remains the architecture and decision record.
 
+The editorial update adds three education guides (eleven category guides total), two runtime modules (`script_quality.py`, `speech_delivery.py`), an implementation plan/operating contract and an offline demo tool. Existing data/plan/export locations remain stable; generated demo media is still private/local-only.
+
 Research is grouped into `strategy`, `formats`, `sources-and-safety`, `references`, `revenue`, `repositories`, `investigations` and `archive`. Original research filenames are retained so they remain recognizable. [FILE_MOVES.json](FILE_MOVES.json) records every moved file and its destination. Relative Markdown links were updated with the moves.
 
 ## Stable data locations

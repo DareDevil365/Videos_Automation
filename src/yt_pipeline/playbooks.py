@@ -52,6 +52,52 @@ PLAYBOOKS={
 }
 
 
+# These presets reuse the trusted graphic renderer and accepted education voice.
+for _name, _description, _writing in (
+    ('rewrite_reveal', 'Before/after wording with a delivered hypothetical rewrite',
+     'Show and speak a specific weak answer, explain the exact weakness, then speak its truthful improved version. '
+     'Clearly introduce practice answers as hypothetical instructional examples. Use a comparison on the rewrite '
+     'with both exact phrases. End on the useful difference, with at most one optional relevant question. '
+     'Do not invent experience, results, hiring outcomes or endorsements.'),
+    ('myth_fact', 'One sourced misconception and a concrete bounded correction',
+     'Introduce one specific claim as a misconception or question, never assert it as truth. '
+     'Correct it using source-linked claims, explain the boundary and give a concrete example. '
+     'Use a comparison with Myth/Fact headings and exact claim/correction phrases. '
+     'Do not invent a universally held belief or overstate evidence. End with the supported correction.'),
+    ('quiz_pause', 'An original question, real thinking interval and explained answer',
+     'Present one original, self-contained puzzle/question with exactly one demonstrable answer. '
+     'Give the necessary conditions, then one short thinking-instruction unit. The director puts a 2-6 second '
+     'silent countdown AFTER that unit speech, then the answer and its concrete explanation. '
+     'Do not disclose the answer before the thinking interval or use a subjective dilemma with a claimed unique answer. '
+     'End with the explanation and at most one optional specific question, not a mandatory comment CTA.'),
+):
+    PLAYBOOKS[_name] = {
+        'format': 'lesson', 'seconds': [20, 40] if _name == 'quiz_pause' else [25, 45],
+        'words': [45, 90] if _name == 'quiz_pause' else [65, 115],
+        'units': [5, 9] if _name == 'quiz_pause' else [6, 12],
+        'voice': deepcopy(PLAYBOOKS['education_demo']['voice']),
+        'music': deepcopy(PLAYBOOKS['education_demo']['music']), 'layout': 'education_demo', 'bottom': ['none'],
+        'writing': _writing,
+        'visuals': 'Original trusted graphic on EVERY unit: callout, process or exact-phrase comparison. '
+                   'Show the concrete question/example immediately, without a generic title card. '
+                   'For quiz_pause exactly one timer scene repeats the earlier question and precedes the answer. '
+                   'Do not request stock, fabricated interfaces, real-person images or screenshots as evidence.',
+        'sound': 'Retain the accepted clear education voice. Optional bounded internal silence/speed uses speech_segments.',
+        'description': _description, 'graphics_only': True}
+
+
+def prepare_request(request):
+    """Resolve defaults only for new presets, preserving historical requests."""
+    value = deepcopy(request)
+    if PLAYBOOKS.get(value.get('playbook'), {}).get('graphics_only'):
+        for key, setting in {'motion_graphics': True, 'hook_options': True, 'hook_validation': 'strict',
+                             'editorial_review': 'required', 'bottom_kind': 'none', 'require_music': False}.items():
+            value.setdefault(key, setting)
+        if value['motion_graphics'] is not True or value['bottom_kind']!='none' or value.get('bottom_asset_id') or value.get('bottom_source_file'):
+            raise Held('playbook_graphics','These original-graphics presets require motion_graphics true and no lower panel.')
+    return value
+
+
 def get_playbook(name):
     if name not in PLAYBOOKS:raise Held('playbook_unknown','Choose a supported creative playbook')
     return {'id':name,**deepcopy(PLAYBOOKS[name])}
@@ -60,6 +106,7 @@ def get_playbook(name):
 def writing_prompt(name):
     value=get_playbook(name)
     return {**value,'task':'Write ONLY the story/content script first. hook must be the exact first spoken unit, not a stronger unwritten marketing summary. The first words must establish the specific curiosity/problem. The actual answer must occupy the final or penultimate unit with no filler ending; edit.payoff_unit_id identifies it. Do not plan an unsupported edit or choose unverified asset URLs. The separate director call will preserve these exact words.',
+            'editorial_policy':'New playbook batches generate three typed hooks in the same writing call and request a separate exact-payoff review. Comment prompts are optional and follow the delivered answer. Clean dialogue never contains speech-control markup. Director speech_segments can express bounded pace/internal silence without changing words. Source clips and caption-led aura keep their separate contracts.',
             'retention_note':'Patterns are testable editorial hypotheses, not a retention guarantee.'}
 
 
@@ -77,6 +124,8 @@ def validate_playbook_script(script,name):
     payoff=script['edit']['payoff_unit_id']
     if payoff not in {u['id'] for u in script['units'][-2:]}:issues.append('Deliver the payoff in the final two units, before at most one optional question; edit.payoff_unit_id must identify that actual answer')
     if issues:raise Held('playbook_length','; '.join(issues))
+    from .script_quality import validate_hook
+    validate_hook(script, name)
     return {'playbook':name,'words':count,'word_tolerance':3,'units':len(script['units']),'duration_target':value['seconds'],'semantic_payoff_verified':False}
 
 
@@ -90,4 +139,10 @@ def export_playbooks(folder):
     write_json(folder/'director-schema.json',PLAN_SCHEMA)
     write_json(folder/'director-capabilities.json',CAPABILITIES)
     write_json(folder/'edit-blocks.json',capabilities())
+    from .contracts import SCRIPT_SCHEMA
+    from .script_quality import hook_envelope,REVIEW_SCHEMA
+    from .speech_delivery import SEGMENT_SCHEMA
+    write_json(folder/'script-hooks-schema.json',hook_envelope(SCRIPT_SCHEMA))
+    write_json(folder/'editorial-review-schema.json',REVIEW_SCHEMA)
+    write_json(folder/'speech-segments-schema.json',SEGMENT_SCHEMA)
     return {'folder':str(folder.resolve()),'playbooks':list(PLAYBOOKS),'renderer':'ffmpeg','adobe_adapter_implemented':False}

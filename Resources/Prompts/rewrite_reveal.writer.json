@@ -1,0 +1,38 @@
+{
+  "id": "rewrite_reveal",
+  "format": "lesson",
+  "seconds": [
+    25,
+    45
+  ],
+  "words": [
+    65,
+    115
+  ],
+  "units": [
+    6,
+    12
+  ],
+  "voice": {
+    "voice_id": "am_adam",
+    "length_scale": 0.8,
+    "pause": 0.1
+  },
+  "music": {
+    "category": "learning",
+    "mood": "quiet unobtrusive instrumental or none",
+    "volume": 0.05
+  },
+  "layout": "education_demo",
+  "bottom": [
+    "none"
+  ],
+  "writing": "Show and speak a specific weak answer, explain the exact weakness, then speak its truthful improved version. Clearly introduce practice answers as hypothetical instructional examples. Use a comparison on the rewrite with both exact phrases. End on the useful difference, with at most one optional relevant question. Do not invent experience, results, hiring outcomes or endorsements.",
+  "visuals": "Original trusted graphic on EVERY unit: callout, process or exact-phrase comparison. Show the concrete question/example immediately, without a generic title card. For quiz_pause exactly one timer scene repeats the earlier question and precedes the answer. Do not request stock, fabricated interfaces, real-person images or screenshots as evidence.",
+  "sound": "Retain the accepted clear education voice. Optional bounded internal silence/speed uses speech_segments.",
+  "description": "Before/after wording with a delivered hypothetical rewrite",
+  "graphics_only": true,
+  "task": "Write ONLY the story/content script first. hook must be the exact first spoken unit, not a stronger unwritten marketing summary. The first words must establish the specific curiosity/problem. The actual answer must occupy the final or penultimate unit with no filler ending; edit.payoff_unit_id identifies it. Do not plan an unsupported edit or choose unverified asset URLs. The separate director call will preserve these exact words.",
+  "editorial_policy": "New playbook batches generate three typed hooks in the same writing call and request a separate exact-payoff review. Comment prompts are optional and follow the delivered answer. Clean dialogue never contains speech-control markup. Director speech_segments can express bounded pace/internal silence without changing words. Source clips and caption-led aura keep their separate contracts.",
+  "retention_note": "Patterns are testable editorial hypotheses, not a retention guarantee."
+}

@@ -206,13 +206,17 @@ def _playbook_request(ws,item,folder):
     """
     _validate_playbook_item(item,ws.config()['channels'])
     rules=get_playbook(item['playbook'])
-    request=json.loads(json.dumps(item['request']))
+    from .playbooks import prepare_request
+    request=prepare_request({**item['request'],'playbook':item['playbook']})
     request.update(playbook=item['playbook'],topic=item['topic'],format=rules['format'])
     request.setdefault('fiction',item['playbook'] in ('horror_stock','tea_chat','cutout_ensemble'))
     request.setdefault('resolution','720p')
     # Newly initialized playbook jobs inspect actual media. Existing jobs/exports
     # remain hash-bound to their original immutable requests.
     request.setdefault('visual_review','required')
+    request.setdefault('hook_options',True)
+    request.setdefault('hook_validation','strict')
+    request.setdefault('editorial_review','required')
     bottom_kind=request.get('bottom_kind','none')
     if bottom_kind not in rules['bottom']:raise Held('playbook_background','The selected playbook does not allow this lower-panel type')
     request['bottom_kind']=bottom_kind

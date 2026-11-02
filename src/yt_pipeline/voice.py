@@ -112,39 +112,73 @@ def synthesize(workspace, script, folder, pause=.16, fps=30,creative_plan=None,d
         except ImportError:raise Held("voice_runtime_missing","Install the production dependencies in the local environment.")
         voice=PiperVoice.load(model,use_cuda=False)
     cache=workspace.root/"cache"/"voice";cache.mkdir(exist_ok=True)
+    from .speech_delivery import speech_segments,number
+
+    def cached_segment(text,voice_id,speed):
+        scale=float(settings.get('length_scale',1))/speed
+        number(scale,.6,1.8,'voice_pace')
+        key=digest(["measured-tts-v3",engine,voice_id,model_sha,config_sha,scale,text])
+        path=cache/(key+'.wav')
+        if not path.exists():
+            temporary=path.with_suffix('.partial.wav')
+            with wave.open(str(temporary),'wb') as wav:
+                if engine=='kokoro':
+                    samples,sample_rate=voice.create(text,voice=voice_id,speed=1/scale,lang='en-us')
+                    peak=float(np.max(np.abs(samples))) if len(samples) else 0
+                    if peak>.95:samples=samples*(.95/peak)
+                    wav.setnchannels(1);wav.setsampwidth(2);wav.setframerate(sample_rate)
+                    wav.writeframes((np.clip(samples,-1,1)*32767).astype('<i2').tobytes())
+                else:voice.synthesize_wav(text,wav,syn_config=SynthesisConfig(length_scale=scale,normalize_audio=True))
+            metrics=wav_metrics(temporary)
+            if metrics['duration']<.15 or metrics['rms']<.001:raise Held('silent_voice','The voice produced empty or silent audio.')
+            if metrics['clipped_fraction']>.001:raise Held('clipped_voice','The voice output contains excessive clipped samples.')
+            temporary.replace(path)
+        return path
+
     rows=[];pcm_parts=[];rate=None;elapsed=0
     folder=Path(folder);folder.mkdir(exist_ok=True)
     for unit in script["units"]:
         scene=scene_map.get(unit['id']);voice_id=cast_map[scene['speaker_id']]['voice_id'] if scene else settings.get('voice_id','am_onyx') if engine=='kokoro' else None
         unit_pause=float(scene.get('pause_after',pause)) if scene else pause
         if not 0<=unit_pause<=1.5:raise Held('voice_pause','Directed pause is outside the supported range')
+        segments=speech_segments(unit['text'],scene)
+        thinking=number((scene or {}).get('thinking_seconds',0),0,6,'voice_pause')
+        if thinking and ((scene or {}).get('graphic',{}).get('kind')!='timer' or thinking<2):
+            raise Held('voice_pause','Thinking silence needs a timer scene and 2-6 seconds.')
         if engine=='kokoro' and voice_id not in voice.get_voices():raise Held('voice_id','A cast voice is not installed')
-        cache_key=digest(["measured-tts-v3",engine,voice_id,model_sha,config_sha,settings.get("length_scale",1),unit["text"]])
-        path=cache/(cache_key+".wav")
-        if not path.exists():
-            temporary=path.with_suffix(".partial.wav")
-            with wave.open(str(temporary),"wb") as wav:
-                if engine=='kokoro':
-                    samples,sample_rate=voice.create(unit['text'],voice=voice_id,speed=1/float(settings.get('length_scale',1)),lang='en-us')
-                    peak=float(np.max(np.abs(samples))) if len(samples) else 0
-                    if peak>.95:samples=samples*(.95/peak)
-                    wav.setnchannels(1);wav.setsampwidth(2);wav.setframerate(sample_rate)
-                    wav.writeframes((np.clip(samples,-1,1)*32767).astype('<i2').tobytes())
-                else:voice.synthesize_wav(unit["text"],wav,syn_config=SynthesisConfig(length_scale=float(settings.get("length_scale",1)),normalize_audio=True))
-            metrics=wav_metrics(temporary)
-            if metrics["duration"]<.15 or metrics["rms"]<.001:raise Held("silent_voice","The voice produced empty or silent audio.")
-            if metrics["clipped_fraction"]>.001:raise Held("clipped_voice","The voice output contains excessive clipped samples.")
-            temporary.replace(path)
+        parts=[cached_segment(s['text'],voice_id,s['speed']) for s in segments]
+        spans=[]
+        if len(parts)==1 and segments[0]['pause_after']==0:
+            path=parts[0]
+        else:
+            path=cache/(digest(['measured-tts-assembly-v1',engine,voice_id,model_sha,config_sha,
+                               settings.get('length_scale',1),segments])+'.wav')
+            chunks=[];segment_rate=None;cursor=0
+            for segment,part in zip(segments,parts):
+                with wave.open(str(part),'rb') as wav:
+                    if wav.getnchannels()!=1 or wav.getsampwidth()!=2:raise Held('voice_channels','Segments must be mono 16-bit PCM.')
+                    if segment_rate is not None and segment_rate!=wav.getframerate():raise Held('voice_sample_rate','Speech segments have mismatched sample rates.')
+                    segment_rate=wav.getframerate();pcm=wav.readframes(wav.getnframes())
+                seconds=len(pcm)/2/segment_rate;silence=round(segment_rate*segment['pause_after'])
+                spans.append({**segment,'start':cursor,'speech_end':cursor+seconds,'end':cursor+seconds+silence/segment_rate})
+                chunks.extend([pcm,b'\0\0'*silence]);cursor+=seconds+silence/segment_rate
+            if not path.exists():
+                temporary=path.with_suffix('.partial.wav')
+                with wave.open(str(temporary),'wb') as wav:
+                    wav.setnchannels(1);wav.setsampwidth(2);wav.setframerate(segment_rate)
+                    for pcm in chunks:wav.writeframes(pcm)
+                temporary.replace(path)
         metrics=wav_metrics(path)
         with wave.open(str(path),"rb") as wav:
             if wav.getnchannels()!=1:raise Held("voice_channels","Voice output must be mono before assembly.")
             if rate is not None and rate!=wav.getframerate():raise Held("voice_sample_rate","Speech clips have mismatched sample rates.")
             rate=wav.getframerate();pcm=wav.readframes(wav.getnframes())
-        duration=max(1,math.ceil((metrics["duration"]+unit_pause)*fps)/fps)
+        duration=max(1,math.ceil((metrics["duration"]+thinking+unit_pause)*fps)/fps)
         padding=max(0,round(rate*duration)-len(pcm)//2)
         rows.append({"id":unit["id"],"speaker":unit["speaker"],"text":unit["text"],"file":str(path),
                      "start":elapsed,"speech_end":elapsed+metrics["duration"],"end":elapsed+duration,"duration":duration,"metrics":metrics,
-                     'voice_id':voice_id,'pause_after':unit_pause,'delivery_length_scale':settings.get('length_scale',1)})
+                     'voice_id':voice_id,'pause_after':unit_pause,'delivery_length_scale':settings.get('length_scale',1),
+                     'speech_segments':segments,'segment_timings':spans,'thinking_seconds':thinking})
         pcm_parts.extend([pcm,b"\0\0"*padding])
         elapsed+=duration
     if not .5<elapsed<=179:raise Held("voice_too_long","Narration must fit the three-minute compositor limit; shorten this script.")

@@ -65,6 +65,16 @@ def package(workspace, job, brief, written, timing, directed, rendered, qa):
               "video":rendered["video"],"cover":rendered["cover"],"captions":rendered["captions"],
               "qa":qa,"source_urls":[s["url"] for s in brief["sources"]],"attribution":credits,
               "publication_mode":"disabled","created_at":now()}
+    hook=written.get('hook_options') or {}
+    plan=(written.get('creative_plan') or {}).get('plan',{})
+    question=plan.get('comment_question','')
+    metadata['creative_experiment']={'playbook':job['request'].get('playbook'),
+        'hook_type':hook.get('selected',{}).get('type') if hook.get('active') else None,
+        'hook_options_recorded':bool(hook),'hook_selection_active':hook.get('active',False),
+        'first_frame_intent':hook.get('selected',{}).get('first_frame') if hook.get('active') else None,
+        'editorial_review':'passed' if written.get('editorial_review') else 'not_requested',
+        'spoken_comment_question':question if question and question in script['units'][-1]['text'] else None,
+        'limits':'Experiment descriptors, not measured engagement or an instruction to post comments.'}
     metadata["approval_fingerprint"]=digest([qa["video_sha256"],metadata["title"],metadata["description"],job["channel"],metadata["contains_synthetic_media"]])
     write_json(workspace.job_dir(job["id"])/"metadata.json",metadata)
     return metadata

@@ -31,5 +31,6 @@
   "visuals": "One supplied usable poster/clip per ranked item, readable rank and title when this is a recommendation, concise verdict/reason. Separate guess round explicitly labelled. No repetitive same card or unsupported movie facts.",
   "sound": "Crisp short deliveries, room to read titles, consistent quiet music; no copyrighted movie score by default.",
   "task": "Write ONLY the story/content script first. hook must be the exact first spoken unit, not a stronger unwritten marketing summary. The first words must establish the specific curiosity/problem. The actual answer must occupy the final or penultimate unit with no filler ending; edit.payoff_unit_id identifies it. Do not plan an unsupported edit or choose unverified asset URLs. The separate director call will preserve these exact words.",
+  "editorial_policy": "New playbook batches generate three typed hooks in the same writing call and request a separate exact-payoff review. Comment prompts are optional and follow the delivered answer. Clean dialogue never contains speech-control markup. Director speech_segments can express bounded pace/internal silence without changing words. Source clips and caption-led aura keep their separate contracts.",
   "retention_note": "Patterns are testable editorial hypotheses, not a retention guarantee."
 }

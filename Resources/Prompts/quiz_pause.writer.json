@@ -1,0 +1,38 @@
+{
+  "id": "quiz_pause",
+  "format": "lesson",
+  "seconds": [
+    20,
+    40
+  ],
+  "words": [
+    45,
+    90
+  ],
+  "units": [
+    5,
+    9
+  ],
+  "voice": {
+    "voice_id": "am_adam",
+    "length_scale": 0.8,
+    "pause": 0.1
+  },
+  "music": {
+    "category": "learning",
+    "mood": "quiet unobtrusive instrumental or none",
+    "volume": 0.05
+  },
+  "layout": "education_demo",
+  "bottom": [
+    "none"
+  ],
+  "writing": "Present one original, self-contained puzzle/question with exactly one demonstrable answer. Give the necessary conditions, then one short thinking-instruction unit. The director puts a 2-6 second silent countdown AFTER that unit speech, then the answer and its concrete explanation. Do not disclose the answer before the thinking interval or use a subjective dilemma with a claimed unique answer. End with the explanation and at most one optional specific question, not a mandatory comment CTA.",
+  "visuals": "Original trusted graphic on EVERY unit: callout, process or exact-phrase comparison. Show the concrete question/example immediately, without a generic title card. For quiz_pause exactly one timer scene repeats the earlier question and precedes the answer. Do not request stock, fabricated interfaces, real-person images or screenshots as evidence.",
+  "sound": "Retain the accepted clear education voice. Optional bounded internal silence/speed uses speech_segments.",
+  "description": "An original question, real thinking interval and explained answer",
+  "graphics_only": true,
+  "task": "Write ONLY the story/content script first. hook must be the exact first spoken unit, not a stronger unwritten marketing summary. The first words must establish the specific curiosity/problem. The actual answer must occupy the final or penultimate unit with no filler ending; edit.payoff_unit_id identifies it. Do not plan an unsupported edit or choose unverified asset URLs. The separate director call will preserve these exact words.",
+  "editorial_policy": "New playbook batches generate three typed hooks in the same writing call and request a separate exact-payoff review. Comment prompts are optional and follow the delivered answer. Clean dialogue never contains speech-control markup. Director speech_segments can express bounded pace/internal silence without changing words. Source clips and caption-led aura keep their separate contracts.",
+  "retention_note": "Patterns are testable editorial hypotheses, not a retention guarantee."
+}

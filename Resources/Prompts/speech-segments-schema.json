@@ -1,0 +1,28 @@
+{
+  "type": "array",
+  "maxItems": 8,
+  "items": {
+    "type": "object",
+    "properties": {
+      "text": {
+        "type": "string"
+      },
+      "pause_after": {
+        "type": "number",
+        "minimum": 0,
+        "maximum": 1.2
+      },
+      "speed": {
+        "type": "number",
+        "minimum": 0.9,
+        "maximum": 1.15
+      }
+    },
+    "required": [
+      "text",
+      "pause_after",
+      "speed"
+    ],
+    "additionalProperties": false
+  }
+}

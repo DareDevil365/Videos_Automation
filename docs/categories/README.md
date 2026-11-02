@@ -4,6 +4,9 @@ Each category has a dedicated `HOW_TO_CREATE.md` with prerequisites, request fie
 
 | Category guide | Runtime preset/route | Channel |
 | --- | --- | --- |
+| [Rewrite reveal](rewrite-reveal/HOW_TO_CREATE.md) | `rewrite_reveal` | education |
+| [Myth versus fact](myth-fact/HOW_TO_CREATE.md) | `myth_fact` | education |
+| [Quiz with thinking time](quiz/HOW_TO_CREATE.md) | `quiz_pause` | education |
 | [Original horror and mystery](horror/HOW_TO_CREATE.md) | `horror_stock` | entertainment |
 | [Fictional chat and tea stories](chat/HOW_TO_CREATE.md) | `tea_chat` | entertainment |
 | [Character cutout stories and comedy](cutout-comedy/HOW_TO_CREATE.md) | `cutout_ensemble` | entertainment |
@@ -16,7 +19,7 @@ Each category has a dedicated `HOW_TO_CREATE.md` with prerequisites, request fie
 ## Shared playbook batch recipe
 
 1. Choose a category, read its guide and gather its actual inputs.
-2. Run `run_pipeline.py --env-file .env doctor` from the root. The current local Gemini budget is exhausted on the audit date; completed cached jobs can still resume.
+2. Run `run_pipeline.py --env-file .env doctor` from the root. Check actual local quota/cooldown rather than assuming historical audit counts still apply; completed cached jobs can resume.
 3. Register the chosen assets with evidence using `asset`/`media-get`/`music-register`, or use existing eligible IDs. Inspect each command's `--help`; do not substitute a path for an expected ID.
 4. Save a new version-1 plan in `Resources/Plans/`. Give the plan and each item a unique stable ID. A minimal shape is shown below; replace the category and required request inputs before running.
 5. Run the batch commands in the category guide. Missing prerequisites hold before model work where supported.
@@ -44,11 +47,11 @@ Each category has a dedicated `HOW_TO_CREATE.md` with prerequisites, request fie
 }
 ```
 
-This is an illustrative plan shape, not a complete ready-to-run factual request: add actual source evidence and appropriate matching media or supported original graphic scenes. Run commands from the project root because relative plan paths resolve there. Do not mutate an initialized plan or manually edit hashed job results. Copy to a new plan ID when changing content.
+This is an illustrative plan shape, not a complete ready-to-run factual request: add actual source evidence and appropriate matching media or supported original graphic scenes. Run commands from the project root because relative plan paths resolve there. Do not mutate an initialized plan or manually edit hashed job results. Copy to a new plan ID when changing content. New batches enable hook alternatives/strict checks and separate editorial review; see [editorial and speech controls](../EDITORIAL_AND_SPEECH.md). The three new education presets require an original graphic on every beat, without random stock substitution.
 
 ## Researched variants still needing work
 
-The [entertainment catalog](../../research/formats/entertainment/ENTERTAINMENT_FORMATS.md) covers E01–E18, including creator/podcast breakdowns, reaction/sigma clips, alternate show stories, gameplay challenges, simulations, deduction puzzles, choose-a-reply comedy, sound comedy, poster/GIF verdicts and controversy/mystery. Some can use shared primitives; they are not all separately implemented end-to-end playbooks. The fast movie montage, film quiz and aura event/reaction presets remain proposals.
+The [entertainment catalog](../../research/formats/entertainment/ENTERTAINMENT_FORMATS.md) covers E01–E18, including creator/podcast breakdowns, reaction/sigma clips, alternate show stories, gameplay challenges, simulations, deduction puzzles, choose-a-reply comedy, sound comedy, poster/GIF verdicts and controversy/mystery. Some can use shared primitives; they are not all separately implemented end-to-end playbooks. The fast movie montage, film-specific quiz and aura event/reaction presets remain proposals; the new original education quiz is a separate implemented route.
 
 The [education catalog](../../research/formats/education-and-movies/EDUCATION_FORMATS.md) contains EDU-F01–F15: before/after tasks, prompt repair, free-tool checks, proof-of-skill projects, interview repair, retrieval practice, schedules, if–then plans, task breakdowns, communication, scam checks, earning/journey analysis, job requirement maps, source checking and learning-path choices. They share the education route; each still needs actual topic evidence and demonstration work. They are not fifteen separately completed tools.
 

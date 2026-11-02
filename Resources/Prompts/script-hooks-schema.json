@@ -1,0 +1,180 @@
+{
+  "type": "object",
+  "properties": {
+    "script": {
+      "type": "object",
+      "properties": {
+        "version": {
+          "type": "integer"
+        },
+        "title": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "format": {
+          "type": "string",
+          "enum": [
+            "chat",
+            "lesson",
+            "clip",
+            "aura",
+            "cutout"
+          ]
+        },
+        "fiction": {
+          "type": "boolean"
+        },
+        "hook": {
+          "type": "string"
+        },
+        "payoff": {
+          "type": "string"
+        },
+        "units": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "speaker": {
+                "type": "string"
+              },
+              "text": {
+                "type": "string"
+              },
+              "kind": {
+                "type": "string",
+                "enum": [
+                  "fact",
+                  "instruction",
+                  "fiction",
+                  "transition"
+                ]
+              },
+              "claim_ids": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "onscreen": {
+                "type": "string"
+              },
+              "visual_query": {
+                "type": "string"
+              },
+              "visual_kind": {
+                "type": "string",
+                "enum": [
+                  "image",
+                  "video"
+                ]
+              }
+            },
+            "required": [
+              "id",
+              "speaker",
+              "text",
+              "kind",
+              "claim_ids",
+              "onscreen"
+            ],
+            "additionalProperties": false
+          }
+        },
+        "edit": {
+          "type": "object",
+          "properties": {
+            "effect": {
+              "type": "string",
+              "enum": [
+                "none",
+                "punch",
+                "flash",
+                "shake"
+              ]
+            },
+            "payoff_unit_id": {
+              "type": "string"
+            },
+            "cta": {
+              "type": "boolean"
+            }
+          },
+          "required": [
+            "effect",
+            "payoff_unit_id",
+            "cta"
+          ],
+          "additionalProperties": false
+        }
+      },
+      "required": [
+        "version",
+        "title",
+        "description",
+        "format",
+        "fiction",
+        "hook",
+        "payoff",
+        "units",
+        "edit"
+      ],
+      "additionalProperties": false
+    },
+    "hook_options": {
+      "type": "array",
+      "minItems": 3,
+      "maxItems": 3,
+      "items": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string",
+            "enum": [
+              "visible_contrast",
+              "small_live_test",
+              "mistake_then_fix",
+              "story_reversal",
+              "unfinished_object",
+              "narrow_promise",
+              "surprising_specific",
+              "viewer_question"
+            ]
+          },
+          "first_line": {
+            "type": "string"
+          },
+          "first_caption": {
+            "type": "string"
+          },
+          "first_frame": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "type",
+          "first_line",
+          "first_caption",
+          "first_frame"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "selected_hook_index": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 2
+    }
+  },
+  "required": [
+    "script",
+    "hook_options",
+    "selected_hook_index"
+  ],
+  "additionalProperties": false
+}

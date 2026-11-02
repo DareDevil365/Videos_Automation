@@ -48,7 +48,7 @@ flowchart TD
 1. [cli.main](../src/yt_pipeline/cli.py), [dashboard.Production](../src/yt_pipeline/dashboard.py) or [batches.run_batch](../src/yt_pipeline/batches.py) creates a job through `Workspace.create`. The request is saved in SQLite and `jobs/<id>/request.json`.
 2. [Pipeline.run](../src/yt_pipeline/pipeline.py) acquires a global production lease and job lease. A heartbeat renews them. It checks cancellation, disk space, channel pause and existing artifact hashes before advancing.
 3. `research_job` accepts a provided brief or builds a dated source/claim brief. Fictional formats can create an explicitly fictional brief without pretending to research real events.
-4. `write_script` accepts a provided script or calls Gemini. It validates the structured result, duplicate script checks, evidence and playbook rules. Playbook scripts receive a frozen-dialogue creative plan; factual playbook evidence/director verdicts share a call. Comedy can add concepts and a punchline review. Bounded repairs stop after their allowed attempts.
+4. `write_script` accepts a provided script or calls Gemini. It validates the structured result, duplicate script checks, evidence and playbook rules. Enabled narrated requests return three typed hook alternatives inside that writing call, with a checked selected line/caption. Playbook scripts receive a frozen-dialogue creative plan; factual playbook evidence/director verdicts share a call. Required separate editorial review validates the exact final payoff quote and shares the single substantive rewrite budget. Comedy can add concepts and a punchline review. Bounded repairs stop after their allowed attempts.
 5. Voice generation produces per-unit audio and measured durations. Clip jobs instead preserve source audio and exact range timing; aura uses its own timing. The cutout/motion-graphics routes can add exact-script word alignment.
 6. The visual builder uses the frozen plan or older format-specific logic, binding actual registered assets. Enabled source-frame review checks these actual bindings. A missing essential factual/movie artifact holds rather than being silently replaced with unrelated stock.
 7. `direct` turns the measured units and files into `compose-job.json` and a normalized project. `shorts_editor` renders the MP4, cover, captions and manifest. Exact captions may be burned in after the clean render.
@@ -72,10 +72,12 @@ The checkpoint stage names are `research`, `script`, `voice`, `visuals`, `direct
 | [editorial.py](../src/yt_pipeline/editorial.py) | Supplies channel/topic direction and agreed editorial scope to research/writing |
 | [contracts.py](../src/yt_pipeline/contracts.py) | Validates briefs/scripts, source and claim IDs, supported formats, unit structure and fiction/factual requirements |
 | [writer.py](../src/yt_pipeline/writer.py) | Gemini REST/cache/budget/cooldown and bounded image inputs; structured script writing, evidence review, duplicates and creative rewrite handling |
-| [playbooks.py](../src/yt_pipeline/playbooks.py) | Defines six executable format presets: timing, words, voice, layout, source requirements and writer prompts; exports the runtime contracts |
+| [playbooks.py](../src/yt_pipeline/playbooks.py) | Defines nine executable presets and defaults: timing, words, voice, layout, source/graphic requirements and writer prompts; exports runtime contracts |
+| [script_quality.py](../src/yt_pipeline/script_quality.py) | Format-aware narrated hook checks, three-option writer envelope/selection, and separate editorial verdict validation bound to the exact existing payoff quote |
+| [speech_delivery.py](../src/yt_pipeline/speech_delivery.py) | Validates exact ordered text coverage, segment count, bounded internal silence/speed and finite timing values without speech tags |
 | [comedy.py](../src/yt_pipeline/comedy.py) | Optional original concept generation/selection and setup/actual-punchline critique for cutout comedy |
 | [creative_plan.py](../src/yt_pipeline/creative_plan.py) | Director schema and frozen dialogue/cast/scene validation; evidence/creative verdicts, supported framing and active-speaker rules |
-| [voice.py](../src/yt_pipeline/voice.py) | Piper/Kokoro model setup, local cached TTS, voice selection, bounded pauses, measured/padded units, audio metrics and normalization |
+| [voice.py](../src/yt_pipeline/voice.py) | Piper/Kokoro setup, cached segments/complete per-unit speech, accepted voice selection, real internal/thinking/end silence, measured durations/audio checks and normalization |
 | [dialogue_captions.py](../src/yt_pipeline/dialogue_captions.py) | Aligns exact script tokens to actual speech with the local English alignment kernel; checks full coverage, records timing repairs and phrase groups |
 | [transcripts.py](../src/yt_pipeline/transcripts.py) | Imports VTT/SRT, local faster-whisper transcription, clips cues, writes SRT and burns timed captions into video |
 | [assets.py](../src/yt_pipeline/assets.py) | Registers copied media with provenance/permissions/hash/expiry; checks use eligibility, selects configured backgrounds and supports optional Pexels acquisition |
@@ -93,7 +95,7 @@ The checkpoint stage names are `research`, `script`, `voice`, `visuals`, `direct
 | [storyboard.py](../src/yt_pipeline/storyboard.py) | Bounded mystery scene tags, story-derived props and original procedural illustrated scenes for the older mystery route |
 | [montage.py](../src/yt_pipeline/montage.py) | Per-unit three-block montage planning/rendering; demands explicit relevant bindings or explicitly decorative media |
 | [entertainment.py](../src/yt_pipeline/entertainment.py) | Aura timing and entertainment-specific visual/effect helpers |
-| [scene_blocks.py](../src/yt_pipeline/scene_blocks.py) | Validates exact-script comparison/process/callout parameters; draws and animates trusted typography scenes locally |
+| [scene_blocks.py](../src/yt_pipeline/scene_blocks.py) | Validates/draws exact-script comparison/process/callout blocks and frame-counted quiz timers; supports Before/After and Myth/Fact comparison headings |
 | [edit_blocks.py](../src/yt_pipeline/edit_blocks.py) | Describes/exports the supported editing vocabulary and schemas; it is not an arbitrary effects-graph/code executor |
 | [director.py](../src/yt_pipeline/director.py) | Resolves measured units, file paths, source offsets, provenance, layout, effects and audio into the final compositor recipe/project |
 | [visual_review.py](../src/yt_pipeline/visual_review.py) | Samples source/finished frames, builds labeled contact sheets, sends actual images to Gemini and validates item-bound verdicts in off/report/required modes |
@@ -172,6 +174,7 @@ The retained Python/FFmpeg architecture and free-only policy are recorded decisi
 
 | Test file | Main evidence |
 | --- | --- |
+| `test_editorial_improvements.py` | Same-call hook selection, exact separate reviews/holds/rewrite budget, clean speech coverage and cached internal silence, real countdown frames and a complete synthetic-speech quiz export |
 | `test_pipeline.py` | Contracts, state/leases, quota/cache/env, source guards, simulated uploads/recovery and public snapshots |
 | `test_pipeline_integration.py` | Actual pipeline exports, source audio, held-job resume and production HTTP controls |
 | `test_agents.py` | Editorial scope, media/license contracts, transcripts, source handoffs, actual caption burn-in and browser fixtures |
@@ -184,9 +187,9 @@ The retained Python/FFmpeg architecture and free-only policy are recorded decisi
 | `test_composition.py` | Real layouts, pixels, effects, source audio, reusable layouts and JSON caller behavior |
 | `test_editor.py` | Legacy exports, dimensions, HTTP, path isolation, cancellation and restart behavior |
 
-The audit suite passed 183 tests with two Pillow deprecation warnings. Many tests use controlled fixtures or fake external transports. They prove bounded behavior, not real Google/YouTube integration or audience quality.
+The initial audit suite passed 183 tests. After editorial/speech/quiz improvements the complete suite passed 210 tests in 118.40s with the same two Pillow deprecation warnings. Many tests use controlled fixtures or fake external transports. They prove bounded behavior, not real Google/YouTube integration or audience quality.
 
-`tools/build_blueprint_pdf.py` and `blueprint_content.py` build the dated PDF explanation with ReportLab. `build_edit_gallery.py` and `build_motion_block_gallery.py` create technical visual previews. `create_upgrade_demo.py` builds a new demo plan/source excerpt when absent; it can fetch external data, so it is not a read-only checker. [check_project_docs.py](../tools/check_project_docs.py) checks local Markdown links and the organization move map without making provider calls.
+`tools/build_blueprint_pdf.py` and `blueprint_content.py` build the dated PDF explanation with ReportLab. `build_edit_gallery.py` and `build_motion_block_gallery.py` create technical visual previews. `create_upgrade_demo.py` builds a new demo plan/source excerpt when absent; it can fetch external data, so it is not a read-only checker. [create_editorial_demo.py](../tools/create_editorial_demo.py) renders/resumes a test-only prepared rewrite fixture with real local voice/alignment, no model calls and an explicitly offline plan. [check_project_docs.py](../tools/check_project_docs.py) checks local Markdown links and the organization move map without making provider calls.
 
 [Examples](../examples/README.md) retain stable paths used by tests. [Resources](../Resources/README.md) indexes plans/prompts/exports; its subfolder indexes explain mixed historical formats. Generated contracts should come from `playbooks --export`, not a hand-maintained duplicate.
 

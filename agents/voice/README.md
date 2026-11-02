@@ -15,6 +15,7 @@ Output to the next role: Per-unit WAVs, assembled narration, voice.json, SRT and
 - [voice.py](../../src/yt_pipeline/voice.py)
 - [dialogue_captions.py](../../src/yt_pipeline/dialogue_captions.py)
 - [transcripts.py](../../src/yt_pipeline/transcripts.py)
+- [speech_delivery.py](../../src/yt_pipeline/speech_delivery.py)
 
 These are modules inside one local application. This folder describes a role; it does not create an independently running agent.
 
@@ -23,6 +24,8 @@ These are modules inside one local application. This folder describes a role; it
 Kokoro/Piper and local English alignment were exercised. Every word is preserved on the tested dialogue route; estimated timing repairs are marked.
 
 Next work: Review pronunciation/emotion and test other languages; frame review does not assess audio.
+
+Director `speech_segments` now control bounded internal silence/speed while preserving every clean script word and punctuation. Complete assembled per-unit WAVs drive alignment and subsequent timing. Existing preset/cast voices are retained. Quiz thinking intervals add real measured silence separately from spoken text; the visible timer starts at the actual speech boundary. See [delivery and timer contracts](../../docs/EDITORIAL_AND_SPEECH.md).
 
 ## Operating rule
 

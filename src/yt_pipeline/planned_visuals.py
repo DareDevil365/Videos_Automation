@@ -124,7 +124,9 @@ def build_planned_visuals(ws,job,script,timing,folder,record):
             if template!='education_demo' or job['request'].get('motion_graphics') is not True:
                 raise Held('scene_block_disabled','Motion graphics require an explicitly enabled education demonstration request.')
             output=folder/(unit['id']+'-graphic.mp4')
-            detail=render_block(graphic,spoken['duration'],output,height=height)
+            detail=render_block(graphic,spoken['duration'],output,height=height,
+                                speech_duration=spoken.get('metrics',{}).get('duration',spoken.get('speech_end',0)-spoken.get('start',0)),
+                                thinking_seconds=spoken.get('thinking_seconds',0))
             detail['label_sources']=[{'label':label,'unit_ids':[u['id'] for u in script['units'] if label.casefold() in (u['text']+' '+u['onscreen']).casefold()]} for label in graphic['labels']]
             generated=register_asset(ws,output,'original_graphic',{'operation':'Trusted local typography block','unit_id':unit['id'],'block':graphic},test_only=job['request'].get('test_only',False))
             rows.append({'unit_id':unit['id'],'file':str(output),'media_id':generated['id'],'duration':spoken['duration'],

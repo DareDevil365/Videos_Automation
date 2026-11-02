@@ -4,6 +4,7 @@ Read [project status](PROJECT_STATUS.md), then the [code walkthrough](CODE_WALKT
 
 - [Maintained architecture/setup guide](../PROJECT_GUIDE.md)
 - [File organization and move map](FILE_ORGANIZATION.md)
+- [Editorial implementation plan](EDITORIAL_IMPROVEMENT_PLAN.md) and [hook/speech/quiz contracts](EDITORIAL_AND_SPEECH.md)
 - [Agent roles](../agents/README.md)
 - [Compositor user/API guide](guides/COMPOSITOR.md)
 - [Research index](../research/README.md)

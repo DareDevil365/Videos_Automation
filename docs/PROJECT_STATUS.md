@@ -1,5 +1,7 @@
 # Project status and remaining work
 
+Latest implementation update, 2 November 2026: **nine playbooks** now include original-graphics rewrite reveal, myth/fact and quiz with real thinking silence/countdown. New batches enable same-call hook alternatives and separate exact-payoff review; structured speech segments add internal silence/speed without changing dialogue. **210 tests passed in 118.40s** with two existing warnings. An actual local rewrite fixture exported at 25.333 seconds with 77/77 aligned words and zero Gemini calls. See the [completed improvement plan](EDITORIAL_IMPROVEMENT_PLAN.md) and [operating contracts](EDITORIAL_AND_SPEECH.md). Live validation of the new model prompts and owner creative approval remain pending. Earlier counts below describe the pre-improvement audit snapshot.
+
 Audit date: 2 November 2026. Checked source modules, documentation, current local configuration, SQLite records, saved outputs/checkpoint hashes and the complete test suite. No new model generation, account login, publishing or external research was performed. Documentation organization is implemented; the feature gaps below were assessed rather than silently changed.
 
 At the time of the audit this directory was not a Git checkout; the assessment used on-disk code/state and saved run evidence, rather than commit history or a Git diff. A subsequent source-only GitHub publication is recorded in the root project guide.
@@ -10,7 +12,7 @@ The local production engine works and has produced real videos. The project is s
 
 Evidence vocabulary: **demonstrated** means an actual saved local/live run exists; **fixture-tested** means behavior was checked with controlled media/pages or fake services; **pending activation** means code exists but real inputs/accounts are absent; **proposed** means the dedicated feature is not implemented. Technical passage does not mean owner-approved creative quality.
 
-## Current workspace evidence
+## Initial workspace audit snapshot
 
 | Item | Observed state |
 | --- | --- |
@@ -41,7 +43,7 @@ The two held jobs report `background_missing` at directing and `model_experiment
 | Research/writing | Public page/feed collection, dated source-linked claims, Gemini scripts/evidence review, explicit supplied-script origin, bounded rewrites and duplicates | Real topic/source curation and reliable creative results still needed |
 | Voice/captions | Local Piper/Kokoro speech, stable character voices, measured durations, pauses, audio checks; English exact-script alignment and full-dialogue phrase captions | Acting, pronunciation and timing need actual listening; other languages unvalidated |
 | Editing/export | Supplied-media overlay/stack/focus/multiblock layouts, crop/contain/blur, motion/effects/CTA, H.264/AAC MP4, cover, SRT, project and manifest | No arbitrary timeline, full animation or native-editor adapter |
-| Creative plans | Six presets, frozen dialogue/cast plan, per-unit visual mapping, one substantive rewrite, comedy concept/punchline checks | A model pass has missed weak logic/jokes; not a dependable autonomous creative director |
+| Creative plans | Nine presets, frozen dialogue/cast plan, per-unit visual mapping, one substantive rewrite, comedy concept/punchline checks, new-batch hook alternatives and separate exact-payoff review | A model pass has missed weak logic/jokes; not a dependable autonomous creative director |
 | Motion graphics | Trusted comparison/process/callout scenes using exact script text, local animated typography | No general generated-code animation or fabricated screenshots |
 | Media/provenance | Registered copied inputs, recorded evidence, expiry/hash checks, Commons acquisition, optional Pexels adapter and SQLite metadata search | Search can return irrelevant subjects; matching/permission records need review |
 | Technical QA/package | Full audio/video decode, dimensions/timing/clipping, freshness/asset checks, credits, disclosure and metadata | Limited claim phrase checks and sampled images do not establish complete editorial/audio quality |
@@ -52,6 +54,9 @@ The two held jobs report `background_missing` at directing and `model_experiment
 
 | Category | What exists | What is partial or missing |
 | --- | --- | --- |
+| [Rewrite reveal](categories/rewrite-reveal/HOW_TO_CREATE.md) | Full original-graphics recipe; actual local 25.333s speech/alignment/export fixture | New model hook/editorial prompts live-unverified; fixture is not style/audience approval |
+| [Myth/fact](categories/myth-fact/HOW_TO_CREATE.md) | Original-graphics preset, correct comparison headings and source/plan contracts | Real sourced episode and creative validation pending |
+| [Quiz](categories/quiz/HOW_TO_CREATE.md) | Required question/answer structure, one measured silent thinking interval, real rendered countdown and full synthetic-speech pipeline test | Generated puzzle correctness and real human-speech quiz pilot still require validation |
 | [Horror/mystery](categories/horror/HOW_TO_CREATE.md) | Stock-story preset and older procedural illustration route; exported legacy mystery | Earlier short pilot rejected; approve a coherent full-length stock story with relevant scenes |
 | [Chat/tea](categories/chat/HOW_TO_CREATE.md) | Timed full messages, cast voices, ASMR/gameplay layout; 35-second pilot | Story/payoff reliability, approved episodes and smooth chat scrolling |
 | [Cutout comedy](categories/cutout-comedy/HOW_TO_CREATE.md) | Human-shaped silhouettes, stable shirts, active-speaker closeups, aligned full dialogue; 30.2s revision | Strong owner-approved comedy; detailed acting/emotions/rigging/lip-sync absent |
@@ -61,7 +66,7 @@ The two held jobs report `background_missing` at directing and `model_experiment
 | [Source clips](categories/source-clips/HOW_TO_CREATE.md) | Permission profiles, ingestion/subtitles/ASR, cue-based selection, original speech/caption fixtures | Populate a real source catalog and validate the entire acquisition-to-export route |
 | [ASMR](categories/asmr/HOW_TO_CREATE.md) | Owner-imported clip packaged/exported | Real automatic provider generation unverified; source quality and seamless ending need improvement |
 
-The [category index](categories/README.md) also maps the broader research catalogs. Those catalogs contain more ideas than the six executable playbooks; their entries are not all completed content generators.
+The [category index](categories/README.md) also maps the broader research catalogs. Those catalogs contain more ideas than the nine executable playbooks; their entries are not all completed content generators.
 
 ## Implemented adapters awaiting real validation
 

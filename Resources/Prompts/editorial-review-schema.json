@@ -1,0 +1,47 @@
+{
+  "type": "object",
+  "properties": {
+    "passes": {
+      "type": "boolean"
+    },
+    "hook_honest": {
+      "type": "boolean"
+    },
+    "hook_specific": {
+      "type": "boolean"
+    },
+    "continuity_consistent": {
+      "type": "boolean"
+    },
+    "opening_promise": {
+      "type": "string"
+    },
+    "payoff_unit_id": {
+      "type": "string"
+    },
+    "payoff_exact_text": {
+      "type": "string"
+    },
+    "reason": {
+      "type": "string"
+    },
+    "issues": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  },
+  "required": [
+    "passes",
+    "hook_honest",
+    "hook_specific",
+    "continuity_consistent",
+    "opening_promise",
+    "payoff_unit_id",
+    "payoff_exact_text",
+    "reason",
+    "issues"
+  ],
+  "additionalProperties": false
+}

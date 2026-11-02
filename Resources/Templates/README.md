@@ -22,6 +22,9 @@ There is at most one substantive creative rewrite, not an endless retry loop. A 
 
 | Preset | Script and delivery | Editor behavior | Required inputs |
 | --- | --- | --- | --- |
+| `rewrite_reveal` | 25–45s hypothetical weak/strong wording with a delivered example | Original graphic every beat and actual Before/After comparison; bounded speech segments optional | Actual supporting brief/sources; no fabricated interface/result |
+| `myth_fact` | 25–45s clearly labeled misconception and sourced correction | Original graphic every beat, Myth/Fact comparison headings | Dated evidence for actual claims and any claimed common belief |
+| `quiz_pause` | 20–40s self-contained question, thinking time, answer and explanation | One real 2–6s silent interval with measured countdown before answer | Checked question/answer brief; original graphics on every beat |
 | `horror_stock` | Original 30–45s mystery, female narrator, slower speech and pauses; concrete answer | Relevant stills/clips with small captions and restrained camera moves | Permitted location/prop visuals and suitable quiet music |
 | `tea_chat` | Brisk 30–45s fictional conversation, consistent character voices | Full actual spoken messages, speaker labels, two-message history; supplied ASMR/gameplay below | Registered lower-panel recording and selected permitted music, or explicit music opt-out |
 | `cutout_ensemble` | 30–50s story, 2–4 recurring actors and optional narrator | Establish group; medium/close speaker crop; hide other actors on closeup; consistent heads and human-shaped clothed bodies | Registered photo heads/backgrounds or eligible stock acquisition |
@@ -79,6 +82,8 @@ Rebuild the local samples with:
 ```
 
 ## Current limits
+
+Current [editorial/speech contracts](../../docs/EDITORIAL_AND_SPEECH.md) add same-call hook alternatives, separate exact-payoff review, exact speech segments and a real quiz timer. New-batch required model checks are not equivalent to human creative approval. Accepted preset/cast voices remain unchanged; emotion labels still do not produce acted photo-head faces or emotional TTS.
 
 - Cast bodies are original local human-shaped silhouettes with shoulders, arms, hands, torso, trousers and shoes, beneath photo-head masks. Costume descriptions and emotion labels do not create detailed clothing, facial acting, full animation, lip-sync or rigs.
 - Music mood and sound-cue labels are planning metadata. The renderer mixes a selected registered track; it does not yet discover licensed trending phonk, synthesize individual stings or guarantee beat-drop synchronization. Voice IDs, pace and pauses work; emotional fear is not guaranteed.

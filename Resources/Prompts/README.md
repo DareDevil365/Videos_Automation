@@ -1,6 +1,6 @@
 # Generated writer/director contracts
 
-Each `<playbook>.writer.json` contains the actual exported writer rules for one of the six presets. `director-schema.json` defines scene/cast output; `director-capabilities.json` and `edit-blocks.json` describe supported operations.
+Each `<playbook>.writer.json` contains the actual exported writer rules for one of nine presets. `director-schema.json` defines scene/cast output, including optional exact speech segments and quiz thinking time; `director-capabilities.json` and `edit-blocks.json` describe supported operations. `script-hooks-schema.json`, `editorial-review-schema.json` and `speech-segments-schema.json` expose the new envelope/review/delivery contracts.
 
 Source of truth: [playbooks.py](../../src/yt_pipeline/playbooks.py), [creative_plan.py](../../src/yt_pipeline/creative_plan.py), [edit_blocks.py](../../src/yt_pipeline/edit_blocks.py) and [scene_blocks.py](../../src/yt_pipeline/scene_blocks.py). Regenerate from the root with:
 

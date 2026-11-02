@@ -54,6 +54,8 @@ class Pipeline:
         thread=threading.Thread(target=heartbeat,daemon=True);thread.start()
         try:
             job=ws.get(job_id);folder=ws.job_dir(job_id);results={}
+            from .playbooks import prepare_request
+            job={**job,'request':prepare_request(job['request'])}
             from .visual_review import review_mode,review_assets,review_render
             review_mode(ws,job['request'])
             for stage in STAGES:

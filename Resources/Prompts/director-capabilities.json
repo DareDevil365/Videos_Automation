@@ -19,7 +19,7 @@
     "pan_left",
     "pan_right"
   ],
-  "cast": "2-4 recurring cast actors plus optional Narrator, same registered avatar/costume/voice across scenes. Closeup hides others and enlarges the selected cutout; no rigging or lip sync.",
+  "cast": "2-4 recurring actors with stable individual heads, distinct outfits and voices. Scene direction v2 supports ensemble two-shots, selective closeups, simple gestures and actual source-media inserts. Narrator voice-only unless explicitly shown; no rigging or lip sync.",
   "voices": [
     "af_heart",
     "af_bella",

@@ -69,7 +69,7 @@ The checkpoint stage names are `research`, `script`, `voice`, `visuals`, `direct
 | [batches.py](../src/yt_pipeline/batches.py) | Default/saved plan validation, prerequisite checks, batch leases, stable recovery tokens, job creation, pause and checked atomic export copies |
 | [research.py](../src/yt_pipeline/research.py) | RSS/Atom and optional YouTube discovery, factual page collection, Gemini claim extraction, provided briefs and freshness checks |
 | [net.py](../src/yt_pipeline/net.py) | Bounded public fetches, URL/network restrictions, redirect handling and basic readable HTML extraction |
-| [editorial.py](../src/yt_pipeline/editorial.py) | Supplies channel/topic direction and agreed editorial scope to research/writing |
+| [editorial.py](../src/yt_pipeline/editorial.py) | Supplies channel/topic scope, stores script-bound owner feedback, and blocks exact rejected scripts before model reapproval |
 | [contracts.py](../src/yt_pipeline/contracts.py) | Validates briefs/scripts, source and claim IDs, supported formats, unit structure and fiction/factual requirements |
 | [writer.py](../src/yt_pipeline/writer.py) | Gemini REST/cache/budget/cooldown and bounded image inputs; structured writing, measured contract-repair feedback, optional source-inventory constraints, evidence review, duplicates and creative rewrite handling |
 | [playbooks.py](../src/yt_pipeline/playbooks.py) | Defines nine executable presets and defaults: timing, words, voice, layout, source/graphic requirements and writer prompts; exports runtime contracts |
@@ -91,7 +91,8 @@ The checkpoint stage names are `research`, `script`, `voice`, `visuals`, `direct
 | [generation_settings.py](../src/yt_pipeline/generation_settings.py) | Chooses supported adequate duration/resolution/thinking from declared capabilities; applies native/custom controls and verifies read-back |
 | [visuals.py](../src/yt_pipeline/visuals.py) | Older timed chat/lesson/stock graphics and route selection for non-plan visuals |
 | [planned_visuals.py](../src/yt_pipeline/planned_visuals.py) | Executes creative plans with registered stills/clips, actual-pixel closeup crops, ranked cards, cast layouts, camera moves, panels, context-bound source bindings and graphic scenes |
-| [cast_body.py](../src/yt_pipeline/cast_body.py) | Draws original clothed human-shaped silhouettes and assigns stable shirt colors by actor identity |
+| [cast_body.py](../src/yt_pipeline/cast_body.py) | Draws original human silhouettes with distinct stable outfit types/colors, trousers and simple talk/point/react arm poses; retains legacy bodies |
+| [scene_direction.py](../src/yt_pipeline/scene_direction.py) | Validates two-shots/inserts, optional visible narrator and necessary stock reuse; locates source details and maps circle/arrow callouts through source crops |
 | [storyboard.py](../src/yt_pipeline/storyboard.py) | Bounded mystery scene tags, story-derived props and original procedural illustrated scenes for the older mystery route |
 | [montage.py](../src/yt_pipeline/montage.py) | Per-unit three-block montage planning/rendering; demands explicit relevant bindings or explicitly decorative media |
 | [entertainment.py](../src/yt_pipeline/entertainment.py) | Aura timing and entertainment-specific visual/effect helpers |

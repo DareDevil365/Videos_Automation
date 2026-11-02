@@ -10,6 +10,7 @@ from .playbooks import get_playbook
 from .edit_blocks import capabilities
 from .scene_blocks import BLOCK_SCHEMA,validate_block,UI_TITLES
 from .speech_delivery import SEGMENT_SCHEMA,speech_segments,number
+from .scene_direction import CALLOUT_SCHEMA,compose_scene,validate_direction
 
 VOICES=['af_heart','af_bella','am_adam','am_michael','bm_george']
 TEMPLATES=['story_stock','chat_asmr','cutout_cast','aura_progression','education_demo','movie_cards']
@@ -17,7 +18,7 @@ CAPABILITIES={
  'templates':TEMPLATES,
  'framing':['wide','medium','closeup'],
  'motion':['hold','slow_push','punch','pan_left','pan_right'],
- 'cast':'2-4 recurring cast actors plus optional Narrator, same registered avatar/costume/voice across scenes. Closeup hides others and enlarges the selected cutout; no rigging or lip sync.',
+ 'cast':'2-4 recurring actors with stable individual heads, distinct outfits and voices. Scene direction v2 supports ensemble two-shots, selective closeups, simple gestures and actual source-media inserts. Narrator voice-only unless explicitly shown; no rigging or lip sync.',
  'voices':VOICES,
  'visuals':'Search queries or exact IDs from supplied inventory only. No guessed URL or generated file path. Stock is illustrative, not a factual record of fictional events.',
  'sound':'Registered music only; optional mood cues become a request, not an invented song file. Speech pauses are bounded and actual durations measured locally.',
@@ -43,6 +44,11 @@ def _schema():
        'required':['version','template','cast','scenes','music_mood','opening_promise','delivered_payoff','comment_question','review'],'additionalProperties':False}
 
 PLAN_SCHEMA=_schema()
+PLAN_SCHEMA['properties']['scenes']['items']['properties'].update({
+    'shot_type':{'type':'string','enum':['dialogue','two_shot','insert']},
+    'pose':{'type':'string','enum':['neutral','talk','point','react']},
+    'callout':CALLOUT_SCHEMA,'reuse_purpose':{'type':'string','enum':['none','detail','continuity','replay']},
+    'reuse_reason':{'type':'string','maxLength':300}})
 
 
 def validate_plan(plan,script,playbook,asset_ids=()):
@@ -72,7 +78,7 @@ def validate_plan(plan,script,playbook,asset_ids=()):
         focus=scene.get('focus_id')
         if focus and focus not in visible:raise Held('creative_framing','Focused actor must be in the visible cast')
         if scene.get('framing') not in CAPABILITIES['framing'] or scene.get('motion') not in CAPABILITIES['motion']:raise Held('creative_framing','Unsupported edit action')
-        if scene['framing']=='closeup' and not focus and expected['layout']=='cutout_cast':raise Held('creative_framing','A cast closeup needs a focused actor')
+        if scene['framing']=='closeup' and not focus and expected['layout']=='cutout_cast' and scene.get('shot_type')!='insert':raise Held('creative_framing','A cast closeup needs a focused actor')
         pause=scene.get('pause_after')
         if type(pause) not in (int,float) or not 0<=pause<=1.5:raise Held('creative_pause','Pauses must be between 0 and 1.5 seconds')
         speech_segments(unit['text'],scene)
@@ -156,6 +162,13 @@ def plan_edit(provider,script,request,brief=None):
        'cast_camera_policy':'For cutout_cast, every spoken character unit is a single active-speaker closeup, including Mike and Alex equally. Set focus_id=speaker_id, visible_cast=[speaker_id]. Narrator units may establish the group. Do not assign one actor group shots and the other closeups. Software enforces this rule.',
        'task':'DIRECTOR PASS ONLY: preserve every unit ID, exact spoken text, order and speaker. Plan one supported scene per unit. First review the script: if its ending only threatens a reveal or withholds the promised answer, mark payoff_delivered false. Do not invent more dialogue to fix it. Give consistent cast identities and allowed voices. Use a female narrator for horror_stock; slower restrained delivery and pauses 0.25-0.7, with a pause near the reveal. Tea/cutout can use faster distinct voices. Stage payoff must identify actual answer/reversal, not the word payoff. Use exact dialogue as text. background_query describes the place; visual_query describes the camera-visible action. All scenes need those queries even if reusing background. asset_id is empty unless from inventory. The editor resolves real timing from audio; do not invent timestamps. rank is 0 for ordinary/hook/question beats; movie_countdown has exactly nine ranked picks 10 down to 2, no rank1 withheld reveal. display_title is empty or an exact substring of this unit onscreen, never a new title. The optional comment question comes after delivering the promise. Return only the supported JSON plan.'}
     schema=deepcopy(PLAN_SCHEMA)
+    scene_mode=request.get('scene_direction_version',1)==2
+    if scene_mode:
+        schema['properties']['scenes']['items']['required'].extend(['shot_type','pose','callout','reuse_purpose','reuse_reason'])
+        prompt['cast_camera_policy']='Build a real scene: use a wide/medium two_shot with both people within the first three beats and for at least one fifth of all beats; alternate interaction/reaction shots, selective closeups and relevant inserts, never only swap isolated heads. Every two_shot needs at least two visible non-narrator characters. A dialogue shot may retain the listener. Inserts show actual animal/object/action source media with visible_cast=[] and focus_id=""; use visual_query for the depicted subject, not the talking-cast location. Narrator is voice-only by default: omit from visible_cast unless show_narrator is explicitly true. Keep each character identity, distinct supported costume and voice stable across scenes; supported costumes include shirt, t-shirt, hoodie, jacket, sweater. Pose applies to the active actor: neutral, talk, point or react. Software preserves these compositions.'
+        prompt['show_narrator']=request.get('show_narrator',False)
+        prompt['detail_callouts']='When narration asks viewers to notice a small visible clue, especially eyes moving/rolling/following, choose callout={kind:circle_arrow,target:the exact visible detail,label:""}. The renderer locates the target in actual source pixels, circles it and adds an arrow. A still photo cannot prove actual eye movement. Use kind none, target/label empty elsewhere. Callouts support still stock or insert images; no video motion tracking or cast-face targeting.'
+        prompt['stock_variety']='Prefer a DIFFERENT matching image for each stock/insert beat. Reuse only for a necessary detail revisit, adjacent scene continuity or later clue replay. Set reuse_purpose and a specific 16-300 character reuse_reason explaining why that exact source must return. A detail revisit changes framing or highlights a new actual detail; replay is non-adjacent. Set none/empty for first uses. Do not pad runtime by cycling the same pictures. Cast location backdrops can continue naturally; insert subjects must actually show the animal/object/action discussed.'
     if request.get('restrict_visuals_to_inventory') is True:
         if not assets:raise Held('creative_asset','Inventory-only direction needs registered visual assets.')
         schema['properties']['scenes']['items']['properties']['asset_id']={'type':'string','enum':assets}
@@ -191,6 +204,7 @@ def plan_edit(provider,script,request,brief=None):
             if evidence.get('supported') is not True or evidence.get('issues')!=[]:
                 raise Held('unsupported_claim','Combined evidence/director review did not support the factual script.')
         plan=validate_plan(value,script,playbook,assets)
+        validate_direction(plan,script,request)
         if request.get('restrict_visuals_to_inventory') is True and any(not scene.get('asset_id') for scene in plan['scenes']):
             raise Held('creative_asset','Every inventory-only scene must select a registered source asset.')
         opening=request.get('_selected_hook')
@@ -209,10 +223,10 @@ def plan_edit(provider,script,request,brief=None):
     overrides=[]
     if rules['layout']=='cutout_cast':
         for i,scene in enumerate(plan['scenes']):
-            resolved=active_speaker_scene(scene,plan['cast'])
+            resolved=compose_scene(scene,plan['cast'],request.get('show_narrator',False)) if scene_mode else active_speaker_scene(scene,plan['cast'])
             if resolved!=scene:overrides.append({'unit_id':scene['unit_id'],'from':{k:scene[k] for k in ('framing','visible_cast','focus_id')},'to':{k:resolved[k] for k in ('framing','visible_cast','focus_id')}})
             plan['scenes'][i]=resolved
     return {'plan':plan,'script_sha256':digest(script),'origin':getattr(provider,'origin','gemini'),'repairs':repairs,
             'block_compiler':'Single-label process requests compile to a one-label callout; dialogue and labels are preserved.',
-            'blocking_policy':'active_speaker_v1' if rules['layout']=='cutout_cast' else None,'blocking_overrides':overrides,
+            'blocking_policy':('scene_direction_v2' if scene_mode else 'active_speaker_v1') if rules['layout']=='cutout_cast' else None,'blocking_overrides':overrides,
             'review_note':'Model editorial judgement, not proof of audience response or factual accuracy.'}

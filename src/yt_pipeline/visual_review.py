@@ -46,7 +46,7 @@ def make_sheets(samples,folder,prefix):
         sheet=Image.new('RGB',(columns*480,rows*700),'#f5f3ef');draw=ImageDraw.Draw(sheet)
         for i,sample in enumerate(group):
             x=(i%columns)*480;y=(i//columns)*700
-            with Image.open(sample['file']) as raw:tile=ImageOps.contain(raw.convert('RGB'),(466,640))
+            with Image.open(sample['file']) as raw:tile=ImageOps.contain(ImageOps.exif_transpose(raw).convert('RGB'),(466,640))
             sheet.paste(tile,(x+(480-tile.width)//2,y+45+(640-tile.height)//2))
             text_box(draw,sample['label'],(x+10,y+8,460,32),'#171b22',22,True,'left',minimum=15)
         path=folder/f'{prefix}-{offset//6+1}.jpg';sheet.save(path,quality=90);sheets.append(path)
@@ -85,7 +85,10 @@ def _judge(ws,provider,mode,kind,items,samples,folder,identity):
                     'Do not claim an image proves a real event or endorsement. Reject a different subject/place, irrelevant screenshot or visibly unrelated action. '
                     if kind=='assets' else
                     'Inspect actual finished video frames for readable text, unclipped subjects, consistent named characters and supported scene actions. '
-                    'Simple animal-head human-body comedy is intentional. Single active-speaker closeups are intentional. '
+                    'Simple animal-head human-body comedy is intentional. Respect planned two-person shots, inserts and selective closeups. '
+                    'Characters should keep their own distinct clothes across scenes; a voice-only narrator need not have an avatar. '
+                    'When a circle/arrow callout is planned, verify it points to the named visible detail rather than unrelated pixels. '
+                    'A still-photo callout highlights a detail; it does not prove eye movement or animated action. '
                     'An illustration does not need photorealism. Progressive subtitles can show a partial phrase in a sampled frame; that alone is not an omission. '
                     'Check that visible graphic labels communicate the supplied narration and are legible. ')+
                     'Return one observation for EACH item id. Mark unknown if frames cannot establish the match. Never mark pass merely because the plan says it works. '
@@ -156,7 +159,8 @@ def review_render(ws,job,written,timing,rendered,provider,folder):
     for i in indices:
         unit=units[i];text=script[unit['id']];scene=scenes.get(unit['id'],{})
         items.append({'id':unit['id'],'narration':text['text'],'speaker':text['speaker'],
-                      'scene':{k:scene[k] for k in ('framing','visible_cast','focus_id','graphic') if k in scene}})
+                      'scene':{k:scene[k] for k in ('framing','visible_cast','focus_id','graphic','shot_type','callout','reuse_purpose','reuse_reason') if k in scene},
+                      'cast':[{k:a.get(k) for k in ('id','speaker','costume','avatar_kind')} for a in plan.get('cast',[])]})
         fractions=(.15,.75) if i in (0,len(units)-1) else (.55,)
         for j,fraction in enumerate(fractions):
             second=min(rendered['duration']-.05,unit['start']+unit['duration']*fraction)

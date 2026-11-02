@@ -2,6 +2,8 @@
 
 These are technical and creative review artifacts. A playable file or passing technical report is not owner approval of the story/style. Private original job state lives under `data/pipeline/jobs/`; copied evidence here keeps its recorded paths/hashes.
 
+Latest owner feedback: **The Turtle Guard script is rejected**; **The Portrait's Watcher needs visual revision**, especially eye callouts and less repeated stock. `owner-feedback.json` beside each local video records that verdict. Scene-direction improvements have tests and previews; these complete exports have not been silently replaced with revised versions.
+
 | Folder | Evidence/status |
 | --- | --- |
 | `fresh-funny-mystery-20261102/fresh-funny/` | **The Turtle Guard**, 36.066s, 114 words; fresh Gemini script/director plan, local voices, passing source/finished-frame/technical checks and verified video hash; `SCRIPT.md` and evidence beside video; test-only, owner creative approval pending |

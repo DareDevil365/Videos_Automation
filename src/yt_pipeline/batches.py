@@ -217,6 +217,7 @@ def _playbook_request(ws,item,folder):
     request.setdefault('hook_options',True)
     request.setdefault('hook_validation','strict')
     request.setdefault('editorial_review','required')
+    if item['playbook'] in ('cutout_ensemble','horror_stock'):request.setdefault('scene_direction_version',2)
     bottom_kind=request.get('bottom_kind','none')
     if bottom_kind not in rules['bottom']:raise Held('playbook_background','The selected playbook does not allow this lower-panel type')
     request['bottom_kind']=bottom_kind

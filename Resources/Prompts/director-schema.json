@@ -234,6 +234,62 @@
             "type": "number",
             "minimum": 0,
             "maximum": 6
+          },
+          "shot_type": {
+            "type": "string",
+            "enum": [
+              "dialogue",
+              "two_shot",
+              "insert"
+            ]
+          },
+          "pose": {
+            "type": "string",
+            "enum": [
+              "neutral",
+              "talk",
+              "point",
+              "react"
+            ]
+          },
+          "callout": {
+            "type": "object",
+            "properties": {
+              "kind": {
+                "type": "string",
+                "enum": [
+                  "none",
+                  "circle_arrow"
+                ]
+              },
+              "target": {
+                "type": "string",
+                "maxLength": 120
+              },
+              "label": {
+                "type": "string",
+                "maxLength": 40
+              }
+            },
+            "required": [
+              "kind",
+              "target",
+              "label"
+            ],
+            "additionalProperties": false
+          },
+          "reuse_purpose": {
+            "type": "string",
+            "enum": [
+              "none",
+              "detail",
+              "continuity",
+              "replay"
+            ]
+          },
+          "reuse_reason": {
+            "type": "string",
+            "maxLength": 300
           }
         },
         "required": [

@@ -6,7 +6,7 @@ Preset: `cutout_ensemble`. Channel profile: `entertainment`.
 
 30–50 seconds; recurring cast; measured per-character speech.
 
-Two to four stable characters, permitted head images/backgrounds and a causal setup/payoff. Clothing identity remains stable; spoken turns focus the actual speaker.
+Two to four stable characters, permitted head images/backgrounds and a causal setup/payoff. New CLI/batch jobs select scene direction v2: early two-person shots, interaction/reaction views, selective closeups and actual animal/object/action inserts. Distinct clothes stay consistent for each person; a narrator is voice-only unless `show_narrator: true` is selected.
 
 ## Prepare the request
 
@@ -18,7 +18,7 @@ Inspect the actual [writer prompt](../../../Resources/Prompts/cutout_ensemble.wr
 
 ## Execution and outputs
 
-Concepts/selector when enabled → writer → bounded comedy/creative critique → frozen cast plan → voices → active-speaker closeups → exact-script aligned subtitles → render.
+Concepts/selector with visible beats when enabled → writer with owner feedback → bounded comedy/creative critique → frozen cast/scene plan → voices → verified individual head crops, distinct outfits, shared scenes and inserts → exact-script aligned subtitles → render. Necessary stock repeats require a reason; the same cast location can continue naturally.
 
 Run the saved plan from the project root:
 
@@ -30,6 +30,8 @@ Run the saved plan from the project root:
 `my-new-plan.json` is a filename you create; it is not a shipped runnable example. Missing essential inputs hold the batch. Outputs go to the plan's `output_root/<plan-id>/<item-id>/`, normally under `Resources/Productions/`, with script, voice, scene plan, captions, metadata, QA and video. Resuming an unchanged completed plan reuses its jobs.
 
 ## Review and remaining work
+
+The owner rejected **The Turtle Guard** script after viewing it. Its saved video remains technical history. The exact script is now blocked by owner feedback, even though a stricter live model critique still passed it. Do not recycle it by renaming characters. Scene/outfit/insert improvements have controlled FFmpeg tests and local previews; a complete new owner-approved comedy is still pending. These are simple collage poses, not full acting, rigs or lip-sync.
 
 Fresh live review: local-only `Resources/Productions/fresh-funny-mystery-20261102/fresh-funny/` contains **The Turtle Guard**, 36.066 seconds and 114 words. Gemini generated the script, concept/critique and director plan from the starting brief; local speech/FFmpeg and required source/finished-frame/technical checks completed. `SCRIPT.md` is a readable copy of the actual generated dialogue. This is a new review candidate, not owner creative approval.
 

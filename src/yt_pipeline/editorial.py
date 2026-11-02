@@ -1,6 +1,53 @@
 """The owner's agreed channel scope, shared by research and scripting."""
 import re
-from .core import Held
+import json
+from pathlib import Path
+from .core import Held,digest,now,file_hash
+from shorts_editor.store import write_json
+
+
+def creative_feedback(workspace,playbook):
+    path=workspace.root/'creative-feedback.json'
+    if not path.exists():return []
+    if path.stat().st_size>2_000_000:raise Held('creative_feedback','Owner feedback file exceeded its bounded input size.')
+    try:data=json.loads(path.read_text(encoding='utf-8'))
+    except (ValueError,UnicodeError):raise Held('creative_feedback','Owner feedback must be valid UTF-8 JSON.')
+    if not isinstance(data,dict) or data.get('version')!=1 or not isinstance(data.get('records'),list):
+        raise Held('creative_feedback','Owner feedback records have an invalid format.')
+    latest={}
+    for row in data['records']:
+        if not isinstance(row,dict) or row.get('verdict') not in ('accepted','rejected','needs_revision') or not isinstance(row.get('script_hash'),str):
+            raise Held('creative_feedback','An owner feedback record is malformed.')
+        if row.get('playbook')==playbook:latest[row['script_hash']]=row
+    return list(latest.values())
+
+
+def check_script_feedback(workspace,script,playbook):
+    feedback=creative_feedback(workspace,playbook)
+    value=digest(' '.join(u['text'].lower() for u in script['units']))
+    if any(row['script_hash']==value and row['verdict']=='rejected' for row in feedback):
+        raise Held('owner_rejected','The owner rejected this exact script. A model pass cannot override that feedback; generate a different story.')
+    return feedback[-4:]
+
+
+def record_creative_feedback(workspace,job_id,verdict,reason):
+    if verdict not in ('accepted','rejected','needs_revision') or not isinstance(reason,str) or not 1<=len(reason.strip())<=1000:
+        raise ValueError('Feedback needs an accepted/rejected/needs_revision verdict and a 1-1000 character reason.')
+    job=workspace.get(job_id);artifact=job['artifacts'].get('script')
+    if not artifact or file_hash(artifact['path'])!=artifact['sha256']:
+        raise Held('creative_feedback','Record feedback against an intact saved script checkpoint.')
+    written=json.loads(Path(artifact['path']).read_text(encoding='utf-8'));script=written['script']
+    row={'job_id':job_id,'at':now(),'channel':job['channel'],'playbook':job['request'].get('playbook'),
+        'script_hash':digest(' '.join(u['text'].lower() for u in script['units'])),'title':script['title'],
+        'verdict':verdict,'reason':reason.strip(),'dialogue':'\n'.join(u['speaker']+': '+u['text'] for u in script['units'])[:3000]}
+    path=workspace.root/'creative-feedback.json'
+    # Validate existing records before changing them; preserve other jobs' feedback.
+    creative_feedback(workspace,job['request'].get('playbook'))
+    data=json.loads(path.read_text(encoding='utf-8')) if path.exists() else {'version':1,'records':[]}
+    data['records']=[r for r in data['records'] if r['job_id']!=job_id]+[row]
+    if len(data['records'])>200:raise Held('creative_feedback','Archive owner feedback explicitly before adding more than 200 job records.')
+    write_json(path,data)
+    return {k:v for k,v in row.items() if k!='dialogue'}
 
 EDUCATION_STYLE='Broad-audience Shorts about procrastination, studying, confidence, job preparation, realistic earning skills, and everyday/free AI tools. Relatable situation first, plain language, one practical takeaway; no specialist programming lectures.'
 EDUCATION_POLICY={

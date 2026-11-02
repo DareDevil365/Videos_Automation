@@ -104,7 +104,7 @@ class Pipeline:
                     record=results['script'].get('creative_plan')
                     if record and results['script']['script']['format']!='aura':
                         from .planned_visuals import build_planned_visuals
-                        result=build_planned_visuals(ws,job,results['script']['script'],results['voice'],folder/'visuals',record)
+                        result=build_planned_visuals(ws,job,results['script']['script'],results['voice'],folder/'visuals',record,provider=self.provider)
                     else:result=build_visuals(ws,results["script"]["script"],results["voice"],folder/"visuals",job=job)
                     result['asset_review']=review_assets(ws,job,result,self.provider,folder/'visual-review')
                 elif stage=="direct":result=direct(ws,job,results["script"]["script"],results["voice"],results["visuals"])

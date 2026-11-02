@@ -7,10 +7,11 @@ from PIL import Image,ImageDraw,ImageOps
 from shorts_editor.graphics import text_box
 from shorts_editor.store import write_json
 from .assets import asset_record,register_asset
-from .core import Held,digest
+from .core import Held,digest,file_hash
 from .media_agent import acquire_visual
 from .transcripts import write_srt
-from .cast_body import draw_human_body,shirt_color
+from .cast_body import draw_human_body,shirt_color,resolve_wardrobes
+from .scene_direction import narrator,compose_scene,validate_direction,check_stock_reuse,locate_callout,draw_callout
 
 
 def resolve_asset(ws,ref,query,cache,kind='image',*,context=None):
@@ -18,6 +19,42 @@ def resolve_asset(ws,ref,query,cache,kind='image',*,context=None):
     key=(query,kind,digest(context) if context else None)
     if key not in cache:cache[key]=acquire_visual(ws,query,kind,context=context) if context else acquire_visual(ws,query,kind)
     return cache[key]
+
+
+def crop_character_head(ws,asset,actor,folder,provider=None):
+    from .writer import Gemini
+    provider=provider or Gemini(ws)
+    schema={'type':'object','properties':{'visible':{'type':'boolean'},'box_yxyx':{'type':'array','minItems':4,'maxItems':4,
+        'items':{'type':'number','minimum':0,'maximum':1000}}},'required':['visible','box_yxyx'],'additionalProperties':False}
+    prompt={'avatar_kind':actor['avatar_kind'],'coordinate_order':'[y_min,x_min,y_max,x_max], normalized 0..1000 on the FIRST original image',
+        'task':'Locate ONE complete, preferably upright/front-facing head of the requested kind. Include hair/ears and chin, with visible eyes/nose/mouth; exclude all other people/faces and large body/background areas. The crop will become a single character head, not a group collage. Return visible=false if no suitable complete head is visible.'}
+    verdict_schema={'type':'object','properties':{'passes':{'type':'boolean'},'reason':{'type':'string','minLength':1,'maxLength':500}},'required':['passes','reason'],'additionalProperties':False}
+    output=Path(folder)/('avatar-'+digest([actor['id'],asset['sha256']])[:16]+'.png')
+    images=[Path(asset['path'])]
+    for attempt in range(2):
+        region=provider.generate('avatar-head-box-v1' if attempt==0 else 'avatar-head-box-repair-v1',prompt,schema,images=images)
+        values=region.get('box_yxyx') if isinstance(region,dict) else None
+        if (not isinstance(region,dict) or region.get('visible') is not True or not isinstance(values,list) or len(values)!=4
+            or any(type(v) not in (int,float) or not math.isfinite(v) or not 0<=v<=1000 for v in values)
+            or values[2]<=values[0] or values[3]<=values[1]):
+            raise Held('cast_face_crop','A complete individual head could not be located in the source.')
+        normalized=[values[1]/1000,values[0]/1000,values[3]/1000,values[2]/1000]
+        with Image.open(asset['path']) as raw:
+            source=ImageOps.exif_transpose(raw).convert('RGB')
+            box=tuple(round(v*(source.width if i%2==0 else source.height)) for i,v in enumerate(normalized))
+            if min(box[2]-box[0],box[3]-box[1])<40:raise Held('cast_face_crop','The selected head is too small; select a clearer individual portrait.')
+            source.crop(box).save(output)
+        review=provider.generate('avatar-head-pixels-v1',{'avatar_kind':actor['avatar_kind'],
+            'task':'Inspect this actual CROPPED image. Pass only if it contains ONE usable complete head of the requested kind, with face/eyes/nose/mouth visible and enough hair/ears/chin. Reject hair-only, cut-off/incomplete faces, multiple people, or a large scene/body crop. This is a character head, not a whole-scene illustration.'},verdict_schema,images=[output])
+        if not isinstance(review,dict) or type(review.get('passes')) is not bool or not isinstance(review.get('reason'),str) or not 1<=len(review['reason'])<=500:
+            raise Held('cast_face_crop','The actual cropped-head review was malformed.')
+        if review['passes']:
+            return {'path':str(output)}, {'file':str(output),'source_asset_id':asset['id'],'source_sha256':asset['sha256'],
+                'box':normalized,'sha256':file_hash(output),'review':review,'repairs':attempt}
+        prompt={**prompt,'failed_crop_box_yxyx':values,'critique':review['reason'],
+            'repair':'Image 1 is the ORIGINAL. Image 2 is the rejected crop. Correct the coordinates on Image 1; choose a different complete upright face if necessary. Do not reuse the rejected crop.'}
+        images=[Path(asset['path']),output]
+    raise Held('cast_face_crop','The character-head crop still failed after one correction; choose a suitable individual portrait.')
 
 
 def _cast_frame(background,cast,avatars,scene,caption,path,height=1280):
@@ -36,7 +73,11 @@ def _cast_frame(background,cast,avatars,scene,caption,path,height=1280):
         x=(720-size)//2 if close else int(40+(i+.5)*640/len(visible)-size/2)
         y=int(height*.16) if close else int(height*.25) if medium else round(height-205-size*4)
         d=ImageDraw.Draw(picture)
-        draw_human_body(picture,x*aa,y*aa,size*aa,shirt_color(actor))
+        wardrobe=actor.get('_wardrobe')
+        if wardrobe:
+            draw_human_body(picture,x*aa,y*aa,size*aa,wardrobe['shirt'],style=wardrobe['style'],
+                pose=scene.get('pose','neutral') if actor_id==scene['speaker_id'] else 'neutral',pants_color=wardrobe['pants'])
+        else:draw_human_body(picture,x*aa,y*aa,size*aa,shirt_color(actor))
         with Image.open(avatar['path']) as raw:head=ImageOps.fit(raw.convert('RGB'),(size*aa,size*aa),centering=(.5,.35))
         mask=Image.new('L',(size*aa,size*aa));ImageDraw.Draw(mask).ellipse((0,0,size*aa-1,size*aa-1),fill=255)
         picture.paste(head,(x*aa,y*aa),mask)
@@ -63,13 +104,14 @@ def stock_closeup(ws,asset,scene,unit,provider=None):
     return result
 
 
-def _stock_frame(asset,caption,path,rank=None,height=1280,crop=None):
+def _stock_frame(asset,caption,path,rank=None,height=1280,crop=None,callout=None):
     with Image.open(asset['path']) as raw:
-        source=raw.convert('RGB')
+        source=ImageOps.exif_transpose(raw).convert('RGB');source_size=source.size
         if crop:
             left,top,right,bottom=crop['box']
-            source=source.crop((round(left*raw.width),round(top*raw.height),round(right*raw.width),round(bottom*raw.height)))
+            source=source.crop((round(left*source.width),round(top*source.height),round(right*source.width),round(bottom*source.height)))
         picture=ImageOps.fit(source,(720,height))
+    annotation=draw_callout(picture,source_size,callout,crop)
     d=ImageDraw.Draw(picture)
     d.rounded_rectangle((26,height-190,694,height-30),radius=14,fill='#0b0c12')
     text_box(d,caption,(48,height-163,624,105),'white',38,True,'center',minimum=25)
@@ -77,6 +119,7 @@ def _stock_frame(asset,caption,path,rank=None,height=1280,crop=None):
         d.rounded_rectangle((28,35,145,135),radius=15,fill='#0b0c12')
         text_box(d,str(rank),(37,48,100,73),'white',50,True,'center')
     picture.save(path)
+    return annotation
 
 
 def _camera_filter(duration,motion,height,repeat):
@@ -111,10 +154,13 @@ def _video_scene(asset,caption,duration,path,height,offset=0,rank=None,motion='h
     if result.returncode:raise Held('planned_visual_render','Directed source clip/caption preparation failed')
 
 
-def build_planned_visuals(ws,job,script,timing,folder,record):
+def build_planned_visuals(ws,job,script,timing,folder,record,*,provider=None):
     plan=record['plan'];folder=Path(folder);folder.mkdir(exist_ok=True)
     if record['script_sha256']!=digest(script):raise Held('creative_rewrite','Edit plan belongs to a different script version')
     template=plan['template'];cache={};provenance={};cast={r['id']:r for r in plan['cast']};avatars={}
+    scene_mode=job['request'].get('scene_direction_version',1)==2
+    if scene_mode:validate_direction(plan,script,job['request'])
+    seen_stock={};reuse_log=[];wardrobes={};avatar_crops={}
     if job['request'].get('bottom_asset_id') and job['request'].get('bottom_kind','none')=='none':
         raise Held('creative_layout','A lower-panel asset requires an explicit allowed lower-panel kind')
     fraction=job['request'].get('top_fraction',.65)
@@ -124,17 +170,23 @@ def build_planned_visuals(ws,job,script,timing,folder,record):
     if template=='cutout_cast':
         for actor in plan['cast']:
             if actor['avatar_kind']=='narrator':continue
+            if scene_mode and narrator(actor) and not job['request'].get('show_narrator',False):continue
             bindings=job['request'].get('cast_assets',{})
             ref=bindings.get(actor['id']) or bindings.get(actor['speaker'])
             avatar=resolve_asset(ws,ref,actor['avatar_query'],cache)
             if avatar['kind']!='image':raise Held('cast_asset','Cast heads require actual usable image files')
-            avatars[actor['id']]=avatar;provenance[avatar['id']]=avatar
+            provenance[avatar['id']]=avatar
+            if scene_mode:avatars[actor['id']],avatar_crops[actor['id']]=crop_character_head(ws,avatar,actor,folder,provider)
+            else:avatars[actor['id']]=avatar
+        if scene_mode:
+            wardrobes=resolve_wardrobes([a for a in plan['cast'] if a['id'] in avatars])
+            cast={ref:{**actor,'_wardrobe':wardrobes.get(ref)} for ref,actor in cast.items()}
     rows=[];bindings=[];units={u['id']:u for u in script['units']}
     if [s['unit_id'] for s in plan['scenes']]!=[u['id'] for u in timing['units']]:raise Held('creative_units','Director and measured voice must cover the same ordered units')
     for i,(scene,spoken) in enumerate(zip(plan['scenes'],timing['units'])):
         if template=='cutout_cast':
             from .creative_plan import active_speaker_scene
-            scene=active_speaker_scene(scene,plan['cast'])
+            scene=compose_scene(scene,plan['cast'],job['request'].get('show_narrator',False)) if scene_mode else active_speaker_scene(scene,plan['cast'])
         if scene['unit_id']!=spoken['id']:raise Held('creative_units','Edit scene and measured speech IDs differ')
         unit=units[spoken['id']]
         graphic=scene.get('graphic',{'kind':'none','title':'','labels':[]})
@@ -163,9 +215,11 @@ def build_planned_visuals(ws,job,script,timing,folder,record):
             generated=register_asset(ws,output,'original_graphic',{'generator':'timed fictional chat state','unit_id':unit['id']},test_only=job['request'].get('test_only',False))
             rows.append({'unit_id':unit['id'],'file':str(output),'media_id':generated['id'],'duration':spoken['duration'],'kind':'directed_chat'})
             continue
+        insert=template=='cutout_cast' and scene.get('shot_type')=='insert'
+        stock_scene=template!='cutout_cast' or insert
         supplied=job['request'].get('media_assets',{}).get(unit['id']) or scene['asset_id']
-        if template=='cutout_cast' and not supplied:supplied=job['request'].get('default_background_id')
-        query=job['request'].get('media_queries',{}).get(unit['id']) or (scene['background_query'] if template=='cutout_cast' else scene['visual_query'])
+        if template=='cutout_cast' and not insert and not supplied:supplied=job['request'].get('default_background_id')
+        query=job['request'].get('media_queries',{}).get(unit['id']) or (scene['visual_query'] if stock_scene else scene['background_query'])
         if supplied and str(supplied).startswith('generation:'):
             from .browser_agent import read_generation
             made=read_generation(ws,supplied.partition(':')[2]);supplied=made.get('asset_id')
@@ -175,33 +229,42 @@ def build_planned_visuals(ws,job,script,timing,folder,record):
         approvals=job['request'].get('visual_approvals',{})
         if essential and not job['request'].get('test_only',False) and approvals.get(unit['id'])!=supplied:
             raise Held('essential_visual_unreviewed','This factual visual needs a recorded unit-to-asset match before non-test production')
-        context={'role':'location backdrop for static fictional cast'} if template=='cutout_cast' else {
+        context={'role':'location backdrop for static fictional cast'} if not stock_scene else {
             'title':script['title'],'narration':unit['text'],
             'previous_line':script['units'][max(0,i-1)]['text'],'next_line':script['units'][min(len(script['units'])-1,i+1)]['text']}
-        background=resolve_asset(ws,supplied,query,cache,'image' if template=='cutout_cast' else unit.get('visual_kind','image'),context=context);provenance[background['id']]=background
+        background=resolve_asset(ws,supplied,query,cache,'image' if not stock_scene else unit.get('visual_kind','image'),context=context);provenance[background['id']]=background
+        reuse=check_stock_reuse(seen_stock,background['sha256'],scene,i) if scene_mode and stock_scene else None
+        if reuse:reuse_log.append({'unit_id':unit['id'],'source_sha256':background['sha256'],**reuse})
         bindings.append({'unit_id':unit['id'],'asset_id':background['id'],'query':query,
-                         'text':unit['text'] if template!='cutout_cast' else '',
-                         'role':'location backdrop for static fictional cast' if template=='cutout_cast' else 'literal illustration of narration',
+                         'text':unit['text'] if stock_scene else '',
+                         'role':'literal animal/object/action illustration' if insert else 'location backdrop for static fictional cast' if not stock_scene else 'literal illustration of narration',
+                         'reuse':reuse,
                          'offset':job['request'].get('media_starts',{}).get(unit['id'],0),
                          'duration':spoken['duration'] if background['kind']=='video' else 0})
         if background['kind']!='image':
-            if template=='cutout_cast':raise Held('cast_background','Current cast renderer requires a still background, not an unsupported video layer')
+            if not stock_scene:raise Held('cast_background','Current cast renderer requires a still background, not an unsupported video layer')
+            if scene.get('callout',{}).get('kind','none')!='none':raise Held('creative_callout','A moving-video callout needs tracking; select a still image for this detail.')
             output=folder/(unit['id']+'-planned.mp4')
             _video_scene(background,unit['onscreen'],spoken['duration'],output,height,job['request'].get('media_starts',{}).get(unit['id'],0),scene.get('rank') or None,scene['motion'])
             generated=register_asset(ws,output,'original_graphic',{'operation':'Directed source clip and caption','sources':[background['id']]},test_only=job['request'].get('test_only',False) or background.get('test_only',False))
             rows.append({'unit_id':unit['id'],'media_id':generated['id'],'duration':spoken['duration'],'file':str(output),'kind':'directed_stock_video'})
             continue
         poster=folder/(unit['id']+'-planned.png')
-        if template=='cutout_cast':_cast_frame(background,cast,avatars,scene,'' if timing.get('caption_style')=='dialogue_bar' else unit['text'],poster,height)
+        crop=None;annotation=None
+        if not stock_scene:_cast_frame(background,cast,avatars,scene,'' if timing.get('caption_style')=='dialogue_bar' else unit['text'],poster,height)
         else:
-            crop=stock_closeup(ws,background,scene,unit)
-            _stock_frame(background,unit['onscreen'],poster,scene.get('rank') or None,height,crop=crop)
+            crop=stock_closeup(ws,background,scene,unit,provider=provider)
+            callout=locate_callout(ws,background,scene.get('callout',{'kind':'none'}),provider=provider)
+            caption=('' if timing.get('caption_style')=='dialogue_bar' else unit['text']) if insert else unit['onscreen']
+            annotation=_stock_frame(background,caption,poster,scene.get('rank') or None,height,crop=crop,callout=callout)
         output=folder/(unit['id']+'-planned.mp4');_motion(poster,spoken['duration'],output,scene['motion'],height)
         generated=register_asset(ws,output,'original_graphic',{'operation':'Validated director-plan collage/stock crop; source licenses retained separately','sources':list(provenance),'scene':scene},test_only=job['request'].get('test_only',False))
         rows.append({'unit_id':unit['id'],'file':str(output),'media_id':generated['id'],'duration':spoken['duration'],'kind':'directed_'+template,'resolved_scene':scene})
-        if template!='cutout_cast' and crop:rows[-1]['source_crop']=crop
+        if crop:rows[-1]['source_crop']=crop
+        if annotation:rows[-1]['source_callout']=annotation
     captions=folder/'captions.srt'
     write_srt([{'start':u['start'],'end':u['speech_end'],'text':u['text']} for u in timing['units']],captions)
     result={'version':1,'format':script['format'],'frames':rows,'captions':str(captions),'selected_media':[],
-            'planned_template':template,'planned_provenance':list(provenance.values()),'creative_plan_sha256':digest(plan),'source_bindings':bindings}
+            'planned_template':template,'planned_provenance':list(provenance.values()),'creative_plan_sha256':digest(plan),'source_bindings':bindings,
+            'wardrobes':wardrobes,'avatar_crops':avatar_crops,'stock_reuse':reuse_log,'scene_direction_version':2 if scene_mode else 1}
     write_json(folder/'visuals.json',result);return result

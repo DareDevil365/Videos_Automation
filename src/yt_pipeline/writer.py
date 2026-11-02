@@ -125,6 +125,10 @@ def write_script(workspace, job, brief, provider,*,_creative_rewrite_budget=1,_c
     from .playbooks import prepare_request
     from .script_quality import hook_envelope,unpack_hooks,validate_hook,review_editorial,HOOK_TYPES
     request=prepare_request(job["request"])
+    if type(request.get('scene_direction_version',1)) is not int or request.get('scene_direction_version',1) not in (1,2):
+        raise Held('editorial_config','scene_direction_version must be 1 or 2.')
+    from .editorial import creative_feedback,check_script_feedback
+    owner_feedback=creative_feedback(workspace,request.get('playbook'))[-4:]
     if request.get('hook_validation','structural') not in ('structural','strict') or request.get('editorial_review','off') not in ('off','required'):
         raise Held('editorial_config','Use structural/strict hook_validation and off/required editorial_review.')
     if type(request.get('hook_options',False)) is not bool:
@@ -173,6 +177,8 @@ def write_script(workspace, job, brief, provider,*,_creative_rewrite_budget=1,_c
             'hook_selection':{'enabled':use_hooks,'types':HOOK_TYPES,'max_spoken_words':12 if profile['format'] in ('chat','cutout') else 18,'max_caption_words':12,'instructions':'When enabled, return the script and exactly THREE distinct typed hook_options in the SAME call, plus selected_hook_index 0-2. Every option, including unselected alternatives, must meet both word limits and omit greetings or generic preambles. Each option has type, first_line, first_caption and first_frame (specific visible intent). Pick the clearest supported promise, not the loudest. The actual first script unit text/hook and onscreen MUST exactly equal the selected line and caption. For chat and cutout dialogue, first_caption must equal first_line verbatim; keep the complete line within twelve words. No invented facts, outcomes or interfaces. First-frame intent is not proof of rendered pixels.'},
             'format_playbook':creative_rules,
             'available_visuals':inventory,
+            'owner_feedback':owner_feedback,'owner_feedback_policy':'Do not reproduce or paraphrase rejected stories, rename their characters and call them new, or treat a model pass as owner approval. Apply the recorded specific criticism; accepted examples are preferences, not text to copy.',
+            'scene_direction':('Write for staged interaction, not a sequence of talking heads. Keep two recurring people with distinct voices/personalities and distinct stable clothes. A voice-only narrator is optional; do not invent extra people for narration. Include a shared scene and show essential animals, objects and actions through actual relevant insert queries. Make visual_query literal and stock-searchable for those beats; the director can choose two_shot/dialogue/insert. Do not rely on imaginary screen content, unseen action, or repeatedly displaying one stock photo. The comedy must work as spoken dialogue with a clear escalating conflict and an earned final consequence/reversal, not an absurd premise plus an ordinary explanation.' if request.get('scene_direction_version')==2 else None),
             'visual_inventory_rule':'When available_visuals is nonempty, invent a fresh coherent story that can be illustrated ONLY with these actual sources. Their verified descriptions are available subjects, not historical claims or evidence of your invented plot. Do not rely on an unavailable screen/interface, readable document, extra character/prop or filmed action to communicate the reveal. Narrated original fiction may use illustrative stills and supported camera moves. Preserve the complete causal payoff; the director will bind every scene to this inventory.' if inventory else None,
             'selected_story_concept':concept,'reference_mechanics':request.get('reference_mechanics',[]),
             'content_label':{'fiction':brief['kind']=='fiction','rule':'Match this exact boolean. In factual education, an explicitly imaginary sample answer is an instructional example, not a fiction-labelled story or real testimonial. Use kind instruction for that demonstrated example.'},
@@ -207,6 +213,7 @@ def write_script(workspace, job, brief, provider,*,_creative_rewrite_budget=1,_c
             'required_bounds':{'spoken_words':creative_rules['words'],'target_spoken_words':sum(creative_rules['words'])//2,'units':creative_rules['units']} if creative_rules else None,
             'format_playbook':creative_rules,
             'available_visuals':inventory,
+            'owner_feedback':owner_feedback,
             'storyboard_contract':'For story_visuals from_script, each visual_query begins an exact supported tag and colon: elevator:, phone:, hallway:, door:, stairwell:, security:, followed by the short literal detail that matches that spoken beat.' if request.get('story_visuals')=='from_script' else None,
             'selected_story_concept':concept,
             'hook_contract': {'max_spoken_words':12 if profile['format'] in ('chat','cutout') else 18,'max_caption_words':12,'rule':'If using a hook envelope, retain three distinct typed options. ALL options must meet the limits, without greetings or preambles. For chat/cutout, each caption equals its complete spoken line verbatim. Selected line/caption must exactly match script.hook and the first actual unit text/onscreen.'},
@@ -214,6 +221,7 @@ def write_script(workspace, job, brief, provider,*,_creative_rewrite_budget=1,_c
         script=validate_draft(raw);repairs=1
     normalized=" ".join(unit["text"].lower() for unit in script["units"])
     script_hash=digest(normalized)
+    check_script_feedback(workspace,script,playbook)
     with workspace.connect() as db:
         duplicate=db.execute("SELECT id FROM jobs WHERE script_hash=? AND id<>? AND status<>'cancelled'",(script_hash,job["id"])).fetchone()
     if duplicate:
@@ -240,7 +248,7 @@ def write_script(workspace, job, brief, provider,*,_creative_rewrite_budget=1,_c
         try:
             if comedy:
                 from .comedy import review_comedy
-                comedy_review=review_comedy(provider,script,concept)
+                comedy_review=review_comedy(provider,script,concept,scene_mode=request.get('scene_direction_version')==2)
             edit_plan=plan_edit(provider,script,request,brief=brief) if combined_review else plan_edit(provider,script,request)
             if combined_review:
                 review={**edit_plan['plan']['evidence_review'],'method':'gemini_evidence_and_director_review'}
@@ -250,7 +258,7 @@ def write_script(workspace, job, brief, provider,*,_creative_rewrite_budget=1,_c
             if exc.code!='creative_review' or origin!='gemini' or not _creative_rewrite_budget:raise
             revised=provider.generate('creative-script-rewrite-v1',{'draft':script,'brief':brief,'format_playbook':creative_rules,
                 'selected_story_concept':concept,
-                'critique':str(exc),'creative_brief':str(request.get('creative_brief',''))[:2000],'available_visuals':inventory,
+                'critique':str(exc),'creative_brief':str(request.get('creative_brief',''))[:2000],'available_visuals':inventory,'owner_feedback':owner_feedback,
                 'task':'Rewrite this script once to fix all substantive critique and length constraints. Keep the topic and factual evidence restrictions. Make the specific hook the very first spoken unit and identical hook field. Supply a planted coherent answer in the final two units, not a filler reaction. The next director will receive this revised script as frozen text; do not change it in that later pass.'},script_schema)
             result=write_script(workspace,{**job,'request':{**request,'script':revised}},brief,provider,_creative_rewrite_budget=0,_concept=concept)
             result.update(origin='gemini',creative_rewrites=1)

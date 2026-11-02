@@ -122,6 +122,7 @@ def main():
     create=sub.add_parser("create");create.add_argument("channel",choices=["education","entertainment"]);create.add_argument("--request");create.add_argument("--topic")
     for name in ("run","cancel","approve","reconcile"):
         p=sub.add_parser(name);p.add_argument("job")
+    p=sub.add_parser('feedback');p.add_argument('job');p.add_argument('--verdict',choices=['accepted','rejected','needs_revision'],required=True);p.add_argument('--reason',required=True)
     p=sub.add_parser("retry");p.add_argument("job");p.add_argument("--from-stage",choices=STAGES,default=None)
     p=sub.add_parser("publish");p.add_argument("job");p.add_argument("--apply",action="store_true")
     p=sub.add_parser("worker");p.add_argument("--once",action="store_true");p.add_argument("--interval",type=float,default=60);p.add_argument("--remote-monitor",action="store_true");p.add_argument("--plan-feeds",action="store_true");p.add_argument('--clip-sources',action='store_true')
@@ -165,11 +166,15 @@ def main():
         elif cmd=="config":result=config_set(ws,args.path,json.loads(args.value))
         elif cmd=="create":
             request=json.loads(Path(args.request).read_text(encoding="utf-8")) if args.request else {"topic":args.topic or ""}
+            if request.get('playbook') in ('cutout_ensemble','horror_stock'):request.setdefault('scene_direction_version',2)
             if args.request:
                 for key in ("brief_file","script_file"):
                     if request.get(key):request[key]=str((Path(args.request).resolve().parent/request[key]).resolve())
             result=ws.create(args.channel,request)
         elif cmd=="run":result=Pipeline(ws).run(args.job)
+        elif cmd=='feedback':
+            from .editorial import record_creative_feedback
+            result=record_creative_feedback(ws,args.job,args.verdict,args.reason)
         elif cmd=="retry":
             job=ws.get(args.job);ws.reset(args.job,args.from_stage or (job["stage"] if job["stage"] in STAGES else "research"));result=ws.get(args.job)
         elif cmd=="cancel":ws.update(args.job,status="cancelled",message="Cancelled by owner");result=ws.get(args.job)

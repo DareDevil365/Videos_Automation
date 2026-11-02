@@ -1,5 +1,7 @@
 # Current content drafts
 
+Latest technical previews: local-only `scene-direction-v2-preview/eye-callout.png` shows a program-located circle/arrow on actual painted eyes; `ensemble-preview.png` shows the earlier accepted animal-head cast together with distinct outfits and a talk pose. `preview-validation.json` retains geometry, source hashes, actual-head checks and the owner rejection gate. These demonstrate rendering features, not new episode scripts or revised complete videos. An unsuitable old human portrait failed the new head check; the unverified `two-person-outfits.png` preview is superseded. The owner rejected The Turtle Guard script and requested mystery visual revisions; those verdicts are stored privately against the actual script hashes.
+
 The owner rejected the earlier scripts on 2 November 2026. Existing production files remain historical technical evidence, not current script candidates or approved content. Fresh drafts start from a new premise and do not reuse the teamwork/receipt, elevator or roommate-fee dialogue.
 
 Current local candidate: `fresh-interview-questions/` — an entirely new education script about the closing "Any questions for us?" moment, with an actual interview photo kept visible behind readable text. `script.json`, `storyboard.json`, source/asset evidence, a readable draft and a static opening-frame preview are saved together. This is an assistant-provided draft, not a fresh Gemini generation or model-approved video. No render or publication is claimed.

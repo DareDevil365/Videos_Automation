@@ -193,6 +193,37 @@ def test_hook_cannot_exist_only_in_metadata():
     with pytest.raises(Held,match='first spoken unit'):validate_playbook_script(value,'horror_stock')
 
 
+@pytest.mark.parametrize('unbound',[False,True])
+def test_inventory_only_story_reaches_writer_and_director_and_cannot_search(tmp_path,unbound):
+    ws=Workspace(tmp_path/'ws');image=tmp_path/'source.png'
+    Image.new('RGB',(400,500),'blue').save(image)
+    asset=register_asset(ws,image,'test',{'description':'Inventory-only technical fixture'})
+    script=draft();calls=[]
+    class Provider:
+        workspace=ws
+        def generate(self,purpose,content,schema):
+            calls.append(purpose)
+            if purpose=='scripter-v3':
+                assert content['available_visuals'][0]['id']==asset['id']
+                assert content['visual_inventory_rule']
+                return deepcopy(script)
+            assert purpose in ('creative-director-v1','creative-director-repair-v1')
+            assert schema['properties']['scenes']['items']['properties']['asset_id']['enum']==[asset['id']]
+            value=plan(script)
+            for scene in value['scenes']:scene['asset_id']='' if unbound else asset['id']
+            return value
+    job=ws.create('entertainment',{'playbook':'horror_stock','fiction':True,'topic':script['title'],
+        'restrict_visuals_to_inventory':True,'visual_asset_ids':[asset['id']],
+        'asset_roles':{asset['id']:'Verified illustrative fixture'}})
+    brief=brief_contract({'title':script['title'],'question':'Who sent it?','kind':'fiction','sources':[],'claims':[]})
+    if unbound:
+        with pytest.raises(Held) as error:write_script(ws,job,brief,Provider())
+        assert error.value.code=='creative_asset' and calls[-1]=='creative-director-repair-v1'
+    else:
+        result=write_script(ws,job,brief,Provider())
+        assert all(s['asset_id']==asset['id'] for s in result['creative_plan']['plan']['scenes'])
+
+
 def test_actual_directed_stock_scene_uses_asset_and_small_captions(tmp_path):
     ws=Workspace(tmp_path/'workspace');image=tmp_path/'stock.png';Image.new('RGB',(720,1280),'#253343').save(image)
     source=register_asset(ws,image,'test',{'reference':'Technical stock fixture'})

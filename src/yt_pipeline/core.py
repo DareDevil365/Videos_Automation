@@ -52,7 +52,7 @@ def default_config():
               "daily_cap":4, "youtube_channel_id":"", "publication_mode":"disabled",
               "auto_private_upload":False, "feed_urls":[], "source_urls":[], "research_queries":[], "footage_ids":[], "music_id":""}
     return {"version":1, "gemini":{"model":"gemini-3.5-flash-lite", "free_tier_confirmed":False,
-                                   "requests_per_day":30, "max_output_tokens":4096},
+                                   "requests_per_day":30, "enforce_local_budget":True, "max_output_tokens":4096},
             "voice":{"model":"voices/en_US-ljspeech-high.onnx", "commercial_use_checked":False,
                      "license_evidence":[], "length_scale":1.0},
             "channels":{"entertainment":{**common,"name":"Entertainment","style":"Fictional chat stories with a clear payoff", "format":"chat"},
@@ -180,7 +180,7 @@ class Workspace:
         with self.connect() as db:
             db.execute("BEGIN IMMEDIATE")
             row=db.execute("SELECT calls FROM usage WHERE day=? AND provider=?",(day,provider)).fetchone()
-            if row and row[0]>=cap:
+            if cap is not None and row and row[0]>=cap:
                 current=datetime.now(timezone.utc)
                 reset=(current+timedelta(days=1)).replace(hour=0,minute=0,second=0,microsecond=0)
                 raise Held("daily_budget","Local daily call budget reached. Queued work resumes after the UTC budget resets.",retry_after=max(1,math.ceil((reset-current).total_seconds())))
@@ -206,6 +206,13 @@ class Workspace:
     def provider_succeeded(self, provider):
         with self.connect() as db:db.execute('DELETE FROM provider_cooldowns WHERE provider=?',(provider,))
 
+    def gemini_budget_cap(self):
+        config=self.config();settings=config['gemini']
+        production=any(p.get('publication_mode','disabled')!='disabled' for p in config['channels'].values())
+        if settings.get('enforce_local_budget',True) is not False or production:
+            return int(settings.get('requests_per_day',30))
+        return None
+
     def quota_status(self, provider, cap):
         day=datetime.now(timezone.utc).date().isoformat()
         with self.connect() as db:
@@ -213,7 +220,7 @@ class Workspace:
             cooldown=db.execute('SELECT until FROM provider_cooldowns WHERE provider=?',(provider,)).fetchone()
         used=usage[0] if usage else 0
         remaining=max(0,math.ceil(cooldown[0]-time.time())) if cooldown else 0
-        return {'local_budget_day_utc':day,'local_calls_today':used,'local_daily_cap':cap,'local_remaining':max(0,cap-used),
+        return {'local_budget_day_utc':day,'local_calls_today':used,'local_daily_cap':cap,'local_remaining':max(0,cap-used) if cap is not None else None,'local_budget_enforced':cap is not None,
                 'cooldown_seconds':remaining,'cooldown_until_utc':datetime.fromtimestamp(cooldown[0],timezone.utc).isoformat() if remaining else None,
                 'provider_balance_known':False}
 

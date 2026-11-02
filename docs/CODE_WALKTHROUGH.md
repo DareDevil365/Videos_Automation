@@ -71,7 +71,7 @@ The checkpoint stage names are `research`, `script`, `voice`, `visuals`, `direct
 | [net.py](../src/yt_pipeline/net.py) | Bounded public fetches, URL/network restrictions, redirect handling and basic readable HTML extraction |
 | [editorial.py](../src/yt_pipeline/editorial.py) | Supplies channel/topic direction and agreed editorial scope to research/writing |
 | [contracts.py](../src/yt_pipeline/contracts.py) | Validates briefs/scripts, source and claim IDs, supported formats, unit structure and fiction/factual requirements |
-| [writer.py](../src/yt_pipeline/writer.py) | Gemini REST/cache/budget/cooldown and bounded image inputs; structured script writing, evidence review, duplicates and creative rewrite handling |
+| [writer.py](../src/yt_pipeline/writer.py) | Gemini REST/cache/budget/cooldown and bounded image inputs; structured writing, measured contract-repair feedback, optional source-inventory constraints, evidence review, duplicates and creative rewrite handling |
 | [playbooks.py](../src/yt_pipeline/playbooks.py) | Defines nine executable presets and defaults: timing, words, voice, layout, source/graphic requirements and writer prompts; exports runtime contracts |
 | [script_quality.py](../src/yt_pipeline/script_quality.py) | Format-aware narrated hook checks, three-option writer envelope/selection, and separate editorial verdict validation bound to the exact existing payoff quote |
 | [speech_delivery.py](../src/yt_pipeline/speech_delivery.py) | Validates exact ordered text coverage, segment count, bounded internal silence/speed and finite timing values without speech tags |
@@ -81,7 +81,7 @@ The checkpoint stage names are `research`, `script`, `voice`, `visuals`, `direct
 | [dialogue_captions.py](../src/yt_pipeline/dialogue_captions.py) | Aligns exact script tokens to actual speech with the local English alignment kernel; checks full coverage, records timing repairs and phrase groups |
 | [transcripts.py](../src/yt_pipeline/transcripts.py) | Imports VTT/SRT, local faster-whisper transcription, clips cues, writes SRT and burns timed captions into video |
 | [assets.py](../src/yt_pipeline/assets.py) | Registers copied media with provenance/permissions/hash/expiry; checks use eligibility, selects configured backgrounds and supports optional Pexels acquisition |
-| [media_agent.py](../src/yt_pipeline/media_agent.py) | Commons search/acquisition, eligible license parsing, metadata/download cache and image/video/audio choices |
+| [media_agent.py](../src/yt_pipeline/media_agent.py) | Commons search/acquisition and license filtering; actual-pixel candidate checks, bounded query refinement, checked source caches and original-versus-thumbnail MIME handling |
 | [media_library.py](../src/yt_pipeline/media_library.py) | Rebuildable SQLite FTS index and candidate search over registered asset metadata; rechecks integrity; no semantic image classifier |
 | [music_agent.py](../src/yt_pipeline/music_agent.py) | Registers music categories, selects eligible library tracks, searches candidates and keeps mood fit separate from popularity evidence |
 | [source_agent.py](../src/yt_pipeline/source_agent.py) | Versioned permitted source profiles, bounded downloads/local ingestion, transcript acquisition and source/transcript hash checkpoints |
@@ -90,7 +90,7 @@ The checkpoint stage names are `research`, `script`, `voice`, `visuals`, `direct
 | [browser_agent.py](../src/yt_pipeline/browser_agent.py) | Provider generation job records, Brave/persistent/CDP session access, explicit selector/cost preflight, one submission, reconciliation/download/import and production dependency |
 | [generation_settings.py](../src/yt_pipeline/generation_settings.py) | Chooses supported adequate duration/resolution/thinking from declared capabilities; applies native/custom controls and verifies read-back |
 | [visuals.py](../src/yt_pipeline/visuals.py) | Older timed chat/lesson/stock graphics and route selection for non-plan visuals |
-| [planned_visuals.py](../src/yt_pipeline/planned_visuals.py) | Executes creative plans with registered stills/clips, ranked cards, cast layouts, camera moves, panels, source bindings and graphic scenes |
+| [planned_visuals.py](../src/yt_pipeline/planned_visuals.py) | Executes creative plans with registered stills/clips, actual-pixel closeup crops, ranked cards, cast layouts, camera moves, panels, context-bound source bindings and graphic scenes |
 | [cast_body.py](../src/yt_pipeline/cast_body.py) | Draws original clothed human-shaped silhouettes and assigns stable shirt colors by actor identity |
 | [storyboard.py](../src/yt_pipeline/storyboard.py) | Bounded mystery scene tags, story-derived props and original procedural illustrated scenes for the older mystery route |
 | [montage.py](../src/yt_pipeline/montage.py) | Per-unit three-block montage planning/rendering; demands explicit relevant bindings or explicitly decorative media |

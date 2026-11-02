@@ -156,6 +156,10 @@ def plan_edit(provider,script,request,brief=None):
        'cast_camera_policy':'For cutout_cast, every spoken character unit is a single active-speaker closeup, including Mike and Alex equally. Set focus_id=speaker_id, visible_cast=[speaker_id]. Narrator units may establish the group. Do not assign one actor group shots and the other closeups. Software enforces this rule.',
        'task':'DIRECTOR PASS ONLY: preserve every unit ID, exact spoken text, order and speaker. Plan one supported scene per unit. First review the script: if its ending only threatens a reveal or withholds the promised answer, mark payoff_delivered false. Do not invent more dialogue to fix it. Give consistent cast identities and allowed voices. Use a female narrator for horror_stock; slower restrained delivery and pauses 0.25-0.7, with a pause near the reveal. Tea/cutout can use faster distinct voices. Stage payoff must identify actual answer/reversal, not the word payoff. Use exact dialogue as text. background_query describes the place; visual_query describes the camera-visible action. All scenes need those queries even if reusing background. asset_id is empty unless from inventory. The editor resolves real timing from audio; do not invent timestamps. rank is 0 for ordinary/hook/question beats; movie_countdown has exactly nine ranked picks 10 down to 2, no rank1 withheld reveal. display_title is empty or an exact substring of this unit onscreen, never a new title. The optional comment question comes after delivering the promise. Return only the supported JSON plan.'}
     schema=deepcopy(PLAN_SCHEMA)
+    if request.get('restrict_visuals_to_inventory') is True:
+        if not assets:raise Held('creative_asset','Inventory-only direction needs registered visual assets.')
+        schema['properties']['scenes']['items']['properties']['asset_id']={'type':'string','enum':assets}
+        prompt['visual_inventory_rule']='Use one actual available_asset_id in EVERY scene. Preserve the frozen dialogue. Reuse/crop/pan an existing appropriate source as needed; never search for an absent shot or pretend a source shows extra props, readable text or interfaces. The story is original fiction, not historical claims about the sources.'
     if request.get('motion_graphics') is True:
         # Constrain creative selection to actual supplied phrases, rather than
         # spend another model call repairing invented graphic copy.
@@ -187,6 +191,8 @@ def plan_edit(provider,script,request,brief=None):
             if evidence.get('supported') is not True or evidence.get('issues')!=[]:
                 raise Held('unsupported_claim','Combined evidence/director review did not support the factual script.')
         plan=validate_plan(value,script,playbook,assets)
+        if request.get('restrict_visuals_to_inventory') is True and any(not scene.get('asset_id') for scene in plan['scenes']):
+            raise Held('creative_asset','Every inventory-only scene must select a registered source asset.')
         opening=request.get('_selected_hook')
         if opening and plan['template']=='education_demo' and plan['scenes'][0].get('graphic',{}).get('kind','none')!='none':
             if opening['first_caption'] not in plan['scenes'][0]['graphic']['labels']:

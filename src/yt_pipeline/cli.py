@@ -33,7 +33,7 @@ def doctor(ws):
             "voice_model":ws.resolve(voice["model"]).is_file(),
             "gemini_key_present":bool(os.environ.get("GEMINI_API_KEY") or os.environ.get("GOOGLE_API_KEY")),
             "gemini_free_tier_confirmed":config["gemini"].get("free_tier_confirmed",False),
-            "gemini_quota":ws.quota_status('gemini',int(config['gemini'].get('requests_per_day',30))),
+            "gemini_quota":ws.quota_status('gemini',ws.gemini_budget_cap()),
             "youtube_search_key_present":bool(os.environ.get("YOUTUBE_API_KEY")),
             "pexels_key_present":bool(os.environ.get("PEXELS_API_KEY")),
             "channels":{name:{"paused":p["paused"],"format":p["format"],"footage_count":len(p["footage_ids"]),
@@ -43,14 +43,14 @@ def doctor(ws):
 
 def config_set(ws, path, value):
     # Strict allowlist: credentials are environment/local OAuth files, never config values.
-    allowed={"gemini.free_tier_confirmed","gemini.requests_per_day","voice.length_scale","voice.engine","voice.normalize_loudness"}
+    allowed={"gemini.free_tier_confirmed","gemini.requests_per_day","gemini.enforce_local_budget","voice.length_scale","voice.engine","voice.normalize_loudness"}
     for channel in ws.config()["channels"]:
         allowed.update("channels."+channel+"."+key for key in ("paused","daily_cap","publication_mode","auto_private_upload","feed_urls","source_urls","research_queries","footage_ids","music_id","style","media_mode","source_ids"))
     if path not in allowed:raise ValueError("This config field cannot be changed through this command.")
     config=ws.config();parts=path.split(".");target=config
     for part in parts[:-1]:target=target[part]
     key=parts[-1]
-    old=target.get(key,[]) if key in ('research_queries','source_ids') else target.get(key,'piper') if key=='engine' else target.get(key,True) if key=='normalize_loudness' else target.get(key,'stock') if key=='media_mode' else target[key]
+    old=target.get(key,[]) if key in ('research_queries','source_ids') else target.get(key,'piper') if key=='engine' else target.get(key,True) if key in ('normalize_loudness','enforce_local_budget') else target.get(key,'stock') if key=='media_mode' else target[key]
     if type(old)!=type(value) and not (isinstance(old,float) and type(value) in (int,float)):raise ValueError("Config value has the wrong type.")
     if key=="publication_mode" and value not in ("disabled","private","scheduled"):raise ValueError("Use disabled, private or scheduled.")
     if key=='engine' and value not in ('piper','kokoro'):raise ValueError('Choose piper or kokoro')

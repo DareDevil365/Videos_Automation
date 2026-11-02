@@ -31,6 +31,8 @@ Run the saved plan from the project root:
 
 ## Review and remaining work
 
+Fresh live review: local-only `Resources/Productions/fresh-funny-mystery-20261102/fresh-funny/` contains **The Turtle Guard**, 36.066 seconds and 114 words. Gemini generated the script, concept/critique and director plan from the starting brief; local speech/FFmpeg and required source/finished-frame/technical checks completed. `SCRIPT.md` is a readable copy of the actual generated dialogue. This is a new review candidate, not owner creative approval.
+
 A 30.2-second revision exported with 90/90 subtitle words. Body shapes were accepted, while earlier stories/framing/caption choices were rejected. Current comedy approval remains unresolved. Bodies are silhouettes without rigs, facial acting or lip sync.
 
 Watch the actual whole video and listen to speech/music. Check the opening promise, causal ending, actual media relevance, names, full readable dialogue and timing. Sampled frame review cannot assess the complete audiovisual experience. Technical readiness and creative approval are separate.

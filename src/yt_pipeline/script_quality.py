@@ -49,7 +49,7 @@ def unpack_hooks(raw, playbook=None):
         raise Held('playbook_hook', 'Choose one of exactly three hook options; never clamp an invalid index.')
     kinds = set()
     maximum = 14 if playbook == 'cutout_ensemble' else 18
-    for option in options:
+    for index_option,option in enumerate(options):
         if not isinstance(option, dict) or set(option) != {'type', 'first_line', 'first_caption', 'first_frame'}:
             raise Held('playbook_hook', 'A hook option needs its type, spoken line, caption and first-frame intent.')
         if option['type'] not in HOOK_TYPES:
@@ -60,9 +60,9 @@ def unpack_hooks(raw, playbook=None):
             if not isinstance(value, str) or not value.strip() or len(value) > limit or _MARKERS.search(value):
                 raise Held('playbook_hook', 'Hook option text must be nonempty, bounded and free of speech tags.')
         if len(option['first_line'].split()) > maximum or _PREAMBLE.match(option['first_line'].strip()):
-            raise Held('playbook_hook', 'Every hook candidate must pass the opening policy.')
+            raise Held('playbook_hook', f'Hook option {index_option}: {len(option["first_line"].split())} spoken words; maximum {maximum}; greetings and generic preambles are forbidden for every candidate.')
         if len(option['first_caption'].split()) > 12:
-            raise Held('playbook_hook', 'Keep each opening caption to at most twelve words.')
+            raise Held('playbook_hook', f'Hook option {index_option}: {len(option["first_caption"].split())} caption words; maximum 12.')
     if len(kinds) != 3 or len({o['first_line'].casefold().strip() for o in options}) != 3:
         raise Held('playbook_hook', 'Use three distinct hook types and lines.')
     script = raw['script']; chosen = options[index]

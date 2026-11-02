@@ -135,6 +135,37 @@ def test_separate_editorial_provider_holds_propagate_without_fallback(tmp_path, 
     assert error.value.code==failure and len(calls)==3
 
 
+@pytest.mark.parametrize('failure',['hook','length'])
+@pytest.mark.parametrize('always_bad',[False,True])
+def test_contract_repair_receives_measured_limits_and_stays_bounded(tmp_path,failure,always_bad):
+    from yt_pipeline.writer import write_script
+    ws=Workspace(tmp_path/'ws');script,plan=episode();bad=envelope(script);calls=[]
+    if failure=='hook':bad['hook_options'][2]['first_line']='Have you ever wondered about a generic opening?'
+    else:bad['script']['units'][-1]['text']+=' '+'extra '*200
+    class Provider:
+        def generate(self,purpose,content,schema):
+            calls.append(purpose)
+            if purpose=='scripter-hooks-v1':return deepcopy(bad)
+            if purpose=='scripter-contract-repair-v1':
+                assert content['required_bounds']['target_spoken_words']>0
+                assert content['hook_contract']['max_caption_words']==12
+                assert len(content['measured_draft']['hook_options'])==3
+                if failure=='length':assert content['measured_draft']['spoken_words']>200
+                else:assert 'option 2' in content['validation_error']
+                return deepcopy(bad) if always_bad else envelope(script)
+            if purpose=='creative-director-v1':return deepcopy(plan)
+            assert purpose=='independent-editorial-v1';return verdict(script)
+    job=ws.create('education',{'playbook':'rewrite_reveal','topic':'Measured repair fixture'})
+    if always_bad:
+        with pytest.raises(Held):write_script(ws,job,brief(),Provider())
+        assert len(calls)==2
+    else:
+        result=write_script(ws,job,brief(),Provider())
+        assert result['contract_repairs']==1
+        assert [u['text'] for u in result['script']['units']]==[u['text'] for u in script['units']]
+    assert calls.count('scripter-contract-repair-v1')==1
+
+
 @pytest.mark.parametrize('always_bad',[False,True])
 def test_separate_editorial_critique_shares_the_single_rewrite_budget(tmp_path,always_bad):
     from yt_pipeline.writer import write_script

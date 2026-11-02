@@ -4,12 +4,19 @@ Implemented from the [reviewed improvement plan](EDITORIAL_IMPROVEMENT_PLAN.md).
 
 ## New request controls
 
+Live generation now supplies measured word/unit counts, counts for each hook alternative and explicit target bounds to the single contract-repair call. Every alternative is checked; dialogue prompts keep the complete spoken hook/caption within twelve words. A still-invalid repair holds instead of being manually trimmed. This does not add another substantive rewrite.
+
+When a literal Commons search finds no eligible match, the media agent can request two simpler search queries from Gemini and try each once. It records successful refinement-to-asset mappings locally. The same license allowlist, registered-asset eligibility and required source/finished-frame review remain; a refined search is not a relevance verdict. Network failures, quota and permission holds propagate without further searching. This adds up to one cached model call and two stock searches per unmatched query, not an unlimited acquisition loop.
+
+Before acceptance, the acquisition route inspects actual source pixels and can reject up to three newly downloaded candidates per query. A migration check also covers previously cached sources. Individual candidate verdicts/cache records are distinct from the per-video source and finished-frame reviews. A video candidate uses three sampled frames, so intervening content can still be missed. Commons JPEG thumbnail MIME is used for decoding even if its original source is a TIFF; license and original MIME remain recorded. Candidate checks add model calls within the shared provider controls; review failure never grants a license exception.
+
 | Field | Values | Behavior |
 | --- | --- | --- |
 | `hook_options` | boolean | For generated narrated playbooks, request three distinct typed hooks and a selected index inside the existing writer call. The actual first spoken line/caption must match that choice. Supplied scripts and caption-only aura/source clips do not get a fabricated brainstorm record |
 | `hook_validation` | `structural`, `strict` | Strict narrated hooks reject greeting/preamble openings and enforce a bounded opening length; there is no universal four-word minimum. Playbook hook/first-unit identity remains checked |
 | `editorial_review` | `off`, `required` | Required adds a separate skeptical text review, validates the exact existing final payoff quote/ID, and rejects unresolved issues. Quotas/provider failures remain holds |
 | `motion_graphics` | boolean | Enables supported original typography. The three new education presets require this and a full-frame layout |
+| `restrict_visuals_to_inventory` | boolean | When true, provide 1-16 registered `visual_asset_ids` and optional `asset_roles`. The writer receives their descriptions; the director must bind every scene to one of those real sources, with no empty search binding. Sources remain subject to eligibility and required review |
 
 New playbook batch jobs default to hook options, strict hook validation and required editorial review, alongside required sampled visual review. Existing saved requests remain unchanged. Direct older preset requests retain their previous review defaults unless enabled. `rewrite_reveal`, `myth_fact` and `quiz_pause` select enhanced defaults even on the direct route; they default to no required music and no lower panel. Explicit modes can disable model review for a clearly labeled offline test; no disabled review should be described as a pass.
 

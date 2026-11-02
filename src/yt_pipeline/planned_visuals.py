@@ -13,10 +13,10 @@ from .transcripts import write_srt
 from .cast_body import draw_human_body,shirt_color
 
 
-def resolve_asset(ws,ref,query,cache,kind='image'):
+def resolve_asset(ws,ref,query,cache,kind='image',*,context=None):
     if ref:return asset_record(ws,ref)
-    key=(query,kind)
-    if key not in cache:cache[key]=acquire_visual(ws,query,kind)
+    key=(query,kind,digest(context) if context else None)
+    if key not in cache:cache[key]=acquire_visual(ws,query,kind,context=context) if context else acquire_visual(ws,query,kind)
     return cache[key]
 
 
@@ -48,8 +48,28 @@ def _cast_frame(background,cast,avatars,scene,caption,path,height=1280):
     picture.resize((720,height),Image.Resampling.LANCZOS).save(path)
 
 
-def _stock_frame(asset,caption,path,rank=None,height=1280):
-    with Image.open(asset['path']) as raw:picture=ImageOps.fit(raw.convert('RGB'),(720,height))
+def stock_closeup(ws,asset,scene,unit,provider=None):
+    if scene.get('framing')!='closeup':return None
+    from .writer import Gemini
+    schema={'type':'object','properties':{'box':{'type':'array','minItems':4,'maxItems':4,
+        'items':{'type':'number','minimum':0,'maximum':1}},'subject':{'type':'string','minLength':1,'maxLength':180}},
+        'required':['box','subject'],'additionalProperties':False}
+    result=(provider or Gemini(ws)).generate('stock-closeup-v1',{'query':scene['visual_query'],'narration':unit['text'],
+        'task':'Choose a tight closeup crop on an ACTUALLY VISIBLE relevant subject in this source image. Return normalized [left,top,right,bottom] coordinates and the visible subject. Use the full image only if it is already a tight closeup. For a room containing monitors, focus the relevant visible monitor area rather than retaining the wide room. For a portrait, keep the relevant painted face intact. The narration is original fiction: do not invent extra screen content or pretend the image proves an imagined event. No new objects, fabricated pixels or source changes; this only selects an actual crop. Keep at least 8% of each original dimension.'},schema,images=[Path(asset['path'])])
+    box=result.get('box') if isinstance(result,dict) else None
+    if (not isinstance(box,list) or len(box)!=4 or any(type(v) not in (int,float) or not math.isfinite(v) or not 0<=v<=1 for v in box)
+        or box[2]-box[0]<.08 or box[3]-box[1]<.08 or not isinstance(result.get('subject'),str) or not 1<=len(result['subject'].strip())<=180):
+        raise Held('stock_framing','Stock closeup needs a valid visible-subject crop within the source bounds.')
+    return result
+
+
+def _stock_frame(asset,caption,path,rank=None,height=1280,crop=None):
+    with Image.open(asset['path']) as raw:
+        source=raw.convert('RGB')
+        if crop:
+            left,top,right,bottom=crop['box']
+            source=source.crop((round(left*raw.width),round(top*raw.height),round(right*raw.width),round(bottom*raw.height)))
+        picture=ImageOps.fit(source,(720,height))
     d=ImageDraw.Draw(picture)
     d.rounded_rectangle((26,height-190,694,height-30),radius=14,fill='#0b0c12')
     text_box(d,caption,(48,height-163,624,105),'white',38,True,'center',minimum=25)
@@ -155,7 +175,10 @@ def build_planned_visuals(ws,job,script,timing,folder,record):
         approvals=job['request'].get('visual_approvals',{})
         if essential and not job['request'].get('test_only',False) and approvals.get(unit['id'])!=supplied:
             raise Held('essential_visual_unreviewed','This factual visual needs a recorded unit-to-asset match before non-test production')
-        background=resolve_asset(ws,supplied,query,cache,'image' if template=='cutout_cast' else unit.get('visual_kind','image'));provenance[background['id']]=background
+        context={'role':'location backdrop for static fictional cast'} if template=='cutout_cast' else {
+            'title':script['title'],'narration':unit['text'],
+            'previous_line':script['units'][max(0,i-1)]['text'],'next_line':script['units'][min(len(script['units'])-1,i+1)]['text']}
+        background=resolve_asset(ws,supplied,query,cache,'image' if template=='cutout_cast' else unit.get('visual_kind','image'),context=context);provenance[background['id']]=background
         bindings.append({'unit_id':unit['id'],'asset_id':background['id'],'query':query,
                          'text':unit['text'] if template!='cutout_cast' else '',
                          'role':'location backdrop for static fictional cast' if template=='cutout_cast' else 'literal illustration of narration',
@@ -170,10 +193,13 @@ def build_planned_visuals(ws,job,script,timing,folder,record):
             continue
         poster=folder/(unit['id']+'-planned.png')
         if template=='cutout_cast':_cast_frame(background,cast,avatars,scene,'' if timing.get('caption_style')=='dialogue_bar' else unit['text'],poster,height)
-        else:_stock_frame(background,unit['onscreen'],poster,scene.get('rank') or None,height)
+        else:
+            crop=stock_closeup(ws,background,scene,unit)
+            _stock_frame(background,unit['onscreen'],poster,scene.get('rank') or None,height,crop=crop)
         output=folder/(unit['id']+'-planned.mp4');_motion(poster,spoken['duration'],output,scene['motion'],height)
         generated=register_asset(ws,output,'original_graphic',{'operation':'Validated director-plan collage/stock crop; source licenses retained separately','sources':list(provenance),'scene':scene},test_only=job['request'].get('test_only',False))
         rows.append({'unit_id':unit['id'],'file':str(output),'media_id':generated['id'],'duration':spoken['duration'],'kind':'directed_'+template,'resolved_scene':scene})
+        if template!='cutout_cast' and crop:rows[-1]['source_crop']=crop
     captions=folder/'captions.srt'
     write_srt([{'start':u['start'],'end':u['speech_end'],'text':u['text']} for u in timing['units']],captions)
     result={'version':1,'format':script['format'],'frames':rows,'captions':str(captions),'selected_media':[],

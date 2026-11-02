@@ -22,4 +22,6 @@ Resources/Templates/MotionBlocks/
 Resources/Music/
 Resources/*.mp4
 Resources/*.wav
+Resources/Drafts/*
+!Resources/Drafts/README.md
 

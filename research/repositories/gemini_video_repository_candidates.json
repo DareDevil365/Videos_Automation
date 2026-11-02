@@ -1,0 +1,639 @@
+{
+  "snapshot": "2026-11-02",
+  "scope": "14 new repository leads beyond the earlier35 screen; 10 have selected implementation reads. No third-party code installed/executed and no account access.",
+  "prior_review": "research/repositories/AUTOMATION_REPOSITORY_REVIEW.md",
+  "repositories": [
+    {
+      "repository": "XredaX/Code2Video-AI",
+      "url": "https://github.com/XredaX/Code2Video-AI",
+      "snapshot": "2026-11-02",
+      "license_observed": "No repository license found",
+      "stars_at_snapshot": 1,
+      "pushed_at": "2026-08-03T09:21:21Z",
+      "category": "Gemini-generated Remotion code",
+      "gemini_role": "Direct GoogleGenAI text/code + image-reference visual review",
+      "recommendation": "High-value architecture reference; do not copy unlicensed code",
+      "code_executed": false,
+      "local_render_validated": false,
+      "files_inspected": [
+        {
+          "path": "README.md",
+          "url": "https://github.com/XredaX/Code2Video-AI/blob/14b7cf53a76eb2ed0103bf2017b423e17f0b7c99/README.md"
+        },
+        {
+          "path": "src/lib/agent-runner.ts",
+          "url": "https://github.com/XredaX/Code2Video-AI/blob/14b7cf53a76eb2ed0103bf2017b423e17f0b7c99/src/lib/agent-runner.ts"
+        },
+        {
+          "path": "src/lib/agent-prompt.ts",
+          "url": "https://github.com/XredaX/Code2Video-AI/blob/14b7cf53a76eb2ed0103bf2017b423e17f0b7c99/src/lib/agent-prompt.ts"
+        },
+        {
+          "path": "src/lib/render-runner.ts",
+          "url": "https://github.com/XredaX/Code2Video-AI/blob/14b7cf53a76eb2ed0103bf2017b423e17f0b7c99/src/lib/render-runner.ts"
+        },
+        {
+          "path": "renderer/render-cli.js",
+          "url": "https://github.com/XredaX/Code2Video-AI/blob/14b7cf53a76eb2ed0103bf2017b423e17f0b7c99/renderer/render-cli.js"
+        },
+        {
+          "path": "renderer/lib/validators.js",
+          "url": "https://github.com/XredaX/Code2Video-AI/blob/14b7cf53a76eb2ed0103bf2017b423e17f0b7c99/renderer/lib/validators.js"
+        }
+      ],
+      "findings": [
+        "Agent returns Remotion TSX, renders representative frames, reviews contact sheet, finalizes only reviewed code hash.",
+        "Docker renderer uses no network, read-only filesystem, dropped capabilities, CPU/memory/PID limits and timeout.",
+        "Validators inspected check basic files/paths, not a proof arbitrary generated code is safe."
+      ],
+      "cost_or_fit_limits": [
+        "Node/Docker/Chromium/Remotion needed.",
+        "No license means code reuse not granted by public visibility.",
+        "Gemini key is not an unlimited/free-generation promise; model-specific quota still applies."
+      ],
+      "pinned_commit": "14b7cf53a76eb2ed0103bf2017b423e17f0b7c99"
+    },
+    {
+      "repository": "showlab/Code2Video",
+      "url": "https://github.com/showlab/Code2Video",
+      "snapshot": "2026-11-02",
+      "license_observed": "MIT read",
+      "stars_at_snapshot": 2214,
+      "pushed_at": "2026-08-24T11:00:47Z",
+      "category": "Manim educational animation",
+      "gemini_role": "Multimodal layout feedback labelled Gemini, routed through AzureOpenAI/config endpoints",
+      "recommendation": "Strong education-renderer pattern; requires rewritten direct-Gemini adapter",
+      "code_executed": false,
+      "local_render_validated": false,
+      "files_inspected": [
+        {
+          "path": "README.md",
+          "url": "https://github.com/showlab/Code2Video/blob/1142d8e14cdc2806df85aedb0fbb5dca474caa0f/README.md"
+        },
+        {
+          "path": "LICENSE",
+          "url": "https://github.com/showlab/Code2Video/blob/1142d8e14cdc2806df85aedb0fbb5dca474caa0f/LICENSE"
+        },
+        {
+          "path": "src/requirements.txt",
+          "url": "https://github.com/showlab/Code2Video/blob/1142d8e14cdc2806df85aedb0fbb5dca474caa0f/src/requirements.txt"
+        },
+        {
+          "path": "src/agent.py",
+          "url": "https://github.com/showlab/Code2Video/blob/1142d8e14cdc2806df85aedb0fbb5dca474caa0f/src/agent.py"
+        },
+        {
+          "path": "src/gpt_request.py",
+          "url": "https://github.com/showlab/Code2Video/blob/1142d8e14cdc2806df85aedb0fbb5dca474caa0f/src/gpt_request.py"
+        },
+        {
+          "path": "src/api_config.json",
+          "url": "https://github.com/showlab/Code2Video/blob/1142d8e14cdc2806df85aedb0fbb5dca474caa0f/src/api_config.json"
+        },
+        {
+          "path": "src/utils.py",
+          "url": "https://github.com/showlab/Code2Video/blob/1142d8e14cdc2806df85aedb0fbb5dca474caa0f/src/utils.py"
+        }
+      ],
+      "findings": [
+        "Separate teaching outline, storyboard, per-section code, real Manim render, layout/video feedback.",
+        "Regenerates sections on code/render/layout failure.",
+        "src/gpt_request.py Gemini functions instantiate openai.AzureOpenAI rather than direct Google API.",
+        "Default repair limits can be up to 10, with parallel generation/rendering."
+      ],
+      "cost_or_fit_limits": [
+        "Not a paste-your-Google-key drop-in as configured.",
+        "CPU/Manim/LaTeX/native graphics dependencies; generated Python needs isolation.",
+        "Bound retries tightly; benchmarks/examples do not prove our topics will be accurate."
+      ],
+      "pinned_commit": "1142d8e14cdc2806df85aedb0fbb5dca474caa0f"
+    },
+    {
+      "repository": "chengenli9/BeaverHacks2026",
+      "url": "https://github.com/chengenli9/BeaverHacks2026",
+      "snapshot": "2026-11-02",
+      "license_observed": "No repository license found",
+      "stars_at_snapshot": 2,
+      "pushed_at": "2026-06-03T00:18:33Z",
+      "category": "Structured footage editor + generated graphic scenes",
+      "gemini_role": "Gemini scene analysis, JSON planning/critics, TTS/images",
+      "recommendation": "Verified hackathon award lead and useful manifest/review design; no code-copy grant",
+      "code_executed": false,
+      "local_render_validated": false,
+      "files_inspected": [
+        {
+          "path": "README.md",
+          "url": "https://github.com/chengenli9/BeaverHacks2026/blob/b6fd82531951434c47710f1ab512094c07df7151/README.md"
+        },
+        {
+          "path": "docs/GEMINI_MODEL_POLICY.md",
+          "url": "https://github.com/chengenli9/BeaverHacks2026/blob/b6fd82531951434c47710f1ab512094c07df7151/docs/GEMINI_MODEL_POLICY.md"
+        },
+        {
+          "path": "backend/app/integrations/gemini/service.py",
+          "url": "https://github.com/chengenli9/BeaverHacks2026/blob/b6fd82531951434c47710f1ab512094c07df7151/backend/app/integrations/gemini/service.py"
+        },
+        {
+          "path": "backend/app/prompts/blind_manifest_critic.md",
+          "url": "https://github.com/chengenli9/BeaverHacks2026/blob/b6fd82531951434c47710f1ab512094c07df7151/backend/app/prompts/blind_manifest_critic.md"
+        },
+        {
+          "path": "backend/app/prompts/render_review_critic.md",
+          "url": "https://github.com/chengenli9/BeaverHacks2026/blob/b6fd82531951434c47710f1ab512094c07df7151/backend/app/prompts/render_review_critic.md"
+        },
+        {
+          "path": "backend/app/rendering/remotion_bridge.py",
+          "url": "https://github.com/chengenli9/BeaverHacks2026/blob/b6fd82531951434c47710f1ab512094c07df7151/backend/app/rendering/remotion_bridge.py"
+        },
+        {
+          "path": "apps/remotion/scripts/render-generated-scene.ts",
+          "url": "https://github.com/chengenli9/BeaverHacks2026/blob/b6fd82531951434c47710f1ab512094c07df7151/apps/remotion/scripts/render-generated-scene.ts"
+        }
+      ],
+      "findings": [
+        "Organizer judging page lists Scenerio first in Google Best Use of Gemini; OSU article corroborates track award.",
+        "Measured media probes/shot indexes constrain planning, manifests drive FFmpeg/Remotion.",
+        "Blind manifest critic explicitly excludes visual/audio judgements; separate rendered-video critic gets actual media and goals.",
+        "Model policy constrains expensive retries but allows placeholder/silent demo fallbacks."
+      ],
+      "cost_or_fit_limits": [
+        "No license found; study patterns, request permission before copying.",
+        "Gemini image/TTS model access and charges must be checked individually.",
+        "Demo output is not proof every generated artifact is creatively acceptable."
+      ],
+      "pinned_commit": "b6fd82531951434c47710f1ab512094c07df7151"
+    },
+    {
+      "repository": "raunakpatil/youtube-agentic-ai-studio",
+      "url": "https://github.com/raunakpatil/youtube-agentic-ai-studio",
+      "snapshot": "2026-11-02",
+      "license_observed": "MIT read",
+      "stars_at_snapshot": 205,
+      "pushed_at": "2026-11-01T06:20:38Z",
+      "category": "Stock-based fact/explainer automation",
+      "gemini_role": "Direct GoogleGenAI research/writing, broad fallback providers",
+      "recommendation": "Closest whole-pipeline comparison; selectively adapt media/provider UI, not blanket migrate",
+      "code_executed": false,
+      "local_render_validated": false,
+      "files_inspected": [
+        {
+          "path": "README.md",
+          "url": "https://github.com/raunakpatil/youtube-agentic-ai-studio/blob/main/README.md"
+        },
+        {
+          "path": "LICENSE",
+          "url": "https://github.com/raunakpatil/youtube-agentic-ai-studio/blob/main/LICENSE"
+        },
+        {
+          "path": "requirements.txt",
+          "url": "https://github.com/raunakpatil/youtube-agentic-ai-studio/blob/main/requirements.txt"
+        },
+        {
+          "path": "pipeline.py",
+          "url": "https://github.com/raunakpatil/youtube-agentic-ai-studio/blob/main/pipeline.py"
+        },
+        {
+          "path": "agents/scriptwriter.py",
+          "url": "https://github.com/raunakpatil/youtube-agentic-ai-studio/blob/main/agents/scriptwriter.py"
+        },
+        {
+          "path": "agents/gemini_client.py",
+          "url": "https://github.com/raunakpatil/youtube-agentic-ai-studio/blob/main/agents/gemini_client.py"
+        },
+        {
+          "path": "video/stock.py",
+          "url": "https://github.com/raunakpatil/youtube-agentic-ai-studio/blob/main/video/stock.py"
+        },
+        {
+          "path": "video/creator.py",
+          "url": "https://github.com/raunakpatil/youtube-agentic-ai-studio/blob/main/video/creator.py"
+        }
+      ],
+      "findings": [
+        "Real Python pipeline connects research/script, downloaded stock, narration, MoviePy and review/upload.",
+        "Shorts use several image queries per section; timed SRT overlay exists.",
+        "Pexels candidates are randomized; search can broaden to generic fallback queries.",
+        "Model chain switches on quota/errors and contains old models/quota comments."
+      ],
+      "cost_or_fit_limits": [
+        "Free service availability/terms differ; broad fallbacks violate our explicit-provider budget unless disabled.",
+        "Edge TTS is a network service, not local Kokoro.",
+        "Stock cascade alone does not verify meaning; do not accept generic fallback as matching.",
+        "MoviePy1/numpy1 pins add a different dependency stack."
+      ],
+      "pinned_commit": null
+    },
+    {
+      "repository": "itsPremkumar/Automated-Video-Generator",
+      "url": "https://github.com/itsPremkumar/Automated-Video-Generator",
+      "snapshot": "2026-11-02",
+      "license_observed": "MIT read",
+      "stars_at_snapshot": 121,
+      "pushed_at": "2026-10-27T12:23:55Z",
+      "category": "Script-to-stock/Remotion toolkit with host-agent support",
+      "gemini_role": "Optional configured/host model bridge; Gemini not universally required",
+      "recommendation": "Useful granular JSON examples and integrations; host-agent zero-key claim does not meet independent-runtime requirement",
+      "code_executed": false,
+      "local_render_validated": false,
+      "files_inspected": [
+        {
+          "path": "README.md",
+          "url": "https://github.com/itsPremkumar/Automated-Video-Generator/blob/main/README.md"
+        },
+        {
+          "path": "LICENSE",
+          "url": "https://github.com/itsPremkumar/Automated-Video-Generator/blob/main/LICENSE"
+        },
+        {
+          "path": "package.json",
+          "url": "https://github.com/itsPremkumar/Automated-Video-Generator/blob/main/package.json"
+        },
+        {
+          "path": "docs/GEMINI.md",
+          "url": "https://github.com/itsPremkumar/Automated-Video-Generator/blob/main/docs/GEMINI.md"
+        },
+        {
+          "path": "docs/agentic-pipeline/VERIFICATION_MATRIX.md",
+          "url": "https://github.com/itsPremkumar/Automated-Video-Generator/blob/main/docs/agentic-pipeline/VERIFICATION_MATRIX.md"
+        },
+        {
+          "path": "src/adapters/mcp/driver-llm.ts",
+          "url": "https://github.com/itsPremkumar/Automated-Video-Generator/blob/main/src/adapters/mcp/driver-llm.ts"
+        },
+        {
+          "path": "src/agentic/ai/ai-verify.ts",
+          "url": "https://github.com/itsPremkumar/Automated-Video-Generator/blob/main/src/agentic/ai/ai-verify.ts"
+        },
+        {
+          "path": "src/agentic/plugins/audio/beat-sync.ts",
+          "url": "https://github.com/itsPremkumar/Automated-Video-Generator/blob/main/src/agentic/plugins/audio/beat-sync.ts"
+        },
+        {
+          "path": "src/agentic/services/scripts/templates.ts",
+          "url": "https://github.com/itsPremkumar/Automated-Video-Generator/blob/main/src/agentic/services/scripts/templates.ts"
+        }
+      ],
+      "findings": [
+        "Agent backend may be driven by external host model; that host still consumes allowance.",
+        "AI verification can return null and fall back to signal-level checks.",
+        "Audio mood/clarity judgement path can use transcript text rather than hearing audio.",
+        "Beat plugin has an aubio loader returning dummy zero-valued audio; FFmpeg fallback and several hooks are partial."
+      ],
+      "cost_or_fit_limits": [
+        "Do not interpret no extra API key as no ChatGPT/Claude runtime consumption.",
+        "Do not copy beat-sync or verification guarantees without executing meaningful tests.",
+        "License of Remotion and media/model layers remains separate."
+      ],
+      "pinned_commit": null
+    },
+    {
+      "repository": "aarontzhang/yt-ai-studio",
+      "url": "https://github.com/aarontzhang/yt-ai-studio",
+      "snapshot": "2026-11-02",
+      "license_observed": "No repository license found",
+      "stars_at_snapshot": 2,
+      "pushed_at": null,
+      "category": "Hackathon natural-language footage editor",
+      "gemini_role": "Gemini mood classification exists, but current edit/transcription stack uses Anthropic/OpenAI",
+      "recommendation": "Likely remembered Google-hackathon family; current source fails Gemini-only/free constraint",
+      "code_executed": false,
+      "local_render_validated": false,
+      "files_inspected": [
+        {
+          "path": "README.md",
+          "url": "https://github.com/aarontzhang/yt-ai-studio/blob/main/README.md"
+        },
+        {
+          "path": "package.json",
+          "url": "https://github.com/aarontzhang/yt-ai-studio/blob/main/package.json"
+        },
+        {
+          "path": "lib/server/geminiClient.ts",
+          "url": "https://github.com/aarontzhang/yt-ai-studio/blob/main/lib/server/geminiClient.ts"
+        }
+      ],
+      "findings": [
+        "Felix Peng portfolio links this exact repository and claims Google DeepMind hackathon win.",
+        "Current README requires OpenAI and Anthropic keys and Supabase.",
+        "Gemini client classifies transcript mood/energy; not whole topic-to-video agent.",
+        "YouTube-style upload/publish screens include mock UI; not native official YouTube integration."
+      ],
+      "cost_or_fit_limits": [
+        "Launch demo claims and current repository differ.",
+        "External provider/account dependencies; no license found.",
+        "Winner claim corroborated by creator materials, not independently located organizer result."
+      ],
+      "pinned_commit": null
+    },
+    {
+      "repository": "scrollmark/showrunner",
+      "url": "https://github.com/scrollmark/showrunner",
+      "snapshot": "2026-11-02",
+      "license_observed": "MIT read",
+      "stars_at_snapshot": 18,
+      "pushed_at": "2026-09-28T17:31:07Z",
+      "category": "Format/provider framework; Remotion/Manim/Veo",
+      "gemini_role": "Gemini provider means Veo video generation, not its default planner",
+      "recommendation": "Good scene-refine/export/provider abstractions; not Gemini-only out of box",
+      "code_executed": false,
+      "local_render_validated": false,
+      "files_inspected": [
+        {
+          "path": "README.md",
+          "url": "https://github.com/scrollmark/showrunner/blob/d9f01063d9dc103766757a4ceeb5a67537f788b1/README.md"
+        },
+        {
+          "path": "LICENSE",
+          "url": "https://github.com/scrollmark/showrunner/blob/d9f01063d9dc103766757a4ceeb5a67537f788b1/LICENSE"
+        },
+        {
+          "path": "pyproject.toml",
+          "url": "https://github.com/scrollmark/showrunner/blob/d9f01063d9dc103766757a4ceeb5a67537f788b1/pyproject.toml"
+        },
+        {
+          "path": "src/showrunner/pipeline.py",
+          "url": "https://github.com/scrollmark/showrunner/blob/d9f01063d9dc103766757a4ceeb5a67537f788b1/src/showrunner/pipeline.py"
+        },
+        {
+          "path": "src/showrunner/providers/video/gemini.py",
+          "url": "https://github.com/scrollmark/showrunner/blob/d9f01063d9dc103766757a4ceeb5a67537f788b1/src/showrunner/providers/video/gemini.py"
+        },
+        {
+          "path": "src/showrunner/formats/manim_explainer/renderer.py",
+          "url": "https://github.com/scrollmark/showrunner/blob/d9f01063d9dc103766757a4ceeb5a67537f788b1/src/showrunner/formats/manim_explainer/renderer.py"
+        }
+      ],
+      "findings": [
+        "Default LLM is Anthropic; registered planner choices include Anthropic/OpenAI.",
+        "Optional Gemini video provider invokes generate_videos with Veo.",
+        "Checkpointed scene refinement and bounded render error repair are real code.",
+        "Formats include faceless explainer, ai-video and Manim explainer."
+      ],
+      "cost_or_fit_limits": [
+        "Core Anthropic dependency and default provider conflict with our runtime rule.",
+        "Veo API route is not funded by Google Pro subscription by implication.",
+        "Remotion or Manim setup; custom renderer license applies."
+      ],
+      "pinned_commit": "d9f01063d9dc103766757a4ceeb5a67537f788b1"
+    },
+    {
+      "repository": "khozhaniyazov/nima_model",
+      "url": "https://github.com/khozhaniyazov/nima_model",
+      "snapshot": "2026-11-02",
+      "license_observed": "Apache-2.0 read",
+      "stars_at_snapshot": 0,
+      "pushed_at": "2026-05-10T21:33:07Z",
+      "category": "Manim scene streaming/generation",
+      "gemini_role": "No direct Gemini provider established in inspected code",
+      "recommendation": "Obscure educational reference; optional future experiment",
+      "code_executed": false,
+      "local_render_validated": false,
+      "files_inspected": [
+        {
+          "path": "readme.md",
+          "url": "https://github.com/khozhaniyazov/nima_model/blob/main/readme.md"
+        },
+        {
+          "path": "LICENSE",
+          "url": "https://github.com/khozhaniyazov/nima_model/blob/main/LICENSE"
+        },
+        {
+          "path": "config.py",
+          "url": "https://github.com/khozhaniyazov/nima_model/blob/main/config.py"
+        }
+      ],
+      "findings": [
+        "README links narrated sample MP4 and describes scene streaming and overlap checks.",
+        "Config defaults to OpenAI-compatible paid model routes and fallback, not a verified Gemini-only path.",
+        "Scene-by-scene rendering and conservative Windows TeX serialization described."
+      ],
+      "cost_or_fit_limits": [
+        "Provider port/config removal of paid fallbacks needed.",
+        "Deterministic successful MP4 fallback can be generic rather than correct requested content.",
+        "Readme/config audited; render code/tests not executed."
+      ],
+      "pinned_commit": null
+    },
+    {
+      "repository": "GoldLegendW80/llm-video-maker",
+      "url": "https://github.com/GoldLegendW80/llm-video-maker",
+      "snapshot": "2026-11-02",
+      "license_observed": "MIT read",
+      "stars_at_snapshot": 35,
+      "pushed_at": "2026-06-17T12:28:09Z",
+      "category": "Host-agent HTML/HyperFrames video skills",
+      "gemini_role": "Host Gemini/coding agent can author video; no standalone Gemini API orchestrator established",
+      "recommendation": "Study briefs/capture/source/parameter vocabulary; not standalone replacement",
+      "code_executed": false,
+      "local_render_validated": false,
+      "files_inspected": [
+        {
+          "path": "README.md",
+          "url": "https://github.com/GoldLegendW80/llm-video-maker/blob/main/README.md"
+        },
+        {
+          "path": "LICENSE",
+          "url": "https://github.com/GoldLegendW80/llm-video-maker/blob/main/LICENSE"
+        }
+      ],
+      "findings": [
+        "Real example MP4/brief paths included.",
+        "Supports local Kokoro option and transcript-locked workflow by documentation.",
+        "Repository is a small skill/script bundle driven by coding host agent."
+      ],
+      "cost_or_fit_limits": [
+        "Host model inference cost still exists.",
+        "Optional OpenAI/fal generation paths do not fit zero-extra-spend runtime.",
+        "Only README/tree/license examined; underlying engine/render quality not run."
+      ],
+      "pinned_commit": null
+    },
+    {
+      "repository": "ersinkoc/AI-Video-Factory",
+      "url": "https://github.com/ersinkoc/AI-Video-Factory",
+      "snapshot": "2026-11-02",
+      "license_observed": "MIT (GitHub metadata)",
+      "stars_at_snapshot": 107,
+      "pushed_at": "2026-11-02T08:32:12Z",
+      "category": "Multi-agent production studio",
+      "gemini_role": "Gemini media gateway; creative agent runner uses Claude Agent SDK",
+      "recommendation": "Reference media-library/QA/state ideas; not free Gemini-only replacement",
+      "code_executed": false,
+      "local_render_validated": false,
+      "files_inspected": [
+        {
+          "path": "packages/agents/src/runner.ts",
+          "url": "https://github.com/ersinkoc/AI-Video-Factory/blob/main/packages/agents/src/runner.ts"
+        }
+      ],
+      "findings": [
+        "Inspected runner imports Anthropic Claude Agent SDK and creates separate agent subprocesses.",
+        "Code explicitly documents subscription/AgentSDK/API allowance usage.",
+        "Per-agent models, timeout/concurrency and costs are tracked."
+      ],
+      "cost_or_fit_limits": [
+        "Claude runtime conflicts with request not to spend host subscription credits.",
+        "Rapidly changing main; no local execution/license-file audit in this pass."
+      ],
+      "pinned_commit": null
+    },
+    {
+      "repository": "yashmote/Northstar-video-solution-generation",
+      "url": "https://github.com/yashmote/Northstar-video-solution-generation",
+      "snapshot": "2026-11-02",
+      "license_observed": "No license established in this audit",
+      "stars_at_snapshot": null,
+      "pushed_at": null,
+      "category": "Gemini JSON -> HTML slides -> narrated MP4",
+      "gemini_role": "Direct legacy Google generativeai calls for extraction/solution",
+      "recommendation": "Related BITS Goa project; simple HTML scene reference, not identified Pokemon demo",
+      "code_executed": false,
+      "local_render_validated": false,
+      "files_inspected": [
+        {
+          "path": "README.md",
+          "url": "https://github.com/yashmote/Northstar-video-solution-generation/blob/main/README.md"
+        },
+        {
+          "path": "eduvision_laptop.py",
+          "url": "https://github.com/yashmote/Northstar-video-solution-generation/blob/main/eduvision_laptop.py"
+        },
+        {
+          "path": "Requirements.txt",
+          "url": "https://github.com/yashmote/Northstar-video-solution-generation/blob/main/Requirements.txt"
+        }
+      ],
+      "findings": [
+        "README publicly identifies author as BITS Goa student; separate agent investigates exact identity match.",
+        "Actual module makes grade-adapted JSON, Playwright PNGs, audio then FFmpeg segments.",
+        "Requirements list google-genai but module imports google.generativeai, a setup mismatch.",
+        "TTS falls from ElevenLabs to flite to silence."
+      ],
+      "cost_or_fit_limits": [
+        "Not our desired fast character/story generator.",
+        "Do not substitute demo solution/silence as successful requested narrated video.",
+        "Exact remembered senior/Pokemon/resumed-work link remains unverified."
+      ],
+      "pinned_commit": null
+    },
+    {
+      "repository": "bhancockio/pokemon-ai-video-generator",
+      "url": "https://github.com/bhancockio/pokemon-ai-video-generator",
+      "snapshot": "2026-11-02",
+      "license_observed": "No repository license found",
+      "stars_at_snapshot": 48,
+      "pushed_at": "2025-11-26T19:14:03Z",
+      "category": "Pokemon cinematic documentary workflow",
+      "gemini_role": "Gemini images; Kling via KIE video; ElevenLabs voice/SFX; Claude orchestrator",
+      "recommendation": "Related Pokemon lead, but paid/multi-provider and not identified student",
+      "code_executed": false,
+      "local_render_validated": false,
+      "files_inspected": [
+        {
+          "path": "README.md",
+          "url": "https://github.com/bhancockio/pokemon-ai-video-generator/blob/main/README.md"
+        }
+      ],
+      "findings": [
+        "Documented multi-stage asset/composite/clip/narration/SFX assembly with examples.",
+        "Image-seed composition and one-action shot prompts are useful planning patterns."
+      ],
+      "cost_or_fit_limits": [
+        "Requires Claude Code, KIE/Kling and ElevenLabs as documented.",
+        "Not a generic free Gemini-only informative video generator.",
+        "No code execution; timed claims are upstream assertions."
+      ],
+      "pinned_commit": null
+    },
+    {
+      "repository": "auzzton/Gemini-Powered-Video-Generator",
+      "url": "https://github.com/auzzton/Gemini-Powered-Video-Generator",
+      "snapshot": "2026-11-02",
+      "license_observed": "No top-level license found; app/LICENSE.md requires separate review",
+      "stars_at_snapshot": 0,
+      "pushed_at": "2026-04-06T16:08:54Z",
+      "category": "Agentic video production hackathon demo",
+      "gemini_role": "Gemini-branded planner with other service dependencies",
+      "recommendation": "Discovery lead only; do not assume Gemini-only or licensed",
+      "code_executed": false,
+      "local_render_validated": false,
+      "files_inspected": [
+        {
+          "path": "package.json",
+          "url": "https://github.com/auzzton/Gemini-Powered-Video-Generator/blob/main/package.json"
+        }
+      ],
+      "findings": [
+        "Package includes ElevenLabs, fal and OpenAI.",
+        "README-linked original antoinekllee/VideoGen-gemini-hack returned404 at inspection."
+      ],
+      "cost_or_fit_limits": [
+        "README fetch timed out in deeper audit; no full implementation validation.",
+        "Multiple providers and unclear license scope."
+      ],
+      "pinned_commit": null
+    },
+    {
+      "repository": "ketanvelip/pokemon-sprites-evolution-timeline",
+      "url": "https://github.com/ketanvelip/pokemon-sprites-evolution-timeline",
+      "snapshot": "2026-11-02",
+      "license_observed": "No repository license found",
+      "stars_at_snapshot": 1,
+      "pushed_at": "2026-01-27T06:49:31Z",
+      "category": "One prepared Remotion Pokemon animation",
+      "gemini_role": "Gemini/agent skill folders present, not evidence of generic API generator",
+      "recommendation": "Do not confuse one rendered project with an autonomous generator",
+      "code_executed": false,
+      "local_render_validated": false,
+      "files_inspected": [],
+      "findings": [
+        "Public description is a specific sprite-evolution timeline animation."
+      ],
+      "cost_or_fit_limits": [
+        "Not identified BITS demo.",
+        "Pokemon artwork rights are separate from renderer source license.",
+        "Metadata/tree discovery only."
+      ],
+      "pinned_commit": null
+    }
+  ],
+  "unresolved_references": [
+    {
+      "reference": "BITS Goa male student/alumnus; Pokemon informative demo; shelved then resumed",
+      "status": "Unidentified; focused search delegated to /root/bits_goa_project; see its separate report."
+    },
+    {
+      "reference": "Google hackathon first-place video editor/generator",
+      "status": "Scenerio award verified in organizer page; UCLA YouTube AI Studio creator-linked source found; cannot assert which user remembers."
+    },
+    {
+      "reference": "antoinekllee/VideoGen-gemini-hack",
+      "status": "README-linked URL returned404; no conclusion about deletion/private/rename."
+    }
+  ],
+  "hackathon_sources": [
+    {
+      "url": "https://judge.beaverhacks.org/cmlfqho300000kv04wi9199a5",
+      "supports": "Organizer lists Scenerio1st Google Best use of Gemini"
+    },
+    {
+      "url": "https://today.oregonstate.edu/all-stories/beaver-hackathon-brings-crowd-student-programmers-osu",
+      "supports": "University awards article lists Scenerio in Google track"
+    },
+    {
+      "url": "https://www.felixpeng.com/projects/youtube-ai-studio",
+      "supports": "Creator project narrative and exact linked aarontzhang repository"
+    },
+    {
+      "url": "https://www.kaggle.com/competitions/gemini-3/hackathon-winners",
+      "supports": "Search-indexed official winner listing contains FlameEdit; no ordinal first-place/repo verified"
+    }
+  ],
+  "search_limits": [
+    "Exact student identification owned by another agent; no guessed match.",
+    "GitHub anonymous API quota reached after metadata/tree/commit reads; no credentials or quota evasion used. Known public raw/code pages remained readable.",
+    "Some README/source requests timed out or returned404; explicit limitations recorded.",
+    "Stars/push times are dated observations, not success/reliability evidence.",
+    "No prototype videos from third-party repositories were rendered locally in this audit."
+  ]
+}

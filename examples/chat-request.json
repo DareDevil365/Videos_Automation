@@ -1,0 +1,14 @@
+{
+  "brief": {"title": "The group project shortcut", "question": "What is the funny final reply?", "kind": "fiction", "sources": [], "claims": []},
+  "script": {
+    "version": 1, "title": "He found the group project shortcut", "description": "An original fictional chat about a group project.", "format": "chat", "fiction": true,
+    "hook": "Did you finish your part?", "payoff": "His part was reminding everyone else.",
+    "units": [
+      {"id": "one", "speaker": "Alex", "text": "Did you finish your part of the project?", "kind": "fiction", "claim_ids": [], "onscreen": "did you finish your part?"},
+      {"id": "two", "speaker": "Sam", "text": "Yes. I have been working all afternoon.", "kind": "fiction", "claim_ids": [], "onscreen": "yes. been working all afternoon"},
+      {"id": "three", "speaker": "Alex", "text": "Great. What did you make?", "kind": "fiction", "claim_ids": [], "onscreen": "great. what did you make?"},
+      {"id": "four", "speaker": "Sam", "text": "A group chat reminding everyone to finish their parts.", "kind": "fiction", "claim_ids": [], "onscreen": "a group chat reminding everyone to finish"}
+    ],
+    "edit": {"effect": "punch", "payoff_unit_id": "four", "cta": false}
+  }
+}

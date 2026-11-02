@@ -1,0 +1,43 @@
+# Search for the remembered BITS Goa video-generation project
+
+Research snapshot: 2 November 2026. Public-source identification search, not a person-identification conclusion. **The exact LinkedIn post, Pokémon demo and resumed-project history have not been verified.** No candidate below should be described as the user's senior without confirmation.
+
+The clues supplied were: a male BITS Goa senior, possibly third/fourth year or graduated; an original authored LinkedIn post demonstrating a prompt turning into an informative video, with Pokémon as an example; Gemini/API-key usage possibly mentioned; an earlier attempt was dropped or left aside and then resumed after a long gap. The user's corrected timeline is **around mid/second-half 2025 for the original post, seen after mid-2025**. An intermediate recollection of 2026 was explicitly corrected to 2025. Gemini/Pokémon wording may be remembered imperfectly.
+
+## Excluded by user: Aryansh Tiwari / AI-Based Content Creator Studio
+
+**Status: explicitly rejected by the user; excluded from identity matching.** The earlier lead came from an [indexed profile](https://in.linkedin.com/in/aryansh-tiwari-61a238268), rather than a verified original-post permalink. It must not be resurfaced as a candidate. No Pokémon demo, resumption history or verified public repository was established. The [official BITS Goa Annual Report 2025](https://www.bits-goa.ac.in/files/ANNUAL-REPORT/Annual-Report-2025.pdf) contains a related project title, but that does not establish the remembered author or post.
+
+## Other related leads, kept distinct
+
+| Lead | Evidence that matches | Missing or conflicting evidence | Conclusion |
+| --- | --- | --- | --- |
+| [Yashvardhan Mote / NorthStar](https://github.com/yashmote/Northstar-video-solution-generation) | Repository README identifies BITS Goa Mechanical Engineering, 2023–2027. Typed/photo homework becomes Gemini-generated explanations, rendered slides, narration and MP4; a sample output file is included. The GitHub profile links to [his LinkedIn](https://www.linkedin.com/in/yashvardhanmote). | Documented examples are school homework, not Pokémon. No matching LinkedIn demo or shelving/resumption wording was found. | Real closely related student repository, **not an identity match**. Code review belongs to the parallel repository report. |
+| [Nikhil Sheoran / FastCut](https://nikhilsheoran.com/) | Own site explicitly identifies BITS Goa and an AI short-form editor. Its project history says work on FastCut lost momentum and stopped. [FastCut's public LinkedIn company page](https://www.linkedin.com/company/fastcutai) independently names the campus. | No Pokémon or Gemini-key informative-video demo found. Stopping FastCut is not evidence of later returning to the same project. FastCut's described task is editing/captioning source material rather than generic topic-to-explainer generation. | Related campus product only. Do not substitute this founder for the remembered senior. |
+| [Harsh Todi / FastCut](https://in.linkedin.com/in/hashtodi) | Public posts describe AI captions, B-roll, silence removal and other short-form editing, including a longer development journey. | No Pokémon/Gemini-demo match. A development journey is not the specific remembered hiatus/resumption. | Same related product; not a second independent match. |
+| [Brandon Hancock / Pokémon video system](https://www.linkedin.com/in/brandon-hancock-ai) and [source code](https://github.com/bhancockio/pokemon-ai-video-generator) | Public posts specifically describe giving a Pokémon name and producing story, visuals, voice, video and sound. The creator's [walkthrough announcement](https://www.skool.com/ai-developer-accelerator/new-video-how-to-make-ai-videos-free-source-code-full-walkthrough) links the repository. | No BITS Goa connection found. Advertised dependencies include Kling, ElevenLabs and Claude orchestration alongside Gemini images; it is not established as Gemini-key-only or zero-cost. | Strong example of the remembered *kind* of demo, not a match for the senior. A senior could have shared a similar demo, but that is speculation and is not recorded as fact. |
+| [speeddemon22/MANIM](https://github.com/speeddemon22/MANIM) | README identifies work at BITS Goa and real mathematical-animation source files. | Fixed physics scenes; no generic Gemini prompt-to-video route or Pokémon evidence. | Screened out as an identity/generator match. |
+
+The parallel [Gemini repository deep dive](../repositories/GEMINI_VIDEO_REPOSITORY_DEEP_DIVE.md) owns implementation/dependency/license comparisons. This search does not claim these programs were installed or rendered locally.
+
+## Search coverage and limits
+
+Public LinkedIn post/profile search used combinations of campus names (“BITS Goa”, “BITS Pilani Goa”), Gemini/Gemini API, video generator, animated/educational/informative video, prompt, Pokémon/Pokemon/Pikachu, Manim and Remotion. The history clue was searched with shelved, revisited, months ago, side project and resumed/rebuilt phrasing. Pokémon-playing agents, card generators, generic Google ambassador posts, unrelated Goa businesses and campus quiz material were excluded.
+
+GitHub public repository/README searches supplied a useful second path when LinkedIn results were sparse. For example, a campus+Gemini README search surfaced NorthStar, while a campus+video search surfaced the fixed Manim project. Search counts are not counts of matching people/projects. The GitHub unauthenticated API later reached its rate limit; source-web and raw-file review remain separate options. No attempt was made to evade that limit.
+
+Public-index snippets can mix an author's posts with reactions/reposts and can have stale relative dates. Campus affiliation and project claims above are tied to the specific source describing them; a person's name appearing in a search result is not sufficient. Public posts are claims unless checked against repository code or independent records. No contact details or student IDs are collected in this report.
+
+## Follow-up after the user's exclusion and date correction
+
+The follow-up searched original-post and public-video routes, including Pokémon/Pokemon/Pikachu with “single prompt”, “topic”, “narration”, “generated a video”, MoviePy, FFmpeg and Manim; campus with text-to-video, prompt-to-video, animated videos, Shorts and Reels; and hiatus language including shelved, revisited, resumed, restarted, abandoned, reviving, picked it up and long break. Queries containing `after:2025-06-01 before:2026-01-01` were also tried. The search service still sometimes returned other years, so a query's date filter is **not** treated as verification of a result's publication date.
+
+No new original post satisfied the campus, informative-video and remembered-history combination. One [Rohan Prasad authored post](https://www.linkedin.com/posts/rohanprasadofficial_web-engineering-ai-activity-7410318813352796160-0hcq) does discuss returning to an older video-editor prototype, but its Goa reference is a React India conference/vacation, not evidence of BITS enrollment; it has no Pokémon/Gemini informative-generator match and falls outside the corrected target period. It is screened out.
+
+A different [NorthStar creator-studio post by Arnav Salkade](https://www.linkedin.com/posts/arnav-salkade-27076a201_what-if-a-single-prompt-could-turn-into-a-activity-7440038024639447041-78Hg) describes prompt-to-physics-animation planning and a scene timeline. This is distinct from Yashvardhan Mote's homework repository. Its 2026 technology references, missing campus/Pokémon evidence and missing hiatus clue make it an implementation-only lead, **not** the requested post. Neither lead justifies asking the user to recognize another speculative profile.
+
+Public LinkedIn pages were read where available; some normal public-browser requests led to a sign-in wall and were stopped there. No personal Brave session, account, credentials or cookies were used. No attached demo has been claimed as watched during this identity search.
+
+## What would resolve the remaining uncertainty
+
+An exact public post URL, a distinctive project name, a visible line from the post, or recognition of the demo interface would be stronger evidence than another similar profile. These are optional clues, not a requirement for continuing the broader repository research. Until then, the honest result is **useful related projects found; exact senior/post not yet identified**. The corrected 2025 period and the user's rejected candidate are retained to prevent repeating the same false lead.

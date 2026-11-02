@@ -1,0 +1,26 @@
+{
+  "template": "overlay",
+  "name": "Chat over supplied footage",
+  "resolution": "1080p",
+  "fps": 30,
+  "duration": 20,
+  "inputs": {
+    "background": "clips/your-gameplay.mp4",
+    "foreground": "clips/your-chat-recording.mp4",
+    "music": "audio/your-track.wav"
+  },
+  "effect_at": 16,
+  "composition": {
+    "x": 0.1,
+    "y": 0.12,
+    "width": 0.8,
+    "height": 0.44,
+    "foreground_fit": "contain",
+    "border_width": 0,
+    "glow": 0,
+    "effect": "none",
+    "audio_source": "foreground",
+    "cta": false
+  },
+  "music_volume": 0.12
+}

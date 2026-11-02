@@ -1,0 +1,25 @@
+.venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+data/
+.env
+.env.*
+!.env.example
+*.egg-info/
+build/
+dist/
+output/
+.playwright-cli/
+tmp/
+
+# Local plans and generated review exports retain machine paths/provenance.
+Resources/Plans/*.json
+Resources/Productions/*
+!Resources/Productions/README.md
+Resources/Templates/Previews/
+Resources/Templates/MotionBlocks/
+Resources/Music/
+Resources/*.mp4
+Resources/*.wav
+

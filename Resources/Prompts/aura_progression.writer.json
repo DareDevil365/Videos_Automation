@@ -1,0 +1,32 @@
+{
+  "id": "aura_progression",
+  "format": "aura",
+  "seconds": [
+    12,
+    24
+  ],
+  "words": [
+    12,
+    45
+  ],
+  "units": [
+    5,
+    8
+  ],
+  "voice": null,
+  "music": {
+    "category": "aura",
+    "mood": "permitted phonk or similar strong rhythmic beat with a drop",
+    "volume": 0.55
+  },
+  "layout": "aura_progression",
+  "bottom": [
+    "none",
+    "gameplay"
+  ],
+  "writing": "Original short editorial caption edit: establish a real documented before/after contrast, transition at the beat drop, escalate through distinct verified visual moments, and deliver the strongest final frame. Captions 1-5 words, aura-minus to aura-plus can be a clearly playful gauge. No invented biography, possessions, girlfriend, money, endorsement or quote about a real person. Use only what the supplied visual inventory supports.",
+  "visuals": "At least four distinct usable images/clips. Early image then different later/event/achievement images supplied with evidence. Never use ASMR beneath aura. Beat-aligned crop, quick flash/punch, optional generic decorative coins explicitly not evidence of the subject's wealth. No one-photo loop.",
+  "sound": "No TTS by default. Require a registered suitable rhythmic track and a specified drop point. Do not silently use the rejected synthetic loop or a comic stock tune.",
+  "task": "Write ONLY the story/content script first. hook must be the exact first spoken unit, not a stronger unwritten marketing summary. The first words must establish the specific curiosity/problem. The actual answer must occupy the final or penultimate unit with no filler ending; edit.payoff_unit_id identifies it. Do not plan an unsupported edit or choose unverified asset URLs. The separate director call will preserve these exact words.",
+  "retention_note": "Patterns are testable editorial hypotheses, not a retention guarantee."
+}

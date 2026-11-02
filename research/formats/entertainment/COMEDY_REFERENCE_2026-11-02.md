@@ -1,0 +1,7 @@
+# Dialogue reference and owner feedback
+
+Reference: [Ryan George — The First Guy To Ever Make Small Talk](https://www.youtube.com/watch?v=ykHmAGQ1Z_0). Public page inspected 2 November 2026: 414K displayed views, runtime 3:56.921, verified creator. The public transcript was read; opening and one later frame were sampled after initial player errors. No full audio watch or measured retention claim. Public unsigned-in isolated Chromium, no personal account.
+
+The conversation begins in progress, uses disagreement to expose an apparently normal social habit, and develops opposing goals through repeated tests of its logic. The ending reverses the earlier opposition rather than merely resolving an unexplained sound. These are broad transferable structural observations. The new roommate fee story has different premise, dialogue, consequence and characters; no source lines, footage, audio, signature phrases or beat-by-beat plot were reused. This is an original structural experiment, not a copy of the video script. Its success is not inferred from the reference views.
+
+Owner feedback on the prior elevator episode: character shapes accepted; body/mask edges grainy; Alex received closeups but Mike mostly remained in group frames; initial hook and comic payoff rejected; the text bar must contain every spoken word timed to voice. Those corrections supersede the earlier broad style acceptance.

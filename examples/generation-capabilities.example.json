@@ -1,0 +1,11 @@
+{
+  "note": "Illustrative only. Verify actual supported values in the chosen model before using this file for a real request.",
+  "aspect_ratios": ["9:16"],
+  "resolutions": [
+    {"label": "720p", "width": 720, "height": 1280},
+    {"label": "1080p", "width": 1080, "height": 1920}
+  ],
+  "durations_seconds": [4, 6, 8, 10],
+  "thinking_levels": ["Low", "High"],
+  "optional_tools": ["grounding"]
+}

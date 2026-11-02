@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Shorts Studio · Format editor</title><link rel="stylesheet" href="/style.css"></head>
+<body>
+<header class="topbar">
+  <a class="brand" href="/" aria-label="Shorts Studio home"><span class="brand-mark">s<span>•</span></span><span>Shorts Studio<small>FORMAT EDITOR</small></span></a>
+  <div class="project-heading"><input id="project-name" aria-label="Project name" maxlength="120" value="Untitled video"><span id="save-state">Local draft</span></div>
+  <div class="top-actions"><button id="open-project" class="quiet">Open project</button><button id="save-project" class="secondary">Save</button><button id="export-video" class="primary"><span>↗</span> Export video</button></div>
+</header>
+<main class="workspace">
+  <aside class="library">
+    <div class="section-heading"><h2>Start with a format</h2><span>01</span></div>
+    <p class="muted intro">Choose a layout. Make it yours.</p>
+    <div id="formats" class="formats"></div>
+    <div class="section-heading media-heading"><h2>Your media</h2><span id="asset-count">0</span></div>
+    <label class="dropzone" id="dropzone"><span class="upload-symbol">+</span><strong>Drop files here</strong><span>Images, clips, GIFs & audio · up to 1 GB</span><input id="media-upload" type="file" multiple accept="image/*,video/*,audio/*"></label>
+    <p id="upload-status" class="muted upload-status" aria-live="polite"></p>
+    <div class="asset-filter"><button class="active" data-filter="all">All</button><button data-filter="image">Images</button><button data-filter="video">Clips</button><button data-filter="audio">Audio</button></div>
+    <div id="assets" class="assets"></div>
+    <div class="local-note"><span class="status-dot"></span> Local workspace. No account needed.</div>
+  </aside>
+  <section class="stage-area">
+    <div class="stage-toolbar"><div><span class="eyebrow">CANVAS</span><h1 id="format-name">Story + gameplay</h1></div><span class="canvas-badge">9:16 <i></i> <span id="resolution-label">720 × 1280</span></span></div>
+    <div class="stage-wrap">
+      <div class="canvas-shadow"><img id="preview" alt="Rendered preview of the selected scene"><div id="preview-loading" class="preview-loading">Preparing your canvas…</div></div>
+      <div class="stage-side-label">MADE FOR THE SMALL SCREEN</div>
+    </div>
+    <div class="preview-controls"><button id="refresh-preview" class="icon-button" title="Refresh preview" aria-label="Refresh preview">↻</button><span id="scene-counter">Scene 01</span><input type="range" id="preview-time" min="0" max="4" step="0.1" value="2.8" aria-label="Preview time in scene"><span id="time-label" class="tabular">2.8s / 4.0s</span></div>
+    <div class="timeline-heading"><h2>Scenes <span id="scene-count">1</span></h2><div><span id="total-duration" class="muted">8 seconds total</span><button id="add-scene" class="text-button">+ Add scene</button></div></div>
+    <div id="timeline" class="timeline"></div>
+    <div id="export-panel" class="export-panel" hidden></div>
+  </section>
+  <aside class="inspector">
+    <div class="section-heading"><h2>Make it yours</h2><span>02</span></div>
+    <div class="inspector-tabs"><button class="active" data-tab="scene">Scene</button><button data-tab="style">Style & audio</button></div>
+    <div id="scene-panel" class="inspector-panel">
+      <div class="field-row"><label class="field">Duration <span class="input-unit"><input id="scene-duration" type="number" min="1" max="60" step="0.5"><span>sec</span></span></label><div class="scene-actions"><button id="move-left" class="icon-button" title="Move scene earlier" aria-label="Move scene earlier">←</button><button id="move-right" class="icon-button" title="Move scene later" aria-label="Move scene later">→</button><button id="duplicate-scene" class="icon-button" title="Duplicate scene" aria-label="Duplicate scene">⧉</button><button id="delete-scene" class="icon-button danger" title="Delete scene" aria-label="Delete scene">×</button></div></div>
+      <label class="field">Headline <textarea id="scene-title" rows="2" maxlength="180" placeholder="Make the first line count"></textarea></label>
+      <label class="field"><span id="caption-label">Caption / takeaway</span><textarea id="scene-text" rows="4" maxlength="700" placeholder="One line or paragraph per timed caption"></textarea><small id="caption-help">Line breaks create sequential caption cues.</small></label>
+      <div id="chat-fields" hidden><label class="field">Messages <textarea id="scene-messages" rows="7" placeholder="Alex: Your message&#10;Sam: Their reply"></textarea><small>One message per line. Speakers alternate sides. Up to 8 messages.</small></label></div>
+      <div id="visual-fields">
+      <div class="subheading">MEDIA</div>
+      <label class="field"><span id="primary-label">Background</span><select id="scene-media"><option value="">No media</option></select></label>
+      <label id="secondary-field" class="field">Secondary panel<select id="scene-secondary"><option value="">No media</option></select></label>
+      <div class="field-row"><label class="field">Clip start <span class="input-unit"><input id="media-start" type="number" min="0" step="0.1"><span>sec</span></span></label><label id="secondary-start-field" class="field">Bottom start <span class="input-unit"><input id="secondary-start" type="number" min="0" step="0.1"><span>sec</span></span></label></div>
+      <label class="field">Media fit<select id="scene-fit"><option value="cover">Fill frame · crop edges</option><option value="contain">Fit entire image / clip</option></select></label>
+      <div id="crop-fields"><label class="field range-label">Crop focus · horizontal <input id="focus-x" type="range" min="0" max="1" step="0.01"></label><label class="field range-label">Crop focus · vertical <input id="focus-y" type="range" min="0" max="1" step="0.01"></label></div>
+      <label class="check-field"><input id="source-audio" type="checkbox"> Keep primary clip audio</label>
+      </div>
+    </div>
+    <div id="style-panel" class="inspector-panel" hidden>
+      <div class="field-row"><label class="field">Accent<input id="accent" type="color"></label><label class="field">Background<input id="background" type="color"></label></div>
+      <label class="field range-label">Text size <input id="font-scale" type="range" min="0.7" max="1.4" step="0.05"></label>
+      <div id="split-fields"><label class="field range-label">Top panel height <input id="split-ratio" type="range" min="0.25" max="0.75" step="0.01"></label><label class="check-field"><input id="swap-panels" type="checkbox"> Swap top and bottom media</label></div>
+      <div class="subheading">SOUND</div>
+      <label class="field">Voiceover<select id="narration"><option value="">No voiceover</option></select><small>Import a recording. Adjust scene lengths to fit it.</small></label>
+      <label class="field">Background music<select id="music"><option value="">No background music</option></select></label>
+      <label class="field range-label">Music volume <input id="music-volume" type="range" min="0" max="1" step="0.01"></label>
+      <label class="field range-label">Primary clip volume <input id="source-volume" type="range" min="0" max="2" step="0.05"></label>
+      <div class="subheading">EXPORT</div>
+      <label class="field">Resolution<select id="resolution"><option value="720p">720 × 1280 · quicker export</option><option value="1080p">1080 × 1920 · full HD</option></select></label>
+      <label class="field">Frame rate<select id="fps"><option value="30">30 fps</option><option value="24">24 fps</option></select></label>
+      <button id="download-project" class="secondary full-width">Download project JSON</button>
+    </div>
+    <div class="inspector-footer">Change the content. Keep the format.</div>
+  </aside>
+</main>
+<div id="toast" role="status" aria-live="polite" hidden></div>
+<dialog id="project-dialog"><div class="dialog-heading"><h2>Saved projects</h2><button id="close-project-dialog" class="icon-button" aria-label="Close projects">×</button></div><div id="saved-projects"></div><label class="import-project">Or import a project JSON<input id="project-import" type="file" accept=".json,application/json"></label></dialog>
+<script src="/app.js"></script>
+</body></html>

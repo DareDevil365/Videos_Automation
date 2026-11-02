@@ -1,0 +1,36 @@
+{
+  "id": "tea_chat",
+  "format": "chat",
+  "seconds": [
+    30,
+    45
+  ],
+  "words": [
+    90,
+    140
+  ],
+  "units": [
+    10,
+    18
+  ],
+  "voice": {
+    "voice_id": "af_heart",
+    "length_scale": 0.83,
+    "pause": 0.1
+  },
+  "music": {
+    "category": "storytime",
+    "mood": "light restrained tension, speech first",
+    "volume": 0.06
+  },
+  "layout": "chat_asmr",
+  "bottom": [
+    "asmr",
+    "gameplay"
+  ],
+  "writing": "Original fictional relationship/friendship chat: specific incriminating message first, establish who is speaking, escalating contradiction with a concrete social consequence, a planted clue, then reveal who was actually texting or why the apparent betrayal happened. The clue must make the answer understandable in retrospect. Avoid an unmentioned twin/hacker/dream suddenly solving everything at the end. End with the answer, followed by at most one optional natural question about the choice; do not spend the ending announcing what a great plot twist it was. No generic moral lecture, no real private conversation or accusation.",
+  "visuals": "Readable conversational message states over a continuous supplied ASMR or gameplay lower panel. Short actual message text, consistent speaker names, one reveal at a time; optional inserts must show what the line means.",
+  "sound": "Brisk intelligible storytime, distinct consistent voices per speaker if supported; short pauses around the reveal. ASMR lower track muted or quiet under speech, never competing at full volume.",
+  "task": "Write ONLY the story/content script first. hook must be the exact first spoken unit, not a stronger unwritten marketing summary. The first words must establish the specific curiosity/problem. The actual answer must occupy the final or penultimate unit with no filler ending; edit.payoff_unit_id identifies it. Do not plan an unsupported edit or choose unverified asset URLs. The separate director call will preserve these exact words.",
+  "retention_note": "Patterns are testable editorial hypotheses, not a retention guarantee."
+}

@@ -1,0 +1,397 @@
+{
+  "audit_date_local": "2026-11-02",
+  "method": "Public YouTube pages in an isolated in-app browser tab. Playback paused and sampled at approximately opening, midpoint and ending using player seek keys. Rounded public view counts captured from watch page or YouTube search results. No private account analytics. Final two references were independently sampled in an isolated, unsigned-in headless Chromium public session and screenshots were saved; media bytes were not downloaded as production assets.",
+  "limitations": [
+    "These are three-frame audits, not complete watches.",
+    "Audio remained muted and was not assessed; exact songs, BPM, beat synchronization and speech pace are not verified.",
+    "Sampling cannot establish cut frequency or retention.",
+    "View counts are time-sensitive rounded display values, not earnings, target-country fit or causal proof.",
+    "No footage or music reuse permission is inferred.",
+    "The lower-view football example is an illustrative counterexample, not a matched statistical control; upload age, audience and distribution differ."
+  ],
+  "references": [
+    {
+      "id": "k_ddoo3MyrY",
+      "url": "https://www.youtube.com/watch?v=k_ddoo3MyrY",
+      "title": "iShowSpeed's Aura At The END",
+      "channel": "deagzzzshorts",
+      "duration_seconds": 32,
+      "public_views_display": "7.9M",
+      "public_views_source": "watch page",
+      "evidence_level": "actual_player_frame_samples",
+      "sample_times_approximate": true,
+      "frames": [
+        {
+          "seconds": 0,
+          "observation": "Seated creator in white football shirt; full portrait source footage."
+        },
+        {
+          "seconds": 15,
+          "observation": "Action and gesture in source scene; red upper caption."
+        },
+        {
+          "seconds": 30,
+          "observation": "Standing calmly among people; green aura-number overlay gives status payoff."
+        }
+      ],
+      "pattern": "Event/reaction reversal; red-to-green status contrast.",
+      "audio_assessed": false,
+      "transcript_assessed": false,
+      "assets_downloaded": false
+    },
+    {
+      "id": "USzGE71P3o0",
+      "url": "https://www.youtube.com/watch?v=USzGE71P3o0",
+      "title": "Slipz's aura",
+      "channel": "VEYRA Shorts",
+      "duration_seconds": 33,
+      "public_views_display": "64M",
+      "public_views_source": "watch page",
+      "evidence_level": "actual_player_frame_samples",
+      "sample_times_approximate": true,
+      "frames": [
+        {
+          "seconds": 0,
+          "observation": "Expressive face filling frame; one large white word near eyes."
+        },
+        {
+          "seconds": 15,
+          "observation": "Two people on ride seats; short colored caption supplies context."
+        },
+        {
+          "seconds": 30,
+          "observation": "Composed reaction close-up under blue lighting."
+        }
+      ],
+      "pattern": "Context then reaction contrast, without gameplay.",
+      "audio_assessed": false,
+      "transcript_assessed": false,
+      "assets_downloaded": false
+    },
+    {
+      "id": "4Hbbrvsnj1o",
+      "url": "https://www.youtube.com/watch?v=4Hbbrvsnj1o",
+      "title": "Aura of MrBeast Pt 3",
+      "channel": "LadduOx Edits and 3 more",
+      "duration_seconds": 22,
+      "public_views_display": "8.7M",
+      "public_views_source": "watch page",
+      "evidence_level": "actual_player_frame_samples",
+      "sample_times_approximate": true,
+      "frames": [
+        {
+          "seconds": 0,
+          "observation": "Creator walking before helmeted people; white header with red name."
+        },
+        {
+          "seconds": 10,
+          "observation": "Tanks on city street near bank facade."
+        },
+        {
+          "seconds": 20,
+          "observation": "Elderly woman wearing colorful glasses; reaction/source scene changes."
+        }
+      ],
+      "pattern": "Multiple source scenes; no factual ownership/arrest inference from these images.",
+      "audio_assessed": false,
+      "transcript_assessed": false,
+      "assets_downloaded": false
+    },
+    {
+      "id": "Bpc9Qo-m_Yg",
+      "url": "https://www.youtube.com/watch?v=Bpc9Qo-m_Yg",
+      "title": "winning in silence",
+      "channel": null,
+      "duration_seconds": 7,
+      "public_views_display": "91M",
+      "public_views_source": "YouTube search result",
+      "evidence_level": "actual_player_frame_samples",
+      "sample_times_approximate": true,
+      "frames": [
+        {
+          "seconds": 0,
+          "observation": "White upper caption band above indoor social encounter."
+        },
+        {
+          "seconds": 2,
+          "observation": "Same social interaction with observers."
+        },
+        {
+          "seconds": 6,
+          "observation": "Foreground person crossing and reaction; short visual payoff."
+        }
+      ],
+      "pattern": "Continuous short encounter with framing caption, rather than asset montage.",
+      "audio_assessed": false,
+      "transcript_assessed": false,
+      "assets_downloaded": false
+    },
+    {
+      "id": "d5mbta2TmNI",
+      "url": "https://www.youtube.com/watch?v=d5mbta2TmNI",
+      "title": "The Aura | X-cool (ultra slowed)",
+      "channel": null,
+      "duration_seconds": 25,
+      "public_views_display": "7.1M",
+      "public_views_source": "YouTube search result",
+      "evidence_level": "actual_player_frame_samples",
+      "sample_times_approximate": true,
+      "frames": [
+        {
+          "seconds": 0,
+          "observation": "Upper premise caption about challenging the person who taught a game; illustrated characters labeled Bro and Me."
+        },
+        {
+          "seconds": 12,
+          "observation": "Cold blue wide shot of armored character."
+        },
+        {
+          "seconds": 22,
+          "observation": "Fiery armor close-up with glowing eyes."
+        }
+      ],
+      "pattern": "Analogy/comparison reversal; cold-to-warm visual contrast. Title names music; sound not verified.",
+      "audio_assessed": false,
+      "transcript_assessed": false,
+      "assets_downloaded": false
+    },
+    {
+      "id": "TBlw1MDcyIU",
+      "url": "https://www.youtube.com/watch?v=TBlw1MDcyIU",
+      "title": "SAMSUNG Roasted Apple | Galaxy Aura Edit",
+      "channel": "AuraEditex",
+      "duration_seconds": 15,
+      "public_views_display": "31M",
+      "public_views_source": "YouTube search result",
+      "evidence_level": "actual_player_frame_samples",
+      "sample_times_approximate": true,
+      "frames": [
+        {
+          "seconds": 0,
+          "observation": "Black top caption area; several phones handled below."
+        },
+        {
+          "seconds": 7,
+          "observation": "Phone internals/repair image and a short red turn-word caption."
+        },
+        {
+          "seconds": 14,
+          "observation": "Monochrome Samsung-labelled component close-up; red payoff caption and skull/troll graphic."
+        }
+      ],
+      "pattern": "Counterclaim and reversal. These frames do not establish a technical superiority claim.",
+      "audio_assessed": false,
+      "transcript_assessed": false,
+      "assets_downloaded": false
+    },
+    {
+      "id": "o3qQzPRGOSY",
+      "url": "https://www.youtube.com/watch?v=o3qQzPRGOSY",
+      "title": "Bro's Aura Hit 999+",
+      "channel": null,
+      "duration_seconds": 21,
+      "public_views_display": "8.4M",
+      "public_views_source": "YouTube search result",
+      "evidence_level": "actual_player_frame_samples",
+      "sample_times_approximate": true,
+      "frames": [
+        {
+          "seconds": 0,
+          "observation": "White Mercedes enters lit driveway below black title bar with red number emphasis."
+        },
+        {
+          "seconds": 10,
+          "observation": "Person beside car; green short caption, arrow and circle highlight an object."
+        },
+        {
+          "seconds": 19,
+          "observation": "Yellow sports car arrives; foreground reaction/person changes."
+        }
+      ],
+      "pattern": "Action sequence and arrival/upstage payoff; no ownership or payment inference.",
+      "audio_assessed": false,
+      "transcript_assessed": false,
+      "assets_downloaded": false
+    },
+    {
+      "id": "NkkurJTAYN0",
+      "url": "https://www.youtube.com/watch?v=NkkurJTAYN0",
+      "title": "Superhero Walk While Aura Farming | Marvel Edits | Funk Sigilo (Slowed)",
+      "channel": null,
+      "duration_seconds": 18,
+      "public_views_display": "4M",
+      "public_views_source": "YouTube search result",
+      "evidence_level": "actual_player_frame_samples",
+      "sample_times_approximate": true,
+      "frames": [
+        {
+          "seconds": 0,
+          "observation": "Red-caped hero walking downstairs; cyan/red edge treatment."
+        },
+        {
+          "seconds": 9,
+          "observation": "Iron Man walk with white upper comparison caption band."
+        },
+        {
+          "seconds": 16,
+          "observation": "Different flying character/cinematic source shot."
+        }
+      ],
+      "pattern": "Multi-character cinematic-performance montage. Track title is not a license.",
+      "audio_assessed": false,
+      "transcript_assessed": false,
+      "assets_downloaded": false
+    },
+    {
+      "id": "gE6tm0lBbR4",
+      "url": "https://www.youtube.com/watch?v=gE6tm0lBbR4",
+      "title": "Best Dreamworks Aura",
+      "channel": "MonsTer07",
+      "duration_seconds": 33,
+      "public_views_display": "5.8M",
+      "public_views_source": "YouTube search result",
+      "evidence_level": "actual_player_frame_samples",
+      "sample_times_approximate": true,
+      "frames": [
+        {
+          "seconds": 0,
+          "observation": "Red-lit ships and villain establishing image; small header."
+        },
+        {
+          "seconds": 16,
+          "observation": "Animated wolf character confrontation."
+        },
+        {
+          "seconds": 30,
+          "observation": "Close-up of elderly martial-artist character beside another figure."
+        }
+      ],
+      "pattern": "Character-performance compilation; color and source-scene changes.",
+      "audio_assessed": false,
+      "transcript_assessed": false,
+      "assets_downloaded": false
+    },
+    {
+      "id": "AZ1mwoJLG5U",
+      "url": "https://www.youtube.com/watch?v=AZ1mwoJLG5U",
+      "title": "Geum Seong Je Aura +99999 | Weak Hero Class 2",
+      "channel": null,
+      "duration_seconds": 15,
+      "public_views_display": "8.9M",
+      "public_views_source": "YouTube search result",
+      "evidence_level": "actual_player_frame_samples",
+      "sample_times_approximate": true,
+      "frames": [
+        {
+          "seconds": 0,
+          "observation": "Wide night alley group confrontation."
+        },
+        {
+          "seconds": 7,
+          "observation": "Group action/reaction; white upper title strip."
+        },
+        {
+          "seconds": 14,
+          "observation": "Close-up of character in glasses and red jacket, another person behind."
+        }
+      ],
+      "pattern": "Wide setup to confrontation to close-up payoff.",
+      "audio_assessed": false,
+      "transcript_assessed": false,
+      "assets_downloaded": false
+    },
+    {
+      "id": "I5LDUlVdMfM",
+      "url": "https://www.youtube.com/watch?v=I5LDUlVdMfM",
+      "title": "Aura Farming Ft carryminati roast",
+      "channel": null,
+      "duration_seconds": 16,
+      "public_views_display": "2.1M",
+      "public_views_source": "YouTube search result",
+      "evidence_level": "actual_player_frame_samples",
+      "sample_times_approximate": true,
+      "frames": [
+        {
+          "seconds": 0,
+          "observation": "Black screen, skull/red glow and unexpected-collaboration caption."
+        },
+        {
+          "seconds": 8,
+          "observation": "Man in blue suit at desk/library background."
+        },
+        {
+          "seconds": 14,
+          "observation": "Same man smiling, skull graphic foreground."
+        }
+      ],
+      "pattern": "Less visual variation in sampled frames; views alone do not prove this is a good template.",
+      "audio_assessed": false,
+      "transcript_assessed": false,
+      "assets_downloaded": false
+    },
+    {
+      "id": "9emC4k9shFs",
+      "url": "https://www.youtube.com/watch?v=9emC4k9shFs",
+      "title": "#aura 999+ #trolface #edit #im #she #mad #short",
+      "channel": "JABBAR EDIT and UCHIHA OG",
+      "duration_seconds": 10.661,
+      "public_views_display": "5.4M",
+      "public_views_source": "watch page",
+      "evidence_level": "actual_player_frame_samples_with_saved_screenshots",
+      "sample_times_approximate": false,
+      "frames": [
+        {
+          "seconds": 0,
+          "observation": "Night road; woman near parked motorcycles; short premise overlay about hitting a bike.",
+          "screenshot": "output/playwright/aura-9emC4k9shFs-0.png"
+        },
+        {
+          "seconds": 5,
+          "observation": "Motorcycle carrying two people; meme faces replace several heads; aura-plus overlay.",
+          "screenshot": "output/playwright/aura-9emC4k9shFs-5.png"
+        },
+        {
+          "seconds": 9,
+          "observation": "Camera swings toward road with motion blur; no new claim or gameplay panel.",
+          "screenshot": "output/playwright/aura-9emC4k9shFs-9.png"
+        }
+      ],
+      "pattern": "One real action source; premise to action payoff with meme-face and aura-plus overlays. Ending sample is camera movement, not proof of an additional outcome.",
+      "audio_assessed": false,
+      "transcript_assessed": false,
+      "assets_downloaded": false
+    },
+    {
+      "id": "_hvUFbXOLP8",
+      "url": "https://www.youtube.com/watch?v=_hvUFbXOLP8",
+      "title": "Cristiano Ronaldo's Aura is Different | Cinematic Edit #shorts",
+      "channel": "Phonk Fx BD",
+      "duration_seconds": 22.601,
+      "public_views_display": "1.3K",
+      "public_views_source": "watch page",
+      "evidence_level": "actual_player_frame_samples_with_saved_screenshots",
+      "sample_times_approximate": false,
+      "frames": [
+        {
+          "seconds": 0,
+          "observation": "Football interview scene; suited presenter and creator in football shirt; horizontal streak/glitch treatment.",
+          "screenshot": "output/playwright/aura-_hvUFbXOLP8-0.png"
+        },
+        {
+          "seconds": 11,
+          "observation": "Ronaldo football celebration cutout over enlarged face/source image; bright edge outline and red-toned palette.",
+          "screenshot": "output/playwright/aura-_hvUFbXOLP8-0.5.png"
+        },
+        {
+          "seconds": 20,
+          "observation": "Ronaldo side-profile applause shot; bright outline and repeated horizontal streaks.",
+          "screenshot": "output/playwright/aura-_hvUFbXOLP8-0.9.png"
+        }
+      ],
+      "pattern": "Full-frame football montage and layered cutout treatment. Deliberately includes a lower-view example: visible cinematic effects alone do not guarantee many views.",
+      "audio_assessed": false,
+      "transcript_assessed": false,
+      "assets_downloaded": false
+    }
+  ]
+}

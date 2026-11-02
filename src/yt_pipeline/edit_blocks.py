@@ -1,0 +1,33 @@
+"""Small tested editing vocabulary, independent of Adobe's native project API."""
+from .core import Held
+
+BLOCKS={
+ 'graphic.comparison':{'description':'Locally rendered before/after cards with timed reveals.','parameters':{'scene.graphic.kind':'comparison','labels':'two exact script phrases','title':'exact script phrase'},'renderers':['ffmpeg']},
+ 'graphic.process':{'description':'Two to four numbered steps revealed inside measured narration.','parameters':{'scene.graphic.kind':'process','labels':'2-4 exact script phrases'},'renderers':['ffmpeg']},
+ 'graphic.callout':{'description':'One large original typographic emphasis card.','parameters':{'scene.graphic.kind':'callout','labels':'one exact script phrase'},'renderers':['ffmpeg']},
+ 'scene.establish':{'description':'Show a supplied background and up to four consistent cast cutouts.','parameters':{'actors':'cast IDs','background':'registered asset ID'},'renderers':['ffmpeg']},
+ 'speaker.closeup':{'description':'Hide other actors; enlarge the active speaker to head and shoulders.','parameters':{'actor':'cast ID'},'renderers':['ffmpeg']},
+ 'camera.slow_push':{'description':'Small centered fixed-canvas zoom over this measured shot.','parameters':{'motion':'slow_push','maximum_zoom':'fixed 1.07'},'renderers':['ffmpeg']},
+ 'caption.phrase':{'description':'Compact readable phrase matching the spoken unit.','parameters':{'words':[1,12]},'renderers':['ffmpeg']},
+ 'caption.dialogue':{'description':'Every original spoken word progressively revealed using local forced alignment; no summary-word substitution.','parameters':{'enabled':'cutout_ensemble or motion_graphics request','timing':'measured local speech; estimated alignment boundaries retained'},'renderers':['ffmpeg']},
+ 'message.reveal':{'description':'Reveal actual supplied message text, never a search instruction.','parameters':{'speaker':'cast ID','text':'script text'},'renderers':['ffmpeg']},
+ 'frame.stack':{'description':'Relevant main visual over supplied decorative gameplay/ASMR.','parameters':{'request.top_fraction':[.35,.75]},'renderers':['ffmpeg']},
+ 'effect.punch':{'description':'Brief fixed-size zoom in a planned shot.','parameters':{'motion':'punch','duration_seconds':'fixed 0.36'},'renderers':['ffmpeg']},
+ 'aura.gauge':{'description':'Clearly playful negative-to-positive visual score over the progression preset.','parameters':{'playbook':'aura_progression','value':'computed -100 to +100 across scene order'},'renderers':['ffmpeg']},
+ 'audio.pause':{'description':'Silence padding after a measured spoken unit.','parameters':{'seconds':[0,1.5]},'renderers':['local_audio']},
+ 'audio.music_bed':{'description':'Use a registered track with the format preset gain.','parameters':{'gain':'fixed by playbook','request.music_id':'registered audio ID'},'renderers':['ffmpeg']},
+ 'rank.card':{'description':'Readable ranked title and original short reason on a usable poster.','parameters':{'rank':[1,10]},'renderers':['ffmpeg']}
+}
+
+
+def capabilities(renderer='ffmpeg'):
+    if renderer not in ('ffmpeg','after_effects','premiere'):raise ValueError('Unknown renderer')
+    return {'version':1,'renderer':renderer,'adapter_implemented':renderer=='ffmpeg',
+       'blocks':{name:spec for name,spec in BLOCKS.items() if renderer in spec['renderers'] or (renderer=='ffmpeg' and 'local_audio' in spec['renderers'])},
+       'notes':['This dictionary describes supported planner fields; it is not an arbitrary blocks timeline interpreter.',
+                'Adobe adapters are planned and expose no executable blocks yet.','Custom JSON is our interchange contract, not a native Adobe project file.',
+                'Sound cue and emotion labels are planning metadata; dedicated stings and emotional speech are not automatically synthesized.']}
+
+
+def require_renderer(renderer):
+    if renderer!='ffmpeg':raise Held('renderer_unavailable','Adobe JSON adapter has not been implemented; choose the working local renderer')

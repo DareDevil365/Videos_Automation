@@ -1,0 +1,229 @@
+{
+  "research_date": "2026-11-02",
+  "exact_match_identified": false,
+  "scope": "Public LinkedIn/GitHub/source search only; no personal account/browser access; no private contact data.",
+  "clues": [
+    "BITS Goa student/senior/alumnus",
+    "male per user recollection",
+    "third/fourth year or graduated, approximate",
+    "Gemini API possibly",
+    "prompt-to-informative-video demo",
+    "Pokemon example possibly",
+    "project shelved then resumed after gap",
+    "Original authored LinkedIn post, not a reaction/repost/profile-only match",
+    "User corrected original post timing to around mid/second-half 2025; seen after mid-2025"
+  ],
+  "leads": [
+    {
+      "id": "aryansh_studio",
+      "name": "Aryansh Tiwari",
+      "project": "AI-Based Content Creator Studio",
+      "status": "excluded_by_user",
+      "urls": [
+        "https://in.linkedin.com/in/aryansh-tiwari-61a238268",
+        "https://www.bits-goa.ac.in/files/ANNUAL-REPORT/Annual-Report-2025.pdf"
+      ],
+      "unverified": [
+        "Pokemon example",
+        "shelved/resumed history",
+        "direct activity permalink",
+        "attached demo playback",
+        "verified public project repository"
+      ],
+      "relative_date_observed": "1y; exact date not established",
+      "exclusion": "User says this is not the senior or authored post they remember; do not resurface as identity candidate.",
+      "indexed_observations_only": [
+        "own public graduation post identifies BITS Goa",
+        "2020-2025 education section",
+        "own public demo announcement names Gemini/Manim/FFmpeg prompt-to-video"
+      ],
+      "evidence_caution": "Earlier observations came from an indexed profile, not a verified original authored-post permalink; they cannot establish the remembered post. User exclusion takes precedence.",
+      "identity_confidence": "excluded"
+    },
+    {
+      "id": "northstar_mote",
+      "name": "Yashvardhan Mote",
+      "project": "NorthStar AI Video Solution Generator",
+      "status": "related_repo_not_identity_match",
+      "urls": [
+        "https://github.com/yashmote/Northstar-video-solution-generation",
+        "https://github.com/yashmote",
+        "https://www.linkedin.com/in/yashvardhanmote"
+      ],
+      "matches": [
+        "README says BITS Goa Mechanical2023-2027",
+        "Gemini-based educational video generation",
+        "sample output file included"
+      ],
+      "unverified": [
+        "Pokemon",
+        "matching LinkedIn demo post",
+        "shelved/resumed history"
+      ]
+    },
+    {
+      "id": "fastcut",
+      "names": [
+        "Nikhil Sheoran",
+        "Harsh Todi"
+      ],
+      "project": "FastCut",
+      "status": "related_campus_editor_not_identity_match",
+      "urls": [
+        "https://nikhilsheoran.com/",
+        "https://www.linkedin.com/company/fastcutai",
+        "https://in.linkedin.com/in/hashtodi"
+      ],
+      "matches": [
+        "BITS Goa",
+        "AI short-form editing",
+        "own history records stopping work"
+      ],
+      "unverified": [
+        "Gemini API use",
+        "Pokemon demo",
+        "returning to same project after gap"
+      ],
+      "conflicts": [
+        "described as source-video editing/captioning, not established as topic-to-informative-video generation"
+      ]
+    },
+    {
+      "id": "hancock_pokemon",
+      "name": "Brandon Hancock",
+      "project": "pokemon-ai-video-generator",
+      "status": "demo_type_match_no_campus_link",
+      "urls": [
+        "https://www.linkedin.com/in/brandon-hancock-ai",
+        "https://github.com/bhancockio/pokemon-ai-video-generator",
+        "https://www.skool.com/ai-developer-accelerator/new-video-how-to-make-ai-videos-free-source-code-full-walkthrough"
+      ],
+      "matches": [
+        "Pokemon-name-to-complete-video demo",
+        "Gemini image component"
+      ],
+      "unverified": [
+        "BITS Goa",
+        "remembered resumption story"
+      ],
+      "conflicts": [
+        "advertises Kling/ElevenLabs/Claude alongside Gemini; not Gemini-key-only or verified free"
+      ]
+    },
+    {
+      "id": "fixed_manim",
+      "project": "speeddemon22/MANIM",
+      "status": "screened_out",
+      "urls": [
+        "https://github.com/speeddemon22/MANIM"
+      ],
+      "matches": [
+        "README mentions BITS Goa"
+      ],
+      "conflicts": [
+        "fixed physics animation scenes, no generic Gemini video-generator evidence",
+        "no Pokemon evidence"
+      ]
+    },
+    {
+      "id": "rohan_web_editor",
+      "name": "Rohan Prasad",
+      "status": "screened_out",
+      "urls": [
+        "https://www.linkedin.com/posts/rohanprasadofficial_web-engineering-ai-activity-7410318813352796160-0hcq"
+      ],
+      "verified_post_content": [
+        "Author revisited a browser video-editor prototype after three years",
+        "Goa is a React India conference/vacation reference"
+      ],
+      "conflicts": [
+        "No BITS Goa enrollment evidence in post",
+        "No Pokemon informative-video demo or Gemini-based generator",
+        "Outside corrected mid/second-half2025 period"
+      ],
+      "identity_confidence": "not_a_match"
+    },
+    {
+      "id": "arnav_northstar",
+      "name": "Arnav Salkade",
+      "project": "NorthStar agentic creator studio (distinct from yashmote repository)",
+      "status": "implementation_lead_only_not_identity_match",
+      "urls": [
+        "https://www.linkedin.com/posts/arnav-salkade-27076a201_what-if-a-single-prompt-could-turn-into-a-activity-7440038024639447041-78Hg"
+      ],
+      "verified_post_content": [
+        "Prompt to photoelectric-effect physics animation",
+        "Scene JSON and timeline described in demo transcript",
+        "Codex GPT5.3/5.4 usage stated"
+      ],
+      "unverified": [
+        "BITS Goa connection",
+        "Pokemon example",
+        "Project shelved then resumed"
+      ],
+      "conflicts": [
+        "2026 technology references outside corrected 2025 window"
+      ],
+      "identity_confidence": "not_supported"
+    }
+  ],
+  "access_limits": [
+    "LinkedIn normal public browser redirected to sign-in wall; stopped at wall",
+    "LinkedIn web fetch returned999/429 for some profile URLs",
+    "GitHub unauthenticated API eventually403 rate limit; no evasion",
+    "Search service sometimes returns wrong-year results despite date filters; exact publication dates were not inferred from those filters"
+  ],
+  "search_families": [
+    "campus+Gemini+video",
+    "Pokemon/Pokémon/Pikachu+prompt/video/generator",
+    "campus+Manim/Remotion",
+    "shelved/revisited/resumed/side-project wording",
+    "public GitHub README and profile crosslinks",
+    "candidate-name and project-title followups",
+    "Original /posts and /videos paths, separately screened from profile reactions/reposts",
+    "Corrected June-December2025 query period; filter results not trusted as publication-date evidence",
+    "MoviePy/FFmpeg source-rendering terms and prompt-to-video variants",
+    "Pokemon single-prompt/topic/narration and generated-video wording"
+  ],
+  "not_claimed": [
+    "exact identity",
+    "complete LinkedIn account history",
+    "attached demo watched",
+    "private information",
+    "third-party project installed/run"
+  ],
+  "user_clarification": "User explicitly rejected Aryansh Tiwari. Require an original authored LinkedIn post and demo. Timeline initially heard as 2026 was explicitly corrected: original post around mid/second-half 2025 and seen after mid-2025.",
+  "followup_query_trail": [
+    "site:linkedin.com/posts \"Pokemon\" \"video\" \"Gemini\" \"built\"",
+    "site:linkedin.com/posts \"Pokémon\" \"video\" \"project\" \"Gemini\"",
+    "site:linkedin.com/posts \"BITS Goa\" \"generate\" \"video\"",
+    "site:linkedin.com/posts \"Pokemon\" \"video generator\"",
+    "site:linkedin.com/posts \"Pokemon\" \"educational video\"",
+    "site:linkedin.com/posts \"Pokemon\" \"informative video\"",
+    "site:linkedin.com/posts \"video\" \"shelved\" \"Goa\"",
+    "site:linkedin.com/posts \"generator\" \"revisited\" \"video\"",
+    "site:linkedin.com/posts \"Pokemon\" \"Manim\"",
+    "site:linkedin.com/posts \"BITSGoa\" \"video\" \"AI\"",
+    "site:linkedin.com/posts \"Pikachu\" \"Gemini\" \"video\"",
+    "site:linkedin.com/posts \"video\" \"Goa\" \"Remotion\"",
+    "site:linkedin.com/posts \"Pokemon\" \"FFmpeg\"",
+    "site:linkedin.com/posts \"Pokemon\" \"MoviePy\"",
+    "site:linkedin.com/posts \"Pokemon\" \"single prompt\" video",
+    "site:linkedin.com/posts \"Pokemon\" \"topic\" \"video\"",
+    "site:linkedin.com/posts \"Pokemon\" \"narration\"",
+    "site:linkedin.com/videos \"Pokemon\" \"AI\"",
+    "site:linkedin.com/posts \"video generator\" \"Goa\" after:2025-06-01 before:2026-01-01",
+    "site:linkedin.com/posts \"Gemini\" \"video\" \"shelved\" after:2025-06-01 before:2026-01-01",
+    "\"BITS Goa\" \"MoviePy\"",
+    "\"BITS Goa\" \"FFmpeg\" -Aryansh",
+    "\"BITS Goa\" \"text-to-video\"",
+    "site:linkedin.com/posts \"Goa\" \"Gemini\" \"reels\"",
+    "site:linkedin.com/posts \"BITS\" \"prompt-to-video\"",
+    "site:linkedin.com/posts \"video\" \"Gemini\" \"abandoned\"",
+    "site:linkedin.com/posts \"video\" \"Gemini\" \"picked it up\"",
+    "site:linkedin.com/posts \"video\" \"Gemini\" \"long break\"",
+    "site:linkedin.com/posts \"Pokemon\" \"generated a video\"",
+    "site:linkedin.com/posts \"yashvardhanmote\" video"
+  ],
+  "outcome": "Exact original authored LinkedIn post, Pokemon demo, author and project repository remain unverified. No candidate is recommended as the user's senior. Related repositories remain separately documented."
+}

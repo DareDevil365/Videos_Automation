@@ -1,0 +1,36 @@
+{
+  "id": "education_demo",
+  "format": "lesson",
+  "seconds": [
+    25,
+    45
+  ],
+  "words": [
+    70,
+    115
+  ],
+  "units": [
+    7,
+    12
+  ],
+  "voice": {
+    "voice_id": "am_adam",
+    "length_scale": 0.8,
+    "pause": 0.1
+  },
+  "music": {
+    "category": "learning",
+    "mood": "quiet unobtrusive instrumental or none",
+    "volume": 0.05
+  },
+  "layout": "education_demo",
+  "bottom": [
+    "none",
+    "gameplay"
+  ],
+  "writing": "One useful AI, interview/job skill, confidence, study or accessible-knowledge takeaway. Hook with a visible specific problem or before/after. Demonstrate the actual step/example. End with the resulting comparison or answer, then optionally ask a relevant choice question. No lecture intro, fake personal test, invented free feature, income claim or guaranteed outcome. Factual units need source claim IDs.",
+  "visuals": "Original screen recording or relevant stock/diagram at each beat. Small captions and a new meaningful visual roughly every 2-3 seconds during explanation, longer when needed to read a real result. No unrelated stock carousel; screenshots must match the actual current interface.",
+  "sound": "Accepted clear brisk male voice, articulate and energetic rather than shouting. Background stays below voice.",
+  "task": "Write ONLY the story/content script first. hook must be the exact first spoken unit, not a stronger unwritten marketing summary. The first words must establish the specific curiosity/problem. The actual answer must occupy the final or penultimate unit with no filler ending; edit.payoff_unit_id identifies it. Do not plan an unsupported edit or choose unverified asset URLs. The separate director call will preserve these exact words.",
+  "retention_note": "Patterns are testable editorial hypotheses, not a retention guarantee."
+}

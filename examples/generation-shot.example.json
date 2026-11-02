@@ -1,0 +1,9 @@
+{
+  "slot_width": 360,
+  "slot_height": 640,
+  "aspect_ratio": "9:16",
+  "usable_seconds": 3,
+  "trim_margin_seconds": 0,
+  "zoom": 1,
+  "complexity": "simple"
+}

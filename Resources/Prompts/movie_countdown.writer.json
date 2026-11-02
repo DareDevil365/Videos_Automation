@@ -1,0 +1,35 @@
+{
+  "id": "movie_countdown",
+  "format": "lesson",
+  "seconds": [
+    35,
+    55
+  ],
+  "words": [
+    75,
+    135
+  ],
+  "units": [
+    10,
+    13
+  ],
+  "voice": {
+    "voice_id": "am_adam",
+    "length_scale": 0.85,
+    "pause": 0.12
+  },
+  "music": {
+    "category": "storytime",
+    "mood": "quiet cinematic rhythmic instrumental",
+    "volume": 0.08
+  },
+  "layout": "movie_cards",
+  "bottom": [
+    "none"
+  ],
+  "writing": "A specific theme and useful short original reasons, not just peak/goated. If asking viewers to choose number one, promise nine picks plus their number one at the START; count 10 down to 2 and invite their choice. Do not promise to reveal the best movie then withhold it. A separate guess-the-film round may show an authorized clue and clearly invite a guess. Never obscure credits/source rights to provoke comments.",
+  "visuals": "One supplied usable poster/clip per ranked item, readable rank and title when this is a recommendation, concise verdict/reason. Separate guess round explicitly labelled. No repetitive same card or unsupported movie facts.",
+  "sound": "Crisp short deliveries, room to read titles, consistent quiet music; no copyrighted movie score by default.",
+  "task": "Write ONLY the story/content script first. hook must be the exact first spoken unit, not a stronger unwritten marketing summary. The first words must establish the specific curiosity/problem. The actual answer must occupy the final or penultimate unit with no filler ending; edit.payoff_unit_id identifies it. Do not plan an unsupported edit or choose unverified asset URLs. The separate director call will preserve these exact words.",
+  "retention_note": "Patterns are testable editorial hypotheses, not a retention guarantee."
+}

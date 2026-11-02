@@ -1,0 +1,545 @@
+{
+  "checked_date": "2026-11-02",
+  "coverage_note": "Thirteen education Shorts have actual three-position visual audits: E01-E07 public IAB; E08-E11 and E16-E17 isolated Playwright Chromium. Four education references remain metadata-only; three are long-form context. Movies have ten actual multi-position visual audits (eight start/mid/near-end, M07/M10 start/mid/later8s), plus M04 opening-only; M02 unavailable, M03/M06 discovery-only. No complete audio watches, measured voice/cut rates, private retention or media reuse rights claimed. Blank/loading captures are excluded and four were successfully retaken.",
+  "education": [
+    {
+      "id": "E01",
+      "url": "https://www.youtube.com/watch?v=ltQ6OhEcmZI",
+      "title": "DonÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Â ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬ÃƒÂ¢Ã¢â‚¬Å¾Ã‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¡ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Â ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â¦ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¡ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¡ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Â ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â¦ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¾ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¡ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢t make this resume mistake",
+      "channel": "Jeff Su",
+      "duration_seconds": 39,
+      "displayed_views": "16K",
+      "evidence_level": "sampled_start_mid_end_frames",
+      "observation": "Presenter opening; viewer-question card; actual resume excerpt; short outlined changing captions and selective blue emphasis.",
+      "audio_assessed": false
+    },
+    {
+      "id": "E02",
+      "url": "https://www.youtube.com/watch?v=QwwS7PxYpzo",
+      "title": "A Very Unethical resume hack",
+      "channel": "Jeff Su",
+      "duration_seconds": 53,
+      "displayed_views": "6.6M",
+      "evidence_level": "sampled_start_mid_end_frames",
+      "observation": "Close presenter opening; resume screenshot at midpoint; actual chatbot output near ending. This is a provocation/caution example, not an instruction to cheat.",
+      "audio_assessed": false
+    },
+    {
+      "id": "E03",
+      "url": "https://www.youtube.com/watch?v=y5e_zJAyIvE",
+      "title": "Resume Tip for 2024",
+      "channel": "Jeff Su",
+      "duration_seconds": 22,
+      "displayed_views": "63K",
+      "evidence_level": "sampled_start_mid_end_frames",
+      "observation": "Presenter opening; real word-cloud browser demonstration around midpoint; short caption chunks. Historical tool access is not evidence it is free now.",
+      "audio_assessed": false
+    },
+    {
+      "id": "E04",
+      "url": "https://www.youtube.com/watch?v=6TXv9qleMoY",
+      "title": "Your Cover Letter Needs This",
+      "channel": "Jeff Su",
+      "duration_seconds": 34,
+      "displayed_views": "34K",
+      "evidence_level": "sampled_start_mid_end_frames",
+      "observation": "Presenter opening, real cover-letter document with circular presenter inset around midpoint, presenter plus template address near end.",
+      "audio_assessed": false
+    },
+    {
+      "id": "E05",
+      "url": "https://www.youtube.com/watch?v=9GBDtq2kSeI",
+      "title": "DonÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Â ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬ÃƒÂ¢Ã¢â‚¬Å¾Ã‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¡ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Â ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â¦ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¡ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¡ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Â ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â¦ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¾ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¡ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢t be THAT Job Seeker",
+      "channel": "Jeff Su",
+      "duration_seconds": 36,
+      "displayed_views": "20K",
+      "evidence_level": "sampled_start_mid_end_frames",
+      "observation": "Presenter and gesture opening; tight/wider talking crop, changing outlined captions; ending frame sampled but transition blurred. Full script not established.",
+      "audio_assessed": false
+    },
+    {
+      "id": "E06",
+      "url": "https://www.youtube.com/watch?v=J3BFof2monw",
+      "title": "Look confident + sound confident = Feel confident",
+      "channel": "Vinh Giang",
+      "duration_seconds": 40.9,
+      "displayed_views": "57K",
+      "evidence_level": "sampled_start_mid_end_frames",
+      "observation": "Live stage opening with persistent summary card; wide body-language demonstration at midpoint; close stage frame and follow CTA near end.",
+      "audio_assessed": false
+    },
+    {
+      "id": "E07",
+      "url": "https://www.youtube.com/watch?v=LvPR2hKqhMg",
+      "title": "How can an INTROVERT speak with more confidence",
+      "channel": "Vinh Giang",
+      "duration_seconds": 57,
+      "displayed_views": "1.2M",
+      "evidence_level": "sampled_start_mid_end_frames",
+      "observation": "Direct audience question text over close selfie; same real speaker with changing captions mid/end; no random stock or gameplay necessary.",
+      "audio_assessed": false
+    },
+    {
+      "id": "E08",
+      "url": "https://www.youtube.com/watch?v=3JTknUk8YIE",
+      "title": "How I Ranked 1st at Cambridge University",
+      "channel": "Ali Abdaal",
+      "duration_seconds": 54.421,
+      "displayed_views": "406K",
+      "evidence_level": "sampled_video_frames",
+      "observation": "Start: presenter on Cambridge background with small white rounded caption. Mid: ordinary room close presenter explaining learning. End: presenter resource/channel CTA. Caption location consistent; no gameplay.",
+      "audio_assessed": false,
+      "screenshot_paths": [
+        "output/playwright/education-e08-start.png",
+        "output/playwright/education-e08-mid.png",
+        "output/playwright/education-e08-end.png"
+      ],
+      "sample_positions": [
+        "start",
+        "mid",
+        "end"
+      ],
+      "browser": "isolated headless Chromium; no personal profile/cookies",
+      "contact_sheet_path": "output/playwright/education-e08-sheet.png"
+    },
+    {
+      "id": "E09",
+      "url": "https://www.youtube.com/watch?v=dsS2wg2Y39c",
+      "title": "How to Improve Your Focus",
+      "channel": "Ali Abdaal",
+      "duration_seconds": 38.561,
+      "displayed_views": "3.8M",
+      "evidence_level": "sampled_video_frames",
+      "observation": "Start: large STAY FOCUSED above talking presenter and small bottom caption. Mid: wider desk/hand gesture shot. End: presenter holding mug and a conclusion caption. Same room/subject; meaningful reframing, no constant unrelated b-roll.",
+      "audio_assessed": false,
+      "screenshot_paths": [
+        "output/playwright/education-e09-start.png",
+        "output/playwright/education-e09-mid.png",
+        "output/playwright/education-e09-end.png"
+      ],
+      "sample_positions": [
+        "start",
+        "mid",
+        "end"
+      ],
+      "browser": "isolated headless Chromium; no personal profile/cookies",
+      "contact_sheet_path": "output/playwright/education-e09-sheet.png"
+    },
+    {
+      "id": "E10",
+      "url": "https://www.youtube.com/watch?v=usflTKVErcg",
+      "title": "How to Improve Your Memory",
+      "channel": "Ali Abdaal",
+      "duration_seconds": 45.061,
+      "displayed_views": "1.2M",
+      "evidence_level": "sampled_start_mid_end_frames",
+      "observation": "Opening at2s: presenter cutout below stressed-student photo/clock on a textured dark background. Middle/near-end: presenter at desk, changing small captions and crop. Opening was retaken successfully; blank initial capture excluded.",
+      "audio_assessed": false,
+      "screenshot_paths": [
+        "output/playwright/education-e10-start.png",
+        "output/playwright/education-e10-mid.png",
+        "output/playwright/education-e10-end.png"
+      ],
+      "sample_positions": [
+        "start",
+        "mid",
+        "end"
+      ],
+      "browser": "isolated headless Chromium; no personal profile/cookies",
+      "contact_sheet_path": "output/playwright/education-e10-sheet.png"
+    },
+    {
+      "id": "E11",
+      "url": "https://www.youtube.com/watch?v=PmQbnKzhqGE",
+      "title": "If you are a student at uni, try this",
+      "channel": "Ali Abdaal",
+      "duration_seconds": 28.981,
+      "displayed_views": "103K",
+      "evidence_level": "sampled_start_mid_end_frames",
+      "observation": "Opening at2s: monochrome seated presenter/cutout with speech bubbles and brain icon. Middle: actual reading/writing study footage. Near-end: colorful book collage with cutout presenter, popcorn and decorative butterfly/flower. Opening retaken successfully; blank initial capture excluded.",
+      "audio_assessed": false,
+      "screenshot_paths": [
+        "output/playwright/education-e11-start.png",
+        "output/playwright/education-e11-mid.png",
+        "output/playwright/education-e11-end.png"
+      ],
+      "sample_positions": [
+        "start",
+        "mid",
+        "end"
+      ],
+      "browser": "isolated headless Chromium; no personal profile/cookies",
+      "contact_sheet_path": "output/playwright/education-e11-sheet.png"
+    },
+    {
+      "id": "E12",
+      "url": "https://www.youtube.com/watch?v=TZe5UqlUg0c",
+      "title": "7 Best AI Tools You NEED to Try (Free & Powerful!)",
+      "channel": "Kevin Stratvert",
+      "duration_seconds": null,
+      "displayed_views": null,
+      "evidence_level": "metadata_only",
+      "observation": "Long-form supplementary reference, creator description/chapter metadata",
+      "audio_assessed": false
+    },
+    {
+      "id": "E13",
+      "url": "https://www.youtube.com/watch?v=B6tn6ojJ2wg",
+      "title": "5 AI Tools That Will Change Your Life!",
+      "channel": "Kevin Stratvert",
+      "duration_seconds": null,
+      "displayed_views": null,
+      "evidence_level": "metadata_only",
+      "observation": "Long-form supplementary reference, creator description/chapter metadata",
+      "audio_assessed": false
+    },
+    {
+      "id": "E14",
+      "url": "https://www.youtube.com/watch?v=Lt54CX9DmS4",
+      "title": "How to Study for Exams - An Evidence-Based Masterclass",
+      "channel": "Ali Abdaal",
+      "duration_seconds": null,
+      "displayed_views": null,
+      "evidence_level": "metadata_only",
+      "observation": "Long-form supplementary reference, creator description/chapter metadata",
+      "audio_assessed": false
+    },
+    {
+      "id": "E15",
+      "url": "https://www.youtube.com/watch?v=WeE3YRGFsFk",
+      "title": "LinkedIn Headline for Job Seekers",
+      "channel": "Jeff Su (search-card attribution, not player-verified)",
+      "evidence_level": "metadata_only",
+      "observation": "Observed YouTube search card in earlier public IAB session. Player, frames, full wording and current views not inspected.",
+      "audio_assessed": false
+    },
+    {
+      "id": "E16",
+      "url": "https://www.youtube.com/watch?v=UqpHjpBDths",
+      "title": "The #1 Prompting Tip for Productivity",
+      "channel": "Jeff Su",
+      "duration_seconds": 52.061,
+      "displayed_views": "105K",
+      "evidence_level": "sampled_start_mid_end_frames",
+      "audio_assessed": false,
+      "observation": "Start presenter with large specific one-minute prompting promise. Middle Gemini input graphic on dark background. Near-end platform/tool logo comparisons (Alfred/Raycast/Windows). Purposeful topic/presenter to interface/diagram movement; exact current feature claim not verified.",
+      "sample_positions": [
+        "start",
+        "mid",
+        "end"
+      ],
+      "screenshot_paths": [
+        "output/playwright/education-e16-start.png",
+        "output/playwright/education-e16-mid.png",
+        "output/playwright/education-e16-end.png"
+      ],
+      "browser": "isolated headless Chromium; no personal profile/cookies",
+      "contact_sheet_path": "output/playwright/education-e16-sheet.png"
+    },
+    {
+      "id": "E17",
+      "url": "https://www.youtube.com/watch?v=-rWNkgdaYZI",
+      "title": "The 30-second fix for AI on mobile",
+      "channel": "Jeff Su",
+      "duration_seconds": 41.921,
+      "displayed_views": "82K",
+      "evidence_level": "sampled_start_mid_end_frames",
+      "audio_assessed": false,
+      "observation": "Start monochrome close presenter with small selectively colored captions. Middle actual iPhone share-sheet favorites edit view with AI apps. Near-end actual phone share sheet over web article with AI app shortcuts visible. Concrete problem-to-action-to-result UI visuals; old platform UI must be reverified before a new tutorial.",
+      "sample_positions": [
+        "start",
+        "mid",
+        "end"
+      ],
+      "screenshot_paths": [
+        "output/playwright/education-e17-start.png",
+        "output/playwright/education-e17-mid.png",
+        "output/playwright/education-e17-end.png"
+      ],
+      "browser": "isolated headless Chromium; no personal profile/cookies",
+      "contact_sheet_path": "output/playwright/education-e17-sheet.png"
+    }
+  ],
+  "movies": [
+    {
+      "id": "M01",
+      "url": "https://www.youtube.com/watch?v=A9fYkSTuPEc",
+      "title": "Guess the Movie: #shorts",
+      "channel": "Quiz Unicorn",
+      "evidence_level": "sampled_start_mid_end_frames",
+      "observation": "Actual vertical wrapper around a wide emoji-quiz card. Orange emoji clue card numbered22 at start; wipe transition near middle; purple emoji clue card numbered23 and timer near end. Blur-fill above/below; branded Quiz Unicorn watermark. Not a movie recommendation countdown.",
+      "audio_assessed": false,
+      "frame_sampled": true,
+      "screenshot_paths": [
+        "output/playwright/movie-m01-start.png",
+        "output/playwright/movie-m01-mid.png",
+        "output/playwright/movie-m01-end.png"
+      ],
+      "contact_sheet_path": "output/playwright/movie-m01-sheet.png"
+    },
+    {
+      "id": "M02",
+      "url": "https://www.youtube.com/watch?v=SisTcmDJ3a4",
+      "title": "Guess the Movie by Scene | Movie Quiz",
+      "channel": "Unverified",
+      "evidence_level": "unavailable_player_verified",
+      "observation": "Real YouTube player page explicitly says video is not available anymore. Not counted as an actual video audit.",
+      "audio_assessed": false,
+      "frame_sampled": false
+    },
+    {
+      "id": "M03",
+      "url": "https://www.youtube.com/watch?v=FdG6kxiAXV8",
+      "title": "GUESS THE MOVIE BY 4 SCENES - Hard To Super Easy",
+      "channel": "Unverified",
+      "evidence_level": "metadata_only",
+      "observation": "Primary YouTube search result; supplementary long-form quiz",
+      "audio_assessed": false,
+      "frame_sampled": false
+    },
+    {
+      "id": "M04",
+      "url": "https://www.youtube.com/watch?v=gxuz8gKfIzY",
+      "title": "Guess the Movie by HeroÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Â ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã¢â‚¬Â¦Ãƒâ€šÃ‚Â¡ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã¢â‚¬Â¦Ãƒâ€šÃ‚Â¾ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢s Profession! Part 2 | Husband vs Wife",
+      "channel": "Unverified",
+      "evidence_level": "opening_frame_only",
+      "observation": "Actual vertical husband/wife challenge: two seated contestants, physical desk bell, persistent score strip, and a text clue about a film character occupation. Opening frame only; seek to later frame stalled and was excluded.",
+      "audio_assessed": false,
+      "frame_sampled": true,
+      "screenshot_paths": [
+        "output/playwright/movie-m04-start.png"
+      ],
+      "contact_sheet_path": "output/playwright/movie-m04-sheet.png"
+    },
+    {
+      "id": "M05",
+      "url": "https://www.youtube.com/watch?v=G16fBHNoHR0",
+      "title": "Best Underrated Movies | These 5 movies",
+      "channel": "Entertainn Buzz",
+      "evidence_level": "sampled_start_mid_end_frames",
+      "observation": "Three actual frame samples show distinct movie/action excerpts with black letterboxing. No title/rank visible in sampled moments. Small-view comparison/control rather than a claimed viral success. Muted frames do not establish full spoken recommendations or hook wording.",
+      "audio_assessed": false,
+      "frame_sampled": true,
+      "duration_seconds": 39.741,
+      "displayed_views": "1.1K",
+      "screenshot_paths": [
+        "output/playwright/movie-m05-start.png",
+        "output/playwright/movie-m05-mid.png",
+        "output/playwright/movie-m05-end.png"
+      ],
+      "contact_sheet_path": "output/playwright/movie-m05-sheet.png"
+    },
+    {
+      "id": "M06",
+      "url": "https://www.youtube.com/watch?v=2pZzSqcEADg",
+      "title": "Survival Thriller Movies You CanÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Â ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã¢â‚¬Â¦Ãƒâ€šÃ‚Â¡ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã¢â‚¬Â¦Ãƒâ€šÃ‚Â¾ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢t Miss",
+      "channel": "Unverified",
+      "evidence_level": "metadata_only",
+      "observation": "Third-party discovery card only; not directly verified",
+      "audio_assessed": false,
+      "frame_sampled": false
+    },
+    {
+      "id": "M07",
+      "url": "https://www.youtube.com/watch?v=niMAPTJY4KM",
+      "title": "Must Watch Movies Before You Die",
+      "channel": "Moviate",
+      "duration_seconds": 10.801,
+      "displayed_views": "3.9M",
+      "evidence_level": "sampled_start_mid_later_frames",
+      "frame_sampled": true,
+      "sample_positions": [
+        "start",
+        "mid",
+        "later"
+      ],
+      "observation": "Opening film-character shot with bold yellow topic promise and white subtitle, small creator watermark; middle labeled film shot (Locke). End capture was blank/loading and excluded. Successful later8s retake shows a different character shot with readable The Fall (2006) label.",
+      "format_family": "short-title-montage",
+      "audio_assessed": false,
+      "screenshot_paths": [
+        "output/playwright/movie-m07-start.png",
+        "output/playwright/movie-m07-mid.png",
+        "output/playwright/movie-m07-later.png"
+      ],
+      "browser": "isolated headless Chromium; no personal profile/cookies",
+      "later_frame_second": 8,
+      "contact_sheet_path": "output/playwright/movie-m07-sheet.png"
+    },
+    {
+      "id": "M08",
+      "url": "https://www.youtube.com/watch?v=PLlaomWufTM",
+      "title": "The only 10/10 movies | Write the best movie of all time",
+      "channel": "M (stylized channel name)",
+      "duration_seconds": 15.481,
+      "displayed_views": "10M",
+      "evidence_level": "sampled_start_mid_end_frames",
+      "frame_sampled": true,
+      "sample_positions": [
+        "start",
+        "mid",
+        "end"
+      ],
+      "observation": "Opening movie shot with topic text, middle names numbered film/year (Shawshank), near-end another numbered named film/year (Fight Club). This is a fast numbered montage, not evidence of a 10-down-to-1 countdown.",
+      "format_family": "numbered-film-montage",
+      "audio_assessed": false,
+      "screenshot_paths": [
+        "output/playwright/movie-m08-start.png",
+        "output/playwright/movie-m08-mid.png",
+        "output/playwright/movie-m08-end.png"
+      ],
+      "browser": "isolated headless Chromium; no personal profile/cookies",
+      "contact_sheet_path": "output/playwright/movie-m08-sheet.png"
+    },
+    {
+      "id": "M09",
+      "url": "https://www.youtube.com/watch?v=VIOwkLilKpA",
+      "title": "3 Short Films To Watch On YouTube",
+      "channel": "Chalchitra Talks",
+      "duration_seconds": 34.581,
+      "displayed_views": "3M",
+      "evidence_level": "sampled_start_mid_end_frames",
+      "frame_sampled": true,
+      "sample_positions": [
+        "start",
+        "mid",
+        "end"
+      ],
+      "observation": "Opening presenter with strong yellow title band; middle actual film excerpt with film title highlighted at top; near-end returns to presenter and the same three-film topic band.",
+      "format_family": "presenter-recommendation",
+      "audio_assessed": false,
+      "screenshot_paths": [
+        "output/playwright/movie-m09-start.png",
+        "output/playwright/movie-m09-mid.png",
+        "output/playwright/movie-m09-end.png"
+      ],
+      "browser": "isolated headless Chromium; no personal profile/cookies",
+      "contact_sheet_path": "output/playwright/movie-m09-sheet.png"
+    },
+    {
+      "id": "M10",
+      "url": "https://www.youtube.com/watch?v=jPEgK_X7bVY",
+      "title": "Movies with the best plot twists",
+      "channel": "Moviate",
+      "duration_seconds": 10.601,
+      "displayed_views": "1M",
+      "evidence_level": "sampled_start_mid_later_frames",
+      "frame_sampled": true,
+      "sample_positions": [
+        "start",
+        "mid",
+        "later"
+      ],
+      "observation": "Opening dramatic film character visual with moving topic text; middle another film character with same topic promise. End capture blank/loading, excluded; exact list/payoff not established. Successful later8s retake shows a different character shot with readable The Invitation label.",
+      "format_family": "short-title-montage",
+      "audio_assessed": false,
+      "screenshot_paths": [
+        "output/playwright/movie-m10-start.png",
+        "output/playwright/movie-m10-mid.png",
+        "output/playwright/movie-m10-later.png"
+      ],
+      "browser": "isolated headless Chromium; no personal profile/cookies",
+      "later_frame_second": 8,
+      "contact_sheet_path": "output/playwright/movie-m10-sheet.png"
+    },
+    {
+      "id": "M11",
+      "url": "https://www.youtube.com/watch?v=LApmxf50ia0",
+      "title": "Best Romcoms (Part 2)",
+      "channel": "Brad Martin",
+      "duration_seconds": 11.781,
+      "displayed_views": "2.2M",
+      "evidence_level": "sampled_start_mid_end_frames",
+      "frame_sampled": true,
+      "sample_positions": [
+        "start",
+        "mid",
+        "end"
+      ],
+      "observation": "Opening/middle presenter with an emotional category statement at top; near-end image of laptop showing the named romantic movie. Personal framing followed by a concrete film choice.",
+      "format_family": "one-film-emotional-recommendation",
+      "audio_assessed": false,
+      "screenshot_paths": [
+        "output/playwright/movie-m11-start.png",
+        "output/playwright/movie-m11-mid.png",
+        "output/playwright/movie-m11-end.png"
+      ],
+      "browser": "isolated headless Chromium; no personal profile/cookies",
+      "contact_sheet_path": "output/playwright/movie-m11-sheet.png"
+    },
+    {
+      "id": "M12",
+      "url": "https://www.youtube.com/watch?v=19tTfqMFL9c",
+      "title": "5 BEST UNDERRATED MOVIES",
+      "channel": "iamrajputshiv",
+      "duration_seconds": 19.561,
+      "displayed_views": "3.3M",
+      "evidence_level": "sampled_start_mid_end_frames",
+      "frame_sampled": true,
+      "sample_positions": [
+        "start",
+        "mid",
+        "end"
+      ],
+      "observation": "Opening black kinetic topic title; middle zoom-blur transition into movie card; near-end poster on upper panel, matching movie still below, translucent center band with film title and genres. Useful split-card template, no gameplay.",
+      "format_family": "poster-still-genre-cards",
+      "audio_assessed": false,
+      "screenshot_paths": [
+        "output/playwright/movie-m12-start.png",
+        "output/playwright/movie-m12-mid.png",
+        "output/playwright/movie-m12-end.png"
+      ],
+      "browser": "isolated headless Chromium; no personal profile/cookies",
+      "contact_sheet_path": "output/playwright/movie-m12-sheet.png"
+    },
+    {
+      "id": "M13",
+      "url": "https://www.youtube.com/watch?v=ZEO9U0QcKQI",
+      "title": "10 Best High School Romance Movies",
+      "channel": "Movielicious",
+      "duration_seconds": 15.801,
+      "displayed_views": "1.4M",
+      "evidence_level": "sampled_start_mid_end_frames",
+      "frame_sampled": true,
+      "sample_positions": [
+        "start",
+        "mid",
+        "end"
+      ],
+      "observation": "Opening brief Netflix-style logo frame; middle and near-end different full portrait movie posters with prominent titles. Fast poster carousel rather than long scripted explanations.",
+      "format_family": "poster-carousel",
+      "audio_assessed": false,
+      "screenshot_paths": [
+        "output/playwright/movie-m13-start.png",
+        "output/playwright/movie-m13-mid.png",
+        "output/playwright/movie-m13-end.png"
+      ],
+      "browser": "isolated headless Chromium; no personal profile/cookies",
+      "contact_sheet_path": "output/playwright/movie-m13-sheet.png"
+    },
+    {
+      "id": "M14",
+      "url": "https://www.youtube.com/watch?v=iU_gujLx6a0",
+      "title": "Best movies of all time",
+      "channel": "Film Shorts 15",
+      "duration_seconds": 15.221,
+      "displayed_views": "756K",
+      "evidence_level": "sampled_start_mid_end_frames",
+      "frame_sampled": true,
+      "sample_positions": [
+        "start",
+        "mid",
+        "end"
+      ],
+      "observation": "Opening stylized cinematic image with large topic words; middle blurred zoom-transition poster and large yellow title; near-end another poster/title. Strong type and zoom-blur; no evidence the stylized opening is an actual movie still.",
+      "format_family": "poster-title-zoom-carousel",
+      "audio_assessed": false,
+      "screenshot_paths": [
+        "output/playwright/movie-m14-start.png",
+        "output/playwright/movie-m14-mid.png",
+        "output/playwright/movie-m14-end.png"
+      ],
+      "browser": "isolated headless Chromium; no personal profile/cookies",
+      "contact_sheet_path": "output/playwright/movie-m14-sheet.png"
+    }
+  ]
+}

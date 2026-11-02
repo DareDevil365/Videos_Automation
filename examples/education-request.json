@@ -1,0 +1,21 @@
+{
+  "brief": {
+    "title": "Check a file before opening it in Python",
+    "question": "How do I check whether a path points to a file?",
+    "kind": "fact",
+    "editorial_verified": true,
+    "notes": "Provided editorial example checked against the linked Python documentation on 2026-11-01. Not a live Gemini script.",
+    "sources": [{"id": "python", "url": "https://docs.python.org/3/library/pathlib.html", "title": "Python pathlib documentation", "excerpt": "Path.exists checks whether a path exists. Path.is_file checks whether the path points to a regular file.", "checked_at": "2026-11-01T12:00:00+00:00"}],
+    "claims": [{"id": "file_check", "source_id": "python", "text": "Path.is_file checks whether a path points to a regular file."}]
+  },
+  "script": {
+    "version": 1, "title": "Check your file path in Python", "description": "A small Python pathlib tip. Check the path type before your next step. The file can still change after the check.", "format": "lesson", "fiction": false,
+    "hook": "Need to check a file path?", "payoff": "Use is_file to check the path type.",
+    "units": [
+      {"id": "hook", "speaker": "Narrator", "text": "Need to check a file path in Python? Try this small step.", "kind": "instruction", "claim_ids": [], "onscreen": "Check a file path"},
+      {"id": "method", "speaker": "Narrator", "text": "Import Path from pathlib. Then call is file on your path to check whether it points to a regular file.", "kind": "fact", "claim_ids": ["file_check"], "onscreen": "from pathlib import Path\nPath('notes.txt').is_file()"},
+      {"id": "finish", "speaker": "Narrator", "text": "Use that result to choose your next step. Still handle errors when you open the file, because the file can change.", "kind": "instruction", "claim_ids": [], "onscreen": "Check first. Handle open errors too."}
+    ],
+    "edit": {"effect": "none", "payoff_unit_id": "finish", "cta": false}
+  }
+}

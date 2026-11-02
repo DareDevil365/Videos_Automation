@@ -1,0 +1,90 @@
+{
+  "checked": "2026-11-02",
+  "method": "Latest commit affecting inspected file; mutable source may change afterward. No code executed.",
+  "files": [
+    {
+      "repository": "harry0703/MoneyPrinterTurbo",
+      "file": "app/services/material.py",
+      "last_file_commit": "1cebc658346a806b79199d3b5d39cb15b4eca4c2",
+      "date": "2026-10-31T09:57:13Z",
+      "immutable_url": "https://github.com/harry0703/MoneyPrinterTurbo/blob/1cebc658346a806b79199d3b5d39cb15b4eca4c2/app/services/material.py"
+    },
+    {
+      "repository": "tsensei/OpenReels",
+      "file": "src/providers/stock/stock-verifier.ts",
+      "last_file_commit": "ae220992306f07dc914510b58c135a2b390689e2",
+      "date": "2026-04-03T14:09:04Z",
+      "immutable_url": "https://github.com/tsensei/OpenReels/blob/ae220992306f07dc914510b58c135a2b390689e2/src/providers/stock/stock-verifier.ts"
+    },
+    {
+      "repository": "Chamanrajragu/purffle-shorts",
+      "file": "purffle_shorts/script.py",
+      "last_file_commit": "dedcd84db2d580ec49bb8514f802518346ff5dba",
+      "date": "2026-10-19T19:54:32Z",
+      "immutable_url": "https://github.com/Chamanrajragu/purffle-shorts/blob/dedcd84db2d580ec49bb8514f802518346ff5dba/purffle_shorts/script.py"
+    },
+    {
+      "repository": "mutonby/openshorts",
+      "file": "reframe_v2.py",
+      "last_file_commit": "f5cdf5ceefac9ba4d09395d1bbae5b7da8975e4e",
+      "date": "2026-10-28T00:40:01Z",
+      "immutable_url": "https://github.com/mutonby/openshorts/blob/f5cdf5ceefac9ba4d09395d1bbae5b7da8975e4e/reframe_v2.py"
+    },
+    {
+      "repository": "octimot/StoryToolkitAI",
+      "file": "storytoolkitai/core/toolkit_ops/search.py",
+      "last_file_commit": "f62b7877936902615a5cf62f46c73d48b4bdd5d1",
+      "date": "2026-07-26T11:47:37Z",
+      "immutable_url": "https://github.com/octimot/StoryToolkitAI/blob/f62b7877936902615a5cf62f46c73d48b4bdd5d1/storytoolkitai/core/toolkit_ops/search.py"
+    },
+    {
+      "repository": "veedstudio/open-edit",
+      "file": "cli/src/render/session.ts",
+      "last_file_commit": "7f212e0484a01d976fb3e68d4adc9f6373c19346",
+      "date": "2026-09-29T16:29:24Z",
+      "immutable_url": "https://github.com/veedstudio/open-edit/blob/7f212e0484a01d976fb3e68d4adc9f6373c19346/cli/src/render/session.ts"
+    },
+    {
+      "repository": "Breakthrough/PySceneDetect",
+      "file": "scenedetect/detectors/adaptive_detector.py",
+      "last_file_commit": "019631a262967ef97d880f82c791a16b466a954f",
+      "date": "2026-09-11T18:29:32Z",
+      "immutable_url": "https://github.com/Breakthrough/PySceneDetect/blob/019631a262967ef97d880f82c791a16b466a954f/scenedetect/detectors/adaptive_detector.py"
+    },
+    {
+      "repository": "m-bain/whisperX",
+      "file": "pyproject.toml",
+      "last_file_commit": "09954952e9404af0f45a393e7cd40e4b984cb596",
+      "date": "2026-10-18T22:38:35Z",
+      "immutable_url": "https://github.com/m-bain/whisperX/blob/09954952e9404af0f45a393e7cd40e4b984cb596/pyproject.toml"
+    },
+    {
+      "repository": "Yeamin-Sheikh/Flow-Automation",
+      "file": "manifest.json",
+      "last_file_commit": "2fd1b9c0e1aa33e0c5a88d627c3c426583f094c3",
+      "date": "2026-09-26T18:10:04Z",
+      "immutable_url": "https://github.com/Yeamin-Sheikh/Flow-Automation/blob/2fd1b9c0e1aa33e0c5a88d627c3c426583f094c3/manifest.json"
+    },
+    {
+      "repository": "DaKev/cutagent",
+      "file": "cutagent/engine.py",
+      "last_file_commit": "2f0b4a205391b97a5cffed5deab7794e6356805b",
+      "date": "2026-07-11T16:48:16Z",
+      "immutable_url": "https://github.com/DaKev/cutagent/blob/2f0b4a205391b97a5cffed5deab7794e6356805b/cutagent/engine.py"
+    },
+    {
+      "repository": "Lightricks/LTX-Desktop",
+      "file": "README.md",
+      "last_file_commit": "c8e423851b520bf6659613b7b0fc8362627d937b",
+      "date": "2026-10-19T15:15:12Z",
+      "immutable_url": "https://github.com/Lightricks/LTX-Desktop/blob/c8e423851b520bf6659613b7b0fc8362627d937b/README.md"
+    },
+    {
+      "repository": "caronc/apprise",
+      "file": "apprise/apprise.py",
+      "last_file_commit": "747a01031b5a6db594e659e213e153dc70fdb6a9",
+      "date": "2026-10-21T01:31:45Z",
+      "immutable_url": "https://github.com/caronc/apprise/blob/747a01031b5a6db594e659e213e153dc70fdb6a9/apprise/apprise.py"
+    }
+  ]
+}

@@ -1,0 +1,630 @@
+{
+  "research_date": "2026-11-02",
+  "method": "Public IAB playback frames, isolated public Chromium via Playwright CLI, saved screenshots, and explicitly attributed historical native-playback audits. No personal browser profile/cookies. All audio/music/WPM unassessed.",
+  "coverage_status": "24 distinct sampled references:10 direct fictional/visual horror stories,10 chat,3 separate horror host/commentary comparators,1 long-form collage. Not full watches; no audio audit.11 of14 new CLI audits have3 decoded frame samples;3 have2 because end frames failed.",
+  "references": [
+    {
+      "id": "S01",
+      "url": "https://www.youtube.com/watch?v=GqWEe7zoH-4",
+      "title": "Accidentally Sent to My Ex! 😬| Text Conversation Gone Wrong 💬",
+      "channel": "Narrated Texts",
+      "format": "texting_asmr",
+      "runtime_seconds": 59,
+      "public_metrics_observed": "3.9M views; 2y ago",
+      "sampled_seconds": [
+        4,
+        53,
+        58
+      ],
+      "observations": [
+        "Compact upper dark iMessage card; gray/blue speakers; food preparation stays visible.",
+        "Opening accidental-recipient premise; late refusal and final reversal.",
+        "Food background progresses to a completed sandwich."
+      ],
+      "limitations": "Muted sampled frames; no complete transcript; midpoint seek decoder-stale and excluded.",
+      "evidence_level": "actual_sampled_frames",
+      "audio_assessed": false
+    },
+    {
+      "id": "S02",
+      "url": "https://www.youtube.com/watch?v=1WfbQGbjlBU",
+      "title": "My Girlfriend Has a Secret Phone 📱",
+      "channel": "LORETXT",
+      "format": "texting",
+      "runtime_seconds": 32,
+      "public_metrics_observed": "1.3K views; 13h ago",
+      "sampled_seconds": [
+        0,
+        24
+      ],
+      "observations": [
+        "Tall phone/WhatsApp layout on city background; initial two-phone suspicion.",
+        "Later messages change relationship context."
+      ],
+      "limitations": "Ending not inspected; recent low-view contrast, not performance exemplar.",
+      "evidence_level": "actual_sampled_frames",
+      "audio_assessed": false
+    },
+    {
+      "id": "S03",
+      "url": "https://www.youtube.com/watch?v=gYivmP1TmNE",
+      "title": "The End 🥺❤️",
+      "channel": "SigmaKAMi",
+      "format": "texting_asmr",
+      "runtime_seconds": 178,
+      "public_metrics_observed": "8.8K views; 8h ago",
+      "sampled_seconds": [
+        0,
+        89,
+        160
+      ],
+      "observations": [
+        "White chat card upper area; continuous craft/scrapbook footage.",
+        "Contact/context changes and short gray/blue messages."
+      ],
+      "limitations": "Longer runtime comparator; full ending and audio unassessed.",
+      "evidence_level": "actual_sampled_frames",
+      "audio_assessed": false
+    },
+    {
+      "id": "S04",
+      "url": "https://www.youtube.com/watch?v=Vq9MqlDc_a8",
+      "title": "Ai Came In Clutch 😭🫴🏽",
+      "channel": "Izwut",
+      "format": "texting_gameplay",
+      "runtime_seconds": 60,
+      "public_metrics_observed": "573K views; 2y ago",
+      "sampled_seconds": [
+        0,
+        30,
+        59
+      ],
+      "observations": [
+        "Compact upper dark chat card over full-frame bright Minecraft-style parkour.",
+        "Single urgent opening message; successive bubbles; late bad-news turn."
+      ],
+      "limitations": "Partial text only; adult innuendo; do not reproduce story; no audio.",
+      "evidence_level": "actual_sampled_frames",
+      "audio_assessed": false
+    },
+    {
+      "id": "S05",
+      "url": "https://www.youtube.com/watch?v=RmbmmbD-7K0",
+      "title": "THE HIDDEN NOTEBOOK!?..😲📒",
+      "channel": "Buddy",
+      "format": "texting_gameplay",
+      "runtime_seconds": 59,
+      "public_metrics_observed": "659K views; 2y ago",
+      "sampled_seconds": [
+        0,
+        29,
+        58
+      ],
+      "observations": [
+        "Dark chat card with My Crush header; gameplay stays visible.",
+        "Opening notebook question; middle negotiation; late teasing reversal."
+      ],
+      "limitations": "No full transcript; sponsor/product tag does not establish revenue.",
+      "evidence_level": "actual_sampled_frames",
+      "audio_assessed": false
+    },
+    {
+      "id": "S06",
+      "url": "https://www.youtube.com/watch?v=7PPdZTAC7s8",
+      "title": "My Building Has 11 Floors. Tonight the Elevator Had a Button for 12.",
+      "channel": "Hallway Cam",
+      "format": "horror",
+      "runtime_seconds": 40,
+      "public_metrics_observed": null,
+      "sampled_seconds": [
+        0,
+        20
+      ],
+      "observations": [
+        "Photographic-look dark elevator panel: display11 and glowing12 button.",
+        "Middle apartment door7B with sparse bottom caption."
+      ],
+      "limitations": "No audio; production provenance unknown; rolling view digits not reliable; ending pending.",
+      "evidence_level": "actual_sampled_frames",
+      "audio_assessed": false
+    },
+    {
+      "id": "S07",
+      "url": "https://www.youtube.com/watch?v=oRk2x06dRZo",
+      "title": "I Let You Send Me Robot Ideas",
+      "channel": "William Osman",
+      "format": "cutout_ensemble_style_comparator",
+      "runtime_seconds": 1126,
+      "public_metrics_observed": "2.4M views; 6y ago in saved page frame",
+      "sampled_seconds": [
+        300,
+        600
+      ],
+      "observations": [
+        "Saved frames reviewed directly in current pass: four photographic enlarged heads pasted onto seated panel-show bodies, shared background and persistent cast placement.",
+        "300-second image has large two-word emphasis text; 600-second image changes expressions and removes that emphasis text.",
+        "This demonstrates cheap collage expression/composition variants; these two samples do not establish a cut rate or a full active-speaker closeup sequence."
+      ],
+      "evidence_level": "actual_saved_frames",
+      "source_artifacts": [
+        "output/playwright/animation-reference-300.png",
+        "output/playwright/animation-reference-600.png"
+      ],
+      "audio_assessed": false,
+      "limitations": "Long-form comparator, not a Shorts outcome. The timestamp names come from the historical capture process; no visible player clock is present in the stored screenshot. TV bodies and celebrity faces are reference only, not reusable assets."
+    },
+    {
+      "id": "S08",
+      "url": "https://www.youtube.com/shorts/h6pcngherRs",
+      "title": "BRO IS ABSOLUTELY COOKED",
+      "channel": "Dozzek",
+      "format": "texting_over_footage",
+      "runtime_seconds": 63.361,
+      "public_metrics_observed": "1,810,945 views; native date 2026-08-18, inspected2026-11-01",
+      "sampled_seconds": [
+        9.5,
+        57.0,
+        62.2
+      ],
+      "observations": [
+        "Historical direct public playback audit: compact dark phone-message panel near upper center with blue/gray bubbles; panel content and height change.",
+        "Full-frame real-world rooftop/parkour/water footage, not generated gameplay.",
+        "Saved user-reference screenshot directly reviewed in continuation: header/contact panel occupies upper region; blue/gray message sides; active real-world water/parkour background remains visible."
+      ],
+      "evidence_level": "historical_actual_playback_audit",
+      "audit_source": "research/COMPOSITION_REFERENCE_AUDIT.md",
+      "source_artifacts": [
+        "data/reference-audit/user-reference.jpg"
+      ],
+      "audio_assessed": false,
+      "limitations": "Historical observations are attributed, not a new full watch in this research turn. Full transcript and audio not established."
+    },
+    {
+      "id": "S09",
+      "url": "https://www.youtube.com/shorts/9_e6Y9iiB-E",
+      "title": "Christina Kingston text-message example",
+      "channel": "Christina Kingston",
+      "format": "texting_black_background",
+      "runtime_seconds": 51.981,
+      "public_metrics_observed": "14,004,475 views; native date2026-06-25, inspected2026-11-01",
+      "sampled_seconds": [],
+      "observations": [
+        "Historical direct playback audit: black background, large phone-message crops, compact persistent top hook.",
+        "Opening later messages blurred; subsequent frames reveal different messages and changed crop. No gameplay visible."
+      ],
+      "evidence_level": "historical_actual_playback_audit",
+      "audit_source": "research/COMPOSITION_REFERENCE_AUDIT.md",
+      "audio_assessed": false,
+      "limitations": "Exact frame timestamps were not recorded; no new playback performed in current turn. Blurring is a reveal technique, not evidence of higher retention. Ending and voice not assessed."
+    },
+    {
+      "id": "S10",
+      "url": "https://www.youtube.com/shorts/K0TbExFL4P4",
+      "title": "Rizzo texts example",
+      "channel": "Rizzo texts",
+      "format": "texting_asmr",
+      "runtime_seconds": 54.781,
+      "public_metrics_observed": "3,255,094 views; native date2024-09-04, inspected2026-11-01",
+      "sampled_seconds": [],
+      "observations": [
+        "Historical actual playback samples: narrow phone-header/message crop near top over full-frame satisfying footage.",
+        "Background samples include metal machining and fruit preparation; description game tags do not prove gameplay is visible."
+      ],
+      "evidence_level": "historical_actual_playback_audit",
+      "audit_source": "research/COMPOSITION_REFERENCE_AUDIT.md",
+      "audio_assessed": false,
+      "limitations": "Exact frame timestamps not recorded; no new playback performed in current turn. Full dialogue/audio/payoff not established."
+    },
+    {
+      "id": "H02",
+      "url": "https://www.youtube.com/watch?v=mS85nWSxznc",
+      "title": "The phone was upstairs. So who left the message?",
+      "channel": "Yekita",
+      "format": "horror_illustrated",
+      "runtime_seconds": 70.621,
+      "public_metrics_observed": "1K views; 1d ago; 8 likes",
+      "sampled_seconds": [
+        0.2,
+        35
+      ],
+      "source_artifacts": [
+        "output/playwright/story-h12-0.png",
+        "output/playwright/story-h12-1.png"
+      ],
+      "observations": [
+        "Full vertical illustrated anxious boy holding illuminated phone; small sparse lower word captions.",
+        "Midpoint: same-looking boy crouches at a doorway; location/action changes rather than one repeated still."
+      ],
+      "evidence_level": "actual_saved_frames",
+      "audio_assessed": false,
+      "limitations": "Third requested sample68.621s never decoded; spinner/stale frame excluded. Only early/middle observed, payoff unassessed. Low-view example, not performance proof."
+    },
+    {
+      "id": "H03",
+      "url": "https://www.youtube.com/watch?v=AgNR5Ig8ngM",
+      "title": "The Elevator Opened Into the Future… | Reality.exe #Shorts",
+      "channel": "Reality.exeeee",
+      "format": "horror_speculative_cinematic",
+      "runtime_seconds": 24.081,
+      "public_metrics_observed": "28 views; 1d ago; 2 likes",
+      "sampled_seconds": [
+        0.2,
+        12,
+        22.081
+      ],
+      "source_artifacts": [
+        "output/playwright/story-h13-0.png",
+        "output/playwright/story-h13-1.png",
+        "output/playwright/story-h13-2.png"
+      ],
+      "observations": [
+        "Full vertical cinematic-looking elevator opens onto blue futuristic city: opening already shows impossible result.",
+        "Midpoint changes to over-shoulder with another figure visible; late frame shows protagonist reaction closeup.",
+        "No visible narration caption or decorative gameplay in these three frames."
+      ],
+      "evidence_level": "actual_saved_frames",
+      "audio_assessed": false,
+      "limitations": "Three decoded frames only; full story/payoff and production provenance not established. 28-view recent example, not proof of demand."
+    },
+    {
+      "id": "H04",
+      "url": "https://www.youtube.com/watch?v=MB20JYEpQnM",
+      "title": "Creepy Story Of Real Estate Agent (real horror video)",
+      "channel": "ANY icON",
+      "format": "horror_illustrated_recount",
+      "runtime_seconds": 61.321,
+      "public_metrics_observed": "7.8M views; 1y ago;65K likes",
+      "sampled_seconds": [
+        0.2,
+        30,
+        59.321
+      ],
+      "source_artifacts": [
+        "output/playwright/story-h14-0.png",
+        "output/playwright/story-h14-1.png",
+        "output/playwright/story-h14-2.png"
+      ],
+      "observations": [
+        "Opening shows exaggerated monstrous suited face and red attention arrow; late frame returns to same figure.",
+        "Middle shows a period-looking couple portrait with a single prominent red name caption; imagery changes with narrative context.",
+        "Full vertical imagery with watermark; no unrelated gameplay in sampled frames."
+      ],
+      "evidence_level": "actual_saved_frames",
+      "audio_assessed": false,
+      "limitations": "Three decoded samples, not full narrative audit. Title claims real horror but factual status unverified; do not copy real-event claim."
+    },
+    {
+      "id": "H05",
+      "url": "https://www.youtube.com/watch?v=StSwGg9rsyM",
+      "title": "Father's Day | True Horror Story in Hindi | Real Incident Animated",
+      "channel": "Spooky Sunday 896",
+      "format": "horror_animation",
+      "runtime_seconds": 58.201,
+      "public_metrics_observed": "2.8M views;1y ago",
+      "sampled_seconds": [
+        0.2,
+        29,
+        56.201
+      ],
+      "source_artifacts": [
+        "output/playwright/story-h15-0.png",
+        "output/playwright/story-h15-1.png",
+        "output/playwright/story-h15-2.png"
+      ],
+      "observations": [
+        "Landscape cartoon scene centered within vertical canvas, black margins and persistent yellow title strip.",
+        "Opening campsite by lake establishes two ordinary characters; midpoint has two distorted grinning figures; late frame isolates human face closeup.",
+        "End sample partly covered by YouTube next-video card, not an intrinsic production overlay."
+      ],
+      "evidence_level": "actual_saved_frames",
+      "audio_assessed": false,
+      "limitations": "Partial visual audit; no transcript or confirmation of real-incident claim. No production permission inferred from public views."
+    },
+    {
+      "id": "H06",
+      "url": "https://www.youtube.com/watch?v=acdENlAMjAM",
+      "title": "Bloody Monday | Scary Pumpkin New Story",
+      "channel": "Haunting Talks",
+      "format": "horror_host_with_insert",
+      "runtime_seconds": 34.481,
+      "public_metrics_observed": "3M views;1mo ago",
+      "sampled_seconds": [
+        0.2,
+        17,
+        32.481
+      ],
+      "source_artifacts": [
+        "output/playwright/story-h16-0.png",
+        "output/playwright/story-h16-1.png",
+        "output/playwright/story-h16-2.png"
+      ],
+      "observations": [
+        "Opening host face with warm flash overlay; midpoint same host with mic against red background.",
+        "Late frame abruptly switches to extreme closeup of teeth/mouth with short question overlay.",
+        "No animated story scene established in these samples despite broad horror keywords."
+      ],
+      "evidence_level": "actual_saved_frames",
+      "audio_assessed": false,
+      "limitations": "Frames establish host-to-insert structure, not a resolved narrative. Broad metadata genre differs from requested fiction-story format; comparator only."
+    },
+    {
+      "id": "H07",
+      "url": "https://www.youtube.com/watch?v=Z769CHAnUnE",
+      "title": "Most creepiest black magic video ever | Hindi horror story",
+      "channel": "ANANT YUG",
+      "format": "horror_host_with_insert",
+      "runtime_seconds": 49.541,
+      "public_metrics_observed": "324K views;3w ago;3.6K likes",
+      "sampled_seconds": [
+        0.2,
+        24,
+        47.541
+      ],
+      "source_artifacts": [
+        "output/playwright/story-h17-0.png",
+        "output/playwright/story-h17-1.png",
+        "output/playwright/story-h17-2.png"
+      ],
+      "observations": [
+        "Dark talking-head and microphone with brief bright left transition stripe at opening.",
+        "Midpoint retains host; late frame becomes differently styled embedded footage with large Hindi headline and shock emoji.",
+        "No fictional cast or literal narrative scene sequence verified in these samples."
+      ],
+      "evidence_level": "actual_saved_frames",
+      "audio_assessed": false,
+      "limitations": "Horror commentary comparator, not a direct fiction-template match. Supernatural/real-event claims and source footage rights unverified."
+    },
+    {
+      "id": "H08",
+      "url": "https://www.youtube.com/watch?v=Mr7a-nbWbJU",
+      "title": "Tuition Horror Story",
+      "channel": "Aasthik Mishraji",
+      "format": "horror_host_illustrated_insert",
+      "runtime_seconds": 63.581,
+      "public_metrics_observed": "Search snapshot77K views; watch-page rolling digits excluded;4.1K likes",
+      "sampled_seconds": [
+        0.2,
+        31
+      ],
+      "source_artifacts": [
+        "output/playwright/story-h18-0.png",
+        "output/playwright/story-h18-1.png"
+      ],
+      "observations": [
+        "Opening host/microphone visible during a layered transition.",
+        "Midpoint classroom/teacher scene provides a literal setting insert instead of continuing talking head."
+      ],
+      "evidence_level": "actual_saved_frames",
+      "audio_assessed": false,
+      "limitations": "Late61.581s seek and58s retry did not decode and are excluded. Story payoff, facts and provenance unverified."
+    },
+    {
+      "id": "H09",
+      "url": "https://www.youtube.com/watch?v=fsE44bI0eNc",
+      "title": "The Elevator Opened Into a Hospital That Shouldn't Exist",
+      "channel": "ScribbleP0p",
+      "format": "horror_illustrated",
+      "runtime_seconds": 32.041,
+      "public_metrics_observed": "138 views;1d ago;7 likes",
+      "sampled_seconds": [
+        0.2,
+        16,
+        30.041
+      ],
+      "source_artifacts": [
+        "output/playwright/story-h19-0.png",
+        "output/playwright/story-h19-1.png",
+        "output/playwright/story-h19-2.png"
+      ],
+      "observations": [
+        "Opening establishes anxious man pressing an elevator button.",
+        "Midpoint changes location to hospital corridor with nurse-like figure behind him.",
+        "Late image changes to a framed photograph bearing2004 and resembling protagonist; literal clue prop can carry the twist. No decorative gameplay visible."
+      ],
+      "evidence_level": "actual_saved_frames",
+      "audio_assessed": false,
+      "limitations": "Three visual samples demonstrate clue insert, but exact explanation/payoff not verified without dialogue. Recent low views; generated/stock provenance not established."
+    },
+    {
+      "id": "H10",
+      "url": "https://www.youtube.com/watch?v=PdegF1yh_qU",
+      "title": "The Elevator Was Empty… But I Was Still Inside",
+      "channel": "HexBubble",
+      "format": "horror_illustrated_chat_hybrid",
+      "runtime_seconds": 45.021,
+      "public_metrics_observed": "530 views;1d ago;2 likes",
+      "sampled_seconds": [
+        0.2,
+        22,
+        43.021
+      ],
+      "source_artifacts": [
+        "output/playwright/story-h20-0.png",
+        "output/playwright/story-h20-1.png",
+        "output/playwright/story-h20-2.png"
+      ],
+      "observations": [
+        "Opening: same-bag protagonist walks toward open elevator.",
+        "Middle: full-screen phone chat presents contradictory location/light reports rather than tiny messages over unrelated footage.",
+        "Late frame shows mirror counterpart and explicit caption identifying mirror location, delivering a concrete visual answer. Uses main scene, evidence insert and return to reveal."
+      ],
+      "evidence_level": "actual_saved_frames",
+      "audio_assessed": false,
+      "limitations": "Sampled visuals support explicit answer but not all causal details; low-view recent reference. Do not copy script, character artwork or wording."
+    },
+    {
+      "id": "H11",
+      "url": "https://www.youtube.com/watch?v=n2XQY1zRTbM",
+      "title": "The Elevator’s Impossible 13th Floor",
+      "channel": "Daily Horror Mix",
+      "format": "horror_cinematic_story",
+      "runtime_seconds": 34.121,
+      "public_metrics_observed": "16 likes; rolling view/date digits excluded",
+      "sampled_seconds": [
+        0.2,
+        17,
+        32.121
+      ],
+      "source_artifacts": [
+        "output/playwright/story-h21-0.png",
+        "output/playwright/story-h21-1.png",
+        "output/playwright/story-h21-2.png"
+      ],
+      "observations": [
+        "Full vertical elevator setting with dark-haired woman and conspicuous raven/shadow at opening.",
+        "Midpoint maintains similar green jacket/elevator but adds candles and a reflection; bottom caption typography changes.",
+        "Late frame widens to corridor looking into same-looking elevator; scene continuity is possible without unrelated backgrounds."
+      ],
+      "evidence_level": "actual_saved_frames",
+      "audio_assessed": false,
+      "limitations": "Three decoded frames do not establish full explanation; production provenance not verified. Rolling metric text excluded."
+    },
+    {
+      "id": "H12",
+      "url": "https://www.youtube.com/watch?v=lDOY2DnCyAI",
+      "title": "The Elevator Opened at 2:36 AM… But Nobody Was Inside",
+      "channel": "A.S.K.K",
+      "format": "horror_footage_story",
+      "runtime_seconds": 82.521,
+      "public_metrics_observed": "26 likes; rolling view/date digits excluded",
+      "sampled_seconds": [
+        0.2,
+        41
+      ],
+      "source_artifacts": [
+        "output/playwright/story-h22-0.png",
+        "output/playwright/story-h22-1.png"
+      ],
+      "observations": [
+        "Landscape security-guard shot on blurred portrait fill, small lower caption with one highlighted word.",
+        "Midpoint switches to bright open elevator; visible caption says darkness, an observable semantic mismatch at that instant.",
+        "Page title specifies2:36AM while opening caption shows2:00AM; consistency check needed in our own generator."
+      ],
+      "evidence_level": "actual_saved_frames",
+      "audio_assessed": false,
+      "limitations": "80.521s end frame did not decode; only2 valid samples. No claim source is stock/original; footage rights unverified. Title hashtag USA does not establish audience geography."
+    },
+    {
+      "id": "H13",
+      "url": "https://www.youtube.com/watch?v=DZsAdsP6Nvs",
+      "title": "The Elevator Called From a Floor That Doesn't Exist",
+      "channel": "Hollow Minute",
+      "format": "horror_cinematic_story",
+      "runtime_seconds": 41.161,
+      "public_metrics_observed": "0 likes; rolling view/date digits excluded",
+      "sampled_seconds": [
+        0.2,
+        20,
+        39.161
+      ],
+      "source_artifacts": [
+        "output/playwright/story-h23-0.png",
+        "output/playwright/story-h23-1.png",
+        "output/playwright/story-h23-2.png"
+      ],
+      "observations": [
+        "Opening wide lobby shot shows desk, guard, landline phone and elevator floor-1 together; caption highlights one verb.",
+        "Midpoint tighter guard-on-phone view preserves the lobby and floor-1 display.",
+        "Late wide view changes elevator display/opening with red glow and refers to disconnected receiver; a concrete prop clue rather than unrelated new image."
+      ],
+      "evidence_level": "actual_saved_frames",
+      "audio_assessed": false,
+      "limitations": "Late anomaly is visible but full explanation not established. Camera crops/props vary within reused location; this is continuity, not evidence of fast cut rate or viral performance."
+    },
+    {
+      "id": "C09",
+      "url": "https://www.youtube.com/watch?v=dItR354IZBU",
+      "title": "HILARIOUS Autocorrect Fails You Won’t Believe Kid Friendly Texting Gone Wrong",
+      "channel": "Niko The Keepo",
+      "format": "texting_gameplay",
+      "runtime_seconds": 29.301,
+      "public_metrics_observed": "496K views;2y ago;6.4K likes",
+      "sampled_seconds": [
+        0.2,
+        14,
+        27.301
+      ],
+      "source_artifacts": [
+        "output/playwright/story-c09-0.png",
+        "output/playwright/story-c09-1.png",
+        "output/playwright/story-c09-2.png"
+      ],
+      "observations": [
+        "Compact upper dark phone contact card with one ordinary request starts over full-canvas colorful Minecraft-style parkour.",
+        "Middle crops to newest messages and reveals specific autocorrect substitution; card height expands.",
+        "Late card adds apology/correction and a final wordplay response; conversational mistake is concretely resolved rather than a cliffhanger."
+      ],
+      "evidence_level": "actual_saved_frames",
+      "audio_assessed": false,
+      "limitations": "Three readable frames, not complete audio audit. Do not copy dialogue or gameplay; view count does not establish monetization/retention."
+    },
+    {
+      "id": "C10",
+      "url": "https://www.youtube.com/watch?v=DkGgBVxdCoM",
+      "title": "Would you still love me if I was fat? | Relationship Chat",
+      "channel": "Chatify",
+      "format": "texting_gameplay",
+      "runtime_seconds": 33.681,
+      "public_metrics_observed": "30K views;2y ago",
+      "sampled_seconds": [
+        0.2,
+        16,
+        31.681
+      ],
+      "source_artifacts": [
+        "output/playwright/story-c10-0.png",
+        "output/playwright/story-c10-1.png",
+        "output/playwright/story-c10-2.png"
+      ],
+      "observations": [
+        "Large upper-to-middle black message rectangle/contact header over full-frame Minecraft-style parkour.",
+        "Opening relationship reassurance, middle insults and mutual infidelity claims, late explicit breakup plus final provocation.",
+        "Blue/gray sides stable; card crops to latest messages but occupies much more area than compact overlay references."
+      ],
+      "evidence_level": "actual_saved_frames",
+      "audio_assessed": false,
+      "limitations": "Aggressive/body-image-related fiction content is a tonal contrast, not recommended dialogue to copy. No audio analysis; page music/location label is not proof of the actual backing track or a license."
+    }
+  ],
+  "blocked_candidates": [
+    {
+      "url": "https://www.youtube.com/watch?v=Bw6IUjjRPaI",
+      "title": "Horror story animated",
+      "channel": "The Curious Cat",
+      "reason": "Viewer-discretion gate; no playback scene evidence, excluded from reviewed count."
+    }
+  ],
+  "research_limitation": "IAB unavailable during continuation; authorized isolated public Chromium fallback worked. Three clips late frames failed to decode and are excluded. First Creepy Stories attempt showed player error; unseen stalled navigation excluded. Fresh isolated public session resumed successfully. No personal Brave accessed.",
+  "pending_reference_candidates": [
+    {
+      "url": "https://www.youtube.com/watch?v=Ryot0TdqMGw",
+      "category": "animated_horror",
+      "status": "Discovered in prior public search results; playback not reviewed."
+    },
+    {
+      "url": "https://www.youtube.com/watch?v=BYysLg8Hzlo",
+      "category": "long_form_horror_craft_comparator",
+      "status": "Discovered in prior public search results; playback not reviewed."
+    }
+  ],
+  "excluded_attempts": [
+    {
+      "url": "https://www.youtube.com/watch?v=Ryot0TdqMGw",
+      "reason": "Player showed Something went wrong; no decoded visual audit included."
+    },
+    {
+      "url": "https://www.youtube.com/watch?v=vjJtIqq2sR8",
+      "reason": "Navigation stalled; not counted."
+    }
+  ],
+  "counts": {
+    "distinct_references": 24,
+    "direct_horror_story": 10,
+    "chat": 10,
+    "horror_commentary_comparators": 3,
+    "collage_longform_comparator": 1,
+    "new_cli_three_decoded_samples": 11,
+    "new_cli_two_decoded_samples": 3,
+    "audio_audits": 0
+  }
+}

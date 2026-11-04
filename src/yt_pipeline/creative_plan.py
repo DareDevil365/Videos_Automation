@@ -133,6 +133,9 @@ def active_speaker_scene(scene,cast):
 
 
 def plan_edit(provider,script,request,brief=None):
+    if request.get('playbook')=='server_chat' and request.get('chat_editing_version')==2:
+        from .chat_editing import compile_chat_plan
+        return compile_chat_plan(script,request)
     if request.get('playbook')=='documentary_chapter':
         from .documentary_graphics import plan_chapter
         return plan_chapter(provider,script,request,brief)

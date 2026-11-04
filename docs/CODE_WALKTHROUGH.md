@@ -65,6 +65,7 @@ The landscape chapter extension adds an explicit full-frame `documentary` compos
 | --- | --- |
 | [documentary_graphics.py](../src/yt_pipeline/documentary_graphics.py) | Frozen-script factual director schema, exact source/label/number checks, six code-owned progressive landscape diagrams and measured clip rendering; model route not live-demonstrated in this pass |
 | [illustrated_story.py](../src/yt_pipeline/illustrated_story.py) | Registered original story-art shots, normalized camera crops, rain/light motion, source-coordinate callouts, explicit reuse reasons and narration-linked durations |
+| [chat_editing.py](../src/yt_pipeline/chat_editing.py) | V2 script-only chat compiler, complete-message reading timeline, local cue synthesis, portrait focused cards/typing/reaction emphasis, optional registered avatar crops and export metadata; no model editing decisions |
 | [core.py](../src/yt_pipeline/core.py) | `Workspace`, SQLite tables/transactions, immutable requests, state updates, artifact hashes, leases, retries, quotas, cooldowns, redaction and local environment loading; `Held` explains recoverable blockers |
 | [pipeline.py](../src/yt_pipeline/pipeline.py) | `Pipeline.run` executes/checkpoints the eight stages; `work_once` chooses an eligible queued/retry/expired-running job |
 | [cli.py](../src/yt_pipeline/cli.py) | Argument parsing, doctor/config, jobs/assets, discovery/planning, worker loop and integration commands; `tick` coordinates production and optional remote work |

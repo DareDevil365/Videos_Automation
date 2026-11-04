@@ -136,7 +136,7 @@ def write_script(workspace, job, brief, provider,*,_creative_rewrite_budget=1,_c
     playbook=request.get('playbook')
     if playbook:
         from .playbooks import writing_prompt,validate_playbook_script
-        creative_rules=writing_prompt(playbook)
+        creative_rules=writing_prompt(playbook,request)
         if request.get('format',creative_rules['format'])!=creative_rules['format']:raise Held('playbook_script','Request format differs from playbook')
         if playbook=='aura_progression' and len(set(request.get('visual_asset_ids',[])))<4:
             raise Held('aura_progression_assets','Supply at least four distinct permitted before/after assets; the rejected single-photo loop is disabled')
@@ -151,7 +151,8 @@ def write_script(workspace, job, brief, provider,*,_creative_rewrite_budget=1,_c
     output_schema=hook_envelope(script_schema) if use_hooks else script_schema
     hook_record=None
     concept=_concept
-    comedy=(playbook=='cutout_ensemble' and request.get('story_tone')=='comedy') or playbook=='server_chat'
+    chat_compiled=playbook=='server_chat' and request.get('chat_editing_version')==2
+    comedy=(playbook=='cutout_ensemble' and request.get('story_tone')=='comedy') or (playbook=='server_chat' and not chat_compiled)
     if comedy and concept is None and not request.get('script') and not request.get('script_file'):
         from .comedy import choose_concept
         concept=choose_concept(provider,request)
@@ -192,7 +193,7 @@ def write_script(workspace, job, brief, provider,*,_creative_rewrite_budget=1,_c
         nonlocal hook_record
         if use_hooks:value,hook_record=unpack_hooks(value,playbook)
         parsed=script_contract(value,brief,profile['format'])
-        if playbook:validate_playbook_script(parsed,playbook)
+        if playbook:validate_playbook_script(parsed,playbook,request)
         if playbook:validate_hook(parsed,playbook,strict=request.get('hook_validation')=='strict')
         if parsed['format']=='cutout' and request.get('story_visuals'):
             from .storyboard import story_specs

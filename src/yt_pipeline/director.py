@@ -16,7 +16,7 @@ def direct(workspace, job, script, timing, visuals):
     provenance=[]
     if visuals.get('planned_template'):
         from .playbooks import get_playbook
-        rules=get_playbook(request['playbook'])
+        rules=get_playbook(request['playbook'],request)
         bottom_id=request.get('bottom_asset_id')
         bottom_kind=request.get('bottom_kind','none')
         if bottom_kind not in rules['bottom']:raise Held('playbook_background','This lower-panel type is not allowed by the selected format')
@@ -48,6 +48,8 @@ def direct(workspace, job, script, timing, visuals):
         if request.get('playbook') in ('documentary_chapter','illustrated_story'):
             spec.update(profile='documentary')
             spec['composition']['effect']='none'
+        if request.get('playbook')=='server_chat' and request.get('chat_editing_version')==2:
+            spec['composition']['effect']='none'  # The compiled chat editor owns emphasis, not model edit hints.
         project=materialize_job(spec,Store(workspace.root/'media'),folder)
         write_json(folder/'compose-job.json',spec);write_json(folder/'render-project.json',project)
         return {'compose_job':str(folder/'compose-job.json'),'project':str(folder/'render-project.json'),'duration':timing['duration'],

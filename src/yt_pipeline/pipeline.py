@@ -79,12 +79,15 @@ class Pipeline:
                 elif stage=="voice":
                     fmt=results['script']['script']['format']
                     if fmt=='clip':result=clip_timing(ws,job,results['script']['script'])
+                    elif job['request'].get('playbook')=='server_chat' and job['request'].get('chat_editing_version')==2:
+                        from .chat_editing import reading_timing
+                        result=reading_timing(ws,job,results['script']['script'],folder/'voice')
                     elif fmt=='aura':result=aura_timing(ws,job,results['script']['script'],creative_plan=(results['script'].get('creative_plan') or {}).get('plan'))
                     elif job['request'].get('playbook') and self.voice_fn is synthesize:
                         from .playbooks import get_playbook
                         record=results['script'].get('creative_plan')
                         if not record:raise Held('creative_plan_missing','This playbook needs its validated second-pass edit plan')
-                        rules=get_playbook(job['request']['playbook'])
+                        rules=get_playbook(job['request']['playbook'],job['request'])
                         result=synthesize(ws,results['script']['script'],folder/'voice',creative_plan=record['plan'],delivery=rules['voice'])
                         minimum,maximum=rules['seconds']
                         if result['duration']<minimum and result['duration']>=minimum*.92:
@@ -131,6 +134,7 @@ class Pipeline:
                             "manifest":str(output.with_suffix(".manifest.json")),"duration":manifest["duration"]}
                     result['visual_review']=review_render(ws,job,results['script'],results['voice'],result,self.provider,folder/'visual-review'/'finished')
                     result['asset_review']=results['visuals'].get('asset_review',{'status':'not_requested'})
+                    if results['visuals'].get('chat_editing'):result['chat_editing']=results['visuals']['chat_editing']
                 elif stage=="quality":result=inspect_render(ws,job,results["research"],results["script"],results["voice"],results["direct"],results["render"])
                 else:result=package(ws,job,results["research"],results["script"],results["voice"],results["direct"],results["render"],results["quality"])
                 if ws.get(job_id)["status"]=="cancelled":raise Held("cancelled","Job cancelled before stage completion was committed.")

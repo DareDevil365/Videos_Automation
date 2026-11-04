@@ -47,7 +47,9 @@ def inspect_render(workspace, job, brief, written, timing, directed, rendered):
             "audio":{"clipped_fraction":clips,"decoded_samples":len(samples)},"video_sha256":file_hash(output),
             "source_conditions_recorded":True,"notes":["Recorded evidence and automated checks are not a legal/YPP certification.",
                  "No speech word alignment or subjective naturalness claim is inferred from technical checks."]}
-    write_json(workspace.job_dir(job["id"])/"qa.json",report)
+    if rendered.get('chat_editing'):
+        report['chat_editing']=rendered['chat_editing']
+    write_json(workspace.job_dir(job['id'])/'qa.json',report)
     return report
 
 

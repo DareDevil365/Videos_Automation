@@ -150,6 +150,7 @@ def main():
     p=sub.add_parser('batch-run');p.add_argument('--plan');p.add_argument('--stop-file')
     p=sub.add_parser('batch-status');p.add_argument('--plan')
     p=sub.add_parser('playbooks');p.add_argument('--export')
+    p=sub.add_parser('chat-plan');p.add_argument('--topic');p.add_argument('--output',required=True)
     for name in ("discover","plan","report","benchmark"):
         p=sub.add_parser(name);p.add_argument("channel",choices=["education","entertainment"])
         if name!="report":p.add_argument("--query",default="")
@@ -166,6 +167,7 @@ def main():
         elif cmd=="config":result=config_set(ws,args.path,json.loads(args.value))
         elif cmd=="create":
             request=json.loads(Path(args.request).read_text(encoding="utf-8")) if args.request else {"topic":args.topic or ""}
+            if request.get('playbook')=='server_chat':request.setdefault('chat_editing_version',2)
             if request.get('playbook') in ('cutout_ensemble','horror_stock'):request.setdefault('scene_direction_version',2)
             if args.request:
                 for key in ("brief_file","script_file"):
@@ -227,6 +229,13 @@ def main():
                 time.sleep(max(5,args.interval))
         elif cmd=='generation-setup':result=setup_browser(ws,args.provider,args.browser,json.loads(Path(args.browser_config).read_text(encoding='utf-8')) if args.browser_config else None)
         elif cmd=='generation-selectors':result=selector_template()
+        elif cmd=='chat-plan':
+            from .batches import default_chat_plan
+            from shorts_editor.store import write_json
+            target=Path(args.output).resolve()
+            if target.exists():raise Held('chat_plan_exists','Choose a new plan filename; initialized plans are not overwritten.')
+            value=default_chat_plan(topic=args.topic);target.parent.mkdir(parents=True,exist_ok=True);write_json(target,value)
+            result={'plan':str(target),'id':value['id'],'editing':'compiled chat v2','next':'Run batch-run --plan with this file, or select it in the native panel.'}
         elif cmd=='playbooks':
             from .playbooks import PLAYBOOKS,export_playbooks
             result=export_playbooks(args.export) if args.export else PLAYBOOKS

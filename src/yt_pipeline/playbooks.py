@@ -128,8 +128,15 @@ def prepare_request(request):
         if value.get('fiction') is True or value.get('bottom_kind')!='none' or value.get('bottom_asset_id'):
             raise Held('documentary_layout','Documentary chapters require factual evidence and a full landscape frame.')
     if value.get('playbook')=='server_chat':
-        for key,setting in {'hook_options':True,'hook_validation':'strict','editorial_review':'required','bottom_kind':'none','require_music':False}.items():
+        version=value.get('chat_editing_version',1)
+        if type(version) is not int or version not in (1,2):raise Held('chat_config','Choose chat editing version 1 or 2.')
+        defaults={'hook_options':False,'hook_validation':'strict','editorial_review':'off','visual_review':'off','bottom_kind':'none','require_music':False} if version==2 else {'hook_options':True,'hook_validation':'strict','editorial_review':'required','bottom_kind':'none','require_music':False}
+        for key,setting in defaults.items():
             value.setdefault(key,setting)
+        if version==2 and (value['hook_options'] is not False or value['editorial_review']!='off' or value['visual_review']!='off'):
+            raise Held('chat_provider_scope','Chat v2 uses the model for script writing only; hooks, model direction and model reviews must be off.')
+        if version==2 and (value.get('fiction') is False or value.get('brief',{}).get('kind','fiction')!='fiction' or value.get('source_urls') or value.get('brief_file')):
+            raise Held('chat_provider_scope','Chat v2 is original fictional conversation; factual research belongs to a separate evidence-reviewed route.')
         if value['bottom_kind']!='none' or value.get('bottom_asset_id'):raise Held('chat_layout','Server chat fills the frame and does not use a lower panel.')
     if PLAYBOOKS.get(value.get('playbook'), {}).get('graphics_only'):
         for key, setting in {'motion_graphics': True, 'hook_options': True, 'hook_validation': 'strict',
@@ -140,20 +147,29 @@ def prepare_request(request):
     return value
 
 
-def get_playbook(name):
+def get_playbook(name,request=None):
     if name not in PLAYBOOKS:raise Held('playbook_unknown','Choose a supported creative playbook')
-    return {'id':name,**deepcopy(PLAYBOOKS[name])}
+    rules={'id':name,**deepcopy(PLAYBOOKS[name])}
+    if name=='server_chat' and (request or {}).get('chat_editing_version')==2:
+        rules.update(seconds=[18,55],words=[40,100],units=[12,22],voice=None)
+        rules['writing']='Write an ORIGINAL casual chat comedy between 2-3 recurring people. The conversation itself tells the complete story; no Narrator. 12-22 short actual messages, 40-100 words total, mostly 2-7 words per message, at most 12 words each. Start immediately on a specific relatable conflict. Escalate with replies that change the situation, plant a concrete detail and end on an earned action/concession/reversal. The final line must land the joke, not explain it afterwards. Avoid formal prose, legal/business jargon, magic bot powers, technical exploits, random new facts and mere confessions. Keep every onscreen field EXACTLY equal to its message text. Use original names and dialogue, never creator cast or copied lines. Metadata describes the actual conversation. Do not invent visual assets or editing commands.'
+        rules['visuals']='The SOFTWARE handles editing: portrait 9:16, close-cropped message cards, previous context, typing beats, reaction emphasis, readable holds, stable names/avatars and notification sound. Return ONLY dialogue/content; do not plan timings, camera moves or music. Text must work without a narrator or unseen physical action.'
+        rules['sound']='Reading-led chat, no narrator or TTS. Original software-generated typing/notification/payoff cues.'
+    return rules
 
 
-def writing_prompt(name):
-    value=get_playbook(name)
+def writing_prompt(name,request=None):
+    value=get_playbook(name,request)
+    if name=='server_chat' and (request or {}).get('chat_editing_version')==2:
+        return {**value,'task':'Write only the complete conversation in the script JSON contract. The hook equals the first actual message, and onscreen equals text for every message. Do not create a storyboard or timing. The software compiles all editing without another model call.',
+            'editorial_policy':'One writing call, at most one structural repair. Software checks message lengths/roles/reading duration; it cannot certify that a joke is good.'}
     return {**value,'task':'Write ONLY the story/content script first. hook must be the exact first spoken unit, not a stronger unwritten marketing summary. The first words must establish the specific curiosity/problem. The actual answer must occupy the final or penultimate unit with no filler ending; edit.payoff_unit_id identifies it. Do not plan an unsupported edit or choose unverified asset URLs. The separate director call will preserve these exact words.',
             'editorial_policy':'New playbook batches generate three typed hooks in the same writing call and request a separate exact-payoff review. Comment prompts are optional and follow the delivered answer. Clean dialogue never contains speech-control markup. Director speech_segments can express bounded pace/internal silence without changing words. Source clips and caption-led aura keep their separate contracts.',
             'retention_note':'Patterns are testable editorial hypotheses, not a retention guarantee.'}
 
 
-def validate_playbook_script(script,name):
-    value=get_playbook(name)
+def validate_playbook_script(script,name,request=None):
+    value=get_playbook(name,request)
     if script['format']!=value['format']:raise Held('playbook_script','Script format differs from its selected playbook')
     if name=='documentary_chapter':
         if script['fiction'] or len({u['speaker'] for u in script['units']})!=1 or any(len(u['onscreen'])>85 for u in script['units']):
@@ -161,8 +177,9 @@ def validate_playbook_script(script,name):
     if name=='server_chat':
         if not 2<=len({u['speaker'] for u in script['units']})<=3 or any(u['speaker'].strip().lower()=='narrator' for u in script['units']):
             raise Held('playbook_script','Server chat needs 2-3 actual participants and no narrator.')
-        if any(u['onscreen']!=u['text'] or len(u['text'].split())>15 for u in script['units']):
-            raise Held('playbook_script','Display every complete chat message verbatim; keep each message at most 15 words.')
+        limit=12 if (request or {}).get('chat_editing_version')==2 else 15
+        if any(u['onscreen']!=u['text'] or len(u['text'].split())>limit for u in script['units']):
+            raise Held('playbook_script',f'Display every complete chat message verbatim; keep each message at most {limit} words.')
     count=sum(len(re.findall(r"\b[\w]+(?:['-][\w]+)*\b",u['text'])) for u in script['units'])
     # Counts are a rough pacing filter. A three-word tolerance avoids spending a
     # second model call for tokenisation differences; measured audio is the limit.
@@ -186,6 +203,13 @@ def export_playbooks(folder):
     from .edit_blocks import capabilities
     folder=Path(folder);folder.mkdir(parents=True,exist_ok=True)
     for name in PLAYBOOKS:write_json(folder/(name+'.writer.json'),writing_prompt(name))
+    write_json(folder/'server_chat.v2.writer.json',writing_prompt('server_chat',{'chat_editing_version':2}))
+    write_json(folder/'server_chat.v2.editor.json',{'version':2,'canvas':[720,1280],
+        'provider_scope':'One dialogue writing request and at most one structural repair; no model directing or review.',
+        'timing':'Frame-clock reading hold per complete message, with code-selected entry/typing/reaction states.',
+        'sound':'Original local typing/notification/payoff cues; no TTS or copied creator audio.',
+        'avatar':'Optional registered photo IDs and normalized crop slots; otherwise stable initials.',
+        'limits':'Deterministic editing and structural checks do not establish comedy quality.'})
     write_json(folder/'director-schema.json',PLAN_SCHEMA)
     write_json(folder/'director-capabilities.json',CAPABILITIES)
     write_json(folder/'edit-blocks.json',capabilities())

@@ -1,20 +1,50 @@
-# Create: Original server-chat comedy
+# Create: original reading-led chat Shorts
 
-Preset: `server_chat`. Channel: `entertainment`. Output: a full-screen fictional server conversation, with original usernames/initial avatars, complete message text, smooth entry/scroll and distinct local character voices. No stock, character bodies, real-service screenshot or lower panel is required.
+Current route: `server_chat` with `chat_editing_version: 2`. Gemini writes the conversation; Python/Pillow/FFmpeg handles every edit. Output is **720x1280 (9:16)** by default, with two or three recurring fictional participants, readable message cards, recent-message context, typing/entry motion, selected reaction emphasis and original local notification/typing/payoff sounds. No narrator, TTS, model director, generated photos, body/costume layer or lower panel is required.
 
-Use the [shared batch recipe](../README.md#shared-playbook-batch-recipe) with `playbook: "server_chat"`, `fiction: true`, `test_only: true`, `bottom_kind: "none"` and `require_music: false` (or an actual eligible music ID). Supply only a creative brief/topic if the program should invent the story; do not supply `script`/`script_file` or a manually prepared storyboard. New requests enable hook alternatives, strict hooks and separate exact-payoff review. Keep `visual_review: "required"` while evaluating actual output.
+## Use without Codex/ChatGPT
 
-Target: 16-18 short messages, 85-125 total spoken words, measured duration 30-55 seconds, 2-3 actual participants and no narrator. Each message is at most 15 words; mostly 3-8 words is preferable. Every onscreen message must equal its exact spoken line. The hook is the first actual message. The final message should enact the planted consequence/reversal, without an explanatory postscript.
+Open `start_pipeline.cmd`, click **New chat**, enter a short topic (or leave blank for a roommate comedy), then click **Start batch**. The saved plan is selected automatically. Local Gemini credentials/free-tier configuration are read by the existing CLI child process; Codex/ChatGPT does not need to be running. **Open produced videos** opens the local export directory. The new button is wired and its plan/preflight paths are tested; extensive interactive GUI QA is not claimed.
 
-The program compares three original comedy concepts, selects one, writes the messages, validates the contract, separately critiques the exact setup/payoff, and directs consistent local voices without changing the script. It permits one structural repair and one substantive rewrite; quotas, malformed outputs and unresolved critique remain holds. The editor reveals only current/past messages, scrolls to keep the latest message readable, and retains stable distinct participant colors. Message arrival lasts about 0.18 seconds; the remainder stays readable for measured speech. Sound remains local character speech and optional explicitly selected music; this does not implement notification sound design or silent reading-only timing.
-
-Run from the root:
+CLI equivalent:
 
 ```powershell
-.venv\Scripts\python.exe run_pipeline.py --env-file .env batch-run --plan Resources/Plans/my-server-chat.json
-.venv\Scripts\python.exe run_pipeline.py batch-status --plan Resources/Plans/my-server-chat.json
+.venv\Scripts\python.exe run_pipeline.py chat-plan --topic "A petty household rule backfires" --output Resources/Plans/my-new-chat.json
+.venv\Scripts\python.exe run_pipeline.py --env-file .env batch-run --plan Resources/Plans/my-new-chat.json
+.venv\Scripts\python.exe run_pipeline.py batch-status --plan Resources/Plans/my-new-chat.json
 ```
 
-Use a new stable plan ID after changing an initialized brief. Inspect `script.json`, the concept/critique and director records, `voice.json`, frame states, the actual complete video and its quality report. Passing model checks is not humor or audience approval. Do not copy reference creator names, characters, plots, screenshots, sounds or dialogue. The [reference study](../../../research/formats/entertainment/BELUGA_CHAT_REFERENCE_2026-11-03.md) distinguishes accessible page evidence from design inferences; browser playback was unavailable during the study.
+Choose a fresh plan filename/ID after changing an initialized plan. Missing keys, free-tier confirmation, provider quota/cooldown, invalid scripts and unusable assets remain holds; there is no automatic paid fallback or key rotation. The existing authorized development local-budget override does not grant provider quota. Publishing remains disabled/test-only.
 
-The older [tea/chat preset](../chat/HOW_TO_CREATE.md) remains a separate split-panel option.
+## Model versus software responsibilities
+
+| Responsibility | Owner |
+| --- | --- |
+| Write original conversation from the topic, exact message text and content metadata | Gemini: one writing call, at most one structural repair |
+| Validate 2-3 participants, no narrator, exact onscreen/message identity, hook, word/unit bounds and final answer identity | Software |
+| Map stable speaker identities/colors and optional registered photo avatar slots | Software |
+| Set complete-message reading holds and typing gaps on the 30 fps clock | Software |
+| Draw current/past messages only, limit visible history, preserve font sizes, animate entry and reaction emphasis | Software |
+| Generate original cue audio locally and assemble MP4/captions/cover | Software |
+| Technical dimensions/timing/audio/decode/hash checks and resumable checkpoints | Software |
+| Decide whether the writing is funny, natural and satisfying | Owner/editorial judgment; not certified by structural QA |
+
+The model does not supply a storyboard, timestamps, camera instructions or audio plan. V2 rejects enabled hook-alternative, model editorial-review and model visual-review settings rather than secretly making those extra calls. It also rejects factual-source requests: original fiction is the supported script-only route. No claim is made that these rules constitute an intelligent autonomous comedy critic.
+
+Contract: 12-22 complete messages, 40-100 words total (existing three-word tokenization tolerance), mostly 2-7 words and at most 12 words each. Actual complete reading duration must fit 18-55 seconds; excessive content holds instead of truncating a message or shrinking fonts. Current timing uses a bounded word/character reading estimate plus typing and payoff holds; it is not measured audience comprehension. `voice.json` retains the common timing-stage filename but explicitly records `narration: false`, reading holds and `original_local_chat_sfx`.
+
+## Optional real-photo avatars
+
+`chat_avatar_ids` accepts up to three registered image IDs in first-speaker appearance order. `chat_avatar_crops` optionally gives matching normalized [left, top, right, bottom] crops. Eligibility/hash checks run before rendering; actual source metadata stays with the asset. Missing optional photos fall back to stable initial avatars. The software does not download arbitrary Google images or infer their rights. The live demonstration used a CC0 black-cat photo and a public-domain raccoon photo, with attribution/source records retained, and no generated image. Fresh plans work with initials and need no image-search account.
+
+## Live evidence and limits
+
+The normal `chat-plan` / `batch-run` route produced **The Dishwasher Decree**, 29.0 seconds, 13 messages, two stock-photo avatars and original local cue audio. Script origin is `gemini`; edit-plan origin is `compiled_chat_rules_v2`; no script was manually supplied. Gemini performed the writing and one structural repair. All subsequent edit/timing/render operations were local, with zero editing-model calls. The exported video passed technical checks and sampled frames were inspected. Its closing message repeats the preceding reply, so it is a working format demonstration with a weak ending, not owner-approved comedy.
+
+Local export: `Resources/Productions/chat-20261105-2b77addc/chat-short/`. The exact script, compiled plan, measured reading timeline, visual records and QA accompany the video. These are ignored local outputs rather than media shipped with the repository. Re-running an unchanged ready job uses intact checkpoints without another model call.
+
+## Legacy behavior
+
+Already-created requests without `chat_editing_version` retain v1: the older full-interface renderer, Gemini concept/director/review workflow and local character voices, 16-18 messages, 85-125 words and 30-55 seconds. Explicit version 1 can reproduce that route. New CLI/batch `server_chat` requests default to version 2; direct Python callers select the version explicitly. V1 exported prompts remain historical/reference contracts; `Resources/Prompts/server_chat.v2.writer.json` and `.v2.editor.json` describe the new path.
+
+The separate [tea/chat preset](../chat/HOW_TO_CREATE.md) still uses split-panel chat. The [Beluga reference study](../../../research/formats/entertainment/BELUGA_CHAT_REFERENCE_2026-11-03.md) records the initial access limitation and subsequent actual frame sampling. Original names/dialogue/art/sound are used; no reference creator footage or characters are copied.

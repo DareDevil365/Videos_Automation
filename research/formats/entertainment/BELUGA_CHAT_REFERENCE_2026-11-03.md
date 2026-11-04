@@ -11,3 +11,12 @@ Implemented adaptation: `server_chat`, a full-screen original dark fictional cha
 Early technical attempts exposed weak writing despite passing model review: one used an inadequately explained moderation-bot reversal; another ended with an ordinary food-theft confession. Those attempts are evidence of renderer operation, not strong approved comedy. The preset now compares three original premises and runs exact-punchline comedy critique before rendering, sharing the existing one substantive rewrite. This remains a fallible model opinion. The owner must judge the finished pilot; a creator's established audience is not evidence that this adaptation will perform similarly.
 
 See [creation guide](../../../docs/categories/server-chat/HOW_TO_CREATE.md), [operating contracts](../../../docs/EDITORIAL_AND_SPEECH.md) and [current status](../../../docs/PROJECT_STATUS.md).
+
+
+## Follow-up: actual visual sampling, 5 November 2026
+
+The installed watch-video skill successfully downloaded the official **Discord Mods Be Like...** reference and extracted 48 samples from its 134.394-second, 1280x720 video. All four contact sheets were inspected. Local-only evidence is outside the production repo in the owner's `Video_Remakes_2026-11-05/reference/beluga/` folder. The earlier browser-playback limitation remains historical rather than the current extent of evidence.
+
+Observed: tightly cropped actual message snippets, abrupt closeups of a name/avatar or reply, multi-message accumulations, occasional attachment/document or time-transition inserts. The sparse automatic captions mostly mark music/brief vocalizations; they do not transcribe the conversation shown on screen. Source audio was not subjectively listened to, and this sampling does not establish exact cut timing or a retention effect. No frame, avatar, character, script or sound was reused in our export.
+
+The owner's requested v2 adaptation is an original portrait reading-led conversation, using locally compiled holds, entry/typing and reaction emphasis plus original synthesized cues. These are our code-owned mechanics, not a claim of exact creator reproduction. Optional generic reusable-photo avatars are separately registered. The model supplies conversation text only; the [creation guide](../../../docs/categories/server-chat/HOW_TO_CREATE.md) distinguishes this demonstrated route from legacy v1 and identifies its remaining writing limits.

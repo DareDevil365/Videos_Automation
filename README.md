@@ -4,6 +4,8 @@ A local Python application for researching, writing, voicing, editing and checki
 
 Current editorial additions: twelve playbook presets, including bounded landscape illustrated-story and documentary chapters, including full-screen original server-chat comedy, rewrite reveal, myth/fact and a quiz with real thinking silence/countdown; hook alternatives, exact-payoff review, structured local speech delivery, and source-grounded red animated detail callouts. See the [category guides](docs/categories/README.md), [implementation plan](docs/EDITORIAL_IMPROVEMENT_PLAN.md) and [operating contracts](docs/EDITORIAL_AND_SPEECH.md).
 
+For chat Shorts, open the local panel and choose **New chat**, then **Start batch**. Gemini writes the conversation; the v2 editor controls reading time, portrait message cards and sound without a model director or narrator. See the [chat guide](docs/categories/server-chat/HOW_TO_CREATE.md).
+
 Start reading here:
 
 1. [Project status: done, partial and remaining](docs/PROJECT_STATUS.md)

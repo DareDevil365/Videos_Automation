@@ -55,6 +55,18 @@ def default_plan(resources_root=None):
                       'request':{'bottom_kind':'none','visual_asset_ids':[],'require_music':True,'test_only':True}}]}
 
 
+def default_chat_plan(resources_root=None,topic=None):
+    resources=Path(resources_root or PROJECT_ROOT/'Resources').resolve()
+    topic=topic or 'Original casual roommate chat: a petty everyday rule backfires on the person who made it'
+    if not isinstance(topic,str) or not 1<=len(topic.strip())<=180:raise ValueError('A chat topic needs 1-180 characters.')
+    return {'version':1,'id':'chat-'+_date().replace('-','')+'-'+uuid.uuid4().hex[:8],
+        'output_root':str(resources/'Productions'),'created_at':now(),
+        'note':'Gemini writes the conversation only. Software controls portrait message editing, reading time, reactions and original sound effects. Test-only; publishing disabled.',
+        'items':[{'id':'chat-short','kind':'playbook','playbook':'server_chat','channel':'entertainment','topic':topic.strip(),
+            'request':{'chat_editing_version':2,'fiction':True,'test_only':True,'bottom_kind':'none','require_music':False,
+                'hook_options':False,'editorial_review':'off','visual_review':'off'}}]}
+
+
 def _validate_playbook_item(item,channels=None):
     if not isinstance(item.get('playbook'),str) or item['playbook'] not in PLAYBOOKS:raise ValueError('Choose a supported playbook name')
     if not isinstance(item.get('topic'),str) or not item['topic'].strip() or len(item['topic'])>180:
@@ -125,7 +137,7 @@ def _prepare_unlocked(ws,plan_path=None):
         return manifest
     manifest={'version':1,'id':plan['id'],'plan_path':str(path),'plan_sha256':file_hash(path),'workspace':str(ws.root),
               'output_root':str(output),'created_at':now(),'updated_at':now(),'status':'queued',
-              'runtime':{'text_provider':'Gemini free-tier API','speech':'local configured Kokoro/Piper','editor':'local FFmpeg','openai_calls':0},
+              'runtime':{'text_provider':'Gemini free-tier API','speech':'reading-led chat uses local sound cues; narrated formats use configured Kokoro/Piper','editor':'local FFmpeg','openai_calls':0},
               'items':[{'id':i['id'],'kind':i['kind'],'status':'queued','job_id':None,'output_folder':str(output/i['id'])} for i in plan['items']]}
     write_json(manifest_path,manifest)
     return manifest
@@ -207,7 +219,9 @@ def _playbook_request(ws,item,folder):
     _validate_playbook_item(item,ws.config()['channels'])
     rules=get_playbook(item['playbook'])
     from .playbooks import prepare_request
-    request=prepare_request({**item['request'],'playbook':item['playbook']})
+    incoming={**item['request'],'playbook':item['playbook']}
+    if item['playbook']=='server_chat':incoming.setdefault('chat_editing_version',2)
+    request=prepare_request(incoming)
     request.update(playbook=item['playbook'],topic=item['topic'],format=rules['format'])
     request.setdefault('fiction',item['playbook'] in ('horror_stock','tea_chat','server_chat','cutout_ensemble'))
     request.setdefault('resolution','720p')
@@ -232,7 +246,7 @@ def _playbook_request(ws,item,folder):
         return checked[ref]
     if music_id and not eligible(music_id).get('has_audio'):
         raise Held('music_missing_audio','Selected soundtrack has no audio')
-    for key in ('visual_asset_ids','background_ids'):
+    for key in ('visual_asset_ids','background_ids','chat_avatar_ids'):
         values=request.get(key,[])
         if not isinstance(values,list):raise Held('batch_asset_request',key+' must be an array of registered asset IDs')
         for ref in values:eligible(ref)

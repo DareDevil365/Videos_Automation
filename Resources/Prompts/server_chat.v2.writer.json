@@ -1,0 +1,31 @@
+{
+  "id": "server_chat",
+  "format": "chat",
+  "seconds": [
+    18,
+    55
+  ],
+  "words": [
+    40,
+    100
+  ],
+  "units": [
+    12,
+    22
+  ],
+  "voice": null,
+  "music": {
+    "category": "storytime",
+    "mood": "optional restrained comic tension",
+    "volume": 0.05
+  },
+  "layout": "server_chat",
+  "bottom": [
+    "none"
+  ],
+  "writing": "Write an ORIGINAL casual chat comedy between 2-3 recurring people. The conversation itself tells the complete story; no Narrator. 12-22 short actual messages, 40-100 words total, mostly 2-7 words per message, at most 12 words each. Start immediately on a specific relatable conflict. Escalate with replies that change the situation, plant a concrete detail and end on an earned action/concession/reversal. The final line must land the joke, not explain it afterwards. Avoid formal prose, legal/business jargon, magic bot powers, technical exploits, random new facts and mere confessions. Keep every onscreen field EXACTLY equal to its message text. Use original names and dialogue, never creator cast or copied lines. Metadata describes the actual conversation. Do not invent visual assets or editing commands.",
+  "visuals": "The SOFTWARE handles editing: portrait 9:16, close-cropped message cards, previous context, typing beats, reaction emphasis, readable holds, stable names/avatars and notification sound. Return ONLY dialogue/content; do not plan timings, camera moves or music. Text must work without a narrator or unseen physical action.",
+  "sound": "Reading-led chat, no narrator or TTS. Original software-generated typing/notification/payoff cues.",
+  "task": "Write only the complete conversation in the script JSON contract. The hook equals the first actual message, and onscreen equals text for every message. Do not create a storyboard or timing. The software compiles all editing without another model call.",
+  "editorial_policy": "One writing call, at most one structural repair. Software checks message lengths/roles/reading duration; it cannot certify that a joke is good."
+}

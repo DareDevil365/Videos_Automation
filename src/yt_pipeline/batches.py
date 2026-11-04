@@ -209,7 +209,7 @@ def _playbook_request(ws,item,folder):
     from .playbooks import prepare_request
     request=prepare_request({**item['request'],'playbook':item['playbook']})
     request.update(playbook=item['playbook'],topic=item['topic'],format=rules['format'])
-    request.setdefault('fiction',item['playbook'] in ('horror_stock','tea_chat','cutout_ensemble'))
+    request.setdefault('fiction',item['playbook'] in ('horror_stock','tea_chat','server_chat','cutout_ensemble'))
     request.setdefault('resolution','720p')
     # Newly initialized playbook jobs inspect actual media. Existing jobs/exports
     # remain hash-bound to their original immutable requests.

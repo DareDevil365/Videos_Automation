@@ -88,6 +88,7 @@ def _judge(ws,provider,mode,kind,items,samples,folder,identity):
                     'Simple animal-head human-body comedy is intentional. Respect planned two-person shots, inserts and selective closeups. '
                     'Characters should keep their own distinct clothes across scenes; a voice-only narrator need not have an avatar. '
                     'When a circle/arrow callout is planned, verify it points to the named visible detail rather than unrelated pixels. '
+                    'Callouts intentionally animate: arrow enters, red circle draws on, holds briefly then fades away. Entry/exit samples may omit parts of the overlay; judge the complete phase for target accuracy, not a permanent circle in every sample. '
                     'A still-photo callout highlights a detail; it does not prove eye movement or animated action. '
                     'An illustration does not need photorealism. Progressive subtitles can show a partial phrase in a sampled frame; that alone is not an omission. '
                     'Check that visible graphic labels communicate the supplied narration and are legible. ')+
@@ -162,8 +163,12 @@ def review_render(ws,job,written,timing,rendered,provider,folder):
                       'scene':{k:scene[k] for k in ('framing','visible_cast','focus_id','graphic','shot_type','callout','reuse_purpose','reuse_reason') if k in scene},
                       'cast':[{k:a.get(k) for k in ('id','speaker','costume','avatar_kind')} for a in plan.get('cast',[])]})
         fractions=(.15,.75) if i in (0,len(units)-1) else (.55,)
-        for j,fraction in enumerate(fractions):
-            second=min(rendered['duration']-.05,unit['start']+unit['duration']*fraction)
+        offsets=[unit['duration']*fraction for fraction in fractions]
+        if scene.get('callout',{}).get('kind','none')!='none':
+            scale=min(1,unit['duration']/2.8)
+            offsets=[.20*scale,1.10*scale,2.65*scale]
+        for j,offset in enumerate(offsets):
+            second=min(rendered['duration']-.05,unit['start']+offset)
             path=folder/f'frame-{i+1}-{j+1}.jpg';sample_frame(rendered['video'],path,second)
             samples.append({'id':unit['id'],'label':f'{unit["id"]} {second:.2f}s','time':second,'file':str(path),'sha256':file_hash(path)})
     identity=digest([file_hash(rendered['video']),digest(written['script']),samples])

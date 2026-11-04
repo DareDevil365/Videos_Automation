@@ -91,8 +91,9 @@ def test_source_callout_maps_through_crop_and_draws_both_marks():
     callout={'kind':'circle_arrow','target':'eyes','label':'','box':[.4,.25,.6,.35]}
     result=draw_callout(picture,(1000,1000),callout,{'box':[.2,.1,.8,.9]})
     assert result['display_box']==[150,150,350,250]
-    yellow=[(x,y) for y in range(500) for x in range(500) if picture.getpixel((x,y))==(255,223,58)]
-    assert any(y<130 for x,y in yellow) and any(y>240 for x,y in yellow)
+    red=[(x,y) for y in range(500) for x in range(500) if picture.getpixel((x,y))==(255,48,56)]
+    assert any(y<130 for x,y in red) and any(y>240 for x,y in red)
+    assert result['stroke_width']>=10 and result['color']=='#ff3038'
     with pytest.raises(Held,match='cropped out'):draw_callout(picture,(1000,1000),{**callout,'box':[0,0,.05,.1]}, {'box':[.2,.1,.8,.9]})
 
 

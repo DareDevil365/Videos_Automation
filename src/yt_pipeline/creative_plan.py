@@ -13,7 +13,7 @@ from .speech_delivery import SEGMENT_SCHEMA,speech_segments,number
 from .scene_direction import CALLOUT_SCHEMA,compose_scene,validate_direction
 
 VOICES=['af_heart','af_bella','am_adam','am_michael','bm_george']
-TEMPLATES=['story_stock','chat_asmr','cutout_cast','aura_progression','education_demo','movie_cards']
+TEMPLATES=['story_stock','chat_asmr','server_chat','cutout_cast','aura_progression','education_demo','movie_cards']
 CAPABILITIES={
  'templates':TEMPLATES,
  'framing':['wide','medium','closeup'],
@@ -67,6 +67,8 @@ def validate_plan(plan,script,playbook,asset_ids=()):
         actors[row['id']]=row;speakers[row['speaker']]=row['id']
     if playbook=='horror_stock' and any(c['voice_id'] not in ('af_heart','af_bella') for c in cast if len(cast)==1 or c['avatar_kind']=='narrator' or c['speaker'].lower()=='narrator' or c['role'].lower() in ('anchor','narrator')):
         raise Held('creative_cast','The selected horror preset requires the requested female narration voice')
+    if playbook=='server_chat' and len({c['voice_id'] for c in cast})!=len(cast):
+        raise Held('creative_cast','Server-chat participants need distinct stable local voices.')
     scenes=plan.get('scenes');units=script['units']
     if not isinstance(scenes,list) or len(scenes)!=len(units):raise Held('creative_units','Director must cover every script unit exactly once')
     for scene,unit in zip(scenes,units):
@@ -162,6 +164,9 @@ def plan_edit(provider,script,request,brief=None):
        'cast_camera_policy':'For cutout_cast, every spoken character unit is a single active-speaker closeup, including Mike and Alex equally. Set focus_id=speaker_id, visible_cast=[speaker_id]. Narrator units may establish the group. Do not assign one actor group shots and the other closeups. Software enforces this rule.',
        'task':'DIRECTOR PASS ONLY: preserve every unit ID, exact spoken text, order and speaker. Plan one supported scene per unit. First review the script: if its ending only threatens a reveal or withholds the promised answer, mark payoff_delivered false. Do not invent more dialogue to fix it. Give consistent cast identities and allowed voices. Use a female narrator for horror_stock; slower restrained delivery and pauses 0.25-0.7, with a pause near the reveal. Tea/cutout can use faster distinct voices. Stage payoff must identify actual answer/reversal, not the word payoff. Use exact dialogue as text. background_query describes the place; visual_query describes the camera-visible action. All scenes need those queries even if reusing background. asset_id is empty unless from inventory. The editor resolves real timing from audio; do not invent timestamps. rank is 0 for ordinary/hook/question beats; movie_countdown has exactly nine ranked picks 10 down to 2, no rank1 withheld reveal. display_title is empty or an exact substring of this unit onscreen, never a new title. The optional comment question comes after delivering the promise. Return only the supported JSON plan.'}
     schema=deepcopy(PLAN_SCHEMA)
+    if playbook=='server_chat':
+        prompt['server_chat']='Only actual chat participants, no narrator. Assign each speaker a stable distinct local voice. Every scene is the next immutable message in full-screen fictional server chat; no body/costume, stock queries or screenshots need to be rendered. Set avatar_kind narrator to indicate no photo acquisition, visible_cast=[], focus_id="", framing wide, motion hold, pause_after 0.1-0.35, sound_cue none except optional final cue. Keep query strings as generic chat context to satisfy the schema. All messages/onscreen text must remain exact. Critically reject weak ordinary explanations masquerading as a punchline.'
+        prompt['chat_causality']='Reject a technical rule/bot/hack magically targeting the wrong person without a clearly planted cause. Check that participants can actually know and do what they claim. A banned participant continuing to chat needs an explicit coherent setup. Prefer everyday social comedy. The final line should enact the comic consequence or turn, not add an explanatory postscript. Generic surprise, gotcha, routine explanations and arbitrary rule exceptions are weak endings. Do not approve merely because a powerful character loses.'
     scene_mode=request.get('scene_direction_version',1)==2
     if scene_mode:
         schema['properties']['scenes']['items']['required'].extend(['shot_type','pose','callout','reuse_purpose','reuse_reason'])

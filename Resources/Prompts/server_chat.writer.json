@@ -1,0 +1,36 @@
+{
+  "id": "server_chat",
+  "format": "chat",
+  "seconds": [
+    30,
+    55
+  ],
+  "words": [
+    85,
+    125
+  ],
+  "units": [
+    16,
+    18
+  ],
+  "voice": {
+    "voice_id": "am_adam",
+    "length_scale": 0.88,
+    "pause": 0.13
+  },
+  "music": {
+    "category": "storytime",
+    "mood": "optional restrained comic tension",
+    "volume": 0.05
+  },
+  "layout": "server_chat",
+  "bottom": [
+    "none"
+  ],
+  "writing": "Invent an original fictional server-chat comedy between 2-3 recurring people with distinct goals. Short actual messages, mostly 3-9 words, no narration. The opening message establishes a concrete immediately understandable conflict. Escalate through replies and a planted detail; deliver a causal final reversal/consequence that turns the opening rule against its maker. Do not finish with a generic reaction or explanation. End on the payoff. Use original names, no creator characters, plots, catchphrases or copied dialogue. All onscreen fields MUST equal the actual full message text verbatim. No real platform exploits, private information, real-person allegations, or engagement promises. Keep messages short enough to read on a phone.",
+  "visuals": "Full-screen original dark server-chat interface, consistent colored initial avatars and names. One actual message at a time, smooth entry/scroll while preserving previous context. No unrelated stock backdrop, character bodies, lower panel or external screenshots. The conversation itself is the scene. This is fictional UI, not a real conversation or authentic Discord screenshot.",
+  "sound": "Distinct consistent local voices per character read actual messages. Short restrained pauses and a beat before the payoff. This pilot retains accessible voiced dialogue; it does not claim to reproduce a creator audio track.",
+  "task": "Write ONLY the story/content script first. hook must be the exact first spoken unit, not a stronger unwritten marketing summary. The first words must establish the specific curiosity/problem. The actual answer must occupy the final or penultimate unit with no filler ending; edit.payoff_unit_id identifies it. Do not plan an unsupported edit or choose unverified asset URLs. The separate director call will preserve these exact words.",
+  "editorial_policy": "New playbook batches generate three typed hooks in the same writing call and request a separate exact-payoff review. Comment prompts are optional and follow the delivered answer. Clean dialogue never contains speech-control markup. Director speech_segments can express bounded pace/internal silence without changing words. Source clips and caption-led aura keep their separate contracts.",
+  "retention_note": "Patterns are testable editorial hypotheses, not a retention guarantee."
+}

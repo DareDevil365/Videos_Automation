@@ -9,6 +9,7 @@
       "enum": [
         "story_stock",
         "chat_asmr",
+        "server_chat",
         "cutout_cast",
         "aura_progression",
         "education_demo",

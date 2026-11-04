@@ -86,9 +86,23 @@ for _name, _description, _writing in (
         'description': _description, 'graphics_only': True}
 
 
+PLAYBOOKS['server_chat']={
+    'format':'chat','seconds':[30,55],'words':[85,125],'units':[16,18],
+    'voice':{'voice_id':'am_adam','length_scale':.88,'pause':.13},
+    'music':{'category':'storytime','mood':'optional restrained comic tension','volume':.05},
+    'layout':'server_chat','bottom':['none'],
+    'writing':'Invent an original fictional server-chat comedy between 2-3 recurring people with distinct goals. Short actual messages, mostly 3-9 words, no narration. The opening message establishes a concrete immediately understandable conflict. Escalate through replies and a planted detail; deliver a causal final reversal/consequence that turns the opening rule against its maker. Do not finish with a generic reaction or explanation. End on the payoff. Use original names, no creator characters, plots, catchphrases or copied dialogue. All onscreen fields MUST equal the actual full message text verbatim. No real platform exploits, private information, real-person allegations, or engagement promises. Keep messages short enough to read on a phone.',
+    'visuals':'Full-screen original dark server-chat interface, consistent colored initial avatars and names. One actual message at a time, smooth entry/scroll while preserving previous context. No unrelated stock backdrop, character bodies, lower panel or external screenshots. The conversation itself is the scene. This is fictional UI, not a real conversation or authentic Discord screenshot.',
+    'sound':'Distinct consistent local voices per character read actual messages. Short restrained pauses and a beat before the payoff. This pilot retains accessible voiced dialogue; it does not claim to reproduce a creator audio track.'}
+
+
 def prepare_request(request):
     """Resolve defaults only for new presets, preserving historical requests."""
     value = deepcopy(request)
+    if value.get('playbook')=='server_chat':
+        for key,setting in {'hook_options':True,'hook_validation':'strict','editorial_review':'required','bottom_kind':'none','require_music':False}.items():
+            value.setdefault(key,setting)
+        if value['bottom_kind']!='none' or value.get('bottom_asset_id'):raise Held('chat_layout','Server chat fills the frame and does not use a lower panel.')
     if PLAYBOOKS.get(value.get('playbook'), {}).get('graphics_only'):
         for key, setting in {'motion_graphics': True, 'hook_options': True, 'hook_validation': 'strict',
                              'editorial_review': 'required', 'bottom_kind': 'none', 'require_music': False}.items():
@@ -113,6 +127,11 @@ def writing_prompt(name):
 def validate_playbook_script(script,name):
     value=get_playbook(name)
     if script['format']!=value['format']:raise Held('playbook_script','Script format differs from its selected playbook')
+    if name=='server_chat':
+        if not 2<=len({u['speaker'] for u in script['units']})<=3 or any(u['speaker'].strip().lower()=='narrator' for u in script['units']):
+            raise Held('playbook_script','Server chat needs 2-3 actual participants and no narrator.')
+        if any(u['onscreen']!=u['text'] or len(u['text'].split())>15 for u in script['units']):
+            raise Held('playbook_script','Display every complete chat message verbatim; keep each message at most 15 words.')
     count=sum(len(re.findall(r"\b[\w]+(?:['-][\w]+)*\b",u['text'])) for u in script['units'])
     # Counts are a rough pacing filter. A three-word tolerance avoids spending a
     # second model call for tokenisation differences; measured audio is the limit.

@@ -6,6 +6,8 @@ Latest owner feedback: **The Turtle Guard script is rejected**; **The Portrait's
 
 | Folder | Evidence/status |
 | --- | --- |
+| `original-server-chat-concepts-20261103/server-chat-pilot/` | **Couch Swap Disaster**, 40.621s, 17 messages; program-generated concepts/script/director, full-screen message-entry/scroll, three voices, passing technical/finished-frame checks and verified video hash. Format pilot: writing remains weak/stiff despite model review; test-only, not owner approved |
+| `original-server-chat-20261102/`, `original-server-chat-refined-20261102/` | Earlier technical server-chat attempts; weak moderation-bot/ordinary-confession stories, preserved as development evidence rather than current creative candidates |
 | `fresh-funny-mystery-20261102/fresh-funny/` | **The Turtle Guard**, 36.066s, 114 words; fresh Gemini script/director plan, local voices, passing source/finished-frame/technical checks and verified video hash; `SCRIPT.md` and evidence beside video; test-only, owner creative approval pending |
 | `fresh-mystery-inventory-20261102/fresh-mystery/` | **The Portrait's Watcher**, 36.721s, 93 words; fresh Gemini script/director plan constrained to six program-verified images, actual stock closeup crop, passing source/finished-frame/technical checks and verified video hash; `SCRIPT.md` and evidence beside video; test-only |
 | `editorial-rewrite-demo/` | 25.333s real local Kokoro/English-alignment rewrite fixture, 77/77 words, actual 0.35s internal silence; provided script/offline prepared plan, zero Gemini calls; test-only |

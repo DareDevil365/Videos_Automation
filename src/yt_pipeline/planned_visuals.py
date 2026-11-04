@@ -11,7 +11,7 @@ from .core import Held,digest,file_hash
 from .media_agent import acquire_visual
 from .transcripts import write_srt
 from .cast_body import draw_human_body,shirt_color,resolve_wardrobes
-from .scene_direction import narrator,compose_scene,validate_direction,check_stock_reuse,locate_callout,draw_callout
+from .scene_direction import narrator,compose_scene,validate_direction,check_stock_reuse,locate_callout,draw_callout,callout_animation_state
 
 
 def resolve_asset(ws,ref,query,cache,kind='image',*,context=None):
@@ -104,14 +104,16 @@ def stock_closeup(ws,asset,scene,unit,provider=None):
     return result
 
 
-def _stock_frame(asset,caption,path,rank=None,height=1280,crop=None,callout=None):
+def _stock_frame(asset,caption,path,rank=None,height=1280,crop=None,callout=None,animate_callout=False):
     with Image.open(asset['path']) as raw:
         source=ImageOps.exif_transpose(raw).convert('RGB');source_size=source.size
         if crop:
             left,top,right,bottom=crop['box']
             source=source.crop((round(left*source.width),round(top*source.height),round(right*source.width),round(bottom*source.height)))
         picture=ImageOps.fit(source,(720,height))
-    annotation=draw_callout(picture,source_size,callout,crop)
+    annotation=draw_callout(picture.copy() if animate_callout else picture,source_size,callout,crop)
+    if annotation and animate_callout:
+        annotation['render_input']={'source_size':source_size,'callout':callout,'crop':crop}
     d=ImageDraw.Draw(picture)
     d.rounded_rectangle((26,height-190,694,height-30),radius=14,fill='#0b0c12')
     text_box(d,caption,(48,height-163,624,105),'white',38,True,'center',minimum=25)
@@ -131,7 +133,26 @@ def _camera_filter(duration,motion,height,repeat):
     return f"scale=1440:{height*2},zoompan=z='{zoom}':x='{x}':y='ih/2-ih/zoom/2':d={frames if repeat else 1}:s=720x{height}:fps=30"
 
 
-def _motion(poster,duration,path,motion,height=1280):
+def _motion(poster,duration,path,motion,height=1280,*,callout=None):
+    if callout:
+        with Image.open(poster) as raw:base=raw.convert('RGB')
+        frames=math.ceil(duration*30)
+        vf=_camera_filter(duration,motion,height,False)
+        process=subprocess.Popen(['ffmpeg','-v','error','-nostdin','-y','-f','rawvideo','-pix_fmt','rgb24','-s',f'720x{height}',
+            '-framerate','30','-i','pipe:0','-vf',vf,'-t',str(duration),'-an','-c:v','libx264','-preset','veryfast','-crf','20',
+            '-threads','2','-pix_fmt','yuv420p',str(path)],stdin=subprocess.PIPE,stdout=subprocess.DEVNULL,stderr=subprocess.PIPE)
+        try:
+            for index in range(frames):
+                picture=base.copy()
+                draw_callout(picture,**callout,**callout_animation_state(index/30,duration))
+                process.stdin.write(picture.tobytes())
+            process.stdin.close();process.stdin=None
+            _,error=process.communicate(timeout=120)
+            if process.returncode:raise Held('planned_visual_render','Animated callout rendering failed; source assets and poster were preserved.')
+        except BaseException:
+            if process.poll() is None:process.kill();process.communicate()
+            raise
+        return
     vf=_camera_filter(duration,motion,height,True)
     result=subprocess.run(['ffmpeg','-v','error','-nostdin','-y','-i',str(poster),'-vf',vf,'-t',str(duration),'-an','-c:v','libx264',
        '-preset','veryfast','-crf','20','-threads','2','-pix_fmt','yuv420p',str(path)],capture_output=True,timeout=120)
@@ -190,6 +211,17 @@ def build_planned_visuals(ws,job,script,timing,folder,record,*,provider=None):
         if scene['unit_id']!=spoken['id']:raise Held('creative_units','Edit scene and measured speech IDs differ')
         unit=units[spoken['id']]
         graphic=scene.get('graphic',{'kind':'none','title':'','labels':[]})
+        if template=='server_chat':
+            from .server_chat import render_server_message
+            if job['request'].get('bottom_asset_id'):raise Held('chat_layout','Server chat requires a full-frame layout.')
+            if unit['onscreen']!=unit['text']:raise Held('creative_rewrite','Server-chat messages must display their full exact text.')
+            output=folder/(unit['id']+'-server.mp4')
+            detail=render_server_message(script,i,spoken['duration'],output,height)
+            generated=register_asset(ws,output,'original_graphic',{'generator':'original server chat with actual message entry/scroll','unit_id':unit['id'],
+                'visible_unit_ids':detail['visible_unit_ids']},test_only=job['request'].get('test_only',False))
+            rows.append({'unit_id':unit['id'],'file':str(output),'media_id':generated['id'],'duration':spoken['duration'],
+                'kind':'directed_server_chat','message_state':detail})
+            continue
         if graphic['kind']!='none':
             from .scene_blocks import validate_block,render_block
             validate_block(graphic,unit,script)
@@ -256,8 +288,9 @@ def build_planned_visuals(ws,job,script,timing,folder,record,*,provider=None):
             crop=stock_closeup(ws,background,scene,unit,provider=provider)
             callout=locate_callout(ws,background,scene.get('callout',{'kind':'none'}),provider=provider)
             caption=('' if timing.get('caption_style')=='dialogue_bar' else unit['text']) if insert else unit['onscreen']
-            annotation=_stock_frame(background,caption,poster,scene.get('rank') or None,height,crop=crop,callout=callout)
-        output=folder/(unit['id']+'-planned.mp4');_motion(poster,spoken['duration'],output,scene['motion'],height)
+            annotation=_stock_frame(background,caption,poster,scene.get('rank') or None,height,crop=crop,callout=callout,animate_callout=True)
+        output=folder/(unit['id']+'-planned.mp4');_motion(poster,spoken['duration'],output,scene['motion'],height,
+            callout=annotation['render_input'] if annotation else None)
         generated=register_asset(ws,output,'original_graphic',{'operation':'Validated director-plan collage/stock crop; source licenses retained separately','sources':list(provenance),'scene':scene},test_only=job['request'].get('test_only',False))
         rows.append({'unit_id':unit['id'],'file':str(output),'media_id':generated['id'],'duration':spoken['duration'],'kind':'directed_'+template,'resolved_scene':scene})
         if crop:rows[-1]['source_crop']=crop

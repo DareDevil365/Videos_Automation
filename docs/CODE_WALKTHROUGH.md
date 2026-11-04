@@ -93,6 +93,7 @@ The checkpoint stage names are `research`, `script`, `voice`, `visuals`, `direct
 | [planned_visuals.py](../src/yt_pipeline/planned_visuals.py) | Executes creative plans with registered stills/clips, actual-pixel closeup crops, ranked cards, cast layouts, camera moves, panels, context-bound source bindings and graphic scenes |
 | [cast_body.py](../src/yt_pipeline/cast_body.py) | Draws original human silhouettes with distinct stable outfit types/colors, trousers and simple talk/point/react arm poses; retains legacy bodies |
 | [scene_direction.py](../src/yt_pipeline/scene_direction.py) | Validates two-shots/inserts, optional visible narrator and necessary stock reuse; locates source details and maps circle/arrow callouts through source crops |
+| [server_chat.py](../src/yt_pipeline/server_chat.py) | Draws original full-screen fictional chat, stable distinct initial avatars, exact message layout, and frame-timed entry/scroll without revealing future messages |
 | [storyboard.py](../src/yt_pipeline/storyboard.py) | Bounded mystery scene tags, story-derived props and original procedural illustrated scenes for the older mystery route |
 | [montage.py](../src/yt_pipeline/montage.py) | Per-unit three-block montage planning/rendering; demands explicit relevant bindings or explicitly decorative media |
 | [entertainment.py](../src/yt_pipeline/entertainment.py) | Aura timing and entertainment-specific visual/effect helpers |

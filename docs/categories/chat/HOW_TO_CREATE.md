@@ -2,6 +2,8 @@
 
 Preset: `tea_chat`. Channel profile: `entertainment`.
 
+For a full-screen fictional server conversation with message-entry/scroll motion and no lower panel, use the separate [server-chat comedy preset](../server-chat/HOW_TO_CREATE.md). This older preset retains its split-panel layout and previous state rendering.
+
 ## What the format produces
 
 30–45 seconds; 90–140 words; 10–18 units. Consistent brisk character voices.

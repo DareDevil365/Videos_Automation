@@ -64,7 +64,7 @@ def unpack_hooks(raw, playbook=None):
         if len(option['first_caption'].split()) > 12:
             raise Held('playbook_hook', f'Hook option {index_option}: {len(option["first_caption"].split())} caption words; maximum 12.')
     if len(kinds) != 3 or len({o['first_line'].casefold().strip() for o in options}) != 3:
-        raise Held('playbook_hook', 'Use three distinct hook types and lines.')
+        raise Held('playbook_hook', 'Use three distinct hook types and three different spoken lines. Returned types: '+', '.join(o['type'] for o in options)+'.')
     script = raw['script']; chosen = options[index]
     if not isinstance(script, dict) or not isinstance(script.get('units'), list) or not script['units'] or not isinstance(script['units'][0], dict):
         raise Held('playbook_hook', 'The selected hook needs an actual script opening.')

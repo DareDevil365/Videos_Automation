@@ -2,7 +2,7 @@
 
 A local Python application for researching, writing, voicing, editing and checking Shorts for entertainment and education channels. Gemini supplies structured writing/review; local speech, Pillow and FFmpeg produce the video. Publishing is a separate adapter and is currently disabled.
 
-Current editorial additions: nine playbook presets including rewrite reveal, myth/fact and a quiz with real thinking silence/countdown; same-call hook alternatives, optional separate exact-payoff review, and structured local speech pauses/speed. See the [implementation plan](docs/EDITORIAL_IMPROVEMENT_PLAN.md) and [operating contracts](docs/EDITORIAL_AND_SPEECH.md).
+Current editorial additions: ten playbook presets, including full-screen original server-chat comedy, rewrite reveal, myth/fact and a quiz with real thinking silence/countdown; hook alternatives, exact-payoff review, structured local speech delivery, and source-grounded red animated detail callouts. See the [category guides](docs/categories/README.md), [implementation plan](docs/EDITORIAL_IMPROVEMENT_PLAN.md) and [operating contracts](docs/EDITORIAL_AND_SPEECH.md).
 
 Start reading here:
 

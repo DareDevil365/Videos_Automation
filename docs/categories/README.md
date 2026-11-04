@@ -9,6 +9,7 @@ Each category has a dedicated `HOW_TO_CREATE.md` with prerequisites, request fie
 | [Quiz with thinking time](quiz/HOW_TO_CREATE.md) | `quiz_pause` | education |
 | [Original horror and mystery](horror/HOW_TO_CREATE.md) | `horror_stock` | entertainment |
 | [Fictional chat and tea stories](chat/HOW_TO_CREATE.md) | `tea_chat` | entertainment |
+| [Full-screen original server-chat comedy](server-chat/HOW_TO_CREATE.md) | `server_chat` | entertainment |
 | [Character cutout stories and comedy](cutout-comedy/HOW_TO_CREATE.md) | `cutout_ensemble` | entertainment |
 | [Aura progression edits](aura/HOW_TO_CREATE.md) | `aura_progression` | entertainment |
 | [Useful education and demonstrations](education/HOW_TO_CREATE.md) | `education_demo` | education |

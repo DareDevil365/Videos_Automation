@@ -2,6 +2,8 @@
 
 These are dated research and reference records. Current implementation is tracked in [project status](../docs/PROJECT_STATUS.md); actual code is mapped in the [walkthrough](../docs/CODE_WALKTHROUGH.md). Research does not activate accounts, schedule work or clear a specific asset.
 
+Latest format reference: [Beluga chat pages and original adaptation](formats/entertainment/BELUGA_CHAT_REFERENCE_2026-11-03.md). This separates verified public page descriptions from inferred production mechanics and the inability to watch full playback during this session.
+
 | Folder | What to read |
 | --- | --- |
 | `strategy/` | [Recorded owner choices](strategy/DECISIONS.md), [pilot plan](strategy/PILOT_MEASUREMENT_PLAN.md), [US-first plan](strategy/US_FIRST_REVENUE_PLAN.md), [market adaptation](strategy/MARKET_TRANSFER_STRATEGY.md), [initial report](strategy/INITIAL_RESEARCH_REPORT.md) |

@@ -3,7 +3,7 @@ import math
 import re
 from pathlib import Path
 
-from PIL import ImageDraw
+from PIL import Image,ImageDraw
 
 from .core import Held
 
@@ -104,7 +104,18 @@ def locate_callout(ws,asset,callout,provider=None):
     return {**callout,'box':box,'source_sha256':asset['sha256']}
 
 
-def draw_callout(picture,source_size,callout,crop=None):
+def callout_animation_state(second,duration):
+    if not math.isfinite(duration) or duration<=0 or not math.isfinite(second):
+        raise Held('callout_timing','Callout timing must be finite, with a positive scene duration.')
+    scale=min(1,duration/2.8);t=max(0,second)/scale
+    def progress(start,length):
+        value=max(0,min(1,(t-start)/length))
+        return 1-(1-value)**3
+    return {'arrow_progress':progress(.08,.40),'circle_progress':progress(.28,.64),
+        'opacity':max(0,min(1,(2.55-t)/.30))}
+
+
+def draw_callout(picture,source_size,callout,crop=None,*,circle_progress=1,arrow_progress=1,opacity=1):
     """Map source coordinates through the same crop/cover transform as the photo."""
     if not callout:return None
     sw,sh=source_size;left,top,right,bottom=(crop or {}).get('box',[0,0,1,1])
@@ -117,16 +128,35 @@ def draw_callout(picture,source_size,callout,crop=None):
     if box[0]<0 or box[1]<0 or box[2]>width or box[3]>height-205:
         raise Held('callout_outside_frame','The highlighted detail is cropped out or covered by captions; reframe this source.')
     x1,y1,x2,y2=box;rx=max(12,(x2-x1)/2+8);ry=max(12,(y2-y1)/2+8);mx=(x1+x2)/2;my=(y1+y2)/2
-    draw=ImageDraw.Draw(picture);color='#ffdf3a'
-    draw.ellipse((mx-rx,my-ry,mx+rx,my+ry),outline=color,width=6)
+    layer=Image.new('RGBA',picture.size);draw=ImageDraw.Draw(layer);color='#ff3038'
+    stroke=max(10,round(width*14/720));outline=stroke+6
+    circle_progress=max(0,min(1,circle_progress));arrow_progress=max(0,min(1,arrow_progress));opacity=max(0,min(1,opacity))
+    ellipse=(mx-rx,my-ry,mx+rx,my+ry)
+    if circle_progress>0:
+        if circle_progress>=1:
+            draw.ellipse(ellipse,outline='#160b0bdd',width=outline)
+            draw.ellipse(ellipse,outline=color,width=stroke)
+        else:
+            draw.arc(ellipse,-90,-90+360*circle_progress,fill='#160b0bdd',width=outline)
+            draw.arc(ellipse,-90,-90+360*circle_progress,fill=color,width=stroke)
     start=(max(35,min(width-35,mx+(160 if mx<width/2 else -160))),max(35,my-130))
     vx,vy=start[0]-mx,start[1]-my;factor=1/math.sqrt((vx/rx)**2+(vy/ry)**2)
     end=(mx+vx*factor,my+vy*factor);dx,dy=end[0]-start[0],end[1]-start[1];length=math.hypot(dx,dy)
     if length<20:raise Held('callout_layout','The arrow has no usable space outside its target.')
     ux,uy=dx/length,dy/length
-    draw.line((start,end),fill=color,width=7)
-    draw.polygon([end,(end[0]-22*ux+11*uy,end[1]-22*uy-11*ux),(end[0]-22*ux-11*uy,end[1]-22*uy+11*ux)],fill=color)
+    tip=(start[0]+dx*arrow_progress,start[1]+dy*arrow_progress)
+    if arrow_progress>0:
+        draw.line((start,tip),fill='#160b0bdd',width=outline)
+        draw.line((start,tip),fill=color,width=stroke)
+        head=min(stroke*2.4,length*arrow_progress*.55)
+        arrow=[tip,(tip[0]-head*ux+head*.55*uy,tip[1]-head*uy-head*.55*ux),
+            (tip[0]-head*ux-head*.55*uy,tip[1]-head*uy+head*.55*ux)]
+        draw.line([arrow[1],arrow[0],arrow[2]],fill='#160b0bdd',width=outline)
+        draw.polygon(arrow,fill=color)
     if callout.get('label'):
         from shorts_editor.graphics import text_box
         text_box(draw,callout['label'],(20,max(10,start[1]-60),width-40,44),color,24,True,'center',minimum=18)
-    return {'source_box':callout['box'],'display_box':box,'target':callout['target'],'kind':callout['kind']}
+    if opacity<1:layer.putalpha(layer.getchannel('A').point(lambda value:round(value*opacity)))
+    picture.paste(Image.alpha_composite(picture.convert('RGBA'),layer).convert(picture.mode))
+    return {'source_box':callout['box'],'display_box':box,'target':callout['target'],'kind':callout['kind'],
+        'color':color,'stroke_width':stroke,'animation':'arrow_enter_circle_draw_hold_fade'}

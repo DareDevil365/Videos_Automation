@@ -151,7 +151,7 @@ def write_script(workspace, job, brief, provider,*,_creative_rewrite_budget=1,_c
     output_schema=hook_envelope(script_schema) if use_hooks else script_schema
     hook_record=None
     concept=_concept
-    comedy=playbook=='cutout_ensemble' and request.get('story_tone')=='comedy'
+    comedy=(playbook=='cutout_ensemble' and request.get('story_tone')=='comedy') or playbook=='server_chat'
     if comedy and concept is None and not request.get('script') and not request.get('script_file'):
         from .comedy import choose_concept
         concept=choose_concept(provider,request)
@@ -206,7 +206,7 @@ def write_script(workspace, job, brief, provider,*,_creative_rewrite_budget=1,_c
         texts=[u.get('text','') for u in units if isinstance(u,dict) and isinstance(u.get('text',''),str)] if isinstance(units,list) else []
         options=raw.get('hook_options',[]) if isinstance(raw,dict) else []
         measurements={'spoken_words':sum(len(re.findall(r"\b[\w]+(?:['-][\w]+)*\b",text)) for text in texts),'units':len(texts),
-            'hook_options':[{'index':i,'spoken_words':len(str(o.get('first_line','')).split()),'caption_words':len(str(o.get('first_caption','')).split())} for i,o in enumerate(options) if isinstance(o,dict)] if isinstance(options,list) else []}
+            'hook_options':[{'index':i,'type':o.get('type'),'spoken_words':len(str(o.get('first_line','')).split()),'caption_words':len(str(o.get('first_caption','')).split())} for i,o in enumerate(options) if isinstance(o,dict)] if isinstance(options,list) else []}
         raw=provider.generate('scripter-contract-repair-v1',{'brief':brief,'draft':raw,'format':profile['format'],
             'validation_error':str(exc),'creative_brief':str(request.get('creative_brief',''))[:2000],
             'measured_draft':measurements,
@@ -216,7 +216,7 @@ def write_script(workspace, job, brief, provider,*,_creative_rewrite_budget=1,_c
             'owner_feedback':owner_feedback,
             'storyboard_contract':'For story_visuals from_script, each visual_query begins an exact supported tag and colon: elevator:, phone:, hallway:, door:, stairwell:, security:, followed by the short literal detail that matches that spoken beat.' if request.get('story_visuals')=='from_script' else None,
             'selected_story_concept':concept,
-            'hook_contract': {'max_spoken_words':12 if profile['format'] in ('chat','cutout') else 18,'max_caption_words':12,'rule':'If using a hook envelope, retain three distinct typed options. ALL options must meet the limits, without greetings or preambles. For chat/cutout, each caption equals its complete spoken line verbatim. Selected line/caption must exactly match script.hook and the first actual unit text/onscreen.'},
+            'hook_contract': {'allowed_types':HOOK_TYPES,'max_spoken_words':12 if profile['format'] in ('chat','cutout') else 18,'max_caption_words':12,'rule':'If using a hook envelope, return exactly three options. Each option MUST choose a DIFFERENT type from allowed_types; never repeat a type. Their spoken lines must also differ. ALL options must meet the limits, without greetings or preambles. For chat/cutout, each caption equals its complete spoken line verbatim. Selected line/caption must exactly match script.hook and the first actual unit text/onscreen.'},
             'task':'Repair the JSON contract once. Check ALL constraints together: unit count, total spoken words AND every hook option, not only the first reported error. Count spoken words across unit text only; aim near target_spoken_words, safely inside the required range, rather than at its upper edge. Shorten or expand the dialogue itself as needed while preserving its coherent setup and delivered payoff. Every factual assertion must reference an existing supporting claim ID. Remove unsupported assertions; never disguise a factual assertion as advice to bypass evidence checks. Preserve the creative brief and scene contract.'},output_schema)
         script=validate_draft(raw);repairs=1
     normalized=" ".join(unit["text"].lower() for unit in script["units"])
@@ -248,7 +248,7 @@ def write_script(workspace, job, brief, provider,*,_creative_rewrite_budget=1,_c
         try:
             if comedy:
                 from .comedy import review_comedy
-                comedy_review=review_comedy(provider,script,concept,scene_mode=request.get('scene_direction_version')==2)
+                comedy_review=review_comedy(provider,script,concept,scene_mode=request.get('scene_direction_version')==2,chat_mode=playbook=='server_chat')
             edit_plan=plan_edit(provider,script,request,brief=brief) if combined_review else plan_edit(provider,script,request)
             if combined_review:
                 review={**edit_plan['plan']['evidence_review'],'method':'gemini_evidence_and_director_review'}

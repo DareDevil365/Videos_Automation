@@ -84,7 +84,6 @@ def paint_overlay(project,scene,index,total,size,cue=0):
         draw.rectangle((0,0,w,h),fill=project["background"])
         box((m,int(h*.07),w-m,int(h*.19)),"#1b2527")
         txt(scene["title"],(m+20*scale,h*.087,w-2*m-40*scale,h*.065),36,True)
-        txt("FICTIONAL CHAT",(m+20*scale,h*.157,w-2*m-40*scale,h*.025),16,color=accent)
         y=h*.225
         for msg in scene["messages"][:cue+1]:
             max_width=w*.75; bubble_width=max_width

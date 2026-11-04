@@ -40,8 +40,8 @@ def server_chat_frame(script,index,progress=1,height=1280):
         if unit['speaker'] not in palette:palette[unit['speaker']]=speaker_color(unit['speaker'],palette.values())
     # A generic fictional server interface, not a screenshot of a real service.
     draw.rectangle((0,0,720,78),fill='#1b1e25')
-    text_box(draw,'NIGHT SHIFT  /  ORIGINAL FICTION',(26,22,668,32),'#c6cad7',22,True,minimum=22)
-    text_box(draw,'# common-room',(30,100,660,50),'white',34,True,minimum=34)
+    text_box(draw,'Messages',(26,22,668,32),'#c6cad7',22,True,minimum=22)
+    text_box(draw,' & '.join(dict.fromkeys(u['speaker'] for u in script['units'])),(30,100,660,50),'white',34,True,minimum=34)
     draw.line((26,162,694,162),fill='#3d4250',width=2)
     for i,row in enumerate(rows[:index+1]):
         y=top+row['y']-offset+(24*(1-ease) if i==index else 0)
@@ -58,11 +58,11 @@ def server_chat_frame(script,index,progress=1,height=1280):
     draw=ImageDraw.Draw(picture)
     draw.rectangle((0,0,720,top-12),fill='#252830')
     draw.rectangle((0,0,720,78),fill='#1b1e25')
-    text_box(draw,'NIGHT SHIFT  /  ORIGINAL FICTION',(26,22,668,32),'#c6cad7',22,True,minimum=22)
-    text_box(draw,'# common-room',(30,100,660,50),'white',34,True,minimum=34)
+    text_box(draw,'Messages',(26,22,668,32),'#c6cad7',22,True,minimum=22)
+    text_box(draw,' & '.join(dict.fromkeys(u['speaker'] for u in script['units'])),(30,100,660,50),'white',34,True,minimum=34)
     draw.rectangle((0,bottom,720,height),fill='#252830')
     draw.rounded_rectangle((24,height-92,696,height-27),radius=12,fill='#343945')
-    text_box(draw,'Message #common-room',(44,height-73,620,34),'#969eaf',24,minimum=24)
+    text_box(draw,'Message',(44,height-73,620,34),'#969eaf',24,minimum=24)
     visible=[row['id'] for row in rows[:index+1] if top+row['y']-offset+row['height']>top and top+row['y']-offset<bottom]
     return picture,{'visible_unit_ids':visible,'active_unit_id':current['id'],'scroll_offset':offset,'speaker_colors':palette,
         'presentation':'original fictional full-screen server chat','entry_seconds':.18}

@@ -39,9 +39,12 @@ class Held(Exception):
 
 def redact(message):
     value = str(message)
-    for key in ("GEMINI_API_KEY", "GOOGLE_API_KEY", "YOUTUBE_API_KEY", "PEXELS_API_KEY"):
+    for key in ("GEMINI_API_KEY", "GOOGLE_API_KEY", "YOUTUBE_API_KEY", "PEXELS_API_KEY", "OPENAI_API_KEY"):
         secret = os.environ.get(key)
         if secret: value = value.replace(secret, "[redacted]")
+    for name,secret in os.environ.items():
+        if secret and re.fullmatch(r"(?:GEMINI|GOOGLE|OPENAI)_API_KEY(?:_[A-Z0-9_]+)?",name):value=value.replace(secret,"[redacted]")
+    value = re.sub(r"sk-[A-Za-z0-9_-]{16,}","[redacted]",value)
     value = re.sub(r"AIza[\w-]{20,}", "[redacted]", value)
     value = re.sub(r"AQ\.[A-Za-z0-9_-]{20,}", "[redacted]", value)
     return value[:1800]
@@ -51,7 +54,7 @@ def default_config():
     common = {"language":"en-US", "audience":"US-first English", "paused":False,
               "daily_cap":4, "youtube_channel_id":"", "publication_mode":"disabled",
               "auto_private_upload":False, "feed_urls":[], "source_urls":[], "research_queries":[], "footage_ids":[], "music_id":""}
-    return {"version":1, "gemini":{"model":"gemini-3.5-flash-lite", "free_tier_confirmed":False,
+    return {"version":1, "text_provider":"gemini", "openai":{"model":"", "api_usage_enabled":False, "key_env":"OPENAI_API_KEY", "requests_per_day":10, "max_output_tokens":8192}, "gemini":{"model":"gemini-3.5-flash-lite", "free_tier_confirmed":False,
                                    "requests_per_day":30, "enforce_local_budget":True, "max_output_tokens":4096},
             "voice":{"model":"voices/en_US-ljspeech-high.onnx", "commercial_use_checked":False,
                      "license_evidence":[], "length_scale":1.0},
@@ -176,15 +179,22 @@ class Workspace:
         return cursor.rowcount==1
 
     def reserve_call(self, provider, cap):
-        day=datetime.now(timezone.utc).date().isoformat() # Local budget, not a claim about provider reset time.
+        self.reserve_calls([(provider,cap)])
+
+    def reserve_calls(self, limits):
+        """Atomically account for aggregate and independent-project budgets."""
+        day=datetime.now(timezone.utc).date().isoformat()
         with self.connect() as db:
             db.execute("BEGIN IMMEDIATE")
-            row=db.execute("SELECT calls FROM usage WHERE day=? AND provider=?",(day,provider)).fetchone()
-            if cap is not None and row and row[0]>=cap:
-                current=datetime.now(timezone.utc)
-                reset=(current+timedelta(days=1)).replace(hour=0,minute=0,second=0,microsecond=0)
-                raise Held("daily_budget","Local daily call budget reached. Queued work resumes after the UTC budget resets.",retry_after=max(1,math.ceil((reset-current).total_seconds())))
-            db.execute("INSERT INTO usage(day,provider,calls) VALUES(?,?,1) ON CONFLICT(day,provider) DO UPDATE SET calls=calls+1",(day,provider))
+            for provider,cap in limits:
+                row=db.execute("SELECT calls FROM usage WHERE day=? AND provider=?",(day,provider)).fetchone()
+                if cap is not None and row and row[0]>=cap:
+                    current=datetime.now(timezone.utc)
+                    reset=(current+timedelta(days=1)).replace(hour=0,minute=0,second=0,microsecond=0)
+                    raise Held("project_budget" if provider.startswith('gemini:') else "daily_budget",
+                               "Local daily call budget reached; saved work remains queued.",retry_after=max(1,math.ceil((reset-current).total_seconds())))
+            for provider,cap in limits:
+                db.execute("INSERT INTO usage(day,provider,calls) VALUES(?,?,1) ON CONFLICT(day,provider) DO UPDATE SET calls=calls+1",(day,provider))
 
     def check_provider(self, provider):
         with self.connect() as db:row=db.execute('SELECT until FROM provider_cooldowns WHERE provider=?',(provider,)).fetchone()

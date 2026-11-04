@@ -2,6 +2,14 @@
 
 Read this from top to bottom once, then use the tables to locate the code you need. This describes the implementation inspected on 2 November 2026. [Project status](PROJECT_STATUS.md) separates code that exists from live integrations and content quality still needing validation. [PROJECT_GUIDE.md](../PROJECT_GUIDE.md) preserves architecture decisions and detailed operating history.
 
+## Phone-screen editor update (5 November 2026)
+
+The new `src/yt_pipeline/phone_editor/` package separates contract/compiler, themes, chrome, message layout, phone screens, story state and writing checks. `chat_editing.py` connects these trusted components to existing timing, assets and FFmpeg stages; `text_provider.py` selects Gemini or the optional OpenAI API adapter. Read the [module map and data flow](PHONE_STORY_IMPLEMENTATION.md), [creation guide](categories/phone-story/HOW_TO_CREATE.md) and [provider setup](TEXT_PROVIDERS.md) for current behavior. This extends the entertainment channel format; it is not an independent model editing service.
+
+## Phone-screen editor update (5 November 2026)
+
+The new `src/yt_pipeline/phone_editor/` package separates contract/compiler, themes, chrome, message layout, phone screens, story state and writing checks. `chat_editing.py` connects these trusted components to existing timing, assets and FFmpeg stages; `text_provider.py` selects Gemini or the optional OpenAI API adapter. Read the [module map and data flow](PHONE_STORY_IMPLEMENTATION.md), [creation guide](categories/phone-story/HOW_TO_CREATE.md) and [provider setup](TEXT_PROVIDERS.md) for current behavior. This extends the entertainment channel format; it is not an independent model editing service.
+
 ## 1. What the application is
 
 There are two Python packages:

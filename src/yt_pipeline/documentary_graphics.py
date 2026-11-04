@@ -114,7 +114,6 @@ def diagram_frame(scene,second,duration,chapter_number=1):
     image=Image.new('RGB',(1280,720),'#f3f0e7');d=ImageDraw.Draw(image)
     ink='#182b38';accent='#177569';orange='#dc593d';muted='#68777c'
     d.rectangle((0,0,15,720),fill=accent)
-    text_box(d,f'FIELD NOTES  /  {chapter_number:02d}',(64,28,850,28),accent,22,True,minimum=22)
     text_box(d,scene['title'],(64,82,1150,100),ink,42,True,minimum=34)
     d.line((64,200,1216,200),fill='#d6d8ce',width=2)
     labels=scene['labels'];n=len(labels);kind=scene['kind']
@@ -168,7 +167,7 @@ def diagram_frame(scene,second,duration,chapter_number=1):
                     d.line((start,400,end,400),fill=orange,width=4)
                     d.polygon([(end,400),(end-9,394),(end-9,406)],fill=orange)
             card(label,(x,y,width,h),p,i,kind=='comparison' and i==n-1)
-    text_box(d,scene.get('source_credit','ORIGINAL EXPLANATORY DIAGRAM'),(64,592,1152,32),muted,18,minimum=18)
+    text_box(d,scene.get('source_credit',''),(64,592,1152,32),muted,18,minimum=18)
     # Keep aligned narration captions on a dedicated uncluttered dark band.
     d.rectangle((15,642,1280,720),fill=ink)
     d.rectangle((64,625,64+round(1152*min(1,second/max(duration,.001))),628),fill=accent)
@@ -205,7 +204,7 @@ def build_chapter_visuals(ws,job,script,timing,folder,record):
     for scene,spoken in zip(plan['scenes'],timing['units']):
         view={**scene,'title':scene['graphic']['title']}
         refs=list(dict.fromkeys(claims[c]['source_id'] for c in scene['claim_ids']))
-        view['source_credit']='SOURCES: '+' / '.join(urlsplit(sources[r]['url']).netloc for r in refs) if refs else 'ILLUSTRATIVE EXPLANATION'
+        view['source_credit']='SOURCES: '+' / '.join(urlsplit(sources[r]['url']).netloc for r in refs) if refs else ''
         output=folder/(scene['unit_id']+'-diagram.mp4')
         render_diagram(view,spoken['duration'],output,plan.get('chapter_number',1))
         generated=register_asset(ws,output,'original_graphic',{'generator':'documentary-diagrams-v1','unit_id':scene['unit_id'],

@@ -47,3 +47,5 @@ Python 3.11+ and FFmpeg/ffprobe are required. The existing local voice models ar
 | `data/` | Private runtime database, credentials, models, caches and job evidence |
 
 Audit on 2 November 2026: 183 tests passed; real local exports exist. YouTube account integration, real browser generation and channel performance remain unverified. Technical completion does not establish owner approval of a story/style. See the status file for exact evidence and blockers.
+
+Current entertainment format: [Phone-screen stories](docs/categories/phone-story/HOW_TO_CREATE.md) combine private chats and phone events with a local reusable editor. [Provider setup](docs/TEXT_PROVIDERS.md) covers Gemini and the optional explicitly enabled OpenAI API route.

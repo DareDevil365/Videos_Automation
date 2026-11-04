@@ -2,6 +2,7 @@ import argparse
 import importlib.util
 import json
 import os
+import re
 from pathlib import Path
 import shutil
 import sys
@@ -9,6 +10,7 @@ import time
 
 from .core import Workspace, Held, STAGES, load_env_file, redact
 from .pipeline import Pipeline
+from .gemini_projects import project_status
 from .assets import register_asset, pexels_video
 from .voice import install_default_voice as setup_voice,install_kokoro_voice
 from .research import discover
@@ -27,7 +29,10 @@ def doctor(ws):
     config=ws.config()
     engine=config['voice'].get('engine','piper')
     voice={**config['voice'],**config['voice'].get('kokoro',{})} if engine=='kokoro' else config['voice']
-    return {"root":str(ws.root),"ffmpeg":bool(shutil.which("ffmpeg")),"ffprobe":bool(shutil.which("ffprobe")),
+    return {"text_provider":config.get("text_provider","gemini"),
+            "gemini_projects":project_status(ws),
+            "selected_key_present":bool(os.environ.get(config.get(config.get("text_provider","gemini"),{}).get("key_env","OPENAI_API_KEY" if config.get("text_provider")=="openai" else "GEMINI_API_KEY"))),
+            "root":str(ws.root),"ffmpeg":bool(shutil.which("ffmpeg")),"ffprobe":bool(shutil.which("ffprobe")),
             "piper_runtime":importlib.util.find_spec("piper") is not None,
             "voice_engine":engine,"voice_runtime":importlib.util.find_spec('kokoro_onnx' if engine=='kokoro' else 'piper') is not None,
             "voice_model":ws.resolve(voice["model"]).is_file(),
@@ -43,15 +48,30 @@ def doctor(ws):
 
 def config_set(ws, path, value):
     # Strict allowlist: credentials are environment/local OAuth files, never config values.
-    allowed={"gemini.free_tier_confirmed","gemini.requests_per_day","gemini.enforce_local_budget","voice.length_scale","voice.engine","voice.normalize_loudness"}
+    allowed={"text_provider","gemini.key_env","gemini.model","gemini.thinking_level","openai.key_env","openai.model","openai.api_usage_enabled","openai.requests_per_day","openai.max_output_tokens","gemini.free_tier_confirmed","gemini.requests_per_day","gemini.enforce_local_budget","voice.length_scale","voice.engine","voice.normalize_loudness"}
     for channel in ws.config()["channels"]:
         allowed.update("channels."+channel+"."+key for key in ("paused","daily_cap","publication_mode","auto_private_upload","feed_urls","source_urls","research_queries","footage_ids","music_id","style","media_mode","source_ids"))
     if path not in allowed:raise ValueError("This config field cannot be changed through this command.")
-    config=ws.config();parts=path.split(".");target=config
+    config=ws.config()
+    from .core import default_config
+    defaults=default_config()
+    config.setdefault("text_provider",defaults["text_provider"])
+    config.setdefault("openai",defaults["openai"])
+    config["gemini"].setdefault("key_env","GEMINI_API_KEY")
+    config["gemini"].setdefault("thinking_level","low")
+    parts=path.split(".");target=config
     for part in parts[:-1]:target=target[part]
     key=parts[-1]
     old=target.get(key,[]) if key in ('research_queries','source_ids') else target.get(key,'piper') if key=='engine' else target.get(key,True) if key in ('normalize_loudness','enforce_local_budget') else target.get(key,'stock') if key=='media_mode' else target[key]
     if type(old)!=type(value) and not (isinstance(old,float) and type(value) in (int,float)):raise ValueError("Config value has the wrong type.")
+    if path=='text_provider' and value not in ('gemini','openai'):raise ValueError('Choose gemini or openai.')
+    if key=='key_env' and not re.fullmatch(r'[A-Z][A-Z0-9_]{0,79}',value):raise ValueError('Use an environment variable name, never an API key.')
+    if path=='gemini.model':
+        from .writer import FREE_MODELS
+        if value not in FREE_MODELS:raise ValueError('Choose a configured free Gemini text model.')
+    if path=='gemini.thinking_level' and value not in ('low','medium','high'):raise ValueError('Choose low, medium or high.')
+    if path=='openai.model' and not re.fullmatch(r'[A-Za-z0-9._-]{1,100}',value):raise ValueError('Set an explicit API model name.')
+    if key=='max_output_tokens' and not 256<=value<=16384:raise ValueError('Use 256-16384 output tokens.')
     if key=="publication_mode" and value not in ("disabled","private","scheduled"):raise ValueError("Use disabled, private or scheduled.")
     if key=='engine' and value not in ('piper','kokoro'):raise ValueError('Choose piper or kokoro')
     if key=='media_mode' and value not in ('stock','graphic'):raise ValueError('Choose stock or graphic')
@@ -150,6 +170,8 @@ def main():
     p=sub.add_parser('batch-run');p.add_argument('--plan');p.add_argument('--stop-file')
     p=sub.add_parser('batch-status');p.add_argument('--plan')
     p=sub.add_parser('playbooks');p.add_argument('--export')
+    p=sub.add_parser('gemini-projects-import');p.add_argument('--file',required=True);p.add_argument('--env-output',default='.env');p.add_argument('--distinct-projects',action='store_true');p.add_argument('--free-tier-confirmed',action='store_true')
+    p=sub.add_parser('phone-plan');p.add_argument('--topic');p.add_argument('--tone',choices=['comedy','mystery','thriller'],default='thriller');p.add_argument('--output',required=True)
     p=sub.add_parser('chat-plan');p.add_argument('--topic');p.add_argument('--output',required=True)
     for name in ("discover","plan","report","benchmark"):
         p=sub.add_parser(name);p.add_argument("channel",choices=["education","entertainment"])
@@ -229,12 +251,16 @@ def main():
                 time.sleep(max(5,args.interval))
         elif cmd=='generation-setup':result=setup_browser(ws,args.provider,args.browser,json.loads(Path(args.browser_config).read_text(encoding='utf-8')) if args.browser_config else None)
         elif cmd=='generation-selectors':result=selector_template()
-        elif cmd=='chat-plan':
-            from .batches import default_chat_plan
+        elif cmd=='gemini-projects-import':
+            from .gemini_projects import import_project_keys
+            result=import_project_keys(ws,args.file,args.env_output,distinct_projects=args.distinct_projects,free_tier_confirmed=args.free_tier_confirmed)
+        elif cmd in ('chat-plan','phone-plan'):
+            from .batches import default_chat_plan,default_phone_plan
             from shorts_editor.store import write_json
             target=Path(args.output).resolve()
             if target.exists():raise Held('chat_plan_exists','Choose a new plan filename; initialized plans are not overwritten.')
-            value=default_chat_plan(topic=args.topic);target.parent.mkdir(parents=True,exist_ok=True);write_json(target,value)
+            value=default_phone_plan(topic=args.topic,tone=args.tone) if cmd=='phone-plan' else default_chat_plan(topic=args.topic)
+            target.parent.mkdir(parents=True,exist_ok=True);write_json(target,value)
             result={'plan':str(target),'id':value['id'],'editing':'compiled chat v2','next':'Run batch-run --plan with this file, or select it in the native panel.'}
         elif cmd=='playbooks':
             from .playbooks import PLAYBOOKS,export_playbooks

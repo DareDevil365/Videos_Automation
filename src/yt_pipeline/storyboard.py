@@ -69,8 +69,6 @@ def story_poster(scene,detail,caption,path,index=0,spoken=''):
     for y in range(1280):
         shade=int(10+12*(1-y/1280));d.line((0,y,720,y),fill=(shade,shade+4,shade+9))
     amber='#d7ad73';muted='#6d7c88';red='#ee685e';edge='#405263';black='#090d12'
-    # A small consistent fiction label keeps the format honest without dominating the scene.
-    text_box(d,'ORIGINAL FICTION',(40,35,640,25),'#8b98a4',19,True)
     if scene=='elevator':
         d.rectangle((73,190,647,1100),fill='#18232e',outline=edge,width=5)
         d.rectangle((105,245,355,1060),fill='#293642');d.rectangle((365,245,615,1060),fill='#202d38')

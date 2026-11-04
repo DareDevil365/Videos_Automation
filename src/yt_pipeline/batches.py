@@ -1,6 +1,6 @@
 """Standalone resumable production plans using Gemini and local production tools.
 
-No OpenAI service or ChatGPT session is used. A plan is data, not executable code.
+The configured text API writes stories. No interactive assistant session is needed. A plan is data, not executable code.
 The batch creates stable pipeline jobs and copies reviewable output into Resources.
 """
 from array import array
@@ -57,14 +57,25 @@ def default_plan(resources_root=None):
 
 def default_chat_plan(resources_root=None,topic=None):
     resources=Path(resources_root or PROJECT_ROOT/'Resources').resolve()
-    topic=topic or 'Original casual roommate chat: a petty everyday rule backfires on the person who made it'
+    topic=topic or 'Original casual chat: two people with conflicting ordinary priorities and an earned surprising ending'
     if not isinstance(topic,str) or not 1<=len(topic.strip())<=180:raise ValueError('A chat topic needs 1-180 characters.')
     return {'version':1,'id':'chat-'+_date().replace('-','')+'-'+uuid.uuid4().hex[:8],
         'output_root':str(resources/'Productions'),'created_at':now(),
         'note':'Gemini writes the conversation only. Software controls portrait message editing, reading time, reactions and original sound effects. Test-only; publishing disabled.',
         'items':[{'id':'chat-short','kind':'playbook','playbook':'server_chat','channel':'entertainment','topic':topic.strip(),
             'request':{'chat_editing_version':2,'fiction':True,'test_only':True,'bottom_kind':'none','require_music':False,
-                'hook_options':False,'editorial_review':'off','visual_review':'off'}}]}
+                'hook_options':False,'editorial_review':'off','visual_review':'off','chat_script_review':True}}]}
+
+
+def default_phone_plan(resources_root=None,topic=None,tone='thriller'):
+    if tone not in ('comedy','mystery','thriller'):raise ValueError('Choose comedy, mystery or thriller.')
+    plan=default_chat_plan(resources_root,topic or 'An original phone-screen mystery across private conversations with fair clues and a concrete final answer')
+    plan['id']=plan['id'].replace('chat-','phone-',1)
+    plan['format']='phone_story'
+    plan['items'][0]['id']='phone-short'
+    plan['items'][0]['request'].update(phone_story=True,chat_tone=tone,chat_script_review=True)
+    plan['note']='Phone-screen channel format: model writes story data; local editor compiles conversations, themes, events, timing and sound. Bounded writing review enabled. Test-only.'
+    return plan
 
 
 def _validate_playbook_item(item,channels=None):
@@ -137,7 +148,7 @@ def _prepare_unlocked(ws,plan_path=None):
         return manifest
     manifest={'version':1,'id':plan['id'],'plan_path':str(path),'plan_sha256':file_hash(path),'workspace':str(ws.root),
               'output_root':str(output),'created_at':now(),'updated_at':now(),'status':'queued',
-              'runtime':{'text_provider':'Gemini free-tier API','speech':'reading-led chat uses local sound cues; narrated formats use configured Kokoro/Piper','editor':'local FFmpeg','openai_calls':0},
+              'runtime':{'text_provider':ws.config().get('text_provider','gemini'),'speech':'reading-led chat uses local sound cues; narrated formats use configured Kokoro/Piper','editor':'local FFmpeg','provider_usage':'See workspace usage records; no implicit provider fallback'},
               'items':[{'id':i['id'],'kind':i['kind'],'status':'queued','job_id':None,'output_folder':str(output/i['id'])} for i in plan['items']]}
     write_json(manifest_path,manifest)
     return manifest
@@ -250,7 +261,7 @@ def _playbook_request(ws,item,folder):
         values=request.get(key,[])
         if not isinstance(values,list):raise Held('batch_asset_request',key+' must be an array of registered asset IDs')
         for ref in values:eligible(ref)
-    for key in ('media_assets','cast_assets'):
+    for key in ('media_assets','cast_assets','phone_wallpaper_ids'):
         values=request.get(key,{})
         if not isinstance(values,dict):raise Held('batch_asset_request',key+' must map unit/cast names to registered asset IDs')
         for ref in values.values():eligible(ref)

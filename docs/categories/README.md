@@ -9,6 +9,7 @@ Each category has a dedicated `HOW_TO_CREATE.md` with prerequisites, request fie
 | [Quiz with thinking time](quiz/HOW_TO_CREATE.md) | `quiz_pause` | education |
 | [Original horror and mystery](horror/HOW_TO_CREATE.md) | `horror_stock` | entertainment |
 | [Fictional chat and tea stories](chat/HOW_TO_CREATE.md) | `tea_chat` | entertainment |
+| [Phone-screen stories: comedy, mystery, thriller](phone-story/HOW_TO_CREATE.md) | `phone-plan` / `server_chat` v2 + `phone_story` | entertainment |
 | [Full-screen original server-chat comedy](server-chat/HOW_TO_CREATE.md) | `server_chat` | entertainment |
 | [Landscape illustrated storytelling](illustrated-story/HOW_TO_CREATE.md) | `illustrated_story` | entertainment |
 | [Documentary chapter: live route pending](documentary/HOW_TO_CREATE.md) | `documentary_chapter` | education |

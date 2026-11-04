@@ -9,7 +9,8 @@ from shorts_editor.render import render_project
 from shorts_editor.store import Store, write_json
 from .core import Held, STAGES, digest, file_hash, redact
 from .research import research_job
-from .writer import Gemini, write_script
+from .writer import write_script
+from .text_provider import configured_provider
 from .voice import synthesize
 from .visuals import build_visuals
 from .director import direct
@@ -34,7 +35,7 @@ def referenced_files(value):
 
 class Pipeline:
     def __init__(self, workspace, provider=None, voice_fn=None):
-        self.workspace=workspace;self.provider=provider or Gemini(workspace);self.voice_fn=voice_fn or synthesize
+        self.workspace=workspace;self.provider=provider or configured_provider(workspace);self.voice_fn=voice_fn or synthesize
 
     def run(self, job_id):
         ws=self.workspace;owner=uuid.uuid4().hex

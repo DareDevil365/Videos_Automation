@@ -4,9 +4,9 @@
     720,
     1280
   ],
-  "provider_scope": "One dialogue writing request and at most one structural repair; no model directing or review.",
+  "provider_scope": "One story-writing request and at most one structural repair. Optional writing-only review, one revision and one recheck. No model directing.",
   "timing": "Frame-clock reading hold per complete message, with code-selected entry/typing/reaction states.",
-  "sound": "Original local typing/notification/payoff cues; no TTS or copied creator audio.",
+  "sound": "One quiet original message pop; no typing chirps, TTS or copied creator audio.",
   "avatar": "Optional registered photo IDs and normalized crop slots; otherwise stable initials.",
   "limits": "Deterministic editing and structural checks do not establish comedy quality."
 }

@@ -1,6 +1,8 @@
 # Create: original reading-led chat Shorts
 
-Current route: `server_chat` with `chat_editing_version: 2`. Gemini writes the conversation; Python/Pillow/FFmpeg handles every edit. Output is **720x1280 (9:16)** by default, with two or three recurring fictional participants, readable message cards, recent-message context, typing/entry motion, selected reaction emphasis and original local notification/typing/payoff sounds. No narrator, TTS, model director, generated photos, body/costume layer or lower panel is required.
+For multi-conversation phone fiction, see the new [phone-screen channel format](../phone-story/HOW_TO_CREATE.md). It shares the local editor and adds private histories, wallpapers, timestamps and phone events.
+
+Current route: `server_chat` with `chat_editing_version: 2`. Gemini writes the conversation; Python/Pillow/FFmpeg handles every edit. Output is **720x1280 (9:16)** by default, with two or three recurring fictional participants, a clean messenger-inspired app crop, measured scrolling bubbles, fixed contact/call/menu chrome, selected camera emphasis and soft local message sounds. No narrator, TTS, model director, generated photos, body/costume layer or lower panel is required.
 
 ## Use without Codex/ChatGPT
 
@@ -14,13 +16,13 @@ CLI equivalent:
 .venv\Scripts\python.exe run_pipeline.py batch-status --plan Resources/Plans/my-new-chat.json
 ```
 
-Choose a fresh plan filename/ID after changing an initialized plan. Missing keys, free-tier confirmation, provider quota/cooldown, invalid scripts and unusable assets remain holds; there is no automatic paid fallback or key rotation. The existing authorized development local-budget override does not grant provider quota. Publishing remains disabled/test-only.
+Choose a fresh plan filename/ID after changing an initialized plan. Missing keys, free-tier confirmation, provider quota/cooldown, invalid scripts and unusable assets remain holds; there is no paid fallback. Explicitly configured independent-project pools can distribute requests while respecting each project's cooldown; see provider setup. The existing authorized development local-budget override does not grant provider quota. Publishing remains disabled/test-only.
 
 ## Model versus software responsibilities
 
 | Responsibility | Owner |
 | --- | --- |
-| Write original conversation from the topic, exact message text and content metadata | Gemini: one writing call, at most one structural repair |
+| Write original conversation from the topic, exact message text and content metadata | Selected text provider: one writing call, at most one structural repair; new plans enable bounded writing review |
 | Validate 2-3 participants, no narrator, exact onscreen/message identity, hook, word/unit bounds and final answer identity | Software |
 | Map stable speaker identities/colors and optional registered photo avatar slots | Software |
 | Set complete-message reading holds and typing gaps on the 30 fps clock | Software |
@@ -29,13 +31,13 @@ Choose a fresh plan filename/ID after changing an initialized plan. Missing keys
 | Technical dimensions/timing/audio/decode/hash checks and resumable checkpoints | Software |
 | Decide whether the writing is funny, natural and satisfying | Owner/editorial judgment; not certified by structural QA |
 
-The model does not supply a storyboard, timestamps, camera instructions or audio plan. V2 rejects enabled hook-alternative, model editorial-review and model visual-review settings rather than secretly making those extra calls. It also rejects factual-source requests: original fiction is the supported script-only route. No claim is made that these rules constitute an intelligent autonomous comedy critic.
+The model does not supply a storyboard, camera instructions or audio plan. Normal chat timestamps are local defaults; phone stories can supply explicit fictional story times. V2 rejects legacy hook-alternative, director editorial-review and visual-review settings. New plans separately enable `chat_script_review`: writing-only critique, at most one revision and one recheck, without model editing calls. See [provider setup](../../TEXT_PROVIDERS.md). It also rejects factual-source requests: original fiction is the supported script-only route. No claim is made that these rules constitute an intelligent autonomous comedy critic.
 
 Contract: 12-22 complete messages, 40-100 words total (existing three-word tokenization tolerance), mostly 2-7 words and at most 12 words each. Actual complete reading duration must fit 18-55 seconds; excessive content holds instead of truncating a message or shrinking fonts. Current timing uses a bounded word/character reading estimate plus typing and payoff holds; it is not measured audience comprehension. `voice.json` retains the common timing-stage filename but explicitly records `narration: false`, reading holds and `original_local_chat_sfx`.
 
 ## Optional real-photo avatars
 
-`chat_avatar_ids` accepts up to three registered image IDs in first-speaker appearance order. `chat_avatar_crops` optionally gives matching normalized [left, top, right, bottom] crops. Eligibility/hash checks run before rendering; actual source metadata stays with the asset. Missing optional photos fall back to stable initial avatars. The software does not download arbitrary Google images or infer their rights. The live demonstration used a CC0 black-cat photo and a public-domain raccoon photo, with attribution/source records retained, and no generated image. Fresh plans work with initials and need no image-search account.
+`chat_avatar_ids` accepts up to six registered image IDs in first-speaker appearance order. `chat_avatar_crops` optionally gives matching normalized [left, top, right, bottom] crops. Eligibility/hash checks run before rendering; actual source metadata stays with the asset. Missing optional photos fall back to stable initial avatars. The software does not download arbitrary Google images or infer their rights. The live demonstration used a CC0 black-cat photo and a public-domain raccoon photo, with attribution/source records retained, and no generated image. Fresh plans work with initials and need no image-search account.
 
 ## Live evidence and limits
 

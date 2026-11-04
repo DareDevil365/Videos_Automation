@@ -17,12 +17,12 @@ from yt_pipeline.core import redact
 
 
 def main():
-    window=tk.Tk();window.title('YouTube Pipeline - Local Controls');window.geometry('860x570')
+    window=tk.Tk();window.title('YouTube Pipeline - Local Controls');window.geometry('1060x600')
     window.minsize(680,430)
     controls=Controls(ROOT);events=queue.Queue()
     frame=ttk.Frame(window,padding=18);frame.pack(fill='both',expand=True)
     ttk.Label(frame,text='YouTube Pipeline',font=('Segoe UI',18,'bold')).pack(anchor='w')
-    ttk.Label(frame,text='Runs on this PC. Gemini writes scripts; editing is local. Chat Shorts need no narrator or ChatGPT connection.').pack(anchor='w',pady=(4,16))
+    ttk.Label(frame,text='Runs on this PC. The selected text API writes stories; phone-screen editing is local. No narrator or assistant session needed.').pack(anchor='w',pady=(4,16))
     from yt_pipeline.batches import default_plan
     from shorts_editor.store import write_json
     starter=ROOT/'Resources/Plans/playbook-starter.json'
@@ -44,16 +44,17 @@ def main():
         write_json(path,value);plan.set(str(path))
         status.set('New playbook plan saved. Configure permitted music/visual inputs; Start checks prerequisites before generation.')
     ttk.Button(line,text='New plan',command=new_plan).pack(side='left',padx=(8,0))
-    def new_chat_plan():
-        from yt_pipeline.batches import default_chat_plan
+    def new_chat_plan(phone=False):
+        from yt_pipeline.batches import default_chat_plan,default_phone_plan
         from shorts_editor.store import write_json
-        topic=simpledialog.askstring('New chat Short','What should the fictional conversation be about?\nLeave blank for an original roommate comedy.',parent=window)
+        topic=simpledialog.askstring('New phone story' if phone else 'New chat Short','What should the fictional story be about?\nLeave blank for an original mystery.' if phone else 'What should the fictional conversation be about?\nLeave blank for an original chat comedy.',parent=window)
         if topic is None:return
-        try:value=default_chat_plan(ROOT/'Resources',topic.strip() or None)
+        try:value=(default_phone_plan if phone else default_chat_plan)(ROOT/'Resources',topic.strip() or None)
         except ValueError as exc:messagebox.showerror('Chat topic',str(exc));return
         path=ROOT/'Resources/Plans'/(value['id']+'.json');write_json(path,value);plan.set(str(path))
         status.set('Chat plan saved. Press Start batch: Gemini writes the conversation; the editor handles timing, visuals and sound.')
     ttk.Button(line,text='New chat',command=new_chat_plan).pack(side='left',padx=(8,0))
+    ttk.Button(line,text='New phone story',command=lambda:new_chat_plan(True)).pack(side='left',padx=(8,0))
     status=tk.StringVar(value='Stopped. Nothing runs until you press Start.')
     buttons=ttk.Frame(frame);buttons.pack(fill='x',pady=14)
     log=tk.Text(frame,wrap='word',font=('Consolas',9),height=18,state='disabled')

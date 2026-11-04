@@ -85,7 +85,6 @@ def _cast_frame(background,cast,avatars,scene,caption,path,height=1280):
     d=ImageDraw.Draw(picture)
     d.rounded_rectangle(box((25,height-180,695,height-30)),radius=14*aa,fill='#080c12')
     text_box(d,caption,box((48,height-155,624,98)),'white',35*aa,True,'center',minimum=23*aa)
-    text_box(d,'ORIGINAL FICTION',box((32,30,656,30)),'#dddddd',18*aa,True)
     picture.resize((720,height),Image.Resampling.LANCZOS).save(path)
 
 
@@ -248,7 +247,7 @@ def build_planned_visuals(ws,job,script,timing,folder,record,*,provider=None):
         if template=='chat_asmr':
             from .visuals import chat_frame
             chat_script={**script,'units':[{**u,'onscreen':u['text']} for u in script['units']],
-                         'show_speakers':True,'chat_title':'Fictional group chat','chat_history':2}
+                         'show_speakers':True,'chat_title':'','chat_history':2}
             chat_path=folder/(unit['id']+'-chat.png');chat_frame(chat_script,i,chat_path)
             with Image.open(chat_path) as raw:card=ImageOps.contain(raw.convert('RGB'),(720,height-30))
             poster=folder/(unit['id']+'-planned.png');canvas=Image.new('RGB',(720,height),'#101014');canvas.paste(card,((720-card.width)//2,15));canvas.save(poster)

@@ -1,8 +1,10 @@
 import re
 from .core import Held
+from .phone_editor.contract import PHONE_SCHEMA,validate_phone_story
 
 
 SCRIPT_SCHEMA = {"type":"object", "properties":{
+    "phone_story":PHONE_SCHEMA,
     "version":{"type":"integer"}, "title":{"type":"string"}, "description":{"type":"string"},
     "format":{"type":"string","enum":["chat","lesson","clip","aura","cutout"]}, "fiction":{"type":"boolean"},
     "hook":{"type":"string"}, "payoff":{"type":"string"},
@@ -90,7 +92,11 @@ def script_contract(value, brief, expected_format=None):
     edit=value.get("edit",{})
     if not isinstance(edit,dict) or edit.get("effect") not in ("none","punch","flash","shake") or edit.get("payoff_unit_id") not in ids or not isinstance(edit.get("cta"),bool):
         raise Held("invalid_script","Edit intent must refer to an existing payoff unit and supported effect.")
-    return {"version":1,"title":string(value.get("title"),"Video title",100),
+    result = {"version":1,"title":string(value.get("title"),"Video title",100),
             "description":string(value.get("description"),"Description",2500),"format":fmt,"fiction":fiction,
             "hook":string(value.get("hook"),"Hook",350),"payoff":string(value.get("payoff"),"Payoff",350),
             "units":units,"edit":{"effect":edit["effect"],"payoff_unit_id":edit["payoff_unit_id"],"cta":edit["cta"]}}
+    if "phone_story" in value:
+        if fmt!="chat" or not fiction:raise Held("phone_story","Phone stories are fictional chat format only.")
+        result["phone_story"]=validate_phone_story(value["phone_story"],units)
+    return result

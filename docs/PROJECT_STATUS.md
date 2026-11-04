@@ -1,5 +1,7 @@
 # Project status and remaining work
 
+5 November 2026 follow-up: the installed video-analysis skill worked on the supplied reference. All 80 overview frames and 60 opening frames were inspected, alongside available captions; see the [visual study](../research/formats/education-and-movies/BETTERWAY_VIDEO_ANALYSIS_2026-11-05.md). Earlier playback limitations are now narrowed to continuous viewing/audio listening. This does not implement long-form production.
+
 5 November 2026: the requested long-form documentary route is assessed in the [implementation plan](LONG_FORM_IMPLEMENTATION_PLAN.md), not implemented. Current output is portrait and the editor has a 180-second project limit. A chapter/canvas extension is required before a full-length pilot. Reference identity/duration/description were checked through public metadata; playback was unavailable.
 
 Final chat/callout regression result: **260 tests passed in 129.27s**, with two existing Pillow deprecation warnings; the final animation-only rerun passed both tests after removing a test-only dependency. The existing chat export remains a format pilot with weak writing.

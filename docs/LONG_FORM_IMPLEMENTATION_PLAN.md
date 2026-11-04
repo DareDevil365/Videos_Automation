@@ -6,7 +6,7 @@ Reviewed 5 November 2026. Status: **proposed, not implemented**. No full-length 
 
 The owner supplied [BetterWay: What Happened To Devin?](https://www.youtube.com/watch?v=_f7UAsanEBk). YouTube's public oEmbed and player metadata identify BetterWay and a duration of 572 seconds (9:32). Its description outlines Devin's launch, criticism, product changes and subsequent company developments, and credits/promotes Kinetic for motion design and ElevenCreative. These are creator-provided descriptions, not independently verified historical claims or proof of a complete production workflow.
 
-Playback was unavailable. No reference audio, captions or video was inspected. Shot timing, typography, sound and animation quality have not been assessed. The choices below propose an original researched explainer; they are not claims about observed editing in this video. No paid service or copied footage is required by this plan.
+The initial metadata review lacked playback. A subsequent [watch-video analysis](../research/formats/education-and-movies/BETTERWAY_VIDEO_ANALYSIS_2026-11-05.md) inspected 80 overview frames, 60 opening frames and available captions. It confirms progressive explanatory graphics and identifies the sponsor segment separately. Sampling does not establish continuous shot timing; actual audio quality remains unassessed. The implementation choices below remain proposals. No paid service or copied footage is required by this plan.
 
 ## Current capability and gaps
 
@@ -38,4 +38,4 @@ Concrete blockers: `src/shorts_editor/models.py` rejects projects over 180 secon
 - Existing short jobs retain their dimensions and constraints. A dedicated long-form route does not silently relax the general shorts editor limits.
 - Full viewing/listening checks continuity, pacing, pronunciation and visual relevance. Technical and model passes alone do not establish documentary quality or audience retention.
 
-Next milestone: the episode/canvas contract and one generated landscape chapter. Reference playback analysis and a finished full-length demonstration remain outstanding.
+Next milestone: the episode/canvas contract and one generated landscape chapter. Prioritize progressive comparison/chart, timeline, source-highlight, relationship-map and outcome-grid templates informed by the visual study. Review settled chart values separately from animated counters. Continuous playback/audio evaluation and a finished full-length demonstration remain outstanding.

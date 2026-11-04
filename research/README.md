@@ -1,5 +1,7 @@
 # Research index
 
+Latest visual study: [BetterWay documentary using watch-video](formats/education-and-movies/BETTERWAY_VIDEO_ANALYSIS_2026-11-05.md), with successful frame/caption extraction and remaining audio/continuous-playback limits.
+
 These are dated research and reference records. Current implementation is tracked in [project status](../docs/PROJECT_STATUS.md); actual code is mapped in the [walkthrough](../docs/CODE_WALKTHROUGH.md). Research does not activate accounts, schedule work or clear a specific asset.
 
 Latest format reference: [Beluga chat pages and original adaptation](formats/entertainment/BELUGA_CHAT_REFERENCE_2026-11-03.md). This separates verified public page descriptions from inferred production mechanics and the inability to watch full playback during this session.

@@ -1,0 +1,11 @@
+# Create: documentary chapter (contract implemented; live run pending)
+
+Preset `documentary_chapter`: factual education, 60-90 seconds, 155-195 words, 8-12 units, one narrator and no lower panel. It uses an explicit landscape chapter profile, existing source-linked briefs/writing/review, measured local voice and original explanatory diagrams. No full documentary chapter has yet been generated through the live model route in this implementation pass: the owner redirected this run to assistant-authored fictional storytelling with no Gemini calls.
+
+Use the shared batch recipe with actual factual source URLs or a valid brief, `fiction: false`, `test_only: true` and `visual_review: required`. Normal generation requires the configured free-tier model/key and remains subject to existing holds. The writer chooses exact narration; the separate documentary director cannot rewrite it. Request sources must be concise enough for existing input limits; there is no unbounded chapter-context window.
+
+`documentary_graphics.py` compiles six trusted primitives: comparison, process, timeline, relationship, source highlight and bars. Labels quote existing script phrases; source highlights bind exact excerpts to actual source IDs; chart values must occur in their bound source excerpt and use common percent/count units. This is structural grounding, not proof that the model assigned every statistic or label correctly. The factual review, separate exact-payoff review and real frame inspection remain necessary. Arbitrary generated Python/JavaScript is never executed.
+
+Graphics reveal elements against measured scene time and retain a reading hold. Final numeric labels are fixed while bar geometry reveals, so intermediate counter values cannot become false displayed statistics. Source hosts appear in the footer; full source/claim records remain in saved artifacts. Landscape caption dimensions and export QA use the actual canvas.
+
+The full 6-10 minute episode outline, per-chapter revision orchestration, continuity review and chapter assembly are still proposed in the [implementation plan](../../LONG_FORM_IMPLEMENTATION_PLAN.md). The existing 180-second editor limit is preserved. Do not present this bounded chapter preset as a finished long-form automation system.

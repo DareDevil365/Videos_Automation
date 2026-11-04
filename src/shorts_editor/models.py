@@ -57,7 +57,7 @@ def new_scene(index=0):
 
 def new_project(format_id="story"):
     return {"version": 1, "name": "Untitled video", "format": format_id,
-            "resolution": "720p", "fps": 30, "accent": "#b5f36c", "background": "#101516",
+            "resolution": "720p", "fps": 30, "profile": "short", "accent": "#b5f36c", "background": "#101516",
             "split_ratio": 0.5, "swap_panels": False, "font_scale": 1,
             "narration": "", "music": "", "music_volume": 0.12, "source_volume": 1,
             "composition": {"x":.10,"y":.12,"width":.80,"height":.44,"foreground_fit":"contain",
@@ -77,6 +77,10 @@ def validate_project(data):
     p["name"] = text(p["name"], "Project name", 120)
     if p["format"] not in FORMAT_IDS:
         raise ValidationError("Choose a supported format.")
+    if p['profile'] not in ('short','documentary'):
+        raise ValidationError('Choose short or documentary profile.')
+    if p['profile']=='documentary' and p['format']!='focus':
+        raise ValidationError('Documentary profile requires the full-frame focus composition.')
     if p["resolution"] not in ("720p", "1080p") or p["fps"] not in (24, 30):
         raise ValidationError("Choose 720p or 1080p, at 24 or 30 fps.")
     for key in ("accent", "background"):
@@ -148,6 +152,8 @@ def validate_project(data):
 
 
 def dimensions(project):
+    if project.get('profile','short')=='documentary':
+        return (1920,1080) if project['resolution']=='1080p' else (1280,720)
     return (1080, 1920) if project["resolution"] == "1080p" else (720, 1280)
 
 

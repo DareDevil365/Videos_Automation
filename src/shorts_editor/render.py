@@ -110,7 +110,7 @@ def preview(project,store,index=0,at=None):
     assets=store.resolve_project_assets(project); scene=project["scenes"][index]
     at=scene["duration"]*.7 if at is None else max(0,min(float(at),scene["duration"]-.001))
     # Small preview uses the exact same layout function and filters as export.
-    size=(360,640)
+    size=(640,360) if project.get('profile')=='documentary' else (360,640)
     key=hashlib.sha256(json.dumps([project,index,round(at,2)],sort_keys=True).encode()).hexdigest()
     output=store.root/"previews"/(key+".png")
     if output.exists(): return output

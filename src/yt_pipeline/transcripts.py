@@ -78,9 +78,10 @@ def write_srt(cues,path):
     Path(path).write_text('\n'.join(rows),encoding='utf-8')
 
 
-def burn_captions(video,cues,split=False,caption_bar=False,bar_height=1280):
+def burn_captions(video,cues,split=False,caption_bar=False,bar_height=1280,canvas=None):
     video=Path(video);signature=digest([cues,'dialogue_bar',bar_height]) if caption_bar else digest(cues);manifest_path=video.with_suffix('.manifest.json')
     manifest=json.loads(manifest_path.read_text(encoding='utf-8'))
+    if canvas:signature=digest([signature,canvas,'landscape-caption-v1'])
     captions=video.with_suffix('.srt');write_srt(cues,captions)
     if manifest.get('caption_burn',{}).get('cues_hash')==signature:return
     clean=video.with_name(video.stem+'.clean.mp4')
@@ -93,6 +94,11 @@ def burn_captions(video,cues,split=False,caption_bar=False,bar_height=1280):
     if caption_bar:
         ass=video.with_suffix('.ass')
         header='[Script Info]\nScriptType: v4.00+\nPlayResX: 720\nPlayResY: 1280\nWrapStyle: 0\n\n[V4+ Styles]\nFormat: Name, Fontname, Fontsize, PrimaryColour, SecondaryColour, OutlineColour, BackColour, Bold, Italic, Underline, StrikeOut, ScaleX, ScaleY, Spacing, Angle, BorderStyle, Outline, Shadow, Alignment, MarginL, MarginR, MarginV, Encoding\nStyle: Default,Arial,35,&H00FFFFFF,&H00FFFFFF,&H00000000,&H00000000,-1,0,0,0,100,100,0,0,1,0,0,2,48,48,'+str(1280-bar_height+56)+',1\n\n[Events]\nFormat: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text\n'
+        if canvas:
+            width,height=canvas
+            header=header.replace('PlayResX: 720',f'PlayResX: {width}').replace('PlayResY: 1280',f'PlayResY: {height}')
+            header=header.replace('Default,Arial,35,',f'Default,Arial,{round(height*30/720)},')
+            header=header.replace('2,48,48,'+str(1280-bar_height+56)+',1',f'2,80,80,{round(height*28/720)},1')
         def stamp(t):return f'{int(t//3600)}:{int(t//60)%60:02d}:{t%60:05.2f}'
         events=[]
         for cue in cues:

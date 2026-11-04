@@ -176,6 +176,12 @@ def _video_scene(asset,caption,duration,path,height,offset=0,rank=None,motion='h
 
 
 def build_planned_visuals(ws,job,script,timing,folder,record,*,provider=None):
+    if record.get('plan',{}).get('template')=='illustrated_story':
+        from .illustrated_story import build_story_visuals
+        return build_story_visuals(ws,job,script,timing,folder,record)
+    if record.get('plan',{}).get('template')=='documentary':
+        from .documentary_graphics import build_chapter_visuals
+        return build_chapter_visuals(ws,job,script,timing,folder,record)
     plan=record['plan'];folder=Path(folder);folder.mkdir(exist_ok=True)
     if record['script_sha256']!=digest(script):raise Held('creative_rewrite','Edit plan belongs to a different script version')
     template=plan['template'];cache={};provenance={};cast={r['id']:r for r in plan['cast']};avatars={}

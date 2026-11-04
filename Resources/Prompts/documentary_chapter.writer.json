@@ -1,0 +1,36 @@
+{
+  "id": "documentary_chapter",
+  "format": "lesson",
+  "seconds": [
+    60,
+    90
+  ],
+  "words": [
+    155,
+    195
+  ],
+  "units": [
+    8,
+    12
+  ],
+  "voice": {
+    "voice_id": "am_adam",
+    "length_scale": 0.98,
+    "pause": 0.22
+  },
+  "music": {
+    "category": "learning",
+    "mood": "optional quiet documentary bed",
+    "volume": 0.05
+  },
+  "layout": "documentary",
+  "bottom": [
+    "none"
+  ],
+  "writing": "Write one original factual documentary chapter for a general audience. One clear question, causal progression and a concrete supported answer, not a list of slogans. Use the supplied chapter objective and episode context to avoid repeating other chapters. One consistent Narrator. Aim at 175 spoken words across 8-12 complete short units. The first line is a specific question or contrast within 18 words. Explain technical ideas in plain language, with a clearly hypothetical everyday analogy if useful. Every factual statement needs supporting claim_ids; transitions and recommendations must not smuggle unsupported assertions. No invented statistics, benchmarks, quotes, companies or demonstrations. Onscreen fields are concise phrases of at most 85 characters that can label a diagram, not paragraphs. Deliver the chapter answer in the final two units without claiming to conclude the whole episode unless this is its last chapter. No greetings, subscription prompts or repeated intro/outro.",
+  "visuals": "Original landscape explanatory motion graphics. The separate director chooses comparison, process, timeline, relationship, source highlight or sourced bars, using exact script phrases. Supply short phrases useful for diagram labels in text/onscreen. No stock carousel, fabricated interface or copied creator assets.",
+  "sound": "One consistent clear local narrator, measured pacing and bounded pauses. No imitated creator voice.",
+  "task": "Write ONLY the story/content script first. hook must be the exact first spoken unit, not a stronger unwritten marketing summary. The first words must establish the specific curiosity/problem. The actual answer must occupy the final or penultimate unit with no filler ending; edit.payoff_unit_id identifies it. Do not plan an unsupported edit or choose unverified asset URLs. The separate director call will preserve these exact words.",
+  "editorial_policy": "New playbook batches generate three typed hooks in the same writing call and request a separate exact-payoff review. Comment prompts are optional and follow the delivered answer. Clean dialogue never contains speech-control markup. Director speech_segments can express bounded pace/internal silence without changing words. Source clips and caption-led aura keep their separate contracts.",
+  "retention_note": "Patterns are testable editorial hypotheses, not a retention guarantee."
+}

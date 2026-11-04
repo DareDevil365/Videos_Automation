@@ -10,6 +10,8 @@ Each category has a dedicated `HOW_TO_CREATE.md` with prerequisites, request fie
 | [Original horror and mystery](horror/HOW_TO_CREATE.md) | `horror_stock` | entertainment |
 | [Fictional chat and tea stories](chat/HOW_TO_CREATE.md) | `tea_chat` | entertainment |
 | [Full-screen original server-chat comedy](server-chat/HOW_TO_CREATE.md) | `server_chat` | entertainment |
+| [Landscape illustrated storytelling](illustrated-story/HOW_TO_CREATE.md) | `illustrated_story` | entertainment |
+| [Documentary chapter: live route pending](documentary/HOW_TO_CREATE.md) | `documentary_chapter` | education |
 | [Character cutout stories and comedy](cutout-comedy/HOW_TO_CREATE.md) | `cutout_ensemble` | entertainment |
 | [Aura progression edits](aura/HOW_TO_CREATE.md) | `aura_progression` | entertainment |
 | [Useful education and demonstrations](education/HOW_TO_CREATE.md) | `education_demo` | education |

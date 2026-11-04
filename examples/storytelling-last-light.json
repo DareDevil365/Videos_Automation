@@ -1,0 +1,26 @@
+{
+  "version": 1,
+  "title": "The Last Light",
+  "description": "An original fictional illustrated mystery, written and directed by the assistant for the owner's requested one-off demonstration. Local synthetic narration and original generated artwork. No Gemini writing, direction or review calls.",
+  "format": "lesson",
+  "fiction": true,
+  "hook": "The lighthouse had been dark for twelve years. At two thirteen, it started flashing.",
+  "payoff": "There was no ghost in the lighthouse. Just a dog who refused to leave his person in the dark.",
+  "units": [
+    {"id":"u1","speaker":"Narrator","text":"The lighthouse had been dark for twelve years. At two thirteen, it started flashing.","onscreen":"The Last Light","kind":"fiction","claim_ids":[]},
+    {"id":"u2","speaker":"Narrator","text":"Across the harbor, Mara put down her tea. Through the rain, the great lantern still looked black.","onscreen":"Across the harbor","kind":"fiction","claim_ids":[]},
+    {"id":"u3","speaker":"Narrator","text":"But a little ground-floor window blinked three times. Paused. Then four.","onscreen":"The wrong window","kind":"fiction","claim_ids":[]},
+    {"id":"u4","speaker":"Narrator","text":"Someone would call it a ghost. Mara had a simpler question. Why was the light so low?","onscreen":"Why so low?","kind":"fiction","claim_ids":[]},
+    {"id":"u5","speaker":"Narrator","text":"She took her torch and crossed the causeway. At the cottage door, its beam found muddy pawprints.","onscreen":"A trail through the rain","kind":"fiction","claim_ids":[]},
+    {"id":"u6","speaker":"Narrator","text":"They led inside. From behind the cellar door came a thin bark.","onscreen":"Something was inside","kind":"fiction","claim_ids":[]},
+    {"id":"u7","speaker":"Narrator","text":"The old keeper had returned for one last box. He had slipped on the stairs. His phone was upstairs, out of reach.","onscreen":"The old keeper","kind":"fiction","claim_ids":[]},
+    {"id":"u8","speaker":"Narrator","text":"Beside him waited Pip, the terrier who had followed him everywhere for nine years.","onscreen":"Pip had stayed","kind":"fiction","claim_ids":[]},
+    {"id":"u9","speaker":"Narrator","text":"Mara stayed with the keeper until help arrived. But one thing still bothered her. That flashing window.","onscreen":"One question remained","kind":"fiction","claim_ids":[]},
+    {"id":"u10","speaker":"Narrator","text":"While they helped him out, Pip raced back to the sill. There lay an old battery lantern.","onscreen":"Back to the window","kind":"fiction","claim_ids":[]},
+    {"id":"u11","speaker":"Narrator","text":"Its loose switch sat beneath a muddy paw. Pip pressed at it. The light flickered, stopped, then flickered again.","onscreen":"One muddy paw","kind":"fiction","claim_ids":[]},
+    {"id":"u12","speaker":"Narrator","text":"He was not sending a code. He was doing the one thing that had finally made somebody come.","onscreen":"Somebody had seen him","kind":"fiction","claim_ids":[]},
+    {"id":"u13","speaker":"Narrator","text":"By dawn, the keeper was safe. Mara knelt beside him, and Pip settled between them.","onscreen":"The smallest keeper","kind":"fiction","claim_ids":[]},
+    {"id":"u14","speaker":"Narrator","text":"There was no ghost in the lighthouse. Just a dog who refused to leave his person in the dark.","onscreen":"The Last Light","kind":"fiction","claim_ids":[]}
+  ],
+  "edit": {"effect":"none","payoff_unit_id":"u14","cta":false}
+}

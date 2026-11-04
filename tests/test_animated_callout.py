@@ -24,6 +24,14 @@ def test_callout_draws_on_then_disappears_and_preserves_target_geometry():
     assert all(box==boxes[0] for box in boxes)
 
 
+def test_thick_ring_leaves_a_tiny_landscape_clue_visible():
+    picture=Image.new('RGB',(1280,720),'#f4dda0')
+    draw_callout(picture,(1280,720),{'kind':'circle_arrow','target':'small window','label':'','box':[.68,.35,.715,.40]})
+    for x in range(871,914):
+        for y in range(253,287):
+            assert picture.getpixel((x,y))==(244,221,160)
+
+
 @pytest.mark.skipif(not shutil.which('ffmpeg'),reason='FFmpeg required')
 def test_actual_animation_video_has_red_entry_full_circle_and_clear_exit(tmp_path):
     poster=tmp_path/'base.png';Image.new('RGB',(720,1280),'#303030').save(poster)

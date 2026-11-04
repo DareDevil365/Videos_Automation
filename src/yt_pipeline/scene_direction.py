@@ -127,9 +127,13 @@ def draw_callout(picture,source_size,callout,crop=None,*,circle_progress=1,arrow
     box=[(x1*sw-cx)*scale-ox,(y1*sh-cy)*scale-oy,(x2*sw-cx)*scale-ox,(y2*sh-cy)*scale-oy]
     if box[0]<0 or box[1]<0 or box[2]>width or box[3]>height-205:
         raise Held('callout_outside_frame','The highlighted detail is cropped out or covered by captions; reframe this source.')
-    x1,y1,x2,y2=box;rx=max(12,(x2-x1)/2+8);ry=max(12,(y2-y1)/2+8);mx=(x1+x2)/2;my=(y1+y2)/2
+    x1,y1,x2,y2=box;mx=(x1+x2)/2;my=(y1+y2)/2
     layer=Image.new('RGBA',picture.size);draw=ImageDraw.Draw(layer);color='#ff3038'
     stroke=max(10,round(width*14/720));outline=stroke+6
+    # Thick strokes need clearance around tiny clues; an inward stroke must
+    # not turn a small window/eye detail into a solid red dot.
+    rx=max(stroke*2.5,(x2-x1)/2+stroke+12)
+    ry=max(stroke*2.5,(y2-y1)/2+stroke+12)
     circle_progress=max(0,min(1,circle_progress));arrow_progress=max(0,min(1,arrow_progress));opacity=max(0,min(1,opacity))
     ellipse=(mx-rx,my-ry,mx+rx,my+ry)
     if circle_progress>0:

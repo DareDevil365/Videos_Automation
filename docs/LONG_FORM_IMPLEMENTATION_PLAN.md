@@ -1,6 +1,6 @@
 # Long-form documentary implementation plan
 
-Reviewed 5 November 2026. Status: **proposed, not implemented**. No full-length documentary was generated in this review.
+Reviewed 5 November 2026. Status: **chapter foundation implemented; full episode workflow pending**. No full-length documentary was generated in this review.
 
 ## Reference evidence
 
@@ -19,7 +19,7 @@ The initial metadata review lacked playback. A subsequent [watch-video analysis]
 | Assembly | FFmpeg exports and durable checkpoints | Independent chapter rendering and final landscape assembly |
 | QA | Decode, timing, hashes and sampled frames | Chapter joins, evidence completeness and landscape readability throughout |
 
-Concrete blockers: `src/shorts_editor/models.py` rejects projects over 180 seconds and returns portrait dimensions. `src/yt_pipeline/director.py`, `pipeline.py` and visual renderers also contain portrait assumptions. Existing playbooks impose short word/unit/duration bounds. Increasing one duration cap would not create a validated documentary route.
+The new explicit `documentary` profile now supports landscape focus composition, preview, QA and caption dimensions. Existing shorts retain their portrait defaults; every individual project still rejects durations over 180 seconds. New `documentary_chapter` and `illustrated_story` presets have their own bounded word/unit/duration contracts and visual builders. Factual diagram/grounding contracts are fixture-tested; no live documentary model run is claimed. The owner explicitly redirected this production to a one-off assistant-authored fictional story with no Gemini calls. Full episode planning, chapter revision/invalidation and assembly remain outstanding.
 
 ## Implementation sequence
 
@@ -38,4 +38,4 @@ Concrete blockers: `src/shorts_editor/models.py` rejects projects over 180 secon
 - Existing short jobs retain their dimensions and constraints. A dedicated long-form route does not silently relax the general shorts editor limits.
 - Full viewing/listening checks continuity, pacing, pronunciation and visual relevance. Technical and model passes alone do not establish documentary quality or audience retention.
 
-Next milestone: the episode/canvas contract and one generated landscape chapter. Prioritize progressive comparison/chart, timeline, source-highlight, relationship-map and outcome-grid templates informed by the visual study. Review settled chart values separately from animated counters. Continuous playback/audio evaluation and a finished full-length demonstration remain outstanding.
+Current milestone: landscape chapter/caption plumbing and trusted comparison, process, timeline, source-highlight, relationship and bar graphics are implemented. An owner-requested assistant-authored fictional pilot exercises the illustration route separately. Outcome grids, full episode outlines, chapter-level revision orchestration/assembly and a complete factual demonstration remain outstanding. See the [illustrated-story guide](categories/illustrated-story/HOW_TO_CREATE.md) and [documentary guide](categories/documentary/HOW_TO_CREATE.md).

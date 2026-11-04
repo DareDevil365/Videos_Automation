@@ -13,7 +13,7 @@ from .speech_delivery import SEGMENT_SCHEMA,speech_segments,number
 from .scene_direction import CALLOUT_SCHEMA,compose_scene,validate_direction
 
 VOICES=['af_heart','af_bella','am_adam','am_michael','bm_george']
-TEMPLATES=['story_stock','chat_asmr','server_chat','cutout_cast','aura_progression','education_demo','movie_cards']
+TEMPLATES=['story_stock','chat_asmr','server_chat','cutout_cast','aura_progression','education_demo','movie_cards','illustrated_story']
 CAPABILITIES={
  'templates':TEMPLATES,
  'framing':['wide','medium','closeup'],
@@ -133,6 +133,9 @@ def active_speaker_scene(scene,cast):
 
 
 def plan_edit(provider,script,request,brief=None):
+    if request.get('playbook')=='documentary_chapter':
+        from .documentary_graphics import plan_chapter
+        return plan_chapter(provider,script,request,brief)
     from .playbooks import prepare_request
     request=prepare_request(request)
     playbook=request['playbook'];rules=get_playbook(playbook)

@@ -96,9 +96,37 @@ PLAYBOOKS['server_chat']={
     'sound':'Distinct consistent local voices per character read actual messages. Short restrained pauses and a beat before the payoff. This pilot retains accessible voiced dialogue; it does not claim to reproduce a creator audio track.'}
 
 
+PLAYBOOKS['illustrated_story']={
+    'format':'lesson','seconds':[75,130],'words':[180,270],'units':[12,18],
+    'voice':{'voice_id':'af_heart','length_scale':1.0,'pause':.3},
+    'music':{'category':'storytime','mood':'optional quiet atmospheric bed','volume':.035},
+    'layout':'illustrated_story','bottom':['none'],
+    'writing':'Original fictional cinematic story with a specific mystery opening, visible planted clues, a coherent cause and a resolved emotional ending. One voice-only narrator. Characters, outfits, important objects and locations stay consistent. Avoid a list of talking-head swaps, an unplanted twin/dream/hacker and a cliffhanger replacing the answer. Narration must match the supplied illustration inventory. This preset requires registered original illustrations and cannot silently search for unrelated footage.',
+    'visuals':'Full-frame landscape original story illustrations, selective reframing, actual frame-timed weather/light effects and an optional supplied source-pixel callout. Narrator has no body. Shared scenes should visibly contain the people/animals mentioned. These effects do not animate character bodies or provide lip sync.',
+    'sound':'Consistent local narrator with bounded pauses; no imitated creator voice.'}
+
+PLAYBOOKS['documentary_chapter']={
+    'format':'lesson','seconds':[60,90],'words':[155,195],'units':[8,12],
+    'voice':{'voice_id':'am_adam','length_scale':.98,'pause':.22},
+    'music':{'category':'learning','mood':'optional quiet documentary bed','volume':.05},
+    'layout':'documentary','bottom':['none'],
+    'writing':'Write one original factual documentary chapter for a general audience. One clear question, causal progression and a concrete supported answer, not a list of slogans. Use the supplied chapter objective and episode context to avoid repeating other chapters. One consistent Narrator. Aim at 175 spoken words across 8-12 complete short units. The first line is a specific question or contrast within 18 words. Explain technical ideas in plain language, with a clearly hypothetical everyday analogy if useful. Every factual statement needs supporting claim_ids; transitions and recommendations must not smuggle unsupported assertions. No invented statistics, benchmarks, quotes, companies or demonstrations. Onscreen fields are concise phrases of at most 85 characters that can label a diagram, not paragraphs. Deliver the chapter answer in the final two units without claiming to conclude the whole episode unless this is its last chapter. No greetings, subscription prompts or repeated intro/outro.',
+    'visuals':'Original landscape explanatory motion graphics. The separate director chooses comparison, process, timeline, relationship, source highlight or sourced bars, using exact script phrases. Supply short phrases useful for diagram labels in text/onscreen. No stock carousel, fabricated interface or copied creator assets.',
+    'sound':'One consistent clear local narrator, measured pacing and bounded pauses. No imitated creator voice.'}
+
+
 def prepare_request(request):
     """Resolve defaults only for new presets, preserving historical requests."""
     value = deepcopy(request)
+    if value.get('playbook')=='illustrated_story':
+        for key,setting in {'bottom_kind':'none','require_music':False}.items():value.setdefault(key,setting)
+        if value['bottom_kind']!='none' or value.get('bottom_asset_id'):
+            raise Held('story_layout','Illustrated stories need the whole landscape frame.')
+    if value.get('playbook')=='documentary_chapter':
+        for key,setting in {'hook_options':True,'hook_validation':'strict','editorial_review':'required','bottom_kind':'none','require_music':False}.items():
+            value.setdefault(key,setting)
+        if value.get('fiction') is True or value.get('bottom_kind')!='none' or value.get('bottom_asset_id'):
+            raise Held('documentary_layout','Documentary chapters require factual evidence and a full landscape frame.')
     if value.get('playbook')=='server_chat':
         for key,setting in {'hook_options':True,'hook_validation':'strict','editorial_review':'required','bottom_kind':'none','require_music':False}.items():
             value.setdefault(key,setting)
@@ -127,6 +155,9 @@ def writing_prompt(name):
 def validate_playbook_script(script,name):
     value=get_playbook(name)
     if script['format']!=value['format']:raise Held('playbook_script','Script format differs from its selected playbook')
+    if name=='documentary_chapter':
+        if script['fiction'] or len({u['speaker'] for u in script['units']})!=1 or any(len(u['onscreen'])>85 for u in script['units']):
+            raise Held('playbook_script','Use one factual narrator and concise diagram headings of at most 85 characters.')
     if name=='server_chat':
         if not 2<=len({u['speaker'] for u in script['units']})<=3 or any(u['speaker'].strip().lower()=='narrator' for u in script['units']):
             raise Held('playbook_script','Server chat needs 2-3 actual participants and no narrator.')

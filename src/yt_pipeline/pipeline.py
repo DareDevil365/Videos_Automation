@@ -97,7 +97,7 @@ class Pipeline:
                         if not minimum<=result['duration']<=maximum:
                             raise Held('playbook_duration',f'Measured voice is {result["duration"]:.1f}s; this format requires {minimum}-{maximum}s. Revise the script rather than pad it with empty silence.')
                     else:result=self.voice_fn(ws,results['script']['script'],folder/'voice')
-                    if job['request'].get('playbook')=='cutout_ensemble' or job['request'].get('motion_graphics') is True:
+                    if job['request'].get('playbook') in ('cutout_ensemble','documentary_chapter','illustrated_story') or job['request'].get('motion_graphics') is True:
                         from .dialogue_captions import align_dialogue
                         result=align_dialogue(ws,result)
                 elif stage=="visuals":
@@ -124,8 +124,9 @@ class Pipeline:
                     captions=Path(results["visuals"]["captions"])
                     output.with_suffix(".srt").write_text(captions.read_text(encoding="utf-8"),encoding="utf-8")
                     if results['voice'].get('caption_cues'):
+                        caption_options={'canvas':(1280,720) if project['resolution']=='720p' else (1920,1080)} if project.get('profile')=='documentary' else {}
                         burn_captions(output,results['voice']['caption_cues'],split=project['format']=='stack',caption_bar=results['voice'].get('caption_style')=='dialogue_bar',
-                            bar_height=round(1280*job['request'].get('top_fraction',.65)/2)*2 if job['request'].get('bottom_asset_id') else 1280)
+                            bar_height=round(1280*job['request'].get('top_fraction',.65)/2)*2 if job['request'].get('bottom_asset_id') else 1280,**caption_options)
                     result={"video":str(output),"cover":str(output.with_suffix(".png")),"captions":str(output.with_suffix(".srt")),
                             "manifest":str(output.with_suffix(".manifest.json")),"duration":manifest["duration"]}
                     result['visual_review']=review_render(ws,job,results['script'],results['voice'],result,self.provider,folder/'visual-review'/'finished')

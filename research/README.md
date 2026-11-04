@@ -1,5 +1,7 @@
 # Research index
 
+Latest repository check: [animation repositories and free API boundaries](repositories/FREE_ANIMATION_REPOSITORIES_2026-11-05.md), distinguishing local rendering, model free tiers and multi-service dependencies.
+
 Latest visual study: [BetterWay documentary using watch-video](formats/education-and-movies/BETTERWAY_VIDEO_ANALYSIS_2026-11-05.md), with successful frame/caption extraction and remaining audio/continuous-playback limits.
 
 These are dated research and reference records. Current implementation is tracked in [project status](../docs/PROJECT_STATUS.md); actual code is mapped in the [walkthrough](../docs/CODE_WALKTHROUGH.md). Research does not activate accounts, schedule work or clear a specific asset.

@@ -14,7 +14,8 @@ def inspect_render(workspace, job, brief, written, timing, directed, rendered):
     info=probe(output)
     video=next(s for s in info["streams"] if s["codec_type"]=="video")
     expected=json.loads(Path(directed["project"]).read_text(encoding="utf-8"))
-    size=(1080,1920) if expected["resolution"]=="1080p" else (720,1280)
+    from shorts_editor.models import dimensions
+    size=dimensions(expected)
     if (video["width"],video["height"])!=size:raise Held("qa_dimensions","Output size does not match its edit recipe.")
     duration=float(info["format"]["duration"])
     if abs(duration-timing["duration"])>.20:raise Held("qa_timing","The finished video does not match measured narration timing.")

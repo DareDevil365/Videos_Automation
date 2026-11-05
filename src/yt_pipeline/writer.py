@@ -329,4 +329,5 @@ def write_script(workspace, job, brief, provider,*,_creative_rewrite_budget=1,_c
                 result['hook_options']={**hook_record,'active':first['text']==chosen['first_line'] and first['onscreen']==chosen['first_caption']}
             return result
     return {"script":script,"origin":origin,"review":review,"script_hash":script_hash,'contract_repairs':repairs,'creative_plan':edit_plan,'comedy_concept':concept,'comedy_review':comedy_review,'hook_options':hook_record,'editorial_review':editorial_review,'chat_script_review':chat_review,'story_development':development,'chat_writing_version':2 if writing_v2 else 1,
+            'writing_skill':{k:v for k,v in ((writing_constraints or {}).get('writing_skill') or (creative_rules or {}).get('writing_skill') or {}).items() if k in ('name','version','genre','sha256')},
             "note":"Schema/model review is not a guarantee of factual accuracy or monetization."}

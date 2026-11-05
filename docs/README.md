@@ -3,6 +3,8 @@
 Read [project status](PROJECT_STATUS.md), then the [code walkthrough](CODE_WALKTHROUGH.md), then the relevant [category recipe](categories/README.md).
 
 - [Maintained architecture/setup guide](../PROJECT_GUIDE.md)
+- [Make, package and upload](AUTOMATIC_PRODUCTION.md), [titles/descriptions](TITLE_DESCRIPTION_PLAYBOOK.md), [character audio](CHAT_AUDIO.md) and [licensed music library](MUSIC_LIBRARY_PLAYBOOK.md)
+- [Reusable genre writing skill](../src/yt_pipeline/skills/short-video-writing/SKILL.md)
 - [File organization and move map](FILE_ORGANIZATION.md)
 - [Editorial implementation plan](EDITORIAL_IMPROVEMENT_PLAN.md) and [hook/speech/quiz contracts](EDITORIAL_AND_SPEECH.md)
 - [Agent roles](../agents/README.md)

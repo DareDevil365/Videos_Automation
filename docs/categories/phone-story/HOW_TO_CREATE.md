@@ -1,5 +1,7 @@
 # Create: phone-screen stories
 
+Latest sound/publishing update: new plans use [stable character voices and ducked genre music](../../CHAT_AUDIO.md), retaining actual silence during blackouts. A notification that previews a message speaks it once at first visibility and stays through the complete line. [Make + upload](../../AUTOMATIC_PRODUCTION.md) supplies the separate opted-in production/public publishing route; YouTube account connection can be deferred while rendering and metadata finish. The ordinary batch workflow below remains a test-only preview. [Genre writing/timing guidance](../../../src/yt_pipeline/skills/short-video-writing/SKILL.md) is loaded by the program, not only installed for an assistant.
+
 This is the channel's reusable phone-screen storytelling format. Comedy, mystery and thriller stories happen entirely inside private message conversations and phone events. It extends the existing durable `server_chat` v2 pipeline with `phone_story: true`; it is not a separate application or a collection of manually edited videos.
 
 ## Start a video
@@ -29,10 +31,10 @@ Software validates that content, compiles a fixed event timeline, measures readi
 | Story timestamps | 24-hour HH:MM in status/header context and individual message bubbles; chronological same-day validation |
 | Message animation | Entry, scrolling, typing dots, bounded emphasis and viewport camera motion; navigation/composer stay fixed |
 | Phone occurrences | Low-battery alert, bounded glitch, 1.5-second black screen, elapsed-time lock screen and incoming notification |
-| Sound | One soft original pop per arrival; a notification is sounded once; blackout/interruption gaps remain silent |
+| Sound | Stable distinct character voices, one soft pop per arrival, quiet ducked genre music; a notification is voiced once and blackouts remain silent |
 | Completion | Existing local MP4, SRT, cover, QA, provenance and resumable stage records |
 
-Call/menu symbols are visual app controls in a rendered video, not actual telephony integration. No calling screen, photo-message attachment, live typing text, home-screen app launcher, charging/unlock interaction, group phone conversation or arbitrary app recreation is implemented. Normal chat supports 2-3 participants; this private-thread mode supports up to six total participants. Pattern/initial fallbacks make it work without stock assets. A hacker photograph is supported only after registering a permitted source and explicitly assigning it as a wallpaper; a hoodie is not silently downloaded or invented.
+Call/menu symbols are visual app controls in a rendered video, not actual telephony integration. Registered GIF/still message attachments are supported through `chat_attachment_ids`. No calling screen, live typing text, home-screen app launcher, charging/unlock interaction, group phone conversation or arbitrary app recreation is implemented. Normal chat supports 2-3 participants; this private-thread mode supports up to six total participants. Pattern/initial fallbacks make it work without stock assets. A hacker photograph is supported only after registering a permitted source and explicitly assigning it as a wallpaper; a hoodie is not silently downloaded or invented.
 
 ## Story contract
 
@@ -47,7 +49,7 @@ The outer script keeps `version: 1`, exact `text`/`onscreen`, `hook` equal to th
 }
 ```
 
-This is a field illustration, not a complete valid episode. Use 12-28 messages, 55-150 words, at most 12 words per message; final reading/event duration must fit 22-90 seconds. Every beat references one actual unit in order. Private messages must come from the phone owner or that thread's contact. No narration. Contacts cannot duplicate the owner. Timestamps cannot move backward or cross midnight in this first version.
+This is a field illustration, not a complete valid episode. Writing v2 uses 10-26 messages, 50-145 words and 18-90 seconds; retained writing v1 uses 12-28 messages, 55-150 words and 22-90 seconds. Both allow at most 12 words per message and must fit complete reading/speech/event time. Every beat references one actual unit in order. Private messages must come from the phone owner or that thread's contact. No separate Narrator character; actual message speakers can have local voices. Contacts cannot duplicate the owner. Timestamps cannot move backward or cross midnight in this first version.
 
 Events occur **before** their associated message. Supported names: `switch`, `low_battery`, `glitch`, `blackout`, `time_jump`, `notification`; software inserts navigation on thread changes even when the writer omits `switch`. Battery/glitch must precede blackout in that beat or an earlier beat; a time jump must advance the actual story clock. Incoming notifications preview that beat's contact message. Do not put every event into every story. A three-hour jump is computed from the actual story timestamps, not a decorative label. Full reading holds are added after events, never stolen to squeeze the story into its time limit.
 

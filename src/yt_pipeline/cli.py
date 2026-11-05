@@ -72,7 +72,7 @@ def config_set(ws, path, value):
     if path=='gemini.thinking_level' and value not in ('low','medium','high'):raise ValueError('Choose low, medium or high.')
     if path=='openai.model' and not re.fullmatch(r'[A-Za-z0-9._-]{1,100}',value):raise ValueError('Set an explicit API model name.')
     if key=='max_output_tokens' and not 256<=value<=16384:raise ValueError('Use 256-16384 output tokens.')
-    if key=="publication_mode" and value not in ("disabled","private","scheduled"):raise ValueError("Use disabled, private or scheduled.")
+    if key=="publication_mode" and value not in ("disabled","private","public","scheduled"):raise ValueError("Use disabled, private, public or scheduled.")
     if key=='engine' and value not in ('piper','kokoro'):raise ValueError('Choose piper or kokoro')
     if key=='media_mode' and value not in ('stock','graphic'):raise ValueError('Choose stock or graphic')
     if key in ("daily_cap","requests_per_day") and not 1<=value<=100:raise ValueError("Use a daily cap from 1 to 100.")
@@ -111,6 +111,10 @@ def tick(ws, remote=False):
     uploads=[]
     for job in ws.jobs():
         profile=ws.config()["channels"][job["channel"]]
+        if job['request'].get('auto_publish') and job['status'] in ('ready','processing'):
+            from .production import finish_production
+            uploads.append(finish_production(ws,job['id']))
+            continue
         if profile.get("auto_private_upload") and profile["publication_mode"]=="private" and not profile["paused"] and job["status"]=="ready":
             try:
                 approve(ws,job["id"]);uploads.append(publish(ws,job["id"],apply=True))
@@ -140,6 +144,13 @@ def main():
     p=sub.add_parser('voice-setup');p.add_argument('--engine',choices=['piper','kokoro'],default='piper');p.add_argument('--voice',default='am_adam')
     config=sub.add_parser("config");config.add_argument("path");config.add_argument("value",help="JSON value, e.g. true, 4, or a quoted string")
     create=sub.add_parser("create");create.add_argument("channel",choices=["education","entertainment"]);create.add_argument("--request");create.add_argument("--topic")
+    p=sub.add_parser('produce');p.add_argument('--topic');p.add_argument('--genre',choices=['comedy','mystery','thriller','story'],default='comedy')
+    p.add_argument('--format',choices=['chat','phone'],default='chat');p.add_argument('--visibility',choices=['public','private','none'],default='public')
+    p.add_argument('--request');p.add_argument('--resume')
+    p=sub.add_parser('finish-production');p.add_argument('job')
+    p=sub.add_parser('music-library');p.add_argument('--install',action='store_true');p.add_argument('--key',action='append')
+    p=sub.add_parser('music-pick');p.add_argument('genre',choices=['comedy','mystery','thriller','story','cinematic','aura'])
+    p.add_argument('--selection-key',default='');p.add_argument('--avoid-recent',type=int,default=3);p.add_argument('--download-missing',action='store_true')
     for name in ("run","cancel","approve","reconcile"):
         p=sub.add_parser(name);p.add_argument("job")
     p=sub.add_parser('feedback');p.add_argument('job');p.add_argument('--verdict',choices=['accepted','rejected','needs_revision'],required=True);p.add_argument('--reason',required=True)
@@ -195,6 +206,27 @@ def main():
                 for key in ("brief_file","script_file"):
                     if request.get(key):request[key]=str((Path(args.request).resolve().parent/request[key]).resolve())
             result=ws.create(args.channel,request)
+        elif cmd=='produce':
+            from .production import create_production,run_production
+            from .core import digest
+            if args.resume:job=ws.get(args.resume)
+            else:
+                spec=json.loads(Path(args.request).read_text(encoding='utf-8')) if args.request else {}
+                if not isinstance(spec,dict):raise ValueError('Production request must be an object.')
+                job=create_production(ws,spec.get('topic',args.topic),spec.get('genre',args.genre),spec.get('format',args.format),
+                    spec.get('visibility',args.visibility),spec.get('request'),
+                    token=digest([str(Path(args.request).resolve()),spec]) if args.request else None)
+            print(json.dumps({'event':'production_started','job_id':job['id'],'resume_command':'produce --resume '+job['id']}),flush=True)
+            result=run_production(ws,job['id'])
+        elif cmd=='finish-production':
+            from .production import finish_production
+            result=finish_production(ws,args.job)
+        elif cmd=='music-library':
+            from .curated_music import music_catalog,install_music_catalog
+            result=install_music_catalog(ws,args.key) if args.install else music_catalog()
+        elif cmd=='music-pick':
+            from .curated_music import select_genre_music
+            result=select_genre_music(ws,args.genre,args.selection_key,args.avoid_recent,args.download_missing)
         elif cmd=="run":result=Pipeline(ws).run(args.job)
         elif cmd=='feedback':
             from .editorial import record_creative_feedback

@@ -22,7 +22,7 @@ def main():
     controls=Controls(ROOT);events=queue.Queue()
     frame=ttk.Frame(window,padding=18);frame.pack(fill='both',expand=True)
     ttk.Label(frame,text='YouTube Pipeline',font=('Segoe UI',18,'bold')).pack(anchor='w')
-    ttk.Label(frame,text='Runs on this PC. The selected text API writes stories; phone-screen editing is local. No narrator or assistant session needed.').pack(anchor='w',pady=(4,16))
+    ttk.Label(frame,text='Runs on this PC. The text API writes stories; local editing adds character voices and music.').pack(anchor='w',pady=(4,16))
     from yt_pipeline.batches import default_plan
     from shorts_editor.store import write_json
     starter=ROOT/'Resources/Plans/playbook-starter.json'
@@ -55,13 +55,28 @@ def main():
         status.set('Chat plan saved. Press Start batch: Gemini writes the conversation; the editor handles timing, visuals and sound.')
     ttk.Button(line,text='New chat',command=new_chat_plan).pack(side='left',padx=(8,0))
     ttk.Button(line,text='New phone story',command=lambda:new_chat_plan(True)).pack(side='left',padx=(8,0))
+    production=ttk.Frame(frame);production.pack(fill='x',pady=(12,0))
+    ttk.Label(production,text='Video topic:').pack(side='left',padx=(0,6))
+    topic_var=tk.StringVar();genre_var=tk.StringVar(value='comedy');format_var=tk.StringVar(value='chat');visibility_var=tk.StringVar(value='public')
+    ttk.Entry(production,textvariable=topic_var).pack(side='left',fill='x',expand=True,padx=(0,6))
+    ttk.Combobox(production,textvariable=genre_var,values=('comedy','mystery','thriller','story'),state='readonly',width=9).pack(side='left',padx=3)
+    ttk.Combobox(production,textvariable=format_var,values=('chat','phone'),state='readonly',width=6).pack(side='left',padx=3)
+    ttk.Combobox(production,textvariable=visibility_var,values=('public','private','none'),state='readonly',width=7).pack(side='left',padx=3)
+    def make_and_upload():
+        topic=topic_var.get().strip()
+        if not 1<=len(topic)<=180:messagebox.showerror('Video topic','Enter a topic of 1-180 characters.');return
+        spec={'topic':topic,'genre':genre_var.get(),'format':format_var.get(),'visibility':visibility_var.get()}
+        target=ROOT/'Resources/Plans'/('production-'+uuid.uuid4().hex[:16]+'.json')
+        write_json(target,spec)
+        plan.set(str(target));start('produce')
+    ttk.Button(production,text='Make + upload',command=make_and_upload).pack(side='left',padx=6)
     status=tk.StringVar(value='Stopped. Nothing runs until you press Start.')
     buttons=ttk.Frame(frame);buttons.pack(fill='x',pady=14)
     log=tk.Text(frame,wrap='word',font=('Consolas',9),height=18,state='disabled')
     def append(value):
         log.configure(state='normal');log.insert('end',redact(value)+'\n');log.see('end');log.configure(state='disabled')
     def start(mode):
-        try:process=controls.start(mode,plan.get() if mode.startswith('batch') else None)
+        try:process=controls.start(mode,plan.get() if mode.startswith('batch') or mode=='produce' else None)
         except Exception as exc:messagebox.showerror('Could not start',str(exc));return
         status.set('Running '+mode+'.');append('Started '+mode+'.')
         def read():
@@ -73,6 +88,12 @@ def main():
                         event=json.loads(value);result=event.get('result',{})
                         if isinstance(result,dict) and result.get('items'):
                             value='Batch '+result.get('status','')+' | '+' | '.join(r['id']+': '+r['status'] for r in result['items'])
+                        elif isinstance(result,dict) and result.get('publication'):
+                            publication=result['publication']
+                            value=publication.get('title','Video')+' | '+publication.get('status','')
+                            if publication.get('message'):value+=' | '+publication['message']
+                            if publication.get('url'):value+=' | '+publication['url']
+                        elif event.get('event')=='production_started':value='Production saved. Job '+event['job_id']+'; repeating the saved request resumes it.'
                         elif event.get('error'):value=event['error'].get('message',value)
                     except (ValueError,TypeError,KeyError):pass
                     events.put(('log',value))
@@ -80,6 +101,7 @@ def main():
             except Exception as exc:events.put(('done','Process output interrupted: '+str(exc)))
         threading.Thread(target=read,daemon=True).start()
     ttk.Button(buttons,text='Start batch',command=lambda:start('batch-run')).pack(side='left',padx=(0,8))
+    ttk.Button(buttons,text='Resume production',command=lambda:start('produce')).pack(side='left',padx=(0,8))
     ttk.Button(buttons,text='Pause after this video',command=lambda:status.set(controls.request_stop())).pack(side='left',padx=(0,8))
     def show_status():
         if controls.running:

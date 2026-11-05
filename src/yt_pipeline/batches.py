@@ -63,7 +63,7 @@ def default_chat_plan(resources_root=None,topic=None):
         'output_root':str(resources/'Productions'),'created_at':now(),
         'note':'Gemini writes the conversation only. Software controls portrait message editing, reading time, reactions and original sound effects. Test-only; publishing disabled.',
         'items':[{'id':'chat-short','kind':'playbook','playbook':'server_chat','channel':'entertainment','topic':topic.strip(),
-            'request':{'chat_editing_version':2,'chat_writing_version':2,'fiction':True,'test_only':True,'bottom_kind':'none','require_music':False,
+            'request':{'chat_editing_version':2,'chat_writing_version':2,'chat_voiceover':True,'chat_auto_music':True,'fiction':True,'test_only':True,'bottom_kind':'none','require_music':False,
                 'hook_options':False,'editorial_review':'off','visual_review':'off','chat_script_review':True}}]}
 
 
@@ -246,6 +246,9 @@ def _playbook_request(ws,item,folder):
     bottom_kind=request.get('bottom_kind','none')
     if bottom_kind not in rules['bottom']:raise Held('playbook_background','The selected playbook does not allow this lower-panel type')
     request['bottom_kind']=bottom_kind
+    if request.get('chat_auto_music') and not request.get('music_id'):
+        from .curated_music import select_genre_music
+        request['music_id']=select_genre_music(ws,request.get('chat_tone','thriller' if request.get('phone_story') else 'comedy'),selection_key=str(folder))['id']
     music_id=request.get('music_id')
     if (item['playbook']=='aura_progression' or request.get('require_music',True)) and not music_id:
         raise Held('playbook_music_missing','Select an explicit permitted format-matched music_id; no generic instrumental will be substituted')

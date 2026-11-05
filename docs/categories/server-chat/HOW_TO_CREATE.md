@@ -1,8 +1,10 @@
-# Create: original reading-led chat Shorts
+# Create: original chat Shorts
+
+New plans now enable [distinct character speech and background music](../../CHAT_AUDIO.md). The registered [genre library](../../MUSIC_LIBRARY_PLAYBOOK.md) supplies an offline track; install it with `music-library --install` on a new setup. Each message is spoken in its character's voice when first shown, with measured full-line holds, quiet cues and music ducking. Saved reading-led jobs remain unchanged. For a topic → titles/description → public-upload flow use [Make + upload / produce](../../AUTOMATIC_PRODUCTION.md); the preview steps below remain test-only.
 
 For multi-conversation phone fiction, see the new [phone-screen channel format](../phone-story/HOW_TO_CREATE.md). It shares the local editor and adds private histories, wallpapers, timestamps and phone events.
 
-Current route: `server_chat` with `chat_editing_version: 2`. Gemini writes the conversation; Python/Pillow/FFmpeg handles every edit. Output is **720x1280 (9:16)** by default, with two or three recurring fictional participants, a clean messenger-inspired app crop, measured scrolling bubbles, fixed contact/call/menu chrome, selected camera emphasis and soft local message sounds. No narrator, TTS, model director, generated photos, body/costume layer or lower panel is required.
+Current route: `server_chat` with `chat_editing_version: 2`. Gemini writes the conversation; Python/Pillow/FFmpeg handles every edit. Output is **720x1280 (9:16)** by default, with two or three recurring fictional participants, a clean messenger-inspired app crop, measured scrolling bubbles, fixed contact/call/menu chrome, selected camera emphasis and soft local message sounds. New plans add local character TTS and genre music. No separate narrator character, model director, generated photos, body/costume layer or lower panel is required.
 
 ## Use without Codex/ChatGPT
 
@@ -33,7 +35,7 @@ Choose a fresh plan filename/ID after changing an initialized plan. Missing keys
 
 The model does not supply a storyboard, camera instructions or audio plan. Normal chat timestamps are local defaults; phone stories can supply explicit fictional story times. V2 rejects legacy hook-alternative, director editorial-review and visual-review settings. New plans separately enable `chat_script_review`: writing-only critique, at most one revision and one recheck, without model editing calls. See [provider setup](../../TEXT_PROVIDERS.md). It also rejects factual-source requests: original fiction is the supported script-only route. No claim is made that these rules constitute an intelligent autonomous comedy critic.
 
-Contract: 12-22 complete messages, 40-100 words total (existing three-word tokenization tolerance), mostly 2-7 words and at most 12 words each. Actual complete reading duration must fit 18-55 seconds; excessive content holds instead of truncating a message or shrinking fonts. Current timing uses a bounded word/character reading estimate plus typing and payoff holds; it is not measured audience comprehension. `voice.json` retains the common timing-stage filename but explicitly records `narration: false`, reading holds and `original_local_chat_sfx`.
+Contract: 12-22 complete messages, 40-100 words total (existing three-word tokenization tolerance), mostly 2-7 words and at most 12 words each. Actual complete reading duration must fit 18-55 seconds; excessive content holds instead of truncating a message or shrinking fonts. Current timing uses a bounded word/character reading estimate plus typing and payoff holds; it is not measured audience comprehension. `voice.json` retains the common timing-stage filename. Reading-only requests record `narration: false`; voiced requests record the actual cast, complete speech boundaries, mixed music provenance and `narration: true`. New writing-v2 bounds are 8-20 messages, 35-105 words and 12-55 seconds; this paragraph's older 12-message/18-second bounds describe writing v1.
 
 ## Optional real-photo avatars
 

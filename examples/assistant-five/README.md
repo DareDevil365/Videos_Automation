@@ -2,6 +2,8 @@
 
 The owner explicitly requested assistant authorship instead of Gemini, then clarified: use the existing production toolbox and permitted stock/GIF/art assets; do not use image/video-generation services. All five outputs are portrait 720x1280, local and test-only.
 
+Audio revision: the three chat outputs now have distinct local character voices and genre-matched music, with [provided title/description alternatives](publication) that use the same grounded packaging contract as automatic production. The builder uses the installed curated music library; no text/visual-generation service is invoked for this batch. Notifications are voiced once at first visibility. Original unvoiced jobs remain preserved as revision ancestors. See [character-audio behavior](../../docs/CHAT_AUDIO.md).
+
 | Script | Writing construction | Toolbox production |
 | --- | --- | --- |
 | [The Family Group](comedy-chat.json) | Literal interpretation invites a boss into a candidly named group; the boss repeats the same mistake upward. The ending escalates the planted mechanism. | Group chat, matching actual header, names, restrained cues and a public-domain animated cat reaction |

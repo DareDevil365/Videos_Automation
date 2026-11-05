@@ -13,8 +13,9 @@ def elapsed_text(previous, current):
     return f'{difference} min later'
 
 
-def story_frame(script, index, second, duration, typing, avatars=None, wallpapers=None,attachments=None):
+def story_frame(script, index, second, duration, typing, avatars=None, wallpapers=None,attachments=None,timed_beat=None):
     story=script['phone_story'];beats=compile_beats(script);beat=beats[index]
+    if timed_beat is not None:beat={**beat,'prefix_seconds':timed_beat['prefix_seconds'],'events':timed_beat['screen_events']}
     thread=next(t for t in story['threads'] if t['id']==beat['thread_id'])
     contact=next(c for c in story['contacts'] if c['id']==thread['contact_id'])['name']
     # Include only already reached messages from THIS private thread. Returning

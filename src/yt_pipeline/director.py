@@ -35,7 +35,10 @@ def direct(workspace, job, script, timing, visuals):
                 'inputs':{'background':bottom['path'] if bottom else asset['path'],**({'foreground':asset['path']} if bottom else {})}})
         inputs={'narration':timing['audio']}
         music_id=request.get('music_id')
-        if rules['music']['volume'] and not music_id and request.get('require_music',True):
+        if timing.get('mixed_music_id'):
+            provenance.append(asset_record(workspace,timing['mixed_music_id']))
+            music_id=None # Chat's measured mix already ducks speech and silences blackouts.
+        if rules['music']['volume'] and not music_id and not timing.get('mixed_music_id') and request.get('require_music',True):
             raise Held('playbook_music_missing','Select a permitted music asset matching this format; the rejected generic instrumental is not an automatic fallback')
         if music_id:
             music=asset_record(workspace,music_id)

@@ -1,0 +1,79 @@
+{
+  "titles": [
+    {
+      "title": "Someone Had My Daughter's Bag. It Wasn't at the Bus Stop.",
+      "angle": "curiosity",
+      "evidence": [
+        {
+          "unit_id": "u1",
+          "quote": "Your daughter's blue backpack is at the bus stop."
+        },
+        {
+          "unit_id": "u6",
+          "quote": "Mum put it in the garage donation box."
+        },
+        {
+          "unit_id": "u17",
+          "quote": "Stop making her look for me."
+        }
+      ]
+    },
+    {
+      "title": "The Stranger Knew About Her Blue Backpack",
+      "angle": "curiosity",
+      "evidence": [
+        {
+          "unit_id": "u1",
+          "quote": "Your daughter's blue backpack is at the bus stop."
+        },
+        {
+          "unit_id": "u6",
+          "quote": "Mum put it in the garage donation box."
+        },
+        {
+          "unit_id": "u17",
+          "quote": "Stop making her look for me."
+        }
+      ]
+    },
+    {
+      "title": "A Text About a Lost Bag Changed Everything",
+      "angle": "emotional",
+      "evidence": [
+        {
+          "unit_id": "u1",
+          "quote": "Your daughter's blue backpack is at the bus stop."
+        },
+        {
+          "unit_id": "u6",
+          "quote": "Mum put it in the garage donation box."
+        },
+        {
+          "unit_id": "u17",
+          "quote": "Stop making her look for me."
+        }
+      ]
+    }
+  ],
+  "selected_index": 0,
+  "description": "An unknown sender claims to have a daughter's blue backpack at the bus stop. Her father checks with his family, and one ordinary detail makes the message much more disturbing.",
+  "description_evidence": [
+    {
+      "unit_id": "u1",
+      "quote": "Your daughter's blue backpack is at the bus stop."
+    },
+    {
+      "unit_id": "u6",
+      "quote": "Mum put it in the garage donation box."
+    },
+    {
+      "unit_id": "u17",
+      "quote": "Stop making her look for me."
+    }
+  ],
+  "keywords": [
+    "blue backpack",
+    "unknown sender"
+  ],
+  "reason": "A specific situation from this story opens an honest question without claiming measured reach."
+}

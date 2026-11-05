@@ -1,4 +1,4 @@
-"""Reading-led portrait chat: model supplies dialogue; code supplies every edit."""
+"""Portrait chat: exact dialogue, measured optional cast speech and local editing."""
 from array import array
 import math
 from pathlib import Path
@@ -28,6 +28,10 @@ def compile_chat_plan(script,request):
     plan={'version':2,'template':'server_chat_v2','cast':[{'id':f'p{i+1}','speaker':s,'avatar_kind':'chat_avatar','voice_id':''} for i,s in enumerate(speakers)],
         'scenes':scenes,'comment_question':'','script_sha256':digest(script),
         'editing_policy':'Clean mobile messenger crop, readable bubbles, real scrolling, local camera emphasis and soft cue audio. No model timing/camera/sound decisions.'}
+    if request.get('chat_voiceover'):
+        from .phone_editor.audio import cast_voices
+        voices=cast_voices(script,request)
+        for character in plan['cast']:character['voice_id']=voices[character['speaker']]
     if script.get('phone_story'):plan['phone_timeline']=compile_beats(script)
     return {'plan':plan,'script_sha256':digest(script),'origin':'compiled_chat_rules_v2','repairs':0,
         'review_note':'Structural code checks only. This is not a model or owner opinion about humor.'}
@@ -37,18 +41,45 @@ def reading_timing(ws,job,script,folder):
     """Frame-clock reading durations and locally synthesized original sound effects."""
     from .playbooks import get_playbook
     folder=Path(folder);folder.mkdir(parents=True,exist_ok=True);rows=[];cursor=0
+    speech=None
+    if job['request'].get('chat_voiceover',False):
+        from .phone_editor.audio import character_speech
+        speech=character_speech(ws,job,script,folder/'characters')
+    spoken={u['id']:u for u in speech['units']} if speech else {}
     beats=compile_beats(script) if script.get('phone_story') else None
+    pauses=job['request'].get('chat_pause_before',{})
+    if set(pauses)-{u['id'] for u in script['units']}:raise Held('chat_timing','An anticipation pause references an unknown message.')
     for index,unit in enumerate(script['units']):
         typing=0 if index==0 else .38 if index==len(script['units'])-1 else .16
+        extra=pauses.get(unit['id'],0)
+        if type(extra) not in (int,float) or not math.isfinite(extra) or not 0<=extra<=1.5:raise Held('chat_timing','Keep anticipation pauses within 0-1.5 seconds.')
+        typing+=extra
         hold=max(1.05,len(unit['text'].split())/3.8+.25,len(unit['text'])/24+.25)
+        clip=spoken.get(unit['id'])
+        events=[dict(e) for e in beats[index]['events']] if beats else []
+        notification=next((e for e in events if e['type']=='notification'),None)
+        if clip and notification:
+            if extra:raise Held('chat_timing','Use anticipation pauses on chat bubbles; an incoming notification already reveals its message.')
+            # A notification already reveals this exact message. Speak it here
+            # once and keep that first visible surface through the full line.
+            extension=max(0,.06+clip['metrics']['duration']+.26-(notification['end']-notification['start']))
+            old_end=notification['end'];notification['end']+=extension
+            for event in events:
+                if event is not notification and event['start']>=old_end:event['start']+=extension;event['end']+=extension
+            typing=0
+        elif clip:hold=max(hold,.06+clip['metrics']['duration']+.26)
         if unit['id'] in job['request'].get('chat_attachment_ids',{}):hold=max(hold,3.0)
         if index==len(script['units'])-1:hold+=.65
-        prefix=beats[index]['prefix_seconds'] if beats else 0
+        prefix=events[-1]['end'] if events else 0
         seconds=math.ceil((prefix+typing+hold)*30)/30
         rows.append({'id':unit['id'],'speaker':unit['speaker'],'text':unit['text'],'start':cursor,
             'speech_end':cursor+seconds,'end':cursor+seconds,'duration':seconds,'typing_seconds':typing,
             'arrival':cursor+prefix+typing,'hold_seconds':seconds-prefix-typing,
-            'prefix_seconds':prefix,'screen_events':beats[index]['events'] if beats else []})
+            'prefix_seconds':prefix,'screen_events':events})
+        onset=cursor+(notification['start'] if notification else prefix+typing)+.06
+        if clip:rows[-1].update(speech_start=onset,
+            speech_end=onset+clip['metrics']['duration'],speech_display='notification' if notification else 'bubble',
+            voice_id=clip['voice_id'],file=clip['file'],speech_metrics=clip['metrics'])
         cursor+=seconds
     minimum,maximum=get_playbook('server_chat',job['request'])['seconds']
     if not minimum<=cursor<=maximum:
@@ -68,6 +99,14 @@ def reading_timing(ws,job,script,folder):
     for index,row in enumerate(rows):
         notification=next((e for e in row['screen_events'] if e['type']=='notification'),None)
         soft_pop(row['start']+notification['start'] if notification else row['arrival'],row['speaker']==outgoing,index==len(rows)-1)
+    speech_meta={}
+    if speech:
+        from .phone_editor.audio import place_speech
+        speech_meta=place_speech(speech,samples,rate,rows)
+    music_meta={}
+    if job['request'].get('music_id'):
+        from .phone_editor.audio import mix_music
+        music_meta=mix_music(ws,job,samples,rate,rows)
     output=folder/'chat-sound.wav';temporary=folder/'chat-sound.partial.wav'
     with wave.open(str(temporary),'wb') as wav:
         wav.setnchannels(1);wav.setsampwidth(2);wav.setframerate(rate);wav.writeframes(samples.tobytes())
@@ -76,14 +115,17 @@ def reading_timing(ws,job,script,folder):
         'audio':str(output),'duration':len(samples)/rate,'units':rows,'model_sha256':digest('chat-soft-message-pop-v3'),
         'sound_design':'One quiet rounded message pop per arrival, distinct incoming/outgoing pitch; no repeated typing chirps or sharp notification stack.',
         'caption_alignment':'Exact complete message text with code-measured reading holds; no invented speech alignment.',
-        'editing_origin':'compiled_chat_rules_v2','narration':False,
-        'limits':['Reading time is a bounded heuristic, not measured audience comprehension.','No voiceover, copied creator audio or model editing calls.']}
+        'editing_origin':'compiled_chat_rules_v2','narration':bool(speech),**speech_meta,**music_meta,
+        'limits':['Reading time is a bounded heuristic, not measured audience comprehension.','Local synthetic character voices do not guarantee expressive acting. No copied creator audio or model editing calls.']}
+    if speech:result.update(voice='distinct local character voices',source='local_cast_speech_and_chat_sfx',
+        caption_alignment='Exact message appears before complete character speech on its first visible bubble or notification; names/timestamps are not spoken and previews are not voiced twice.',
+        model_sha256=digest(['chat-cast-audio-v1',speech_meta,music_meta]))
     write_json(folder/'timing.json',result);return result
 
 
 def render_chat_message(script,index,spoken,path,avatars=None,wallpapers=None,attachments=None,group_name=None):
     path=Path(path);duration=spoken['duration'];typing=spoken['typing_seconds']
-    render=(lambda second: story_frame(script,index,second,duration,typing,avatars,wallpapers,attachments)) if script.get('phone_story') else (lambda second: chat_frame(script,index,second,duration,typing,avatars,{'attachments':attachments or {},**({'contact':group_name} if group_name else {})}))
+    render=(lambda second: story_frame(script,index,second,duration,typing,avatars,wallpapers,attachments,spoken)) if script.get('phone_story') else (lambda second: chat_frame(script,index,second,duration,typing,avatars,{'attachments':attachments or {},**({'contact':group_name} if group_name else {})}))
     hold_time=min(duration-.51,spoken.get('prefix_seconds',0)+typing+1.12)
     poster,meta=render(hold_time);poster.save(path.with_suffix('.png'))
     partial=path.with_suffix('.partial.mp4');log=path.with_suffix('.ffmpeg.log')
@@ -150,6 +192,6 @@ def build_chat_visuals(ws,job,script,timing,folder,record):
         'planned_provenance':provenance,'selected_media':[],'source_bindings':[],'editing_origin':record['origin'],
         'creative_plan_sha256':digest(plan)}
     result['chat_editing']={'status':'pass','origin':'compiled_chat_rules_v2','message_count':len(rows),
-        'canvas':[720,1280],'timing':'frame-clock reading holds','narration':False,'editing_model_calls':0,
+        'canvas':[720,1280],'timing':'frame-clock holds extended for complete character speech' if timing.get('narration') else 'frame-clock reading holds','narration':timing.get('narration',False),'editing_model_calls':0,
         'limits':'Structural rendering checks, not a humor, comprehension or audience-quality score.'}
     write_json(folder/'visuals.json',result);return result

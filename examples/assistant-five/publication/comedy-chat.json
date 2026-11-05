@@ -1,0 +1,79 @@
+{
+  "titles": [
+    {
+      "title": "I Added My Boss to the Wrong Group Chat",
+      "angle": "curiosity",
+      "evidence": [
+        {
+          "unit_id": "u1",
+          "quote": "Theo. Why is my boss here?"
+        },
+        {
+          "unit_id": "u5",
+          "quote": "Look at the group name."
+        },
+        {
+          "unit_id": "u12",
+          "quote": "I've added my boss."
+        }
+      ]
+    },
+    {
+      "title": "The Group Chat Was Too Honest",
+      "angle": "curiosity",
+      "evidence": [
+        {
+          "unit_id": "u1",
+          "quote": "Theo. Why is my boss here?"
+        },
+        {
+          "unit_id": "u5",
+          "quote": "Look at the group name."
+        },
+        {
+          "unit_id": "u12",
+          "quote": "I've added my boss."
+        }
+      ]
+    },
+    {
+      "title": "He Invited His Boss Too",
+      "angle": "emotional",
+      "evidence": [
+        {
+          "unit_id": "u1",
+          "quote": "Theo. Why is my boss here?"
+        },
+        {
+          "unit_id": "u5",
+          "quote": "Look at the group name."
+        },
+        {
+          "unit_id": "u12",
+          "quote": "I've added my boss."
+        }
+      ]
+    }
+  ],
+  "selected_index": 0,
+  "description": "One family-group invitation brings a boss into a brutally honest chat. Then the boss decides to invite someone too.",
+  "description_evidence": [
+    {
+      "unit_id": "u1",
+      "quote": "Theo. Why is my boss here?"
+    },
+    {
+      "unit_id": "u5",
+      "quote": "Look at the group name."
+    },
+    {
+      "unit_id": "u12",
+      "quote": "I've added my boss."
+    }
+  ],
+  "keywords": [
+    "group chat",
+    "boss"
+  ],
+  "reason": "A specific situation from this story opens an honest question without claiming measured reach."
+}

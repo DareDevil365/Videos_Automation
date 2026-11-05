@@ -15,6 +15,9 @@ def command(root,mode,plan=None,stop_file=None):
         args.append(mode)
         if plan:args+=['--plan',str(Path(plan).resolve())]
         if mode=='batch-run' and stop_file:args+=['--stop-file',str(stop_file)]
+    elif mode=='produce':
+        if not plan:raise ValueError('Choose a production request file.')
+        args+=['produce','--request',str(Path(plan).resolve())]
     elif mode=='generation-setup':args+=['generation-setup','--browser','brave']
     elif mode=='doctor':args+=['doctor']
     else:raise ValueError('Unknown standalone operation')
@@ -44,6 +47,6 @@ class Controls:
     def request_stop(self):
         if not self.running:return 'No task is running.'
         if self.mode!='batch-run':
-            return 'Close the dedicated setup browser to finish saving its session. No generation queue is active.' if self.mode=='generation-setup' else 'The status/setup check is finishing; no video queue is active.'
+            return 'This one-video production is finishing. Keep the window open; resume its saved request if interrupted.' if self.mode=='produce' else 'Close the dedicated setup browser to finish saving its session. No generation queue is active.' if self.mode=='generation-setup' else 'The status/setup check is finishing; no video queue is active.'
         self.stop_file.write_text('Pause after the current video. Do not start another job.\n',encoding='utf-8')
         return 'Pause requested. The current video may finish; the next video will not start.'

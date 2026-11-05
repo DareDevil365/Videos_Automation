@@ -1,0 +1,79 @@
+{
+  "titles": [
+    {
+      "title": "Dad Kept Buying Two Coffees. I Finally Understood Why.",
+      "angle": "curiosity",
+      "evidence": [
+        {
+          "unit_id": "u1",
+          "quote": "Dad, why are you buying two coffees again?"
+        },
+        {
+          "unit_id": "u7",
+          "quote": "Please check on Dad. He's expecting Mum."
+        },
+        {
+          "unit_id": "u18",
+          "quote": "I'll order a fresh one."
+        }
+      ]
+    },
+    {
+      "title": "Who Was Dad's Second Coffee For?",
+      "angle": "curiosity",
+      "evidence": [
+        {
+          "unit_id": "u1",
+          "quote": "Dad, why are you buying two coffees again?"
+        },
+        {
+          "unit_id": "u7",
+          "quote": "Please check on Dad. He's expecting Mum."
+        },
+        {
+          "unit_id": "u18",
+          "quote": "I'll order a fresh one."
+        }
+      ]
+    },
+    {
+      "title": "The Coffee Waiting at the Station",
+      "angle": "emotional",
+      "evidence": [
+        {
+          "unit_id": "u1",
+          "quote": "Dad, why are you buying two coffees again?"
+        },
+        {
+          "unit_id": "u7",
+          "quote": "Please check on Dad. He's expecting Mum."
+        },
+        {
+          "unit_id": "u18",
+          "quote": "I'll order a fresh one."
+        }
+      ]
+    }
+  ],
+  "selected_index": 0,
+  "description": "Leah thinks she knows why her dad still orders two coffees. A message from the station cafe makes her change her journey home.",
+  "description_evidence": [
+    {
+      "unit_id": "u1",
+      "quote": "Dad, why are you buying two coffees again?"
+    },
+    {
+      "unit_id": "u7",
+      "quote": "Please check on Dad. He's expecting Mum."
+    },
+    {
+      "unit_id": "u18",
+      "quote": "I'll order a fresh one."
+    }
+  ],
+  "keywords": [
+    "second coffee",
+    "dad"
+  ],
+  "reason": "A specific situation from this story opens an honest question without claiming measured reach."
+}

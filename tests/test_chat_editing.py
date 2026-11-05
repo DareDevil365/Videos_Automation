@@ -72,6 +72,8 @@ def test_full_program_uses_only_writer_no_model_director_or_tts(tmp_path):
 def test_chat_plan_is_standalone_and_preflights_without_sources_or_models(tmp_path):
     from yt_pipeline.batches import default_chat_plan,_playbook_request
     ws=Workspace(tmp_path/'ws');plan=default_chat_plan(tmp_path/'Resources','A short fictional roommate argument')
+    assert plan['items'][0]['request']['chat_auto_music'] and plan['items'][0]['request']['chat_voiceover']
+    plan['items'][0]['request']['chat_auto_music']=False # Offline content-only preflight remains available.
     req=_playbook_request(ws,plan['items'][0],tmp_path/'item')
     assert req['chat_editing_version']==2 and req['visual_review']=='off' and req['editorial_review']=='off'
     assert req['hook_options'] is False and req['test_only'] is True and req['require_music'] is False

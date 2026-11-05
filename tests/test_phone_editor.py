@@ -46,6 +46,8 @@ def phone_script():
 def phone_request(tmp_path):
     plan=default_phone_plan(tmp_path/'Resources')
     plan['items'][0]['request']['chat_writing_version']=1
+    plan['items'][0]['request']['chat_voiceover']=False # This fixture covers the legacy reading-led path.
+    plan['items'][0]['request']['chat_auto_music']=False
     return _playbook_request(Workspace(tmp_path/'ws'),plan['items'][0],tmp_path/'item')
 
 

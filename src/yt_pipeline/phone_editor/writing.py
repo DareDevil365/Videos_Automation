@@ -37,7 +37,9 @@ def draft_schema(schema):
 
 
 def writing_context(brief,request,rules,feedback):
+    from ..writing_craft import craft_context
     return {'topic':request.get('topic',brief.get('title','')),'tone':request.get('chat_tone','thriller' if request.get('phone_story') else 'comedy'),
+        'writing_skill':craft_context(request.get('chat_tone','thriller' if request.get('phone_story') else 'comedy'),'phone' if request.get('phone_story') else 'chat'),
         'owner_constraints':str(request.get('creative_brief',''))[:2000],'owner_feedback':feedback,
         'conversation_mode':'private threads' if request.get('phone_story') else 'group' if request.get('chat_group_name') else 'conversation','group_name':request.get('chat_group_name',''),
         'bounds':{k:rules[k] for k in ('words','units','seconds')},'format_rules':rules['writing'],
@@ -70,9 +72,10 @@ def validate_anchors(script,development):
 
 
 def diagnose(provider,script,tone):
+    from ..writing_craft import craft_context
     # No title, hook/payoff metadata, writer explanation or favorable prior verdict.
     # This is a fresh text-only call, not an independent human/model-family judge.
-    content={'tone':tone,'messages':[{'id':u['id'],'speaker':u['speaker'],'text':u['text']} for u in script['units']],
+    content={'tone':tone,'writing_skill':craft_context(tone),'messages':[{'id':u['id'],'speaker':u['speaker'],'text':u['text']} for u in script['units']],
         'task':'Read this unlabelled conversation as a cold reader. Reconstruct its specific opening question and actual ending answer. '
         'List every missing assumption a viewer must invent. Then assess ALL seven criteria with an exact existing message quote each. '
         'opening: specific intelligible curiosity, not compulsory danger/contradiction. cause: explain why this behavior happens and why now; identity alone is not motive. '

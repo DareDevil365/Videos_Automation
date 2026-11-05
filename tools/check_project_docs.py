@@ -13,6 +13,7 @@ def main():
     files = sorted({*ROOT.glob('*.md'), *ROOT.glob('docs/**/*.md'),
                     *ROOT.glob('agents/**/*.md'), *ROOT.glob('research/**/*.md'),
                     *ROOT.glob('examples/**/*.md'), *ROOT.glob('tools/*.md'),
+                    *ROOT.glob('src/yt_pipeline/skills/**/*.md'),
                     *ROOT.glob('tests/*.md'), *ROOT.glob('Resources/**/README.md')})
     problems = []
     links = 0

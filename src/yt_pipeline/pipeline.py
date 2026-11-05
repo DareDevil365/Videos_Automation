@@ -138,7 +138,7 @@ class Pipeline:
                     result['asset_review']=results['visuals'].get('asset_review',{'status':'not_requested'})
                     if results['visuals'].get('chat_editing'):result['chat_editing']=results['visuals']['chat_editing']
                 elif stage=="quality":result=inspect_render(ws,job,results["research"],results["script"],results["voice"],results["direct"],results["render"])
-                else:result=package(ws,job,results["research"],results["script"],results["voice"],results["direct"],results["render"],results["quality"])
+                else:result=package(ws,job,results["research"],results["script"],results["voice"],results["direct"],results["render"],results["quality"],provider=self.provider)
                 if ws.get(job_id)["status"]=="cancelled":raise Held("cancelled","Job cancelled before stage completion was committed.")
                 path=folder/(stage+".json");write_json(path,result)
                 artifacts=ws.get(job_id)["artifacts"]

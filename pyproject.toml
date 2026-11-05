@@ -25,6 +25,7 @@ where = ["src"]
 
 [tool.setuptools.package-data]
 shorts_editor = ["web/*"]
+yt_pipeline = ["music_catalog.json", "skills/short-video-writing/SKILL.md", "skills/short-video-writing/references/*.md", "skills/short-video-writing/agents/*.yaml"]
 
 [tool.pytest.ini_options]
 pythonpath = ["src"]

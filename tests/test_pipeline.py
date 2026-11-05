@@ -222,7 +222,8 @@ def test_research_rejects_private_or_unsafe_sources(url):
 def test_config_types_and_credentials_not_config(ws):
     with pytest.raises(ValueError):config_set(ws,'gemini.key','secret')
     with pytest.raises(ValueError):config_set(ws,'channels.education.daily_cap',True)
-    with pytest.raises(ValueError):config_set(ws,'channels.education.publication_mode','public')
+    assert config_set(ws,'channels.education.publication_mode','public')['value']=='public'
+    with pytest.raises(ValueError):config_set(ws,'channels.education.publication_mode','unknown')
     config_set(ws,'channels.education.paused',True)
     assert ws.config()['channels']['education']['paused']
 

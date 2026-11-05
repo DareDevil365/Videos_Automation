@@ -10,6 +10,10 @@ Code inspection also found actual prompt conflicts: chat writing inherited gener
 
 ## What changed
 
+Subsequent skill/audio update: the original [short-video-writing skill](../src/yt_pipeline/skills/short-video-writing/SKILL.md) is now packaged and loaded by `writing_craft.craft_context` into writer prompts and the cold-reader's genre guidance. Selected references cover comic mechanism and comedic timing, fair mystery cause/knowledge/reveal, emotional choice, honest aura captions and factual explanation. [Timing guidance](../src/yt_pipeline/skills/short-video-writing/references/timing.md) separates script rhythm from actual speech/reading duration. The same skill is installed for Codex, but the program reads its bundled copy directly and does not depend on Codex running.
+
+Discovery surveyed skills.sh and Skills CLI searches for screenwriting/comedy and creative-writing/storytelling. They returned screenwriting subskills and a general creative-writing coach, among others. Search/install counts are not behavioral evidence; no external skill was installed or copied wholesale. A focused original skill was created for the actual local JSON contracts, earlier failures and genre/editor constraints. Its frontmatter/references validate. New live Gemini quality and audience response remain unmeasured.
+
 New `chat-plan` / `phone-plan` requests select **`chat_writing_version: 2`**. Existing requests without that field keep version 1. Both use the local chat editor; this writing version does not restore a model director.
 
 1. **Develop the ending before the dialogue.** One writing request returns three compact story sketches, selects one, and writes its conversation. Sketches record the situation, competing wants, opening, early plant, ending, cause and mechanism. Software checks that the selected opening/ending and early plant actually appear. This is writer selection, not an independent quality vote. No three full scripts or extra concept-selection call is required.

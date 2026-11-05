@@ -142,6 +142,15 @@ def prepare_request(request):
         if value.get('phone_story') and version!=2:raise Held('phone_story','Phone stories require the local v2 editor.')
         if value.get('chat_tone','comedy') not in ('comedy','mystery','thriller','story'):raise Held('chat_config','Choose comedy, mystery or thriller tone.')
         if type(value.get('chat_script_review',False)) is not bool:raise Held('chat_config','chat_script_review must be a boolean.')
+        if type(value.get('chat_voiceover',False)) is not bool:raise Held('chat_voice','chat_voiceover must be a boolean.')
+        if type(value.get('chat_auto_music',False)) is not bool:raise Held('chat_music','chat_auto_music must be a boolean.')
+        pauses=value.get('chat_pause_before',{})
+        if not isinstance(pauses,dict) or len(pauses)>26 or any(not isinstance(k,str) or type(v) not in (int,float) or not 0<=v<=1.5 for k,v in pauses.items()):raise Held('chat_timing','Message anticipation pauses must map message IDs to 0-1.5 seconds.')
+        voices=value.get('chat_voice_ids',{})
+        if not isinstance(voices,dict) or len(voices)>6 or any(not isinstance(k,str) or not isinstance(v,str) or not v for k,v in voices.items()):raise Held('chat_voice','Map up to six actual character names to installed voice IDs.')
+        if value.get('chat_voiceover') and version!=2:raise Held('chat_voice','Character speech needs the compiled chat editor.')
+        volume=value.get('chat_music_volume',.20)
+        if type(volume) not in (int,float) or not 0<=volume<=.35:raise Held('chat_music','Keep chat background music between 0 and 0.35.')
         if not isinstance(value.get('chat_attachment_ids',{}),dict) or len(value.get('chat_attachment_ids',{}))>8:raise Held('chat_attachment','Use a mapping of at most eight message IDs to registered GIF/image IDs.')
         if value.get('chat_group_name') is not None and (not isinstance(value['chat_group_name'],str) or not 1<=len(value['chat_group_name'])<=40):raise Held('chat_config','Use a short actual conversation name.')
         if not isinstance(value.get('phone_wallpaper_ids',{}),dict) or len(value.get('phone_wallpaper_ids',{}))>5:raise Held('phone_wallpaper','Supply at most five registered thread wallpaper IDs.')
@@ -185,6 +194,8 @@ def get_playbook(name,request=None):
 
 def writing_prompt(name,request=None):
     value=get_playbook(name,request)
+    from .writing_craft import craft_context
+    value['writing_skill']=craft_context((request or {}).get('chat_tone',(request or {}).get('story_tone','comedy' if name in ('server_chat','cutout_ensemble') else name)),value['format'])
     if name=='server_chat' and (request or {}).get('chat_editing_version')==2:
         return {**value,'task':'Write only the complete conversation in the script JSON contract. The hook equals the first actual message, and onscreen equals text for every message. Do not create a storyboard or timing. The software compiles all editing without another model call.',
             'editorial_policy':'One writing call, at most one structural repair. Optional writing-only critique allows at most one revision and one recheck; software still owns all edits. Structural checks/model opinions cannot certify humor or viewer response.'}

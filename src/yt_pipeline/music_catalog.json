@@ -1,0 +1,467 @@
+{
+  "version": 1,
+  "checked_on": "2026-11-05",
+  "purpose": "Permitted downloadable background music for the software editor; fit and popularity evidence kept separate.",
+  "selection_policy": "Prefer eligible installed tracks matching genre, avoid recent job soundtrack IDs when alternatives exist, then rotate deterministically from job/selection key. Explicit music_id overrides remain caller-owned.",
+  "tracks": [
+    {
+      "key": "mixkit-595",
+      "title": "Secret Garden",
+      "artist": "Eugenio Mininni",
+      "source_url": "https://mixkit.co/free-stock-music/tag/comedy/",
+      "download_url": "https://assets.mixkit.co/music/595/595.mp3",
+      "license": "Mixkit Stock Music Free License",
+      "license_url": "https://mixkit.co/license/#musicFree",
+      "sha256": "fda04cb4597c1ffd80d14ce82a74f6938c657952647dc50889138cd3e4903034",
+      "source_metadata_url": "https://mixkit.co/free-stock-music/tag/comedy/",
+      "license_terms_url": "https://mixkit.co/license/modal/musicFree/",
+      "attribution": "Secret Garden by Eugenio Mininni, Mixkit Stock Music Free License: https://mixkit.co/free-stock-music/tag/comedy/",
+      "attribution_required": false,
+      "genres": [
+        "comedy"
+      ],
+      "priority": 2,
+      "dialogue_music_volume": 0.08,
+      "montage_music_volume": 0.08,
+      "fit_note": "Light, mischievous dialog comedy; restrained plucked pulse.",
+      "fit_evidence": "Editorial hypothesis from source genre, instrumentation/mood and intended story role; no owner listening approval or performance test.",
+      "edit_notes": "Start with a short fade; keep speech dominant, duck during lines, retain deliberate silence at reveals. Select an actual phrase/beat from the chosen file; excerpt timing is not pre-certified.",
+      "popularity": {
+        "status": "unverified",
+        "claim": "No track-specific popularity or audience-performance evidence collected; do not label trending or proven."
+      },
+      "restrictions": "Use as part of video; no standalone/music-only redistribution, rights-management registration, games or TV/radio use under this license.",
+      "recommended_excerpt_start": 0,
+      "excerpt_status": "Starting suggestion, not an auditioned or beat-verified timestamp."
+    },
+    {
+      "key": "mixkit-2",
+      "title": "Comical",
+      "artist": "Ahjay Stelino",
+      "source_url": "https://mixkit.co/free-stock-music/tag/comedy/",
+      "download_url": "https://assets.mixkit.co/music/2/2.mp3",
+      "license": "Mixkit Stock Music Free License",
+      "license_url": "https://mixkit.co/license/#musicFree",
+      "sha256": "2f5ed23f2c51b5aa28b237563ee1249d12094fefce7afdaddee4f5a330e010cb",
+      "source_metadata_url": "https://mixkit.co/free-stock-music/tag/comedy/",
+      "license_terms_url": "https://mixkit.co/license/modal/musicFree/",
+      "attribution": "Comical by Ahjay Stelino, Mixkit Stock Music Free License: https://mixkit.co/free-stock-music/tag/comedy/",
+      "attribution_required": false,
+      "genres": [
+        "comedy"
+      ],
+      "priority": 3,
+      "dialogue_music_volume": 0.07,
+      "montage_music_volume": 0.07,
+      "fit_note": "Broad, playful reaction comedy; avoid under a serious danger reveal.",
+      "fit_evidence": "Editorial hypothesis from source genre, instrumentation/mood and intended story role; no owner listening approval or performance test.",
+      "edit_notes": "Start with a short fade; keep speech dominant, duck during lines, retain deliberate silence at reveals. Select an actual phrase/beat from the chosen file; excerpt timing is not pre-certified.",
+      "popularity": {
+        "status": "unverified",
+        "claim": "No track-specific popularity or audience-performance evidence collected; do not label trending or proven."
+      },
+      "restrictions": "Use as part of video; no standalone/music-only redistribution, rights-management registration, games or TV/radio use under this license.",
+      "recommended_excerpt_start": 0,
+      "excerpt_status": "Starting suggestion, not an auditioned or beat-verified timestamp."
+    },
+    {
+      "key": "mixkit-188",
+      "title": "Echoes",
+      "artist": "Andrew Ev",
+      "source_url": "https://mixkit.co/free-stock-music/tag/mystery/",
+      "download_url": "https://assets.mixkit.co/music/188/188.mp3",
+      "license": "Mixkit Stock Music Free License",
+      "license_url": "https://mixkit.co/license/#musicFree",
+      "sha256": "49842074dc06f05a40690c2b3af42bd32be76a5f6505a65cfe952b2fe1ccb5de",
+      "source_metadata_url": "https://mixkit.co/free-stock-music/tag/mystery/",
+      "license_terms_url": "https://mixkit.co/license/modal/musicFree/",
+      "attribution": "Echoes by Andrew Ev, Mixkit Stock Music Free License: https://mixkit.co/free-stock-music/tag/mystery/",
+      "attribution_required": false,
+      "genres": [
+        "mystery",
+        "thriller"
+      ],
+      "priority": 1,
+      "dialogue_music_volume": 0.08,
+      "montage_music_volume": 0.08,
+      "fit_note": "Sparse atmospheric mystery bed; room for quiet phone dialogue.",
+      "fit_evidence": "Editorial hypothesis from source genre, instrumentation/mood and intended story role; no owner listening approval or performance test.",
+      "edit_notes": "Start with a short fade; keep speech dominant, duck during lines, retain deliberate silence at reveals. Select an actual phrase/beat from the chosen file; excerpt timing is not pre-certified.",
+      "popularity": {
+        "status": "unverified",
+        "claim": "No track-specific popularity or audience-performance evidence collected; do not label trending or proven."
+      },
+      "restrictions": "Use as part of video; no standalone/music-only redistribution, rights-management registration, games or TV/radio use under this license.",
+      "recommended_excerpt_start": 0,
+      "excerpt_status": "Starting suggestion, not an auditioned or beat-verified timestamp."
+    },
+    {
+      "key": "mixkit-671",
+      "title": "Piano Horror",
+      "artist": "Francisco Alvear",
+      "source_url": "https://mixkit.co/free-stock-music/tag/mystery/",
+      "download_url": "https://assets.mixkit.co/music/671/671.mp3",
+      "license": "Mixkit Stock Music Free License",
+      "license_url": "https://mixkit.co/license/#musicFree",
+      "sha256": "f7ce9f4c051feacd95b1fd429a1852f4ac1ed81eb51b43c61b432d6ccdc607fd",
+      "source_metadata_url": "https://mixkit.co/free-stock-music/tag/mystery/",
+      "license_terms_url": "https://mixkit.co/license/modal/musicFree/",
+      "attribution": "Piano Horror by Francisco Alvear, Mixkit Stock Music Free License: https://mixkit.co/free-stock-music/tag/mystery/",
+      "attribution_required": false,
+      "genres": [
+        "mystery",
+        "thriller"
+      ],
+      "priority": 2,
+      "dialogue_music_volume": 0.06,
+      "montage_music_volume": 0.06,
+      "fit_note": "Darker suspense; reserve for actual threat, not gentle family stories.",
+      "fit_evidence": "Editorial hypothesis from source genre, instrumentation/mood and intended story role; no owner listening approval or performance test.",
+      "edit_notes": "Start with a short fade; keep speech dominant, duck during lines, retain deliberate silence at reveals. Select an actual phrase/beat from the chosen file; excerpt timing is not pre-certified.",
+      "popularity": {
+        "status": "unverified",
+        "claim": "No track-specific popularity or audience-performance evidence collected; do not label trending or proven."
+      },
+      "restrictions": "Use as part of video; no standalone/music-only redistribution, rights-management registration, games or TV/radio use under this license.",
+      "recommended_excerpt_start": 0,
+      "excerpt_status": "Starting suggestion, not an auditioned or beat-verified timestamp."
+    },
+    {
+      "key": "mixkit-565",
+      "title": "Fallen (Asper)",
+      "artist": "Eugenio Mininni",
+      "source_url": "https://mixkit.co/free-stock-music/tag/mystery/",
+      "download_url": "https://assets.mixkit.co/music/565/565.mp3",
+      "license": "Mixkit Stock Music Free License",
+      "license_url": "https://mixkit.co/license/#musicFree",
+      "sha256": "3d1d4ee42d13c167dcba407e52b57073b4e402cf68718662bef9cbe0a2fb4ef4",
+      "source_metadata_url": "https://mixkit.co/free-stock-music/tag/mystery/",
+      "license_terms_url": "https://mixkit.co/license/modal/musicFree/",
+      "attribution": "Fallen (Asper) by Eugenio Mininni, Mixkit Stock Music Free License: https://mixkit.co/free-stock-music/tag/mystery/",
+      "attribution_required": false,
+      "genres": [
+        "mystery",
+        "thriller"
+      ],
+      "priority": 3,
+      "dialogue_music_volume": 0.07,
+      "montage_music_volume": 0.07,
+      "fit_note": "Longer dark cinematic tension alternative; test excerpt against dialogue.",
+      "fit_evidence": "Editorial hypothesis from source genre, instrumentation/mood and intended story role; no owner listening approval or performance test.",
+      "edit_notes": "Start with a short fade; keep speech dominant, duck during lines, retain deliberate silence at reveals. Select an actual phrase/beat from the chosen file; excerpt timing is not pre-certified.",
+      "popularity": {
+        "status": "unverified",
+        "claim": "No track-specific popularity or audience-performance evidence collected; do not label trending or proven."
+      },
+      "restrictions": "Use as part of video; no standalone/music-only redistribution, rights-management registration, games or TV/radio use under this license.",
+      "recommended_excerpt_start": 0,
+      "excerpt_status": "Starting suggestion, not an auditioned or beat-verified timestamp."
+    },
+    {
+      "key": "mixkit-493",
+      "title": "Beautiful Dream",
+      "artist": "Diego Nava",
+      "source_url": "https://mixkit.co/free-stock-music/piano/",
+      "download_url": "https://assets.mixkit.co/music/493/493.mp3",
+      "license": "Mixkit Stock Music Free License",
+      "license_url": "https://mixkit.co/license/#musicFree",
+      "sha256": "3ccd950625b4278992809e597575cb1fd3ec27629199c4825d9a0e61959e3e0d",
+      "source_metadata_url": "https://mixkit.co/free-stock-music/piano/",
+      "license_terms_url": "https://mixkit.co/license/modal/musicFree/",
+      "attribution": "Beautiful Dream by Diego Nava, Mixkit Stock Music Free License: https://mixkit.co/free-stock-music/piano/",
+      "attribution_required": false,
+      "genres": [
+        "story",
+        "cinematic"
+      ],
+      "priority": 1,
+      "dialogue_music_volume": 0.09,
+      "montage_music_volume": 0.09,
+      "fit_note": "Warm reflective piano for an earned emotional return.",
+      "fit_evidence": "Editorial hypothesis from source genre, instrumentation/mood and intended story role; no owner listening approval or performance test.",
+      "edit_notes": "Start with a short fade; keep speech dominant, duck during lines, retain deliberate silence at reveals. Select an actual phrase/beat from the chosen file; excerpt timing is not pre-certified.",
+      "popularity": {
+        "status": "unverified",
+        "claim": "No track-specific popularity or audience-performance evidence collected; do not label trending or proven."
+      },
+      "restrictions": "Use as part of video; no standalone/music-only redistribution, rights-management registration, games or TV/radio use under this license.",
+      "recommended_excerpt_start": 0,
+      "excerpt_status": "Starting suggestion, not an auditioned or beat-verified timestamp."
+    },
+    {
+      "key": "mixkit-22",
+      "title": "Piano Reflections",
+      "artist": "Ahjay Stelino",
+      "source_url": "https://mixkit.co/free-stock-music/piano/",
+      "download_url": "https://assets.mixkit.co/music/22/22.mp3",
+      "license": "Mixkit Stock Music Free License",
+      "license_url": "https://mixkit.co/license/#musicFree",
+      "sha256": "7d58c4255d91f58e29e61520b6011cabd5a54b3e89b54646cebac9d37295bbec",
+      "source_metadata_url": "https://mixkit.co/free-stock-music/piano/",
+      "license_terms_url": "https://mixkit.co/license/modal/musicFree/",
+      "attribution": "Piano Reflections by Ahjay Stelino, Mixkit Stock Music Free License: https://mixkit.co/free-stock-music/piano/",
+      "attribution_required": false,
+      "genres": [
+        "story",
+        "cinematic"
+      ],
+      "priority": 2,
+      "dialogue_music_volume": 0.08,
+      "montage_music_volume": 0.08,
+      "fit_note": "Quiet introspective alternative for slower conversations.",
+      "fit_evidence": "Editorial hypothesis from source genre, instrumentation/mood and intended story role; no owner listening approval or performance test.",
+      "edit_notes": "Start with a short fade; keep speech dominant, duck during lines, retain deliberate silence at reveals. Select an actual phrase/beat from the chosen file; excerpt timing is not pre-certified.",
+      "popularity": {
+        "status": "unverified",
+        "claim": "No track-specific popularity or audience-performance evidence collected; do not label trending or proven."
+      },
+      "restrictions": "Use as part of video; no standalone/music-only redistribution, rights-management registration, games or TV/radio use under this license.",
+      "recommended_excerpt_start": 0,
+      "excerpt_status": "Starting suggestion, not an auditioned or beat-verified timestamp."
+    },
+    {
+      "key": "mixkit-839",
+      "title": "Tears of Joy",
+      "artist": "Michael Ramir C.",
+      "source_url": "https://mixkit.co/free-stock-music/piano/",
+      "download_url": "https://assets.mixkit.co/music/839/839.mp3",
+      "license": "Mixkit Stock Music Free License",
+      "license_url": "https://mixkit.co/license/#musicFree",
+      "sha256": "30717c4e8d2a954a6163477b831e5b8981b406d2c34d72820fce4d40a8686ddc",
+      "source_metadata_url": "https://mixkit.co/free-stock-music/piano/",
+      "license_terms_url": "https://mixkit.co/license/modal/musicFree/",
+      "attribution": "Tears of Joy by Michael Ramir C., Mixkit Stock Music Free License: https://mixkit.co/free-stock-music/piano/",
+      "attribution_required": false,
+      "genres": [
+        "story",
+        "cinematic"
+      ],
+      "priority": 3,
+      "dialogue_music_volume": 0.08,
+      "montage_music_volume": 0.08,
+      "fit_note": "Emotional uplift; use after the positive turn rather than telegraphing grief.",
+      "fit_evidence": "Editorial hypothesis from source genre, instrumentation/mood and intended story role; no owner listening approval or performance test.",
+      "edit_notes": "Start with a short fade; keep speech dominant, duck during lines, retain deliberate silence at reveals. Select an actual phrase/beat from the chosen file; excerpt timing is not pre-certified.",
+      "popularity": {
+        "status": "unverified",
+        "claim": "No track-specific popularity or audience-performance evidence collected; do not label trending or proven."
+      },
+      "restrictions": "Use as part of video; no standalone/music-only redistribution, rights-management registration, games or TV/radio use under this license.",
+      "recommended_excerpt_start": 0,
+      "excerpt_status": "Starting suggestion, not an auditioned or beat-verified timestamp."
+    },
+    {
+      "key": "mixkit-400",
+      "title": "C.B.P.D",
+      "artist": "Arulo",
+      "source_url": "https://mixkit.co/free-stock-music/trap/",
+      "download_url": "https://assets.mixkit.co/music/400/400.mp3",
+      "license": "Mixkit Stock Music Free License",
+      "license_url": "https://mixkit.co/license/#musicFree",
+      "sha256": "75cd47d2ce88f7a665c31b10ba893d0327494d461b51ecb8776b1327cb117b39",
+      "source_metadata_url": "https://mixkit.co/free-stock-music/trap/",
+      "license_terms_url": "https://mixkit.co/license/modal/musicFree/",
+      "attribution": "C.B.P.D by Arulo, Mixkit Stock Music Free License: https://mixkit.co/free-stock-music/trap/",
+      "attribution_required": false,
+      "genres": [
+        "aura"
+      ],
+      "priority": 1,
+      "dialogue_music_volume": 0.1,
+      "montage_music_volume": 0.5,
+      "fit_note": "Rhythmic trap practice-to-payoff montage; make action drive the cut.",
+      "fit_evidence": "Editorial hypothesis from source genre, instrumentation/mood and intended story role; no owner listening approval or performance test.",
+      "edit_notes": "Start with a short fade; keep speech dominant, duck during lines, retain deliberate silence at reveals. Select an actual phrase/beat from the chosen file; excerpt timing is not pre-certified.",
+      "popularity": {
+        "status": "unverified",
+        "claim": "No track-specific popularity or audience-performance evidence collected; do not label trending or proven."
+      },
+      "restrictions": "Use as part of video; no standalone/music-only redistribution, rights-management registration, games or TV/radio use under this license.",
+      "recommended_excerpt_start": 0,
+      "excerpt_status": "Starting suggestion, not an auditioned or beat-verified timestamp."
+    },
+    {
+      "key": "mixkit-357",
+      "title": "Head Bang",
+      "artist": "Arulo",
+      "source_url": "https://mixkit.co/free-stock-music/trap/",
+      "download_url": "https://assets.mixkit.co/music/357/357.mp3",
+      "license": "Mixkit Stock Music Free License",
+      "license_url": "https://mixkit.co/license/#musicFree",
+      "sha256": "4848c50c2a472c7cb6fa63d1ce4f88259c309aab1c21edbb557b29394dcb3a38",
+      "source_metadata_url": "https://mixkit.co/free-stock-music/trap/",
+      "license_terms_url": "https://mixkit.co/license/modal/musicFree/",
+      "attribution": "Head Bang by Arulo, Mixkit Stock Music Free License: https://mixkit.co/free-stock-music/trap/",
+      "attribution_required": false,
+      "genres": [
+        "aura"
+      ],
+      "priority": 2,
+      "dialogue_music_volume": 0.1,
+      "montage_music_volume": 0.45,
+      "fit_note": "More forceful montage alternative; keep spoken passages unobscured.",
+      "fit_evidence": "Editorial hypothesis from source genre, instrumentation/mood and intended story role; no owner listening approval or performance test.",
+      "edit_notes": "Start with a short fade; keep speech dominant, duck during lines, retain deliberate silence at reveals. Select an actual phrase/beat from the chosen file; excerpt timing is not pre-certified.",
+      "popularity": {
+        "status": "unverified",
+        "claim": "No track-specific popularity or audience-performance evidence collected; do not label trending or proven."
+      },
+      "restrictions": "Use as part of video; no standalone/music-only redistribution, rights-management registration, games or TV/radio use under this license.",
+      "recommended_excerpt_start": 0,
+      "excerpt_status": "Starting suggestion, not an auditioned or beat-verified timestamp."
+    },
+    {
+      "key": "mixkit-370",
+      "title": "Sparta",
+      "artist": "Arulo",
+      "source_url": "https://mixkit.co/free-stock-music/trap/",
+      "download_url": "https://assets.mixkit.co/music/370/370.mp3",
+      "license": "Mixkit Stock Music Free License",
+      "license_url": "https://mixkit.co/license/#musicFree",
+      "sha256": "4d893ee0a115303d64b3b143ff5f88439b94809552ba0110652d6f58dfca4626",
+      "source_metadata_url": "https://mixkit.co/free-stock-music/trap/",
+      "license_terms_url": "https://mixkit.co/license/modal/musicFree/",
+      "attribution": "Sparta by Arulo, Mixkit Stock Music Free License: https://mixkit.co/free-stock-music/trap/",
+      "attribution_required": false,
+      "genres": [
+        "aura"
+      ],
+      "priority": 3,
+      "dialogue_music_volume": 0.1,
+      "montage_music_volume": 0.45,
+      "fit_note": "High-energy reveal or athletic finish alternative.",
+      "fit_evidence": "Editorial hypothesis from source genre, instrumentation/mood and intended story role; no owner listening approval or performance test.",
+      "edit_notes": "Start with a short fade; keep speech dominant, duck during lines, retain deliberate silence at reveals. Select an actual phrase/beat from the chosen file; excerpt timing is not pre-certified.",
+      "popularity": {
+        "status": "unverified",
+        "claim": "No track-specific popularity or audience-performance evidence collected; do not label trending or proven."
+      },
+      "restrictions": "Use as part of video; no standalone/music-only redistribution, rights-management registration, games or TV/radio use under this license.",
+      "recommended_excerpt_start": 0,
+      "excerpt_status": "Starting suggestion, not an auditioned or beat-verified timestamp."
+    },
+    {
+      "key": "incompetech-usuan1400011",
+      "title": "Monkeys Spinning Monkeys",
+      "artist": "Kevin MacLeod",
+      "source_url": "https://incompetech.com/music/royalty-free/index.html?isrc=USUAN1400011",
+      "download_url": "https://incompetech.com/music/royalty-free/mp3-royaltyfree/Monkeys%20Spinning%20Monkeys.mp3",
+      "license": "CC BY 4.0",
+      "license_url": "https://creativecommons.org/licenses/by/4.0/",
+      "sha256": "a5bb345c23849ad0786aa0bc5157a9f2d4039660fe00282e55754d475f36dc14",
+      "source_metadata_url": "https://incompetech.com/music/royalty-free/pieces.json",
+      "license_terms_url": "https://incompetech.com/music/royalty-free/faq.html",
+      "attribution": "\"Monkeys Spinning Monkeys\" Kevin MacLeod (incompetech.com)\nLicensed under Creative Commons: By Attribution 4.0 License\nhttps://creativecommons.org/licenses/by/4.0/\nSource: https://incompetech.com/music/royalty-free/index.html?isrc=USUAN1400011",
+      "attribution_required": true,
+      "genres": [
+        "comedy"
+      ],
+      "priority": 1,
+      "dialogue_music_volume": 0.08,
+      "montage_music_volume": 0.08,
+      "fit_note": "Recognizable bouncy comedy association; original licensed recording, not an orchestral cover.",
+      "fit_evidence": "Editorial hypothesis from source genre, instrumentation/mood and intended story role; no owner listening approval or performance test.",
+      "edit_notes": "Start with a short fade; keep speech dominant, duck during lines, retain deliberate silence at reveals. Select an actual phrase/beat from the chosen file; excerpt timing is not pre-certified.",
+      "popularity": {
+        "status": "historical_platform_evidence",
+        "observed_on": "2026-11-05",
+        "event_dates": [
+          "2021-04-01",
+          "2022-06-24"
+        ],
+        "sources": [
+          "https://newsroom.tiktok.com/trending-on-tiktok-endless-inspirationalquotes?lang=en",
+          "https://newsroom.tiktok.com/tiktok-classics-memes-and-viral-hits?lang=en-GB"
+        ],
+        "claim": "TikTok described the original composition as a popular comedy sound and included it among viral hits. This is historical familiarity, not current 2026 ranking or causal evidence of more views."
+      },
+      "restrictions": "Use the licensed original recording with attribution. Do not infer rights to later covers, remixes or platform-only sounds.",
+      "recommended_excerpt_start": 0,
+      "excerpt_status": "Starting suggestion, not an auditioned or beat-verified timestamp."
+    },
+    {
+      "key": "incompetech-usuan1100772",
+      "title": "Sneaky Snitch",
+      "artist": "Kevin MacLeod",
+      "source_url": "https://incompetech.com/music/royalty-free/index.html?isrc=USUAN1100772",
+      "download_url": "https://incompetech.com/music/royalty-free/mp3-royaltyfree/Sneaky%20Snitch.mp3",
+      "license": "CC BY 4.0",
+      "license_url": "https://creativecommons.org/licenses/by/4.0/",
+      "sha256": "db1710333d68a215277f77e4e17e1a64bf4ed38f87c70f8d0f56b16b6aa4f884",
+      "source_metadata_url": "https://incompetech.com/music/royalty-free/pieces.json",
+      "license_terms_url": "https://incompetech.com/music/royalty-free/faq.html",
+      "attribution": "\"Sneaky Snitch\" Kevin MacLeod (incompetech.com)\nLicensed under Creative Commons: By Attribution 4.0 License\nhttps://creativecommons.org/licenses/by/4.0/\nSource: https://incompetech.com/music/royalty-free/index.html?isrc=USUAN1100772",
+      "attribution_required": true,
+      "genres": [
+        "comedy"
+      ],
+      "priority": 2,
+      "dialogue_music_volume": 0.08,
+      "montage_music_volume": 0.08,
+      "fit_note": "Mischievous plotting and low-stakes suspicion; comic rather than threatening.",
+      "fit_evidence": "Editorial hypothesis from source genre, instrumentation/mood and intended story role; no owner listening approval or performance test.",
+      "edit_notes": "Start with a short fade; keep speech dominant, duck during lines, retain deliberate silence at reveals. Select an actual phrase/beat from the chosen file; excerpt timing is not pre-certified.",
+      "popularity": {
+        "status": "unverified",
+        "claim": "No track-specific popularity or audience-performance evidence collected; do not label trending or proven."
+      },
+      "restrictions": "Use the licensed original recording with attribution. Do not infer rights to later covers, remixes or platform-only sounds.",
+      "recommended_excerpt_start": 0,
+      "excerpt_status": "Starting suggestion, not an auditioned or beat-verified timestamp."
+    },
+    {
+      "key": "incompetech-usuan1100646",
+      "title": "Investigations",
+      "artist": "Kevin MacLeod",
+      "source_url": "https://incompetech.com/music/royalty-free/index.html?isrc=USUAN1100646",
+      "download_url": "https://incompetech.com/music/royalty-free/mp3-royaltyfree/Investigations.mp3",
+      "license": "CC BY 4.0",
+      "license_url": "https://creativecommons.org/licenses/by/4.0/",
+      "sha256": "699f7a3cd227dfe5c1e88099b45af57202bfe9d56f86b8b43e4252b65dd96768",
+      "source_metadata_url": "https://incompetech.com/music/royalty-free/pieces.json",
+      "license_terms_url": "https://incompetech.com/music/royalty-free/faq.html",
+      "attribution": "\"Investigations\" Kevin MacLeod (incompetech.com)\nLicensed under Creative Commons: By Attribution 4.0 License\nhttps://creativecommons.org/licenses/by/4.0/\nSource: https://incompetech.com/music/royalty-free/index.html?isrc=USUAN1100646",
+      "attribution_required": true,
+      "genres": [
+        "comedy"
+      ],
+      "priority": 3,
+      "dialogue_music_volume": 0.08,
+      "montage_music_volume": 0.08,
+      "fit_note": "Dry comic investigation and awkward dialogue; not a serious fear bed.",
+      "fit_evidence": "Editorial hypothesis from source genre, instrumentation/mood and intended story role; no owner listening approval or performance test.",
+      "edit_notes": "Start with a short fade; keep speech dominant, duck during lines, retain deliberate silence at reveals. Select an actual phrase/beat from the chosen file; excerpt timing is not pre-certified.",
+      "popularity": {
+        "status": "unverified",
+        "claim": "No track-specific popularity or audience-performance evidence collected; do not label trending or proven."
+      },
+      "restrictions": "Use the licensed original recording with attribution. Do not infer rights to later covers, remixes or platform-only sounds.",
+      "recommended_excerpt_start": 0,
+      "excerpt_status": "Starting suggestion, not an auditioned or beat-verified timestamp."
+    }
+  ],
+  "platform_only_references": [
+    {
+      "title": "Oh No",
+      "artist": "Recording not selected; reference title only",
+      "role": "Recognizable comic reversal reference; no licensed download included.",
+      "bake_in_eligible": false,
+      "source": "https://newsroom.tiktok.com/tiktok-classics-memes-and-viral-hits?lang=en-GB",
+      "note": "The official article names an orchestral TikTok Classics version. Rights to the original or cover have not been acquired."
+    },
+    {
+      "title": "Spooky, Scary Skeletons",
+      "artist": "Recording not selected; reference title only",
+      "role": "Recognizable spooky-comic contrast reference; no licensed download included.",
+      "bake_in_eligible": false,
+      "source": "https://newsroom.tiktok.com/tiktok-classics-memes-and-viral-hits?lang=en-GB",
+      "note": "Historical platform reference only; do not substitute this for licensed suspense music."
+    }
+  ],
+  "limitations": [
+    "No music guarantees reach; audience fit must be measured on our own channel.",
+    "A permitted track can still receive an erroneous Content ID claim; retain evidence and follow the rights holder dispute process.",
+    "No subjective listening approval is claimed by this catalog.",
+    "Platform music tools and downloadable recordings have different permissions."
+  ]
+}

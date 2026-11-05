@@ -82,7 +82,19 @@ def run_one(ws,name,inputs,output,revision=False):
     request=base_request(script);plan=None
     if name.endswith('-chat'):
         request.update(playbook='server_chat',chat_editing_version=2,chat_writing_version=2,chat_script_review=False,
-                       chat_tone='comedy' if name=='comedy-chat' else 'mystery' if name=='mystery-chat' else 'story')
+                       chat_tone='comedy' if name=='comedy-chat' else 'mystery' if name=='mystery-chat' else 'story',
+                       chat_voiceover=True,render_revision=5,chat_music_volume=.20,metadata_version=2,
+                       publication_metadata=json.loads((ROOT/'examples/assistant-five/publication'/(name+'.json')).read_text(encoding='utf-8')))
+        voice_maps={'comedy-chat':{'Maya':'af_bella','Theo':'am_adam','Boss':'bm_george'},
+                    'mystery-chat':{'Unknown':'am_onyx','Ari':'am_adam','Lily':'af_sky','Maya':'af_heart'},
+                    'story-chat':{'Leah':'af_heart','Dad':'bm_george','Cafe':'bf_emma'}}
+        request['chat_voice_ids']=voice_maps[name]
+        library=json.loads((ROOT/'Resources/Music/curated-20261105/registered-tracks.json').read_text(encoding='utf-8'))
+        music={'comedy-chat':'Monkeys Spinning Monkeys','mystery-chat':'Echoes','story-chat':'Beautiful Dream'}
+        # Track IDs are resolved from the checked local library, never hardcoded workspace IDs.
+        entries=library['tracks'] if isinstance(library,dict) and 'tracks' in library else library
+        track=next(t for t in entries if t.get('title')==music[name])
+        request['music_id']=track['asset_id'];request['require_music']=True
         if script.get('phone_story'):request['phone_story']=True
         if name=='comedy-chat':request.update(chat_attachment_ids={'u8':inputs['gif']},chat_group_name='People I Pretend To Listen To')
     elif name=='cinematic-story':
@@ -134,6 +146,15 @@ def run_one(ws,name,inputs,output,revision=False):
         'duration':qa['duration'],'technical_pass':qa['technical_pass'],'sha256':file_hash(folder/'video.mp4'),
         'test_only':True,'limits':'Assistant-authored creative review, not autonomous Gemini quality or owner approval. Historical paintings are illustrative; stock athletes are different people.'}
     write_json(folder/'AUTHORING_AND_VALIDATION.json',validation)
+    credit_file=folder/'CREDITS.md'
+    existing=credit_file.read_text(encoding='utf-8') if credit_file.exists() else '# Source credits\n\nAssistant-authored script; local toolbox rendering.\n'
+    existing=existing.split('\n## Soundtrack and character audio')[0].rstrip()
+    metadata=json.loads((folder/'metadata.json').read_text(encoding='utf-8'))
+    timing=json.loads((folder/'voice.json').read_text(encoding='utf-8'))
+    soundtrack='\n\n'.join(metadata.get('attribution',[]))
+    voices=timing.get('cast_voices',{})
+    if voices:soundtrack+='\n\nLocal licensed Kokoro synthetic voices: '+', '.join(f'{name}: {voice}' for name,voice in voices.items())+'.'
+    credit_file.write_text(existing+'\n\n## Soundtrack and character audio\n\n'+soundtrack+'\n',encoding='utf-8')
     (folder/'SCRIPT.md').write_text('# '+script['title']+'\n\nOriginal assistant-authored script at the owner request.\n\n'+'\n\n'.join(u['speaker']+': '+u['text'] for u in script['units'])+'\n',encoding='utf-8')
     return {'name':name,'status':'ready','video':str(folder/'video.mp4'),'validation':validation}
 

@@ -1,0 +1,4 @@
+interface:
+  display_name: "Short Video Writing"
+  short_description: "Genre scripts, comic timing and earned story reveals"
+  default_prompt: "Use $short-video-writing to improve this short-video script's cause, character voices, pacing and payoff."

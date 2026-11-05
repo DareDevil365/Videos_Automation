@@ -85,9 +85,10 @@ def metadata_for(workspace,job_id):
     return job,metadata
 
 
-def fingerprint(job,metadata):
+def fingerprint(job,metadata,mode=None):
     return digest([file_hash(metadata["video"]),metadata["title"],metadata["description"],job["channel"],
-                   metadata["contains_synthetic_media"],job["request"].get("publish_at")])
+                   metadata["contains_synthetic_media"],metadata.get('made_for_kids'),metadata.get('category_id'),
+                   job["request"].get("publish_at"),mode or job['request'].get('publish_visibility')])
 
 
 def approve(workspace,job_id):
@@ -95,7 +96,7 @@ def approve(workspace,job_id):
     if job['status']!='ready':raise Held('not_ready','Only a completed ready job can receive a new publication approval.')
     if not metadata["qa"]["publication_ready"]:raise Held("test_media","Test-only or held source media cannot be approved for upload.")
     if file_hash(metadata['video'])!=metadata['qa']['video_sha256']:raise Held('video_changed','The video changed after technical review. Rebuild and check it before approving.')
-    value=fingerprint(job,metadata)
+    value=fingerprint(job,metadata,workspace.config()['channels'][job['channel']]['publication_mode'])
     workspace.update(job_id,approval_hash=value)
     workspace.event(job_id,"publication_approved",{"fingerprint":value})
     return {"job_id":job_id,"approved_version":value}
@@ -135,6 +136,10 @@ def _publish(workspace,job_id,apply=False,client=None):
     job,metadata=metadata_for(workspace,job_id)
     profile=workspace.config()["channels"][job["channel"]]
     status={"privacyStatus":"private","selfDeclaredMadeForKids":metadata["made_for_kids"],"containsSyntheticMedia":metadata["contains_synthetic_media"]}
+    mode=profile['publication_mode']
+    intended=job['request'].get('publish_visibility')
+    if intended and intended!=mode:raise Held('publication_policy_changed','This job requests '+intended+' visibility; the channel policy differs. Restore its intended policy or create a new job.')
+    if mode=='public':status['privacyStatus']='public'
     if profile["publication_mode"]=="scheduled":
         stamp=job["request"].get("publish_at")
         if not stamp:raise Held("schedule_missing","A scheduled job needs publish_at in ISO format with a timezone.")
@@ -145,14 +150,14 @@ def _publish(workspace,job_id,apply=False,client=None):
     payload={"snippet":{"title":metadata["title"],"description":metadata["description"],"categoryId":metadata["category_id"]},"status":status}
     if not apply:
         return {"dry_run":True,"job_id":job_id,"channel_profile":job["channel"],"channel_id":profile["youtube_channel_id"],
-                "payload":payload,"publication_ready":metadata["qa"]["publication_ready"],"approved":job["approval_hash"]==fingerprint(job,metadata),
+                "payload":payload,"publication_ready":metadata["qa"]["publication_ready"],"approved":job["approval_hash"]==fingerprint(job,metadata,mode),
                 "note":"No network request, credential lookup or upload occurred."}
     if profile.get("paused"):raise Held("channel_paused","Channel publishing is paused.")
     if job['status'] not in ('ready','processing','uploaded_private','scheduled','published'):raise Held('not_ready','This job is not eligible for publication or reconciliation.')
-    if profile["publication_mode"] not in ("private","scheduled"):raise Held("publishing_disabled","Publishing is disabled. Configure an authorized private/scheduled policy explicitly.")
+    if mode not in ("private","public","scheduled"):raise Held("publishing_disabled","Publishing is disabled. Configure an authorized private/public/scheduled policy explicitly.")
     if not metadata["qa"]["publication_ready"]:raise Held("test_media","A test-only result cannot be uploaded.")
     if file_hash(metadata['video'])!=metadata['qa']['video_sha256']:raise Held('video_changed','The video changed after its quality checks.')
-    if job["approval_hash"]!=fingerprint(job,metadata):raise Held("approval_missing","This exact video/metadata version needs publication approval.")
+    if job["approval_hash"]!=fingerprint(job,metadata,mode):raise Held("approval_missing","This exact video, metadata and visibility version needs publication approval.")
     directed=json.loads(Path(job["artifacts"]["direct"]["path"]).read_text(encoding="utf-8"))
     for asset in directed["provenance"]:asset_record(workspace,asset["id"])
     brief=json.loads(Path(job["artifacts"]["research"]["path"]).read_text(encoding="utf-8"))
@@ -163,7 +168,7 @@ def _publish(workspace,job_id,apply=False,client=None):
     if client.identity()["id"]!=expected:raise Held("wrong_channel","OAuth channel identity does not match this production profile.")
     state=load_upload(workspace,job_id)
     video=Path(metadata["video"]);size=video.stat().st_size
-    version=fingerprint(job,metadata)
+    version=fingerprint(job,metadata,mode)
     if state and state["version"]!=version:raise Held("upload_version_changed","An upload session exists for another content version. Reconcile it instead of replacing it.")
     if state and state.get("video_id"):
         return reconcile(workspace,job_id,client)
@@ -228,10 +233,11 @@ def reconcile(workspace,job_id,client=None):
     requested=state["requested_status"]
     if status.get("privacyStatus") not in ("private","public"):
         raise Held("visibility_mismatch","Uploaded visibility differs from the requested publication policy.")
-    if "publishAt" not in requested and status.get("privacyStatus")!="private":raise Held("visibility_mismatch","The private upload is not private.")
+    if "publishAt" not in requested and status.get("privacyStatus")!=requested['privacyStatus']:raise Held("visibility_mismatch","YouTube visibility differs from the requested upload policy; no replacement upload was started.")
     if 'publishAt' in requested and status.get('privacyStatus')=='public' and datetime.fromisoformat(requested['publishAt'])>datetime.now(timezone.utc):
         raise Held('visibility_mismatch','The video became public before its requested schedule. Review Studio immediately.')
-    target="processing" if processing and processing!="succeeded" else ("published" if status.get("privacyStatus")=="public" else "scheduled") if "publishAt" in requested else "uploaded_private"
+    processed=processing=='succeeded' or status.get('uploadStatus')=='processed'
+    target='processing' if not processed else 'published' if status.get('privacyStatus')=='public' else 'scheduled' if 'publishAt' in requested else 'uploaded_private'
     workspace.update(job_id,status=target,message=f"YouTube state: {target}")
     state.update(phase=target,checked_at=now(),processing_status=processing);save_upload(workspace,job_id,state)
     workspace.event(job_id,"upload_checked",{"video_id":state["video_id"],"state":target})

@@ -53,21 +53,29 @@ def inspect_render(workspace, job, brief, written, timing, directed, rendered):
     return report
 
 
-def package(workspace, job, brief, written, timing, directed, rendered, qa):
+def package(workspace, job, brief, written, timing, directed, rendered, qa,provider=None):
     script=written["script"]
-    description=script["description"].strip()
+    strategy=None
+    if job['request'].get('metadata_version')==2:
+        from .publication_metadata import make_metadata,validate_metadata
+        supplied=job['request'].get('publication_metadata')
+        strategy=validate_metadata(supplied,script) if supplied is not None else make_metadata(provider,script,job['request'])
+        if supplied is not None:strategy['origin']='provided_content_packaging_v1'
+    description=(strategy['description'] if strategy else script["description"]).strip()
     if script["fiction"]:description+="\n\nOriginal fictional entertainment/edit captions; not a real conversation, creator quote or endorsement."
     if brief["sources"]:
         description+="\n\nSources checked:\n"+"\n".join(source["url"] for source in brief["sources"])
-    credits=[asset["attribution"] for asset in directed["provenance"] if asset.get("attribution")]
+    credits=list(dict.fromkeys(asset["attribution"] for asset in directed["provenance"] if asset.get("attribution")))
     if credits:description+="\n\n"+"\n".join(credits)
-    metadata={"version":1,"channel_profile":job["channel"],"title":script["title"],"description":description[:4900],
+    if len(description.encode('utf-8'))>5000:raise Held('metadata_description','Description and required credits exceed 5000 UTF-8 bytes; shorten the premise without cutting credits.')
+    metadata={"version":1,"channel_profile":job["channel"],"title":strategy['title'] if strategy else script["title"],"description":description,
               "category_id":"27" if job["channel"]=="education" else "23", "made_for_kids":False,
               "contains_synthetic_media":timing.get("source")!="original_clip" or script["fiction"] or any(a.get('evidence',{}).get('synthetic') for a in directed['provenance']),"disclosure":{"decision":"Conservative disclosure for synthesized narration or fictional presentation; original-source clip route retains source audio.",
                   "voice":timing["voice"],"fiction":script["fiction"],"impersonation":False},
               "video":rendered["video"],"cover":rendered["cover"],"captions":rendered["captions"],
               "qa":qa,"source_urls":[s["url"] for s in brief["sources"]],"attribution":credits,
-              "publication_mode":"disabled","created_at":now()}
+              "publication_mode":job['request'].get('publish_visibility','disabled'),"created_at":now(),
+              'packaging_strategy':strategy}
     hook=written.get('hook_options') or {}
     plan=(written.get('creative_plan') or {}).get('plan',{})
     question=plan.get('comment_question','')

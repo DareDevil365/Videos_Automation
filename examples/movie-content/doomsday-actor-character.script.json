@@ -1,0 +1,102 @@
+{
+  "version": 1,
+  "title": "Downey Is Doom. What Should You Watch Before Doomsday?",
+  "description": "Does Robert Downey Jr. playing Doctor Doom mean Tony Stark is back? Here is what Disney confirmed, what remains a theory, and one optional movie to understand Reed Richards and the Fantastic Four.",
+  "format": "lesson",
+  "fiction": false,
+  "hook": "Downey is back for Doomsday. Is that Tony Stark under the mask?",
+  "payoff": "Watch Fantastic Four: First Steps if you want to know Reed and his team before Doomsday.",
+  "units": [
+    {
+      "id": "u1",
+      "speaker": "Narrator",
+      "text": "Downey is back for Doomsday. Is that Tony Stark under the mask?",
+      "kind": "fact",
+      "claim_ids": [
+        "c1",
+        "c2"
+      ],
+      "onscreen": "TONY STARK UNDER THE MASK?"
+    },
+    {
+      "id": "u2",
+      "speaker": "Narrator",
+      "text": "Disney announced him as Doctor Doom. A Tony Stark connection is still unconfirmed.",
+      "kind": "fact",
+      "claim_ids": [
+        "c1",
+        "c2"
+      ],
+      "onscreen": "CONFIRMED ROLE: DOCTOR DOOM"
+    },
+    {
+      "id": "u3",
+      "speaker": "Narrator",
+      "text": "So if you want one movie to understand the matchup, start with the other side.",
+      "kind": "transition",
+      "claim_ids": [
+        "c5",
+        "c6"
+      ],
+      "onscreen": "ONE MOVIE FOR CONTEXT"
+    },
+    {
+      "id": "u4",
+      "speaker": "Narrator",
+      "text": "Doom rules Latveria. He combines sorcery and technology, and he's Reed Richards' rival.",
+      "kind": "fact",
+      "claim_ids": [
+        "c4",
+        "c5"
+      ],
+      "onscreen": "SORCERY + TECHNOLOGY"
+    },
+    {
+      "id": "u5",
+      "speaker": "Narrator",
+      "text": "Reed leads the Fantastic Four. First Steps introduces that team in the MCU.",
+      "kind": "fact",
+      "claim_ids": [
+        "c5",
+        "c6"
+      ],
+      "onscreen": "FIRST STEPS → FANTASTIC FOUR"
+    },
+    {
+      "id": "u6",
+      "speaker": "Narrator",
+      "text": "You can go into Doomsday cold. The earlier movie is optional, not homework.",
+      "kind": "fact",
+      "claim_ids": [
+        "c6"
+      ],
+      "onscreen": "OPTIONAL, NOT HOMEWORK"
+    },
+    {
+      "id": "u7",
+      "speaker": "Narrator",
+      "text": "Watch Fantastic Four: First Steps if you want to know Reed and his team before Doomsday.",
+      "kind": "instruction",
+      "claim_ids": [
+        "c6"
+      ],
+      "onscreen": "WATCH: FANTASTIC FOUR · FIRST STEPS"
+    },
+    {
+      "id": "u8",
+      "speaker": "Narrator",
+      "text": "Then read Doom's comics for more of the character. They aren't confirmed film spoilers.",
+      "kind": "transition",
+      "claim_ids": [
+        "c1",
+        "c5"
+      ],
+      "onscreen": "COMIC CONTEXT ≠ FILM SPOILERS"
+    }
+  ],
+  "edit": {
+    "effect": "none",
+    "payoff_unit_id": "u7",
+    "cta": false
+  }
+}

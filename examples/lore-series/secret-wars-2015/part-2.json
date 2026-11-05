@@ -1,0 +1,117 @@
+{
+  "version": 1,
+  "title": "The Man Hidden Beneath Doom’s Castle",
+  "description": "Part 2 of an original spoiler recap and commentary about Marvel Comics Secret Wars (2015), written by Jonathan Hickman and drawn by Esad Ribic. Comics canon, not a prediction of the MCU films.",
+  "format": "lesson",
+  "fiction": false,
+  "hook": "Doctor Doom's godlike power came from a man hidden beneath his castle.",
+  "payoff": "That man now owed him a favor. All for one hamburger.",
+  "units": [
+    {
+      "id": "u1",
+      "speaker": "Narrator",
+      "text": "Doctor Doom's godlike power came from a man hidden beneath his castle.",
+      "onscreen": "A GOD WITH A SECRET",
+      "kind": "fact",
+      "claim_ids": [
+        "c5",
+        "c7"
+      ],
+      "visual_kind": "image",
+      "visual_query": "Original symbolic comic diagram: A GOD WITH A SECRET"
+    },
+    {
+      "id": "u2",
+      "speaker": "Narrator",
+      "text": "Spider-Man Miles Morales found him while the survivors investigated Doom's power.",
+      "onscreen": "MILES FINDS THE SOURCE",
+      "kind": "fact",
+      "claim_ids": [
+        "c7"
+      ],
+      "visual_kind": "image",
+      "visual_query": "Original symbolic comic diagram: MILES FINDS THE SOURCE"
+    },
+    {
+      "id": "u3",
+      "speaker": "Narrator",
+      "text": "This was Molecule Man. His cosmic power was keeping Doom on the throne.",
+      "onscreen": "MOLECULE MAN → DOOM",
+      "kind": "fact",
+      "claim_ids": [
+        "c5",
+        "c7"
+      ],
+      "visual_kind": "image",
+      "visual_query": "Original symbolic comic diagram: MOLECULE MAN → DOOM"
+    },
+    {
+      "id": "u4",
+      "speaker": "Narrator",
+      "text": "The cosmic power source was hungry. Miles happened to have a hamburger.",
+      "onscreen": "A HUNGRY COSMIC BEING",
+      "kind": "fact",
+      "claim_ids": [
+        "c8"
+      ],
+      "visual_kind": "image",
+      "visual_query": "Original symbolic comic diagram: A HUNGRY COSMIC BEING"
+    },
+    {
+      "id": "u5",
+      "speaker": "Narrator",
+      "text": "He handed it over. A small kindness to someone with power over whole realities.",
+      "onscreen": "ONE HAMBURGER",
+      "kind": "transition",
+      "claim_ids": [
+        "c5",
+        "c8"
+      ],
+      "visual_kind": "image",
+      "visual_query": "Original symbolic comic diagram: ONE HAMBURGER"
+    },
+    {
+      "id": "u6",
+      "speaker": "Narrator",
+      "text": "Before this, Miles had lost his mother. Now he'd helped someone who could reshape realities.",
+      "onscreen": "MILES HAD LOST HIS MOTHER",
+      "kind": "transition",
+      "claim_ids": [
+        "c5",
+        "c12"
+      ],
+      "visual_kind": "image",
+      "visual_query": "Original symbolic comic diagram: MILES HAD LOST HIS MOTHER"
+    },
+    {
+      "id": "u7",
+      "speaker": "Narrator",
+      "text": "That man now owed him a favor. All for one hamburger.",
+      "onscreen": "A COSMIC DEBT",
+      "kind": "transition",
+      "claim_ids": [
+        "c8"
+      ],
+      "visual_kind": "image",
+      "visual_query": "Original symbolic comic diagram: A COSMIC DEBT"
+    },
+    {
+      "id": "u8",
+      "speaker": "Narrator",
+      "text": "Next: Doom loses the throne—and we learn what that favor was worth.",
+      "onscreen": "PART THREE · THE FAVOR",
+      "kind": "transition",
+      "claim_ids": [
+        "c10",
+        "c12"
+      ],
+      "visual_kind": "image",
+      "visual_query": "Original symbolic comic diagram: PART THREE · THE FAVOR"
+    }
+  ],
+  "edit": {
+    "effect": "none",
+    "payoff_unit_id": "u7",
+    "cta": false
+  }
+}

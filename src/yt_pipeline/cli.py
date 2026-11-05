@@ -148,6 +148,8 @@ def main():
     p.add_argument('--format',choices=['chat','phone'],default='chat');p.add_argument('--visibility',choices=['public','private','none'],default='public')
     p.add_argument('--request');p.add_argument('--resume')
     p=sub.add_parser('finish-production');p.add_argument('job')
+    p=sub.add_parser('lore-plan');p.add_argument('--series',required=True);p.add_argument('--brief',required=True);p.add_argument('--output',required=True);p.add_argument('--source-review');p.add_argument('--build-id');p.add_argument('--revise-batch')
+    p=sub.add_parser('audience-critique');p.add_argument('job');p.add_argument('--role');p.add_argument('--phase',choices=['script','frames'],default='script')
     p=sub.add_parser('music-library');p.add_argument('--install',action='store_true');p.add_argument('--key',action='append')
     p=sub.add_parser('music-pick');p.add_argument('genre',choices=['comedy','mystery','thriller','story','cinematic','aura'])
     p.add_argument('--selection-key',default='');p.add_argument('--avoid-recent',type=int,default=3);p.add_argument('--download-missing',action='store_true')
@@ -221,6 +223,13 @@ def main():
         elif cmd=='finish-production':
             from .production import finish_production
             result=finish_production(ws,args.job)
+        elif cmd=='lore-plan':
+            from .source_series import create_series_plan
+            result=create_series_plan(ws,args.series,args.brief,args.output,args.source_review,build_id=args.build_id,revise_batch=args.revise_batch)
+        elif cmd=='audience-critique':
+            from .audience_critique import critique_job
+            from .text_provider import configured_provider
+            result=critique_job(ws,args.job,configured_provider(ws),args.role,args.phase)
         elif cmd=='music-library':
             from .curated_music import music_catalog,install_music_catalog
             result=install_music_catalog(ws,args.key) if args.install else music_catalog()

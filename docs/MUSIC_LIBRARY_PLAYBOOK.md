@@ -69,3 +69,39 @@ To add a track, inspect the original rights-holder page and exact recording lice
 Once the channel is connected, compare similar episodes using different genre candidates and keep the chosen track ID/version with the video's analytics. Evaluate retention, viewers choosing to watch, completion and feedback alongside script/topic differences. An uncontrolled view-count difference is an association, not evidence that the soundtrack caused reach. No channel-performance experiment or public upload was run to build this library.
 
 Validation for this addition: **six focused tests passed** for offline selection, recent-use rotation, least-recent fallback, test-only/tampered asset exclusion, changed-download refusal and rights/popularity separation. All fourteen actual downloaded recordings fully decode with FFmpeg, all fourteen installed registrations pass current integrity/eligibility checks, and all six supported genre selections resolve. The ignored local `VALIDATION.json` preserves those technical results. These checks do not constitute a listening verdict or an audience-performance test.
+
+## Effects and environment coverage
+
+The [sound catalog](../src/yt_pipeline/sound_catalog.json), [sound library module](../src/yt_pipeline/sound_library.py) and [sound tool](../tools/curate_sound_library.py) add **16 reusable assets** alongside the fourteen music recordings. Twelve are original deterministic software signals with bounded peaks/durations; they use no sampled app audio, voice imitation, generation service or third-party recording. Four are downloaded ambience items from their original permitted source. The existing generic `original_graphic` source bucket labels software-made assets; each original signal's evidence explicitly identifies its media type as audio and retains its synthesis recipe.
+
+| Categories | Available assets | Intended use |
+| --- | --- | --- |
+| `message_incoming`, `message_outgoing` | Two restrained variations each | One cue at an actual message arrival, with stable direction and subtle variation |
+| `notification` | One soft notification | Use instead of a second bubble cue when the same incoming message is already previewed |
+| `transition` | Two short air movements | A meaningful conversation/screen switch, not every camera move |
+| `error`, `low_battery` | One quiet cue each | A real compiled error or battery event |
+| `glitch` | One bounded 0.21-second interruption | A planted phone interruption; not constant distortion |
+| `reveal`, `impact` | One restrained reveal and one low athletic impact | Explicit story/action accents; never automatically add a loud sting to every ending |
+| `ambience_rain` | Mixkit “Light rain loop” | Established rainy setting; source is 15 seconds, no seamless-loop claim |
+| `ambience_office` | Mixkit “Office ambience” | Established office setting; approximately 42 seconds |
+| `ambience_cafe` | Mixkit “Restaurant crowd talking ambience” | Established café/restaurant setting; 120 seconds; keep crowd below character speech |
+| `ambience_station` | Mixkit “Train waiting at station” | Established station setting; approximately 42 seconds |
+
+The original source pages are [rain](https://mixkit.co/free-sound-effects/rain/), [ambience](https://mixkit.co/free-sound-effects/ambience/) and [train](https://mixkit.co/free-sound-effects/train/). These exact ambience recordings use the **[Mixkit Sound Effects Free License](https://mixkit.co/license/modal/sfxFree/)**, a different license from the music license. It permits incorporation into larger edited projects, including commercial YouTube videos. It does not permit redistribution as standalone stock/source files or rights-management registration. Only source metadata and the installer are committed; each installation downloads its own recordings. Source titles describe the atmosphere, not a verified real-world recording location or recording method.
+
+```powershell
+python tools/curate_sound_library.py list
+python tools/curate_sound_library.py install --originals-only
+python tools/curate_sound_library.py install
+python tools/curate_sound_library.py select message_incoming --selection-key episode-42
+```
+
+`install_sound_library(workspace, include_ambience=True, keys=None)` prepares/registers selected items with definitions, source/license snapshots and hashes. Original cues install without network calls. `select_sound(workspace, category, selection_key='', genre=None, avoid_asset_ids=())` chooses an eligible installed variant offline and returns its asset plus mix guidance. `mix_sound_events(workspace, samples, rate, events, silence=(), speech_ranges=())` mixes explicit events into a mono 16-bit PCM timeline and returns resolved asset IDs, source hashes and credits for the caller's checkpoint/provenance.
+
+An event supplies `category` and absolute `start`, with optional `selection_key`, `genre` and bounded `gain`. Ambience may specify a shorter `duration`; effects must fit in full and cannot be silently truncated. Longer ambience is not invented by assuming an unverified seamless loop. The mixer fades source edges, ducks ambience during supplied speech intervals and hard-mutes every supplied blackout interval **after** effects are added. The calling editor must supply those intervals and keep returned source records with the exported video. No source is chosen for an unmentioned environment, and no API is called to invent a missing sound.
+
+New chat plans resolve one notification-or-message cue, compiled switch/battery/glitch cues, and any explicitly directed atmosphere/accent. A message has one speech occurrence even if it appears in both a notification and bubble. There is deliberately no repeated typing sound and no hard horror jump-scare preset. An explicitly opted-in job calls the mixer after voice and music so silence wins; older completed videos are not retroactively changed. Other genres can call the library with deliberate scene-event choices.
+
+This is **core audio coverage**, not all possible audio. Footsteps, doors, dogs, mail delivery, crowds beyond the selected setting, specific sports Foley, custom musical builds and natural expressive character acting may still require a separately licensed source or a new deliberate sound decision. No waveform/decode check can establish that a sound is pleasing, that an ambience loop is seamless or that an audience will prefer it.
+
+Sound-library validation: **six focused tests passed**, covering network-free original installation and reuse, deterministic bounded signals, variation/integrity checks, genre/category holds, complete-effect timing and gain limits, speech-ducked ambience and exact blackout silence. Actual source recordings and registered assets are audited locally under `Resources/Music/sound-effects-20261105/`. No subjective listening or owner approval is inferred.

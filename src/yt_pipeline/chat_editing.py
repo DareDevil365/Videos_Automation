@@ -80,6 +80,7 @@ def reading_timing(ws,job,script,folder):
         if clip:rows[-1].update(speech_start=onset,
             speech_end=onset+clip['metrics']['duration'],speech_display='notification' if notification else 'bubble',
             voice_id=clip['voice_id'],file=clip['file'],speech_metrics=clip['metrics'])
+        if clip and clip.get('voice_style'):rows[-1]['voice_style']=clip['voice_style']
         cursor+=seconds
     minimum,maximum=get_playbook('server_chat',job['request'])['seconds']
     if not minimum<=cursor<=maximum:
@@ -96,9 +97,10 @@ def reading_timing(ws,job,script,folder):
             value=round((.095 if payoff else .065)*envelope*(math.sin(phase)+.12*math.sin(phase*2))*26000)
             samples[first+n]=max(-30000,min(30000,samples[first+n]+value))
     outgoing=script.get('phone_story',{}).get('pov',script['units'][0]['speaker'])
-    for index,row in enumerate(rows):
-        notification=next((e for e in row['screen_events'] if e['type']=='notification'),None)
-        soft_pop(row['start']+notification['start'] if notification else row['arrival'],row['speaker']==outgoing,index==len(rows)-1)
+    if not job['request'].get('chat_sound_library'):
+        for index,row in enumerate(rows):
+            notification=next((e for e in row['screen_events'] if e['type']=='notification'),None)
+            soft_pop(row['start']+notification['start'] if notification else row['arrival'],row['speaker']==outgoing,index==len(rows)-1)
     speech_meta={}
     if speech:
         from .phone_editor.audio import place_speech
@@ -107,6 +109,10 @@ def reading_timing(ws,job,script,folder):
     if job['request'].get('music_id'):
         from .phone_editor.audio import mix_music
         music_meta=mix_music(ws,job,samples,rate,rows)
+    effects={}
+    if job['request'].get('chat_sound_library'):
+        from .phone_editor.audio import mix_chat_effects
+        effects=mix_chat_effects(ws,job,script,samples,rate,rows)
     output=folder/'chat-sound.wav';temporary=folder/'chat-sound.partial.wav'
     with wave.open(str(temporary),'wb') as wav:
         wav.setnchannels(1);wav.setsampwidth(2);wav.setframerate(rate);wav.writeframes(samples.tobytes())
@@ -115,11 +121,13 @@ def reading_timing(ws,job,script,folder):
         'audio':str(output),'duration':len(samples)/rate,'units':rows,'model_sha256':digest('chat-soft-message-pop-v3'),
         'sound_design':'One quiet rounded message pop per arrival, distinct incoming/outgoing pitch; no repeated typing chirps or sharp notification stack.',
         'caption_alignment':'Exact complete message text with code-measured reading holds; no invented speech alignment.',
-        'editing_origin':'compiled_chat_rules_v2','narration':bool(speech),**speech_meta,**music_meta,
+        'editing_origin':'compiled_chat_rules_v2','narration':bool(speech),**speech_meta,**music_meta,**effects,
         'limits':['Reading time is a bounded heuristic, not measured audience comprehension.','Local synthetic character voices do not guarantee expressive acting. No copied creator audio or model editing calls.']}
     if speech:result.update(voice='distinct local character voices',source='local_cast_speech_and_chat_sfx',
         caption_alignment='Exact message appears before complete character speech on its first visible bubble or notification; names/timestamps are not spoken and previews are not voiced twice.',
-        model_sha256=digest(['chat-cast-audio-v1',speech_meta,music_meta]))
+        model_sha256=digest(['chat-cast-audio-v1',speech_meta,music_meta,effects]))
+    if effects:result.update(sound_design='One quiet arrival or notification cue, short actual phone-event accents, no typing loop, and hard blackout silence.',
+        model_sha256=digest([result['model_sha256'],effects]))
     write_json(folder/'timing.json',result);return result
 
 

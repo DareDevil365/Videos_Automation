@@ -1,0 +1,125 @@
+{
+  "version": 1,
+  "review_date": "2026-11-05",
+  "scope": "script_only; no video or audio audition",
+  "reviewer_roles": [
+    "distracted first-time viewer",
+    "continuity-aware comics fan"
+  ],
+  "verdict": "rewrite_before_render",
+  "audience_metrics_observed": false,
+  "video_sha256": null,
+  "script_files": [
+    {
+      "path": "examples/lore-series/secret-wars-2015/part-1.json",
+      "sha256": "eb30d2290bd9e4aa751b21bcb28ee4c1c95db368b52ca5478e67c106f40756c6"
+    },
+    {
+      "path": "examples/lore-series/secret-wars-2015/part-2.json",
+      "sha256": "024dd959073a9b2545e81785c37b1f304dfe096a9125b7c3884bd79c2986bdec"
+    },
+    {
+      "path": "examples/lore-series/secret-wars-2015/part-3.json",
+      "sha256": "41ed9f3884f490959a83ee1c147e7d4eca921fdac3a32fb2e51fea01360af41d"
+    }
+  ],
+  "issues": [
+    {
+      "id": "P1-01",
+      "part": 1,
+      "unit_id": "u7",
+      "quote": "Doom had saved them, but survival now came with a throne above it.",
+      "severity": "high",
+      "audience_observation": "The ending repeats the opening: saved reality, then controlled it. I have watched the setup expanded, not received a new answer.",
+      "recommended_fix": "Make the chapter reveal a specific new cost of Doom's rescue, such as erased memories of the former reality, supported by c4. Change the payoff to that discovery."
+    },
+    {
+      "id": "P1-02",
+      "part": 1,
+      "unit_id": "u3",
+      "quote": "Reed Richards and the Future Foundation built a life raft for the end.",
+      "severity": "high",
+      "audience_observation": "Future Foundation and life raft arrive before I understand Battleworld or why this rival matters. This is the first likely scroll-away point for a newcomer.",
+      "recommended_fix": "Cut the Foundation name here; say Reed is Doom's rival if needed, or postpone the survival-ship detail until it changes the conflict."
+    },
+    {
+      "id": "P1-03",
+      "part": 1,
+      "unit_id": "u4",
+      "quote": "But the survivors arrived somewhere stranger than the world they had lost.",
+      "severity": "medium",
+      "audience_observation": "Somewhere stranger is a vague bridge that delays the concrete setting.",
+      "recommended_fix": "Join the arrival directly to the patchwork world reveal; use the saved words for a consequence or choice."
+    },
+    {
+      "id": "P2-01",
+      "part": 2,
+      "unit_id": "u2",
+      "quote": "In the 2015 Secret Wars comics, Miles Morales escaped the dying realities in a life raft.",
+      "severity": "high",
+      "audience_observation": "Another survival-raft recap slows a promising secret-under-the-castle opening. I want the hidden power, not the journey repeated.",
+      "recommended_fix": "Introduce Miles as Spider-Man and reach the discovery quickly; retain only context essential to his action."
+    },
+    {
+      "id": "P2-02",
+      "part": 2,
+      "unit_id": "u4",
+      "quote": "Beneath Doomstadt, they found Owen Reece: Molecule Man.",
+      "severity": "medium",
+      "audience_observation": "Doomstadt, Owen Reece and Molecule Man give me three labels in one short beat. Only one is needed to follow the power source.",
+      "recommended_fix": "Use beneath Doom's castle and Molecule Man in speech; put an optional real name in supporting metadata rather than narrating every alias."
+    },
+    {
+      "id": "P2-03",
+      "part": 2,
+      "unit_id": "u8",
+      "quote": "Next: when Reed Richards challenged the man on the throne.",
+      "severity": "medium",
+      "audience_observation": "The next-part line is generic after the distinctive burger/favor beat. It switches the viewer's question without carrying the strongest unresolved consequence.",
+      "recommended_fix": "Tie the next chapter to the actual unresolved favor or the weakness Doom cannot admit, without implying that the burger caused Doom's defeat."
+    },
+    {
+      "id": "P3-01",
+      "part": 3,
+      "unit_id": "u3",
+      "quote": "He pushed Doom to concede that Reed could have saved reality better.",
+      "severity": "high",
+      "audience_observation": "The advertised admission is answered by the third unit. The remainder feels like an appendix rather than an escalating resolution.",
+      "recommended_fix": "Make admission -> power transfer -> changed outcome the central causal chain. Cut side names and let the final consequence serve as the ending."
+    },
+    {
+      "id": "P3-02",
+      "part": 3,
+      "unit_id": "u5",
+      "quote": "Reed's family and the Future Foundation helped rebuild the multiverse, with Franklin and Molecule Man creating worlds.",
+      "severity": "high",
+      "audience_observation": "Franklin, Future Foundation, the family and Molecule Man are stacked into a long line, exactly when the decisive aftermath should be easy to follow.",
+      "recommended_fix": "Simplify to Reed and his family rebuilding realities, or explain Franklin earlier if his identity is essential to the chosen question."
+    },
+    {
+      "id": "P3-03",
+      "part": 3,
+      "unit_id": "u6",
+      "quote": "Miles found himself in the restored reality, with his mother alive again.",
+      "severity": "high",
+      "audience_observation": "The mother's return is potentially emotional, but no earlier part establishes that Miles lost her. It lands as a surprising fact rather than an earned human payoff.",
+      "recommended_fix": "Plant the loss before the restoration, with source support, or reserve the mother/burger connection for its own short. Keep the kindness reward distinct from the cause of Doom losing power."
+    },
+    {
+      "id": "P3-04",
+      "part": 3,
+      "unit_id": "u8",
+      "quote": "Saving reality and owning it were never the same thing.",
+      "severity": "medium",
+      "audience_observation": "The generic saving-versus-owning moral explains the theme after the more specific burger callback has landed. It weakens the final impression.",
+      "recommended_fix": "End on the earned concrete consequence. If a thematic contrast is retained, demonstrate it through the two outcomes instead of stating a lesson."
+    }
+  ],
+  "canon_assessment": "No definite contradiction established from the consulted official indexed recaps. Full issue-level verification is not claimed. Do not compress the hamburger reward into the cause of Doom losing power.",
+  "sources": [
+    "https://www.marvel.com/articles/comics/secret-wars-official-marvel-guide",
+    "https://www.marvel.com/characters/spider-man-miles-morales/in-comics",
+    "https://www.marvel.com/comics/guides/2508/the-future-foundation"
+  ],
+  "source_access": "Direct canonical opens returned403. Official indexed source text was consulted using targeted search. Full comics and paid issues were not read."
+}

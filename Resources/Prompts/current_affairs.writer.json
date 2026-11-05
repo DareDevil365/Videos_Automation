@@ -1,0 +1,44 @@
+{
+  "id": "current_affairs",
+  "format": "lesson",
+  "seconds": [
+    25,
+    80
+  ],
+  "words": [
+    75,
+    175
+  ],
+  "units": [
+    7,
+    12
+  ],
+  "voice": {
+    "voice_id": "am_adam",
+    "length_scale": 1.0,
+    "pause": 0.18
+  },
+  "music": {
+    "category": "learning",
+    "mood": "quiet licensed bed below speech",
+    "volume": 0.06
+  },
+  "layout": "education_demo",
+  "bottom": [
+    "none"
+  ],
+  "writing": "Explain one dated development and its concrete meaning for an India/world-current-affairs viewer. State the actual event date, define one useful term and answer what changed. Distinguish direction, denominator, eligibility and exceptions; avoid turning a narrow concession into a blanket claim. No fake breaking-news urgency, invented election result or nationalistic claim beyond the evidence.",
+  "visuals": "Trusted original portrait panels or explanatory motion graphics bound to exact script labels. No generated photos/videos or assumed permission to reuse comic panels/film clips.",
+  "sound": "One clear local narrator, complete measured speech and reading holds; optional permitted music below voice.",
+  "writing_skill": {
+    "name": "short-video-writing",
+    "version": 1,
+    "genre": "factual",
+    "medium": "lesson",
+    "guidance": "# Short-video writing\n\nServe the chosen genre and the owner's premise. Make the audience want a specific answer, then deliver an answer the story earned. Curiosity, surprise, recognition and anticipation are options, not a compulsory alarming first line. Do not promise engagement or retention results from craft rules.\n\nChoose the relevant reference: [comedy](references/comedy.md), [mystery/thriller](references/mystery.md), [emotional/cinematic story](references/story.md), or [aura captions](references/aura.md). For factual explainers use [evidence-led writing](references/factual.md). Read [timing](references/timing.md) when planning spoken or chat delivery.\n\nBefore dialogue, identify the protagonist's immediate want, opposing pressure, opening question, early plant and ending. Explain the causal chain to yourself without the title, soundtrack or an invented fact. If the explanation needs a new rule at the ending, rebuild the premise. When the application asks for alternatives, vary the mechanism rather than renaming characters in the same idea.\n\nIn chat, every story fact must come from a message, visible phone occurrence or established contact/thread context. Give each person a different want and reaction pattern; changing names is insufficient. Track what each private conversation lets them know. A narrator should not read speaker names, timestamps, directions or a separate explanation. Preserve natural fragments and contractions. The last meaningful reply must change the situation or fulfill the opening rather than explain the joke, recap the reveal or add a generic moral.\n\nRevise at the level of cause and consequence. Remove a line if deleting it changes nothing. Replace repeated disbelief with a choice, new evidence, a consequence or a reversal. Read the exact words aloud; split a sentence where thought or intention changes, never just to meet a message count. Keep the selected format's schema, word and unit bounds. Treat stock assets as the available inventory, not permission to invent unseen events.\n\nCritique the conversation without its writer's sales pitch. Reconstruct the question/answer, identify necessary assumptions, and cite exact lines for opening, cause, knowledge, progression, character voice, payoff and genre. State what a weak line fails to accomplish. A fluent model verdict is not proof of humor, suspense, audience response or human approval. Use the application's bounded rewrite/recheck route rather than an endless polishing loop.\n\nTiming belongs in supported delivery fields or editor configuration, never hidden control tags in spoken dialogue. Protect the complete line and the viewer's reading time. Use an earned pause before an interpretation changes; do not place the same long pause before every reply. Music and sound should support attention without supplying a missing cause or telegraphing every punchline.\n\n# Evidence-led explainers\n\nStart with one answerable question or supported contrast. Use a causal explanation and a concrete example rather than a list of impressive claims. Separate what sources show from an analogy, inference or proposal. A clearly hypothetical demonstration can explain a concept; it cannot invent a real result, price, benchmark, quote or historical event.\n\nTie the opening promise to the answer actually delivered. Explain a necessary term before relying on it. Choose visuals that can demonstrate the explanation with sources, measured diagrams or honest illustration. Do not import fictional mystery pacing at the expense of clarity, or use an unrelated trending fact as the title/description.\n\nEnd once the stated question is answered. An actionable example is useful when the video promises one. Unsupported certainty, outcome guarantees and a framework that never demonstrates the promised answer fail review. Preserve the application's evidence and citation contracts.\n\n\n# Delivery and timing contract\n\nDistinguish script rhythm from editing time. The writer chooses what a line changes and where the decisive thought ends. The editor measures complete speech and readable message holds. A text model cannot know a clip's final speech duration in advance.\n\nThe voiced chat editor places each complete exact-message clip 0.06 seconds after its bubble arrives. A notification already showing the message speaks it at that first preview instead: its screen extends through the full line, and the later bubble is not voiced twice. Each bubble hold is the maximum of measured speech plus a 0.26-second tail, the existing word/character reading heuristic, and a three-second attachment hold where needed. The final message receives another 0.65 seconds. Clips stay sequential. Other phone event screens occur before the next bubble/speech; returning to a conversation restores its own history. Names and timestamps are visual UI, not extra narration.\n\nInitial typing delays are zero for the opening, 0.16 seconds for ordinary replies and 0.38 seconds before the final reply. These are defaults, not universal comic timing. Supported `chat_pause_before` overrides add 0-1.5 seconds before selected chat bubbles and preserve full speech/reading time; use them sparingly where the setup has created an expectation. A voiced notification already reveals the message and does not accept that extra bubble delay. Do not pad a weak story to its minimum length or truncate speech to fit the duration cap.\n\nFor comedy, protect the punchline's last thought and let the consequence register. For mystery, delay an answer only when the viewer has enough information to form a hypothesis. For emotional stories, let the character's choice carry the pause. A black screen is not automatically suspense. Music ducks under speech and fades around blackouts; blackouts remain silent. Distinct synthetic voices establish character identity but do not guarantee fear, sarcasm or dramatic acting.\n\nReview actual exported timing and audio before calling an edit polished. Source/licensing checks, PCM peak checks and exact input text do not establish subjective naturalness or engagement.\n",
+    "sha256": "c24c3276c48148c388543e0fe0e59233e6bfd90c7ac621052ba8a50b753c0012",
+    "scope": "Trusted writing guidance; current JSON/content contracts take precedence. No quality or engagement guarantee."
+  },
+  "task": "Write the source-bound script only, preserving claim IDs and the chosen canon/event date. Open on the actual question and deliver the concrete answer by the penultimate unit. A comic chapter may then lead to its actual next part. The local editor compiles illustrations, captions and timing; do not invent footage, source URLs or release links.",
+  "editorial_policy": "Check the scope of each claim against the supplied evidence. Audience critique is a separate pass; it cannot verify an unsourced claim or prove engagement."
+}

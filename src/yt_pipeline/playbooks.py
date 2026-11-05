@@ -115,9 +115,24 @@ PLAYBOOKS['documentary_chapter']={
     'sound':'One consistent clear local narrator, measured pacing and bounded pauses. No imitated creator voice.'}
 
 
+for _name,_writing,_voice in (
+    ('comic_lore','Retell one coherent, sourced fictional canon as an original short recap. Clearly name the comic/run/year in metadata and distinguish it from film announcements or fan theories. Open with a specific story question, reveal a new concrete consequence, and deliver this chapter\'s answer before an earned next-part lead. Explain people by their role; avoid alias lists and repeated thematic morals. Every plot claim needs a supplied claim ID. Never claim to have read a full issue when only publisher recaps were available.','bm_george'),
+    ('movie_brief','Give one useful movie recommendation, confirmed announcement or clearly sourced movie-news answer. Lead with the actual viewer question and resolve it. Distinguish the actor from the character, confirmed facts from rumors, comic canon from film continuity, gross from budget and dated estimates from final totals. Do not invent feuds, release dates, box-office records, streaming availability or prediction-as-fact.','am_adam'),
+    ('current_affairs','Explain one dated development and its concrete meaning for an India/world-current-affairs viewer. State the actual event date, define one useful term and answer what changed. Distinguish direction, denominator, eligibility and exceptions; avoid turning a narrow concession into a blanket claim. No fake breaking-news urgency, invented election result or nationalistic claim beyond the evidence.','am_adam')):
+    PLAYBOOKS[_name]={'format':'lesson','seconds':[25,80],'words':[75,175],'units':[7,12],
+        'voice':{'voice_id':_voice,'length_scale':1.0,'pause':.18},
+        'music':{'category':'storytime' if _name!='current_affairs' else 'learning','mood':'quiet licensed bed below speech','volume':.06},
+        'layout':'comic_lore' if _name=='comic_lore' else 'education_demo','bottom':['none'],'writing':_writing,
+        'visuals':'Trusted original portrait panels or explanatory motion graphics bound to exact script labels. No generated photos/videos or assumed permission to reuse comic panels/film clips.',
+        'sound':'One clear local narrator, complete measured speech and reading holds; optional permitted music below voice.'}
+
+
 def prepare_request(request):
     """Resolve defaults only for new presets, preserving historical requests."""
     value = deepcopy(request)
+    if value.get('playbook') in ('comic_lore','movie_brief','current_affairs'):
+        for key,setting in {'bottom_kind':'none','require_music':False,'hook_options':False,'editorial_review':'off','visual_review':'off','motion_graphics':True}.items():value.setdefault(key,setting)
+        if value.get('fiction') is True or value['bottom_kind']!='none' or value.get('bottom_asset_id'):raise Held('factual_brief','Source-aware short recaps need factual briefs and a full portrait frame.')
     if value.get('playbook')=='illustrated_story':
         if value.get('story_canvas','landscape') not in ('portrait','landscape'):raise Held('story_layout','Choose portrait or landscape story canvas.')
         if type(value.get('allow_licensed_illustrations',False)) is not bool:raise Held('story_layout','allow_licensed_illustrations must be a boolean.')
@@ -143,6 +158,12 @@ def prepare_request(request):
         if value.get('chat_tone','comedy') not in ('comedy','mystery','thriller','story'):raise Held('chat_config','Choose comedy, mystery or thriller tone.')
         if type(value.get('chat_script_review',False)) is not bool:raise Held('chat_config','chat_script_review must be a boolean.')
         if type(value.get('chat_voiceover',False)) is not bool:raise Held('chat_voice','chat_voiceover must be a boolean.')
+        from .phone_editor.audio import voice_styles
+        voice_styles(value)
+        if type(value.get('chat_sound_library',False)) is not bool:raise Held('chat_sound','chat_sound_library must be a boolean.')
+        events=value.get('chat_sound_events',[])
+        if not isinstance(events,list) or len(events)>8 or any(not isinstance(e,dict) for e in events):raise Held('chat_sound','Supply at most eight explicit sound events.')
+        if events and not value.get('chat_sound_library'):raise Held('chat_sound','Explicit sound events need chat_sound_library enabled.')
         if type(value.get('chat_auto_music',False)) is not bool:raise Held('chat_music','chat_auto_music must be a boolean.')
         pauses=value.get('chat_pause_before',{})
         if not isinstance(pauses,dict) or len(pauses)>26 or any(not isinstance(k,str) or type(v) not in (int,float) or not 0<=v<=1.5 for k,v in pauses.items()):raise Held('chat_timing','Message anticipation pauses must map message IDs to 0-1.5 seconds.')
@@ -196,6 +217,9 @@ def writing_prompt(name,request=None):
     value=get_playbook(name,request)
     from .writing_craft import craft_context
     value['writing_skill']=craft_context((request or {}).get('chat_tone',(request or {}).get('story_tone','comedy' if name in ('server_chat','cutout_ensemble') else name)),value['format'])
+    if name in ('comic_lore','movie_brief','current_affairs'):
+        return {**value,'task':'Write the source-bound script only, preserving claim IDs and the chosen canon/event date. Open on the actual question and deliver the concrete answer by the penultimate unit. A comic chapter may then lead to its actual next part. The local editor compiles illustrations, captions and timing; do not invent footage, source URLs or release links.',
+            'editorial_policy':'Check the scope of each claim against the supplied evidence. Audience critique is a separate pass; it cannot verify an unsourced claim or prove engagement.'}
     if name=='server_chat' and (request or {}).get('chat_editing_version')==2:
         return {**value,'task':'Write only the complete conversation in the script JSON contract. The hook equals the first actual message, and onscreen equals text for every message. Do not create a storyboard or timing. The software compiles all editing without another model call.',
             'editorial_policy':'One writing call, at most one structural repair. Optional writing-only critique allows at most one revision and one recheck; software still owns all edits. Structural checks/model opinions cannot certify humor or viewer response.'}
@@ -207,7 +231,7 @@ def writing_prompt(name,request=None):
 def validate_playbook_script(script,name,request=None):
     value=get_playbook(name,request)
     if script['format']!=value['format']:raise Held('playbook_script','Script format differs from its selected playbook')
-    if name=='documentary_chapter':
+    if name in ('documentary_chapter','comic_lore','movie_brief','current_affairs'):
         if script['fiction'] or len({u['speaker'] for u in script['units']})!=1 or any(len(u['onscreen'])>85 for u in script['units']):
             raise Held('playbook_script','Use one factual narrator and concise diagram headings of at most 85 characters.')
     if name=='server_chat':

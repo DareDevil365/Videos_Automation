@@ -14,7 +14,8 @@ One folder per responsibility. The executable implementation is a single Python 
 | [Browser generation worker](generation/README.md) | Plan settings, inspect an explicit provider page, submit once and import/download a result. |
 | [Director and visual editor](director/README.md) | Convert frozen dialogue and actual media into supported timed scenes and a compositor recipe. |
 | [Quality reviewer and packager](quality/README.md) | Check exported bytes and sampled images, then package exact outputs with evidence. |
-| [Publisher](publisher/README.md) | Publish only a checked exact version to the verified channel under configured private/scheduled policy. |
+| [Audience critique agents](audience-critique/README.md) | Separate genre-specific viewer passes: exact attention loss, unsupported claims, weak payoff and concrete fixes. |
+| [Publisher](publisher/README.md) | Publish only a checked exact version to the verified channel under configured public/private/scheduled policy. |
 | [Supervisor and growth analyst](supervisor/README.md) | Surface operational incidents and collect honest owned-channel performance observations. |
 
 ## Handoffs

@@ -133,6 +133,12 @@ def active_speaker_scene(scene,cast):
 
 
 def plan_edit(provider,script,request,brief=None):
+    if request.get('playbook')=='comic_lore':
+        from .lore_visuals import plan_lore
+        return plan_lore(script,request,brief)
+    if request.get('playbook') in ('movie_brief','current_affairs'):
+        from .brief_visuals import plan_brief
+        return plan_brief(script,request,brief)
     if request.get('playbook')=='server_chat' and request.get('chat_editing_version')==2:
         from .chat_editing import compile_chat_plan
         return compile_chat_plan(script,request)

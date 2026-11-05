@@ -1,0 +1,69 @@
+{
+  "version": 1,
+  "series_id": "doom-secret-wars-2015",
+  "canon": "Marvel Comics Secret Wars (2015), separate from the 1984 event and the MCU.",
+  "status": "Revised after audience critique; local prototype only.",
+  "parts": [
+    {
+      "part": 1,
+      "script": "part-1.json",
+      "word_count": 94,
+      "main_issue_references": [
+        "Secret Wars (2015) #1–5"
+      ],
+      "next_part": 2,
+      "publication_url": null,
+      "lore_scenes": {
+        "u1": "dominion",
+        "u2": "collapse",
+        "u3": "life_raft",
+        "u4": "battleworld",
+        "u5": "control",
+        "u6": "throne",
+        "u7": "memory",
+        "u8": "hidden_power"
+      }
+    },
+    {
+      "part": 2,
+      "script": "part-2.json",
+      "word_count": 100,
+      "main_issue_references": [
+        "Secret Wars (2015) #6–9"
+      ],
+      "next_part": 3,
+      "publication_url": null,
+      "lore_scenes": {
+        "u1": "dominion",
+        "u2": "hidden_power",
+        "u3": "source_closeup",
+        "u4": "meal_detail",
+        "u5": "meal",
+        "u6": "absence",
+        "u7": "meal_detail",
+        "u8": "duel"
+      }
+    },
+    {
+      "part": 3,
+      "script": "part-3.json",
+      "word_count": 98,
+      "main_issue_references": [
+        "Secret Wars (2015) #9"
+      ],
+      "next_part": null,
+      "publication_url": null,
+      "lore_scenes": {
+        "u1": "consequence",
+        "u2": "duel",
+        "u3": "throne",
+        "u4": "confrontation",
+        "u5": "rebuilding",
+        "u6": "meal_detail",
+        "u7": "restoration",
+        "u8": "consequence"
+      }
+    }
+  ],
+  "publication_rule": "Finish each part before promising an available next part. Do not invent release links. Part3 concludes the arc."
+}

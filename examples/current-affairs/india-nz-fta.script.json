@@ -1,0 +1,103 @@
+{
+  "version": 1,
+  "title": "India–New Zealand Trade Deal: Why Zero Duty Isn’t Both Ways",
+  "description": "The India–New Zealand free trade agreement took effect on 20 October 2026. This current-affairs explainer compares tariff treatment by direction and explains why rules of origin and other costs still matter.",
+  "format": "lesson",
+  "fiction": false,
+  "hook": "New Zealand dropped duties on qualifying Indian exports. Did India do the same?",
+  "payoff": "Remember the test: which direction are the goods going, and do they qualify?",
+  "units": [
+    {
+      "id": "u1",
+      "speaker": "Narrator",
+      "text": "New Zealand dropped duties on qualifying Indian exports. Did India do the same?",
+      "kind": "fact",
+      "claim_ids": [
+        "c2",
+        "c4"
+      ],
+      "onscreen": "ZERO DUTY BOTH WAYS?"
+    },
+    {
+      "id": "u2",
+      "speaker": "Narrator",
+      "text": "No. The free trade agreement took effect on October twentieth, twenty twenty-six, with different terms each way.",
+      "kind": "fact",
+      "claim_ids": [
+        "c1",
+        "c2",
+        "c4"
+      ],
+      "onscreen": "IN FORCE: 20 OCTOBER 2026"
+    },
+    {
+      "id": "u3",
+      "speaker": "Narrator",
+      "text": "Qualifying Indian goods enter New Zealand without customs duty, the tax charged on imports.",
+      "kind": "fact",
+      "claim_ids": [
+        "c2",
+        "c5"
+      ],
+      "onscreen": "INDIA → NEW ZEALAND: ZERO DUTY"
+    },
+    {
+      "id": "u4",
+      "speaker": "Narrator",
+      "text": "The New Zealand government said almost fifty-seven percent of its exports to India were tariff-free at launch.",
+      "kind": "fact",
+      "claim_ids": [
+        "c3"
+      ],
+      "onscreen": "NEW ZEALAND → INDIA: ALMOST 57% AT LAUNCH"
+    },
+    {
+      "id": "u5",
+      "speaker": "Narrator",
+      "text": "That's export coverage, not a count of tariff lines. India kept exclusions, including dairy.",
+      "kind": "fact",
+      "claim_ids": [
+        "c3",
+        "c4"
+      ],
+      "onscreen": "EXPORT COVERAGE ≠ TARIFF LINE COUNT"
+    },
+    {
+      "id": "u6",
+      "speaker": "Narrator",
+      "text": "Rules of origin decide which goods qualify. Shipping from a partner country isn't enough.",
+      "kind": "fact",
+      "claim_ids": [
+        "c6"
+      ],
+      "onscreen": "RULES OF ORIGIN = ELIGIBILITY"
+    },
+    {
+      "id": "u7",
+      "speaker": "Narrator",
+      "text": "And zero customs duty does not erase other charges or product requirements.",
+      "kind": "fact",
+      "claim_ids": [
+        "c7"
+      ],
+      "onscreen": "ZERO DUTY ≠ ZERO COST"
+    },
+    {
+      "id": "u8",
+      "speaker": "Narrator",
+      "text": "Remember the test: which direction are the goods going, and do they qualify?",
+      "kind": "transition",
+      "claim_ids": [
+        "c2",
+        "c3",
+        "c6"
+      ],
+      "onscreen": "CHECK THE DIRECTION AND ORIGIN"
+    }
+  ],
+  "edit": {
+    "effect": "none",
+    "payoff_unit_id": "u8",
+    "cta": false
+  }
+}

@@ -1,0 +1,107 @@
+{
+  "version": 2,
+  "review_date": "2026-11-06",
+  "previous_report": "script-critique.json",
+  "scope": "Revised script recheck plus actual original-graphics gallery and silent two-second renderer sample; not full-episode review.",
+  "verdict": "script_clear_for_prototype_render; visual_quality_revision_recommended",
+  "publication_approval": false,
+  "audience_metrics_observed": false,
+  "script_files": [
+    {
+      "path": "examples/lore-series/secret-wars-2015/part-1.json",
+      "sha256": "b42a32f403865011cff63d97dec854e2924139463c409e95b274ee1f7a9e886b"
+    },
+    {
+      "path": "examples/lore-series/secret-wars-2015/part-2.json",
+      "sha256": "be4e6a884c24036aa74a8ffb996249d55eaf8edadf3886867bdc475a08ac4237"
+    },
+    {
+      "path": "examples/lore-series/secret-wars-2015/part-3.json",
+      "sha256": "488acb466fc193d36041f7ec0488d5d59241a3d50ac9e535fe4fdfc7c745a76e"
+    }
+  ],
+  "visual_samples": [
+    {
+      "path": "Resources/Drafts/comic-lore-renderer/contact-sheet.png",
+      "sha256": "23064d5fa2ef09b69cedc563389c7450557fe65d126f96528518732d5472c60c"
+    },
+    {
+      "path": "Resources/Drafts/comic-lore-renderer/hidden_power.png",
+      "sha256": "c6804fe5609853036bf2941e4b05869e895c321e1d9ff8874bc1ee87045de782"
+    },
+    {
+      "path": "Resources/Drafts/comic-lore-renderer/hidden-power-preview.mp4",
+      "sha256": "a28e8195d7a8d9542c78618c415007596545b347f5d222cc3cccaddf03813bcd"
+    }
+  ],
+  "video_observation": {
+    "duration_seconds": 2,
+    "has_audio": false,
+    "observed_frame_seconds": [
+      0,
+      0.5,
+      1,
+      1.5
+    ],
+    "method": "watch-video timestamped frame extraction + full-resolution still inspection"
+  },
+  "resolved_prior_issues": [
+    "P1-01",
+    "P1-03",
+    "P2-01",
+    "P2-02",
+    "P2-03",
+    "P3-02",
+    "P3-03",
+    "P3-04"
+  ],
+  "mitigated_prior_issues": [
+    "P1-02",
+    "P3-01"
+  ],
+  "additional_fixed_blocker": "Part1 previously attached memory loss to the life-raft survivors; current u6 distinguishes Battleworld people and u7 explicitly says raft survivors remember. Claimc13 added.",
+  "canon_status": "No remaining definite blocker established within official indexed recap evidence. Mother-loss is supported by the source describing the mother as previously deceased; full issue-level verification remains unavailable.",
+  "remaining_findings": [
+    {
+      "id": "R2-V1",
+      "severity": "high",
+      "surface": "hidden-power-preview 0.0-1.5s",
+      "issue": "Narrative composition is almost unchanged across sampled frames; subtle pulse/particles do not create a discovery.",
+      "fix": "Stage the concealment/reveal and visible upward power movement rather than hold the completed explanatory diagram."
+    },
+    {
+      "id": "R2-V2",
+      "severity": "high",
+      "surface": "hidden_power.png",
+      "issue": "Anonymous small lower figure is not identifiable as Molecule Man, and the vertical connection has no unambiguous direction.",
+      "fix": "Use short necessary role labels and clear upward energy flow/arrow toward Doom."
+    },
+    {
+      "id": "R2-V3",
+      "severity": "medium",
+      "surface": "ten-scene contact sheet",
+      "issue": "Repeated starfield, flat small generic figures and frame treatment give an educational-diagram feel despite differing scene layouts.",
+      "fix": "Vary focal scale, angle and staged action while preserving consistent role shapes/colors. Do not claim publisher comic art or literal acting."
+    },
+    {
+      "id": "R2-S1",
+      "severity": "medium",
+      "surface": "Part2 u6",
+      "issue": "Prior mother-loss is now planted but sits after the gift, so delivery could suggest Miles calculated the reward.",
+      "fix": "Keep the act framed as kindness whose consequence Miles did not anticipate; avoid transactional voice/emphasis."
+    },
+    {
+      "id": "R2-S2",
+      "severity": "medium",
+      "surface": "Part3 u1-u8",
+      "issue": "The opening states both final outcomes. Interest now depends on explaining how, not concealing the result.",
+      "fix": "Render a clear causal progression and two distinct outcomes; do not use mystery timing that pretends those outcomes remain unknown."
+    }
+  ],
+  "limits": [
+    "No finished episode seen.",
+    "Silent renderer sample cannot support a narration/music verdict.",
+    "No real viewers, retention measurements or subjective audience-validation data.",
+    "Direct Marvel canonical pages returned403; official indexed text consulted."
+  ]
+}

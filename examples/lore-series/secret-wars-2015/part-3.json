@@ -1,0 +1,115 @@
+{
+  "version": 1,
+  "title": "The Admission That Cost Doom His World",
+  "description": "Part 3 of an original spoiler recap and commentary about Marvel Comics Secret Wars (2015), written by Jonathan Hickman and drawn by Esad Ribic. Comics canon, not a prediction of the MCU films.",
+  "format": "lesson",
+  "fiction": false,
+  "hook": "Doctor Doom lost his godhood. Miles Morales got his mother back.",
+  "payoff": "The battle changed who held the power. The hamburger changed who Miles came home to.",
+  "units": [
+    {
+      "id": "u1",
+      "speaker": "Narrator",
+      "text": "Doctor Doom lost his godhood. Miles Morales got his mother back.",
+      "onscreen": "A GOD FALLS. A FAMILY RETURNS.",
+      "kind": "fact",
+      "claim_ids": [
+        "c10",
+        "c12"
+      ],
+      "visual_kind": "image",
+      "visual_query": "Original symbolic comic diagram: A GOD FALLS. A FAMILY RETURNS."
+    },
+    {
+      "id": "u2",
+      "speaker": "Narrator",
+      "text": "In Secret Wars' final battle, Reed Richards challenged Doom's rule.",
+      "onscreen": "REED CHALLENGES DOOM",
+      "kind": "fact",
+      "claim_ids": [
+        "c9"
+      ],
+      "visual_kind": "image",
+      "visual_query": "Original symbolic comic diagram: REED CHALLENGES DOOM"
+    },
+    {
+      "id": "u3",
+      "speaker": "Narrator",
+      "text": "Doom finally admitted Reed could have saved reality better than he had.",
+      "onscreen": "REED COULD HAVE DONE BETTER",
+      "kind": "fact",
+      "claim_ids": [
+        "c9"
+      ],
+      "visual_kind": "image",
+      "visual_query": "Original symbolic comic diagram: REED COULD HAVE DONE BETTER"
+    },
+    {
+      "id": "u4",
+      "speaker": "Narrator",
+      "text": "Molecule Man chose to move the power from Doom to Reed.",
+      "onscreen": "DOOM → REED",
+      "kind": "fact",
+      "claim_ids": [
+        "c10"
+      ],
+      "visual_kind": "image",
+      "visual_query": "Original symbolic comic diagram: DOOM → REED"
+    },
+    {
+      "id": "u5",
+      "speaker": "Narrator",
+      "text": "Reed and his family then helped rebuild the multiverse, rather than leave one patchwork world.",
+      "onscreen": "WORLDS REBUILT",
+      "kind": "fact",
+      "claim_ids": [
+        "c11"
+      ],
+      "visual_kind": "image",
+      "visual_query": "Original symbolic comic diagram: WORLDS REBUILT"
+    },
+    {
+      "id": "u6",
+      "speaker": "Narrator",
+      "text": "And Molecule Man remembered the meal Miles had given him underground.",
+      "onscreen": "THE HAMBURGER MATTERED",
+      "kind": "fact",
+      "claim_ids": [
+        "c8",
+        "c12"
+      ],
+      "visual_kind": "image",
+      "visual_query": "Original symbolic comic diagram: THE HAMBURGER MATTERED"
+    },
+    {
+      "id": "u7",
+      "speaker": "Narrator",
+      "text": "He gave Miles a place in the rebuilt reality—and brought his mother back.",
+      "onscreen": "MILES GETS HIS MOTHER BACK",
+      "kind": "fact",
+      "claim_ids": [
+        "c12"
+      ],
+      "visual_kind": "image",
+      "visual_query": "Original symbolic comic diagram: MILES GETS HIS MOTHER BACK"
+    },
+    {
+      "id": "u8",
+      "speaker": "Narrator",
+      "text": "The battle changed who held the power. The hamburger changed who Miles came home to.",
+      "onscreen": "THE FAVOR REPAID",
+      "kind": "transition",
+      "claim_ids": [
+        "c10",
+        "c12"
+      ],
+      "visual_kind": "image",
+      "visual_query": "Original symbolic comic diagram: THE FAVOR REPAID"
+    }
+  ],
+  "edit": {
+    "effect": "none",
+    "payoff_unit_id": "u8",
+    "cta": false
+  }
+}

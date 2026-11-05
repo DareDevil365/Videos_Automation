@@ -1,0 +1,39 @@
+{
+  "version": 1,
+  "reviewed_on": "2026-11-06",
+  "reviewer": "Main assistant, skeptical audience pass; separate critic-agent run was unavailable",
+  "scope": "Original provided script and source brief only; no measured audience response or audio/video claim.",
+  "script_sha256": "28841adfa08e9e5aefce8cd5bc098677596b9bd4541472d8366fc5e6bc3b3a63",
+  "first_attention_loss_unit_id": "u2",
+  "outcome": "revise",
+  "findings": [
+    {
+      "unit_id": "u2",
+      "severity": "major",
+      "quote": "The confirmed role is Victor von Doom. A Tony Stark connection has not been confirmed.",
+      "problem": "The yes/no hook is answered immediately, but the next lines do not establish a new reason to stay.",
+      "fix": "Answer the rumor briefly, then promise one useful viewing choice."
+    },
+    {
+      "unit_id": "u3",
+      "severity": "minor",
+      "quote": "Doom is a monarch, not just a man wearing another metal suit.",
+      "problem": "The monarch and metal-suit line repeats the following definition.",
+      "fix": "Spend the time on why Doom is a different kind of antagonist."
+    },
+    {
+      "unit_id": "u6",
+      "severity": "major",
+      "quote": "That's why Doom's comic stories matter: they offer a character to understand, not merely a familiar face.",
+      "problem": "Explore the character is generic; the viewer still has nothing specific to watch.",
+      "fix": "Name First Steps as an optional starting point for Reed and the team, using the official guide."
+    },
+    {
+      "unit_id": "u8",
+      "severity": "major",
+      "quote": "Downey is returning. The character announced is Doom. Don't let the same actor turn a theory into a fact.",
+      "problem": "The ending repeats the casting answer.",
+      "fix": "End with a concrete viewing recommendation and keep the comic/film boundary clear."
+    }
+  ]
+}

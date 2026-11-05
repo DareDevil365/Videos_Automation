@@ -63,6 +63,12 @@ def package(workspace, job, brief, written, timing, directed, rendered, qa,provi
         if supplied is not None:strategy['origin']='provided_content_packaging_v1'
     description=(strategy['description'] if strategy else script["description"]).strip()
     if script["fiction"]:description+="\n\nOriginal fictional entertainment/edit captions; not a real conversation, creator quote or endorsement."
+    series=job['request'].get('series')
+    if series:
+        if (not isinstance(series,dict) or type(series.get('part')) is not int or type(series.get('total')) is not int
+                or not 1<=series['part']<=series['total']<=12 or series.get('next_part')!=(series['part']+1 if series['part']<series['total'] else None)):
+            raise Held('series_contract','Series metadata needs sequential real parts and a concluding final part.')
+        description+=f"\n\nPart {series['part']} of {series['total']}. "+str(series.get('canon',''))
     if brief["sources"]:
         description+="\n\nSources checked:\n"+"\n".join(source["url"] for source in brief["sources"])
     credits=list(dict.fromkeys(asset["attribution"] for asset in directed["provenance"] if asset.get("attribution")))
@@ -75,7 +81,7 @@ def package(workspace, job, brief, written, timing, directed, rendered, qa,provi
               "video":rendered["video"],"cover":rendered["cover"],"captions":rendered["captions"],
               "qa":qa,"source_urls":[s["url"] for s in brief["sources"]],"attribution":credits,
               "publication_mode":job['request'].get('publish_visibility','disabled'),"created_at":now(),
-              'packaging_strategy':strategy}
+              'packaging_strategy':strategy,'series':series}
     hook=written.get('hook_options') or {}
     plan=(written.get('creative_plan') or {}).get('plan',{})
     question=plan.get('comment_question','')

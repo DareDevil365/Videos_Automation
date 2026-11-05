@@ -1,0 +1,129 @@
+{
+  "version": 1,
+  "topic_id": "india-nz-fta-20261020",
+  "research_date": "2026-11-05",
+  "event_date": "2026-10-20",
+  "freshness_status": "verified_recent_development_not_same_day_breaking",
+  "verification_method": "Opened official pages from both governments and WTO; sources and claim links below. No social-media or secondary report used as evidence.",
+  "sources": [
+    {
+      "id": "s1",
+      "title": "PIB: India-New Zealand FTA to enter into force from 20 October 2026",
+      "url": "https://www.pib.gov.in/PressReleasePage.aspx?PRID=2313143&lang=1&reg=3",
+      "published_at": "2026-09-21",
+      "checked_at": "2026-11-05T18:25:33+00:00",
+      "excerpt": "Zero Duty on 100% of India’s Exports to New Zealand from Day One; keeping sensitive products such as dairy",
+      "supports": [
+        "c2",
+        "c4"
+      ],
+      "reading_locations": "Headlines; paragraphs on duty-free Indian exports and sensitive exclusions."
+    },
+    {
+      "id": "s2",
+      "title": "NZ MFAT: New Zealand-India Free Trade Agreement",
+      "url": "https://www.mfat.govt.nz/en/trade/free-trade-agreements/free-trade-agreements-in-force/new-zealand-india-free-trade-agreement",
+      "published_at": null,
+      "checked_at": "2026-11-05T18:25:33+00:00",
+      "excerpt": "The NZ-India Free Trade Agreement (FTA) entered into force on 20 October 2026.",
+      "supports": [
+        "c1"
+      ],
+      "reading_locations": "Opening status statement."
+    },
+    {
+      "id": "s3",
+      "title": "New Zealand Government: India FTA now open for business",
+      "url": "https://www.beehive.govt.nz/release/india-fta-now-open-business",
+      "published_at": "2026-10-20",
+      "checked_at": "2026-11-05T18:25:33+00:00",
+      "excerpt": "From today, almost 57 per cent of New Zealand exports to India are tariff-free.",
+      "supports": [
+        "c3"
+      ],
+      "reading_locations": "Opening results and phased-outcomes paragraphs."
+    },
+    {
+      "id": "s4",
+      "title": "New Zealand Customs: New Zealand-India FTA",
+      "url": "https://www.customs.govt.nz/information-releases-and-legislation/legislation/international-agreements/free-trade-agreements/new-zealand-india-free-trade-agreement",
+      "published_at": "2026-10-19",
+      "checked_at": "2026-11-05T18:25:33+00:00",
+      "excerpt": "Goods must meet the FTA rules of origin. other costs and levies may still apply.",
+      "supports": [
+        "c6",
+        "c7"
+      ],
+      "reading_locations": "Rules of Origin; Information for importers; FAQ on other costs and border requirements."
+    },
+    {
+      "id": "s5",
+      "title": "WTO glossary: tariffs",
+      "url": "https://www.wto.org/english/thewto_e/glossary_e/tariffs_e.htm",
+      "published_at": null,
+      "checked_at": "2026-11-05T18:25:33+00:00",
+      "excerpt": "Customs duties on merchandise imports.",
+      "supports": [
+        "c5"
+      ],
+      "reading_locations": "Glossary definition."
+    }
+  ],
+  "claims": [
+    {
+      "id": "c1",
+      "text": "The India-New Zealand FTA entered into force on 20 October 2026.",
+      "source_id": "s2"
+    },
+    {
+      "id": "c2",
+      "text": "New Zealand removed customs duty across all tariff lines for qualifying Indian exports at entry into force.",
+      "source_id": "s1"
+    },
+    {
+      "id": "c3",
+      "text": "At entry into force almost 57 percent of New Zealand exports to India became tariff-free; further tariff reductions are phased in. This is export coverage, not a count of tariff lines.",
+      "source_id": "s3"
+    },
+    {
+      "id": "c4",
+      "text": "India excluded sensitive products including dairy from tariff concessions under the agreement.",
+      "source_id": "s1"
+    },
+    {
+      "id": "c5",
+      "text": "A tariff is a customs duty on imported goods.",
+      "source_id": "s5"
+    },
+    {
+      "id": "c6",
+      "text": "Rules of origin determine whether a good qualifies for preferential tariff treatment; merely shipping it from a partner is insufficient.",
+      "source_id": "s4"
+    },
+    {
+      "id": "c7",
+      "text": "Tariff preferences do not remove all other costs or customs, biosecurity and product requirements.",
+      "source_id": "s4"
+    }
+  ],
+  "important_distinctions": [
+    "Zero-duty Indian-export access is a concession by New Zealand; do not label all imports into India duty-free.",
+    "Almost 57 percent refers to New Zealand export coverage at launch; do not call it 57 percent of products/tariff lines.",
+    "The announcement date, signature date, entry-into-force date and research date differ.",
+    "Do not claim automatic retail price reductions, guaranteed jobs/income or unlimited visa access.",
+    "Do not insert unrelated election results, geopolitical victory claims or predictions."
+  ],
+  "upsc_context": [
+    "Bilateral free trade agreements",
+    "Tariff versus non-tariff requirements",
+    "Rules of origin",
+    "Asymmetric and phased trade concessions"
+  ],
+  "visual_plan": [
+    "Original two-direction arrow graphic: India to NZ versus NZ to India.",
+    "Entry-into-force date card clearly marked 20 Oct 2026; research date in source/end card only.",
+    "Two comparison cards: qualifying Indian exports at zero duty; almost 57 percent of NZ exports at launch.",
+    "Short Rules of origin definition and three-question ending: which goods, which direction, which date."
+  ],
+  "media_rights": "Facts may be paraphrased in original narration/graphics. No government image, seal, screenshot, map, photograph or music is licensed by this packet; use existing eligible assets or original code graphics."
+}

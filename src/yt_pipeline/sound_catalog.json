@@ -1,0 +1,450 @@
+{
+  "version": 1,
+  "checked_on": "2026-11-05",
+  "purpose": "Small reusable library of non-imitative UI accents and permitted environment ambience; no generation service.",
+  "items": [
+    {
+      "key": "ui-incoming-soft",
+      "title": "Soft incoming message",
+      "category": "message_incoming",
+      "source_kind": "original_software_sfx",
+      "generator": "local-ui-sfx-v1",
+      "recipe": {
+        "type": "tone",
+        "seconds": 0.13,
+        "frequency": 415,
+        "end_frequency": 470,
+        "peak": 0.07
+      },
+      "genres": [
+        "comedy",
+        "mystery",
+        "thriller",
+        "story",
+        "cinematic",
+        "aura"
+      ],
+      "recommended_gain": 1.0,
+      "maximum_gain": 1.25,
+      "attribution": "Original software-synthesized effect; no sampled or copied app audio.",
+      "license": "Original deterministic project signal; no third-party recording",
+      "use_note": "One cue per meaningful arrival/event; no repeated typing chirps or sharp jump scare.",
+      "loop_allowed": false
+    },
+    {
+      "key": "ui-incoming-warm",
+      "title": "Warm incoming message",
+      "category": "message_incoming",
+      "source_kind": "original_software_sfx",
+      "generator": "local-ui-sfx-v1",
+      "recipe": {
+        "type": "tone",
+        "seconds": 0.15,
+        "frequency": 355,
+        "end_frequency": 400,
+        "peak": 0.065
+      },
+      "genres": [
+        "comedy",
+        "mystery",
+        "thriller",
+        "story",
+        "cinematic",
+        "aura"
+      ],
+      "recommended_gain": 1.0,
+      "maximum_gain": 1.25,
+      "attribution": "Original software-synthesized effect; no sampled or copied app audio.",
+      "license": "Original deterministic project signal; no third-party recording",
+      "use_note": "One cue per meaningful arrival/event; no repeated typing chirps or sharp jump scare.",
+      "loop_allowed": false
+    },
+    {
+      "key": "ui-outgoing-soft",
+      "title": "Soft outgoing message",
+      "category": "message_outgoing",
+      "source_kind": "original_software_sfx",
+      "generator": "local-ui-sfx-v1",
+      "recipe": {
+        "type": "tone",
+        "seconds": 0.12,
+        "frequency": 550,
+        "end_frequency": 610,
+        "peak": 0.065
+      },
+      "genres": [
+        "comedy",
+        "mystery",
+        "thriller",
+        "story",
+        "cinematic",
+        "aura"
+      ],
+      "recommended_gain": 1.0,
+      "maximum_gain": 1.25,
+      "attribution": "Original software-synthesized effect; no sampled or copied app audio.",
+      "license": "Original deterministic project signal; no third-party recording",
+      "use_note": "One cue per meaningful arrival/event; no repeated typing chirps or sharp jump scare.",
+      "loop_allowed": false
+    },
+    {
+      "key": "ui-outgoing-round",
+      "title": "Rounded outgoing message",
+      "category": "message_outgoing",
+      "source_kind": "original_software_sfx",
+      "generator": "local-ui-sfx-v1",
+      "recipe": {
+        "type": "tone",
+        "seconds": 0.14,
+        "frequency": 485,
+        "end_frequency": 530,
+        "peak": 0.065
+      },
+      "genres": [
+        "comedy",
+        "mystery",
+        "thriller",
+        "story",
+        "cinematic",
+        "aura"
+      ],
+      "recommended_gain": 1.0,
+      "maximum_gain": 1.25,
+      "attribution": "Original software-synthesized effect; no sampled or copied app audio.",
+      "license": "Original deterministic project signal; no third-party recording",
+      "use_note": "One cue per meaningful arrival/event; no repeated typing chirps or sharp jump scare.",
+      "loop_allowed": false
+    },
+    {
+      "key": "ui-notification-soft",
+      "title": "Soft incoming notification",
+      "category": "notification",
+      "source_kind": "original_software_sfx",
+      "generator": "local-ui-sfx-v1",
+      "recipe": {
+        "type": "double",
+        "seconds": 0.29,
+        "frequency": 465,
+        "end_frequency": 570,
+        "peak": 0.06
+      },
+      "genres": [
+        "comedy",
+        "mystery",
+        "thriller",
+        "story",
+        "cinematic",
+        "aura"
+      ],
+      "recommended_gain": 1.0,
+      "maximum_gain": 1.25,
+      "attribution": "Original software-synthesized effect; no sampled or copied app audio.",
+      "license": "Original deterministic project signal; no third-party recording",
+      "use_note": "One cue per meaningful arrival/event; no repeated typing chirps or sharp jump scare.",
+      "loop_allowed": false
+    },
+    {
+      "key": "ui-switch-air",
+      "title": "Soft conversation switch",
+      "category": "transition",
+      "source_kind": "original_software_sfx",
+      "generator": "local-ui-sfx-v1",
+      "recipe": {
+        "type": "whoosh",
+        "seconds": 0.24,
+        "frequency": 800,
+        "end_frequency": 1100,
+        "peak": 0.065
+      },
+      "genres": [
+        "comedy",
+        "mystery",
+        "thriller",
+        "story",
+        "cinematic",
+        "aura"
+      ],
+      "recommended_gain": 1.0,
+      "maximum_gain": 1.25,
+      "attribution": "Original software-synthesized effect; no sampled or copied app audio.",
+      "license": "Original deterministic project signal; no third-party recording",
+      "use_note": "One cue per meaningful arrival/event; no repeated typing chirps or sharp jump scare.",
+      "loop_allowed": false
+    },
+    {
+      "key": "ui-switch-short",
+      "title": "Short page movement",
+      "category": "transition",
+      "source_kind": "original_software_sfx",
+      "generator": "local-ui-sfx-v1",
+      "recipe": {
+        "type": "whoosh",
+        "seconds": 0.18,
+        "frequency": 700,
+        "end_frequency": 900,
+        "peak": 0.055
+      },
+      "genres": [
+        "comedy",
+        "mystery",
+        "thriller",
+        "story",
+        "cinematic",
+        "aura"
+      ],
+      "recommended_gain": 1.0,
+      "maximum_gain": 1.25,
+      "attribution": "Original software-synthesized effect; no sampled or copied app audio.",
+      "license": "Original deterministic project signal; no third-party recording",
+      "use_note": "One cue per meaningful arrival/event; no repeated typing chirps or sharp jump scare.",
+      "loop_allowed": false
+    },
+    {
+      "key": "ui-error-low",
+      "title": "Restrained error signal",
+      "category": "error",
+      "source_kind": "original_software_sfx",
+      "generator": "local-ui-sfx-v1",
+      "recipe": {
+        "type": "double",
+        "seconds": 0.3,
+        "frequency": 330,
+        "end_frequency": 245,
+        "peak": 0.06
+      },
+      "genres": [
+        "comedy",
+        "mystery",
+        "thriller",
+        "story",
+        "cinematic",
+        "aura"
+      ],
+      "recommended_gain": 1.0,
+      "maximum_gain": 1.25,
+      "attribution": "Original software-synthesized effect; no sampled or copied app audio.",
+      "license": "Original deterministic project signal; no third-party recording",
+      "use_note": "One cue per meaningful arrival/event; no repeated typing chirps or sharp jump scare.",
+      "loop_allowed": false
+    },
+    {
+      "key": "ui-battery-low",
+      "title": "Quiet low battery signal",
+      "category": "low_battery",
+      "source_kind": "original_software_sfx",
+      "generator": "local-ui-sfx-v1",
+      "recipe": {
+        "type": "double",
+        "seconds": 0.32,
+        "frequency": 390,
+        "end_frequency": 300,
+        "peak": 0.055
+      },
+      "genres": [
+        "comedy",
+        "mystery",
+        "thriller",
+        "story",
+        "cinematic",
+        "aura"
+      ],
+      "recommended_gain": 1.0,
+      "maximum_gain": 1.25,
+      "attribution": "Original software-synthesized effect; no sampled or copied app audio.",
+      "license": "Original deterministic project signal; no third-party recording",
+      "use_note": "One cue per meaningful arrival/event; no repeated typing chirps or sharp jump scare.",
+      "loop_allowed": false
+    },
+    {
+      "key": "ui-glitch-bounded",
+      "title": "Bounded digital interruption",
+      "category": "glitch",
+      "source_kind": "original_software_sfx",
+      "generator": "local-ui-sfx-v1",
+      "recipe": {
+        "type": "glitch",
+        "seconds": 0.21,
+        "frequency": 760,
+        "end_frequency": 440,
+        "peak": 0.045
+      },
+      "genres": [
+        "comedy",
+        "mystery",
+        "thriller",
+        "story",
+        "cinematic",
+        "aura"
+      ],
+      "recommended_gain": 1.0,
+      "maximum_gain": 1.25,
+      "attribution": "Original software-synthesized effect; no sampled or copied app audio.",
+      "license": "Original deterministic project signal; no third-party recording",
+      "use_note": "One cue per meaningful arrival/event; no repeated typing chirps or sharp jump scare.",
+      "loop_allowed": false
+    },
+    {
+      "key": "reveal-soft",
+      "title": "Restrained reveal accent",
+      "category": "reveal",
+      "source_kind": "original_software_sfx",
+      "generator": "local-ui-sfx-v1",
+      "recipe": {
+        "type": "tone",
+        "seconds": 0.55,
+        "frequency": 210,
+        "end_frequency": 300,
+        "peak": 0.075
+      },
+      "genres": [
+        "comedy",
+        "mystery",
+        "thriller",
+        "story",
+        "cinematic",
+        "aura"
+      ],
+      "recommended_gain": 1.0,
+      "maximum_gain": 1.25,
+      "attribution": "Original software-synthesized effect; no sampled or copied app audio.",
+      "license": "Original deterministic project signal; no third-party recording",
+      "use_note": "One cue per meaningful arrival/event; no repeated typing chirps or sharp jump scare.",
+      "loop_allowed": false
+    },
+    {
+      "key": "aura-impact-soft",
+      "title": "Low athletic impact accent",
+      "category": "impact",
+      "source_kind": "original_software_sfx",
+      "generator": "local-ui-sfx-v1",
+      "recipe": {
+        "type": "impact",
+        "seconds": 0.32,
+        "frequency": 115,
+        "end_frequency": 58,
+        "peak": 0.105
+      },
+      "genres": [
+        "aura"
+      ],
+      "recommended_gain": 1.0,
+      "maximum_gain": 1.25,
+      "attribution": "Original software-synthesized effect; no sampled or copied app audio.",
+      "license": "Original deterministic project signal; no third-party recording",
+      "use_note": "One cue per meaningful arrival/event; no repeated typing chirps or sharp jump scare.",
+      "loop_allowed": false
+    },
+    {
+      "key": "mixkit-sfx-2393",
+      "title": "Light rain loop",
+      "category": "ambience_rain",
+      "source_url": "https://mixkit.co/free-sound-effects/rain/",
+      "source_download_page": "https://mixkit.co/free-sound-effects/download/2393/?context=item+grid",
+      "download_url": "https://assets.mixkit.co/active_storage/sfx/2393/2393.wav",
+      "sha256": "0e90fa5f678cca6966e66477b75b8fe608bf845d54e4b3e3efff839b9cc6805e",
+      "source_kind": "licensed_stock_sfx",
+      "genres": [
+        "comedy",
+        "mystery",
+        "thriller",
+        "story",
+        "cinematic",
+        "aura"
+      ],
+      "recommended_gain": 0.06,
+      "maximum_gain": 0.2,
+      "license": "Mixkit Sound Effects Free License",
+      "license_url": "https://mixkit.co/license/#sfxFree",
+      "license_terms_url": "https://mixkit.co/license/modal/sfxFree/",
+      "attribution": "Light rain loop \u2014 Mixkit: https://mixkit.co/free-sound-effects/rain/",
+      "use_note": "Use only when the story establishes this environment; not a generic overlay. Source-labeled ambience, no claim of a particular real location. Loop seams have not been auditioned.",
+      "loop_allowed": false
+    },
+    {
+      "key": "mixkit-sfx-447",
+      "title": "Office ambience",
+      "category": "ambience_office",
+      "source_url": "https://mixkit.co/free-sound-effects/ambience/",
+      "source_download_page": "https://mixkit.co/free-sound-effects/download/447/?context=item+grid",
+      "download_url": "https://assets.mixkit.co/active_storage/sfx/447/447.wav",
+      "sha256": "68d2fa0be54500ef1c2d13101748dcc3d4288ef4f4450bae7280fa1c9f471c37",
+      "source_kind": "licensed_stock_sfx",
+      "genres": [
+        "comedy",
+        "mystery",
+        "thriller",
+        "story",
+        "cinematic",
+        "aura"
+      ],
+      "recommended_gain": 0.06,
+      "maximum_gain": 0.2,
+      "license": "Mixkit Sound Effects Free License",
+      "license_url": "https://mixkit.co/license/#sfxFree",
+      "license_terms_url": "https://mixkit.co/license/modal/sfxFree/",
+      "attribution": "Office ambience \u2014 Mixkit: https://mixkit.co/free-sound-effects/ambience/",
+      "use_note": "Use only when the story establishes this environment; not a generic overlay. Source-labeled ambience, no claim of a particular real location. Loop seams have not been auditioned.",
+      "loop_allowed": false
+    },
+    {
+      "key": "mixkit-sfx-444",
+      "title": "Restaurant crowd talking ambience",
+      "category": "ambience_cafe",
+      "source_url": "https://mixkit.co/free-sound-effects/ambience/",
+      "source_download_page": "https://mixkit.co/free-sound-effects/download/444/?context=item+grid",
+      "download_url": "https://assets.mixkit.co/active_storage/sfx/444/444.wav",
+      "sha256": "6ec124dc7ce3f66be9859a11f113b11a020a38f9ad78b7e0cebc0d7e44e6db6f",
+      "source_kind": "licensed_stock_sfx",
+      "genres": [
+        "comedy",
+        "mystery",
+        "thriller",
+        "story",
+        "cinematic",
+        "aura"
+      ],
+      "recommended_gain": 0.045,
+      "maximum_gain": 0.2,
+      "license": "Mixkit Sound Effects Free License",
+      "license_url": "https://mixkit.co/license/#sfxFree",
+      "license_terms_url": "https://mixkit.co/license/modal/sfxFree/",
+      "attribution": "Restaurant crowd talking ambience \u2014 Mixkit: https://mixkit.co/free-sound-effects/ambience/",
+      "use_note": "Use only when the story establishes this environment; not a generic overlay. Source-labeled ambience, no claim of a particular real location. Loop seams have not been auditioned.",
+      "loop_allowed": false
+    },
+    {
+      "key": "mixkit-sfx-1634",
+      "title": "Train waiting at station",
+      "category": "ambience_station",
+      "source_url": "https://mixkit.co/free-sound-effects/train/",
+      "source_download_page": "https://mixkit.co/free-sound-effects/download/1634/?context=item+grid",
+      "download_url": "https://assets.mixkit.co/active_storage/sfx/1634/1634.wav",
+      "sha256": "d0c8d2919cd5ed596d75b45136304b25103281853234f53dd192f8b97fe4be81",
+      "source_kind": "licensed_stock_sfx",
+      "genres": [
+        "comedy",
+        "mystery",
+        "thriller",
+        "story",
+        "cinematic",
+        "aura"
+      ],
+      "recommended_gain": 0.06,
+      "maximum_gain": 0.2,
+      "license": "Mixkit Sound Effects Free License",
+      "license_url": "https://mixkit.co/license/#sfxFree",
+      "license_terms_url": "https://mixkit.co/license/modal/sfxFree/",
+      "attribution": "Train waiting at station \u2014 Mixkit: https://mixkit.co/free-sound-effects/train/",
+      "use_note": "Use only when the story establishes this environment; not a generic overlay. Source-labeled ambience, no claim of a particular real location. Loop seams have not been auditioned.",
+      "loop_allowed": false
+    }
+  ],
+  "policies": {
+    "blackout": "Hard silence overrides all speech, effects, music and ambience inside intentional blackout intervals.",
+    "typing": "No repeated typing chirps or keyboard loops.",
+    "notifications": "One sound/speech for an incoming message, even when its notification preview and bubble are both shown.",
+    "ambience": "Opt in only for an established environment; no automatic random rain, office or station layer.",
+    "loudness": "Starting gains are editorial suggestions, not listening approval. Speech stays dominant.",
+    "coverage": "Core phone/UI, transition, error/battery, bounded glitch, soft reveal, aura impact, rain/office/cafe/station ambience. Not a universal Foley library."
+  }
+}

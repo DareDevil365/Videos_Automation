@@ -1,5 +1,7 @@
 # Research index
 
+New source packs: [comic lore](content-lore/README.md), [movie topics and verification](content-movies/README.md), and [current affairs](content-current-affairs/README.md). See the [confirmed content order](../docs/CONTENT_ROADMAP.md).
+
 Latest repository check: [animation repositories and free API boundaries](repositories/FREE_ANIMATION_REPOSITORIES_2026-11-05.md), distinguishing local rendering, model free tiers and multi-service dependencies.
 
 Latest visual study: [BetterWay documentary using watch-video](formats/education-and-movies/BETTERWAY_VIDEO_ANALYSIS_2026-11-05.md), with successful frame/caption extraction and remaining audio/continuous-playback limits.

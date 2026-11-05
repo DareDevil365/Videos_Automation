@@ -177,6 +177,12 @@ def _video_scene(asset,caption,duration,path,height,offset=0,rank=None,motion='h
 
 
 def build_planned_visuals(ws,job,script,timing,folder,record,*,provider=None):
+    if record.get('plan',{}).get('template')=='source_brief':
+        from .brief_visuals import build_brief_visuals
+        return build_brief_visuals(ws,job,script,timing,folder,record)
+    if record.get('plan',{}).get('template')=='comic_lore':
+        from .lore_visuals import build_lore_visuals
+        return build_lore_visuals(ws,job,script,timing,folder,record)
     if record.get('plan',{}).get('template')=='server_chat_v2':
         from .chat_editing import build_chat_visuals
         return build_chat_visuals(ws,job,script,timing,folder,record)

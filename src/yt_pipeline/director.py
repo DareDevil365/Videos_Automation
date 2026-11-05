@@ -34,6 +34,7 @@ def direct(workspace, job, script, timing, visuals):
                 'source_audio':False,'effect_at':max(.1,unit['duration']-.35) if unit['id']==script['edit']['payoff_unit_id'] else 180,
                 'inputs':{'background':bottom['path'] if bottom else asset['path'],**({'foreground':asset['path']} if bottom else {})}})
         inputs={'narration':timing['audio']}
+        provenance.extend(asset_record(workspace,ref) for ref in dict.fromkeys(e['asset_id'] for e in timing.get('effects',[])))
         music_id=request.get('music_id')
         if timing.get('mixed_music_id'):
             provenance.append(asset_record(workspace,timing['mixed_music_id']))

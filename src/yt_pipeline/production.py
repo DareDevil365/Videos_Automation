@@ -28,7 +28,7 @@ def _create_production(ws,topic,genre,format,visibility,extra,token):
         if saved:return ws.get(saved['id'])
     request=dict(extra or {})
     request.update(topic=topic.strip(),playbook='server_chat',chat_tone=genre,chat_editing_version=2,chat_writing_version=2,
-        chat_script_review=True,chat_voiceover=True,fiction=True,test_only=False,bottom_kind='none',require_music=True,
+        chat_script_review=True,chat_voiceover=True,chat_sound_library=True,fiction=True,test_only=False,bottom_kind='none',require_music=True,
         hook_options=False,editorial_review='off',visual_review='off',phone_story=format=='phone',metadata_version=2,
         auto_publish=visibility!='none',production_workflow=1)
     if visibility!='none':request['publish_visibility']=visibility

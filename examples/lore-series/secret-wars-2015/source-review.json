@@ -1,0 +1,18 @@
+{
+  "version": 1,
+  "reviewer": "Assistant source review with separate comic audience critic",
+  "supported": true,
+  "brief_sha256": "52da2aee25f7048101f557094d0b7ec480e99e7fde85ee547849c8aa6287f293",
+  "script_sha256": {
+    "part-1.json": "b42a32f403865011cff63d97dec854e2924139463c409e95b274ee1f7a9e886b",
+    "part-2.json": "be4e6a884c24036aa74a8ffb996249d55eaf8edadf3886867bdc475a08ac4237",
+    "part-3.json": "488acb466fc193d36041f7ec0488d5d59241a3d50ac9e535fe4fdfc7c745a76e"
+  },
+  "limitations": "Original recaps checked against official Marvel indexed summaries, character biography and official reading list. Direct access to some publisher pages returned 403; complete issues/panels were not read. Claims relate to 2015 comics only. This is prototype review, no reuse grant, verified audience interest or publication approval.",
+  "checks": [
+    "Battleworld inhabitants and remembering life-raft survivors distinguished",
+    "Molecule Man source and transfer separate from Miles hamburger reward",
+    "Exact script text and source brief bound to this review",
+    "No projected film plot or publisher art used"
+  ]
+}

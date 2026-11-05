@@ -129,7 +129,7 @@ class Pipeline:
                     output.with_suffix(".srt").write_text(captions.read_text(encoding="utf-8"),encoding="utf-8")
                     if results['voice'].get('caption_cues'):
                         caption_options={'canvas':(1280,720) if project['resolution']=='720p' else (1920,1080)} if project.get('profile')=='documentary' else {}
-                        if job['request'].get('story_canvas')=='portrait':caption_options['font_size']=48
+                        if job['request'].get('story_canvas')=='portrait' or job['request'].get('playbook') in ('comic_lore','movie_brief','current_affairs'):caption_options['font_size']=48
                         burn_captions(output,results['voice']['caption_cues'],split=project['format']=='stack',caption_bar=results['voice'].get('caption_style')=='dialogue_bar',
                             bar_height=round(1280*job['request'].get('top_fraction',.65)/2)*2 if job['request'].get('bottom_asset_id') else 1280,**caption_options)
                     result={"video":str(output),"cover":str(output.with_suffix(".png")),"captions":str(output.with_suffix(".srt")),

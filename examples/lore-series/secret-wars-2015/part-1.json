@@ -1,0 +1,116 @@
+{
+  "version": 1,
+  "title": "Doom Saved Reality. Then Made It Kneel.",
+  "description": "Part 1 of an original spoiler recap and commentary about Marvel Comics Secret Wars (2015), written by Jonathan Hickman and drawn by Esad Ribic. Comics canon, not a prediction of the MCU films.",
+  "format": "lesson",
+  "fiction": false,
+  "hook": "The Marvel multiverse fell apart. Doctor Doom kept the pieces.",
+  "payoff": "Doom hid the old reality from his people. But the raft's survivors still remembered it.",
+  "units": [
+    {
+      "id": "u1",
+      "speaker": "Narrator",
+      "text": "The Marvel multiverse fell apart. Doctor Doom kept the pieces.",
+      "onscreen": "THE END. THEN DOOM.",
+      "kind": "fact",
+      "claim_ids": [
+        "c1",
+        "c2"
+      ],
+      "visual_kind": "image",
+      "visual_query": "Original symbolic comic diagram: THE END. THEN DOOM."
+    },
+    {
+      "id": "u2",
+      "speaker": "Narrator",
+      "text": "In Secret Wars, the 2015 comic, universes were crashing into one another.",
+      "onscreen": "SECRET WARS · 2015 COMICS",
+      "kind": "fact",
+      "claim_ids": [
+        "c1"
+      ],
+      "visual_kind": "image",
+      "visual_query": "Original symbolic comic diagram: SECRET WARS · 2015 COMICS"
+    },
+    {
+      "id": "u3",
+      "speaker": "Narrator",
+      "text": "Reed Richards built a survival raft. But escape didn't bring the survivors home.",
+      "onscreen": "ESCAPE WAS NOT HOME",
+      "kind": "fact",
+      "claim_ids": [
+        "c3",
+        "c2"
+      ],
+      "visual_kind": "image",
+      "visual_query": "Original symbolic comic diagram: ESCAPE WAS NOT HOME"
+    },
+    {
+      "id": "u4",
+      "speaker": "Narrator",
+      "text": "They woke on Battleworld: fragments of destroyed worlds stitched into one planet.",
+      "onscreen": "BROKEN WORLDS → BATTLEWORLD",
+      "kind": "fact",
+      "claim_ids": [
+        "c2"
+      ],
+      "visual_kind": "image",
+      "visual_query": "Original symbolic comic diagram: BROKEN WORLDS → BATTLEWORLD"
+    },
+    {
+      "id": "u5",
+      "speaker": "Narrator",
+      "text": "Doom had made that planet, and every territory answered to him.",
+      "onscreen": "ONE WORLD. ONE RULER.",
+      "kind": "fact",
+      "claim_ids": [
+        "c2"
+      ],
+      "visual_kind": "image",
+      "visual_query": "Original symbolic comic diagram: ONE WORLD. ONE RULER."
+    },
+    {
+      "id": "u6",
+      "speaker": "Narrator",
+      "text": "Battleworld's people were expected to worship Doom as their god.",
+      "onscreen": "BATTLEWORLD WORSHIPS DOOM",
+      "kind": "fact",
+      "claim_ids": [
+        "c4"
+      ],
+      "visual_kind": "image",
+      "visual_query": "Original symbolic comic diagram: BATTLEWORLD WORSHIPS DOOM"
+    },
+    {
+      "id": "u7",
+      "speaker": "Narrator",
+      "text": "Doom hid the old reality from his people. But the raft's survivors still remembered it.",
+      "onscreen": "THE OUTSIDERS REMEMBER",
+      "kind": "fact",
+      "claim_ids": [
+        "c4",
+        "c13"
+      ],
+      "visual_kind": "image",
+      "visual_query": "Original symbolic comic diagram: THE OUTSIDERS REMEMBER"
+    },
+    {
+      "id": "u8",
+      "speaker": "Narrator",
+      "text": "Next: the hidden man whose power kept Doom on that throne.",
+      "onscreen": "PART TWO · THE HIDDEN POWER",
+      "kind": "transition",
+      "claim_ids": [
+        "c5",
+        "c7"
+      ],
+      "visual_kind": "image",
+      "visual_query": "Original symbolic comic diagram: PART TWO · THE HIDDEN POWER"
+    }
+  ],
+  "edit": {
+    "effect": "none",
+    "payoff_unit_id": "u7",
+    "cta": false
+  }
+}

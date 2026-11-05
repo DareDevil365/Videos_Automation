@@ -8,7 +8,8 @@ import pytest
 from yt_pipeline.core import Workspace,Held
 from yt_pipeline.assets import register_asset
 from yt_pipeline.chat_editing import reading_timing
-from yt_pipeline.phone_editor.audio import cast_voices,mix_music
+from yt_pipeline.phone_editor.audio import cast_voices,mix_chat_effects,mix_music,style_speech,voice_styles
+from yt_pipeline.voice import wav_metrics
 
 
 def script():
@@ -81,3 +82,48 @@ def test_music_ducks_during_speech_and_preserves_blackout_silence(tmp_path):
     assert rms(1.3,1.7)<rms(4.5,4.9)*.5
     assert not any(samples[3*24000:4*24000])
     assert max(abs(v) for v in samples)<32000
+
+
+def test_youthful_style_changes_only_selected_character_and_remeasures(tmp_path,monkeypatch):
+    ws=Workspace(tmp_path/'ws');source=tmp_path/'source.wav';wav(source,2)
+    folder=tmp_path/'styled';folder.mkdir()
+    metrics=wav_metrics(source)
+    timing={'units':[{'id':'u1','speaker':'Dad','text':'A test line.','voice_id':'am_adam','file':str(source),'metrics':metrics},
+                     {'id':'u2','speaker':'Lily','text':'Another test line.','voice_id':'af_bella','file':str(source),'metrics':metrics}],
+            'metrics':metrics,'cast_voices':{'Dad':'am_adam','Lily':'af_bella'},'model_sha256':'fixture'}
+    result=style_speech(ws,timing,{'Lily':'light_youthful'},folder)
+    assert result['units'][0]['file']==str(source)
+    tuned=result['units'][1]
+    assert tuned['file']!=str(source) and tuned['source_speech_file']==str(source)
+    assert 1.85<tuned['metrics']['duration']<2.05 and tuned['metrics']['sample_rate']==24000
+    assert tuned['metrics']['clipped_fraction']==0 and tuned['voice_style']['pitch_semitones']==1.25
+    with wave.open(tuned['file'],'rb') as f:pcm=array('h',f.readframes(f.getnframes()))
+    middle=pcm[round(.4*24000):round(1.4*24000)]
+    crossings=sum(a<=0<b for a,b in zip(middle,middle[1:]))
+    assert 345<crossings<365 # Original source is 330 Hz; verify a modest real pitch change.
+    assert result['units'][0]['end']==result['units'][1]['start']
+    monkeypatch.setattr('yt_pipeline.phone_editor.audio.subprocess.run',lambda *a,**k:pytest.fail('An intact style cache must be reused.'))
+    again=style_speech(ws,timing,{'Lily':'light_youthful'},folder)
+    assert again['units'][1]['file']==tuned['file']
+    with pytest.raises(Held):voice_styles({'chat_voice_styles':{'Ghost':'light_youthful'}},['Lily'])
+    with pytest.raises(Held):voice_styles({'chat_voice_styles':{'Lily':'cartoon'}})
+
+
+def test_chat_effect_routing_does_not_sound_same_notification_twice(tmp_path,monkeypatch):
+    ws=Workspace(tmp_path/'ws');job=ws.create('entertainment',{})
+    rows=[{'id':'u1','speaker':'A','start':0,'arrival':.2,'screen_events':[]},
+          {'id':'u2','speaker':'B','start':2,'arrival':4.2,'speech_start':2.71,'speech_end':3.8,
+           'screen_events':[{'type':'switch','start':0,'end':.35},{'type':'notification','start':.65,'end':2.1}]},
+          {'id':'u3','speaker':'A','start':5,'arrival':6.6,'screen_events':[{'type':'blackout','start':0,'end':1.5}]}]
+    monkeypatch.setattr('yt_pipeline.sound_library.install_sound_library',lambda ws,include_ambience:assert_false(include_ambience))
+    def verify(ws,samples,rate,events,silence,speech):
+        assert [(e['category'],round(e['start'],2)) for e in events]==[
+            ('message_outgoing',.2),('notification',2.65),('message_outgoing',6.6),('transition',2)]
+        assert silence==[(5,6.5)] and speech==[(2.71,3.8)]
+        return {'effects':events}
+    monkeypatch.setattr('yt_pipeline.sound_library.mix_sound_events',verify)
+    assert len(mix_chat_effects(ws,job,script(),array('h',[0]),24000,rows)['effects'])==4
+
+
+def assert_false(value):
+    assert value is False

@@ -17,6 +17,9 @@ Each category has a dedicated `HOW_TO_CREATE.md` with prerequisites, request fie
 | [Aura progression edits](aura/HOW_TO_CREATE.md) | `aura_progression` | entertainment |
 | [Useful education and demonstrations](education/HOW_TO_CREATE.md) | `education_demo` | education |
 | [Nine-pick movie countdowns](movies/HOW_TO_CREATE.md) | `movie_countdown` | entertainment |
+| [Source-backed comic lore](comic-lore/HOW_TO_CREATE.md) | `lore-plan` / `comic_lore` | entertainment |
+| [Confirmed movie context and recommendations](movies/HOW_TO_CREATE.md) | `movie_brief` | entertainment |
+| [Current-affairs explainers](current-affairs/HOW_TO_CREATE.md) | `current_affairs` | education |
 | [Permitted source clips](source-clips/HOW_TO_CREATE.md) | registered source → transcript → clip | entertainment |
 | [Generated ASMR](asmr/HOW_TO_CREATE.md) | imported/generated source → legacy ASMR batch | entertainment |
 

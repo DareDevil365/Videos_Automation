@@ -1,4 +1,12 @@
-# Create: Nine-pick movie countdowns
+# Create: movie content
+
+## Confirmed movie context and recommendations
+
+The `movie_brief` route makes one source-backed question or recommendation into a narrated portrait Short. Start with the viewer's question, distinguish announcement from rumor, and give a concrete viewing reason. Use studio/distributor evidence for the actual market/date or omit the claim. A cast announcement is not a confirmed plot; a comic recap is not a film spoiler. A trailer or publisher page does not grant permission to re-upload its images.
+
+The [Doomsday research packet](../../../research/content-movies/README.md) and [reviewed source pilot tool](../../../tools/create_source_short_pilots.py) demonstrate an optional viewing recommendation without assumed movie footage rights. The program uses a factual brief, one narrator, 7–12 source-linked units, exact graphics labels and the existing local motion-block compositor. Keep rumor, release timing, region, box-office estimate and reporting date distinct. Use the [movie audience critic](../../../agents/audience-critique/README.md) to flag empty hype, weak reasons and actor/character confusion. The older countdown route below remains available.
+
+## Nine-pick movie countdowns
 
 Preset: `movie_countdown`. Channel profile: `entertainment`.
 

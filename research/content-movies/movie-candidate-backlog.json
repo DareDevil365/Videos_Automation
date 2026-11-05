@@ -1,0 +1,116 @@
+{
+  "version": 1,
+  "checked_on_ist": "2026-11-06",
+  "status": "research_backlog_not_schedule_or_performance_prediction",
+  "candidates": [
+    {
+      "id": "avengers-doomsday",
+      "status": "upcoming_in_reviewed_US_sources",
+      "verified_fact": "Disney’s current US title page lists 18 December 2026.",
+      "sources": [
+        "https://movies.disney.com/avengers-doomsday",
+        "https://www.disneyplus.com/explore/articles/avengers-doomsday"
+      ],
+      "angles": [
+        "Confirmed character versus fan theory",
+        "Doom context linked to issue-labelled comic episodes",
+        "Optional spoiler-light recap or watch recommendation"
+      ],
+      "checks_before_publish": [
+        "Recheck current US date; do not invent India availability.",
+        "UK Disney title page says 18 December while UK Disney+ guide says 16 December: unresolved official conflict.",
+        "A comic plot is not a confirmed screenplay; label predictions."
+      ]
+    },
+    {
+      "id": "avengers-secret-wars",
+      "status": "future_title_in_official_guide",
+      "verified_fact": "The official Disney+ release-order guide lists December 2027.",
+      "sources": [
+        "https://www.disneyplus.com/explore/articles/marvel-movies-in-order"
+      ],
+      "angles": [
+        "1984 versus 2015 comic continuity",
+        "A character-focused reading primer"
+      ],
+      "checks_before_publish": [
+        "Verify exact day and territory from an updated title/studio page before naming one.",
+        "Do not assume a comic issue maps directly onto the film."
+      ]
+    },
+    {
+      "id": "dune-part-three",
+      "status": "upcoming_in_studio_sources",
+      "verified_fact": "The official movie site lists North America 18 December 2026 and international rollout beginning 16 December 2026; Legendary confirms the 18 December original release.",
+      "sources": [
+        "https://www.dunemovie.com/home/",
+        "https://www.legendary.com/film/dune-part-three/"
+      ],
+      "angles": [
+        "Paul’s power and its consequences",
+        "Fremen/Great Houses lore with labelled novel or film canon",
+        "A spoiler-controlled primer"
+      ],
+      "checks_before_publish": [
+        "Check the actual local market’s release date.",
+        "Confirm family relationships in a stated canon; no unverified Odyssey-to-Dune ancestry claim.",
+        "No box-office gross is claimed for this unreleased title."
+      ]
+    },
+    {
+      "id": "the-odyssey",
+      "status": "released_theatrically_in_reviewed_official_sources",
+      "verified_fact": "Universal Canada lists the 17 July 2026 theatrical opening; Universal At Home lists a 17 November digital/disc launch.",
+      "sources": [
+        "https://universalpictures.ca/movie/the-odyssey/",
+        "https://www.universalpicturesathome.com/movies/the-odyssey-2026"
+      ],
+      "angles": [
+        "Mythic source versus film adaptation",
+        "A viewing recommendation with a specific audience reason"
+      ],
+      "checks_before_publish": [
+        "Do not call its theatrical release upcoming as of 6 November.",
+        "Do not turn a US/Canada retailer listing into India subscription availability.",
+        "Distinguish mythological parallels from a verified Dune family-tree connection."
+      ]
+    },
+    {
+      "id": "ramayana-rise-of-a-legend",
+      "status": "official_advertised_release_date_has_arrived",
+      "verified_fact": "Sony’s official movie site advertises a 5 November global theatrical date; Sony Singapore also says 5 November.",
+      "sources": [
+        "https://ramayanariseofalegend.com/home/",
+        "https://www.sonypictures.com.sg/index.php/movies/ramayana-rise-of-a-legend"
+      ],
+      "angles": [
+        "Adaptation context with actual plot/spoiler labels",
+        "Verified release coverage",
+        "Box-office update only after dated figures are available"
+      ],
+      "checks_before_publish": [
+        "No gross, record or biggest-ever claim was verified by this research.",
+        "Check the local showing/release status, not only an announcement.",
+        "A later part’s date needs a fresh official check; old 2027 promises may change."
+      ]
+    }
+  ],
+  "format_backlog": [
+    {
+      "format": "what-to-watch",
+      "need": "A specific audience use case, original recommendation reason, spoiler level and confirmed India platform/price/availability if named."
+    },
+    {
+      "format": "box-office-update",
+      "need": "Dated figures, currency, territory, gross versus nett and period; distinguish producer claims from independent estimates. No fabricated record or guarantee of traction."
+    },
+    {
+      "format": "release-hype",
+      "need": "Official studio/date/trailer facts, territory checks and a genuinely distinct question per Short; avoid repeating the same announcement across multiple daily uploads."
+    },
+    {
+      "format": "Hollywood-events-and-celebrity-discussion",
+      "need": "Actual dated interview/event/statement as evidence. Allegations and reaction claims need reliable sourcing; do not invent celebrity disputes or private motives."
+    }
+  ]
+}

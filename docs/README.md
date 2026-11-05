@@ -5,6 +5,7 @@ Read [project status](PROJECT_STATUS.md), then the [code walkthrough](CODE_WALKT
 - [Maintained architecture/setup guide](../PROJECT_GUIDE.md)
 - [Make, package and upload](AUTOMATIC_PRODUCTION.md), [titles/descriptions](TITLE_DESCRIPTION_PLAYBOOK.md), [character audio](CHAT_AUDIO.md) and [licensed music library](MUSIC_LIBRARY_PLAYBOOK.md)
 - [Reusable genre writing skill](../src/yt_pipeline/skills/short-video-writing/SKILL.md)
+- [Channel content priorities and backlog](CONTENT_ROADMAP.md) and [audience critique agents](../agents/audience-critique/README.md)
 - [File organization and move map](FILE_ORGANIZATION.md)
 - [Editorial implementation plan](EDITORIAL_IMPROVEMENT_PLAN.md) and [hook/speech/quiz contracts](EDITORIAL_AND_SPEECH.md)
 - [Agent roles](../agents/README.md)

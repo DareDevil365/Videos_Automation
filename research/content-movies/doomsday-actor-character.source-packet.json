@@ -1,0 +1,47 @@
+{
+  "version": 1,
+  "research_date_ist": "2026-11-06",
+  "checked_at_utc": "2026-11-05T18:30:29+00:00",
+  "topic_id": "doomsday-actor-character",
+  "status": "verified_film_primer_not_breaking_news",
+  "brief": "../../examples/movie-content/doomsday-actor-character.brief.json",
+  "script": "../../examples/movie-content/doomsday-actor-character.script.json",
+  "claim_index": {
+    "c1": {
+      "source_id": "s1",
+      "status": "verified_primary_source"
+    },
+    "c2": {
+      "source_id": "s2",
+      "status": "verified_primary_source"
+    },
+    "c3": {
+      "source_id": "s3",
+      "status": "verified_primary_source"
+    },
+    "c4": {
+      "source_id": "s1",
+      "status": "verified_primary_source"
+    },
+    "c5": {
+      "source_id": "s1",
+      "status": "verified_primary_source"
+    }
+  },
+  "source_locations": {
+    "s1": "Who is Doctor Doom; Robert Downey Jr. as Doctor Doom sections.",
+    "s2": "Opening casting announcement; do not use its superseded May release dates.",
+    "s3": "Current US release-date field and cast."
+  },
+  "interpretation_notes": [
+    "A same-actor/different-character distinction does not prove no plot connection will ever exist.",
+    "The comic-context statements are explanatory interpretation, not a claim that a particular comic is the film screenplay.",
+    "The parent comic-lore series should identify its issue/run continuity separately."
+  ],
+  "visual_plan": [
+    "Original ACTOR → ANNOUNCED CHARACTER → THEORY columns.",
+    "Generic original metal-mask/circuit/magic iconography, visibly illustrative rather than fake film evidence.",
+    "A source card for the distinction; do not invent a studio screenshot or quote."
+  ],
+  "media_rights": "No film footage, actor portrait, poster, comic panel, soundtrack or studio logo rights supplied. Use eligible registered sources or original code graphics."
+}

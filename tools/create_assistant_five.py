@@ -86,9 +86,10 @@ def run_one(ws,name,inputs,output,revision=False):
                        chat_voiceover=True,render_revision=5,chat_music_volume=.20,metadata_version=2,
                        publication_metadata=json.loads((ROOT/'examples/assistant-five/publication'/(name+'.json')).read_text(encoding='utf-8')))
         voice_maps={'comedy-chat':{'Maya':'af_bella','Theo':'am_adam','Boss':'bm_george'},
-                    'mystery-chat':{'Unknown':'am_onyx','Ari':'am_adam','Lily':'af_sky','Maya':'af_heart'},
+                    'mystery-chat':{'Unknown':'am_onyx','Ari':'am_adam','Lily':'af_bella','Maya':'af_heart'},
                     'story-chat':{'Leah':'af_heart','Dad':'bm_george','Cafe':'bf_emma'}}
         request['chat_voice_ids']=voice_maps[name]
+        if name=='mystery-chat':request.update(render_revision=7,chat_voice_styles={'Lily':'light_youthful'},chat_sound_library=True)
         library=json.loads((ROOT/'Resources/Music/curated-20261105/registered-tracks.json').read_text(encoding='utf-8'))
         music={'comedy-chat':'Monkeys Spinning Monkeys','mystery-chat':'Echoes','story-chat':'Beautiful Dream'}
         # Track IDs are resolved from the checked local library, never hardcoded workspace IDs.

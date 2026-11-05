@@ -1,5 +1,12 @@
 # Project status and remaining work
 
+Latest writing/toolbox update (5 November): new plans use focused writing v2 with three compact sketches in one call, exact opening/plant/ending anchors, seven quoted cold-reader criteria and one contextual revision. This removes unrelated stock/narration instructions and preserves the owner's brief during revision. Fewer meaningful messages are allowed instead of enforcing twelve. Old saved requests retain v1. See [writing quality and limits](CHAT_WRITING_QUALITY.md); a live Gemini quality improvement is still unproved.
+
+The owner's requested **five assistant-authored videos are ready locally**, all 720x1280: texting comedy (21.49s), texting mystery (34.49s), texting emotional story (33.65s), illustrated/cinematic fable (41.47s) and stock aura edit (13.62s). The [script/builder guide](../examples/assistant-five/README.md) distinguishes this closed-provider demonstration from autonomous model writing. Zero Gemini/OpenAI/visual-generation calls were used. Permitted stock footage, historical paintings, a public-domain GIF and licensed music feed the existing local toolbox. Final-frame inspection corrected header/GIF size, aura score/boxing/empty-tail issues and cinematic subtitle/inset sizing. All 40 checkpoints and 152 file references verify; source/credits and per-video hashes accompany the outputs.
+
+Validation for this pass: **295 tests passed in 287.39s**, two existing Pillow warnings; **24 affected tests passed in 69.02s** after the final media changes. Earlier test counts below are historical. Actual sampled export frames were reviewed; there was no independent model visual/audio review or owner creative approval.
+
+
 Current validation: **287 passed** (two existing Pillow warnings), followed by **56 relevant passed** after final changes; 86 documents/558 links/39 move destinations validate. Independent project quota failover, persisted cooldown, cache-through-cooldown, aggregate production cap and private/idempotent import have meaningful tests. Both live completed prototypes retain intact eight-stage hashes. Full-event 3.8 writing comparison remains queued after a network timeout and subsequent HTTP 503 service error; excellent autonomous writing is unresolved.
 
 

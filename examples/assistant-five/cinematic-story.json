@@ -1,0 +1,112 @@
+{
+  "version": 1,
+  "title": "One More Window",
+  "description": "Original fictional fable. Illustrated through a montage of permitted historical paintings, not a biography of the artist or a historical event.",
+  "format": "lesson",
+  "fiction": true,
+  "hook": "The boy asked his grandfather to paint him a window.",
+  "payoff": "'You. When I get out, who is showing me the way?'",
+  "units": [
+    {
+      "id": "u1",
+      "speaker": "Narrator",
+      "text": "The boy asked his grandfather to paint him a window.",
+      "onscreen": "The boy asked his grandfather to paint him a window.",
+      "kind": "fiction",
+      "claim_ids": []
+    },
+    {
+      "id": "u2",
+      "speaker": "Narrator",
+      "text": "There was already one above his bed. It faced a brick wall.",
+      "onscreen": "There was already one above his bed. It faced a brick wall.",
+      "kind": "fiction",
+      "claim_ids": []
+    },
+    {
+      "id": "u3",
+      "speaker": "Narrator",
+      "text": "The old man had painted houses all his life. Gardens were harder.",
+      "onscreen": "The old man had painted houses all his life. Gardens were harder.",
+      "kind": "fiction",
+      "claim_ids": []
+    },
+    {
+      "id": "u4",
+      "speaker": "Narrator",
+      "text": "But on Tuesday, a garden appeared beside the bed.",
+      "onscreen": "But on Tuesday, a garden appeared beside the bed.",
+      "kind": "fiction",
+      "claim_ids": []
+    },
+    {
+      "id": "u5",
+      "speaker": "Narrator",
+      "text": "On Wednesday, the boy asked for a road. 'Where should it go?'",
+      "onscreen": "On Wednesday, the boy asked for a road. 'Where should it go?'",
+      "kind": "fiction",
+      "claim_ids": []
+    },
+    {
+      "id": "u6",
+      "speaker": "Narrator",
+      "text": "'Somewhere we can walk when I am better.'",
+      "onscreen": "'Somewhere we can walk when I am better.'",
+      "kind": "fiction",
+      "claim_ids": []
+    },
+    {
+      "id": "u7",
+      "speaker": "Narrator",
+      "text": "So his grandfather added a cafe at the far end, with two chairs outside.",
+      "onscreen": "So his grandfather added a cafe at the far end, with two chairs outside.",
+      "kind": "fiction",
+      "claim_ids": []
+    },
+    {
+      "id": "u8",
+      "speaker": "Narrator",
+      "text": "Then the paint ran out.",
+      "onscreen": "Then the paint ran out.",
+      "kind": "fiction",
+      "claim_ids": []
+    },
+    {
+      "id": "u9",
+      "speaker": "Narrator",
+      "text": "The old man sold the one picture he had always refused to sell.",
+      "onscreen": "The old man sold the one picture he had always refused to sell.",
+      "kind": "fiction",
+      "claim_ids": []
+    },
+    {
+      "id": "u10",
+      "speaker": "Narrator",
+      "text": "When he returned, the boy was standing, leaning on a chair.",
+      "onscreen": "When he returned, the boy was standing, leaning on a chair.",
+      "kind": "fiction",
+      "claim_ids": []
+    },
+    {
+      "id": "u11",
+      "speaker": "Narrator",
+      "text": "'You have forgotten someone,' he said. 'Who?' asked his grandfather.",
+      "onscreen": "'You have forgotten someone,' he said. 'Who?' asked his grandfather.",
+      "kind": "fiction",
+      "claim_ids": []
+    },
+    {
+      "id": "u12",
+      "speaker": "Narrator",
+      "text": "'You. When I get out, who is showing me the way?'",
+      "onscreen": "'You. When I get out, who is showing me the way?'",
+      "kind": "fiction",
+      "claim_ids": []
+    }
+  ],
+  "edit": {
+    "effect": "none",
+    "payoff_unit_id": "u12",
+    "cta": false
+  }
+}

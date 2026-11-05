@@ -1,0 +1,64 @@
+{
+  "version": 1,
+  "title": "Let The Shot Answer",
+  "description": "Original sports montage captions with permitted stock footage and music. Different athletes, no claimed biography or attributed quotation.",
+  "format": "aura",
+  "fiction": true,
+  "hook": "NO BIG ENTRANCE.",
+  "payoff": "LET THAT ANSWER.",
+  "units": [
+    {
+      "id": "u1",
+      "speaker": "Edit",
+      "text": "NO BIG ENTRANCE.",
+      "onscreen": "NO BIG ENTRANCE.",
+      "kind": "fiction",
+      "claim_ids": []
+    },
+    {
+      "id": "u2",
+      "speaker": "Edit",
+      "text": "JUST ANOTHER REP.",
+      "onscreen": "JUST ANOTHER REP.",
+      "kind": "fiction",
+      "claim_ids": []
+    },
+    {
+      "id": "u3",
+      "speaker": "Edit",
+      "text": "ONE MORE.",
+      "onscreen": "ONE MORE.",
+      "kind": "fiction",
+      "claim_ids": []
+    },
+    {
+      "id": "u4",
+      "speaker": "Edit",
+      "text": "THEY ARE STILL TALKING.",
+      "onscreen": "THEY ARE STILL TALKING.",
+      "kind": "fiction",
+      "claim_ids": []
+    },
+    {
+      "id": "u5",
+      "speaker": "Edit",
+      "text": "YOUR TURN.",
+      "onscreen": "YOUR TURN.",
+      "kind": "fiction",
+      "claim_ids": []
+    },
+    {
+      "id": "u6",
+      "speaker": "Edit",
+      "text": "LET THAT ANSWER.",
+      "onscreen": "LET THAT ANSWER.",
+      "kind": "fiction",
+      "claim_ids": []
+    }
+  ],
+  "edit": {
+    "effect": "none",
+    "payoff_unit_id": "u6",
+    "cta": false
+  }
+}

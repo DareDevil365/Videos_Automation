@@ -1,0 +1,112 @@
+{
+  "version": 1,
+  "title": "The Family Group",
+  "description": "Original fictional story authored by the assistant at the owner request.",
+  "format": "chat",
+  "fiction": true,
+  "hook": "Theo. Why is my boss here?",
+  "payoff": "I've added my boss.",
+  "units": [
+    {
+      "id": "u1",
+      "speaker": "Maya",
+      "text": "Theo. Why is my boss here?",
+      "onscreen": "Theo. Why is my boss here?",
+      "kind": "fiction",
+      "claim_ids": []
+    },
+    {
+      "id": "u2",
+      "speaker": "Theo",
+      "text": "You said add everyone who feeds us.",
+      "onscreen": "You said add everyone who feeds us.",
+      "kind": "fiction",
+      "claim_ids": []
+    },
+    {
+      "id": "u3",
+      "speaker": "Maya",
+      "text": "I meant the dog sitter.",
+      "onscreen": "I meant the dog sitter.",
+      "kind": "fiction",
+      "claim_ids": []
+    },
+    {
+      "id": "u4",
+      "speaker": "Theo",
+      "text": "She's here too.",
+      "onscreen": "She's here too.",
+      "kind": "fiction",
+      "claim_ids": []
+    },
+    {
+      "id": "u5",
+      "speaker": "Maya",
+      "text": "Look at the group name.",
+      "onscreen": "Look at the group name.",
+      "kind": "fiction",
+      "claim_ids": []
+    },
+    {
+      "id": "u6",
+      "speaker": "Theo",
+      "text": "People I Pretend To Listen To.",
+      "onscreen": "People I Pretend To Listen To.",
+      "kind": "fiction",
+      "claim_ids": []
+    },
+    {
+      "id": "u7",
+      "speaker": "Maya",
+      "text": "Change it. Now.",
+      "onscreen": "Change it. Now.",
+      "kind": "fiction",
+      "claim_ids": []
+    },
+    {
+      "id": "u8",
+      "speaker": "Theo",
+      "text": "He's typing.",
+      "onscreen": "He's typing.",
+      "kind": "fiction",
+      "claim_ids": []
+    },
+    {
+      "id": "u9",
+      "speaker": "Boss",
+      "text": "Finally. An honest team.",
+      "onscreen": "Finally. An honest team.",
+      "kind": "fiction",
+      "claim_ids": []
+    },
+    {
+      "id": "u10",
+      "speaker": "Maya",
+      "text": "I can explain.",
+      "onscreen": "I can explain.",
+      "kind": "fiction",
+      "claim_ids": []
+    },
+    {
+      "id": "u11",
+      "speaker": "Boss",
+      "text": "No need.",
+      "onscreen": "No need.",
+      "kind": "fiction",
+      "claim_ids": []
+    },
+    {
+      "id": "u12",
+      "speaker": "Boss",
+      "text": "I've added my boss.",
+      "onscreen": "I've added my boss.",
+      "kind": "fiction",
+      "claim_ids": []
+    }
+  ],
+  "edit": {
+    "effect": "none",
+    "payoff_unit_id": "u12",
+    "cta": false
+  }
+}

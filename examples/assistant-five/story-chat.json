@@ -1,0 +1,297 @@
+{
+  "version": 1,
+  "title": "The Second Coffee",
+  "description": "Original fictional story authored by the assistant at the owner request.",
+  "format": "chat",
+  "fiction": true,
+  "hook": "Dad, why are you buying two coffees again?",
+  "payoff": "I'll order a fresh one.",
+  "units": [
+    {
+      "id": "u1",
+      "speaker": "Leah",
+      "text": "Dad, why are you buying two coffees again?",
+      "onscreen": "Dad, why are you buying two coffees again?",
+      "kind": "fiction",
+      "claim_ids": []
+    },
+    {
+      "id": "u2",
+      "speaker": "Dad",
+      "text": "Friday. Window table. Same as always.",
+      "onscreen": "Friday. Window table. Same as always.",
+      "kind": "fiction",
+      "claim_ids": []
+    },
+    {
+      "id": "u3",
+      "speaker": "Leah",
+      "text": "Mum's been gone two years.",
+      "onscreen": "Mum's been gone two years.",
+      "kind": "fiction",
+      "claim_ids": []
+    },
+    {
+      "id": "u4",
+      "speaker": "Dad",
+      "text": "I know, love.",
+      "onscreen": "I know, love.",
+      "kind": "fiction",
+      "claim_ids": []
+    },
+    {
+      "id": "u5",
+      "speaker": "Leah",
+      "text": "My train leaves at six.",
+      "onscreen": "My train leaves at six.",
+      "kind": "fiction",
+      "claim_ids": []
+    },
+    {
+      "id": "u6",
+      "speaker": "Dad",
+      "text": "I'll keep the seat till seven.",
+      "onscreen": "I'll keep the seat till seven.",
+      "kind": "fiction",
+      "claim_ids": []
+    },
+    {
+      "id": "u7",
+      "speaker": "Leah",
+      "text": "Please check on Dad. He's expecting Mum.",
+      "onscreen": "Please check on Dad. He's expecting Mum.",
+      "kind": "fiction",
+      "claim_ids": []
+    },
+    {
+      "id": "u8",
+      "speaker": "Cafe",
+      "text": "He knows she isn't coming.",
+      "onscreen": "He knows she isn't coming.",
+      "kind": "fiction",
+      "claim_ids": []
+    },
+    {
+      "id": "u9",
+      "speaker": "Leah",
+      "text": "Then who's the second coffee for?",
+      "onscreen": "Then who's the second coffee for?",
+      "kind": "fiction",
+      "claim_ids": []
+    },
+    {
+      "id": "u10",
+      "speaker": "Cafe",
+      "text": "He asks if the station train's been delayed.",
+      "onscreen": "He asks if the station train's been delayed.",
+      "kind": "fiction",
+      "claim_ids": []
+    },
+    {
+      "id": "u11",
+      "speaker": "Leah",
+      "text": "Every Friday?",
+      "onscreen": "Every Friday?",
+      "kind": "fiction",
+      "claim_ids": []
+    },
+    {
+      "id": "u12",
+      "speaker": "Cafe",
+      "text": "Every Friday.",
+      "onscreen": "Every Friday.",
+      "kind": "fiction",
+      "claim_ids": []
+    },
+    {
+      "id": "u13",
+      "speaker": "Leah",
+      "text": "The train's pulling out.",
+      "onscreen": "The train's pulling out.",
+      "kind": "fiction",
+      "claim_ids": []
+    },
+    {
+      "id": "u14",
+      "speaker": "Dad",
+      "text": "Get home safe.",
+      "onscreen": "Get home safe.",
+      "kind": "fiction",
+      "claim_ids": []
+    },
+    {
+      "id": "u15",
+      "speaker": "Leah",
+      "text": "I'm not on it.",
+      "onscreen": "I'm not on it.",
+      "kind": "fiction",
+      "claim_ids": []
+    },
+    {
+      "id": "u16",
+      "speaker": "Dad",
+      "text": "Where are you?",
+      "onscreen": "Where are you?",
+      "kind": "fiction",
+      "claim_ids": []
+    },
+    {
+      "id": "u17",
+      "speaker": "Leah",
+      "text": "Outside. Is my coffee cold?",
+      "onscreen": "Outside. Is my coffee cold?",
+      "kind": "fiction",
+      "claim_ids": []
+    },
+    {
+      "id": "u18",
+      "speaker": "Dad",
+      "text": "I'll order a fresh one.",
+      "onscreen": "I'll order a fresh one.",
+      "kind": "fiction",
+      "claim_ids": []
+    }
+  ],
+  "edit": {
+    "effect": "none",
+    "payoff_unit_id": "u18",
+    "cta": false
+  },
+  "phone_story": {
+    "pov": "Leah",
+    "contacts": [
+      {
+        "id": "d",
+        "name": "Dad"
+      },
+      {
+        "id": "c",
+        "name": "Cafe"
+      }
+    ],
+    "threads": [
+      {
+        "id": "dad",
+        "contact_id": "d",
+        "theme": "sage"
+      },
+      {
+        "id": "cafe",
+        "contact_id": "c",
+        "theme": "light"
+      }
+    ],
+    "beats": [
+      {
+        "unit_id": "u1",
+        "thread_id": "dad",
+        "time": "17:42",
+        "events": []
+      },
+      {
+        "unit_id": "u2",
+        "thread_id": "dad",
+        "time": "17:42",
+        "events": []
+      },
+      {
+        "unit_id": "u3",
+        "thread_id": "dad",
+        "time": "17:42",
+        "events": []
+      },
+      {
+        "unit_id": "u4",
+        "thread_id": "dad",
+        "time": "17:42",
+        "events": []
+      },
+      {
+        "unit_id": "u5",
+        "thread_id": "dad",
+        "time": "17:42",
+        "events": []
+      },
+      {
+        "unit_id": "u6",
+        "thread_id": "dad",
+        "time": "17:42",
+        "events": []
+      },
+      {
+        "unit_id": "u7",
+        "thread_id": "cafe",
+        "time": "17:45",
+        "events": []
+      },
+      {
+        "unit_id": "u8",
+        "thread_id": "cafe",
+        "time": "17:45",
+        "events": []
+      },
+      {
+        "unit_id": "u9",
+        "thread_id": "cafe",
+        "time": "17:45",
+        "events": []
+      },
+      {
+        "unit_id": "u10",
+        "thread_id": "cafe",
+        "time": "17:45",
+        "events": []
+      },
+      {
+        "unit_id": "u11",
+        "thread_id": "cafe",
+        "time": "17:45",
+        "events": []
+      },
+      {
+        "unit_id": "u12",
+        "thread_id": "cafe",
+        "time": "17:45",
+        "events": []
+      },
+      {
+        "unit_id": "u13",
+        "thread_id": "dad",
+        "time": "18:00",
+        "events": [
+          "time_jump"
+        ]
+      },
+      {
+        "unit_id": "u14",
+        "thread_id": "dad",
+        "time": "18:00",
+        "events": []
+      },
+      {
+        "unit_id": "u15",
+        "thread_id": "dad",
+        "time": "18:00",
+        "events": []
+      },
+      {
+        "unit_id": "u16",
+        "thread_id": "dad",
+        "time": "18:00",
+        "events": []
+      },
+      {
+        "unit_id": "u17",
+        "thread_id": "dad",
+        "time": "18:00",
+        "events": []
+      },
+      {
+        "unit_id": "u18",
+        "thread_id": "dad",
+        "time": "18:00",
+        "events": []
+      }
+    ]
+  }
+}

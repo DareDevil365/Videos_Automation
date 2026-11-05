@@ -171,7 +171,7 @@ def main():
     p=sub.add_parser('batch-status');p.add_argument('--plan')
     p=sub.add_parser('playbooks');p.add_argument('--export')
     p=sub.add_parser('gemini-projects-import');p.add_argument('--file',required=True);p.add_argument('--env-output',default='.env');p.add_argument('--distinct-projects',action='store_true');p.add_argument('--free-tier-confirmed',action='store_true')
-    p=sub.add_parser('phone-plan');p.add_argument('--topic');p.add_argument('--tone',choices=['comedy','mystery','thriller'],default='thriller');p.add_argument('--output',required=True)
+    p=sub.add_parser('phone-plan');p.add_argument('--topic');p.add_argument('--tone',choices=['comedy','mystery','thriller','story'],default='thriller');p.add_argument('--output',required=True)
     p=sub.add_parser('chat-plan');p.add_argument('--topic');p.add_argument('--output',required=True)
     for name in ("discover","plan","report","benchmark"):
         p=sub.add_parser(name);p.add_argument("channel",choices=["education","entertainment"])

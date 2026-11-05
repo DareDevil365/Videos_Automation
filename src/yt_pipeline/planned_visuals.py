@@ -158,9 +158,11 @@ def _motion(poster,duration,path,motion,height=1280,*,callout=None):
     if result.returncode:raise Held('planned_visual_render','A directed scene failed; its source assets and poster were preserved')
 
 
-def _video_scene(asset,caption,duration,path,height,offset=0,rank=None,motion='hold'):
+def _video_scene(asset,caption,duration,path,height,offset=0,rank=None,motion='hold',minimal=False):
     plate=Image.new('RGBA',(720,height));draw=ImageDraw.Draw(plate)
-    draw.rounded_rectangle((26,height-190,694,height-30),radius=14,fill='#0b0c12ee')
+    if minimal:
+        for y in range(height-280,height):draw.line((0,y,720,y),fill=(0,0,0,round((y-height+280)*.5)))
+    else:draw.rounded_rectangle((26,height-190,694,height-30),radius=14,fill='#0b0c12ee')
     text_box(draw,caption,(48,height-163,624,105),'white',38,True,'center',minimum=25)
     if rank:
         draw.rounded_rectangle((28,35,145,135),radius=15,fill='#0b0c12')
@@ -285,7 +287,7 @@ def build_planned_visuals(ws,job,script,timing,folder,record,*,provider=None):
             if not stock_scene:raise Held('cast_background','Current cast renderer requires a still background, not an unsupported video layer')
             if scene.get('callout',{}).get('kind','none')!='none':raise Held('creative_callout','A moving-video callout needs tracking; select a still image for this detail.')
             output=folder/(unit['id']+'-planned.mp4')
-            _video_scene(background,unit['onscreen'],spoken['duration'],output,height,job['request'].get('media_starts',{}).get(unit['id'],0),scene.get('rank') or None,scene['motion'])
+            _video_scene(background,unit['onscreen'],spoken['duration'],output,height,job['request'].get('media_starts',{}).get(unit['id'],0),scene.get('rank') or None,scene['motion'],minimal=bool(job['request'].get('aura_clean')))
             generated=register_asset(ws,output,'original_graphic',{'operation':'Directed source clip and caption','sources':[background['id']]},test_only=job['request'].get('test_only',False) or background.get('test_only',False))
             rows.append({'unit_id':unit['id'],'media_id':generated['id'],'duration':spoken['duration'],'file':str(output),'kind':'directed_stock_video'})
             continue

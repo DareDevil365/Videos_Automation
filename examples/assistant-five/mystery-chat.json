@@ -1,0 +1,292 @@
+{
+  "version": 1,
+  "title": "The Blue Backpack",
+  "description": "Original fictional story authored by the assistant at the owner request.",
+  "format": "chat",
+  "fiction": true,
+  "hook": "Your daughter's blue backpack is at the bus stop.",
+  "payoff": "Stop making her look for me.",
+  "units": [
+    {
+      "id": "u1",
+      "speaker": "Unknown",
+      "text": "Your daughter's blue backpack is at the bus stop.",
+      "onscreen": "Your daughter's blue backpack is at the bus stop.",
+      "kind": "fiction",
+      "claim_ids": []
+    },
+    {
+      "id": "u2",
+      "speaker": "Ari",
+      "text": "She hasn't left yet.",
+      "onscreen": "She hasn't left yet.",
+      "kind": "fiction",
+      "claim_ids": []
+    },
+    {
+      "id": "u3",
+      "speaker": "Unknown",
+      "text": "Then come get it. Alone.",
+      "onscreen": "Then come get it. Alone.",
+      "kind": "fiction",
+      "claim_ids": []
+    },
+    {
+      "id": "u4",
+      "speaker": "Lily",
+      "text": "I've got my bag. The red one.",
+      "onscreen": "I've got my bag. The red one.",
+      "kind": "fiction",
+      "claim_ids": []
+    },
+    {
+      "id": "u5",
+      "speaker": "Ari",
+      "text": "Where's the blue one?",
+      "onscreen": "Where's the blue one?",
+      "kind": "fiction",
+      "claim_ids": []
+    },
+    {
+      "id": "u6",
+      "speaker": "Lily",
+      "text": "Mum put it in the garage donation box.",
+      "onscreen": "Mum put it in the garage donation box.",
+      "kind": "fiction",
+      "claim_ids": []
+    },
+    {
+      "id": "u7",
+      "speaker": "Ari",
+      "text": "Maya. Did someone collect the donations?",
+      "onscreen": "Maya. Did someone collect the donations?",
+      "kind": "fiction",
+      "claim_ids": []
+    },
+    {
+      "id": "u8",
+      "speaker": "Maya",
+      "text": "No. Garage is locked.",
+      "onscreen": "No. Garage is locked.",
+      "kind": "fiction",
+      "claim_ids": []
+    },
+    {
+      "id": "u9",
+      "speaker": "Ari",
+      "text": "Can you check the blue backpack?",
+      "onscreen": "Can you check the blue backpack?",
+      "kind": "fiction",
+      "claim_ids": []
+    },
+    {
+      "id": "u10",
+      "speaker": "Maya",
+      "text": "Why?",
+      "onscreen": "Why?",
+      "kind": "fiction",
+      "claim_ids": []
+    },
+    {
+      "id": "u11",
+      "speaker": "Ari",
+      "text": "Someone says they found it.",
+      "onscreen": "Someone says they found it.",
+      "kind": "fiction",
+      "claim_ids": []
+    },
+    {
+      "id": "u12",
+      "speaker": "Maya",
+      "text": "Hang on.",
+      "onscreen": "Hang on.",
+      "kind": "fiction",
+      "claim_ids": []
+    },
+    {
+      "id": "u13",
+      "speaker": "Ari",
+      "text": "Lily, stay upstairs. Lock your door.",
+      "onscreen": "Lily, stay upstairs. Lock your door.",
+      "kind": "fiction",
+      "claim_ids": []
+    },
+    {
+      "id": "u14",
+      "speaker": "Lily",
+      "text": "Dad?",
+      "onscreen": "Dad?",
+      "kind": "fiction",
+      "claim_ids": []
+    },
+    {
+      "id": "u15",
+      "speaker": "Maya",
+      "text": "The box is still here.",
+      "onscreen": "The box is still here.",
+      "kind": "fiction",
+      "claim_ids": []
+    },
+    {
+      "id": "u16",
+      "speaker": "Ari",
+      "text": "Is the bag in it?",
+      "onscreen": "Is the bag in it?",
+      "kind": "fiction",
+      "claim_ids": []
+    },
+    {
+      "id": "u17",
+      "speaker": "Unknown",
+      "text": "Stop making her look for me.",
+      "onscreen": "Stop making her look for me.",
+      "kind": "fiction",
+      "claim_ids": []
+    }
+  ],
+  "edit": {
+    "effect": "none",
+    "payoff_unit_id": "u17",
+    "cta": false
+  },
+  "phone_story": {
+    "pov": "Ari",
+    "contacts": [
+      {
+        "id": "u",
+        "name": "Unknown"
+      },
+      {
+        "id": "l",
+        "name": "Lily"
+      },
+      {
+        "id": "m",
+        "name": "Maya"
+      }
+    ],
+    "threads": [
+      {
+        "id": "unknown",
+        "contact_id": "u",
+        "theme": "dark"
+      },
+      {
+        "id": "daughter",
+        "contact_id": "l",
+        "theme": "rose"
+      },
+      {
+        "id": "wife",
+        "contact_id": "m",
+        "theme": "sage"
+      }
+    ],
+    "beats": [
+      {
+        "unit_id": "u1",
+        "thread_id": "unknown",
+        "time": "18:11",
+        "events": []
+      },
+      {
+        "unit_id": "u2",
+        "thread_id": "unknown",
+        "time": "18:11",
+        "events": []
+      },
+      {
+        "unit_id": "u3",
+        "thread_id": "unknown",
+        "time": "18:11",
+        "events": []
+      },
+      {
+        "unit_id": "u4",
+        "thread_id": "daughter",
+        "time": "18:12",
+        "events": []
+      },
+      {
+        "unit_id": "u5",
+        "thread_id": "daughter",
+        "time": "18:12",
+        "events": []
+      },
+      {
+        "unit_id": "u6",
+        "thread_id": "daughter",
+        "time": "18:12",
+        "events": []
+      },
+      {
+        "unit_id": "u7",
+        "thread_id": "wife",
+        "time": "18:13",
+        "events": []
+      },
+      {
+        "unit_id": "u8",
+        "thread_id": "wife",
+        "time": "18:13",
+        "events": []
+      },
+      {
+        "unit_id": "u9",
+        "thread_id": "wife",
+        "time": "18:13",
+        "events": []
+      },
+      {
+        "unit_id": "u10",
+        "thread_id": "wife",
+        "time": "18:13",
+        "events": []
+      },
+      {
+        "unit_id": "u11",
+        "thread_id": "wife",
+        "time": "18:13",
+        "events": []
+      },
+      {
+        "unit_id": "u12",
+        "thread_id": "wife",
+        "time": "18:13",
+        "events": []
+      },
+      {
+        "unit_id": "u13",
+        "thread_id": "daughter",
+        "time": "18:14",
+        "events": []
+      },
+      {
+        "unit_id": "u14",
+        "thread_id": "daughter",
+        "time": "18:14",
+        "events": []
+      },
+      {
+        "unit_id": "u15",
+        "thread_id": "wife",
+        "time": "18:15",
+        "events": []
+      },
+      {
+        "unit_id": "u16",
+        "thread_id": "wife",
+        "time": "18:15",
+        "events": []
+      },
+      {
+        "unit_id": "u17",
+        "thread_id": "unknown",
+        "time": "18:15",
+        "events": [
+          "notification"
+        ]
+      }
+    ]
+  }
+}

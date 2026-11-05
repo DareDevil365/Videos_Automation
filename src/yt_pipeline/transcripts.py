@@ -78,10 +78,13 @@ def write_srt(cues,path):
     Path(path).write_text('\n'.join(rows),encoding='utf-8')
 
 
-def burn_captions(video,cues,split=False,caption_bar=False,bar_height=1280,canvas=None):
+def burn_captions(video,cues,split=False,caption_bar=False,bar_height=1280,canvas=None,font_size=None):
     video=Path(video);signature=digest([cues,'dialogue_bar',bar_height]) if caption_bar else digest(cues);manifest_path=video.with_suffix('.manifest.json')
     manifest=json.loads(manifest_path.read_text(encoding='utf-8'))
     if canvas:signature=digest([signature,canvas,'landscape-caption-v1'])
+    if font_size is not None:
+        if type(font_size) is not int or not 24<=font_size<=72:raise Held('caption_style','Caption font size must be 24-72 pixels.')
+        signature=digest([signature,font_size])
     captions=video.with_suffix('.srt');write_srt(cues,captions)
     if manifest.get('caption_burn',{}).get('cues_hash')==signature:return
     clean=video.with_name(video.stem+'.clean.mp4')
@@ -99,6 +102,7 @@ def burn_captions(video,cues,split=False,caption_bar=False,bar_height=1280,canva
             header=header.replace('PlayResX: 720',f'PlayResX: {width}').replace('PlayResY: 1280',f'PlayResY: {height}')
             header=header.replace('Default,Arial,35,',f'Default,Arial,{round(height*30/720)},')
             header=header.replace('2,48,48,'+str(1280-bar_height+56)+',1',f'2,80,80,{round(height*28/720)},1')
+        if font_size is not None:header=header.replace('Default,Arial,35,',f'Default,Arial,{font_size},')
         def stamp(t):return f'{int(t//3600)}:{int(t//60)%60:02d}:{t%60:05.2f}'
         events=[]
         for cue in cues:

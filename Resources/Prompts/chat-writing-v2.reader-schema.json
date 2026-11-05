@@ -1,0 +1,236 @@
+{
+  "type": "object",
+  "properties": {
+    "reader_question": {
+      "type": "string"
+    },
+    "reader_answer": {
+      "type": "string"
+    },
+    "missing_assumptions": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "maxItems": 8
+    },
+    "checks": {
+      "type": "object",
+      "properties": {
+        "opening": {
+          "type": "object",
+          "properties": {
+            "verdict": {
+              "type": "string",
+              "enum": [
+                "pass",
+                "revise"
+              ]
+            },
+            "unit_id": {
+              "type": "string"
+            },
+            "quote": {
+              "type": "string"
+            },
+            "reason": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "verdict",
+            "unit_id",
+            "quote",
+            "reason"
+          ],
+          "additionalProperties": false
+        },
+        "cause": {
+          "type": "object",
+          "properties": {
+            "verdict": {
+              "type": "string",
+              "enum": [
+                "pass",
+                "revise"
+              ]
+            },
+            "unit_id": {
+              "type": "string"
+            },
+            "quote": {
+              "type": "string"
+            },
+            "reason": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "verdict",
+            "unit_id",
+            "quote",
+            "reason"
+          ],
+          "additionalProperties": false
+        },
+        "knowledge": {
+          "type": "object",
+          "properties": {
+            "verdict": {
+              "type": "string",
+              "enum": [
+                "pass",
+                "revise"
+              ]
+            },
+            "unit_id": {
+              "type": "string"
+            },
+            "quote": {
+              "type": "string"
+            },
+            "reason": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "verdict",
+            "unit_id",
+            "quote",
+            "reason"
+          ],
+          "additionalProperties": false
+        },
+        "progression": {
+          "type": "object",
+          "properties": {
+            "verdict": {
+              "type": "string",
+              "enum": [
+                "pass",
+                "revise"
+              ]
+            },
+            "unit_id": {
+              "type": "string"
+            },
+            "quote": {
+              "type": "string"
+            },
+            "reason": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "verdict",
+            "unit_id",
+            "quote",
+            "reason"
+          ],
+          "additionalProperties": false
+        },
+        "voice": {
+          "type": "object",
+          "properties": {
+            "verdict": {
+              "type": "string",
+              "enum": [
+                "pass",
+                "revise"
+              ]
+            },
+            "unit_id": {
+              "type": "string"
+            },
+            "quote": {
+              "type": "string"
+            },
+            "reason": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "verdict",
+            "unit_id",
+            "quote",
+            "reason"
+          ],
+          "additionalProperties": false
+        },
+        "payoff": {
+          "type": "object",
+          "properties": {
+            "verdict": {
+              "type": "string",
+              "enum": [
+                "pass",
+                "revise"
+              ]
+            },
+            "unit_id": {
+              "type": "string"
+            },
+            "quote": {
+              "type": "string"
+            },
+            "reason": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "verdict",
+            "unit_id",
+            "quote",
+            "reason"
+          ],
+          "additionalProperties": false
+        },
+        "genre": {
+          "type": "object",
+          "properties": {
+            "verdict": {
+              "type": "string",
+              "enum": [
+                "pass",
+                "revise"
+              ]
+            },
+            "unit_id": {
+              "type": "string"
+            },
+            "quote": {
+              "type": "string"
+            },
+            "reason": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "verdict",
+            "unit_id",
+            "quote",
+            "reason"
+          ],
+          "additionalProperties": false
+        }
+      },
+      "required": [
+        "opening",
+        "cause",
+        "knowledge",
+        "progression",
+        "voice",
+        "payoff",
+        "genre"
+      ],
+      "additionalProperties": false
+    }
+  },
+  "required": [
+    "reader_question",
+    "reader_answer",
+    "missing_assumptions",
+    "checks"
+  ],
+  "additionalProperties": false
+}

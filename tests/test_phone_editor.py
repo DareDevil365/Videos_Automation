@@ -45,6 +45,7 @@ def phone_script():
 
 def phone_request(tmp_path):
     plan=default_phone_plan(tmp_path/'Resources')
+    plan['items'][0]['request']['chat_writing_version']=1
     return _playbook_request(Workspace(tmp_path/'ws'),plan['items'][0],tmp_path/'item')
 
 

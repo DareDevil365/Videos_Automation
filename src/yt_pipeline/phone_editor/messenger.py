@@ -10,7 +10,8 @@ def _ease(value):
     return 1-(1-max(0,min(1,value)))**3
 
 
-def bubble_layout(script,outgoing=None):
+def bubble_layout(script,outgoing=None,attachments=None):
+    attachments=attachments or {}
     """Measure the real conversation once; history uses one continuous scroll."""
     draw=ImageDraw.Draw(Image.new('RGB',(720,1280)));rows=[];y=260
     outgoing=outgoing or script['units'][0]['speaker'];speakers=list(dict.fromkeys(u['speaker'] for u in script['units']))
@@ -18,12 +19,15 @@ def bubble_layout(script,outgoing=None):
         lines=wrapped(draw,unit['text'],font(38),490)
         if len(lines)>4:raise Held('chat_message_length','Keep each message within four readable lines.')
         width=min(550,max(100,math.ceil(max(draw.textlength(line,font=font(38)) for line in lines))+44))
-        height=round(len(lines)*47.2)+34+(24 if unit.get('_story_time') else 0)
+        text_height=round(len(lines)*47.2)+34+(24 if unit.get('_story_time') else 0)
+        attached=unit['id'] in attachments
+        if attached:width=max(width,480)
+        height=text_height+(280 if attached else 0)
         named=len(speakers)>2 and unit['speaker']!=outgoing
         if named:y+=30
         if index and unit['speaker']!=script['units'][index-1]['speaker']:y+=14
         x=692-width if unit['speaker']==outgoing else 28
-        rows.append({'id':unit['id'],'speaker':unit['speaker'],'text':unit['text'],'x':x,'y':y,'width':width,'height':height,'outgoing':unit['speaker']==outgoing,'named':named,'time':unit.get('_story_time')})
+        rows.append({'id':unit['id'],'speaker':unit['speaker'],'text':unit['text'],'x':x,'y':y,'width':width,'height':height,'outgoing':unit['speaker']==outgoing,'named':named,'time':unit.get('_story_time'),'attachment':attached,'text_height':text_height})
         y+=height+12
     return rows
 
@@ -31,7 +35,7 @@ def bubble_layout(script,outgoing=None):
 def chat_frame(script,index,second,duration,typing,avatars=None,settings=None):
     units=script['units'];avatars=avatars or {};settings=settings or {}
     outgoing=settings.get('pov',units[0]['speaker']);theme_name=settings.get('theme','light');theme=PALETTES[theme_name]
-    rows=bubble_layout(script,outgoing)
+    rows=bubble_layout(script,outgoing,settings.get('attachments'))
     current=rows[index];arrived=second>=typing;elapsed=max(0,second-typing)
     last=index if arrived else index-1
     contact=next((u['speaker'] for u in units if u['speaker']!=units[0]['speaker']),'Messages')
@@ -55,7 +59,10 @@ def chat_frame(script,index,second,duration,typing,avatars=None,settings=None):
         bd.rounded_rectangle((8,0,w+8,h),radius=29,fill=fill)
         if row['outgoing']:bd.polygon([(w-13,h-17),(w+16,h+1),(w-31,h-1)],fill=fill)
         else:bd.polygon([(25,h-17),(0,h+1),(42,h-1)],fill=fill)
-        text_box(bd,row['text'],(30,15,w-44,h-20-(24 if row['time'] else 0)),'white' if row['outgoing'] else theme.incoming_ink,38,minimum=38)
+        text_box(bd,row['text'],(30,15,w-44,row['text_height']-20-(24 if row['time'] else 0)),'white' if row['outgoing'] else theme.incoming_ink,38,minimum=38)
+        if row['attachment']:
+            attached=settings['attachments'][row['id']].at(max(0,second-typing))
+            bubble.alpha_composite(attached,(round((w-440)/2)+8,row['text_height']))
         if row['time']:bd.text((w-10-bd.textlength(row['time'],font=font(17)),h-26),row['time'],font=font(17),fill='#dbe9ff' if row['outgoing'] else theme.muted)
         if active:
             entry=_ease(elapsed/.22);scale=.94+.06*entry
@@ -98,4 +105,4 @@ def chat_frame(script,index,second,duration,typing,avatars=None,settings=None):
     return image,{'visible_unit_ids':visible,'active_unit_id':current['id'],'message_arrived':arrived,
         'emphasis':focus,'typing_seconds':typing,'canvas':[720,1280],'ui':'clean_mobile_messenger',
         'camera_zoom':round(zoom,4),'scroll_offset':round(scroll,3),'active_bubble_box':active_box,
-        'outgoing_speaker':outgoing,'contact':contact,'theme':theme_name,'story_time':settings.get('time','09:41'),'decorative_labels':False}
+        'outgoing_speaker':outgoing,'contact':contact,'theme':theme_name,'story_time':settings.get('time','09:41'),'decorative_labels':False,'visible_attachments':[r['id'] for r in rows[:last+1] if r['attachment'] and r['id'] in visible]}

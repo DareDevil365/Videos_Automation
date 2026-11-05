@@ -225,3 +225,5 @@ The initial audit suite passed 183 tests. After editorial/speech/quiz improvemen
 | Performance learning | `monitor.py`, `benchmarks.py`; preserve missing data and compare real format/duration cohorts |
 
 Keep current implementation status and the affected `PROJECT_GUIDE.md` sections synchronized. Add a new abstraction when the actual change needs it; the agent folders do not require a package refactor.
+
+Latest writing/media extension: `phone_editor/writing.py` owns focused story sketches, selected anchors and seven-criterion cold reading; the generic writer retains its legacy paths. `phone_editor/attachments.py` measures and loops registered GIF/still assets. `illustrated_story.py` now accepts explicit portrait rendering/licensed art/insets; `entertainment.py`, `visuals.py` and `director.py` implement optional clean aura frames without score labels or boxes. `transcripts.py` accepts an explicit bounded portrait caption size. The [writing-quality guide](CHAT_WRITING_QUALITY.md) and [five-video builder/example guide](../examples/assistant-five/README.md) trace these flows and distinguish human-authored examples from model validation.

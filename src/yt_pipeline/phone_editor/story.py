@@ -13,7 +13,7 @@ def elapsed_text(previous, current):
     return f'{difference} min later'
 
 
-def story_frame(script, index, second, duration, typing, avatars=None, wallpapers=None):
+def story_frame(script, index, second, duration, typing, avatars=None, wallpapers=None,attachments=None):
     story=script['phone_story'];beats=compile_beats(script);beat=beats[index]
     thread=next(t for t in story['threads'] if t['id']==beat['thread_id'])
     contact=next(c for c in story['contacts'] if c['id']==thread['contact_id'])['name']
@@ -24,7 +24,7 @@ def story_frame(script, index, second, duration, typing, avatars=None, wallpaper
     prefix=beat['prefix_seconds'];local=max(0,second-prefix)
     battery=5 if any('low_battery'==event['type'] for row in beats[:index+1] for event in row['events']) else 82
     settings={'pov':story['pov'],'contact':contact,'theme':thread['theme'],'time':beat['time'],
-              'battery':battery,'focus':index in (0,len(script['units'])-1) or (len(script['units'][index]['text'].split())<=4 and '?' in script['units'][index]['text']),'wallpaper':(wallpapers or {}).get(thread['id'])}
+              'battery':battery,'attachments':attachments or {},'focus':index in (0,len(script['units'])-1) or (len(script['units'][index]['text'].split())<=4 and '?' in script['units'][index]['text']),'wallpaper':(wallpapers or {}).get(thread['id'])}
     picture,meta=chat_frame(conversation,len(indices)-1,local,max(.1,duration-prefix),typing,avatars,settings)
     meta.update(thread_id=thread['id'],screen='chat',prefix_seconds=prefix,phone_story=True)
     for event in beat['events']:

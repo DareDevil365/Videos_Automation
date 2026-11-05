@@ -1,0 +1,31 @@
+{
+  "id": "server_chat",
+  "format": "chat",
+  "seconds": [
+    22,
+    90
+  ],
+  "words": [
+    55,
+    150
+  ],
+  "units": [
+    12,
+    28
+  ],
+  "voice": null,
+  "music": {
+    "category": "storytime",
+    "mood": "optional restrained comic tension",
+    "volume": 0.05
+  },
+  "layout": "server_chat",
+  "bottom": [
+    "none"
+  ],
+  "writing": "Write an ORIGINAL story story told ENTIRELY through a fictional phone screen. 12-28 actual messages, 55-150 words total, at most 12 words each. One phone owner and 1-5 named contacts; no narrator. Use private conversations with distinct purposes, not random switches. Start with a specific curiosity, surprising message or unresolved problem, plant a fair clue, escalate through new information and deliver a causal answer in the final two messages. A cliffhanger may add a new implication only after resolving the opening. Avoid repetitive reactions and arbitrary unplanted endings. Do not escape the mystery with an unplanted prank, dream, burner app or newly invented sibling; the reveal must follow from evidence in actual earlier messages. Each onscreen equals its message text exactly. The outer script version MUST be integer 1, including repairs. Deliver at least 12 message units; count them before returning. Return phone_story: pov is the phone owner name, contacts give unique IDs/names, threads reference contact IDs and choose light/dark/rose/sage theme, and beats map EVERY actual unit in order to thread_id, explicit fictional same-day 24-hour HH:MM time, and events array. Each message speaker must be the phone owner or that thread contact. Events are optional story occurrences: low_battery, glitch, blackout, time_jump, notification; switch navigation is automatic. Events happen BEFORE the associated message; notification previews that incoming message. Battery/glitch must precede blackout; advance time for time_jump. Use interruptions only when they serve this story, never cram in every capability. No duration, camera, code, URLs or downloads. The program chooses rendering and all timing. Do not falsely present fiction as an actual phone recording.",
+  "visuals": "The SOFTWARE handles editing: portrait 9:16, close-cropped message cards, previous context, typing beats, reaction emphasis, readable holds, stable names/avatars and notification sound. Return ONLY dialogue/content; do not plan timings, camera moves or music. Text must work without a narrator or unseen physical action.",
+  "sound": "Reading-led chat, no narrator or TTS. Quiet original message pops; interruption/blackout sections stay silent.",
+  "task": "Write only the complete conversation in the script JSON contract. The hook equals the first actual message, and onscreen equals text for every message. Do not create a storyboard or timing. The software compiles all editing without another model call.",
+  "editorial_policy": "One writing call, at most one structural repair. Optional writing-only critique allows at most one revision and one recheck; software still owns all edits. Structural checks/model opinions cannot certify humor or viewer response."
+}

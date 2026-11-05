@@ -95,7 +95,8 @@ def build_visuals(workspace, script, timing, folder, job=None):
             asset=timing['selected_media'][i]['asset'] if script['format']=='aura' else None
             path=mystery_scene(script,i,duration,folder,story[unit['id']]) if story else aura_scene(script,i,asset,duration,folder,
                 progression=bool(job and job['request'].get('playbook')=='aura_progression'),
-                motion=timing.get('creative_scenes',[{}]*len(script['units']))[i].get('motion','slow_push')) if asset else cutout_scene(script,i,duration,folder)
+                motion=timing.get('creative_scenes',[{}]*len(script['units']))[i].get('motion','slow_push'),
+                clean=bool(job and job['request'].get('aura_clean')),offset=job['request'].get('media_starts',{}).get(unit['id'],0) if job else 0) if asset else cutout_scene(script,i,duration,folder)
             rows.append({'unit_id':unit['id'],'file':str(path),'duration':duration,'kind':'illustrated_mystery' if story else script['format'],
                          **({'storyboard':story[unit['id']]} if story else {}),'provenance':'Original motion/layout; any source photo has its own recorded credit.'})
             continue

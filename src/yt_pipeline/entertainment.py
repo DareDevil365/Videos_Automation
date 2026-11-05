@@ -40,14 +40,24 @@ def aura_timing(ws,job,script,creative_plan=None):
     return result
 
 
-def aura_scene(script,index,asset,duration,folder,progression=False,motion='slow_push'):
+def aura_scene(script,index,asset,duration,folder,progression=False,motion='slow_push',clean=False,offset=0):
     folder=Path(folder);poster=folder/(script['units'][index]['id']+'-poster.png')
     score=round(-100+200*index/max(1,len(script['units'])-1))
     if asset['kind']=='video':
         from .planned_visuals import _video_scene
         output=folder/(script['units'][index]['id']+'.mp4')
-        caption=script['units'][index]['onscreen']+(f' | AURA {score:+d}' if progression else '')
-        _video_scene(asset,caption,duration,output,832,motion=motion)
+        caption=script['units'][index]['onscreen']+(f' | AURA {score:+d}' if progression and not clean else '')
+        _video_scene(asset,caption,duration,output,1280 if clean else 832,motion=motion,offset=offset,minimal=clean)
+        return output
+    if clean:
+        with Image.open(asset['path']) as raw:picture=ImageOps.fit(raw.convert('RGB'),(720,1280))
+        shade=Image.new('RGBA',picture.size);sd=ImageDraw.Draw(shade)
+        for y in range(1000,1280):sd.line((0,y,720,y),fill=(0,0,0,round((y-1000)*.5)))
+        picture=Image.alpha_composite(picture.convert('RGBA'),shade).convert('RGB');draw=ImageDraw.Draw(picture)
+        text_box(draw,script['units'][index]['onscreen'],(48,1117,624,105),'white',38,True,'center',minimum=25)
+        picture.save(poster)
+        from .planned_visuals import _motion
+        output=folder/(script['units'][index]['id']+'.mp4');_motion(poster,duration,output,motion,1280)
         return output
     with Image.open(asset['path']) as raw:picture=ImageOps.fit(raw.convert('RGB'),(720,832),centering=(.5,.35))
     draw=ImageDraw.Draw(picture);draw.rectangle((0,680,720,832),fill='#0c0c10')

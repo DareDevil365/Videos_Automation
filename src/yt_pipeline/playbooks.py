@@ -119,6 +119,8 @@ def prepare_request(request):
     """Resolve defaults only for new presets, preserving historical requests."""
     value = deepcopy(request)
     if value.get('playbook')=='illustrated_story':
+        if value.get('story_canvas','landscape') not in ('portrait','landscape'):raise Held('story_layout','Choose portrait or landscape story canvas.')
+        if type(value.get('allow_licensed_illustrations',False)) is not bool:raise Held('story_layout','allow_licensed_illustrations must be a boolean.')
         for key,setting in {'bottom_kind':'none','require_music':False}.items():value.setdefault(key,setting)
         if value['bottom_kind']!='none' or value.get('bottom_asset_id'):
             raise Held('story_layout','Illustrated stories need the whole landscape frame.')
@@ -130,13 +132,18 @@ def prepare_request(request):
     if value.get('playbook')=='server_chat':
         version=value.get('chat_editing_version',1)
         if type(version) is not int or version not in (1,2):raise Held('chat_config','Choose chat editing version 1 or 2.')
+        if type(value.get('chat_writing_version',1)) is not int or value.get('chat_writing_version',1) not in (1,2):raise Held('chat_config','Choose chat writing version 1 or 2.')
+        if value.get('chat_writing_version')==2 and version!=2:raise Held('chat_config','Writing v2 needs the local chat editor.')
+        value.setdefault('chat_tone','thriller' if value.get('phone_story') else 'comedy')
         defaults={'hook_options':False,'hook_validation':'strict','editorial_review':'off','visual_review':'off','bottom_kind':'none','require_music':False} if version==2 else {'hook_options':True,'hook_validation':'strict','editorial_review':'required','bottom_kind':'none','require_music':False}
         for key,setting in defaults.items():
             value.setdefault(key,setting)
         if value.get('phone_story') is not None and type(value['phone_story']) is not bool:raise Held('phone_story','phone_story must be a boolean request setting.')
         if value.get('phone_story') and version!=2:raise Held('phone_story','Phone stories require the local v2 editor.')
-        if value.get('chat_tone','comedy') not in ('comedy','mystery','thriller'):raise Held('chat_config','Choose comedy, mystery or thriller tone.')
+        if value.get('chat_tone','comedy') not in ('comedy','mystery','thriller','story'):raise Held('chat_config','Choose comedy, mystery or thriller tone.')
         if type(value.get('chat_script_review',False)) is not bool:raise Held('chat_config','chat_script_review must be a boolean.')
+        if not isinstance(value.get('chat_attachment_ids',{}),dict) or len(value.get('chat_attachment_ids',{}))>8:raise Held('chat_attachment','Use a mapping of at most eight message IDs to registered GIF/image IDs.')
+        if value.get('chat_group_name') is not None and (not isinstance(value['chat_group_name'],str) or not 1<=len(value['chat_group_name'])<=40):raise Held('chat_config','Use a short actual conversation name.')
         if not isinstance(value.get('phone_wallpaper_ids',{}),dict) or len(value.get('phone_wallpaper_ids',{}))>5:raise Held('phone_wallpaper','Supply at most five registered thread wallpaper IDs.')
         if version==2 and (value['hook_options'] is not False or value['editorial_review']!='off' or value['visual_review']!='off'):
             raise Held('chat_provider_scope','Chat v2 uses the model for script writing only; hooks, model direction and model reviews must be off.')
@@ -165,8 +172,14 @@ def get_playbook(name,request=None):
             rules.update(seconds=[22,90],words=[55,150],units=[12,28])
             rules['writing']=f'Write an ORIGINAL {tone} story told ENTIRELY through a fictional phone screen. 12-28 actual messages, 55-150 words total, at most 12 words each. One phone owner and 1-5 named contacts; no narrator. Use private conversations with distinct purposes, not random switches. Start with a specific curiosity, surprising message or unresolved problem, plant a fair clue, escalate through new information and deliver a causal answer in the final two messages. A cliffhanger may add a new implication only after resolving the opening. Avoid repetitive reactions and arbitrary unplanted endings. Do not escape the mystery with an unplanted prank, dream, burner app or newly invented sibling; the reveal must follow from evidence in actual earlier messages. Each onscreen equals its message text exactly. The outer script version MUST be integer 1, including repairs. Deliver at least 12 message units; count them before returning. Return phone_story: pov is the phone owner name, contacts give unique IDs/names, threads reference contact IDs and choose light/dark/rose/sage theme, and beats map EVERY actual unit in order to thread_id, explicit fictional same-day 24-hour HH:MM time, and events array. Each message speaker must be the phone owner or that thread contact. Events are optional story occurrences: low_battery, glitch, blackout, time_jump, notification; switch navigation is automatic. Events happen BEFORE the associated message; notification previews that incoming message. Battery/glitch must precede blackout; advance time for time_jump. Use interruptions only when they serve this story, never cram in every capability. No duration, camera, code, URLs or downloads. The program chooses rendering and all timing. Do not falsely present fiction as an actual phone recording.'
             if tone=='comedy':rules['writing']+=' '+COMEDY_BRIEF
+        if (request or {}).get('chat_writing_version')==2:
+            rules.update(units=[10,26] if (request or {}).get('phone_story') else [8,20],words=[50,145] if (request or {}).get('phone_story') else [35,105],seconds=[18,90] if (request or {}).get('phone_story') else [12,55])
+            rules['writing']+=' For writing version 2, the numeric words/units/seconds fields override older counts in the format description. Do not pad to twelve messages; fewer meaningful exchanges within those numeric bounds are preferred.'
+        if (request or {}).get('chat_writing_version')==2:
+            rules['writing']=rules['writing'].replace('12-22 short actual messages, 40-100 words total','8-20 short actual messages, 35-105 words total').replace('12-28 actual messages, 55-150 words total','10-26 actual messages, 50-145 words total').replace('Deliver at least 12 message units; count them before returning.','Use only meaningful exchanges within the supplied unit bounds.')
         rules['visuals']='The SOFTWARE handles editing: portrait 9:16, close-cropped message cards, previous context, typing beats, reaction emphasis, readable holds, stable names/avatars and notification sound. Return ONLY dialogue/content; do not plan timings, camera moves or music. Text must work without a narrator or unseen physical action.'
         rules['sound']='Reading-led chat, no narrator or TTS. Quiet original message pops; interruption/blackout sections stay silent.'
+    if name=='illustrated_story' and (request or {}).get('story_canvas')=='portrait':rules.update(seconds=[35,80],words=[100,190],units=[8,14])
     return rules
 
 
@@ -219,7 +232,12 @@ def export_playbooks(folder):
     write_json(folder/'server_chat.v2.writer.json',writing_prompt('server_chat',{'chat_editing_version':2}))
     from .phone_editor.contract import PHONE_SCHEMA
     write_json(folder/'phone-story.schema.json',PHONE_SCHEMA)
-    for tone in ('comedy','mystery','thriller'):write_json(folder/('phone-story.'+tone+'.writer.json'),writing_prompt('server_chat',{'chat_editing_version':2,'phone_story':True,'chat_tone':tone}))
+    for tone in ('comedy','mystery','thriller','story'):write_json(folder/('phone-story.'+tone+'.writer.json'),writing_prompt('server_chat',{'chat_editing_version':2,'phone_story':True,'chat_tone':tone}))
+    from .phone_editor.writing import DIAGNOSTIC_SCHEMA,draft_schema
+    from .contracts import SCRIPT_SCHEMA
+    write_json(folder/'chat-writing-v2.reader-schema.json',DIAGNOSTIC_SCHEMA)
+    write_json(folder/'chat-writing-v2.draft-schema.json',draft_schema(SCRIPT_SCHEMA))
+    write_json(folder/'chat-writing-v2.writer.json',writing_prompt('server_chat',{'chat_editing_version':2,'chat_writing_version':2}))
     write_json(folder/'server_chat.v2.editor.json',{'version':2,'canvas':[720,1280],
         'provider_scope':'One story-writing request and at most one structural repair. Optional writing-only review, one revision and one recheck. No model directing.',
         'timing':'Frame-clock reading hold per complete message, with code-selected entry/typing/reaction states.',

@@ -1,0 +1,17 @@
+# Five assistant-authored toolbox videos
+
+The owner explicitly requested assistant authorship instead of Gemini, then clarified: use the existing production toolbox and permitted stock/GIF/art assets; do not use image/video-generation services. All five outputs are portrait 720x1280, local and test-only.
+
+| Script | Writing construction | Toolbox production |
+| --- | --- | --- |
+| [The Family Group](comedy-chat.json) | Literal interpretation invites a boss into a candidly named group; the boss repeats the same mistake upward. The ending escalates the planted mechanism. | Group chat, matching actual header, names, restrained cues and a public-domain animated cat reaction |
+| [The Blue Backpack](mystery-chat.json) | A claimed lost object conflicts with the daughter's current bag. The early garage-donation detail explains the stranger's access; the final message reveals the nearby threat. | Unknown/daughter/spouse private threads, dark/rose/sage palettes, timestamps and a closing notification |
+| [The Second Coffee](story-chat.json) | A daughter misreads her father's ritual. Train/table details establish who the second drink is for; her decision to return fulfills the story. | Private chats, a measured fifteen-minute jump, restored histories and reading-led delivery |
+| [One More Window](cinematic-story.json) | A child's imagined view becomes a plan for a shared future. Two chairs plant the final request to include his grandfather. | Licensed historical paintings, measured portrait camera motion, a registered inset inside an existing frame, local narration/captions and permitted piano |
+| [Let The Shot Answer](aura.json) | Short original edit captions move from practice to a real dunk and its held impact frame; no invented athlete biography or attributed quote. | Four distinct permitted stock-video sources, continuous action cuts, a sourced freeze frame and licensed rhythmic music; no fake aura score |
+
+The mystery resolves the bag's location/false claim while ending on immediate danger; it does not depict the family's later rescue. The cinematic story is original fiction illustrated with historical paintings, not a Van Gogh biography or literal footage of the fictional events. Its camera/inset animation does not rig the painted characters. The aura montage features different stock athletes, not a fabricated single-person career. These are creative review candidates, not claims of audience response.
+
+Builder: [create_assistant_five.py](../../tools/create_assistant_five.py). It requires the checked, ignored local source manifests/media in `Resources/Drafts/assistant-five-20261105/`. It registers provenance, uses a closed prepared provider, runs existing durable stages and exports under `Resources/Productions/assistant-five-20261105/`. `--only` selects a video; `--revision` explicitly creates a test-only revision and preserves the older job/state. No remote text/image/video generation is allowed. Local voice synthesis and FFmpeg rendering are part of the existing toolbox.
+
+Every output includes `SCRIPT.md`, request/script/direction/timing/visual/QA records and `AUTHORING_AND_VALIDATION.json` with hashes and zero-generation-call evidence. The source media stays ignored; scripts and reproducible production logic are committed. The root project guide records current validation and review results.

@@ -46,7 +46,7 @@ def direct(workspace, job, script, timing, visuals):
             'composition':{'height':round(1280*request.get('top_fraction',.65)/2)*2/1280 if bottom else 1,'x':0,'y':0,'width':1,'foreground_fit':'cover','audio_source':'none',
                            'effect':script['edit']['effect'],'cta':False,'border_width':0,'glow':0}}
         if request.get('playbook') in ('documentary_chapter','illustrated_story'):
-            spec.update(profile='documentary')
+            if request.get('playbook')!='illustrated_story' or request.get('story_canvas')!='portrait':spec.update(profile='documentary')
             spec['composition']['effect']='none'
         if request.get('playbook')=='server_chat' and request.get('chat_editing_version')==2:
             spec['composition']['effect']='none'  # The compiled chat editor owns emphasis, not model edit hints.
@@ -104,7 +104,7 @@ def direct(workspace, job, script, timing, visuals):
         if request.get('story_visuals') and not split:
             spec['composition'].update(x=0,y=0,width=1,height=1,foreground_fit='contain',border_width=0,glow=0)
         if request.get('playbook')=='aura_progression' and not split:
-            spec['composition'].update(x=0,y=.05,width=1,height=.9,foreground_fit='contain',border_width=0,glow=0)
+            spec['composition'].update(x=0,y=0 if request.get('aura_clean') else .05,width=1,height=1 if request.get('aura_clean') else .9,foreground_fit='cover' if request.get('aura_clean') else 'contain',border_width=0,glow=0)
         project=materialize_job(spec,Store(workspace.root/'media'),folder)
         write_json(folder/'compose-job.json',spec);write_json(folder/'render-project.json',project)
         return {'compose_job':str(folder/'compose-job.json'),'project':str(folder/'render-project.json'),'duration':timing['duration'],

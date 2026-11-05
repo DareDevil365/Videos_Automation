@@ -10,6 +10,7 @@ Run tools from the project root. These are separate from normal production comma
 | [create_upgrade_demo.py](create_upgrade_demo.py) | Creates a missing demonstration plan and fetches a source excerpt; does not overwrite an existing initialized plan |
 | [create_storytelling_pilot.py](create_storytelling_pilot.py) | Owner-requested assistant-authored fictional story and prepared direction; local speech/render, closed provider, six supplied original art files, zero Gemini calls verified |
 | [create_editorial_demo.py](create_editorial_demo.py) | Offline test-only original rewrite pilot; prepared plan, local speech/alignment, no Gemini requests; requires a prepared source brief and installed local models |
+| [create_assistant_five.py](create_assistant_five.py) | Five assistant-authored portrait videos through the existing toolbox; requires checked local stock/art/GIF inputs, refuses remote generation and preserves revision state |
 | [build_blueprint_pdf.py](build_blueprint_pdf.py) | Builds the dated PDF blueprint with ReportLab/system fonts |
 | [blueprint_content.py](blueprint_content.py) | Content used by the PDF builder; historical snapshot rather than live current status |
 

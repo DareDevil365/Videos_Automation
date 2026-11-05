@@ -62,3 +62,9 @@ Counts, exact quote checks, timeline consistency and technical QA are automatic.
 ## How to extend the editor
 
 See [the implementation plan and current scope](../../PHONE_STORY_IMPLEMENTATION.md). Add a trusted screen/event renderer, its finite story-data fields, local timing and meaningful tests; register it through the compiler. Do not ask the model to generate executable rendering code. This keeps layouts, symbols, screens, effects and sound reusable independently of the story while retaining deterministic recovery.
+
+## Writing v2, GIFs and gentle stories
+
+New plans also select `chat_writing_version: 2`; [the writing-quality guide](../../CHAT_WRITING_QUALITY.md) explains the focused development/read/revision process and limits. Current v2 bounds are 10-26 messages, 50-145 words and 18-90 seconds; version-1 saved requests keep their older bounds. `phone-plan --tone story` supports gentle emotional narratives without a compulsory threat/twist.
+
+`chat_attachment_ids` maps up to eight existing message IDs to registered GIF/still-image asset IDs. GIFs retain their source/license record, animate on the frame clock and get at least a three-second reading/view hold. The loader accepts at most 240 frames; MP4/voice-note attachments are not implemented. `chat_group_name` gives normal group chats their actual short header. A private-thread phone story still uses its contact headers. The [assistant-authored examples](../../../examples/assistant-five/README.md) demonstrate a GIF, private chats and a fifteen-minute jump without remote generation.

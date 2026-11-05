@@ -63,12 +63,12 @@ def default_chat_plan(resources_root=None,topic=None):
         'output_root':str(resources/'Productions'),'created_at':now(),
         'note':'Gemini writes the conversation only. Software controls portrait message editing, reading time, reactions and original sound effects. Test-only; publishing disabled.',
         'items':[{'id':'chat-short','kind':'playbook','playbook':'server_chat','channel':'entertainment','topic':topic.strip(),
-            'request':{'chat_editing_version':2,'fiction':True,'test_only':True,'bottom_kind':'none','require_music':False,
+            'request':{'chat_editing_version':2,'chat_writing_version':2,'fiction':True,'test_only':True,'bottom_kind':'none','require_music':False,
                 'hook_options':False,'editorial_review':'off','visual_review':'off','chat_script_review':True}}]}
 
 
 def default_phone_plan(resources_root=None,topic=None,tone='thriller'):
-    if tone not in ('comedy','mystery','thriller'):raise ValueError('Choose comedy, mystery or thriller.')
+    if tone not in ('comedy','mystery','thriller','story'):raise ValueError('Choose comedy, mystery or thriller.')
     plan=default_chat_plan(resources_root,topic or 'An original phone-screen mystery across private conversations with fair clues and a concrete final answer')
     plan['id']=plan['id'].replace('chat-','phone-',1)
     plan['format']='phone_story'

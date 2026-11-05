@@ -12,7 +12,7 @@ ROOT = Path(__file__).resolve().parents[1]
 def main():
     files = sorted({*ROOT.glob('*.md'), *ROOT.glob('docs/**/*.md'),
                     *ROOT.glob('agents/**/*.md'), *ROOT.glob('research/**/*.md'),
-                    *ROOT.glob('examples/*.md'), *ROOT.glob('tools/*.md'),
+                    *ROOT.glob('examples/**/*.md'), *ROOT.glob('tools/*.md'),
                     *ROOT.glob('tests/*.md'), *ROOT.glob('Resources/**/README.md')})
     problems = []
     links = 0

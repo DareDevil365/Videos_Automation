@@ -41,6 +41,7 @@ def reading_timing(ws,job,script,folder):
     for index,unit in enumerate(script['units']):
         typing=0 if index==0 else .38 if index==len(script['units'])-1 else .16
         hold=max(1.05,len(unit['text'].split())/3.8+.25,len(unit['text'])/24+.25)
+        if unit['id'] in job['request'].get('chat_attachment_ids',{}):hold=max(hold,3.0)
         if index==len(script['units'])-1:hold+=.65
         prefix=beats[index]['prefix_seconds'] if beats else 0
         seconds=math.ceil((prefix+typing+hold)*30)/30
@@ -80,9 +81,9 @@ def reading_timing(ws,job,script,folder):
     write_json(folder/'timing.json',result);return result
 
 
-def render_chat_message(script,index,spoken,path,avatars=None,wallpapers=None):
+def render_chat_message(script,index,spoken,path,avatars=None,wallpapers=None,attachments=None,group_name=None):
     path=Path(path);duration=spoken['duration'];typing=spoken['typing_seconds']
-    render=(lambda second: story_frame(script,index,second,duration,typing,avatars,wallpapers)) if script.get('phone_story') else (lambda second: chat_frame(script,index,second,duration,typing,avatars))
+    render=(lambda second: story_frame(script,index,second,duration,typing,avatars,wallpapers,attachments)) if script.get('phone_story') else (lambda second: chat_frame(script,index,second,duration,typing,avatars,{'attachments':attachments or {},**({'contact':group_name} if group_name else {})}))
     hold_time=min(duration-.51,spoken.get('prefix_seconds',0)+typing+1.12)
     poster,meta=render(hold_time);poster.save(path.with_suffix('.png'))
     partial=path.with_suffix('.partial.mp4');log=path.with_suffix('.ffmpeg.log')
@@ -94,7 +95,7 @@ def render_chat_message(script,index,spoken,path,avatars=None,wallpapers=None):
             final=poster.tobytes()
             for frame in range(math.ceil(duration*30)):
                 second=frame/30
-                value=render(second)[0].tobytes() if second<spoken.get('prefix_seconds',0)+typing+1.1 or second>duration-.5 else final
+                value=render(second)[0].tobytes() if attachments or second<spoken.get('prefix_seconds',0)+typing+1.1 or second>duration-.5 else final
                 process.stdin.write(value)
             process.stdin.close();process.wait(timeout=120)
             if process.returncode:raise Held('chat_render','Chat encoding failed; inspect the retained log.')
@@ -130,9 +131,16 @@ def build_chat_visuals(ws,job,script,timing,folder,record):
         if asset['kind']!='image':raise Held('phone_wallpaper','Wallpapers need registered images.')
         provenance.append(asset)
         with Image.open(asset['path']) as raw:wallpapers[thread_id]=ImageOps.exif_transpose(raw).convert('RGB')
+    attachments={}
+    from .phone_editor.attachments import Attachment
+    for uid,ref in job['request'].get('chat_attachment_ids',{}).items():
+        if uid not in {u['id'] for u in script['units']}:raise Held('chat_attachment','Attachment must reference an existing message.')
+        asset=asset_record(ws,ref)
+        if Path(asset['path']).suffix.lower() not in ('.gif','.png','.jpg','.jpeg','.webp'):raise Held('chat_attachment','Use registered GIF or still-image attachments.')
+        attachments[uid]=Attachment(asset['path']);provenance.append(asset)
     rows=[]
     for index,spoken in enumerate(timing['units']):
-        output=folder/(spoken['id']+'-chat.mp4');details=render_chat_message(script,index,spoken,output,avatars,wallpapers)
+        output=folder/(spoken['id']+'-chat.mp4');details=render_chat_message(script,index,spoken,output,avatars,wallpapers,attachments,job['request'].get('chat_group_name'))
         made=register_asset(ws,output,'original_graphic',{'generator':'compiled-chat-editor-v2','unit_id':spoken['id'],
             'avatar_source_ids':ids,'wallpaper_source_ids':list(job['request'].get('phone_wallpaper_ids',{}).values()),'message_state':details},test_only=job['request'].get('test_only',False))
         rows.append({'unit_id':spoken['id'],'file':str(output),'media_id':made['id'],'duration':spoken['duration'],

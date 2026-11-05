@@ -57,7 +57,7 @@ def quota_retry_delay(error):
 
 def gemini_wire_schema(schema):
     """Avoid combinatorial array grammar bounds; local contracts keep limits."""
-    if 'phone_story' not in schema.get('properties',{}):return schema
+    if 'phone_story' not in schema.get('properties',{}) and 'sketches' not in schema.get('properties',{}):return schema
     def simplify(value):
         if isinstance(value,dict):return {k:simplify(v) for k,v in value.items() if k not in ('minItems','maxItems')}
         if isinstance(value,list):return [simplify(v) for v in value]
@@ -182,6 +182,13 @@ def write_script(workspace, job, brief, provider,*,_creative_rewrite_budget=1,_c
     direction=editorial_context(job)
     profile=workspace.config()["channels"][job["channel"]]
     profile={**profile,"format":request.get("format",creative_rules['format'] if creative_rules else profile["format"])}
+    writing_v2=chat_compiled and request.get('chat_writing_version',1)==2
+    development=None;writing_constraints=None
+    if writing_v2:
+        from .phone_editor.writing import writing_context,draft_schema
+        writing_constraints=writing_context(brief,request,creative_rules,owner_feedback)
+        for field in ('visual_query','visual_kind'):script_schema['properties']['units']['items']['properties'].pop(field,None)
+        output_schema=draft_schema(script_schema)
     inventory=[]
     if request.get('restrict_visuals_to_inventory') is True:
         from .assets import asset_record
@@ -197,23 +204,36 @@ def write_script(workspace, job, brief, provider,*,_creative_rewrite_budget=1,_c
         raw=json.loads(Path(request["script_file"]).read_text(encoding="utf-8"));origin="provided_script"
     else:
         origin=getattr(provider,"name","gemini")
-        raw=provider.generate("scripter-hooks-v1" if use_hooks else "scripter-v3" if playbook else "scripter-v2",{"brief":brief,"format":profile["format"],"language":profile["language"],"style":profile["style"],"editorial_direction":direction,'creative_brief':str(request.get('creative_brief',''))[:2000],
-            'hook_selection':{'enabled':use_hooks,'types':HOOK_TYPES,'max_spoken_words':12 if profile['format'] in ('chat','cutout') else 18,'max_caption_words':12,'instructions':'When enabled, return the script and exactly THREE distinct typed hook_options in the SAME call, plus selected_hook_index 0-2. Every option, including unselected alternatives, must meet both word limits and omit greetings or generic preambles. Each option has type, first_line, first_caption and first_frame (specific visible intent). Pick the clearest supported promise, not the loudest. The actual first script unit text/hook and onscreen MUST exactly equal the selected line and caption. For chat and cutout dialogue, first_caption must equal first_line verbatim; keep the complete line within twelve words. No invented facts, outcomes or interfaces. First-frame intent is not proof of rendered pixels.'},
-            'format_playbook':creative_rules,
-            'available_visuals':inventory,
-            'owner_feedback':owner_feedback,'owner_feedback_policy':'Do not reproduce or paraphrase rejected stories, rename their characters and call them new, or treat a model pass as owner approval. Apply the recorded specific criticism; accepted examples are preferences, not text to copy.',
-            'scene_direction':('Write for staged interaction, not a sequence of talking heads. Keep two recurring people with distinct voices/personalities and distinct stable clothes. A voice-only narrator is optional; do not invent extra people for narration. Include a shared scene and show essential animals, objects and actions through actual relevant insert queries. Make visual_query literal and stock-searchable for those beats; the director can choose two_shot/dialogue/insert. Do not rely on imaginary screen content, unseen action, or repeatedly displaying one stock photo. The comedy must work as spoken dialogue with a clear escalating conflict and an earned final consequence/reversal, not an absurd premise plus an ordinary explanation.' if request.get('scene_direction_version')==2 else None),
-            'visual_inventory_rule':'When available_visuals is nonempty, invent a fresh coherent story that can be illustrated ONLY with these actual sources. Their verified descriptions are available subjects, not historical claims or evidence of your invented plot. Do not rely on an unavailable screen/interface, readable document, extra character/prop or filmed action to communicate the reveal. Narrated original fiction may use illustrative stills and supported camera moves. Preserve the complete causal payoff; the director will bind every scene to this inventory.' if inventory else None,
-            'selected_story_concept':concept,'reference_mechanics':request.get('reference_mechanics',[]),
-            'content_label':{'fiction':brief['kind']=='fiction','rule':'Match this exact boolean. In factual education, an explicitly imaginary sample answer is an instructional example, not a fiction-labelled story or real testimonial. Use kind instruction for that demonstrated example.'},
-            'motion_graphics':{'enabled':request.get('motion_graphics',False),
-                'instructions':'When enabled for education_demo, write short visible examples with phrases usable as comparison, numbered process or callout labels. Clearly introduce invented sample answers as examples, never real testimonials. Keep each unit self-contained. Avoid relying on a real tool screenshot when illustrating an interview answer. The director preserves the script and selects exact phrases for graphics.'},
-            "visual_brief":"For each spoken unit include visual_query: 2–5 literal English search words describing a useful illustration (e.g. student notebook desk), and visual_kind: image or video. Onscreen text should usually be 3–9 words, not the entire spoken paragraph.",
-            'entertainment_formats':'Aura: original short edit-caption beats, no invented quote attributed to the photographed creator, no narration required. Cutout: original conversational story/dialogue suitable for simple staged characters. Movie/franchise content: distinguish canon evidence, confirmed announcements and explicitly labelled fan theories/what-ifs. Do not invent leaks, real endorsements, source URLs or clip permissions.',
-            "task":(f'Use {creative_rules["units"][0]}-{creative_rules["units"][1]} separate units and {creative_rules["words"][0]}-{creative_rules["words"][1]} total spoken words. Follow the selected format_playbook pacing, writing and payoff requirements exactly. Those override generic duration/unit guidance. ' if playbook else 'Write an original 20–50 second Short, usually 5–10 units. ')+"Use complete short spoken sentences or dialogue turns, hook, meaningful progression and a delivered payoff. Each factual unit needs claim_ids from the brief. Instructions are suggestions/demonstrated steps, not guarantees. For chat, assign consistent fictional speakers; onscreen is the actual message. For lesson, onscreen is concise explanation. Use an effect only at payoff. Use explicit fictional HH:MM story times only when the phone_story contract requests them; never invent source timestamps, input filenames or test results. Metadata must match the story. Identify fiction. Keep [P]/[PP]/[PPP]/[FAST]/[NORMAL] tags out of all spoken text; structured director delivery controls timing. Comment questions are optional and follow the delivered payoff."},output_schema)
+        if writing_v2:
+            raw=provider.generate('chat-story-draft-v2',{'writing_constraints':writing_constraints,
+                'task':'Develop THREE compact genuinely different story sketches first, varying the mechanism and ending. '
+                'Each has situation, conflicting_wants, opening, early_plant, ending, cause and mechanism. '
+                'Opening/early_plant/ending are exact messages of at most 12 words. Choose the clearest earned ending, not the loudest premise. '
+                'Then write ONLY that selected conversation in script, using its first and last messages verbatim and its early plant in the first third. '
+                'Build backward from the consequence. Do not pad to a preferred count: use only exchanges that change something, within the supplied bounds. '
+                'The script version remains 1. No stock/visual search fields or editing instructions.'},output_schema)
+        else:
+            raw=provider.generate("scripter-hooks-v1" if use_hooks else "scripter-v3" if playbook else "scripter-v2",{"brief":brief,"format":profile["format"],"language":profile["language"],"style":profile["style"],"editorial_direction":direction,'creative_brief':str(request.get('creative_brief',''))[:2000],
+                'hook_selection':{'enabled':use_hooks,'types':HOOK_TYPES,'max_spoken_words':12 if profile['format'] in ('chat','cutout') else 18,'max_caption_words':12,'instructions':'When enabled, return the script and exactly THREE distinct typed hook_options in the SAME call, plus selected_hook_index 0-2. Every option, including unselected alternatives, must meet both word limits and omit greetings or generic preambles. Each option has type, first_line, first_caption and first_frame (specific visible intent). Pick the clearest supported promise, not the loudest. The actual first script unit text/hook and onscreen MUST exactly equal the selected line and caption. For chat and cutout dialogue, first_caption must equal first_line verbatim; keep the complete line within twelve words. No invented facts, outcomes or interfaces. First-frame intent is not proof of rendered pixels.'},
+                'format_playbook':creative_rules,
+                'available_visuals':inventory,
+                'owner_feedback':owner_feedback,'owner_feedback_policy':'Do not reproduce or paraphrase rejected stories, rename their characters and call them new, or treat a model pass as owner approval. Apply the recorded specific criticism; accepted examples are preferences, not text to copy.',
+                'scene_direction':('Write for staged interaction, not a sequence of talking heads. Keep two recurring people with distinct voices/personalities and distinct stable clothes. A voice-only narrator is optional; do not invent extra people for narration. Include a shared scene and show essential animals, objects and actions through actual relevant insert queries. Make visual_query literal and stock-searchable for those beats; the director can choose two_shot/dialogue/insert. Do not rely on imaginary screen content, unseen action, or repeatedly displaying one stock photo. The comedy must work as spoken dialogue with a clear escalating conflict and an earned final consequence/reversal, not an absurd premise plus an ordinary explanation.' if request.get('scene_direction_version')==2 else None),
+                'visual_inventory_rule':'When available_visuals is nonempty, invent a fresh coherent story that can be illustrated ONLY with these actual sources. Their verified descriptions are available subjects, not historical claims or evidence of your invented plot. Do not rely on an unavailable screen/interface, readable document, extra character/prop or filmed action to communicate the reveal. Narrated original fiction may use illustrative stills and supported camera moves. Preserve the complete causal payoff; the director will bind every scene to this inventory.' if inventory else None,
+                'selected_story_concept':concept,'reference_mechanics':request.get('reference_mechanics',[]),
+                'content_label':{'fiction':brief['kind']=='fiction','rule':'Match this exact boolean. In factual education, an explicitly imaginary sample answer is an instructional example, not a fiction-labelled story or real testimonial. Use kind instruction for that demonstrated example.'},
+                'motion_graphics':{'enabled':request.get('motion_graphics',False),
+                    'instructions':'When enabled for education_demo, write short visible examples with phrases usable as comparison, numbered process or callout labels. Clearly introduce invented sample answers as examples, never real testimonials. Keep each unit self-contained. Avoid relying on a real tool screenshot when illustrating an interview answer. The director preserves the script and selects exact phrases for graphics.'},
+                "visual_brief":"For each spoken unit include visual_query: 2–5 literal English search words describing a useful illustration (e.g. student notebook desk), and visual_kind: image or video. Onscreen text should usually be 3–9 words, not the entire spoken paragraph.",
+                'entertainment_formats':'Aura: original short edit-caption beats, no invented quote attributed to the photographed creator, no narration required. Cutout: original conversational story/dialogue suitable for simple staged characters. Movie/franchise content: distinguish canon evidence, confirmed announcements and explicitly labelled fan theories/what-ifs. Do not invent leaks, real endorsements, source URLs or clip permissions.',
+                "task":(f'Use {creative_rules["units"][0]}-{creative_rules["units"][1]} separate units and {creative_rules["words"][0]}-{creative_rules["words"][1]} total spoken words. Follow the selected format_playbook pacing, writing and payoff requirements exactly. Those override generic duration/unit guidance. ' if playbook else 'Write an original 20–50 second Short, usually 5–10 units. ')+"Use complete short spoken sentences or dialogue turns, hook, meaningful progression and a delivered payoff. Each factual unit needs claim_ids from the brief. Instructions are suggestions/demonstrated steps, not guarantees. For chat, assign consistent fictional speakers; onscreen is the actual message. For lesson, onscreen is concise explanation. Use an effect only at payoff. Use explicit fictional HH:MM story times only when the phone_story contract requests them; never invent source timestamps, input filenames or test results. Metadata must match the story. Identify fiction. Keep [P]/[PP]/[PPP]/[FAST]/[NORMAL] tags out of all spoken text; structured director delivery controls timing. Comment questions are optional and follow the delivered payoff."},output_schema)
     repairs=0
-    def validate_draft(value):
-        nonlocal hook_record
+    def validate_draft(value,check_anchors=True):
+        nonlocal hook_record,development
+        if writing_v2 and isinstance(value,dict) and "sketches" in value:
+            from .phone_editor.writing import unpack_draft
+            value,development=unpack_draft(value)
+        if writing_v2 and check_anchors and origin in ('gemini','openai') and development is None:raise Held('invalid_contract','A model-written v2 draft must include its three story sketches and selected_index.')
         if use_hooks:value,hook_record=unpack_hooks(value,playbook)
         parsed=script_contract(value,brief,profile['format'])
         if parsed.get('phone_story') and request.get('phone_story') is not True:raise Held('phone_story','Select phone_story mode explicitly before supplying a multi-thread story.')
@@ -223,6 +243,9 @@ def write_script(workspace, job, brief, provider,*,_creative_rewrite_budget=1,_c
         if parsed['format']=='cutout' and request.get('story_visuals'):
             from .storyboard import story_specs
             story_specs(parsed,request)
+        if writing_v2 and development and check_anchors:
+            from .phone_editor.writing import validate_anchors
+            validate_anchors(parsed,development)
         return parsed
     try:script=validate_draft(raw)
     except Held as exc:
@@ -233,22 +256,31 @@ def write_script(workspace, job, brief, provider,*,_creative_rewrite_budget=1,_c
         options=raw.get('hook_options',[]) if isinstance(raw,dict) else []
         measurements={'spoken_words':sum(len(re.findall(r"\b[\w]+(?:['-][\w]+)*\b",text)) for text in texts),'units':len(texts),
             'hook_options':[{'index':i,'type':o.get('type'),'spoken_words':len(str(o.get('first_line','')).split()),'caption_words':len(str(o.get('first_caption','')).split())} for i,o in enumerate(options) if isinstance(o,dict)] if isinstance(options,list) else []}
-        raw=provider.generate('scripter-contract-repair-v1',{'brief':brief,'draft':raw,'format':profile['format'],
-            'validation_error':str(exc),'creative_brief':str(request.get('creative_brief',''))[:2000],
-            'measured_draft':measurements,
-            'required_bounds':{'spoken_words':creative_rules['words'],'target_spoken_words':sum(creative_rules['words'])//2,'units':creative_rules['units']} if creative_rules else None,
-            'format_playbook':creative_rules,
-            'available_visuals':inventory,
-            'owner_feedback':owner_feedback,
-            'storyboard_contract':'For story_visuals from_script, each visual_query begins an exact supported tag and colon: elevator:, phone:, hallway:, door:, stairwell:, security:, followed by the short literal detail that matches that spoken beat.' if request.get('story_visuals')=='from_script' else None,
-            'selected_story_concept':concept,
-            'hook_contract': {'allowed_types':HOOK_TYPES,'max_spoken_words':12 if profile['format'] in ('chat','cutout') else 18,'max_caption_words':12,'rule':'If using a hook envelope, return exactly three options. Each option MUST choose a DIFFERENT type from allowed_types; never repeat a type. Their spoken lines must also differ. ALL options must meet the limits, without greetings or preambles. For chat/cutout, each caption equals its complete spoken line verbatim. Selected line/caption must exactly match script.hook and the first actual unit text/onscreen.'},
-            'task':'Repair the JSON contract once. The script version MUST remain integer 1; never increment it during repair.  Check ALL constraints together: unit count, total spoken words AND every hook option, not only the first reported error. Count spoken words across unit text only; aim near target_spoken_words, safely inside the required range, rather than at its upper edge. Shorten or expand the dialogue itself as needed while preserving its coherent setup and delivered payoff. Every factual assertion must reference an existing supporting claim ID. Remove unsupported assertions; never disguise a factual assertion as advice to bypass evidence checks. Preserve the creative brief and scene contract.'},output_schema)
+        if writing_v2:
+            repair_schema=draft_schema(script_schema) if development is None else script_schema
+            raw=provider.generate('chat-story-contract-repair-v2',{'draft':raw,'error':str(exc),'writing_constraints':writing_constraints,
+                'selected_story':development,'task':'Repair the complete script once, preserving selected opening/early plant/ending if present. Return a complete sketches/selected_index/script envelope if no valid sketch was selected; otherwise script JSON only. Script version remains 1. Meet ALL bounds without padding or visual-search fields.'},repair_schema)
+        else:
+            raw=provider.generate('scripter-contract-repair-v1',{'brief':brief,'draft':raw,'format':profile['format'],
+                'validation_error':str(exc),'creative_brief':str(request.get('creative_brief',''))[:2000],
+                'measured_draft':measurements,
+                'required_bounds':{'spoken_words':creative_rules['words'],'target_spoken_words':sum(creative_rules['words'])//2,'units':creative_rules['units']} if creative_rules else None,
+                'format_playbook':creative_rules,
+                'available_visuals':inventory,
+                'owner_feedback':owner_feedback,
+                'storyboard_contract':'For story_visuals from_script, each visual_query begins an exact supported tag and colon: elevator:, phone:, hallway:, door:, stairwell:, security:, followed by the short literal detail that matches that spoken beat.' if request.get('story_visuals')=='from_script' else None,
+                'selected_story_concept':concept,
+                'hook_contract': {'allowed_types':HOOK_TYPES,'max_spoken_words':12 if profile['format'] in ('chat','cutout') else 18,'max_caption_words':12,'rule':'If using a hook envelope, return exactly three options. Each option MUST choose a DIFFERENT type from allowed_types; never repeat a type. Their spoken lines must also differ. ALL options must meet the limits, without greetings or preambles. For chat/cutout, each caption equals its complete spoken line verbatim. Selected line/caption must exactly match script.hook and the first actual unit text/onscreen.'},
+                'task':'Repair the JSON contract once. The script version MUST remain integer 1; never increment it during repair.  Check ALL constraints together: unit count, total spoken words AND every hook option, not only the first reported error. Count spoken words across unit text only; aim near target_spoken_words, safely inside the required range, rather than at its upper edge. Shorten or expand the dialogue itself as needed while preserving its coherent setup and delivered payoff. Every factual assertion must reference an existing supporting claim ID. Remove unsupported assertions; never disguise a factual assertion as advice to bypass evidence checks. Preserve the creative brief and scene contract.'},output_schema)
         script=validate_draft(raw);repairs=1
     chat_review=None
     if chat_compiled and request.get('chat_script_review') is True and origin in ('gemini','openai'):
         from .phone_editor.writing import reviewed_script
-        script,chat_review=reviewed_script(provider,script,brief,script_schema,validate_draft,request.get('chat_tone','comedy'))
+        script,chat_review=reviewed_script(provider,script,brief,script_schema,lambda value:validate_draft(value,check_anchors=False),request.get('chat_tone','comedy'),context=writing_constraints or {'topic':request.get('topic',brief['title']),'creative_brief':request.get('creative_brief',''),'format_playbook':creative_rules,'owner_feedback':owner_feedback},version=2 if writing_v2 else 1)
+    if development:
+        selected=development['selected']
+        development['anchor_status']='retained' if script['units'][0]['text']==selected['opening'] and script['units'][-1]['text']==selected['ending'] and selected['early_plant'] in [u['text'] for u in script['units'][:max(2,len(script['units'])//3)]] else 'rebuilt during writing revision'
+        development['final_script_sha256']=digest(script)
     normalized=" ".join(unit["text"].lower() for unit in script["units"])
     script_hash=digest(normalized)
     check_script_feedback(workspace,script,playbook)
@@ -296,5 +328,5 @@ def write_script(workspace, job, brief, provider,*,_creative_rewrite_budget=1,_c
                 chosen=hook_record['selected'];first=result['script']['units'][0]
                 result['hook_options']={**hook_record,'active':first['text']==chosen['first_line'] and first['onscreen']==chosen['first_caption']}
             return result
-    return {"script":script,"origin":origin,"review":review,"script_hash":script_hash,'contract_repairs':repairs,'creative_plan':edit_plan,'comedy_concept':concept,'comedy_review':comedy_review,'hook_options':hook_record,'editorial_review':editorial_review,'chat_script_review':chat_review,
+    return {"script":script,"origin":origin,"review":review,"script_hash":script_hash,'contract_repairs':repairs,'creative_plan':edit_plan,'comedy_concept':concept,'comedy_review':comedy_review,'hook_options':hook_record,'editorial_review':editorial_review,'chat_script_review':chat_review,'story_development':development,'chat_writing_version':2 if writing_v2 else 1,
             "note":"Schema/model review is not a guarantee of factual accuracy or monetization."}

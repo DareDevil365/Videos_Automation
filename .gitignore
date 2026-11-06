@@ -3,9 +3,19 @@ __pycache__/
 *.py[cod]
 .pytest_cache/
 data/
+# Credentials and environment secrets
 .env
 .env.*
 !.env.example
+client_secret*.json
+client_secret.json
+token*.json
+token.json
+credentials.json
+*_credentials.json
+*.credentials.json
+data/pipeline/credentials/*.json
+
 *.egg-info/
 build/
 dist/

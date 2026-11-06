@@ -141,6 +141,7 @@ def main():
     parser.add_argument("--root",default="data/pipeline");parser.add_argument("--env-file")
     sub=parser.add_subparsers(dest="command",required=True)
     for name in ("init","doctor","status"):sub.add_parser(name)
+    p=sub.add_parser("production-history");p.add_argument("--channel",choices=["entertainment","education"]);p.add_argument("--limit",type=int,default=8)
     p=sub.add_parser('voice-setup');p.add_argument('--engine',choices=['piper','kokoro'],default='piper');p.add_argument('--voice',default='am_adam')
     config=sub.add_parser("config");config.add_argument("path");config.add_argument("value",help="JSON value, e.g. true, 4, or a quoted string")
     create=sub.add_parser("create");create.add_argument("channel",choices=["education","entertainment"]);create.add_argument("--request");create.add_argument("--topic")
@@ -148,7 +149,7 @@ def main():
     p.add_argument('--format',choices=['chat','phone'],default='chat');p.add_argument('--visibility',choices=['public','private','none'],default='public')
     p.add_argument('--request');p.add_argument('--resume')
     p=sub.add_parser('finish-production');p.add_argument('job')
-    p=sub.add_parser('lore-plan');p.add_argument('--series',required=True);p.add_argument('--brief',required=True);p.add_argument('--output',required=True);p.add_argument('--source-review');p.add_argument('--build-id');p.add_argument('--revise-batch')
+    p=sub.add_parser('lore-plan');p.add_argument('--series',required=True);p.add_argument('--brief',required=True);p.add_argument('--output',required=True);p.add_argument('--source-review');p.add_argument('--build-id');p.add_argument('--revise-batch');p.add_argument('--assistant-authored',action='store_true')
     p=sub.add_parser('audience-critique');p.add_argument('job');p.add_argument('--role');p.add_argument('--phase',choices=['script','frames'],default='script')
     p=sub.add_parser('music-library');p.add_argument('--install',action='store_true');p.add_argument('--key',action='append')
     p=sub.add_parser('music-pick');p.add_argument('genre',choices=['comedy','mystery','thriller','story','cinematic','aura'])
@@ -199,6 +200,9 @@ def main():
         load_env_file(args.env_file);ws=Workspace(args.root);cmd=args.command
         if cmd in ("init","doctor"):result=doctor(ws)
         elif cmd=="status":result={"jobs":ws.jobs(),"alerts":alerts(ws),"doctor":doctor(ws)}
+        elif cmd=="production-history":
+            from .production_history import production_history
+            result=production_history(ws,args.limit,args.channel)
         elif cmd=="config":result=config_set(ws,args.path,json.loads(args.value))
         elif cmd=="create":
             request=json.loads(Path(args.request).read_text(encoding="utf-8")) if args.request else {"topic":args.topic or ""}
@@ -225,7 +229,8 @@ def main():
             result=finish_production(ws,args.job)
         elif cmd=='lore-plan':
             from .source_series import create_series_plan
-            result=create_series_plan(ws,args.series,args.brief,args.output,args.source_review,build_id=args.build_id,revise_batch=args.revise_batch)
+            result=create_series_plan(ws,args.series,args.brief,args.output,args.source_review,build_id=args.build_id,revise_batch=args.revise_batch,
+                                      assistant_authored=args.assistant_authored)
         elif cmd=='audience-critique':
             from .audience_critique import critique_job
             from .text_provider import configured_provider
@@ -308,7 +313,7 @@ def main():
             result=export_playbooks(args.export) if args.export else PLAYBOOKS
         elif cmd=='batch-run':
             from .batches import run_batch
-            result=run_batch(ws,args.plan,stop_file=args.stop_file,progress=lambda event:print(json.dumps({'event':'batch_progress','result':event},ensure_ascii=False),flush=True))
+            result=run_batch(ws,args.plan,stop_file=args.stop_file,progress=lambda event:print(json.dumps({'event':'batch_progress','result':event}),flush=True))
         elif cmd=='batch-status':
             from .batches import batch_status
             result=batch_status(ws,args.plan)
@@ -346,7 +351,7 @@ def main():
                 print(json.dumps({"status":"ok","result":result},ensure_ascii=False),flush=True)
                 if args.once:return
                 time.sleep(max(5,args.interval))
-        print(json.dumps({"status":"ok","result":result},ensure_ascii=False))
+        print(json.dumps({"status":"ok","result":result}))
         if isinstance(result,dict) and result.get("status") in ("held","failed","retry_wait"):raise SystemExit(2)
     except Held as exc:
         print(json.dumps({"status":"held","error":{"code":exc.code,"message":redact(exc),"retry_after":exc.retry_after}}));raise SystemExit(2)

@@ -13,11 +13,15 @@ from .assets import register_asset
 from .core import Held, digest
 from .transcripts import write_srt
 from .source_delivery import delivery_for
-from .source_sets import resolve_source_set, source_painter
+from .source_sets import check_lore_reuse, resolve_source_set, source_painter
+from .lore_forge import FORGE_KINDS, forge_art
+from .lore_actions import resolve_actions
+from .lore_reactor import REACTOR_KINDS, reactor_art
 
 
 KINDS=('collapse','life_raft','battleworld','throne','control','hidden_power','meal','confrontation','rebuilding','restoration',
-       'dominion','memory','source_closeup','meal_detail','absence','duel','consequence','portrait')
+       'dominion','memory','source_closeup','meal_detail','absence','duel','consequence','portrait','street_impact') + FORGE_KINDS + REACTOR_KINDS
+CAMERAS = ('wide', 'push', 'pan_left', 'pan_right', 'detail')
 SIZE=(720,1280)
 ART=(20,180,700,950)
 NOTE='Original symbolic code-drawn illustration, not an official comic panel, movie frame, literal character performance or additional evidence.'
@@ -25,14 +29,23 @@ NOTE='Original symbolic code-drawn illustration, not an official comic panel, mo
 
 def _kind(text):
     value=text.casefold()
-    for words,kind in ((('hamburger','hungry','food','thank-you'),'meal'),
+    if 'mask' in value:
+        for cues,kind in ((('pressed','put it on','fitted','lifted','wore'),'mask_fitting'),
+                          (('warned','pulled back','recoiled'),'forge_warning'),
+                          (('cooled','cools','cooling'),'mask_cooling'),
+                          (('red-hot','burning'),'hot_mask')):
+            if any(cue in value for cue in cues):return kind
+    for words,kind in (
+        (('hammer','tongs','anvil','monks forged'),'forge'),
+        (('mountains','tibet','himalayas'),'mountain_pass'),
+        (('laboratory','lab explosion'),'lab_blast'),(('hamburger','hungry','food','thank-you'),'meal'),
         (('mother','family restored'),'restoration'),(('rebuild','creating worlds','worlds back'),'rebuilding'),
         (('admit','confront','rival','concede','power passed'),'confrontation'),
         (('beneath','underneath','hidden','source sustaining'),'hidden_power'),(('raft',),'life_raft'),
         (('worship','throne'),'throne'),(('territory','answered','owning','control'),'control'),
         (('planet','battleworld'),'battleworld'),(('collaps','destroyed','dying','end'),'collapse')):
         if any(word in value for word in words):return kind
-    return 'battleworld'
+    return 'portrait'
 
 
 def plan_lore(script,request,brief):
@@ -41,6 +54,9 @@ def plan_lore(script,request,brief):
     units=script['units'];ids={u['id'] for u in units};overrides=request.get('lore_scenes',{})
     if not isinstance(overrides,dict) or set(overrides)-ids or any(v not in KINDS for v in overrides.values()):
         raise Held('lore_scene','Map known message IDs to a supported original lore scene kind.')
+    cameras=request.get('lore_cameras',{})
+    if not isinstance(cameras,dict) or set(cameras)-ids or any(v not in CAMERAS for v in cameras.values()):
+        raise Held('lore_scene','Map known message IDs to a supported camera.')
     claims={c['id']:c for c in brief['claims']};sources={s['id'] for s in brief['sources']}
     speakers = list(dict.fromkeys(u['speaker'] for u in units))
     if len(speakers) != 1 and [u['speaker'] for u in units] != ['Host', *(['Narrator'] * (len(units)-2)), 'Host']:
@@ -58,8 +74,9 @@ def plan_lore(script,request,brief):
         if not isinstance(label,str) or not label.strip() or len(label)>70:
             raise Held('lore_label','Use an exact short onscreen phrase, at most 70 characters.')
         scenes.append({'unit_id':unit['id'],'text':unit['text'],'speaker_id':cast_ids[unit['speaker']],'kind':overrides.get(unit['id'],_kind(unit['text'])),
-            'label':label,'claim_ids':list(refs),**delivery_for(unit,request,.28 if index==len(units)-1 else .18),
-            'visible_cast':[],'framing':'wide','motion':'panel_reveal','illustration_note':NOTE})
+            'label':label,'claim_ids':list(refs),**delivery_for(unit,request,.07, tight_default=True),
+            'visible_cast':[],'framing':cameras.get(unit['id'], CAMERAS[index % len(CAMERAS)]),
+            'motion':'panel_reveal','illustration_note':NOTE})
     plan={'version':1,'template':'comic_lore','cast':cast,
         'scenes':scenes,'sources':deepcopy(brief['sources']),'claims':deepcopy(brief['claims']),
         'script_sha256':digest(script),'brief_sha256':digest(brief),'comment_question':'','illustration_note':NOTE}
@@ -78,7 +95,10 @@ def _background(kind):
         'restoration':('#2c2120','#f0cba1'),'dominion':('#12201b','#b6a364'),'memory':('#182432','#9ccedb'),
         'source_closeup':('#10292b','#a2fcde'),'meal_detail':('#33231f','#f7c785'),
         'absence':('#222331','#9e9cc2'),'duel':('#141e2d','#bbc6eb'),'consequence':('#272723','#dbca89'),
-        'portrait':('#182329','#9ccedb')}
+        'portrait':('#182329','#9ccedb'),'lab_blast':('#18252e','#a4c7cd'),
+        'mountain_pass':('#142832','#97c3d0'),'street_impact':('#19242e','#80a4a6')}
+    palette.update({name:('#221d24','#d79d6e') for name in FORGE_KINDS if name not in palette})
+    palette.update({name:('#121f2a','#8bb9c7') for name in REACTOR_KINDS})
     base,accent=palette[kind];image=Image.new('RGB',SIZE,'#080e17');d=ImageDraw.Draw(image)
     d.polygon([(24,202),(693,180),(694,911),(30,947)],fill=base,outline='#d7d1bf',width=4)
     rng=random.Random(8821)
@@ -180,7 +200,25 @@ def _burger(d,x,y,scale=1):
 def _art(scene,second,duration):
     kind=scene['kind'];p=max(0,min(1,second/duration));reveal=_ease(second/.65)
     layer=Image.new('RGBA',SIZE);d=ImageDraw.Draw(layer)
-    if kind=='portrait':
+    if kind in FORGE_KINDS:
+        forge_art(layer,kind,second,p,_glow)
+    elif kind in REACTOR_KINDS:
+        reactor_art(layer,kind,second,p,_glow)
+    elif kind=='street_impact':
+        settle=max(0,min(1,(p-.46)*5))
+        roof=660+52*settle
+        d.line((55,793,666,793),fill='#738a90',width=4)
+        for x,h in ((66,167),(132,224),(475,152),(578,219)):
+            d.polygon([(x,791),(x,791-h),(x+79,791-h-16),(x+79,791)],
+                      fill='#293842',outline='#5a747c',width=2)
+        d.polygon([(152,767),(152,724),(222,714),(268,roof),(428,roof+12),
+                   (480,711),(562,731),(577,768)], fill='#8c7460',outline='#d8c6a7',width=4)
+        d.polygon([(239,714),(280,roof+12),(417,roof+23),(449,716)],
+                  fill='#263f48',outline='#acbab6',width=3)
+        for x in (218,501):
+            d.ellipse((x-31,734,x+31,794),fill='#101923',outline='#8a9993',width=4)
+            d.ellipse((x-13,751,x+13,777),fill='#626d68',outline='#c1c5b2',width=2)
+    elif kind=='portrait':
         _glow(layer,(360,490),220,(133,191,175),90)
         for i in range(4):
             radius=140+i*45
@@ -318,9 +356,17 @@ def lore_frame(scene,second,duration):
     image=_background(scene['kind']).copy().convert('RGBA');art=_art(scene,max(0,second),duration)
     image.alpha_composite(art)
     # Camera only moves the illustration viewport, keeping captions and title stable.
-    progress=max(0,min(1,second/duration));zoom=1+.075*progress
+    progress=max(0,min(1,second/duration))
+    camera=scene.get('framing','push')
+    if camera=='detail':
+        zoom, center = 1.14 + .045*progress, .5
+    elif camera in ('pan_left','pan_right'):
+        zoom = 1.10
+        center = (.77-.54*progress) if camera=='pan_left' else (.23+.54*progress)
+    else:
+        zoom, center = 1 + (.12 if camera=='push' else .032)*progress, .5
     x1,y1,x2,y2=ART;viewport=image.crop(ART);w,h=viewport.size
-    cw,ch=w/zoom,h/zoom;left=(w-cw)/2;top=(h-ch)*(.35 if scene['kind']=='hidden_power' else .5)
+    cw,ch=w/zoom,h/zoom;left=(w-cw)*center;top=(h-ch)*(.35 if scene['kind']=='hidden_power' else .5)
     image.paste(viewport.crop((round(left),round(top),round(left+cw),round(top+ch))).resize((w,h),Image.Resampling.LANCZOS),(x1,y1))
     label=scene.get('label','')
     text_box(ImageDraw.Draw(image),label,(42,46,636,125),'#f1ead6',44,True,minimum=29)
@@ -353,6 +399,9 @@ def build_lore_visuals(ws,job,script,timing,folder,record):
     if [s['unit_id'] for s in plan['scenes']]!=[u['id'] for u in timing['units']]:raise Held('lore_timing','Lore scenes must match measured speech in order.')
     units={u['id']:u for u in script['units']};claims={c['id']:c for c in plan['claims']};sources={s['id']:s for s in plan['sources']}
     placements,reaction,provenance = resolve_source_set(ws,job['request'],script)
+    if job['request'].get('lore_fresh_visuals'):
+        check_lore_reuse(ws,job)
+    actions = resolve_actions(job['request'], script)
     rows=[];bindings=[]
     for scene,spoken in zip(plan['scenes'],timing['units']):
         unit=units[scene['unit_id']]
@@ -361,10 +410,13 @@ def build_lore_visuals(ws,job,script,timing,folder,record):
         refs=list(dict.fromkeys(claims[c]['source_id'] for c in scene['claim_ids']))
         urls=[sources[ref]['url'] for ref in refs]
         output=folder/(scene['unit_id']+'-lore.mp4')
-        painter = source_painter(lore_frame, placements.get(unit['id'],()), reaction, spoken['start']) if placements or reaction else None
+        painter = source_painter(lore_frame, placements.get(unit['id'],()), reaction, spoken['start'],
+                                 action=actions.get(unit['id'])) if placements or reaction or actions else None
         render_lore_shot(scene,spoken['duration'],output,paint=painter)
         made=register_asset(ws,output,'original_graphic',{'generator':'original-comic-lore-v1','unit_id':scene['unit_id'],
-            'scene_kind':scene['kind'],'claim_ids':scene['claim_ids'],'source_urls':urls,'illustration_note':NOTE},test_only=job['request'].get('test_only',False))
+            'scene_kind':scene['kind'],'camera':scene['framing'],
+            'action':actions.get(unit['id']), 'claim_ids':scene['claim_ids'],
+            'source_urls':urls,'illustration_note':NOTE},test_only=job['request'].get('test_only',False))
         provenance.append(made)
         rows.append({'unit_id':scene['unit_id'],'file':str(output),'media_id':made['id'],'duration':spoken['duration'],'kind':'comic_lore','resolved_scene':scene})
         bindings.append({'unit_id':scene['unit_id'],'claim_ids':scene['claim_ids'],'source_urls':urls,'scope':'Source linkage only; illustration is not factual evidence.'})

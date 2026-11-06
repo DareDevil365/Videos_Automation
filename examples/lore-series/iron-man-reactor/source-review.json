@@ -1,0 +1,9 @@
+{
+  "reviewer": "Codex, film continuity source comparison",
+  "supported": true,
+  "brief_sha256": "1483c5c229eedf42662eb5c9370f6bc39f2464575f994ea446b00b0d4d7182f8",
+  "script_sha256": {
+    "part-1.json": "da7e53366c547f2fe7d0cd7db13fa883dba96db907d974847f25fc47901d7408"
+  },
+  "limitations": "Reviewed Marvel's on-screen War Machine profile, the MCU Guidebook catalog preview and Propstore's case description. Visuals are illustrative."
+}

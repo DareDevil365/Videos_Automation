@@ -1,0 +1,42 @@
+{
+  "version": 1,
+  "license": "https://mixkit.co/license/modal/musicFree/",
+  "parts": {
+    "part-1": {
+      "track": "mixkit-565",
+      "title": "Fallen (Asper)",
+      "artist": "Eugenio Mininni",
+      "source": "https://mixkit.co/free-stock-music/tag/mystery/",
+      "start_seconds": 0,
+      "gain": 0.07,
+      "excerpt_mean_dbfs": -15.9,
+      "cue": "One restrained impact on the assembled Battleworld visual. The score stays out of the opening claim."
+    },
+    "part-2": {
+      "track": "mixkit-188",
+      "title": "Echoes",
+      "artist": "Andrew Ev",
+      "source": "https://mixkit.co/free-stock-music/tag/mystery/",
+      "start_seconds": 16,
+      "gain": 0.1,
+      "excerpt_mean_dbfs": -21.1,
+      "cue": "One soft reveal at the source-of-Doom's-power visual. Give the hamburger beat room without adding a comic sound."
+    },
+    "part-3": {
+      "track": "mixkit-22",
+      "title": "Piano Reflections",
+      "artist": "Ahjay Stelino",
+      "source": "https://mixkit.co/free-stock-music/instrument/piano/",
+      "start_seconds": 0,
+      "gain": 0.067,
+      "excerpt_mean_dbfs": -16.3,
+      "cue": "Use the continuous reflective bed to carry the return of Miles's mother. Leave that line free of effects."
+    }
+  },
+  "notes": [
+    "Music keys resolve through the installed catalog so the recipe can travel between workspaces.",
+    "FFmpeg measured a 38-second window from each proposed source offset. Linear gains are starting mix settings.",
+    "Echoes averages -45.2 dBFS in its first five seconds. The source offset skips the very quiet opening.",
+    "Cue placement describes a visual event. Resolve the beat ID from the final script before rendering."
+  ]
+}

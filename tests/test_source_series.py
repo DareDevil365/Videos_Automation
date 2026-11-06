@@ -8,7 +8,7 @@ from yt_pipeline.core import Held,Workspace
 from yt_pipeline.source_series import create_series_plan
 from yt_pipeline.brief_visuals import MODES,brief_frame,plan_brief
 from yt_pipeline.contracts import brief_contract,script_contract
-from yt_pipeline.playbooks import validate_playbook_script
+from yt_pipeline.playbooks import validate_playbook_script, writing_prompt
 
 
 ROOT=Path(__file__).resolve().parents[1]
@@ -22,6 +22,12 @@ def test_series_plan_binds_actual_three_parts_review_and_music(tmp_path,monkeypa
     result=create_series_plan(ws,SERIES/'series.json',BRIEF,target,SERIES/'source-review.json')
     plan=json.loads(target.read_text(encoding='utf-8'));assert result['parts']==3
     assert [x['request']['series']['next_part'] for x in plan['items']]==[2,3,None]
+    assert all(x['request']['series']['structure']=='serial_cliffhanger' for x in plan['items'])
+    prompt = writing_prompt('comic_lore', plan['items'][0]['request'])
+    assert 'unresolved turn' in prompt['task']
+    assert prompt['seconds'] == [25,179]
+    assert 'Host for the opening and closing' in prompt['writing']
+    assert "deliver this chapter's answer" not in prompt['writing']
     assert all(x['request']['test_only'] and not x['request']['auto_publish'] and x['request']['brief']['editorial_verified'] for x in plan['items'])
     assert {x['request']['music_id'] for x in plan['items']}=={'soundtrack'}
     assert len({x['request']['script']['hook'] for x in plan['items']})==3
@@ -35,6 +41,28 @@ def test_series_rejects_rewritten_dialogue_under_an_older_source_review(tmp_path
     monkeypatch.setattr('yt_pipeline.curated_music.select_genre_music',lambda *a,**k:{'id':'soundtrack'})
     with pytest.raises(Held,match='each exact supplied script'):
         create_series_plan(ws,source/'series.json',BRIEF,tmp_path/'Plans'/'bad.json',source/'source-review.json')
+
+
+def test_assistant_plan_requires_review_and_preserves_staging(tmp_path, monkeypatch):
+    ws = Workspace(tmp_path/'ws')
+    series = json.loads((SERIES/'series.json').read_text(encoding='utf-8'))
+    for path in SERIES.glob('part-*.json'):
+        (tmp_path/path.name).write_bytes(path.read_bytes())
+    part = series['parts'][0]
+    part['lore_cameras'] = {'u1':'detail'}
+    part['lore_actions'] = {'u1':{'kind':'doom_magic','actor':'symbolic','origin':[430,550]}}
+    spec = tmp_path/'series.json'
+    target = tmp_path/'Plans'/'assistant.json'
+    write_json(spec, series)
+    monkeypatch.setattr('yt_pipeline.curated_music.select_genre_music', lambda *a, **k: {'id':'soundtrack'})
+    with pytest.raises(Held, match='exact source review'):
+        create_series_plan(ws, spec, BRIEF, target, assistant_authored=True)
+    create_series_plan(ws, spec, BRIEF, target, SERIES/'source-review.json', assistant_authored=True)
+    request = json.loads(target.read_text(encoding='utf-8'))['items'][0]['request']
+    assert request['lore_fresh_visuals'] is True
+    assert request['lore_cameras'] == part['lore_cameras']
+    assert request['lore_actions'] == part['lore_actions']
+    assert request['script']['title'] and request['script']['description']
 
 
 @pytest.mark.parametrize(('folder','stem','preset'),[('movie-content','doomsday-actor-character','movie_brief'),('current-affairs','india-nz-fta','current_affairs')])

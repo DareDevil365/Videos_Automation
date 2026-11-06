@@ -40,12 +40,24 @@ Publication approval binds the video, title, complete description, category, kid
 
 ## Connect YouTube later
 
-No credentials or OAuth window were requested during this implementation. When ready, supply an installed-app OAuth client JSON and use:
+In Google Cloud Console, choose a project and enable YouTube Data API v3. In Google Auth Platform, complete Branding and Audience. For a personal Google account choose External, then add the channel owner's Google account as a test user while the app is in Testing. In Clients, create a Desktop app client and download the JSON. In the credentials wizard, select User data. The local program uses the desktop browser consent flow. [Google Desktop OAuth](https://developers.google.com/identity/protocols/oauth2/native-app)
+
+Run the authorization command from this project folder and verify the returned channel name and ID. The JSON and resulting refresh credential stay in local storage.
 
 ```powershell
-.venv\Scripts\python.exe run_pipeline.py authorize entertainment path/to/desktop-client.json
+.venv\Scripts\python.exe run_pipeline.py authorize entertainment "C:\path\to\desktop-client.json"
+.venv\Scripts\python.exe run_pipeline.py doctor
+```
+
+Use `education` for a separate education channel profile. Authorization records the channel identity. To activate the already requested public production flow after connection, set the matching profile's publication mode and finish a saved eligible production.
+
+```powershell
 .venv\Scripts\python.exe run_pipeline.py config channels.entertainment.publication_mode '"public"'
 .venv\Scripts\python.exe run_pipeline.py finish-production JOB_ID
 ```
 
 `authorize` performs explicit browser consent, saves the credential only in ignored local storage and records the authorized channel ID. An API key alone cannot authorize uploads. Scope and API behavior follow the [official upload reference](https://developers.google.com/youtube/data/reference/rest/v3/videos/insert). Real account connection, live upload, post-upload Analytics and audience response remain untested here; transport fixtures verify public/private policy, metadata, partial-upload recovery and duplicate prevention. The three new voiced exports remain local test-only review candidates and are not queued for public release.
+
+Google's Testing mode can require renewed consent as test refresh tokens expire. Review the Audience configuration when activating sustained unattended use. [Google Audience documentation](https://support.google.com/cloud/answer/15549945)
+
+For a multipart Short, attach the actual next part in YouTube Studio's Related video setting after both parts are on the channel. Shorts description URLs are non-clickable, so the release outro should say to tap the related video once it has been attached. The local comic preview packet has working relative links in each `description.md` and supplies a separate release outro in its script recipe. [YouTube link behavior](https://support.google.com/youtube/answer/13748639) · [Related video setup](https://support.google.com/youtube/answer/14075157)

@@ -5,8 +5,9 @@ import math
 from PIL import Image, ImageDraw, ImageOps
 
 from .assets import asset_record
-from .cinema_set import draw_theater, light_actor
+from .cinema_set import draw_theater, light_actor, light_audience
 from .core import Held
+from .lore_actions import draw_action
 
 
 SETTINGS = {
@@ -28,6 +29,45 @@ def apply_reaction_preset(workspace, request):
     if name not in presets:
         raise Held("reaction_set", "This reaction preset is not installed in this workspace.")
     request["reaction_set"] = presets[name]
+
+
+def check_lore_reuse(workspace, job):
+    """Avoid immediate repeats of registered story photos, including re-cropped copies."""
+    def identities(asset):
+        evidence = asset.get("evidence", {})
+        return {value for value in (asset.get("sha256"), evidence.get("derived_from"),
+                                    evidence.get("media_url")) if isinstance(value, str) and value}
+
+    def rows(request):
+        panels = request.get("source_panels") or {}
+        if not isinstance(panels, dict):
+            return []
+        return [row for placements in panels.values() if isinstance(placements, list) for row in placements
+                if isinstance(row, dict) and isinstance(row.get("asset_id"), str)]
+
+    with workspace.connect() as db:
+        previous = db.execute(
+            "SELECT request FROM jobs WHERE id<>? AND channel=? "
+            "AND status IN ('ready','processing','published','scheduled','uploaded_private') "
+            "AND json_extract(request,'$.playbook')='comic_lore' "
+            "ORDER BY created_at DESC LIMIT 3", (job["id"], job["channel"]),
+        ).fetchall()
+        recent = [row["asset_id"] for old in previous for row in rows(json.loads(old[0]))]
+        seen = set(recent)
+        for asset_id in set(recent):
+            record = db.execute("SELECT data FROM assets WHERE id=?", (asset_id,)).fetchone()
+            if record:
+                seen.update(identities(json.loads(record[0])))
+        for panel in rows(job["request"]):
+            asset_id = panel["asset_id"]
+            record = db.execute("SELECT data FROM assets WHERE id=?", (asset_id,)).fetchone()
+            current = {asset_id}
+            if record:
+                current.update(identities(json.loads(record[0])))
+            reason = panel.get("repeat_reason")
+            if current.intersection(seen) and (not isinstance(reason, str) or not reason.strip()):
+                raise Held("lore_repeat", "A recent story image repeats. Choose a different image or record why this callback needs the same one.")
+            seen.update(current)
 
 
 def resolve_source_set(workspace, request, script):
@@ -70,26 +110,43 @@ def resolve_source_set(workspace, request, script):
                 raise Held("source_panel", "Keep source images in the main story area.")
             size = (box[2] - box[0], box[3] - box[1])
             image = picture(row.get("asset_id"))
+            if request.get("lore_fresh_visuals"):
+                scale = (max if fit == "cover" else min)(size[0] / image.width, size[1] / image.height)
+                if scale > 1.25:
+                    raise Held("lore_image_quality", "The story image needs more native pixels or a smaller placement.")
             image = ImageOps.fit(image, size) if fit == "cover" else ImageOps.contain(image, size)
-            prepared.append((image, box))
+            motion = row.get("motion")
+            if motion is not None:
+                if (not isinstance(motion, dict) or motion.get("kind") not in ("drop", "arc", "crush", "knock")
+                        or set(motion) - {"kind", "offset"}):
+                    raise Held("source_panel", "Choose drop, arc, crush or knock for a moving cutout.")
+                offset = motion.get("offset", [0, 0])
+                if (not isinstance(offset, list) or len(offset) != 2
+                        or any(type(n) is not int or abs(n) > 560 for n in offset)
+                        or image.getchannel("A").getextrema() == (255, 255)):
+                    raise Held("source_panel", "Moving props need a transparent cutout and bounded pixel offsets.")
+                motion = (motion["kind"], offset)
+            prepared.append((image, box, motion))
         placements[beat] = prepared
 
     set_data = None
     if reaction is not None:
         if not isinstance(reaction, dict) or not isinstance(reaction.get("setting"), str) or reaction["setting"] not in SETTINGS:
             raise Held("reaction_set", "Choose a registered set layout.")
+        setting = reaction["setting"]
+        backdrop_id = reaction.get("backdrop")
         cast = reaction.get("cast")
-        if not isinstance(cast, list) or not 1 <= len(cast) <= 3:
+        if not isinstance(cast, list) or not (0 if setting == "cinema" and backdrop_id else 1) <= len(cast) <= 3:
             raise Held("reaction_set", "Supply one to three registered cast cutouts.")
         props = reaction.get("props", [])
         if not isinstance(props, list) or len(props) > 2:
             raise Held("reaction_set", "Use up to two registered background props.")
-        backdrop_id = reaction.get("backdrop")
-        if backdrop_id is not None and (reaction["setting"] != "workshop" or len(cast) != 1 or props):
-            raise Held("reaction_set", "Use a workshop backdrop with one seated cast cutout.")
+        if backdrop_id is not None and (setting not in ("workshop", "cinema")
+                                        or (setting == "workshop" and (len(cast) != 1 or props))):
+            raise Held("reaction_set", "Use a cinema or one-person workshop backdrop.")
         backdrop = ImageOps.fit(picture(backdrop_id).convert("RGB"), (760, 320)) if backdrop_id is not None else None
         foreground_id = reaction.get("foreground")
-        if foreground_id is not None and backdrop is None:
+        if foreground_id is not None and (backdrop is None or setting != "workshop"):
             raise Held("reaction_set", "Use a foreground layer with a workshop backdrop.")
         foreground = None
         if foreground_id is not None:
@@ -106,8 +163,9 @@ def resolve_source_set(workspace, request, script):
                 raise Held("reaction_set", "Cast and props require transparent cutout images.")
             return ImageOps.contain(image.crop(alpha.getbbox()), size)
 
-        setting = reaction["setting"]
-        size = (465, 204) if backdrop is not None else (210, 212 if setting == "cinema" else 255)
+        if setting == "cinema" and backdrop is not None:
+            backdrop = light_audience(backdrop)
+        size = (465, 204) if setting == "workshop" and backdrop is not None else (210, 212 if setting == "cinema" else 255)
         actors = [cutout(asset_id, size) for asset_id in cast]
         set_data = (
             setting,
@@ -122,7 +180,7 @@ def resolve_source_set(workspace, request, script):
 def draw_reaction_set(frame, setup, time):
     setting, cast, props, backdrop, foreground = setup
     if setting == "cinema":
-        draw_theater(frame, cast, props, time)
+        draw_theater(frame, cast, props, time, backdrop=backdrop)
         return
     if backdrop is not None:
         # Small independent movement on the room and sofa gives the plate depth.
@@ -183,18 +241,42 @@ def draw_reaction_set(frame, setup, time):
             draw.ellipse((x-4, 1214, x+4, 1222), fill="#d5926b")
 
 
-def source_painter(paint, placements, reaction, start):
+def move_cutout(source, motion, p):
+    kind, (dx, dy) = motion
+    after = max(0, min(1, (p-.46)*5))
+    if kind == "crush":
+        height = max(1, round(source.height*(1-.44*after)))
+        return source.resize((source.width, height), Image.Resampling.BICUBIC), 0, source.height-height
+    if kind == "drop":
+        travel = 1-min(1, p/.46)**2
+        return source, round(dx*travel), round(dy*travel+40*after)
+    if kind == "arc":
+        travel = max(0,min(1,(p-.17)/.65))
+        return source.rotate(-48*travel, resample=Image.Resampling.BICUBIC), round(dx*travel), round(dy*travel-125*math.sin(travel*math.pi))
+    return source.rotate(-45*after, resample=Image.Resampling.BICUBIC), round(dx*after), round(dy*after)
+
+
+def source_painter(paint, placements, reaction, start, *, action=None):
     def frame(scene, second, duration):
         image = paint(scene, second, duration)
         if reaction:
             art = image.crop((0, 180, 720, 952)).resize((720, 710), Image.Resampling.LANCZOS)
             ImageDraw.Draw(image).rectangle((0, 180, 720, 991), fill="#0c121c")
             image.paste(art, (0, 180))
-        for source, (left, top, right, bottom) in placements:
+        for source, (left, top, right, bottom), motion in placements:
+            x = left + (right-left-source.width)//2
+            y = top + (bottom-top-source.height)//2
+            if motion:
+                source, dx, dy = move_cutout(source, motion, second/duration)
+                x, y = x+dx, y+dy
             reveal = min(1, .6 + second * 2.5)
             alpha = source.getchannel("A").point(lambda n: round(n * reveal)) if reveal < 1 else source.getchannel("A")
-            image.paste(source, (left + (right-left-source.width)//2,
-                                 top + (bottom-top-source.height)//2), alpha)
+            safe_top, safe_bottom = max(185, y), min(890 if reaction else 950, y+source.height)
+            if safe_top < safe_bottom:
+                crop = (0, safe_top-y, source.width, safe_bottom-y)
+                image.paste(source.crop(crop), (x, safe_top), alpha.crop(crop))
+        if action:
+            draw_action(image, action, second, duration)
         if reaction:
             draw_reaction_set(image, reaction, start + second)
         return image

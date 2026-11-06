@@ -184,7 +184,11 @@ def render_project(project,store,output,progress=None,cancel=None):
     if p["music"]:
         args += ["-stream_loop","-1","-i",str(assets[p["music"]]["path"])]
         fade=min(1,seconds/4)
-        filters.append(f"[{idx}:a]aresample=48000,aformat=channel_layouts=stereo,volume={p['music_volume']},afade=t=in:d={fade},afade=t=out:st={seconds-fade}:d={fade},atrim=duration={seconds}[music]")
+        start = p.get("music_start", 0)
+        if start and start >= assets[p["music"]]["duration"]:
+            raise ValidationError("Music start must fit inside the source track.")
+        seek = f"atrim=start={start},asetpts=PTS-STARTPTS," if start else ""
+        filters.append(f"[{idx}:a]{seek}aresample=48000,aformat=channel_layouts=stereo,volume={p['music_volume']},afade=t=in:d={fade},afade=t=out:st={seconds-fade}:d={fade},atrim=duration={seconds}[music]")
         audio_labels.append("[music]")
     filters.append("".join(audio_labels)+f"amix=inputs={len(audio_labels)}:duration=first:normalize=0,alimiter=limit=0.95:latency=1[a]")
     run_ffmpeg([*args,"-filter_complex_threads","1","-filter_complex",";".join(filters),"-map","0:v","-map","[a]",

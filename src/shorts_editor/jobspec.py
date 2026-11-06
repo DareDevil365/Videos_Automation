@@ -20,7 +20,7 @@ def materialize_job(job, store, base):
         p = validate_project(layout)
     else: raise ValidationError("Template must be a preset name, a layout JSON path or an object.")
     if p["format"] not in COMPOSITION_IDS: raise ValidationError("Choose a media-slot composition template.")
-    for key in ("name","resolution","fps","profile","music_volume","source_volume"):
+    for key in ("name","resolution","fps","profile","music_volume","music_start","source_volume"):
         if key in job: p[key] = job[key]
     if "composition" in job:
         if not isinstance(job["composition"],dict): raise ValidationError("Composition settings must be an object.")

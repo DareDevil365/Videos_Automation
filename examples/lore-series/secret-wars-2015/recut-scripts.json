@@ -1,0 +1,50 @@
+{
+  "version": 1,
+  "parts": [
+    {
+      "part": 1,
+      "title": "The Man Doom Hid Under His Castle",
+      "rows": [
+        ["Doom saved reality, then buried its past. Doom's Broken Worlds, part one.", "DOOM'S BROKEN WORLDS · PART 1", "dominion", "2 4"],
+        ["As the last two universes collided, Doom's rival Reed Richards built a raft to get people out.", "REED BUILDS A LIFE RAFT", "life_raft", "1 3 9"],
+        ["Doom took another route, gathering fragments from the worlds that had already been destroyed.", "DOOM KEEPS THE PIECES", "collapse", "2"],
+        ["He stitched those fragments into one planet called Battleworld, where every survivor answered to him.", "BROKEN WORLDS → BATTLEWORLD", "battleworld", "2"],
+        ["His subjects worshipped him as their god and knew nothing of the worlds they'd lost.", "THE GOD OF BATTLEWORLD", "portrait", "2 4"],
+        ["But some raft survivors remembered their old lives and started investigating the ruler who'd replaced their entire reality.", "SOME SURVIVORS REMEMBER", "memory", "7 13"],
+        ["That search led beneath Doom's castle, to a hidden man. Why would a god need to hide him?", "WHO IS UNDER DOOM'S CASTLE?", "hidden_power", "5 7"],
+        ["Part two is linked in the description. Subscribe to follow the story.", "PART 2 · THE HIDDEN MAN", "hidden_power", ""]
+      ],
+      "published_outro": "Subscribe for more and tap the related video for part two."
+    },
+    {
+      "part": 2,
+      "title": "The Hamburger That Earned Spider-Man a Favor",
+      "rows": [
+        ["The man beneath Doom's castle was keeping him a god. Doom's Broken Worlds, part two.", "DOOM'S BROKEN WORLDS · PART 2", "hidden_power", "5 7"],
+        ["Miles Morales, one of the Spider-Men, had survived his universe's destruction. His mother had died before any of this.", "MILES MORALES", "portrait", "6 12"],
+        ["While investigating Doom's power, Miles found the hidden Molecule Man beneath the castle, with an unexpectedly ordinary problem.", "UNDER DOOM'S CASTLE", "hidden_power", "7 8"],
+        ["He was hungry. This was the same man supplying the cosmic power that kept Doom on his throne.", "THE MAN POWERING DOOM", "source_closeup", "5 8"],
+        ["Miles reached into his pocket and handed him a hamburger, giving him something to eat.", "ONE HAMBURGER", "meal", "8"],
+        ["The gesture earned Molecule Man's gratitude. Doom still had his throne, but Miles now had a favor coming.", "MILES EARNS A FAVOR", "meal_detail", "2 8"],
+        ["A man who could help reshape reality now owed him. What could that favor actually give Miles back?", "WHAT COULD MILES GET BACK?", "source_closeup", "8 11 12"],
+        ["Part three is linked in the description. Subscribe for the finale.", "PART 3 · THE FAVOR COMES BACK", "duel", ""]
+      ],
+      "published_outro": "Subscribe and tap the related video for part three."
+    },
+    {
+      "part": 3,
+      "title": "Doom Lost His Power. Spider-Man Got His Favor.",
+      "rows": [
+        ["Doom's reign ended with an admission. Miles's favor was still waiting. Doom's Broken Worlds, part three.", "DOOM'S BROKEN WORLDS · PART 3", "dominion", "8 9 10"],
+        ["Reed Richards, Doom's rival, confronted him over the world he'd built from everybody else's ruins.", "REED CONFRONTS DOOM", "duel", "2 9"],
+        ["Doom finally admitted Reed would have done a better job saving reality, despite everything Doom had managed to preserve.", "DOOM ADMITS IT", "throne", "2 9"],
+        ["Molecule Man agreed and took the power away from Doom, handing it to Reed instead.", "DOOM → REED", "confrontation", "9 10"],
+        ["Reed and his family helped rebuild the separate realities. Doom's patchwork planet would no longer be the only world.", "WORLDS REBUILT", "rebuilding", "2 11"],
+        ["Molecule Man also remembered the hamburger, and rewarded the kid who'd shared it with him.", "THE HAMBURGER MATTERED", "meal_detail", "8 12"],
+        ["Miles Morales got a home in the rebuilt reality. And his mother, who'd died before all this, was alive again.", "MILES GETS HIS MOTHER BACK", "restoration", "12"],
+        ["That was Doom's Broken Worlds. Subscribe for more comic stories.", "DOOM'S BROKEN WORLDS · FINALE", "restoration", ""]
+      ],
+      "published_outro": null
+    }
+  ]
+}

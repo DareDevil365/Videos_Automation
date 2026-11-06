@@ -1,0 +1,15 @@
+{
+  "title": "Why Doctor Doom Put On a Red-Hot Mask",
+  "description": "Victor von Doom wanted to hide the scar left by his lab accident. In Marvel’s Books of Doom, his search takes him to a mountain forge and to a decision that makes his injuries worse. A short comic-lore retelling with original geometric illustrations.",
+  "rows": [
+    ["Doom's mask was still red-hot. He wanted it on his face anyway. This is Books of Doom.", "THE MASK WAS STILL RED-HOT", "hot_mask", "4"],
+    ["It started in a college lab. His machine blew up and left him with a scar he wanted to hide.", "BEFORE THE MASK", "lab_blast", "2"],
+    ["Victor went to Tibet, where an order of monks helped him forge a suit of armor.", "A FORGE IN THE MOUNTAINS", "mountain_pass", "1"],
+    ["They worked the glowing metal on an anvil. The last piece was the one Victor cared about most.", "HAMMER • TONGS • ANVIL", "forge", ""],
+    ["He could have waited for the mask to cool. He wanted it on now.", "THERE WAS STILL TIME TO WAIT", "forge_warning", "4"],
+    ["He put it on while the metal was still hot. The mask meant to hide his scar burned him again.", "HE WORE IT BEFORE IT COOLED", "mask_fitting", "4 5"],
+    ["The glow faded. The damage stayed.", "RED-HOT IRON → COLD STEEL", "mask_cooling", "5"],
+    ["That's how the thing Victor made to hide his face became the face of Doctor Doom. Follow for more comic lore.", "THE FACE OF DOCTOR DOOM", "portrait", "6"]
+  ],
+  "cameras": ["detail", "push", "pan_right", "wide", "detail", "push", "wide", "push"]
+}

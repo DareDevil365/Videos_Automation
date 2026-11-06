@@ -88,6 +88,29 @@ def test_foreground_speech_track_is_selected(supplied,tmp_path):
     assert 640<frequency<680,frequency # Foreground is 660 Hz; background is 330 Hz.
 
 
+def test_music_offset_skips_quiet_intro_in_rendered_audio(supplied,tmp_path):
+    root, store = supplied
+    music = tmp_path / "delayed-music.wav"
+    subprocess.run(["ffmpeg", "-v", "error", "-f", "lavfi", "-i",
+                    "sine=frequency=880:duration=2", "-af", "adelay=1000",
+                    str(music)], check=True)
+    job = {"template": "focus", "name": "Music offset regression", "duration": 1,
+           "inputs": {"background": str(root / "screenshot.png"), "music": str(music)},
+           "music_start": 1, "music_volume": .4, "composition": {"audio_source": "none"}}
+    project = materialize_job(job, store, root)
+    output = tmp_path / "music-offset.mp4"
+    render_project(project, store, output)
+    pcm = subprocess.run(["ffmpeg", "-v", "error", "-ss", "0.3", "-i", str(output),
+                          "-t", "0.4", "-vn", "-ac", "1", "-ar", "24000", "-f", "s16le", "-"],
+                         capture_output=True, check=True).stdout
+    samples = array("h")
+    samples.frombytes(pcm)
+    assert max(map(abs, samples)) > 500
+    frequency = sum(a <= 0 < b for a, b in zip(samples, samples[1:])) / (len(samples)/24000)
+    assert 860 < frequency < 900
+    assert validate_project(project)["music_start"] == 1
+
+
 def test_video_punch_with_glow_keeps_fixed_frames(supplied,tmp_path):
     """Regression for the Windows heap crash on the aura payoff scene."""
     root,store=supplied

@@ -1,0 +1,38 @@
+{
+  "version": 1,
+  "title": "Books of Doom · The Burning Mask",
+  "question": "Why did Doom put on the mask while it was still hot?",
+  "kind": "fact",
+  "sources": [
+    {
+      "id": "marvel",
+      "url": "https://www.marvel.com/comics/collection/124641/doctor_doom_books_of_doom_2025",
+      "title": "Marvel · Doctor Doom: Books of Doom",
+      "excerpt": "Marvel's collection lists issues 1–6, Ed Brubaker and Pablo Raimondi, and Victor's journey from college to the throne of Latveria.",
+      "checked_at": "2026-11-06T14:00:00+00:00"
+    },
+    {
+      "id": "origin",
+      "url": "https://www.sideshow.com/pdf/catalog09.pdf",
+      "title": "Sideshow's licensed Marvel Doctor Doom catalog account",
+      "excerpt": "Victor wore the newly forged mask while it was red-hot and was permanently disfigured.",
+      "checked_at": "2026-11-06T14:00:00+00:00"
+    },
+    {
+      "id": "context",
+      "url": "https://www.tvinsider.com/1299291/avengers-doomsday-doctor-doom-comics-backstory-explained-mcu/",
+      "title": "TV Insider · Doctor Doom comics backstory",
+      "excerpt": "Victor was injured by an experiment and fled to Tibet, where monks helped make his mask and he developed his armor.",
+      "checked_at": "2026-11-06T14:00:00+00:00"
+    }
+  ],
+  "claims": [
+    {"id": "c1", "text": "Victor traveled to Tibet, where monks helped him craft his armor and mask.", "source_id": "context"},
+    {"id": "c2", "text": "Victor's college experiment exploded and left him with a facial scar.", "source_id": "context"},
+    {"id": "c4", "text": "Victor put on the mask while it was red-hot.", "source_id": "origin"},
+    {"id": "c5", "text": "The heat of the mask disfigured Victor.", "source_id": "origin"},
+    {"id": "c6", "text": "The iconic mask became part of Victor's identity as Doctor Doom.", "source_id": "origin"}
+  ],
+  "notes": "Public sources support the origin beat. Full comic pages were unavailable. The hammer, tongs, worried expression and visible cooling are symbolic staging for the preview. Use this recap as a reading companion to Books of Doom.",
+  "editorial_verified": true
+}

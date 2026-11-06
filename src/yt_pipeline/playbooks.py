@@ -116,7 +116,7 @@ PLAYBOOKS['documentary_chapter']={
 
 
 for _name,_writing,_voice in (
-    ('comic_lore','Retell one coherent, sourced fictional canon as an original short recap. Clearly name the comic/run/year in metadata and distinguish it from film announcements or fan theories. Open with a specific story question, reveal a new concrete consequence, and deliver this chapter\'s answer before an earned next-part lead. Explain people by their role; avoid alias lists and repeated thematic morals. Every plot claim needs a supplied claim ID. Never claim to have read a full issue when only publisher recaps were available.','bm_george'),
+    ('comic_lore','Retell one coherent, sourced fictional canon as an original short recap. Clearly name the comic/run/year in metadata and distinguish it from film announcements or fan theories. Open with a specific story question, reveal a new concrete consequence, and deliver this chapter\'s answer before an earned next-part lead. Use Host for the opening and closing units, and Narrator for the story between them. The host states the series name and current part after the hook and returns with a short subscription/next-part line. Refer only to a real continuation supplied in the request. Explain people by their role; avoid alias lists and repeated thematic morals. Every plot claim needs a supplied claim ID. Never claim to have read a full issue when only publisher recaps were available.','bm_george'),
     ('movie_brief','Give one useful movie recommendation, confirmed announcement or clearly sourced movie-news answer. Lead with the actual viewer question and resolve it. Distinguish the actor from the character, confirmed facts from rumors, comic canon from film continuity, gross from budget and dated estimates from final totals. Do not invent feuds, release dates, box-office records, streaming availability or prediction-as-fact.','am_adam'),
     ('current_affairs','Explain one dated development and its concrete meaning for an India/world-current-affairs viewer. State the actual event date, define one useful term and answer what changed. Distinguish direction, denominator, eligibility and exceptions; avoid turning a narrow concession into a blanket claim. No fake breaking-news urgency, invented election result or nationalistic claim beyond the evidence.','am_adam')):
     PLAYBOOKS[_name]={'format':'lesson','seconds':[25,80],'words':[75,175],'units':[7,12],
@@ -192,6 +192,20 @@ def prepare_request(request):
 def get_playbook(name,request=None):
     if name not in PLAYBOOKS:raise Held('playbook_unknown','Choose a supported creative playbook')
     rules={'id':name,**deepcopy(PLAYBOOKS[name])}
+    series = (request or {}).get('series', {})
+    if name == 'comic_lore' and series.get('structure') == 'serial_cliffhanger':
+        rules.update(seconds=[25,179], words=[75,420], units=[7,24])
+        rules['writing'] = rules['writing'].replace(
+            "and deliver this chapter's answer before an earned next-part lead.",
+            "and end intermediate chapters at a sourced unresolved turn.",
+        )
+        rules['writing'] += (
+            ' This request is one continuing serialized story. Earlier chapters end on a concrete unresolved event or question;'
+            ' only the final chapter concludes the overall arc. Give each chapter real new events before its cliffhanger.'
+            ' Use edit.payoff_unit_id to identify the chapter turn or final resolution in the final two units.'
+            ' Choose natural chapter length within the Shorts limit. The number of chapters follows the story.'
+            ' The current part, total and real next-part relation are supplied in series.'
+        )
     if name=='server_chat' and (request or {}).get('chat_editing_version')==2:
         rules.update(seconds=[18,55],words=[40,100],units=[12,22],voice=None)
         rules['writing']='Write an ORIGINAL casual chat comedy between 2-3 recurring people. The conversation itself tells the complete story; no Narrator. 12-22 short actual messages, 40-100 words total, mostly 2-7 words per message, at most 12 words each. Start immediately on a specific relatable conflict. Escalate with replies that change the situation, plant a concrete detail and end on an earned action/concession/reversal. The final line must land the joke, not explain it afterwards. Avoid formal prose, legal/business jargon, magic bot powers, technical exploits, random new facts and mere confessions. Keep every onscreen field EXACTLY equal to its message text. Use original names and dialogue, never creator cast or copied lines. Metadata describes the actual conversation. Do not invent visual assets or editing commands.'
@@ -218,7 +232,8 @@ def writing_prompt(name,request=None):
     from .writing_craft import craft_context
     value['writing_skill']=craft_context((request or {}).get('chat_tone',(request or {}).get('story_tone','comedy' if name in ('server_chat','cutout_ensemble') else name)),value['format'])
     if name in ('comic_lore','movie_brief','current_affairs'):
-        return {**value,'task':'Write the source-bound script only, preserving claim IDs and the chosen canon/event date. Open on the actual question and deliver the concrete answer by the penultimate unit. A comic chapter may then lead to its actual next part. The local editor compiles illustrations, captions and timing; do not invent footage, source URLs or release links.',
+        ending = 'Build to a concrete unresolved turn by the penultimate unit for earlier parts, and conclude the overall arc in the final part.' if name == 'comic_lore' and (request or {}).get('series',{}).get('structure') == 'serial_cliffhanger' else 'Open on the actual question and deliver the concrete answer by the penultimate unit.'
+        return {**value,'task':'Write the source-bound script only, preserving claim IDs and the chosen canon/event date. '+ending+' Follow the provided host and continuation structure. The local editor compiles illustrations, captions and timing; do not invent footage, source URLs or release links.',
             'editorial_policy':'Check the scope of each claim against the supplied evidence. Audience critique is a separate pass; it cannot verify an unsourced claim or prove engagement.'}
     if name=='server_chat' and (request or {}).get('chat_editing_version')==2:
         return {**value,'task':'Write only the complete conversation in the script JSON contract. The hook equals the first actual message, and onscreen equals text for every message. Do not create a storyboard or timing. The software compiles all editing without another model call.',

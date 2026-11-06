@@ -39,13 +39,23 @@ def theater_room():
     return room
 
 
-def draw_theater(frame, cast, props, time):
+def light_audience(backdrop):
+    gray = ImageOps.colorize(backdrop.convert("L"), "#101322", "#e1d9cb", mid="#6e8492")
+    return Image.blend(ImageEnhance.Brightness(backdrop).enhance(.78), gray, .23)
+
+
+def draw_theater(frame, cast, props, time, *, backdrop=None):
     """Composite one room at the bottom of the Shorts frame."""
-    room = theater_room().copy()
+    if backdrop is None:
+        room = theater_room().copy()
+    else:
+        left = 20 + round(12 * math.sin(time * .43))
+        room = backdrop.crop((left, 12, left + 720, 300))
     draw = ImageDraw.Draw(room)
+    draw.line((0, 0, 720, 0), fill="#7e635b", width=2)
     for x, prop in zip((59, 661), props):
         room.paste(prop, (x - prop.width//2, 226 - prop.height), prop)
-    spacing = min(221, 640 / len(cast))
+    spacing = min(221, 640 / max(1, len(cast)))
     centers = [round(360 + (index - (len(cast)-1)/2)*spacing) for index in range(len(cast))]
     for index, (x, actor) in enumerate(zip(centers, cast)):
         draw.rounded_rectangle((x-102, 92, x+102, 277), 30, fill="#533142", outline="#825b62", width=3)

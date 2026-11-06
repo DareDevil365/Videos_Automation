@@ -49,6 +49,13 @@ def direct(workspace, job, script, timing, visuals):
             'inputs':inputs,'shots':rows,'music_volume':rules['music']['volume'],
             'composition':{'height':round(1280*request.get('top_fraction',.65)/2)*2/1280 if bottom else 1,'x':0,'y':0,'width':1,'foreground_fit':'cover','audio_source':'none',
                            'effect':script['edit']['effect'],'cta':False,'border_width':0,'glow':0}}
+        if 'source_music' in request:
+            from .speech_delivery import number
+            mix = request['source_music']
+            if request.get('playbook') not in ('comic_lore','movie_brief','current_affairs') or not music_id or not isinstance(mix,dict) or set(mix) - {'start','volume'}:
+                raise Held('source_music','Set a start or level for a registered source Short soundtrack.')
+            spec['music_start'] = number(mix.get('start',0), 0, min(600,music['duration']-.1),'source_music')
+            spec['music_volume'] = number(mix.get('volume',rules['music']['volume']), .01, .15,'source_music')
         if request.get('playbook') in ('documentary_chapter','illustrated_story'):
             if request.get('playbook')!='illustrated_story' or request.get('story_canvas')!='portrait':spec.update(profile='documentary')
             spec['composition']['effect']='none'

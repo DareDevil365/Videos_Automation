@@ -8,11 +8,14 @@ from .core import Held
 from .speech_delivery import number
 
 
-def delivery_for(unit, request, default_pause):
+def delivery_for(unit, request, default_pause, *, tight_default=False):
     config = request.get("source_delivery", {})
     if not isinstance(config, dict):
         raise Held("speech_delivery", "Supply a source delivery object.")
-    if not config:
+    tight = config.get("tight_speech", tight_default)
+    if type(tight) is not bool:
+        raise Held("speech_delivery", "Tight speech must be true or false.")
+    if not config and not tight:
         return {"pause_after": default_pause}
     phrases = config.get("linked_phrases", [])
     pauses = config.get("pauses_after", {})
@@ -25,10 +28,11 @@ def delivery_for(unit, request, default_pause):
         raise Held("speech_delivery", "Supply a map from beat IDs to pause lengths.")
     return {
         "pause_after": number(pauses.get(unit["id"], config.get("pause_after", default_pause)), 0, .9),
+        **({"tight_speech": True} if tight else {}),
         "linked_phrases": [p for p in phrases if p.casefold() in unit["text"].casefold()],
         "speech_segments": [{
             "text": unit["text"],
-            "speed": number(config.get("speed", 1), .9, 1.15),
+            "speed": number(config.get("speed", 1.10 if tight else 1), .9, 1.15),
             "pause_after": 0,
         }],
     }

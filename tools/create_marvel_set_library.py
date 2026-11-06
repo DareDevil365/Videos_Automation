@@ -5,7 +5,7 @@ import shutil
 import subprocess
 
 from create_source_photo_revision import CC, COMMONS, ROOT, SOURCES
-from PIL import Image, ImageDraw
+from PIL import Image, ImageChops, ImageDraw, ImageFilter
 from shorts_editor.graphics import font
 from shorts_editor.store import write_json
 from yt_pipeline.assets import register_asset
@@ -30,11 +30,27 @@ LAYERS = {
 
 THEATER_CROPS = {
     "doom-seated.png": ("doom-cutout.png", (.25, 0, 1, .52)),
+    "miles-seated.png": ("miles-theater.png", (0, 0, 1, 1)),
     "iron-seated.png": ("iron-red-cutout.png", (.16, 0, .84, .53)),
 }
 
+MILES_MATTE = [
+    (46,12),(66,8),(81,16),(90,29),(92,52),(94,72),(107,76),(126,98),
+    (130,119),(128,151),(119,176),(106,193),(72,194),(49,181),(33,165),
+    (20,153),(0,131),(0,64),(16,73),(29,79),(38,70),(34,53),(34,30),
+]
+
+
+def clean_miles_portrait(original):
+    image = original.convert("RGBA")
+    mask = Image.new("L", image.size)
+    ImageDraw.Draw(mask).polygon([(x*image.width/141, y*image.height/196) for x,y in MILES_MATTE], fill=255)
+    image.putalpha(ImageChops.multiply(image.getchannel("A"), mask.filter(ImageFilter.GaussianBlur(.5))))
+    return image
+
+
 PRESETS = {
-    "crossover-theater": ("cinema", ["doom-seated", "miles-theater", "iron-seated"], []),
+    "crossover-theater": ("cinema", ["doom-seated", "miles-seated", "iron-seated"], []),
     "iron-man-workshop": ("workshop", ["tony-gauntlet-cutout"], []),
     "spider-man-city": ("city", ["miles-cutout"], []),
     "captain-america-and-bucky": ("living_room", ["cap-cutout", "bucky-cutout"], []),
@@ -81,7 +97,10 @@ def build(workspace, source, destination):
             with Image.open(source / original) as cutout:
                 box = (round(left*cutout.width), round(top*cutout.height),
                        round(right*cutout.width), round(bottom*cutout.height))
-                cutout.crop(box).save(target)
+                image = cutout.crop(box)
+                if name == "miles-seated.png":
+                    image = clean_miles_portrait(image)
+                image.save(target)
         else:
             shutil.copyfile(source / name, target)
         reference_key = "url" if source_ref.startswith("https://") else "recipe"

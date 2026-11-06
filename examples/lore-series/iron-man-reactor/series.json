@@ -1,0 +1,32 @@
+{
+  "version": 1,
+  "series_id": "iron-man-reactor",
+  "title": "The Gift That Saved Iron Man",
+  "structure": "serial_cliffhanger",
+  "canon": "Marvel Studios' Iron Man (2008) film continuity.",
+  "parts": [
+    {
+      "part": 1,
+      "script": "part-1.json",
+      "next_part": null,
+      "lore_scenes": {
+        "u1":"reactor_tease", "u2":"cave_battery", "u3":"reactor_build", "u4":"cave_escape",
+        "u5":"reactor_case", "u6":"reactor_theft", "u7":"reactor_return", "u8":"reactor_case"
+      },
+      "lore_cameras": {
+        "u1":"push", "u2":"pan_right", "u3":"detail", "u4":"wide",
+        "u5":"pan_left", "u6":"push", "u7":"wide", "u8":"detail"
+      },
+      "source_delivery": {
+        "tight_speech": true,
+        "speed": 1.09,
+        "pause_after": 0.06,
+        "pauses_after": {"u5":0.08,"u6":0.135,"u7":0.14},
+        "linked_phrases": ["Tony Stark","Pepper Potts","Obadiah Stane","Iron Man","arc reactor"]
+      },
+      "reaction_preset": "iron-man-workshop",
+      "source_music": {"start": 6.0, "volume": 0.085},
+      "source_cues": {"u6":"impact","u7":"reveal"}
+    }
+  ]
+}

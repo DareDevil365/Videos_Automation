@@ -5,10 +5,12 @@ import shutil
 import subprocess
 
 import pytest
-from PIL import ImageChops
+from PIL import Image,ImageChops
 
 from yt_pipeline.core import Held,Workspace,digest
 from yt_pipeline.lore_visuals import KINDS,plan_lore,lore_frame,render_lore_shot,build_lore_visuals
+from yt_pipeline.lore_actions import COLORS, resolve_actions
+from yt_pipeline.source_sets import check_lore_reuse, source_painter
 
 
 ROOT=Path(__file__).resolve().parents[1]
@@ -63,3 +65,32 @@ def test_actual_lore_shot_is_portrait_video_with_measured_duration(tmp_path):
     assert (stream['width'],stream['height'],stream['r_frame_rate'])==(720,1280,'30/1')
     assert float(data['format']['duration'])==pytest.approx(.8,abs=.04)
     assert path.with_suffix('.png').is_file()
+
+
+def test_action_and_moving_photo_stay_in_the_story_area():
+    still = lambda *args: Image.new("RGB", (720,1280), "#111522")
+    prop = Image.new("RGBA", (76,60), "#77777a")
+    for kind in COLORS:
+        actions = resolve_actions({"lore_actions":{"u1":{"kind":kind,"actor":"symbolic",
+                                   "target":[530,420]}}}, {"units":[{"id":"u1"}]})
+        paint = source_painter(still, [(prop,(260,640,336,700),("arc",[265,-95]))],
+                               None, 0, action=actions["u1"])
+        change = ImageChops.difference(paint({},0,3),paint({},2.3,3)).getbbox()
+        assert change and 185 <= change[1] < change[3] <= 950
+
+
+def test_recent_story_photo_needs_an_explicit_repeat_reason(tmp_path):
+    from yt_pipeline.assets import register_asset
+
+    ws = Workspace(tmp_path/'ws')
+    image = tmp_path/'figure.png'
+    Image.new("RGB",(64,64),"#448877").save(image)
+    asset = register_asset(ws,image,'test',{"review":"fixture"})
+    copy = register_asset(ws,image,'test',{"review":"second registration"})
+    old = ws.create('entertainment',{'playbook':'comic_lore','source_panels':{'u1':[{'asset_id':asset['id']}]}})
+    ws.update(old['id'], status='ready')
+    request = {'playbook':'comic_lore','source_panels':{'u3':[{'asset_id':copy['id']}]}}
+    with pytest.raises(Held, match='recent story image'):
+        check_lore_reuse(ws, ws.create('entertainment',request))
+    request['source_panels']['u3'][0]['repeat_reason'] = 'Callback to the same object before and after.'
+    check_lore_reuse(ws, ws.create('entertainment',request))

@@ -1,0 +1,31 @@
+[
+  {
+    "series_id": "books-of-doom-latveria",
+    "channel": "entertainment",
+    "playbook": "comic_lore",
+    "topic": "How Doctor Doom took Latveria",
+    "starting_source": "https://www.marvel.com/comics/issue/4033/books_of_doom_2005_-_2006_6",
+    "direction": "Start on a concrete obstacle to taking the throne. Build around a real reversal, and use a different setting and composition from the forge and Battleworld."
+  },
+  {
+    "series_id": "doom-strange-triumph-torment",
+    "channel": "entertainment",
+    "playbook": "comic_lore",
+    "topic": "Why Doctor Doom needed Doctor Strange",
+    "direction": "Research Triumph and Torment and build around the specific bargain. A brief geometric magic action can connect two sourced character reveals."
+  },
+  {
+    "series_id": "next-movie-brief",
+    "channel": "entertainment",
+    "playbook": "movie_brief",
+    "topic": "One genuinely useful Marvel watch recommendation",
+    "direction": "Choose a verified viewer question from current release coverage. Check past titles before pitching another Doomsday list."
+  },
+  {
+    "series_id": "next-current-affairs",
+    "channel": "education",
+    "playbook": "current_affairs",
+    "topic": "One dated India or world affairs development with a practical consequence",
+    "direction": "Pick a current event using primary sources. Distinguish what changed, who is affected and what remains pending."
+  }
+]

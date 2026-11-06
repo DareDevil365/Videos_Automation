@@ -94,6 +94,8 @@ def validate_project(data):
         p[key] = number(p[key], key, low, high)
     for key in ("music", "narration"):
         p[key] = asset_ref(p[key], key)
+    if "music_start" in data:
+        p["music_start"] = number(data["music_start"], "music_start", 0, 600)
     defaults = new_project()["composition"]
     if not isinstance(p["composition"], dict): raise ValidationError("Composition must be an object.")
     c = {**defaults, **{k:v for k,v in p["composition"].items() if k in defaults}}

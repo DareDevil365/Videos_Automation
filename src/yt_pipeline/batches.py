@@ -355,12 +355,12 @@ def _copy_outputs(ws,job,folder):
         if source.is_file():copy(source,folder/source.name)
     render_record=job['artifacts'].get('render')
     if render_record:
-        rendered=json.loads(Path(render_record['path']).read_text())
+        rendered=json.loads(Path(render_record['path']).read_text(encoding='utf-8'))
         for key,target in [('video','video.mp4'),('cover','cover.png'),('captions','captions.srt'),('manifest','render-manifest.json')]:
             if rendered.get(key) and Path(rendered[key]).is_file():copy(rendered[key],folder/target)
     voice=ws.job_dir(job['id'])/'voice.json'
     if voice.is_file():
-        record=json.loads(voice.read_text());audio=record.get('audio')
+        record=json.loads(voice.read_text(encoding='utf-8'));audio=record.get('audio')
         if audio and Path(audio).is_file():copy(audio,folder/'narration.wav')
     reviews=ws.job_dir(job['id'])/'visual-review'
     if reviews.is_dir():
@@ -416,8 +416,8 @@ def _run_batch(ws,plan_path,stop,progress,stop_file,lost):
             item['output_hashes']=_copy_outputs(ws,job,folder)
             if job['status']=='ready':
                 item['video']=str(folder/'video.mp4');item['cover']=str(folder/'cover.png')
-                scripted=json.loads((folder/'script.json').read_text())
-                item['script_origin']=scripted.get('origin');item['duration']=json.loads((folder/'quality.json').read_text())['duration']
+                scripted=json.loads((folder/'script.json').read_text(encoding='utf-8'))
+                item['script_origin']=scripted.get('origin');item['duration']=json.loads((folder/'quality.json').read_text(encoding='utf-8'))['duration']
         except Exception as exc:
             item.update(status='held',message=redact(exc),error_code=getattr(exc,'code',type(exc).__name__))
         save()

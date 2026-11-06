@@ -150,6 +150,13 @@ def synthesize(workspace, script, folder, pause=.16, fps=30,creative_plan=None,d
         linked_phrases = (scene or {}).get('linked_phrases', [])
         spoken_texts = [connected_text(s['text'], linked_phrases) for s in segments]
         parts=[cached_segment(text,voice_id,s['speed']) for text,s in zip(spoken_texts,segments)]
+        tight = (scene or {}).get('tight_speech') is True
+        removed_ms = 0
+        if tight:
+            from .speech_gaps import tighten_speech_file
+            trimmed = [tighten_speech_file(part, cache) for part in parts]
+            parts = [part for part, _ in trimmed]
+            removed_ms = sum(ms for _, ms in trimmed)
         spans=[]
         if len(parts)==1 and segments[0]['pause_after']==0:
             path=parts[0]
@@ -158,6 +165,8 @@ def synthesize(workspace, script, folder, pause=.16, fps=30,creative_plan=None,d
                             settings.get('length_scale',1),segments]
             if spoken_texts != [s['text'] for s in segments]:
                 assembly_key.append(spoken_texts)
+            if tight:
+                assembly_key.extend(['tight-quiet-speech-v1', [file_hash(part) for part in parts]])
             path=cache/(digest(assembly_key)+'.wav')
             chunks=[];segment_rate=None;cursor=0
             for segment,part in zip(segments,parts):
@@ -184,6 +193,7 @@ def synthesize(workspace, script, folder, pause=.16, fps=30,creative_plan=None,d
         rows.append({"id":unit["id"],"speaker":unit["speaker"],"text":unit["text"],"file":str(path),
                      "start":elapsed,"speech_end":elapsed+metrics["duration"],"end":elapsed+duration,"duration":duration,"metrics":metrics,
                      'voice_id':voice_id,'pause_after':unit_pause,'delivery_length_scale':settings.get('length_scale',1),
+                     **({'quiet_trimmed_ms': removed_ms} if tight else {}),
                      **({'linked_phrases': linked_phrases, 'speech_engine_text': ' '.join(spoken_texts)} if linked_phrases else {}),
                      'speech_segments':segments,'segment_timings':spans,'thinking_seconds':thinking})
         pcm_parts.extend([pcm,b"\0\0"*padding])

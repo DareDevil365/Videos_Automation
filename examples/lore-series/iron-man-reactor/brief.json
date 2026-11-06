@@ -1,0 +1,20 @@
+{
+  "version": 1,
+  "title": "The Gift That Saved Iron Man",
+  "question": "How did Pepper's decision to keep the first arc reactor save Tony Stark in Iron Man?",
+  "kind": "fact",
+  "sources": [
+    {"id":"film_guide","url":"https://www.previewsworld.com/Catalog/Prevue/AUG150845","title":"PREVIEWSworld · Marvel Cinematic Universe Guidebook: Iron Man","excerpt":"The guide's arc reactor entry covers the battery-powered electromagnet, the cave-built reactor and first armor, Pepper's display case and Stane's theft.","checked_at":"2026-11-06T16:00:00+00:00"},
+    {"id":"marvel_rhodey","url":"https://www.marvel.com/characters/war-machine-james-rhodes/on-screen/","title":"Marvel · War Machine on screen","excerpt":"Stane stole Stark's updated reactor. The original reactor was used to save Stark before his confrontation with Stane.","checked_at":"2026-11-06T16:00:00+00:00"},
+    {"id":"case","url":"https://propstore.com/product/iron-man-2008/654-light-up-proof-that-tony-stark-has-a-heart-arc-reactor-display-replica/","title":"Propstore · Iron Man arc reactor display replica","excerpt":"Pepper preserved the original reactor in a display case and gave it back to Tony. The listing confirms the inscription.","checked_at":"2026-11-06T16:00:00+00:00"}
+  ],
+  "claims": [
+    {"id":"c1","text":"A battery powered an electromagnet that kept shrapnel away from Stark's heart during captivity.","source_id":"film_guide"},
+    {"id":"c2","text":"Stark built the first miniature reactor to replace the battery and power armor built with Yinsen to escape.","source_id":"film_guide"},
+    {"id":"c3","text":"Stark replaced his first reactor and asked Pepper to dispose of it. She gave it back to him in a display case.","source_id":"film_guide"},
+    {"id":"c4","text":"Obadiah Stane stole the upgraded reactor from Stark's chest.","source_id":"marvel_rhodey"},
+    {"id":"c5","text":"The original reactor was put back into service to save Stark.","source_id":"marvel_rhodey"},
+    {"id":"c6","text":"Pepper's display case read Proof That Tony Stark Has a Heart.","source_id":"case"}
+  ],
+  "notes": "Continuity is Marvel Studios' Iron Man (2008). Reactor images, cave and chest panels are original geometric staging. The short avoids attributing the reinstallation to one character because official summaries emphasize different helpers."
+}

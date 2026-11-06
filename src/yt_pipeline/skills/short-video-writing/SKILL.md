@@ -9,6 +9,8 @@ Serve the chosen genre and the owner's premise. Make the audience want a specifi
 
 Choose the relevant reference: [comedy](references/comedy.md), [mystery/thriller](references/mystery.md), [emotional/cinematic story](references/story.md), or [aura captions](references/aura.md). For factual explainers use [evidence-led writing](references/factual.md). Read [timing](references/timing.md) when planning spoken or chat delivery.
 
+For a sourced comic recap, use the [comic lore reference](references/comic_lore.md) for chapter hooks, role introductions, host handoffs and actual continuation links.
+
 Before dialogue, identify the protagonist's immediate want, opposing pressure, opening question, early plant and ending. Explain the causal chain to yourself without the title, soundtrack or an invented fact. If the explanation needs a new rule at the ending, rebuild the premise. When the application asks for alternatives, vary the mechanism rather than renaming characters in the same idea.
 
 In chat, every story fact must come from a message, visible phone occurrence or established contact/thread context. Give each person a different want and reaction pattern; changing names is insufficient. Track what each private conversation lets them know. A narrator should not read speaker names, timestamps, directions or a separate explanation. Preserve natural fragments and contractions. The last meaningful reply must change the situation or fulfill the opening rather than explain the joke, recap the reveal or add a generic moral.

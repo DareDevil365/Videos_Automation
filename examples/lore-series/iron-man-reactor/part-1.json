@@ -1,0 +1,115 @@
+{
+  "version": 1,
+  "title": "The Gift That Saved Iron Man",
+  "description": "In Iron Man (2008), Pepper Potts keeps Tony Stark's first arc reactor after he replaces it. Here is how that small choice pays off when Obadiah Stane steals the upgrade.",
+  "format": "lesson",
+  "fiction": false,
+  "hook": "The one thing that could save Iron Man was sitting in a display case.",
+  "payoff": "Pepper's gift was still in the workshop. The first reactor went back into Tony's chest. The thing he wanted gone saved him again.",
+  "units": [
+    {
+      "id": "u1",
+      "speaker": "Host",
+      "text": "The one thing that could save Iron Man was sitting in a display case.",
+      "kind": "fact",
+      "claim_ids": [
+        "c3",
+        "c5"
+      ],
+      "onscreen": "WHAT WAS IN THE CASE?",
+      "visual_kind": "image",
+      "visual_query": "WHAT WAS IN THE CASE?"
+    },
+    {
+      "id": "u2",
+      "speaker": "Narrator",
+      "text": "In the cave, a car battery powered the magnet keeping shrapnel away from Tony's heart.",
+      "kind": "fact",
+      "claim_ids": [
+        "c1"
+      ],
+      "onscreen": "A BATTERY KEPT HIM ALIVE",
+      "visual_kind": "image",
+      "visual_query": "A BATTERY KEPT HIM ALIVE"
+    },
+    {
+      "id": "u3",
+      "speaker": "Narrator",
+      "text": "He built a miniature arc reactor to replace the battery. That little ring could power something bigger.",
+      "kind": "fact",
+      "claim_ids": [
+        "c2"
+      ],
+      "onscreen": "TONY BUILDS A NEW POWER SOURCE",
+      "visual_kind": "image",
+      "visual_query": "TONY BUILDS A NEW POWER SOURCE"
+    },
+    {
+      "id": "u4",
+      "speaker": "Narrator",
+      "text": "Tony and Yinsen built a suit around it. That first Iron Man armor got Tony out of the cave.",
+      "kind": "fact",
+      "claim_ids": [
+        "c2"
+      ],
+      "onscreen": "THE FIRST SUIT GETS HIM OUT",
+      "visual_kind": "image",
+      "visual_query": "THE FIRST SUIT GETS HIM OUT"
+    },
+    {
+      "id": "u5",
+      "speaker": "Narrator",
+      "text": "Back home, Tony upgraded the reactor. He told Pepper to throw the old one out. She put it in a display case instead.",
+      "kind": "fact",
+      "claim_ids": [
+        "c3"
+      ],
+      "onscreen": "PEPPER KEEPS THE ORIGINAL",
+      "visual_kind": "image",
+      "visual_query": "PEPPER KEEPS THE ORIGINAL"
+    },
+    {
+      "id": "u6",
+      "speaker": "Narrator",
+      "text": "Then Obadiah Stane pulled the new reactor straight out of Tony's chest and left him to die.",
+      "kind": "fact",
+      "claim_ids": [
+        "c4"
+      ],
+      "onscreen": "STANE TAKES THE UPGRADE",
+      "visual_kind": "image",
+      "visual_query": "STANE TAKES THE UPGRADE"
+    },
+    {
+      "id": "u7",
+      "speaker": "Narrator",
+      "text": "Pepper's gift was still in the workshop. The first reactor went back into Tony's chest. The thing he wanted gone saved him again.",
+      "kind": "fact",
+      "claim_ids": [
+        "c3",
+        "c5"
+      ],
+      "onscreen": "THE FIRST REACTOR SAVES HIM AGAIN",
+      "visual_kind": "image",
+      "visual_query": "THE FIRST REACTOR SAVES HIM AGAIN"
+    },
+    {
+      "id": "u8",
+      "speaker": "Host",
+      "text": "The label said proof that Tony Stark has a heart. Thanks to Pepper, it was still beating.",
+      "kind": "fact",
+      "claim_ids": [
+        "c5",
+        "c6"
+      ],
+      "onscreen": "PROOF THAT TONY STARK HAS A HEART",
+      "visual_kind": "image",
+      "visual_query": "PROOF THAT TONY STARK HAS A HEART"
+    }
+  ],
+  "edit": {
+    "effect": "none",
+    "payoff_unit_id": "u7",
+    "cta": false
+  }
+}

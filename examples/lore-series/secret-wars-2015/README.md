@@ -1,5 +1,7 @@
 # Secret Wars 2015: three-part Doom lore pilot
 
+The current serialized revision uses [recut-scripts.json](recut-scripts.json), a separate [music plan](recut-music.json) and the [recut tool](../../../tools/create_comic_lore_recut.py). It follows one continuing story. Part one ends beneath Doom's castle, part two leaves Miles's favor unresolved and part three resolves the arc. The host announces each part and returns for a short continuation/subscription line. Local exports are under `Resources/Productions/doom-broken-worlds-serial-20261106/`. Earlier filenames and measurements below describe the initial pilot.
+
 Original authored short recaps about a fictional comic canon. These are source-linked drafts for critique, not Gemini-written scripts, rendered videos, owner approval or an MCU plot prediction. [Source brief](../../../research/content-lore/SECRET_WARS_2015_BRIEF.json) and [access record](../../../research/content-lore/SECRET_WARS_SOURCE_ACCESS.json) distinguish publisher recap evidence from a full-issue reading.
 
 | Part | Script | Local purpose | Reading references |

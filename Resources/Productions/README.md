@@ -1,5 +1,7 @@
 # Review exports
 
+Latest screen-story exports: `strange-supreme-heart-final-20261107/part-1/` (**55.033s**, 19 shots), `civil-war-complete-final-20261107/part-1/` (**95.233s**, 33 shots), and `kraven-last-hunt-subscribe-final-20261107/part-1/` (**50.766s**, 10 shots). Each ends with the newly requested spoken and visible subscribe line after its story payoff. All three passed technical QA, all 42 package hashes matched, and actual exported cuts were sampled. Their local `export-review.jpg`, `finished-review.json` and `REVIEW.md` record the checks and limits. No extra text-provider calls were used. [Screen recap scripts and workflow](../../examples/screen-recaps/README.md).
+
 These are technical and creative review artifacts. A playable file or passing technical report is not owner approval of the story/style. Private original job state lives under `data/pipeline/jobs/`; copied evidence here keeps its recorded paths/hashes.
 
 Latest owner feedback: **The Turtle Guard script is rejected**; **The Portrait's Watcher needs visual revision**, especially eye callouts and less repeated stock. `owner-feedback.json` beside each local video records that verdict. Scene-direction improvements have tests and previews; these complete exports have not been silently replaced with revised versions.

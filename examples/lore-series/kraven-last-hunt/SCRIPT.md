@@ -16,4 +16,4 @@ Narrator: He reaches Kraven, expecting another fight. Kraven refuses. He believe
 
 Narrator: He even releases Vermin to test Peter, then stops the creature before it can kill him. Peter goes after Vermin.
 
-Host: Kraven leaves a confession and dies by suicide. Peter survives the hunt, but being buried alive leaves him traumatized.
+Host: Kraven leaves a confession and dies by suicide. Peter survives the hunt, but being buried alive leaves him traumatized. For more stories like this, subscribe.

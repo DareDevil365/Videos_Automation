@@ -16,7 +16,7 @@
       "reaction_preset": "crossover-theater",
       "source_duration": [
         42,
-        50
+        59
       ],
       "source_delivery": {
         "tight_speech": true,
@@ -117,6 +117,22 @@
             ]
           }
         }
+      },
+      "lore_cuts": {
+        "u9": [
+          {
+            "on": "",
+            "kind": "hunt_confession",
+            "camera": "push",
+            "reason": "Keep the confession and trauma ending intact."
+          },
+          {
+            "on": "For more stories",
+            "kind": "end_subscribe",
+            "camera": "wide",
+            "reason": "The owner requested a short subscription line after this ending."
+          }
+        ]
       }
     }
   ]

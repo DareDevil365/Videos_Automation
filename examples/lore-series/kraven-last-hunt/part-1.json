@@ -126,7 +126,7 @@
     {
       "id": "u9",
       "speaker": "Host",
-      "text": "Kraven leaves a confession and dies by suicide. Peter survives the hunt, but being buried alive leaves him traumatized.",
+      "text": "Kraven leaves a confession and dies by suicide. Peter survives the hunt, but being buried alive leaves him traumatized. For more stories like this, subscribe.",
       "onscreen": "SURVIVAL DOES NOT ERASE THE HUNT",
       "kind": "fact",
       "claim_ids": [
@@ -141,6 +141,6 @@
   "edit": {
     "effect": "none",
     "payoff_unit_id": "u8",
-    "cta": false
+    "cta": true
   }
 }

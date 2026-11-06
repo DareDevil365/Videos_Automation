@@ -1,0 +1,375 @@
+{
+  "version": 1,
+  "series_id": "civil-war-complete",
+  "title": "Captain America: Civil War — The Complete Main Story",
+  "structure": "chapter_answers",
+  "canon": "Captain America: Civil War (2016), MCU film.",
+  "source_voices": {
+    "Host": "am_adam",
+    "Narrator": "af_bella"
+  },
+  "parts": [
+    {
+      "part": 1,
+      "script": "part-1.json",
+      "next_part": null,
+      "reaction_preset": "crossover-theater",
+      "source_duration": [
+        75,
+        115
+      ],
+      "source_delivery": {
+        "tight_speech": true,
+        "speed": 1.15,
+        "pause_after": 0.05,
+        "linked_phrases": [
+          "Captain America",
+          "Iron Man",
+          "Black Panther",
+          "Winter Soldiers",
+          "Sokovia Accords",
+          "Doctor Strange",
+          "Ancient One"
+        ]
+      },
+      "source_music": {
+        "start": 4,
+        "volume": 0.06
+      },
+      "visual_selection": {
+        "mode": "authored"
+      },
+      "lore_cuts": {
+        "u3": [
+          {
+            "on": "",
+            "kind": "cw_grief",
+            "camera": "wide",
+            "reason": "A victim’s photograph makes Tony’s guilt concrete."
+          },
+          {
+            "on": "Steve fears",
+            "kind": "cw_accords",
+            "camera": "wide",
+            "reason": "The document physically separates the two leaders."
+          },
+          {
+            "on": "Peggy's funeral",
+            "kind": "cw_funeral",
+            "camera": "wide",
+            "reason": "The funeral supplies Steve’s personal context without naming it earlier than the story."
+          }
+        ],
+        "u4": [
+          {
+            "on": "",
+            "kind": "cw_vienna",
+            "camera": "wide",
+            "reason": "Show the assassination event before the pursuit."
+          },
+          {
+            "on": "Bucky is blamed",
+            "kind": "cw_chase",
+            "camera": "wide",
+            "reason": "Bucky, Steve and the Panther occupy one chase geography."
+          }
+        ],
+        "u5": [
+          {
+            "on": "",
+            "kind": "cw_interrogation",
+            "camera": "wide",
+            "reason": "The trigger-book and prisoner explain reactivation."
+          },
+          {
+            "on": "helicopter escape",
+            "kind": "cw_helicopter",
+            "camera": "wide",
+            "reason": "Hands stay anchored between helicopter skid and roof."
+          },
+          {
+            "on": "five more",
+            "kind": "cw_soldier_map",
+            "camera": "wide",
+            "reason": "Five separate pods establish the apparent threat and destination."
+          }
+        ],
+        "u6": [
+          {
+            "on": "",
+            "kind": "cw_wanda_exit",
+            "camera": "wide",
+            "reason": "Clint’s recruitment and Wanda overcoming Vision explain how she joins Steve’s team."
+          },
+          {
+            "on": "Sharon returns",
+            "kind": "cw_gear",
+            "camera": "wide",
+            "reason": "Sharon returns equipment before Steve assembles his side."
+          },
+          {
+            "on": "Tony intercepts",
+            "kind": "cw_teams",
+            "camera": "wide",
+            "reason": "Both six-person lineups appear, including Wanda, Hawkeye, Falcon, Vision and Rhodey."
+          },
+          {
+            "on": "Spider-Man steals",
+            "kind": "cw_shield",
+            "camera": "wide",
+            "reason": "The shield moves from Steve toward Peter along a web line."
+          },
+          {
+            "on": "Ant-Man goes giant",
+            "kind": "cw_giant",
+            "camera": "wide",
+            "reason": "Scale changes against small Spider-Man and Iron Man, not a name card."
+          }
+        ],
+        "u7": [
+          {
+            "on": "",
+            "kind": "cw_escape",
+            "camera": "wide",
+            "reason": "Natasha intervenes while Steve and Bucky reach the jet."
+          },
+          {
+            "on": "Vision accidentally",
+            "kind": "cw_fall",
+            "camera": "wide",
+            "reason": "Vision’s missed beam and Rhodey’s downward movement show the cost."
+          },
+          {
+            "on": "Raft prison",
+            "kind": "cw_raft",
+            "camera": "wide",
+            "reason": "Four detained allies appear behind bars, completing the escape’s consequence."
+          }
+        ],
+        "u8": [
+          {
+            "on": "",
+            "kind": "cw_truth",
+            "camera": "wide",
+            "reason": "The framing evidence motivates Tony’s change of course."
+          },
+          {
+            "on": "In Siberia",
+            "kind": "cw_bunker",
+            "camera": "wide",
+            "reason": "Tony reunites with Steve and Bucky before the reveal."
+          },
+          {
+            "on": "soldiers already dead",
+            "kind": "cw_soldiers",
+            "camera": "wide",
+            "reason": "The unused pods overturn the army expectation without identifying the final victims."
+          }
+        ],
+        "u9": [
+          {
+            "on": "",
+            "kind": "cw_zemo",
+            "camera": "wide",
+            "reason": "Zemo’s family photograph makes his motive concrete before the tape identifies Tony’s parents."
+          },
+          {
+            "on": "a recording",
+            "kind": "cw_tape",
+            "camera": "wide",
+            "reason": "Only now identify the 1991 victims and Bucky on the monitor."
+          }
+        ],
+        "u10": [
+          {
+            "on": "",
+            "kind": "cw_fight",
+            "camera": "wide",
+            "reason": "The shield takes Tony’s blast while Bucky and Steve share the frame."
+          },
+          {
+            "on": "blasts off",
+            "kind": "cw_arm_loss",
+            "camera": "wide",
+            "reason": "Metal fragments show the arm loss without gore."
+          },
+          {
+            "on": "Steve disables",
+            "kind": "cw_reactor_disabled",
+            "camera": "wide",
+            "reason": "Shield contact is anchored at the armor’s chest."
+          },
+          {
+            "on": "then leaves",
+            "kind": "cw_shield_drop",
+            "camera": "wide",
+            "reason": "The same shield is dropped as Steve and the injured Bucky leave."
+          }
+        ],
+        "u11": [
+          {
+            "on": "",
+            "kind": "cw_arrest",
+            "camera": "wide",
+            "reason": "T’Challa refuses further revenge and takes Zemo alive."
+          },
+          {
+            "on": "Steve frees",
+            "kind": "cw_rescue",
+            "camera": "wide",
+            "reason": "Close the prisoners’ subplot."
+          },
+          {
+            "on": "Tony helps",
+            "kind": "cw_rehab",
+            "camera": "wide",
+            "reason": "Show Rhodey’s leg braces and Tony supporting his recovery."
+          },
+          {
+            "on": "Bucky sleeps",
+            "kind": "cw_wakanda",
+            "camera": "wide",
+            "reason": "The empty arm and cryogenic pod preserve the cost and final state."
+          }
+        ],
+        "u12": [
+          {
+            "on": "",
+            "kind": "cw_letter",
+            "camera": "push",
+            "reason": "Close the main story on the apology and real offer of help."
+          },
+          {
+            "on": "For more stories",
+            "kind": "end_subscribe",
+            "camera": "wide",
+            "reason": "Only after the final promise, show and speak the requested subscription line."
+          }
+        ]
+      },
+      "lore_design": {
+        "palette": "paper",
+        "font": "Trebuchet MS",
+        "atmosphere": "none",
+        "audience_required": true,
+        "reason": "Preserve a readable portrait story, stable identity/costume and explicit per-beat visual purposes. Cuts follow aligned spoken phrases, while full sentences retain the causal chain. Trebuchet keeps open readable letters; a dark caption strip separates the story from its quiet lower audience set.",
+        "shots": {
+          "u1": {
+            "palette": "paper",
+            "atmosphere": "none",
+            "reason": "Follow the spoken causal beat with recognizable actors, legible physical contact and location-appropriate light. Warm daylight for the airport; neutral concrete for Berlin/Siberia; restrained red for the personal confrontation.",
+            "elements": [
+              "Show portrait as the stated beat’s action/result, with no early reveal of later story information."
+            ]
+          },
+          "u2": {
+            "palette": "ember",
+            "atmosphere": "embers",
+            "reason": "Follow the spoken causal beat with recognizable actors, legible physical contact and location-appropriate light. Warm daylight for the airport; neutral concrete for Berlin/Siberia; restrained red for the personal confrontation.",
+            "elements": [
+              "Show cw_lagos as the stated beat’s action/result, with no early reveal of later story information."
+            ]
+          },
+          "u3": {
+            "palette": "paper",
+            "atmosphere": "none",
+            "reason": "Follow the spoken causal beat with recognizable actors, legible physical contact and location-appropriate light. Warm daylight for the airport; neutral concrete for Berlin/Siberia; restrained red for the personal confrontation.",
+            "elements": [
+              "A victim’s photograph makes Tony’s guilt concrete.",
+              "The document physically separates the two leaders.",
+              "The funeral supplies Steve’s personal context without naming it earlier than the story."
+            ]
+          },
+          "u4": {
+            "palette": "concrete",
+            "atmosphere": "none",
+            "reason": "Follow the spoken causal beat with recognizable actors, legible physical contact and location-appropriate light. Warm daylight for the airport; neutral concrete for Berlin/Siberia; restrained red for the personal confrontation.",
+            "elements": [
+              "Show the assassination event before the pursuit.",
+              "Bucky, Steve and the Panther occupy one chase geography."
+            ]
+          },
+          "u5": {
+            "palette": "concrete",
+            "atmosphere": "none",
+            "reason": "Follow the spoken causal beat with recognizable actors, legible physical contact and location-appropriate light. Warm daylight for the airport; neutral concrete for Berlin/Siberia; restrained red for the personal confrontation.",
+            "elements": [
+              "The trigger-book and prisoner explain reactivation.",
+              "Hands stay anchored between helicopter skid and roof.",
+              "Five separate pods establish the apparent threat and destination."
+            ]
+          },
+          "u6": {
+            "palette": "daylight",
+            "atmosphere": "none",
+            "reason": "Follow the spoken causal beat with recognizable actors, legible physical contact and location-appropriate light. Warm daylight for the airport; neutral concrete for Berlin/Siberia; restrained red for the personal confrontation.",
+            "elements": [
+              "Show Sharon returning the equipment.",
+              "Both six-person lineups appear, including Wanda, Hawkeye, Falcon, Vision and Rhodey.",
+              "The shield moves from Steve toward Peter along a web line.",
+              "Scale changes against small Spider-Man and Iron Man, not a name card."
+            ]
+          },
+          "u7": {
+            "palette": "concrete",
+            "atmosphere": "none",
+            "reason": "Follow the spoken causal beat with recognizable actors, legible physical contact and location-appropriate light. Warm daylight for the airport; neutral concrete for Berlin/Siberia; restrained red for the personal confrontation.",
+            "elements": [
+              "Natasha intervenes while Steve and Bucky reach the jet.",
+              "Vision’s missed beam and Rhodey’s downward movement show the cost.",
+              "Four detained allies appear behind bars, completing the escape’s consequence."
+            ]
+          },
+          "u8": {
+            "palette": "concrete",
+            "atmosphere": "none",
+            "reason": "Follow the spoken causal beat with recognizable actors, legible physical contact and location-appropriate light. Warm daylight for the airport; neutral concrete for Berlin/Siberia; restrained red for the personal confrontation.",
+            "elements": [
+              "The framing evidence motivates Tony’s change of course.",
+              "Tony reunites with Steve and Bucky before the reveal.",
+              "The unused pods overturn the army expectation without identifying the final victims."
+            ]
+          },
+          "u9": {
+            "palette": "plum",
+            "atmosphere": "none",
+            "reason": "Follow the spoken causal beat with recognizable actors, legible physical contact and location-appropriate light. Warm daylight for the airport; neutral concrete for Berlin/Siberia; restrained red for the personal confrontation.",
+            "elements": [
+              "Hold the abandoned threat while Zemo’s motive is disclosed.",
+              "Only now identify the 1991 victims and Bucky on the monitor."
+            ]
+          },
+          "u10": {
+            "palette": "crimson",
+            "atmosphere": "none",
+            "reason": "Follow the spoken causal beat with recognizable actors, legible physical contact and location-appropriate light. Warm daylight for the airport; neutral concrete for Berlin/Siberia; restrained red for the personal confrontation.",
+            "elements": [
+              "The shield takes Tony’s blast while Bucky and Steve share the frame.",
+              "Metal fragments show the arm loss without gore.",
+              "Shield contact is anchored at the armor’s chest.",
+              "The same shield is dropped as Steve and the injured Bucky leave."
+            ]
+          },
+          "u11": {
+            "palette": "paper",
+            "atmosphere": "none",
+            "reason": "Follow the spoken causal beat with recognizable actors, legible physical contact and location-appropriate light. Warm daylight for the airport; neutral concrete for Berlin/Siberia; restrained red for the personal confrontation.",
+            "elements": [
+              "T’Challa restrains Zemo instead of continuing the revenge cycle.",
+              "Return to the prison with doors open.",
+              "The arm remains missing and a cryogenic pod establishes Wakanda’s treatment route."
+            ]
+          },
+          "u12": {
+            "palette": "daylight",
+            "atmosphere": "none",
+            "reason": "Follow the spoken causal beat with recognizable actors, legible physical contact and location-appropriate light. Warm daylight for the airport; neutral concrete for Berlin/Siberia; restrained red for the personal confrontation.",
+            "elements": [
+              "Show cw_letter as the stated beat’s action/result, with no early reveal of later story information."
+            ]
+          }
+        }
+      }
+    }
+  ]
+}

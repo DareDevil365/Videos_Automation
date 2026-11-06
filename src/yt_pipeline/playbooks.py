@@ -228,7 +228,7 @@ def get_playbook(name,request=None):
         bounds=request['source_duration']
         if not isinstance(bounds,list) or len(bounds)!=2 or any(type(v) not in (int,float) for v in bounds) or not 10<=bounds[0]<bounds[1]<=179:
             raise Held('playbook_duration','Supply a measured comic duration window within 10–179 seconds.')
-        rules.update(seconds=list(bounds),words=[110,230])
+        rules.update(seconds=list(bounds),words=[110,230 if bounds[1]<=60 else min(420,round(bounds[1]*3.5))])
         rules['writing'] += (' Build a connected causal story with the motive, pressure, decision and consequence intact. '
             'Identify the actual comic and issue, or the actual show and episode, near the opening. '
             'Explain why each transition happens; a chain of disconnected plot highlights is insufficient. '

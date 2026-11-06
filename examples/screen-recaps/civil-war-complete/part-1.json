@@ -1,0 +1,187 @@
+{
+  "version": 1,
+  "title": "Captain America: Civil War — The Complete Main Story",
+  "description": "A connected recap of the 2016 Civil War film: Lagos, the Accords, Bucky’s pursuit, both airport teams and the final Siberian confrontation. The late recording is revealed in the final act, not the hook.",
+  "format": "lesson",
+  "fiction": false,
+  "hook": "The Avengers win their battles. So why are they about to tear each other apart?",
+  "payoff": "Black Panther chooses justice over revenge and arrests Zemo. Steve frees his imprisoned friends. Bucky enters cryogenic sleep in Wakanda until his brainwashing can be removed.",
+  "units": [
+    {
+      "id": "u1",
+      "speaker": "Host",
+      "text": "The Avengers win their battles. So why are they about to tear each other apart?",
+      "onscreen": "CAPTAIN AMERICA: CIVIL WAR",
+      "kind": "fact",
+      "claim_ids": [
+        "c1"
+      ],
+      "visual_kind": "image",
+      "visual_query": "CAPTAIN AMERICA: CIVIL WAR",
+      "lore_scene": "portrait",
+      "lore_camera": "push"
+    },
+    {
+      "id": "u2",
+      "speaker": "Narrator",
+      "text": "Wanda redirects an explosion in Lagos, killing civilians. Governments demand control of the Avengers through the Sokovia Accords.",
+      "onscreen": "ONE MISSION CHANGES THE RULES",
+      "kind": "fact",
+      "claim_ids": [
+        "c1"
+      ],
+      "visual_kind": "image",
+      "visual_query": "ONE MISSION CHANGES THE RULES",
+      "lore_scene": "cw_lagos",
+      "lore_camera": "push"
+    },
+    {
+      "id": "u3",
+      "speaker": "Narrator",
+      "text": "Tony feels responsible for Sokovia and agrees. Steve fears political control. After Peggy's funeral, he follows his own conscience.",
+      "onscreen": "TONY AND STEVE CHOOSE DIFFERENT SIDES",
+      "kind": "fact",
+      "claim_ids": [
+        "c2",
+        "c3"
+      ],
+      "visual_kind": "image",
+      "visual_query": "TONY AND STEVE CHOOSE DIFFERENT SIDES",
+      "lore_scene": "cw_grief",
+      "lore_camera": "push"
+    },
+    {
+      "id": "u4",
+      "speaker": "Narrator",
+      "text": "Then a bombing kills Wakanda's king, and Bucky is blamed. His son, Black Panther, wants revenge. Steve finds Bucky first.",
+      "onscreen": "BUCKY IS WANTED",
+      "kind": "fact",
+      "claim_ids": [
+        "c4"
+      ],
+      "visual_kind": "image",
+      "visual_query": "BUCKY IS WANTED",
+      "lore_scene": "cw_vienna",
+      "lore_camera": "push"
+    },
+    {
+      "id": "u5",
+      "speaker": "Narrator",
+      "text": "A fake psychiatrist triggers Bucky's brainwashing. Steve stops his helicopter escape. Once himself again, Bucky reveals five more Winter Soldiers hidden in Siberia.",
+      "onscreen": "THE PRISONER BECOMES A THREAT",
+      "kind": "fact",
+      "claim_ids": [
+        "c5"
+      ],
+      "visual_kind": "image",
+      "visual_query": "THE PRISONER BECOMES A THREAT",
+      "lore_scene": "cw_interrogation",
+      "lore_camera": "push"
+    },
+    {
+      "id": "u6",
+      "speaker": "Narrator",
+      "text": "Clint frees Wanda. Sharon returns Steve's gear. Steve gathers his allies, but Tony intercepts them at the airport. Spider-Man steals Steve's shield; Ant-Man goes giant.",
+      "onscreen": "TWO TEAMS. ONE AIRPORT.",
+      "kind": "fact",
+      "claim_ids": [
+        "c6",
+        "c7",
+        "c14"
+      ],
+      "visual_kind": "image",
+      "visual_query": "TWO TEAMS. ONE AIRPORT.",
+      "lore_scene": "cw_wanda_exit",
+      "lore_camera": "push"
+    },
+    {
+      "id": "u7",
+      "speaker": "Narrator",
+      "text": "Natasha lets Steve and Bucky escape, then goes on the run. Vision accidentally shoots down Rhodey, leaving him paralyzed. Steve's other allies are sent to the Raft prison.",
+      "onscreen": "THE FIGHT HAS A COST",
+      "kind": "fact",
+      "claim_ids": [
+        "c8"
+      ],
+      "visual_kind": "image",
+      "visual_query": "THE FIGHT HAS A COST",
+      "lore_scene": "cw_escape",
+      "lore_camera": "push"
+    },
+    {
+      "id": "u8",
+      "speaker": "Narrator",
+      "text": "Tony discovers Bucky was framed and follows them. In Siberia, they find the other soldiers already dead. Someone has led them into a different trap.",
+      "onscreen": "THE THREAT IS NOT WHAT THEY EXPECTED",
+      "kind": "fact",
+      "claim_ids": [
+        "c9"
+      ],
+      "visual_kind": "image",
+      "visual_query": "THE THREAT IS NOT WHAT THEY EXPECTED",
+      "lore_scene": "cw_truth",
+      "lore_camera": "push"
+    },
+    {
+      "id": "u9",
+      "speaker": "Narrator",
+      "text": "The bomber, Zemo, lost his family in Sokovia. He plays a recording: a brainwashed Bucky murdered Tony's parents. Steve knew about the murder.",
+      "onscreen": "THE RECORDING CHANGES EVERYTHING",
+      "kind": "fact",
+      "claim_ids": [
+        "c10"
+      ],
+      "visual_kind": "image",
+      "visual_query": "THE RECORDING CHANGES EVERYTHING",
+      "lore_scene": "cw_zemo",
+      "lore_camera": "push"
+    },
+    {
+      "id": "u10",
+      "speaker": "Narrator",
+      "text": "Tony attacks Bucky. Steve won't abandon his friend. Tony blasts off Bucky's metal arm; Steve disables the armor, then leaves his shield behind.",
+      "onscreen": "THE LAST FIGHT IS PERSONAL",
+      "kind": "fact",
+      "claim_ids": [
+        "c11"
+      ],
+      "visual_kind": "image",
+      "visual_query": "THE LAST FIGHT IS PERSONAL",
+      "lore_scene": "cw_fight",
+      "lore_camera": "push"
+    },
+    {
+      "id": "u11",
+      "speaker": "Narrator",
+      "text": "Black Panther stops Zemo's suicide and arrests him. Steve frees his friends. Tony helps Rhodey walk again. Bucky sleeps in Wakanda while they work to remove his brainwashing.",
+      "onscreen": "A BROKEN TEAM. A WAY FORWARD.",
+      "kind": "fact",
+      "claim_ids": [
+        "c12"
+      ],
+      "visual_kind": "image",
+      "visual_query": "A BROKEN TEAM. A WAY FORWARD.",
+      "lore_scene": "cw_arrest",
+      "lore_camera": "push"
+    },
+    {
+      "id": "u12",
+      "speaker": "Host",
+      "text": "Steve sends Tony an apology and a phone. Their friendship is broken, but if Tony ever needs him, Steve will answer. For more stories like this, subscribe.",
+      "onscreen": "ONE PHONE. ONE PROMISE.",
+      "kind": "fact",
+      "claim_ids": [
+        "c13"
+      ],
+      "visual_kind": "image",
+      "visual_query": "ONE PHONE. ONE PROMISE.",
+      "lore_scene": "cw_letter",
+      "lore_camera": "push"
+    }
+  ],
+  "edit": {
+    "effect": "none",
+    "payoff_unit_id": "u11",
+    "cta": true
+  }
+}

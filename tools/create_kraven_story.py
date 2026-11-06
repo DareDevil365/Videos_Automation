@@ -15,6 +15,7 @@ from yt_pipeline.batches import run_batch
 from yt_pipeline.contracts import script_contract
 from yt_pipeline.core import Workspace,file_hash
 from yt_pipeline.lore_visuals import plan_lore,lore_frame
+from yt_pipeline.lore_cuts import cut_schedule,cut_painter
 from yt_pipeline.playbooks import get_playbook,validate_playbook_script
 from yt_pipeline.source_series import create_series_plan
 from yt_pipeline.source_sets import resolve_source_set,source_painter,check_lore_reuse
@@ -23,7 +24,7 @@ from yt_pipeline.voice import synthesize
 
 RECIPE=ROOT/'examples/lore-series/kraven-last-hunt'
 DRAFT=ROOT/'Resources/Drafts/kraven-last-hunt'
-BUILD='kraven-last-hunt-complete-20261107'
+BUILD='kraven-last-hunt-subscribe-final-20261107'
 COVER_URL='https://cdn.marvel.com/u/prod/marvel/i/mg/a/40/4bc668a38f9e6/clean.jpg'
 
 
@@ -60,7 +61,7 @@ def prepare(workspace,target):
     review={'reviewer':'Codex, indexed official Marvel history/recaps/issue and reading-order comparison','supported':True,
             'limitations':brief['notes'],'brief_sha256':file_hash(RECIPE/'brief.json'),'script_sha256':{'part-1.json':file_hash(RECIPE/'part-1.json')}}
     write_json(RECIPE/'source-review.json',review)
-    earlier=ROOT/'Resources/Productions/kraven-last-hunt-directed-final-20261107/batch.json'
+    earlier=ROOT/'Resources/Productions/kraven-last-hunt-complete-20261107/batch.json'
     create_series_plan(workspace,DRAFT/'series.json',RECIPE/'brief.json',target,RECIPE/'source-review.json',build_id=BUILD,
                        assistant_authored=True,revise_batch=earlier if earlier.exists() else None)
 
@@ -70,11 +71,15 @@ def storyboard(workspace,target):
     plan=plan_lore(request['script'],request,request['brief'])['plan']
     _,reaction,_=resolve_source_set(workspace,request,request['script'])
     backdrops,props,_=load_style_layers(workspace,request,request['script'])
-    sheet=Image.new('RGB',(1152,1536),'#211b20')
+    frames=[]
     for n,scene in enumerate(plan['scenes']):
-        painter=source_painter(lambda s,t,d:lore_frame(s,t,d,style_backdrops=backdrops),props.get(scene['unit_id'],()),reaction,n*4)
-        frame=painter(scene,2.7,4)
-        sheet.paste(frame.resize((288,512)),(n%4*288,n//4*512))
+        span=max(6,len(scene['text'].split())/2.6)
+        cuts=cut_schedule(scene,{'start':n*6,'duration':span},[],preview=True)
+        painter=source_painter(cut_painter(lambda s,t,d:lore_frame(s,t,d,style_backdrops=backdrops),cuts),props.get(scene['unit_id'],()),reaction,n*6)
+        for row in cuts or [{'start':0,'end':span}]:
+            frames.append(painter(scene,(row['start']+row['end'])/2,span))
+    sheet=Image.new('RGB',(1152,512*((len(frames)+3)//4)),'#211b20')
+    for n,frame in enumerate(frames):sheet.paste(frame.resize((288,512)),(n%4*288,n//4*512))
     sheet.save(DRAFT/'storyboard.jpg',quality=94)
     write_json(DRAFT/'design-decisions.json',plan['design'])
 

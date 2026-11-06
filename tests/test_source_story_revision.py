@@ -22,6 +22,7 @@ def test_measured_story_window_is_opt_in_and_does_not_change_legacy_rules():
     assert rule['seconds']==[42,50] and rule['words'][1]>=178
     assert 'why each transition happens' in rule['writing']
     assert get_playbook('comic_lore')['seconds']==original
+    assert get_playbook('comic_lore',{'source_duration':[75,115]})['words'][1]>=268
     for invalid in ([50,42],[42,float('inf')],[True,50],'42-50'):
         with pytest.raises(Held):get_playbook('comic_lore',{'source_duration':invalid})
 

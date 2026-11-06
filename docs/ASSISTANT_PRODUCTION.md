@@ -2,6 +2,8 @@
 
 Open this project folder in Antigravity. Its workspace instructions are in [AGENTS.md](../AGENTS.md). Start the session with **“Use yourself as the writer and shot planner. Read the comic lore playbook, check production history, and make the next local preview.”** The assistant writes the creative files. The program handles registered assets, local voices, timing, motion, rendering, captions, and the finished title and description package.
 
+For film/episode stories, read the [recap and timed-cut workflow](categories/movies/FILM_RECAPS.md). Build a main-plot/visual coverage table before shortening a whole movie. Keep the decisive reveal in its final act. Use exact spoken anchors for multiple shots within a narrated unit, select music by emotional fit, and preserve required lower audience framing. The latest ending preference is a brief spoken and visible subscribe request **after** the story payoff; earlier no-CTA examples are historical. The [screen recap examples](../examples/screen-recaps/README.md) include both source-specific scripts and reusable execution commands.
+
 ## Start with what happened last
 
 ```powershell

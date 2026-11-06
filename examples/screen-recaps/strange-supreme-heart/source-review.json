@@ -1,0 +1,9 @@
+{
+  "reviewer": "Codex, compared the cited continuity/plot sources and exact supplied narration",
+  "supported": true,
+  "limitations": "What If…? S1E4 (2021), alternate animated reality. Secondary episode recaps were compared with official Disney continuity metadata; no full-episode viewing is claimed. Geometry illustrates actions and costumes; it is not literal footage. Source posters and audience assets are local-review-only. Full acting/suspense and audience response are not established by technical checks.",
+  "brief_sha256": "f88169c9b3f1d26265baeda885b01fcf9cf48a89fdd8d216d4c06e6fa0447116",
+  "script_sha256": {
+    "part-1.json": "d9bfb51714de1b1daa786922e55b9980260a9bc859c88796ddc8bd14f66f70f5"
+  }
+}

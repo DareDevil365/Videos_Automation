@@ -1,0 +1,251 @@
+{
+  "version": 1,
+  "series_id": "strange-supreme-heart",
+  "title": "Doctor Strange Keeps Saving Her. Why Does She Still Die?",
+  "structure": "chapter_answers",
+  "canon": "What If…? S1E4 (2021), alternate animated MCU continuity.",
+  "source_voices": {
+    "Host": "af_heart",
+    "Narrator": "am_michael"
+  },
+  "parts": [
+    {
+      "part": 1,
+      "script": "part-1.json",
+      "next_part": null,
+      "reaction_preset": "doctor-strange-sanctum",
+      "source_duration": [
+        45,
+        60
+      ],
+      "source_delivery": {
+        "tight_speech": true,
+        "speed": 1.22,
+        "pause_after": 0.05,
+        "linked_phrases": [
+          "Captain America",
+          "Iron Man",
+          "Black Panther",
+          "Winter Soldiers",
+          "Sokovia Accords",
+          "Doctor Strange",
+          "Ancient One"
+        ]
+      },
+      "source_music": {
+        "start": 4,
+        "volume": 0.06
+      },
+      "visual_selection": {
+        "mode": "authored"
+      },
+      "lore_cuts": {
+        "u3": [
+          {
+            "on": "",
+            "kind": "ss_library",
+            "camera": "wide",
+            "reason": "Training follows his personal loss."
+          },
+          {
+            "on": "defeats Dormammu",
+            "kind": "ss_dormammu",
+            "camera": "wide",
+            "reason": "Show the achievement that makes the time-travel paradox possible."
+          },
+          {
+            "on": "rewinds",
+            "kind": "ss_clock",
+            "camera": "wide",
+            "reason": "Return to the eye/clock when he chooses to reverse time."
+          }
+        ],
+        "u4": [
+          {
+            "on": "",
+            "kind": "ss_routes",
+            "camera": "wide",
+            "reason": "Three changing routes return to the same center."
+          },
+          {
+            "on": "The Ancient One",
+            "kind": "ss_absolute",
+            "camera": "wide",
+            "reason": "The teacher links loss, magic and time rather than adding another death montage."
+          }
+        ],
+        "u5": [
+          {
+            "on": "",
+            "kind": "ss_warning",
+            "camera": "wide",
+            "reason": "The Ancient One blocks his path and a cracked clock makes the paradox warning physical."
+          },
+          {
+            "on": "just needs more",
+            "kind": "ss_book",
+            "camera": "wide",
+            "reason": "A close-up of forbidden knowledge motivates the next absorption action."
+          }
+        ],
+        "u6": [
+          {
+            "on": "",
+            "kind": "ss_absorb",
+            "camera": "wide",
+            "reason": "Creatures contract toward his chest; the cloak becomes purple."
+          },
+          {
+            "on": "Ancient One",
+            "kind": "ss_split",
+            "camera": "wide",
+            "reason": "The teacher’s branching lines introduce the second self before its action."
+          }
+        ],
+        "u7": [
+          {
+            "on": "",
+            "kind": "ss_duel",
+            "camera": "wide",
+            "reason": "The red-cloaked counterpart opposes the purple-cloaked Strange."
+          },
+          {
+            "on": "absorbs",
+            "kind": "ss_consume",
+            "camera": "wide",
+            "reason": "The opposing figure contracts into the corrupted one."
+          }
+        ],
+        "u8": [
+          {
+            "on": "",
+            "kind": "ss_revive",
+            "camera": "wide",
+            "reason": "Christine steps back from the monstrous form."
+          },
+          {
+            "on": "Reality starts",
+            "kind": "ss_collapse",
+            "camera": "wide",
+            "reason": "The environment visibly breaks after the reversal."
+          },
+          {
+            "on": "Watcher for help",
+            "kind": "ss_watcher",
+            "camera": "wide",
+            "reason": "Strange reaches toward the observer when his own magic fails."
+          }
+        ],
+        "u9": [
+          {
+            "on": "",
+            "kind": "ss_prison",
+            "camera": "wide",
+            "reason": "The last fragment of reality closes around the two figures."
+          },
+          {
+            "on": "Stephen is left alone",
+            "kind": "ss_alone",
+            "camera": "push",
+            "reason": "Christine is absent when the narration reaches his isolation."
+          },
+          {
+            "on": "For more stories",
+            "kind": "end_subscribe",
+            "camera": "wide",
+            "reason": "The requested CTA begins after the final tragic consequence."
+          }
+        ]
+      },
+      "lore_design": {
+        "palette": "paper",
+        "font": "Trebuchet MS",
+        "atmosphere": "none",
+        "audience_required": true,
+        "reason": "Preserve a readable portrait story, stable identity/costume and explicit per-beat visual purposes. Cuts follow aligned spoken phrases, while full sentences retain the causal chain. Trebuchet keeps open readable letters; a dark caption strip separates the story from its quiet lower audience set.",
+        "shots": {
+          "u1": {
+            "palette": "plum",
+            "atmosphere": "none",
+            "reason": "Follow the spoken causal beat with recognizable actors, legible physical contact and location-appropriate light. Warm study and road contrasts with purple absorption, red conflict and a multicolor collapse; character costume colors stay stable.",
+            "elements": [
+              "Show ss_clock as the stated beat’s action/result, with no early reveal of later story information."
+            ]
+          },
+          "u2": {
+            "palette": "paper",
+            "atmosphere": "none",
+            "reason": "Follow the spoken causal beat with recognizable actors, legible physical contact and location-appropriate light. Warm study and road contrasts with purple absorption, red conflict and a multicolor collapse; character costume colors stay stable.",
+            "elements": [
+              "Show portrait as the stated beat’s action/result, with no early reveal of later story information."
+            ]
+          },
+          "u3": {
+            "palette": "ember",
+            "atmosphere": "none",
+            "reason": "Follow the spoken causal beat with recognizable actors, legible physical contact and location-appropriate light. Warm study and road contrasts with purple absorption, red conflict and a multicolor collapse; character costume colors stay stable.",
+            "elements": [
+              "Training follows his personal loss.",
+              "Show the achievement that makes the time-travel paradox possible.",
+              "Return to the eye/clock when he chooses to reverse time."
+            ]
+          },
+          "u4": {
+            "palette": "paper",
+            "atmosphere": "none",
+            "reason": "Follow the spoken causal beat with recognizable actors, legible physical contact and location-appropriate light. Warm study and road contrasts with purple absorption, red conflict and a multicolor collapse; character costume colors stay stable.",
+            "elements": [
+              "Three changing routes return to the same center.",
+              "The teacher links loss, magic and time rather than adding another death montage."
+            ]
+          },
+          "u5": {
+            "palette": "paper",
+            "atmosphere": "none",
+            "reason": "Follow the spoken causal beat with recognizable actors, legible physical contact and location-appropriate light. Warm study and road contrasts with purple absorption, red conflict and a multicolor collapse; character costume colors stay stable.",
+            "elements": [
+              "Hold the cause chain through the warning.",
+              "The library is a deliberate response to the warning, not a random location."
+            ]
+          },
+          "u6": {
+            "palette": "plum",
+            "atmosphere": "hex",
+            "reason": "Follow the spoken causal beat with recognizable actors, legible physical contact and location-appropriate light. Warm study and road contrasts with purple absorption, red conflict and a multicolor collapse; character costume colors stay stable.",
+            "elements": [
+              "Creatures contract toward his chest; the cloak becomes purple.",
+              "The teacher’s branching lines introduce the second self before its action."
+            ]
+          },
+          "u7": {
+            "palette": "crimson",
+            "atmosphere": "hex",
+            "reason": "Follow the spoken causal beat with recognizable actors, legible physical contact and location-appropriate light. Warm study and road contrasts with purple absorption, red conflict and a multicolor collapse; character costume colors stay stable.",
+            "elements": [
+              "The red-cloaked counterpart opposes the purple-cloaked Strange.",
+              "The opposing figure contracts into the corrupted one."
+            ]
+          },
+          "u8": {
+            "palette": "hex",
+            "atmosphere": "hex",
+            "reason": "Follow the spoken causal beat with recognizable actors, legible physical contact and location-appropriate light. Warm study and road contrasts with purple absorption, red conflict and a multicolor collapse; character costume colors stay stable.",
+            "elements": [
+              "Christine steps back from the monstrous form.",
+              "The environment visibly breaks after the reversal.",
+              "Strange reaches toward the observer when his own magic fails."
+            ]
+          },
+          "u9": {
+            "palette": "plum",
+            "atmosphere": "none",
+            "reason": "Follow the spoken causal beat with recognizable actors, legible physical contact and location-appropriate light. Warm study and road contrasts with purple absorption, red conflict and a multicolor collapse; character costume colors stay stable.",
+            "elements": [
+              "Show ss_prison as the stated beat’s action/result, with no early reveal of later story information."
+            ]
+          }
+        }
+      }
+    }
+  ]
+}

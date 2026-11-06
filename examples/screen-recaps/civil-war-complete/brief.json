@@ -1,0 +1,116 @@
+{
+  "version": 1,
+  "title": "Captain America: Civil War — The Complete Main Story",
+  "question": "What drives the characters’ choices and how does the story resolve?",
+  "kind": "fact",
+  "sources": [
+    {
+      "id": "marvel",
+      "url": "https://www.marvel.com/amp/articles/movies/the-essential-marvel-cinematic-universe-guide-phase-three",
+      "title": "Marvel: Phase Three story guide",
+      "excerpt": "Official chronology supports Lagos, Accords, bombing, trigger words, Siberia, airport costs, parents revelation, split and final reconciliation offer. Direct page blocked; indexed publisher passages reviewed.",
+      "checked_at": "2026-11-06T22:09:07.092344+00:00"
+    },
+    {
+      "id": "plot",
+      "url": "https://en.wikipedia.org/wiki/Captain_America:_Civil_War",
+      "title": "Civil War film plot and referenced cast",
+      "excerpt": "Secondary plot audit cross-checks capture/reactivation, Peggy/Sharon, both teams, airport, framing discovery, late recording, arm/armor damage and aftermath. It is not the 2006 comic plot.",
+      "checked_at": "2026-11-06T22:09:07.092344+00:00"
+    },
+    {
+      "id": "disney",
+      "url": "https://movies.disney.com/captain-america-civil-war",
+      "title": "Disney: Civil War film page",
+      "excerpt": "Official 2016 film identity, central oversight conflict and on-screen cast.",
+      "checked_at": "2026-11-06T22:09:07.092344+00:00"
+    },
+    {
+      "id": "d23",
+      "url": "https://d23.com/captain-america-civil-war-what-you-need-to-know-before-you-see-it/",
+      "title": "D23: Tony and Steve through-story",
+      "excerpt": "Official Disney editorial explains the leadership conflict and Steve/Bucky/Tony histories.",
+      "checked_at": "2026-11-06T22:09:07.092344+00:00"
+    },
+    {
+      "id": "wanda",
+      "url": "https://marvelcinematicuniverse.fandom.com/wiki/Rescue_of_Wanda_Maximoff",
+      "title": "Fan-maintained scene audit: rescue of Wanda",
+      "excerpt": "Clint comes to recruit Wanda; Vision tries to stop the escape; Wanda overpowers him and leaves with Clint. Secondary scene support, not official publisher evidence.",
+      "checked_at": "2026-11-06T22:09:07.092344+00:00"
+    }
+  ],
+  "claims": [
+    {
+      "id": "c1",
+      "source_id": "marvel",
+      "text": "In Lagos, Rumlow’s attack leads Wanda to redirect an explosion; civilians die and the Sokovia Accords propose international oversight."
+    },
+    {
+      "id": "c2",
+      "source_id": "marvel",
+      "text": "Tony supports oversight after the harm in Sokovia; Steve distrusts political control over the team."
+    },
+    {
+      "id": "c3",
+      "source_id": "plot",
+      "text": "Peggy dies during the story. Sharon speaks at her funeral; Steve continues to follow his own judgment."
+    },
+    {
+      "id": "c4",
+      "source_id": "marvel",
+      "text": "A Vienna bombing kills T’Chaka; Bucky is framed, T’Challa pursues revenge, and Steve protects Bucky."
+    },
+    {
+      "id": "c5",
+      "source_id": "plot",
+      "text": "Zemo impersonates a psychiatrist and activates Bucky. Steve stops the rampage, including a helicopter escape. Bucky explains five other Winter Soldiers in Siberia."
+    },
+    {
+      "id": "c6",
+      "source_id": "plot",
+      "text": "Sharon returns Steve and Sam’s equipment. Steve recruits Sam, Wanda, Clint and Scott. Tony assembles Rhodey, Natasha, Vision, T’Challa and Peter."
+    },
+    {
+      "id": "c7",
+      "source_id": "plot",
+      "text": "The teams fight at Leipzig/Halle Airport. Spider-Man takes Steve’s shield and Scott uses Giant-Man size."
+    },
+    {
+      "id": "c8",
+      "source_id": "marvel",
+      "text": "Natasha permits Steve and Bucky to escape; Vision accidentally shoots Rhodey down, causing paralysis, and the remaining Steve allies are imprisoned in the Raft."
+    },
+    {
+      "id": "c9",
+      "source_id": "marvel",
+      "text": "Tony learns Bucky was framed and goes to Siberia, where the other Winter Soldiers are dead."
+    },
+    {
+      "id": "c10",
+      "source_id": "plot",
+      "text": "Zemo seeks revenge for his family’s deaths in Sokovia. His recording reveals brainwashed Bucky murdered Howard and Maria Stark, and Tony learns Steve knew about their murder."
+    },
+    {
+      "id": "c11",
+      "source_id": "marvel",
+      "text": "Tony fights Bucky and Steve. Tony destroys Bucky’s metal arm; Steve disables the armor and leaves his shield."
+    },
+    {
+      "id": "c12",
+      "source_id": "plot",
+      "text": "T’Challa stops Zemo killing himself and hands him to authorities; Steve frees the Raft prisoners; Bucky chooses cryogenic sleep in Wakanda until his conditioning can be removed. Tony supplies Rhodey with exoskeletal braces to help him walk again."
+    },
+    {
+      "id": "c13",
+      "source_id": "marvel",
+      "text": "Steve sends Tony an apology and a phone, leaving the possibility of future help."
+    },
+    {
+      "id": "c14",
+      "source_id": "wanda",
+      "text": "Clint helps Wanda leave the Avengers Compound after she subdues Vision."
+    }
+  ],
+  "notes": "Theatrical Civil War (2016) film, not the comic event. Major-plot/visual coverage map is saved separately. The 1991 mission is explained at the late recording to preserve the discovery. Geometry illustrates actions and costumes; it is not literal footage. Source posters and audience assets are local-review-only. Full acting/suspense and audience response are not established by technical checks."
+}

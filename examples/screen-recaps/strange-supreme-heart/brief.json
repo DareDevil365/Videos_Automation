@@ -1,0 +1,72 @@
+{
+  "version": 1,
+  "title": "Doctor Strange Keeps Saving Her. Why Does She Still Die?",
+  "question": "What drives the characters’ choices and how does the story resolve?",
+  "kind": "fact",
+  "sources": [
+    {
+      "id": "syfy",
+      "url": "https://www.syfy.com/syfy-wire/marvel-what-if-dr-strange-heartbreaking-episode-recap",
+      "title": "SYFY Wire: What If episode four recap",
+      "excerpt": "The alternate crash kills Christine; repeated attempts fail; the absolute point drives absorption over centuries, two selves, their duel and the universe/crystal ending.",
+      "checked_at": "2026-11-06T22:09:07.092344+00:00"
+    },
+    {
+      "id": "lp",
+      "url": "https://www.laughingplace.com/w/articles/2021/09/01/recap-what-if-episode-4/",
+      "title": "Laughing Place: What If episode four",
+      "excerpt": "Corroborates the cause chain, Ancient One split, power absorption, frightened Christine, Watcher refusal and final collapse.",
+      "checked_at": "2026-11-06T22:09:07.092344+00:00"
+    },
+    {
+      "id": "disney",
+      "url": "https://www.disneylatino.com/novedades/doctor-strange-que-es-el-multiverso-y-que-hay-en-el",
+      "title": "Disney: alternate Doctor Strange continuity",
+      "excerpt": "Official Disney context identifies the fourth What If episode and the altered crash losing Christine instead of his hands.",
+      "checked_at": "2026-11-06T22:09:07.092344+00:00"
+    }
+  ],
+  "claims": [
+    {
+      "id": "s1",
+      "source_id": "disney",
+      "text": "What If season one episode four changes the crash so Christine dies instead of Strange’s hands being injured."
+    },
+    {
+      "id": "s2",
+      "source_id": "syfy",
+      "text": "The loss leads Strange to magic. He defeats Dormammu but later uses time travel to try to undo Christine’s death."
+    },
+    {
+      "id": "s3",
+      "source_id": "lp",
+      "text": "Different choices still lead to Christine’s death; the Ancient One calls it an absolute point because the loss leads him to sorcery and saving the universe."
+    },
+    {
+      "id": "s4",
+      "source_id": "syfy",
+      "text": "Strange seeks greater power and spends centuries absorbing mystical creatures, becoming monstrous."
+    },
+    {
+      "id": "s5",
+      "source_id": "lp",
+      "text": "The Ancient One split Strange into two selves; the other accepted the death rather than following the absorption path."
+    },
+    {
+      "id": "s6",
+      "source_id": "syfy",
+      "text": "The good Strange tries to stop his counterpart; the corrupted one defeats and absorbs him."
+    },
+    {
+      "id": "s7",
+      "source_id": "lp",
+      "text": "Strange revives Christine, frightens her, and cannot stop reality collapsing. The Watcher refuses to interfere."
+    },
+    {
+      "id": "s8",
+      "source_id": "syfy",
+      "text": "The universe collapses, Christine vanishes, and Strange remains alone inside a small crystalline refuge."
+    }
+  ],
+  "notes": "What If…? S1E4 (2021), alternate animated reality. Secondary episode recaps were compared with official Disney continuity metadata; no full-episode viewing is claimed. Geometry illustrates actions and costumes; it is not literal footage. Source posters and audience assets are local-review-only. Full acting/suspense and audience response are not established by technical checks."
+}

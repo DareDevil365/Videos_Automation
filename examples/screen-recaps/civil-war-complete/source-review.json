@@ -1,0 +1,9 @@
+{
+  "reviewer": "Codex, compared the cited continuity/plot sources and exact supplied narration",
+  "supported": true,
+  "limitations": "Theatrical Civil War (2016) film, not the comic event. Major-plot/visual coverage map is saved separately. The 1991 mission is explained at the late recording to preserve the discovery. Geometry illustrates actions and costumes; it is not literal footage. Source posters and audience assets are local-review-only. Full acting/suspense and audience response are not established by technical checks.",
+  "brief_sha256": "3c7c9fb0f1e8ee7db49e7cb6f06f69197c54b769b71e22886bb82e0db258d23f",
+  "script_sha256": {
+    "part-1.json": "cc0679f59618ca6607f896fb0c8c57c74155ffbe5beccc70a9b77b2e42d1c94c"
+  }
+}

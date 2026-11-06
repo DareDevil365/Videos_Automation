@@ -1,0 +1,144 @@
+{
+  "version": 1,
+  "title": "Doctor Strange Keeps Saving Her. Why Does She Still Die?",
+  "description": "The tragedy of Doctor Strange in What If…? season 1 episode 4 (2021). This is alternate animated continuity, not the 2016 movie or a prediction about later films.",
+  "format": "lesson",
+  "fiction": false,
+  "hook": "Doctor Strange can reverse time. So why does Christine keep dying?",
+  "payoff": "The universe disappears, taking Christine with it. Stephen is left alone inside a crystal. He finally undid her death, and lost everything anyway. For more stories like this, subscribe.",
+  "units": [
+    {
+      "id": "u1",
+      "speaker": "Host",
+      "text": "Doctor Strange can reverse time. So why does Christine keep dying?",
+      "onscreen": "ONE NIGHT. EVERY POSSIBLE CHOICE.",
+      "kind": "fact",
+      "claim_ids": [
+        "s1"
+      ],
+      "visual_kind": "image",
+      "visual_query": "ONE NIGHT. EVERY POSSIBLE CHOICE.",
+      "lore_scene": "ss_clock",
+      "lore_camera": "push"
+    },
+    {
+      "id": "u2",
+      "speaker": "Narrator",
+      "text": "In What If's fourth episode, Christine dies in the crash that should have injured his hands.",
+      "onscreen": "WHAT IF…? · SEASON 1, EPISODE 4",
+      "kind": "fact",
+      "claim_ids": [
+        "s1"
+      ],
+      "visual_kind": "image",
+      "visual_query": "WHAT IF…? · SEASON 1, EPISODE 4",
+      "lore_scene": "portrait",
+      "lore_camera": "push"
+    },
+    {
+      "id": "u3",
+      "speaker": "Narrator",
+      "text": "Stephen learns magic and defeats Dormammu, but cannot accept her death. So he rewinds their last night.",
+      "onscreen": "HE SAVES THE WORLD. HE CANNOT ACCEPT THE LOSS.",
+      "kind": "fact",
+      "claim_ids": [
+        "s2"
+      ],
+      "visual_kind": "image",
+      "visual_query": "HE SAVES THE WORLD. HE CANNOT ACCEPT THE LOSS.",
+      "lore_scene": "ss_library",
+      "lore_camera": "push"
+    },
+    {
+      "id": "u4",
+      "speaker": "Narrator",
+      "text": "Different routes. Different choices. She dies every time. The Ancient One explains: her death made him a sorcerer.",
+      "onscreen": "EVERY ATTEMPT RETURNS TO THE SAME LOSS",
+      "kind": "fact",
+      "claim_ids": [
+        "s3"
+      ],
+      "visual_kind": "image",
+      "visual_query": "EVERY ATTEMPT RETURNS TO THE SAME LOSS",
+      "lore_scene": "ss_routes",
+      "lore_camera": "push"
+    },
+    {
+      "id": "u5",
+      "speaker": "Narrator",
+      "text": "Undo that loss, and he destroys the history that gave him these powers. Stephen decides he just needs more.",
+      "onscreen": "THE WARNING BECOMES A CHALLENGE",
+      "kind": "fact",
+      "claim_ids": [
+        "s3",
+        "s4"
+      ],
+      "visual_kind": "image",
+      "visual_query": "THE WARNING BECOMES A CHALLENGE",
+      "lore_scene": "ss_warning",
+      "lore_camera": "push"
+    },
+    {
+      "id": "u6",
+      "speaker": "Narrator",
+      "text": "For centuries, he absorbs mystical creatures, becoming a monster. But the Ancient One has split him into two selves.",
+      "onscreen": "POWER GROWS. REALITY SPLITS.",
+      "kind": "fact",
+      "claim_ids": [
+        "s4",
+        "s5"
+      ],
+      "visual_kind": "image",
+      "visual_query": "POWER GROWS. REALITY SPLITS.",
+      "lore_scene": "ss_absorb",
+      "lore_camera": "push"
+    },
+    {
+      "id": "u7",
+      "speaker": "Narrator",
+      "text": "His other self accepts the loss and tries to stop him. Stephen defeats and absorbs that Strange too.",
+      "onscreen": "THE LAST PERSON WHO COULD STOP HIM",
+      "kind": "fact",
+      "claim_ids": [
+        "s6"
+      ],
+      "visual_kind": "image",
+      "visual_query": "THE LAST PERSON WHO COULD STOP HIM",
+      "lore_scene": "ss_duel",
+      "lore_camera": "wide"
+    },
+    {
+      "id": "u8",
+      "speaker": "Narrator",
+      "text": "He revives Christine, but she's terrified. Reality starts collapsing. He begs the Watcher for help, but the Watcher won't interfere.",
+      "onscreen": "SHE RETURNS. REALITY CANNOT HOLD.",
+      "kind": "fact",
+      "claim_ids": [
+        "s7"
+      ],
+      "visual_kind": "image",
+      "visual_query": "SHE RETURNS. REALITY CANNOT HOLD.",
+      "lore_scene": "ss_revive",
+      "lore_camera": "push"
+    },
+    {
+      "id": "u9",
+      "speaker": "Host",
+      "text": "The universe disappears, taking Christine with it. Stephen is left alone inside a crystal. He finally undid her death, and lost everything anyway. For more stories like this, subscribe.",
+      "onscreen": "ALL THAT POWER. ONE PERSON LEFT.",
+      "kind": "fact",
+      "claim_ids": [
+        "s8"
+      ],
+      "visual_kind": "image",
+      "visual_query": "ALL THAT POWER. ONE PERSON LEFT.",
+      "lore_scene": "ss_prison",
+      "lore_camera": "push"
+    }
+  ],
+  "edit": {
+    "effect": "none",
+    "payoff_unit_id": "u9",
+    "cta": true
+  }
+}

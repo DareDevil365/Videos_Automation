@@ -27,10 +27,12 @@ from .lore_style_assets import load_character_cutouts, load_style_layers, place_
 from .lore_identity import IDENTITY_KINDS, identity_art
 from .lore_design import compile_design, paint_atmosphere
 from .lore_hunt import HUNT_KINDS, hunt_art
+from .lore_cuts import compile_cuts,cut_schedule,cut_painter
+from .lore_screen import SCREEN_KINDS,screen_art
 
 
 KINDS=('collapse','life_raft','battleworld','throne','control','hidden_power','meal','confrontation','rebuilding','restoration',
-       'dominion','memory','source_closeup','meal_detail','absence','duel','consequence','portrait','street_impact') + FORGE_KINDS + REACTOR_KINDS + THUNDER_KINDS + PACT_KINDS + HELLBOY_KINDS + IDENTITY_KINDS + HUNT_KINDS
+       'dominion','memory','source_closeup','meal_detail','absence','duel','consequence','portrait','street_impact') + FORGE_KINDS + REACTOR_KINDS + THUNDER_KINDS + PACT_KINDS + HELLBOY_KINDS + IDENTITY_KINDS + HUNT_KINDS + SCREEN_KINDS
 CAMERAS = ('wide', 'push', 'pan_left', 'pan_right', 'detail')
 SIZE=(720,1280)
 ART=(20,180,700,950)
@@ -94,6 +96,7 @@ def plan_lore(script,request,brief):
             'label':label,'claim_ids':list(refs),**delivery_for(unit,request,.07, tight_default=True),
             'visible_cast':[],'framing':camera,
             'motion':'panel_reveal','illustration_note':NOTE})
+    compile_cuts(scenes,request,KINDS,CAMERAS)
     design=compile_design(request,units)
     if design:
         for scene in scenes:scene['design']=design['shots'][scene['unit_id']]
@@ -127,6 +130,7 @@ def _background(kind,theme=None):
     palette.update({name:('#242029','#c58968') for name in HELLBOY_KINDS})
     palette.update({name:('#18232f','#9cbeb8') for name in IDENTITY_KINDS})
     palette.update({name:('#382a26','#cba16a') for name in HUNT_KINDS})
+    palette.update({name:('#453349','#d5ad78') for name in SCREEN_KINDS})
     from .lore_design import PALETTES
     colors=PALETTES[theme] if theme else None
     base,accent=(colors['field'],colors['accent']) if colors else palette[kind]
@@ -246,6 +250,8 @@ def _art(scene,second,duration,thunder_cast=None,pact_cast=None,hellboy_media=No
         identity_art(layer,scene,second,p,_glow,character_cutouts or {})
     elif kind in HUNT_KINDS:
         hunt_art(layer,scene,second,p,_glow)
+    elif kind in SCREEN_KINDS:
+        screen_art(layer,scene,second,p,_glow)
     elif kind=='street_impact':
         settle=max(0,min(1,(p-.46)*5))
         roof=660+52*settle
@@ -481,8 +487,10 @@ def build_lore_visuals(ws,job,script,timing,folder,record):
         refs=list(dict.fromkeys(claims[c]['source_id'] for c in scene['claim_ids']))
         urls=[sources[ref]['url'] for ref in refs]
         output=folder/(scene['unit_id']+'-lore.mp4')
-        painter = source_painter(frame, placements.get(unit['id'],()), reaction, spoken['start'],
-                                 action=actions.get(unit['id'])) if placements or reaction or actions else frame
+        schedule=cut_schedule(scene,spoken,timing.get('word_timings',[]))
+        directed_frame=cut_painter(frame,schedule)
+        painter = source_painter(directed_frame, placements.get(unit['id'],()), reaction, spoken['start'],
+                                 action=actions.get(unit['id'])) if placements or reaction or actions else directed_frame
         render_lore_shot(scene,spoken['duration'],output,paint=painter)
         sourced = bool((thunder_cast and scene['kind'] in THUNDER_KINDS and scene['kind']!='stormbreaker_forged')
                        or (pact_cast and scene['kind'] in PACT_KINDS))
@@ -491,7 +499,7 @@ def build_lore_visuals(ws,job,script,timing,folder,record):
         photo_setting = bool((hellboy_media and scene['kind'] in HELLBOY_KINDS) or scene['unit_id'] in style_backdrops)
         illustration_note = SOURCE_CAST_NOTE if sourced else SOURCE_SETTING_NOTE if photo_setting else NOTE
         made=register_asset(ws,output,'original_graphic',{'generator':'original-comic-lore-v1','unit_id':scene['unit_id'],
-            'scene_kind':scene['kind'],'camera':scene['framing'],
+            'scene_kind':scene['kind'],'camera':scene['framing'],'cut_schedule':schedule,
             'cast_style':'mixed' if len(styles)>1 else 'source_cutout' if sourced else 'geometric',
             'setting_style':'photographic' if photo_setting else 'geometric',
             'visual_selection':scene.get('visual_style'),

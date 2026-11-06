@@ -59,7 +59,7 @@ def create_series_plan(workspace,series_file,brief_file,output_file,source_revie
             'series':{'id':identifier,'structure':structure,'part':part['part'],'total':len(parts),'next_part':part.get('next_part'),'canon':str(series.get('canon',''))[:240]},
             'source_review':review,'creative_brief':('Build one continuing story. End earlier parts on a concrete cliffhanger and conclude the arc in the final part. ' if structure == 'serial_cliffhanger' else 'Deliver the chapter answer before its next-part lead. ')+'Preserve the supplied canon/source distinction.'}
         for key in ('lore_scenes','lore_cameras','lore_actions','source_panels','reaction_preset','source_delivery',
-                    'source_cues','source_music','music_id','thunder_cast','pact_cast','hellboy_media','visual_selection','character_cutouts','source_duration','lore_design','reaction_set'):
+                    'source_cues','source_music','music_id','thunder_cast','pact_cast','hellboy_media','visual_selection','character_cutouts','source_duration','lore_design','reaction_set','lore_cuts'):
             if key in part:
                 request[key]=part[key]
         if assistant_authored:

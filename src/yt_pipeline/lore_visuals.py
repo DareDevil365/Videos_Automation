@@ -17,10 +17,11 @@ from .source_sets import check_lore_reuse, resolve_source_set, source_painter
 from .lore_forge import FORGE_KINDS, forge_art
 from .lore_actions import resolve_actions
 from .lore_reactor import REACTOR_KINDS, reactor_art
+from .lore_thunder import THUNDER_KINDS, thunder_art
 
 
 KINDS=('collapse','life_raft','battleworld','throne','control','hidden_power','meal','confrontation','rebuilding','restoration',
-       'dominion','memory','source_closeup','meal_detail','absence','duel','consequence','portrait','street_impact') + FORGE_KINDS + REACTOR_KINDS
+       'dominion','memory','source_closeup','meal_detail','absence','duel','consequence','portrait','street_impact') + FORGE_KINDS + REACTOR_KINDS + THUNDER_KINDS
 CAMERAS = ('wide', 'push', 'pan_left', 'pan_right', 'detail')
 SIZE=(720,1280)
 ART=(20,180,700,950)
@@ -73,9 +74,13 @@ def plan_lore(script,request,brief):
         label=unit['onscreen']
         if not isinstance(label,str) or not label.strip() or len(label)>70:
             raise Held('lore_label','Use an exact short onscreen phrase, at most 70 characters.')
-        scenes.append({'unit_id':unit['id'],'text':unit['text'],'speaker_id':cast_ids[unit['speaker']],'kind':overrides.get(unit['id'],_kind(unit['text'])),
+        scene_kind = overrides.get(unit['id'], unit.get('lore_scene', _kind(unit['text'])))
+        camera = cameras.get(unit['id'], unit.get('lore_camera', CAMERAS[index % len(CAMERAS)]))
+        if scene_kind not in KINDS or camera not in CAMERAS:
+            raise Held('lore_scene','Choose a supported illustration and camera.')
+        scenes.append({'unit_id':unit['id'],'text':unit['text'],'speaker_id':cast_ids[unit['speaker']],'kind':scene_kind,
             'label':label,'claim_ids':list(refs),**delivery_for(unit,request,.07, tight_default=True),
-            'visible_cast':[],'framing':cameras.get(unit['id'], CAMERAS[index % len(CAMERAS)]),
+            'visible_cast':[],'framing':camera,
             'motion':'panel_reveal','illustration_note':NOTE})
     plan={'version':1,'template':'comic_lore','cast':cast,
         'scenes':scenes,'sources':deepcopy(brief['sources']),'claims':deepcopy(brief['claims']),
@@ -99,6 +104,7 @@ def _background(kind):
         'mountain_pass':('#142832','#97c3d0'),'street_impact':('#19242e','#80a4a6')}
     palette.update({name:('#221d24','#d79d6e') for name in FORGE_KINDS if name not in palette})
     palette.update({name:('#121f2a','#8bb9c7') for name in REACTOR_KINDS})
+    palette.update({name:('#151e31','#91badc') for name in THUNDER_KINDS})
     base,accent=palette[kind];image=Image.new('RGB',SIZE,'#080e17');d=ImageDraw.Draw(image)
     d.polygon([(24,202),(693,180),(694,911),(30,947)],fill=base,outline='#d7d1bf',width=4)
     rng=random.Random(8821)
@@ -204,6 +210,8 @@ def _art(scene,second,duration):
         forge_art(layer,kind,second,p,_glow)
     elif kind in REACTOR_KINDS:
         reactor_art(layer,kind,second,p,_glow)
+    elif kind in THUNDER_KINDS:
+        thunder_art(layer,kind,second,p,_glow)
     elif kind=='street_impact':
         settle=max(0,min(1,(p-.46)*5))
         roof=660+52*settle
@@ -354,7 +362,7 @@ def lore_frame(scene,second,duration):
     if scene.get('kind') not in KINDS:raise Held('lore_scene','Unsupported lore scene kind.')
     if not math.isfinite(duration) or duration<=0 or not math.isfinite(second):raise Held('lore_timing','Use finite measured lore timing.')
     image=_background(scene['kind']).copy().convert('RGBA');art=_art(scene,max(0,second),duration)
-    image.alpha_composite(art)
+    image.alpha_composite(art.crop(ART), dest=ART[:2])
     # Camera only moves the illustration viewport, keeping captions and title stable.
     progress=max(0,min(1,second/duration))
     camera=scene.get('framing','push')

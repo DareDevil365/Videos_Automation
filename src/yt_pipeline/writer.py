@@ -162,6 +162,14 @@ def write_script(workspace, job, brief, provider,*,_creative_rewrite_budget=1,_c
             raise Held('aura_progression_assets','Supply at least four distinct permitted before/after assets; the rejected single-photo loop is disabled')
     else:creative_rules=None
     script_schema=deepcopy(SCRIPT_SCHEMA)
+    unit_properties=script_schema['properties']['units']['items']['properties']
+    if playbook=='comic_lore':
+        from .lore_visuals import CAMERAS, KINDS
+        unit_properties['lore_scene']['enum']=list(KINDS)
+        unit_properties['lore_camera']['enum']=list(CAMERAS)
+    else:
+        unit_properties.pop('lore_scene')
+        unit_properties.pop('lore_camera')
     script_schema['properties']['version']={'type':'integer'}
     script_schema['properties']['fiction']={'type':'boolean','enum':[brief['kind']=='fiction']}
     if brief['kind']=='fact':
@@ -224,7 +232,15 @@ def write_script(workspace, job, brief, provider,*,_creative_rewrite_budget=1,_c
                 'content_label':{'fiction':brief['kind']=='fiction','rule':'Match this exact boolean. In factual education, an explicitly imaginary sample answer is an instructional example, not a fiction-labelled story or real testimonial. Use kind instruction for that demonstrated example.'},
                 'motion_graphics':{'enabled':request.get('motion_graphics',False),
                     'instructions':'When enabled for education_demo, write short visible examples with phrases usable as comparison, numbered process or callout labels. Clearly introduce invented sample answers as examples, never real testimonials. Keep each unit self-contained. Avoid relying on a real tool screenshot when illustrating an interview answer. The director preserves the script and selects exact phrases for graphics.'},
-                "visual_brief":"For each spoken unit include visual_query: 2–5 literal English search words describing a useful illustration (e.g. student notebook desk), and visual_kind: image or video. Onscreen text should usually be 3–9 words, not the entire spoken paragraph.",
+                "visual_brief":("For each beat, decide what the viewer must see to follow the narrated cause and effect. "
+                    "Select lore_scene and lore_camera only from their allowed values when they depict that beat accurately. "
+                    "Omit a scene hint when no supported scene fits. Use visual_query to describe the desired actor, action and object. "
+                    "Geometric characters should act on their props. Establish who is present, show the action's contact, then show the changed state. "
+                    "Use a character-focused shot for choices, a wide shot for changing geography, and a detail when an object changes the story. "
+                    "Keep the same character cues and prop design across shots. Use an original or registered asset only when available. "
+                    "Do not invent an asset ID, a movie event or an unsupported editing action. Keep the onscreen phrase brief."
+                    if playbook=='comic_lore' else
+                    "For each spoken unit include visual_query: 2–5 literal English search words describing a useful illustration (e.g. student notebook desk), and visual_kind: image or video. Onscreen text should usually be 3–9 words, not the entire spoken paragraph."),
                 'entertainment_formats':'Aura: original short edit-caption beats, no invented quote attributed to the photographed creator, no narration required. Cutout: original conversational story/dialogue suitable for simple staged characters. Movie/franchise content: distinguish canon evidence, confirmed announcements and explicitly labelled fan theories/what-ifs. Do not invent leaks, real endorsements, source URLs or clip permissions.',
                 "task":(f'Use {creative_rules["units"][0]}-{creative_rules["units"][1]} separate units and {creative_rules["words"][0]}-{creative_rules["words"][1]} total spoken words. Follow the selected format_playbook pacing, writing and payoff requirements exactly. Those override generic duration/unit guidance. ' if playbook else 'Write an original 20–50 second Short, usually 5–10 units. ')+"Use complete short spoken sentences or dialogue turns, hook, meaningful progression and a delivered payoff. Each factual unit needs claim_ids from the brief. Instructions are suggestions/demonstrated steps, not guarantees. For chat, assign consistent fictional speakers; onscreen is the actual message. For lesson, onscreen is concise explanation. Use an effect only at payoff. Use explicit fictional HH:MM story times only when the phone_story contract requests them; never invent source timestamps, input filenames or test results. Metadata must match the story. Identify fiction. Keep [P]/[PP]/[PPP]/[FAST]/[NORMAL] tags out of all spoken text; structured director delivery controls timing. Comment questions are optional and follow the delivered payoff."},output_schema)
     repairs=0

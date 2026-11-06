@@ -15,12 +15,12 @@ A public search surfaced a July 18, 2025 fan upload about the same gift at rough
 | A display case could save Tony | Cold open on a dim, angular case |
 | A battery keeps Tony alive | Cave cross-section with current travelling down a cable |
 | The device and suit take shape | A reactor assembly, then a geometric Mark I leaving the cave |
-| Pepper preserves the first device | A new angle with the reactor illuminated in the case |
-| Stane takes the upgrade | A tight chest view with the working reactor moving away |
-| The gift saves Tony | Movement reverses and a pulse line returns |
+| Pepper preserves the first device | Geometric Pepper puts the gift on the bench. A match cut shows Tony discovering the same case. |
+| Stane takes the upgrade | Geometric Stane reaches across, pulls the lit reactor away, and leaves Tony with an empty socket. |
+| The gift saves Tony | Tony brings the first reactor back to his chest and the pulse line returns. |
 | The inscription pays off | A circular cutout of a photographed Disney Store replica in the local hybrid revision |
 
-The main story is geometric. The established lower workshop set is a separate, quieter reaction strip. A local hybrid revision places the registered replica photo in beat `u8` and uses the older ready cut as its revision ancestor. The photo and workshop are local preview assets. [Disney Store replica reference](https://www.disneystore.com/iron-man-mark-i-arc-reactor-with-lights-marvel-vault-418140893107.html)
+The main story is geometric. Tony's dark hair and goatee, Pepper's copper hair and tailored jacket, and Stane's broad suit, bald head and gray beard identify the actors. The gift shot represents Pepper leaving the case, followed by Tony discovering it. The local geometric-cast revision also uses a drawn Tony in the lower workshop. Its final insert is the registered replica photo from the earlier cut. The photo and workshop are local preview assets. [Disney Store replica reference](https://www.disneystore.com/iron-man-mark-i-arc-reactor-with-lights-marvel-vault-418140893107.html)
 
 ## Rebuild
 

@@ -9,6 +9,14 @@ QUEUE = Path(__file__).resolve().parents[2] / "docs" / "PRODUCTION_QUEUE.json"
 FINISHED = ("ready", "processing", "uploaded_private", "scheduled", "published")
 
 
+def verified_artifact(record):
+    if record:
+        path = Path(record["path"])
+        if path.is_file() and file_hash(path) == record["sha256"]:
+            return json.loads(path.read_text(encoding="utf-8"))
+    return {}
+
+
 def production_history(workspace, limit=8, channel=None):
     if type(limit) is not int or not 1 <= limit <= 100:
         raise ValueError("Choose a history limit between 1 and 100.")
@@ -25,11 +33,7 @@ def production_history(workspace, limit=8, channel=None):
         request = json.loads(job["request"])
         artifacts = json.loads(job["artifacts"])
         package = artifacts.get("package")
-        metadata = {}
-        if package:
-            path = Path(package["path"])
-            if path.is_file() and file_hash(path) == package["sha256"]:
-                metadata = json.loads(path.read_text(encoding="utf-8"))
+        metadata = verified_artifact(package)
         series = request.get("series") or {}
         item = {
             "job_id": job["id"], "channel": job["channel"], "status": job["status"],
@@ -40,10 +44,13 @@ def production_history(workspace, limit=8, channel=None):
             "updated_at": job["updated_at"],
         }
         if metadata and job["status"] in FINISHED:
+            visual_plan = verified_artifact(artifacts.get("script")).get("creative_plan") or {}
+            shots = visual_plan.get("plan", {}).get("scenes", []) if request.get("playbook") == "comic_lore" else []
             completed.append({**item, "package": package["path"], "video": metadata.get("video"),
                               "description": metadata.get("description"),
                               "publication_ready": metadata.get("qa", {}).get("publication_ready"),
-                              "scenes": request.get("lore_scenes"), "cameras": request.get("lore_cameras"),
+                              "scenes": {shot["unit_id"]:shot["kind"] for shot in shots} or request.get("lore_scenes"),
+                              "cameras": {shot["unit_id"]:shot["framing"] for shot in shots} or request.get("lore_cameras"),
                               "top_assets": [row["asset_id"] for rows in (request.get("source_panels") or {}).values()
                                              for row in rows]})
         state = uploads.get(job["id"], {})

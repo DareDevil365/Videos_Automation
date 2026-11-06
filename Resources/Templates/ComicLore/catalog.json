@@ -1,0 +1,17 @@
+{
+  "version": 1,
+  "assets": [
+    {"id":"tony-workshop","kind":"actor","file":"actors/tony-workshop.png","recipe":"person","profile":"tony","features":"Dark side-swept hair, goatee, blue workshop shirt."},
+    {"id":"tony-seated","kind":"actor","file":"actors/tony-seated.png","recipe":"workshop","features":"Seated Tony with a lit chest reactor for a lower workshop set."},
+    {"id":"pepper-office","kind":"actor","file":"actors/pepper-office.png","recipe":"person","profile":"pepper","features":"Copper bob and plum jacket."},
+    {"id":"pepper-workshop","kind":"actor","file":"actors/pepper-workshop.png","recipe":"person","profile":"pepper","jacket":"#4f6a6e","features":"Same Pepper head with a cooler jacket variant."},
+    {"id":"stane-suit","kind":"actor","file":"actors/stane-suit.png","recipe":"person","profile":"stane","features":"Broad suit body, bald head, grey beard and rust tie."},
+    {"id":"happy-suit","kind":"actor","file":"actors/happy-suit.png","recipe":"person","profile":"happy","features":"Shared broad suit body, dark hair, clean-shaven face and blue tie."},
+    {"id":"happy-formal","kind":"actor","file":"actors/happy-formal.png","recipe":"person","profile":"happy","jacket":"#4d4446","features":"Happy head with an alternate formal jacket."},
+    {"id":"doom-mask-cold","kind":"prop","file":"props/doom-mask-cold.png","recipe":"mask","heat":0,"features":"Angular iron mask with separate brow and mouth facets."},
+    {"id":"doom-mask-hot","kind":"prop","file":"props/doom-mask-hot.png","recipe":"mask","heat":0.95,"features":"The same Doom mask rendered red-hot."},
+    {"id":"iron-man-mark-i","kind":"prop","file":"props/iron-man-mark-i.png","recipe":"mark_i","features":"Blocky steel helmet, straight visor and rivets."},
+    {"id":"thor-hammer","kind":"prop","file":"props/thor-hammer.png","recipe":"hammer","features":"Faceted head, wrapped handle. The local draw function positions it at the grip."},
+    {"id":"arc-reactor","kind":"prop","file":"props/arc-reactor.png","recipe":"reactor","features":"Ring and copper ribs shared with the Iron Man reactor scenes."}
+  ]
+}

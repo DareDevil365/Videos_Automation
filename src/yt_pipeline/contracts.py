@@ -12,7 +12,8 @@ SCRIPT_SCHEMA = {"type":"object", "properties":{
         "id":{"type":"string"},"speaker":{"type":"string"},"text":{"type":"string"},
         "kind":{"type":"string","enum":["fact","instruction","fiction","transition"]},
         "claim_ids":{"type":"array","items":{"type":"string"}},"onscreen":{"type":"string"},
-        "visual_query":{"type":"string"},"visual_kind":{"type":"string","enum":["image","video"]}},
+        "visual_query":{"type":"string"},"visual_kind":{"type":"string","enum":["image","video"]},
+        "lore_scene":{"type":"string"},"lore_camera":{"type":"string"}},
         "required":["id","speaker","text","kind","claim_ids","onscreen"],"additionalProperties":False}},
     "edit":{"type":"object","properties":{"effect":{"type":"string","enum":["none","punch","flash","shake"]},
              "payoff_unit_id":{"type":"string"},"cta":{"type":"boolean"}},
@@ -89,6 +90,15 @@ def script_contract(value, brief, expected_format=None):
                       "onscreen":string(row.get("onscreen",row.get("text")),"Onscreen text",220),
                       "visual_query":str(row.get('visual_query',''))[:160],
                       "visual_kind":row.get('visual_kind') if row.get('visual_kind') in ('image','video') else 'image'})
+        if "lore_scene" in row or "lore_camera" in row:
+            from .lore_visuals import CAMERAS, KINDS
+            if fmt != "lesson" or fiction:
+                raise Held("lore_scene", "Geometric lore choices need a factual lesson script.")
+            for key, choices in (("lore_scene", KINDS), ("lore_camera", CAMERAS)):
+                if key in row:
+                    if row[key] not in choices:
+                        raise Held("lore_scene", f"Choose a supported {key}.")
+                    units[-1][key] = row[key]
     edit=value.get("edit",{})
     if not isinstance(edit,dict) or edit.get("effect") not in ("none","punch","flash","shake") or edit.get("payoff_unit_id") not in ids or not isinstance(edit.get("cta"),bool):
         raise Held("invalid_script","Edit intent must refer to an existing payoff unit and supported effect.")

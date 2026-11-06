@@ -2,9 +2,11 @@
 import math
 from PIL import ImageDraw
 
+from .lore_reactor_cast import PEPPER, STANE, TONY, arm, person
+
 
 REACTOR_KINDS = ("reactor_tease", "cave_battery", "reactor_build", "cave_escape",
-                 "reactor_case", "reactor_theft", "reactor_return")
+                 "reactor_case", "reactor_gift", "reactor_theft", "reactor_return")
 
 
 def _reactor(layer, glow, x, y, r, heat, time):
@@ -36,8 +38,65 @@ def _chest(d, x, y, armored):
     d.ellipse((x-57,y-57,x+57,y+57),fill="#101923",outline="#a5b5b3",width=5)
 
 
+def _gift(layer, glow, second, progress):
+    d = ImageDraw.Draw(layer)
+    d.polygon([(39,820),(39,340),(659,316),(681,807)], fill="#172e37", outline="#577780", width=4)
+    d.polygon([(74,477),(134,367),(560,347),(621,440),(621,580),(74,581)],
+              fill="#223b43", outline="#67807c", width=3)
+    for x in range(129, 604, 67):
+        d.line((x,390,x,576), fill="#35545a", width=2)
+    placing = progress < .67
+    if placing:
+        shoulder, _ = person(d, PEPPER, 206, 472, 1.05)
+        travel = min(1, progress / .42)
+        x = 314 + 48 * travel
+        y = 593 + 53 * travel
+        arm(d, PEPPER, shoulder, (289,617), (x-43,y+30), 1.05)
+    else:
+        shoulder, _ = person(d, TONY, 496, 472, 1.05, facing=-1)
+        x, y = 362, 646
+        reach = min(1, (progress-.67) * 8)
+        arm(d, TONY, shoulder, (433,637), (428-16*reach,685-15*reach), 1.05)
+    d.polygon([(79,682),(620,682),(671,734),(53,734)], fill="#4e4941", outline="#a49374", width=4)
+    d.rectangle((57,734,667,781), fill="#322f30", outline="#746555", width=3)
+    d.polygon([(x-54,y-45),(x-32,y-65),(x+51,y-65),(x+61,y-45),(x+61,y+33),(x-54,y+33)],
+              fill="#29404a", outline="#a8c0b9", width=3)
+    _reactor(layer, glow, x+3, y-11, 28, .85, second)
+    d.polygon([(397,687),(476,682),(481,708),(402,715)], fill="#c6b289", outline="#edd5aa", width=2)
+    d.line((414,695,463,691), fill="#74604c", width=2)
+    d.line((415,704,444,701), fill="#74604c", width=2)
+
+
+def _take_reactor(layer, glow, second, progress):
+    d = ImageDraw.Draw(layer)
+    d.polygon([(43,832),(43,331),(661,303),(680,812)], fill="#242d39", outline="#6a7887", width=3)
+    d.polygon([(86,704),(120,658),(371,658),(403,706),(399,803),(90,803)],
+              fill="#4e3a3f", outline="#877070", width=3)
+    d.line((94,742,394,742), fill="#79595b", width=4)
+    recoil = max(0, min(1, (progress-.46)*5))
+    _, chest = person(d, TONY, 211-28*recoil, 464+40*recoil, 1.15)
+    shoulder, _ = person(d, STANE, 514, 421, 1.25, facing=-1)
+    approach = min(1, progress/.37)
+    grab = max(0, min(1, (progress-.46)*3.3))
+    chest_x, chest_y = chest
+    hand_x = chest_x+169*(1-approach)+180*grab
+    hand_y = chest_y-34*(1-approach)-124*grab
+    arm(d, STANE, shoulder, (388,614-49*grab), (hand_x+22,hand_y+13), 1.23)
+    d.ellipse((chest_x-42,chest_y-42,chest_x+42,chest_y+42),
+              fill="#101923",outline="#819599",width=4)
+    if grab:
+        chest_x, chest_y = hand_x, hand_y
+    _reactor(layer, glow, chest_x, chest_y, 36, .92, second)
+
+
 def reactor_art(layer, kind, second, progress, glow):
     d = ImageDraw.Draw(layer)
+    if kind == "reactor_gift":
+        _gift(layer, glow, second, progress)
+        return
+    if kind == "reactor_theft":
+        _take_reactor(layer, glow, second, progress)
+        return
     if kind in ("reactor_tease", "reactor_case"):
         bright = kind == "reactor_case"
         y = 554 if bright else 570
@@ -56,19 +115,18 @@ def reactor_art(layer, kind, second, progress, glow):
     if kind == "cave_battery":
         d.polygon([(39,840),(39,434),(102,290),(213,266),(322,339),
                    (355,458),(355,840)],fill="#332a2a",outline="#8c705c",width=4)
-        d.polygon([(430,447),(530,388),(631,448),(669,794),(395,794)],
-                  fill="#485355",outline="#a4b0a6",width=4)
+        _, chest = person(d, TONY, 521, 452, 1.13, facing=-1)
         d.rounded_rectangle((91,628,269,752),14,fill="#32434b",outline="#b5bfb1",width=4)
         d.rectangle((112,615,144,641),fill="#be6255")
         d.rectangle((215,615,242,641),fill="#7ca6ae")
-        wire=[(128,625),(143,563),(236,529),(337,582),(488,604)]
+        wire=[(128,625),(143,563),(236,529),(337,582),chest]
         d.line(wire,fill="#b87d59",width=7,joint="curve")
         for index in range(len(wire)-1):
             (x,y),(xx,yy) = wire[index:index+2]
             p = (progress*2+index*.21)%1
             x,y = x+(xx-x)*p,y+(yy-y)*p
             d.ellipse((x-5,y-5,x+5,y+5),fill="#ffe4a2")
-        _reactor(layer,glow,500,604,36,.5,second)
+        _reactor(layer,glow,*chest,28,.5,second)
         return
     if kind == "reactor_build":
         d.polygon([(67,700),(634,700),(678,764),(38,764)],fill="#3a3c39",outline="#a89673",width=4)
@@ -94,14 +152,13 @@ def reactor_art(layer, kind, second, progress, glow):
         d.line((325,y-193,391,y-193),fill="#1b2c2f",width=9)
         _reactor(layer,glow,359,y,48,1,second)
         return
-    theft = kind == "reactor_theft"
-    y = 542
-    _chest(d, 312, y, armored=False)
+    shoulder, (cx, cy) = person(d, TONY, 303, 445, 1.3)
     move = min(1, progress*1.38)
-    x = 312+208*move if theft else 550-238*move
-    y2 = y-102*move if theft else y+78*(1-move)
-    d.line((310,y,x,y2),fill="#567682",width=4)
-    _reactor(layer,glow,x,y2,51,1,second)
-    if not theft and move == 1:
+    x = 538+(cx-538)*move
+    y = cy+67*(1-move)
+    d.ellipse((cx-42,cy-42,cx+42,cy+42),fill="#101923",outline="#819599",width=4)
+    arm(d, TONY, shoulder, (453,727), (x+20,y+19), 1.24)
+    _reactor(layer,glow,x,y,39,1,second)
+    if move == 1:
         d.line([(144,790),(248,790),(276,763),(311,811),(343,765),
                 (375,790),(574,790)],fill="#94d4ce",width=4)

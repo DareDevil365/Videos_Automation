@@ -1,0 +1,134 @@
+{
+  "version": 1,
+  "title": "The Alien Who Took Thor's Hammer",
+  "description": "In Walt Simonson’s Thor #337–339, Beta Ray Bill wields Thor’s hammer, then faces Thor again without it. The duel shows why the alien warrior was worthy and leads to the forging of Stormbreaker.",
+  "format": "lesson",
+  "fiction": false,
+  "hook": "Thor's hammer gave his own opponent the power of thunder. The rematch showed why.",
+  "payoff": "Thor got his hammer back, and Odin had a second one forged for Bill. Its name was Stormbreaker.",
+  "units": [
+    {
+      "id": "u1",
+      "speaker": "Host",
+      "text": "Thor's hammer gave his own opponent the power of thunder. The rematch showed why.",
+      "kind": "fact",
+      "claim_ids": [
+        "c1",
+        "c3"
+      ],
+      "onscreen": "THOR'S HAMMER CHOSE HIS OPPONENT",
+      "visual_kind": "image",
+      "visual_query": "THOR'S HAMMER CHOSE HIS OPPONENT",
+      "lore_scene": "thor_hammer_hook",
+      "lore_camera": "detail"
+    },
+    {
+      "id": "u2",
+      "speaker": "Narrator",
+      "text": "The alien was Beta Ray Bill. His people were fleeing danger, and when Thor approached their ship, Bill fought to protect them.",
+      "kind": "fact",
+      "claim_ids": [
+        "c1",
+        "c2"
+      ],
+      "onscreen": "BILL WAS GUARDING A REFUGEE FLEET",
+      "visual_kind": "image",
+      "visual_query": "BILL WAS GUARDING A REFUGEE FLEET",
+      "lore_scene": "bill_fleet",
+      "lore_camera": "pan_left"
+    },
+    {
+      "id": "u3",
+      "speaker": "Narrator",
+      "text": "Bill got hold of Thor's hammer. It gave him Thor's power, and suddenly Odin had two worthy fighters and one hammer.",
+      "kind": "fact",
+      "claim_ids": [
+        "c3",
+        "c4"
+      ],
+      "onscreen": "TWO WORTHY FIGHTERS",
+      "visual_kind": "image",
+      "visual_query": "TWO WORTHY FIGHTERS",
+      "lore_scene": "bill_lifts",
+      "lore_camera": "push"
+    },
+    {
+      "id": "u4",
+      "speaker": "Narrator",
+      "text": "Odin sent them to a world of fire. This time, they fought with their bare hands.",
+      "kind": "fact",
+      "claim_ids": [
+        "c4"
+      ],
+      "onscreen": "A DUEL WITHOUT HAMMERS",
+      "visual_kind": "image",
+      "visual_query": "A DUEL WITHOUT HAMMERS",
+      "lore_scene": "thor_duel",
+      "lore_camera": "wide"
+    },
+    {
+      "id": "u5",
+      "speaker": "Narrator",
+      "text": "Bill won. Then he saw Thor about to fall into the lava. He could have walked away.",
+      "kind": "fact",
+      "claim_ids": [
+        "c5"
+      ],
+      "onscreen": "BILL WINS. THOR IS STILL IN DANGER.",
+      "visual_kind": "image",
+      "visual_query": "BILL WINS. THOR IS STILL IN DANGER.",
+      "lore_scene": "thor_ledge",
+      "lore_camera": "pan_right"
+    },
+    {
+      "id": "u6",
+      "speaker": "Narrator",
+      "text": "Instead, Bill grabbed him and pulled him to safety. He'd fought for the power to save his people, and he used his strength to save Thor too.",
+      "kind": "fact",
+      "claim_ids": [
+        "c5",
+        "c6"
+      ],
+      "onscreen": "BILL REACHES BACK FOR THOR",
+      "visual_kind": "image",
+      "visual_query": "BILL REACHES BACK FOR THOR",
+      "lore_scene": "thor_rescue",
+      "lore_camera": "push"
+    },
+    {
+      "id": "u7",
+      "speaker": "Narrator",
+      "text": "Thor got his hammer back, and Odin had a second one forged for Bill. Its name was Stormbreaker.",
+      "kind": "fact",
+      "claim_ids": [
+        "c7"
+      ],
+      "onscreen": "A SECOND HAMMER: STORMBREAKER",
+      "visual_kind": "image",
+      "visual_query": "A SECOND HAMMER: STORMBREAKER",
+      "lore_scene": "stormbreaker_forged",
+      "lore_camera": "detail"
+    },
+    {
+      "id": "u8",
+      "speaker": "Host",
+      "text": "The hammer told us Bill was worthy. That hand reaching for Thor showed us why.",
+      "kind": "fact",
+      "claim_ids": [
+        "c3",
+        "c5",
+        "c7"
+      ],
+      "onscreen": "THE CHOICE THAT PROVED IT",
+      "visual_kind": "image",
+      "visual_query": "THE CHOICE THAT PROVED IT",
+      "lore_scene": "thor_two_hammers",
+      "lore_camera": "wide"
+    }
+  ],
+  "edit": {
+    "effect": "none",
+    "payoff_unit_id": "u7",
+    "cta": false
+  }
+}

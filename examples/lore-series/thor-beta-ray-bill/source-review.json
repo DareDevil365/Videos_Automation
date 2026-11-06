@@ -1,0 +1,9 @@
+{
+  "reviewer": "Codex, publisher and creator source comparison",
+  "supported": true,
+  "brief_sha256": "3f431a1bdc6df3eda76a3178653af0f3df1c711adb352a2a9daba89fd6e73abc",
+  "script_sha256": {
+    "part-1.json": "3ec54362db09affde9a646b628327ce8bfd53cc37d80fb8eea8a16f42afc1892"
+  },
+  "limitations": "Compared Marvel reading guides, the creator interview, licensed game profiles and a secondary plot synopsis. Specific rescue blocking is illustrative."
+}

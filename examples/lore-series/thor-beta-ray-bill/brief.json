@@ -1,0 +1,81 @@
+{
+  "version": 1,
+  "title": "The Alien Who Took Thor's Hammer",
+  "question": "Why did Beta Ray Bill prove worthy of Thor's hammer?",
+  "kind": "fact",
+  "sources": [
+    {
+      "id": "marvel",
+      "url": "https://www.marvel.com/comics/guides/1479/8-best-stories-of-walt-simonsons-thor",
+      "title": "Marvel · Walt Simonson’s Thor reading guide",
+      "excerpt": "Issues 337–339 introduce Bill wielding Thor’s hammer and becoming an ally.",
+      "checked_at": "2026-11-06T16:30:00+00:00"
+    },
+    {
+      "id": "interview",
+      "url": "https://www.twomorrows.com/media/MMV8SimonsonPreview.pdf",
+      "title": "Modern Masters · Walt Simonson interview, pages 47–48",
+      "excerpt": "Simonson designed Bill to look monstrous, describes the fiery unarmed duel and explains Bill needed the power to defend his people.",
+      "checked_at": "2026-11-06T16:30:00+00:00"
+    },
+    {
+      "id": "snap",
+      "url": "https://marvelsnap.com/character-spotlight-beta-ray-bill/",
+      "title": "Marvel Snap · Beta Ray Bill character spotlight",
+      "excerpt": "The spacecraft mistook Thor for a threat. Bill fought him, picked up the hammer, and was granted Thor’s power.",
+      "checked_at": "2026-11-06T16:30:00+00:00"
+    },
+    {
+      "id": "duel",
+      "url": "https://clixnexus.com/article.php?aid=311&title=Who+the+Clix%3F+Beta+Ray+Bill",
+      "title": "Clixnexus · Beta Ray Bill origin and duel",
+      "excerpt": "Bill guards a refugee fleet, wins the duel in Skartheim, and rescues Thor from the lava.",
+      "checked_at": "2026-11-06T16:30:00+00:00"
+    },
+    {
+      "id": "weapons",
+      "url": "https://www.marvel.com/amp/articles/comics/thor-s-11-mightiest-weapons",
+      "title": "Marvel · Thor’s Mightiest Weapons",
+      "excerpt": "Bill wields the original hammer and bests Thor in unarmed combat. Odin arranges a weapon of Bill’s own, Stormbreaker.",
+      "checked_at": "2026-11-06T16:30:00+00:00"
+    }
+  ],
+  "claims": [
+    {
+      "id": "c1",
+      "text": "Bill fought Thor after his ship identified Thor as a threat, then wielded Thor’s hammer.",
+      "source_id": "snap"
+    },
+    {
+      "id": "c2",
+      "text": "Beta Ray Bill was the champion protecting a fleet of Korbinite refugees.",
+      "source_id": "duel"
+    },
+    {
+      "id": "c3",
+      "text": "The hammer deemed Bill worthy and gave him the power of Thor.",
+      "source_id": "snap"
+    },
+    {
+      "id": "c4",
+      "text": "Odin set Thor and Bill a duel without hammers in a fiery world.",
+      "source_id": "interview"
+    },
+    {
+      "id": "c5",
+      "text": "Bill won the duel and saved Thor from falling into lava.",
+      "source_id": "duel"
+    },
+    {
+      "id": "c6",
+      "text": "Bill sought power he could use to protect his people.",
+      "source_id": "interview"
+    },
+    {
+      "id": "c7",
+      "text": "Thor kept Mjolnir and Odin commissioned Stormbreaker for Beta Ray Bill.",
+      "source_id": "weapons"
+    }
+  ],
+  "notes": "Walt Simonson’s original Thor (1966) #337–339, 1983–84. Full pages were not reviewed. The ship, specific poses, lava ledge and hand contact are original illustrative blocking. The rescue detail was corroborated against a secondary plot synopsis and the creator’s description of the duel."
+}

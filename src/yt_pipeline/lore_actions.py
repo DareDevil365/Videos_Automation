@@ -16,6 +16,20 @@ COLORS = {
 }
 
 
+def draw_hammer(draw, x, y, scale=1, *, head="#819aab", edge="#d1e2df"):
+    """Draw the reusable head and handle around the hand's grip point."""
+    def polygon(points, fill):
+        draw.polygon([(x+a*scale,y+b*scale) for a,b in points],
+                     fill=fill, outline=edge, width=max(1, round(scale)))
+
+    draw.line((x,y+17*scale,x,y-40*scale), fill="#9c704f", width=max(2,round(8*scale)))
+    for dy in (-24,-14,-4,6,16):
+        draw.line((x-4*scale,y+dy*scale,x+4*scale,y+(dy-3)*scale),
+                  fill="#c9ab80", width=max(1,round(2*scale)))
+    polygon([(-26,-53),(21,-53),(26,-48),(26,-34),(21,-29),(-26,-29)], head)
+    polygon([(-26,-53),(-18,-48),(-18,-34),(-26,-29)], "#586c79")
+
+
 def resolve_actions(request, script):
     raw = request.get("lore_actions", {})
     if not isinstance(raw, dict) or raw.keys() - {unit["id"] for unit in script["units"]}:
@@ -68,8 +82,7 @@ def draw_action(frame, action, second, duration):
                   fill="#48595a", outline=light, width=3)
         d.line((head_x-21, head_y, head_x+25, head_y), fill=light, width=6)
         if kind == "hammer_lightning":
-            d.line((x, y+17, x, y-40), fill="#c9ab80", width=8)
-            d.rectangle((x-25, y-53, x+25, y-30), fill="#819aab", outline=light, width=3)
+            draw_hammer(d, x, y, edge=light)
     if ramp:
         if kind in ("optic_blast", "repulsor"):
             tx, ty = (target[0], target[1]-194) if target else (x + reach * 300, y - (18 if kind == "repulsor" else 0))

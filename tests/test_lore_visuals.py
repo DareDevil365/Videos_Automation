@@ -11,6 +11,7 @@ from yt_pipeline.core import Held,Workspace,digest
 from yt_pipeline.lore_visuals import KINDS,plan_lore,lore_frame,render_lore_shot,build_lore_visuals
 from yt_pipeline.lore_actions import COLORS, resolve_actions
 from yt_pipeline.source_sets import check_lore_reuse, source_painter
+from yt_pipeline.contracts import script_contract
 
 
 ROOT=Path(__file__).resolve().parents[1]
@@ -34,6 +35,19 @@ def test_compiled_lore_preserves_exact_words_labels_claims_and_explicit_scene_ch
         with pytest.raises(Held):plan_lore(script,request,brief)
     broken=deepcopy(script);broken['units'][0]['claim_ids']=['invented']
     with pytest.raises(Held):plan_lore(broken,{},brief)
+
+
+def test_authored_beat_visual_choices_are_validated_and_can_be_overridden():
+    script, brief = fixture()
+    script['units'][0].update(lore_scene='thor_hammer_hook', lore_camera='detail')
+    validated = script_contract(script, brief, 'lesson')
+    scene = plan_lore(validated, {}, brief)['plan']['scenes'][0]
+    assert (scene['kind'],scene['framing']) == ('thor_hammer_hook','detail')
+    scene = plan_lore(validated, {'lore_scenes':{'u1':'bill_fleet'},'lore_cameras':{'u1':'wide'}}, brief)['plan']['scenes'][0]
+    assert (scene['kind'],scene['framing']) == ('bill_fleet','wide')
+    script['units'][0]['lore_scene'] = 'unsupported-animation'
+    with pytest.raises(Held, match='supported lore_scene'):
+        script_contract(script, brief, 'lesson')
 
 
 def test_scene_art_changes_and_moves_without_intruding_on_caption_safe_area():

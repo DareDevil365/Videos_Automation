@@ -11,11 +11,11 @@
       "next_part": null,
       "lore_scenes": {
         "u1":"reactor_tease", "u2":"cave_battery", "u3":"reactor_build", "u4":"cave_escape",
-        "u5":"reactor_case", "u6":"reactor_theft", "u7":"reactor_return", "u8":"reactor_case"
+        "u5":"reactor_gift", "u6":"reactor_theft", "u7":"reactor_return", "u8":"reactor_case"
       },
       "lore_cameras": {
         "u1":"push", "u2":"pan_right", "u3":"detail", "u4":"wide",
-        "u5":"pan_left", "u6":"push", "u7":"wide", "u8":"detail"
+        "u5":"wide", "u6":"push", "u7":"wide", "u8":"detail"
       },
       "source_delivery": {
         "tight_speech": true,

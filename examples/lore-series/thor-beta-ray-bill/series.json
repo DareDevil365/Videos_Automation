@@ -1,0 +1,106 @@
+{
+  "version": 1,
+  "series_id": "thor-beta-ray-bill",
+  "title": "The Alien Who Took Thor's Hammer",
+  "structure": "serial_cliffhanger",
+  "canon": "Walt Simonson’s Thor (1966) #337–339, Marvel Comics continuity.",
+  "parts": [
+    {
+      "part": 1,
+      "script": "part-1.json",
+      "next_part": null,
+      "source_delivery": {
+        "tight_speech": true,
+        "speed": 1.08,
+        "pause_after": 0.055,
+        "pauses_after": {
+          "u5": 0.15,
+          "u6": 0.105
+        },
+        "linked_phrases": [
+          "Beta Ray Bill",
+          "Thor's hammer"
+        ]
+      },
+      "source_music": {
+        "start": 6,
+        "volume": 0.083
+      },
+      "source_cues": {
+        "u3": "reveal",
+        "u5": "impact"
+      },
+      "publication_metadata": {
+        "titles": [
+          {
+            "title": "Why Beta Ray Bill Could Lift Thor's Hammer",
+            "angle": "searchable",
+            "evidence": [
+              {
+                "unit_id": "u3",
+                "quote": "Bill got hold of Thor's hammer. It gave him Thor's power, and suddenly Odin had two worthy fighters and one hammer."
+              },
+              {
+                "unit_id": "u6",
+                "quote": "Instead, Bill grabbed him and pulled him to safety. He'd fought for the power to save his people, and he used his strength to save Thor too."
+              }
+            ]
+          },
+          {
+            "title": "The Alien Who Took Thor's Hammer",
+            "angle": "curiosity",
+            "evidence": [
+              {
+                "unit_id": "u1",
+                "quote": "Thor's hammer gave his own opponent the power of thunder. The rematch showed why."
+              },
+              {
+                "unit_id": "u3",
+                "quote": "Bill got hold of Thor's hammer. It gave him Thor's power, and suddenly Odin had two worthy fighters and one hammer."
+              }
+            ]
+          },
+          {
+            "title": "Thor's Rival Won. Then He Saved Thor.",
+            "angle": "emotional",
+            "evidence": [
+              {
+                "unit_id": "u5",
+                "quote": "Bill won. Then he saw Thor about to fall into the lava. He could have walked away."
+              },
+              {
+                "unit_id": "u6",
+                "quote": "Instead, Bill grabbed him and pulled him to safety. He'd fought for the power to save his people, and he used his strength to save Thor too."
+              }
+            ]
+          }
+        ],
+        "selected_index": 1,
+        "description": "In Walt Simonson’s Thor #337–339, Beta Ray Bill wields Thor’s hammer, then faces Thor again without it. The duel shows why the alien warrior was worthy and leads to the forging of Stormbreaker.",
+        "description_evidence": [
+          {
+            "unit_id": "u3",
+            "quote": "Bill got hold of Thor's hammer. It gave him Thor's power, and suddenly Odin had two worthy fighters and one hammer."
+          },
+          {
+            "unit_id": "u4",
+            "quote": "Odin sent them to a world of fire. This time, they fought with their bare hands."
+          },
+          {
+            "unit_id": "u6",
+            "quote": "Instead, Bill grabbed him and pulled him to safety. He'd fought for the power to save his people, and he used his strength to save Thor too."
+          },
+          {
+            "unit_id": "u7",
+            "quote": "Thor got his hammer back, and Odin had a second one forged for Bill. Its name was Stormbreaker."
+          }
+        ],
+        "keywords": [
+          "Thor's hammer",
+          "Beta Ray Bill"
+        ],
+        "reason": "The title leads with a recognizable object and a surprising person. The Short delivers both the lift and the reason it matters."
+      }
+    }
+  ]
+}

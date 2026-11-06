@@ -2,6 +2,8 @@
 
 Use the [forge recut recipe](../../../examples/lore-series/books-of-doom/forge-recut.json) as a reference for the channel's look. On this workstation the video is in `Resources/Productions/books-of-doom-forge-recut/part-1/video.mp4`. The approved reference has a dark portrait canvas, a strong short heading, a skewed thin-edged panel, flat faceted shapes, restrained light effects, and captions separated from the lower reaction set.
 
+Use the [shot decision matrix](SHOT_DECISIONS.md) to choose what to show and the [starter asset folder](../../../Resources/Templates/ComicLore/README.md) for reusable layers. Share underlying body shapes and materials when it saves work. Keep the actor's hair, face, clothes and posture distinct. For action beats, show who acts, where contact happens and what changes. The [Iron Man example](../../../examples/lore-series/iron-man-reactor/README.md) shows this on the gift and theft.
+
 ## Choose what the viewer should see
 
 - Draw the main characters as recognizable geometric silhouettes. Identify each one through a few consistent shapes, colors and signature details. Use a high-resolution cutout when a real object, prop, setting or texture adds clarity. A source character cutout can support a deliberate reveal where the likeness matters. Keep every layer inside the scene's grade.

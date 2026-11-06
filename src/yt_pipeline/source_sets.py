@@ -87,6 +87,16 @@ def resolve_source_set(workspace, request, script):
         if backdrop_id is not None and (reaction["setting"] != "workshop" or len(cast) != 1 or props):
             raise Held("reaction_set", "Use a workshop backdrop with one seated cast cutout.")
         backdrop = ImageOps.fit(picture(backdrop_id).convert("RGB"), (760, 320)) if backdrop_id is not None else None
+        foreground_id = reaction.get("foreground")
+        if foreground_id is not None and backdrop is None:
+            raise Held("reaction_set", "Use a foreground layer with a workshop backdrop.")
+        foreground = None
+        if foreground_id is not None:
+            overlay = picture(foreground_id)
+            minimum, maximum = overlay.getchannel("A").getextrema()
+            if minimum != 0 or maximum == 0:
+                raise Held("reaction_set", "The foreground must have painted and transparent areas.")
+            foreground = ImageOps.fit(overlay, (760, 320))
 
         def cutout(asset_id, size):
             image = picture(asset_id)
@@ -100,19 +110,24 @@ def resolve_source_set(workspace, request, script):
             [cutout(asset_id, (465, 204) if backdrop is not None else (210, 255)) for asset_id in cast],
             [cutout(asset_id, (112, 186)) for asset_id in props],
             backdrop,
+            foreground,
         )
     return placements, set_data, list(assets.values())
 
 
 def draw_reaction_set(frame, setup, time):
-    setting, cast, props, backdrop = setup
+    setting, cast, props, backdrop, foreground = setup
     if backdrop is not None:
         # Small independent movement on the room and sofa gives the plate depth.
         x = 20 + round(9 * math.sin(time * .85))
-        frame.paste(backdrop.crop((x, 12, x + 720, 300)), (0, 992))
+        crop = (x, 12, x + 720, 300)
+        frame.paste(backdrop.crop(crop), (0, 992))
         actor = cast[0]
         actor_x = 330 - actor.width // 2 + round(2 * math.sin(time * 1.6))
         frame.paste(actor, (actor_x, 1280 - actor.height), actor)
+        if foreground is not None:
+            overlay = foreground.crop(crop)
+            frame.paste(overlay, (0, 992), overlay)
         return
     draw = ImageDraw.Draw(frame)
     draw.rectangle((0, 992, 720, 1280), fill=SETTINGS[setting])

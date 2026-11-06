@@ -5,7 +5,7 @@ The story plays in the upper panel, with dialogue captions between that panel an
 | Preset | Setting | First local cast and props |
 | --- | --- | --- |
 | `crossover-theater` | `cinema` | Doom, Miles and Iron Man in theater seats with animated popcorn |
-| `iron-man-workshop` | `workshop` | Comic-inked Tony on the leather sofa, four lit armor bays, a flame-painted Ford roadster and an Audi R8 |
+| `iron-man-workshop` | `workshop` | Tony and his gauntlet on an illustrated sofa, with four drawn armor bays, a modern coupe and a flame-painted hot rod |
 | `spider-man-city` | `city` | Miles on a swinging web above the skyline |
 | `captain-america-and-bucky` | `living_room` | Cap and Bucky with the shield in a living room |
 | `doctor-strange-sanctum` | `sanctum` | Strange framed by a circular magic motif |
@@ -36,10 +36,10 @@ Choose the set around the subject of the episode. Use the theater for teams and 
 
 ## Build or inspect the local library
 
-The [library tool](../../tools/create_marvel_set_library.py) lists the filenames and original photo credits. Prepare transparent cutouts from your sourced images and put them in one folder. For the workshop, prepare a sofa cutout and a separate room backdrop. The [reference composition tool](../../tools/compose_workshop_reference.py) traces the four suits, sofa and cars from the supplied screenshots and car photographs. It uses cool steel and teal for the shadows, with warm ink for skin, armor and flames. The drawn bays and floor provide a shared perspective. The generic workshop recipe accepts a different registered backdrop and one seated cutout.
+The [library tool](../../tools/create_marvel_set_library.py) lists the filenames and original photo credits. Prepare transparent cutouts from your sourced images and put them in one folder. The [workshop composition tool](../../tools/compose_workshop_reference.py) takes Tony and his gauntlet from the 1920 × 800 screencap of the Gulmira news scene. A hand-marked alpha mask preserves his original color and lighting. Pillow draws the sofa, suits, cars and garage from authored paths in the comic palette. The tool exports a room backdrop, the Tony cutout, and a transparent sofa front. The editor draws them in that order so the cushion rail covers the bottom of the actor layer. The generic workshop recipe accepts a different registered backdrop and seated cutout, plus an optional transparent `foreground`. [Iron Man gallery frame 8803](https://caps2.b-cdn.net/200/8-iron-man1/full/iron-man1-movie-screencaps.com-8803.jpg)
 
 ```powershell
-.venv/Scripts/python.exe tools/compose_workshop_reference.py ARMOR_SCREENSHOT SOFA_SCREENSHOT ROADSTER_PHOTO AUDI_PHOTO PATH_TO_CUTOUTS
+.venv/Scripts/python.exe tools/compose_workshop_reference.py TONY_REFERENCE PATH_TO_CUTOUTS
 ```
 
 ```powershell
@@ -48,6 +48,6 @@ The [library tool](../../tools/create_marvel_set_library.py) lists the filenames
 
 The output contains a contact sheet, five silent 720 × 288 motion previews, the photo layers and `library.json`. A second JSON file in the local pipeline workspace installs the names for future jobs. When a video uses a set, the editor renders it on the episode's timeline, including across scene boundaries. The workshop layers move at slightly different rates to give the room depth. The short MP4 previews are for reviewing or reusing the strip in an external editor.
 
-The comic-ink workshop preview was checked as a rendered frame and decoded as a complete four-second clip. The library checksum and installed preset were verified against the export.
+The workshop preview was checked as a rendered frame and decoded as a complete four-second clip. The library checksum and installed preset were verified against the export.
 
 The supplied cosplay images show recognizable costumes. Photo credits and license links are carried in the library, and the installed assets are marked for local review. If you use a separately cleared asset, register it with its own usage evidence before building a publication-ready set.

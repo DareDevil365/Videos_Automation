@@ -47,6 +47,18 @@ def test_set_cast_and_props_are_reusable_and_remain_preview_only(tmp_path):
     assert frame.getpixel((20, 991)) == (0, 0, 0)
     assert frame.getpixel((20, 992)) == (49, 68, 79)
 
+    foreground_path = tmp_path / "foreground.png"
+    overlay = Image.new("RGBA", (760, 320))
+    ImageDraw.Draw(overlay).rectangle((290, 286, 410, 319), fill="#982e1d")
+    overlay.save(foreground_path)
+    foreground = register_asset(workspace, foreground_path, "original_graphic", {"source": "fixture"})
+    request["reaction_set"]["foreground"] = foreground["id"]
+    _, resolved, assets = resolve_source_set(workspace, {**request, "test_only": True}, script)
+    draw_reaction_set(frame, resolved, 0)
+    assert {asset["id"] for asset in assets} == {asset_id, backdrop["id"], foreground["id"]}
+    assert frame.getpixel((330, 1270)) == (152, 46, 29)
+    assert frame.getpixel((330, 1180)) == (215, 175, 132)
+
 
 def test_linked_title_stays_whole_in_speech_and_captions():
     title = "The Fantastic Four: First Steps"

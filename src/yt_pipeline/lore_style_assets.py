@@ -87,13 +87,13 @@ def validate_execution(scene,request,images,thunder_cast,extra_kinds=()):
             raise Held('lore_style_asset','Register and supply the photographic setting selected for this shot.')
         if set(photo_props)-set(layer.get('props',{})):
             raise Held('lore_style_asset','Register and place each selected photographic prop insert.')
-    geometric_only={'vision_magic','vision_unlock','spider_theft','spider_trapped','spider_reach','spider_resolve','spider_lift','spider_hospital'}
+    geometric_only={'vision_magic','vision_unlock','spider_theft','spider_trapped','spider_reach','spider_resolve','spider_lift','spider_hospital','spider_transfusion','spider_serum_return'}
     expected=None
     if kind in THUNDER_KINDS:
         expected=set() if kind=='stormbreaker_forged' else {'bill'} if kind in ('thor_hammer_hook','bill_lifts','bill_fleet') else {'thor','bill'}
     elif kind in extra_kinds:
-        if kind.startswith('spider_'):expected={'doc_ock'} if kind=='spider_theft' else {'aunt_may'} if kind=='spider_hospital' else {'spider_man'}
-        else:expected=set() if kind in ('vision_ship','vision_two_ships') else {'white_vision'} if kind in ('vision_memory','vision_answer') else {'vision','white_vision'}
+        if kind.startswith('spider_'):expected={'doc_ock'} if kind=='spider_theft' else {'aunt_may'} if kind in ('spider_hospital','spider_transfusion') else {'spider_man'}
+        else:expected=set() if kind in ('vision_ship','vision_two_ships','vision_aftermath') else {'white_vision'} if kind in ('vision_memory','vision_answer','vision_departure') else {'vision','white_vision'}
     if expected is not None and set(people)!=expected:
         raise Held('lore_style_recipe','The directed cast must match the cast actually drawn by this recipe.')
     for who,choice in people.items():

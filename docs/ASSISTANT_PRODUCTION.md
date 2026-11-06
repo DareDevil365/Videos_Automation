@@ -34,3 +34,6 @@ Before searching for images or drawing a new layer, check the [starter catalog](
 
 
 Before assembling the next comic, read the [visual selection and voice rules](categories/comic-lore/VISUAL_DECISIONS.md). Supply each new shot’s focus, action, cast and prop state through `visual_selection.shots`. The program records and applies supported representation choices. New series rotate local male/female narrator pairs independently of character gender, freeze the pair and preserve it across chapters. Inspect the saved decision reasons and a spoken sample before accepting the full cut.
+
+
+For the current comic writing standard, read [connected narrative writing](categories/comic-lore/NARRATIVE_WRITING.md) and the [owner feedback/revision review](reviews/comic-lore-script-revision/WRITING_REVIEW.md). Query the [source library](../research/content-lore/SOURCE_LIBRARY.md) first. Reuse reviewed facts, then verify only missing decisive details. Keep the cause between beats, introduce the true issue/episode with its cover/poster, measure faster complete narration and use the requested 42–50 second standalone window. Earlier short versions were owner-rejected writing examples.

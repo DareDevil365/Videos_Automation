@@ -7,7 +7,7 @@ from .core import Held
 
 SEGMENT_SCHEMA = {'type': 'array', 'maxItems': 8, 'items': {'type': 'object', 'properties': {
     'text': {'type': 'string'}, 'pause_after': {'type': 'number', 'minimum': 0, 'maximum': 1.2},
-    'speed': {'type': 'number', 'minimum': .9, 'maximum': 1.15}},
+    'speed': {'type': 'number', 'minimum': .9, 'maximum': 1.25}},
     'required': ['text', 'pause_after', 'speed'], 'additionalProperties': False}}
 
 
@@ -31,7 +31,7 @@ def speech_segments(text, scene=None):
         if not isinstance(part, str) or not part.strip() or re.search(r'\[(?:P{1,3}|FAST|NORMAL)\]', part):
             raise Held('speech_delivery', 'Speech segment text must contain dialogue, without control tags.')
         result.append({'text': part, 'pause_after': number(row['pause_after'], 0, 1.2),
-                       'speed': number(row['speed'], .9, 1.15)})
+                       'speed': number(row['speed'], .9, 1.25)})
     if ' '.join(' '.join(s['text'].split()) for s in result) != ' '.join(text.split()):
         raise Held('speech_delivery', 'Speech segments must preserve every script word, punctuation and order.')
     if result[-1]['pause_after'] != 0 or sum(s['pause_after'] for s in result) > 2.4:

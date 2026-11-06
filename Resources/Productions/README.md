@@ -43,3 +43,8 @@ The five original toolbox examples are in `assistant-five-20261105/`. Its three 
 
 
 The hybrid selection demonstrations are in `vision-theseus-adaptive-20261106/part-1/` (42.17s) and `spider-man-last-lift-adaptive-polished-20261106/part-1/` (38.30s). Each retains a `visual-decisions.json` file explaining its per-shot choices. Vision uses a female host and male narrator; Spider-Man uses a male host and female narrator. Their [Vision notes](../../examples/lore-series/vision-theseus/README.md) and [Spider-Man notes](../../examples/lore-series/spider-man-last-lift/README.md) identify continuity, sources, illustrative staging and rebuild commands. Earlier Spider-Man voice/blocking versions are preserved separately.
+
+
+Latest connected-story revisions (7 November 2026): `vision-theseus-story-revision-20261107/part-1/` is **49.533s** and `spider-man-last-lift-story-revision-final-20261107/part-1/` is **49.966s**. Both identify/show their source at the opening, use faster complete narration and restore missing causal story links. Their predecessor adaptive scripts were rated 2/10 by the owner and remain historical technical examples. The new scripts await owner judgment. [Exact revised writing and validation](../../docs/reviews/comic-lore-script-revision/WRITING_REVIEW.md).
+
+Both revised MP4s passed technical QA, all 28 recorded package hashes matched, and narration had no detected quiet interval of 0.3 seconds or longer at −42 dB. Actual exported frames were sampled. They are assistant-authored local previews with copyrighted source artwork; publication readiness is false. The earlier `spider-man-last-lift-story-revision-20261107` attempt was held for an overlong opening and was replaced by the separately initialized final revision.

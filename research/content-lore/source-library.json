@@ -1,0 +1,801 @@
+{
+  "version": 1,
+  "updated_at": "2026-11-06T18:57:52.275014+00:00",
+  "research_method": "Main assistant completed after delegated research hit its usage limit.",
+  "purpose": "Reusable source discovery and bounded reviewed facts, not copied scripts or a complete comics archive.",
+  "reading_routes": [
+    {
+      "id": "marvel_guides",
+      "title": "Marvel story guides and character histories",
+      "url": "https://www.marvel.com/comics/guides",
+      "kind": "Publisher recaps and reading order",
+      "access_notes": "Use to locate the exact arc and supporting facts. A teaser is not a complete story.",
+      "checked_at": "2026-11-06T18:57:52.275014+00:00",
+      "verification": "publisher/archival search result checked; specific reading access not assumed"
+    },
+    {
+      "id": "marvel_free",
+      "title": "Marvel free-issue collection",
+      "url": "https://www.marvel.com/comics/guides/2421/free_issues",
+      "kind": "Publisher reading route",
+      "access_notes": "Only the issues currently offered are free. Check the reader and account requirements.",
+      "checked_at": "2026-11-06T18:57:52.275014+00:00",
+      "verification": "publisher/archival search result checked; specific reading access not assumed"
+    },
+    {
+      "id": "marvel_service",
+      "title": "Marvel reading-service notices",
+      "url": "https://help.marvel.com/article/marvel-whats-happening-to-marvel-unlimited",
+      "kind": "Publisher service information",
+      "access_notes": "Current search results announce a November/December 2026 service transition. Recheck access and app details before directing a user to a reader; do not promise permanent free access.",
+      "checked_at": "2026-11-06T18:57:52.275014+00:00",
+      "verification": "publisher/archival search result checked; specific reading access not assumed"
+    },
+    {
+      "id": "dc_editorial",
+      "title": "DC editorial explainers",
+      "url": "https://www.dc.com/blog/2016/02/08/the-dctv-secrets-of-supergirl-ep-13-for-the-girl-who-has-everything",
+      "kind": "Publisher story explanation",
+      "access_notes": "Useful causal recaps; cross-check exact issue bibliography when catalog copy conflicts.",
+      "checked_at": "2026-11-06T18:57:52.275014+00:00",
+      "verification": "publisher/archival search result checked; specific reading access not assumed"
+    },
+    {
+      "id": "dc_timeline",
+      "title": "DC official history timelines",
+      "url": "https://www.dc.com/blog/2025-09-24/a-complete-timeline-of-the-new-history-of-the-dc-universe",
+      "kind": "Publisher timeline",
+      "access_notes": "Issue references and sequence, not a replacement for decisive scenes.",
+      "checked_at": "2026-11-06T18:57:52.275014+00:00",
+      "verification": "publisher/archival search result checked; specific reading access not assumed"
+    },
+    {
+      "id": "dc_reader",
+      "title": "DC Universe Infinite",
+      "url": "https://www.dc.com/blog/2021/01/21/welcome-to-dc-universe-infinite",
+      "kind": "Publisher reading route",
+      "access_notes": "Subscription and territory conditions apply. Do not assume access from India or that every issue is unlocked.",
+      "checked_at": "2026-11-06T18:57:52.275014+00:00",
+      "verification": "publisher/archival search result checked; specific reading access not assumed"
+    },
+    {
+      "id": "darkhorse_timeline",
+      "title": "Hellboy official timeline",
+      "url": "https://images.darkhorse.com/darkhorse/index_images/blog/hellboy_timeline.pdf",
+      "kind": "Publisher PDF",
+      "access_notes": "Useful for events and chronology; a timeline can omit motives and reversals.",
+      "checked_at": "2026-11-06T18:57:52.275014+00:00",
+      "verification": "publisher/archival search result checked; specific reading access not assumed"
+    },
+    {
+      "id": "darkhorse_sampler",
+      "title": "Hellboy library sampler",
+      "url": "https://images.darkhorse.com/libraries/downloads/LIBCON25_SAMPLER_HBY.pdf",
+      "kind": "Publisher preview PDF",
+      "access_notes": "Search indexed the publisher sampler. The browser could not open the 44 MB file here; full contents have not been reviewed.",
+      "checked_at": "2026-11-06T18:57:52.275014+00:00",
+      "verification": "publisher/archival search result checked; specific reading access not assumed"
+    },
+    {
+      "id": "darkhorse_digital",
+      "title": "Dark Horse Digital",
+      "url": "https://digital.darkhorse.com/",
+      "kind": "Publisher reading route",
+      "access_notes": "Check a particular issue’s preview/purchase offer. Main publisher pages blocked this browser; no full-book access is claimed.",
+      "checked_at": "2026-11-06T18:57:52.275014+00:00",
+      "verification": "publisher/archival search result checked; specific reading access not assumed"
+    },
+    {
+      "id": "image_first",
+      "title": "Image free first issues",
+      "url": "https://imagecomics.com/comics/read-first-issues",
+      "kind": "Publisher first-issue readers",
+      "access_notes": "Follow the publisher reader from each issue page. A free first issue does not establish a later arc’s ending.",
+      "checked_at": "2026-11-06T18:57:52.275014+00:00",
+      "verification": "publisher/archival search result checked; specific reading access not assumed"
+    },
+    {
+      "id": "comicbookplus",
+      "title": "Comic Book Plus",
+      "url": "https://comicbookplus.com/?cbplus=about",
+      "kind": "Public-domain-oriented archive",
+      "access_notes": "The site describes legal Golden/Silver Age reading. Verify the specific issue and jurisdiction before reusing scans; access may require an account.",
+      "checked_at": "2026-11-06T18:57:52.275014+00:00",
+      "verification": "publisher/archival search result checked; specific reading access not assumed"
+    },
+    {
+      "id": "digitalmuseum",
+      "title": "Digital Comic Museum",
+      "url": "https://digitalcomicmuseum.com/",
+      "kind": "Public-domain-oriented archive",
+      "access_notes": "Golden Age archive; downloads require a free account. Verify each issue’s status, not merely its age.",
+      "checked_at": "2026-11-06T18:57:52.275014+00:00",
+      "verification": "publisher/archival search result checked; specific reading access not assumed"
+    },
+    {
+      "id": "gcd",
+      "title": "Grand Comics Database",
+      "url": "https://www.comics.org/",
+      "kind": "Volunteer bibliography",
+      "access_notes": "Use for issue numbers, credits and editions. It is not a complete canonical story recap.",
+      "checked_at": "2026-11-06T18:57:52.275014+00:00",
+      "verification": "publisher/archival search result checked; specific reading access not assumed"
+    },
+    {
+      "id": "creator_interviews",
+      "title": "Creator explanations",
+      "url": "https://www.etonline.com/wandavision-series-finale-interview-jac-schaeffer-161951",
+      "kind": "Direct creator interview",
+      "access_notes": "Useful for why a scene or character decision exists. Keep interpretation distinct from on-screen events.",
+      "checked_at": "2026-11-06T18:57:52.275014+00:00",
+      "verification": "publisher/archival search result checked; specific reading access not assumed"
+    }
+  ],
+  "stories": [
+    {
+      "id": "spider-man-last-lift",
+      "title": "Spider-Man Could See the Cure. He Couldn’t Reach It.",
+      "issues": "The Amazing Spider-Man (1963) #31–33; focal issue #33 (1966)",
+      "medium": "comic",
+      "tags": [
+        "marvel",
+        "spider-man",
+        "aunt may",
+        "rescue",
+        "resolve"
+      ],
+      "evidence_state": "reviewed_project_packet",
+      "project_brief": "examples/lore-series/spider-man-last-lift/brief.json",
+      "sources": [
+        {
+          "id": "arc",
+          "url": "https://www.marvel.com/articles/comics/most-impactful-spider-man-stories-by-decade?linkId=178717653",
+          "title": "Marvel’s most impactful Spider-Man stories",
+          "excerpt": "The stolen ISO-36 serum could save May. Machinery traps Peter in a flooding room. His determination lets him escape.",
+          "checked_at": "2026-11-06T18:54:15.674946+00:00"
+        },
+        {
+          "id": "resolve",
+          "url": "https://www.marvel.com/articles/comics/spider-man-s-greatest-moments?linkId=125912694",
+          "title": "Marvel’s greatest Spider-Man moments",
+          "excerpt": "The article identifies issue #33, his struggle beneath industrial rubble and the importance of Aunt May and Uncle Ben to his resolve.",
+          "checked_at": "2026-11-06T18:54:15.674946+00:00"
+        },
+        {
+          "id": "outcome",
+          "url": "https://www.marvel.com/characters/doctor-octopus-otto-octavius/in-comics",
+          "title": "Marvel’s Doctor Octopus history",
+          "excerpt": "Octavius’s forces hijack the substance. Spider-Man reaches the underwater hideout, recovers the serum and saves May with Dr Connors’s help.",
+          "checked_at": "2026-11-06T18:54:15.674946+00:00"
+        },
+        {
+          "id": "issue",
+          "url": "https://www.marvel.com/comics/issue/6738/amazing_spider-man_1963_33",
+          "title": "Marvel issue catalog and cover",
+          "excerpt": "The Amazing Spider-Man (1963) #33, The Final Chapter, concludes the If This Be My Destiny arc.",
+          "checked_at": "2026-11-06T18:54:15.674946+00:00"
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "source_id": "outcome",
+          "text": "Doc Ock’s forces stole the serum May needed. Peter followed to an underwater hideout."
+        },
+        {
+          "id": "c2",
+          "source_id": "arc",
+          "text": "Peter was pinned beneath heavy machinery in a flooding room, close to the serum."
+        },
+        {
+          "id": "c3",
+          "source_id": "resolve",
+          "text": "Remembering Aunt May and Uncle Ben, Peter persisted and lifted the machinery."
+        },
+        {
+          "id": "c4",
+          "source_id": "outcome",
+          "text": "Peter recovered the serum and saved Aunt May with Dr Connors’s assistance."
+        },
+        {
+          "id": "c5",
+          "source_id": "outcome",
+          "text": "May became ill because Peter’s radioactive blood was used in a transfusion. The experimental ISO-36 was needed to save her."
+        },
+        {
+          "id": "c6",
+          "source_id": "issue",
+          "text": "The focal story appears in The Amazing Spider-Man #33, published in 1966; the larger arc spans #31–33."
+        }
+      ],
+      "reuse": "Reuse these bounded source-linked facts offline. Write a new connected script; the older rendered narration is not a quality template.",
+      "missing_details": "Read the precise issue/scene if expanding beyond these claims. Do not infer unseen dialogue, sequence or motive.",
+      "source_review": "examples/lore-series/spider-man-last-lift/source-review.json"
+    },
+    {
+      "id": "vision-theseus",
+      "title": "Vision Beat Himself With a Question",
+      "issues": "WandaVision (2021), episode 9, The Series Finale",
+      "medium": "television",
+      "tags": [
+        "marvel",
+        "vision",
+        "wanda",
+        "identity",
+        "theseus"
+      ],
+      "evidence_state": "reviewed_project_packet",
+      "project_brief": "examples/lore-series/vision-theseus/brief.json",
+      "sources": [
+        {
+          "id": "creator",
+          "url": "https://www.etonline.com/wandavision-series-finale-interview-jac-schaeffer-161951",
+          "title": "Head writer Jac Schaeffer on the finale",
+          "excerpt": "Schaeffer explains why identical Synthezoids needed a logical resolution and distinguishes the restored data from Wanda’s emotional goodbye.",
+          "checked_at": "2026-11-06T18:54:15.640774+00:00"
+        },
+        {
+          "id": "scene",
+          "url": "https://www.gamesradar.com/wandavision-the-comic-book-roots-of-the-finales-ship-of-theseus-scene/",
+          "title": "GamesRadar / Newsarama on the two Visions",
+          "excerpt": "The rebuilt original and Wanda’s recreation discuss the Ship of Theseus. The conversation leads to restored memories and White Vision leaving.",
+          "checked_at": "2026-11-06T18:54:15.642155+00:00"
+        },
+        {
+          "id": "marvel",
+          "url": "https://www.marvel.com/articles/tv-shows/wandavision-paul-bettany-vision-goodbye?linkId=112916480",
+          "title": "Marvel on Vision’s goodbye",
+          "excerpt": "Wanda cannot maintain her fictional world. Her Vision is a memory made real.",
+          "checked_at": "2026-11-06T18:54:15.642155+00:00"
+        },
+        {
+          "id": "exchange",
+          "url": "https://www.springfieldspringfield.co.uk/view_episode_scripts.php?episode=s01e09&tv-show=wandavision-2021",
+          "title": "Third-party episode transcript, identity exchange",
+          "excerpt": "The exchange names White Vision’s target, compares the replaced ship and a second vessel from the old wood, and distinguishes original material from blocked memory data.",
+          "checked_at": "2026-11-06T18:54:15.642155+00:00"
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "source_id": "scene",
+          "text": "SWORD rebuilt the original body as White Vision. He fought Wanda’s magically created Vision."
+        },
+        {
+          "id": "c2",
+          "source_id": "marvel",
+          "text": "Wanda’s Vision was a magical creation rather than the original physical body."
+        },
+        {
+          "id": "c3",
+          "source_id": "creator",
+          "text": "The fight becomes an identity argument using the Ship of Theseus thought experiment."
+        },
+        {
+          "id": "c4",
+          "source_id": "scene",
+          "text": "Wanda’s Vision unlocks White Vision’s blocked memories. White Vision identifies himself as Vision and flies away."
+        },
+        {
+          "id": "c5",
+          "source_id": "exchange",
+          "text": "White Vision’s directive is to destroy Vision. Wanda’s Vision disputes being the true original, prompting the identity discussion."
+        },
+        {
+          "id": "c6",
+          "source_id": "exchange",
+          "text": "The analogy compares a ship with replaced planks and a second ship made from restored old planks. It is then applied to their bodies and memories."
+        },
+        {
+          "id": "c7",
+          "source_id": "exchange",
+          "text": "White Vision’s memory data was kept from him, not fully erased. He permits access before recognizing himself."
+        },
+        {
+          "id": "c8",
+          "source_id": "creator",
+          "text": "Restoring White Vision’s data does not make him the emotional partner Wanda knew inside the Hex. Her goodbye to that Vision is a real goodbye."
+        }
+      ],
+      "reuse": "Reuse these bounded source-linked facts offline. Write a new connected script; the older rendered narration is not a quality template.",
+      "missing_details": "Read the precise issue/scene if expanding beyond these claims. Do not infer unseen dialogue, sequence or motive.",
+      "source_review": "examples/lore-series/vision-theseus/source-review.json"
+    },
+    {
+      "id": "thor-beta-ray-bill",
+      "title": "The Alien Who Took Thor's Hammer",
+      "issues": "Thor (1966) #337–340",
+      "medium": "comic",
+      "tags": [
+        "marvel",
+        "thor",
+        "beta ray bill",
+        "worthiness",
+        "sacrifice"
+      ],
+      "evidence_state": "reviewed_project_packet",
+      "project_brief": "examples/lore-series/thor-beta-ray-bill/brief.json",
+      "sources": [
+        {
+          "id": "marvel",
+          "url": "https://www.marvel.com/comics/guides/1479/8-best-stories-of-walt-simonsons-thor",
+          "title": "Marvel · Walt Simonson’s Thor reading guide",
+          "excerpt": "Issues 337–339 introduce Bill wielding Thor’s hammer and becoming an ally.",
+          "checked_at": "2026-11-06T16:30:00+00:00"
+        },
+        {
+          "id": "interview",
+          "url": "https://www.twomorrows.com/media/MMV8SimonsonPreview.pdf",
+          "title": "Modern Masters · Walt Simonson interview, pages 47–48",
+          "excerpt": "Simonson designed Bill to look monstrous, describes the fiery unarmed duel and explains Bill needed the power to defend his people.",
+          "checked_at": "2026-11-06T16:30:00+00:00"
+        },
+        {
+          "id": "snap",
+          "url": "https://marvelsnap.com/character-spotlight-beta-ray-bill/",
+          "title": "Marvel Snap · Beta Ray Bill character spotlight",
+          "excerpt": "The spacecraft mistook Thor for a threat. Bill fought him, picked up the hammer, and was granted Thor’s power.",
+          "checked_at": "2026-11-06T16:30:00+00:00"
+        },
+        {
+          "id": "duel",
+          "url": "https://clixnexus.com/article.php?aid=311&title=Who+the+Clix%3F+Beta+Ray+Bill",
+          "title": "Clixnexus · Beta Ray Bill origin and duel",
+          "excerpt": "Bill guards a refugee fleet, wins the duel in Skartheim, and rescues Thor from the lava.",
+          "checked_at": "2026-11-06T16:30:00+00:00"
+        },
+        {
+          "id": "weapons",
+          "url": "https://www.marvel.com/amp/articles/comics/thor-s-11-mightiest-weapons",
+          "title": "Marvel · Thor’s Mightiest Weapons",
+          "excerpt": "Bill wields the original hammer and bests Thor in unarmed combat. Odin arranges a weapon of Bill’s own, Stormbreaker.",
+          "checked_at": "2026-11-06T16:30:00+00:00"
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "text": "Bill fought Thor after his ship identified Thor as a threat, then wielded Thor’s hammer.",
+          "source_id": "snap"
+        },
+        {
+          "id": "c2",
+          "text": "Beta Ray Bill was the champion protecting a fleet of Korbinite refugees.",
+          "source_id": "duel"
+        },
+        {
+          "id": "c3",
+          "text": "The hammer deemed Bill worthy and gave him the power of Thor.",
+          "source_id": "snap"
+        },
+        {
+          "id": "c4",
+          "text": "Odin set Thor and Bill a duel without hammers in a fiery world.",
+          "source_id": "interview"
+        },
+        {
+          "id": "c5",
+          "text": "Bill won the duel and saved Thor from falling into lava.",
+          "source_id": "duel"
+        },
+        {
+          "id": "c6",
+          "text": "Bill sought power he could use to protect his people.",
+          "source_id": "interview"
+        },
+        {
+          "id": "c7",
+          "text": "Thor kept Mjolnir and Odin commissioned Stormbreaker for Beta Ray Bill.",
+          "source_id": "weapons"
+        }
+      ],
+      "reuse": "Reuse these bounded source-linked facts offline. Write a new connected script; the older rendered narration is not a quality template.",
+      "missing_details": "Read the precise issue/scene if expanding beyond these claims. Do not infer unseen dialogue, sequence or motive.",
+      "source_review": "examples/lore-series/thor-beta-ray-bill/source-review.json"
+    },
+    {
+      "id": "doom-triumph-torment",
+      "title": "Doctor Doom Offered Mephisto a Trade",
+      "issues": "Doctor Strange and Doctor Doom: Triumph and Torment (1989)",
+      "medium": "graphic_novel",
+      "tags": [
+        "marvel",
+        "doom",
+        "doctor strange",
+        "mephisto",
+        "rescue"
+      ],
+      "evidence_state": "reviewed_project_packet",
+      "project_brief": "examples/lore-series/doom-triumph-torment/brief.json",
+      "sources": [
+        {
+          "id": "marvel",
+          "url": "https://www.marvel.com/amp/articles/comics/the-8-most-influential-doctor-strange-stories",
+          "title": "Marvel’s Doctor Strange story guide",
+          "excerpt": "Strange owed Doom a favor after becoming Sorcerer Supreme. They entered Mephisto’s realm to free Doom’s mother. Strange’s apparent betrayal was part of a larger plan.",
+          "checked_at": "2026-11-06T17:00:00+00:00"
+        },
+        {
+          "id": "cynthia",
+          "url": "https://www.marvel.com/comics/guides/2448/the_witches_of_the_marvel_universe",
+          "title": "Marvel’s Cynthia von Doom entry",
+          "excerpt": "Cynthia made a pact for power and Mephisto took her soul. Doom and Strange freed it and she reached a better afterlife.",
+          "checked_at": "2026-11-06T17:00:00+00:00"
+        },
+        {
+          "id": "deal",
+          "url": "https://comicbookclub.pages.wm.edu/2024/02/21/doomed/",
+          "title": "William & Mary Comics Studies Club recap",
+          "excerpt": "Doom offers Strange in exchange for Cynthia. Cynthia refuses freedom at the cost of betrayal. A device Doom planted helps Strange escape.",
+          "checked_at": "2026-11-06T17:00:00+00:00"
+        },
+        {
+          "id": "ending",
+          "url": "https://www.slashfilm.com/1594511/fantastic-four-doctor-doom-comics-marvel-fans-should-read/",
+          "title": "Slashfilm’s reading guide, with panel from the graphic novel",
+          "excerpt": "Cynthia rejects Doom’s bargain and disavows him. Doom had given Strange a way to free himself.",
+          "checked_at": "2026-11-06T17:00:00+00:00"
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "text": "Cynthia made a pact with Mephisto. He took her soul.",
+          "source_id": "cynthia"
+        },
+        {
+          "id": "c2",
+          "text": "Strange owed Doom a favor after becoming Sorcerer Supreme and helped him enter Mephisto’s realm.",
+          "source_id": "marvel"
+        },
+        {
+          "id": "c3",
+          "text": "Doom offered Strange to Mephisto in exchange for Cynthia’s soul.",
+          "source_id": "deal"
+        },
+        {
+          "id": "c4",
+          "text": "Cynthia rejected the exchange and disavowed her son.",
+          "source_id": "ending"
+        },
+        {
+          "id": "c5",
+          "text": "Doom had planted a device that helped Strange break free.",
+          "source_id": "deal"
+        },
+        {
+          "id": "c6",
+          "text": "Cynthia’s refusal redeemed her soul. Doom and Strange’s battle with Mephisto ended with her release to a better afterlife.",
+          "source_id": "deal"
+        }
+      ],
+      "reuse": "Reuse these bounded source-linked facts offline. Write a new connected script; the older rendered narration is not a quality template.",
+      "missing_details": "Read the precise issue/scene if expanding beyond these claims. Do not infer unseen dialogue, sequence or motive.",
+      "source_review": "examples/lore-series/doom-triumph-torment/source-review.json"
+    },
+    {
+      "id": "hellboy-horns",
+      "title": "Hellboy Rejects His Apocalyptic Destiny",
+      "issues": "Wake the Devil #5, with classic Hellboy premise context",
+      "medium": "comic",
+      "tags": [
+        "dark horse",
+        "hellboy",
+        "destiny",
+        "demon",
+        "choice"
+      ],
+      "evidence_state": "reviewed_project_packet",
+      "project_brief": "examples/lore-series/hellboy-horns/brief.json",
+      "sources": [
+        {
+          "id": "timeline",
+          "url": "https://images.darkhorse.com/darkhorse/index_images/blog/hellboy_timeline.pdf",
+          "title": "Dark Horse’s official Hellboy timeline",
+          "excerpt": "The timeline identifies the 1944 summoning, Professor Bruttenholm as his adoptive father, and the 1997 Hecate encounter in Wake the Devil.",
+          "checked_at": "2026-11-06T17:00:00+00:00"
+        },
+        {
+          "id": "rpg",
+          "url": "https://d1vzi28wh99zvq.cloudfront.net/pdf_previews/353222-sample.pdf",
+          "title": "Official licensed Hellboy RPG sample",
+          "excerpt": "The character introduction describes a demon investigator who rejects his apocalyptic destiny. The Right Hand of Doom can release the Ogdru Jahad.",
+          "checked_at": "2026-11-06T17:00:00+00:00"
+        },
+        {
+          "id": "horns",
+          "url": "https://scifi.stackexchange.com/questions/215873/why-does-hellboy-file-down-his-horns/215896",
+          "title": "Horn-breaking discussion identifying Wake the Devil #5",
+          "excerpt": "The answer identifies Wake the Devil part five, where Hecate invokes his destiny, his horns grow, and he breaks them in rejection. Movie filing scenes are distinguished from this event.",
+          "checked_at": "2026-11-06T17:00:00+00:00"
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "source_id": "rpg",
+          "text": "Hellboy is a demon and paranormal investigator who refuses an apocalyptic destiny."
+        },
+        {
+          "id": "c2",
+          "source_id": "timeline",
+          "text": "An occult ritual brought Hellboy to Earth as a child. Professor Bruttenholm, known as Broom, became his adoptive father."
+        },
+        {
+          "id": "c3",
+          "source_id": "rpg",
+          "text": "His stone right hand is the key that can release the Ogdru Jahad and bring destruction."
+        },
+        {
+          "id": "c4",
+          "source_id": "horns",
+          "text": "In Wake the Devil #5, Hecate invokes his apocalyptic destiny. His horns grow and he breaks them off to reject it."
+        }
+      ],
+      "reuse": "Reuse these bounded source-linked facts offline. Write a new connected script; the older rendered narration is not a quality template.",
+      "missing_details": "Read the precise issue/scene if expanding beyond these claims. Do not infer unseen dialogue, sequence or motive.",
+      "source_review": "examples/lore-series/hellboy-horns/source-review.json"
+    },
+    {
+      "id": "secret-wars-2015",
+      "title": "Doom, Battleworld and the source of his power",
+      "issues": "Secret Wars (2015) #1–9",
+      "medium": "comic",
+      "tags": [
+        "marvel",
+        "doom",
+        "secret wars",
+        "battleworld",
+        "molecule man"
+      ],
+      "evidence_state": "reviewed_project_packet",
+      "project_brief": "research/content-lore/SECRET_WARS_2015_BRIEF.json",
+      "sources": [
+        {
+          "id": "marvel_guide",
+          "url": "https://www.marvel.com/articles/comics/secret-wars-official-marvel-guide",
+          "title": "The Official Marvel Guide to Every Secret Wars",
+          "excerpt": "Paraphrased evidence: The 2015 story differs from 1984. Doom obtained Beyonder power, imposed worship on Battleworld, and concealed the former reality. Reed later drew an admission of inferiority from Doom; Molecule Man shifted the power to Reed.",
+          "checked_at": "2026-11-05T18:22:50.003949+00:00"
+        },
+        {
+          "id": "marvel_collection",
+          "url": "https://www.marvel.com/comics/collection/54948/secret_wars_trade_paperback",
+          "title": "Secret Wars TPB: 2015 core collection",
+          "excerpt": "Paraphrased evidence: Collapsed realities leave a composite planet, Battleworld, whose surviving population answers to Doom. The listing collects the core 2015 event through issue9.",
+          "checked_at": "2026-11-05T18:22:50.003949+00:00"
+        },
+        {
+          "id": "marvel_miles",
+          "url": "https://www.marvel.com/characters/spider-man-miles-morales/in-comics",
+          "title": "Miles Morales: official in-comics history",
+          "excerpt": "Paraphrased evidence: Miles survives, finds hidden Molecule Man, feeds him, and later receives a restored home and mother. The returning survivors remember their earlier reality, unlike the inhabitants whose remembered world centers on Doom.",
+          "checked_at": "2026-11-05T18:22:50.003949+00:00"
+        },
+        {
+          "id": "marvel_foundation",
+          "url": "https://www.marvel.com/comics/guides/2508/the-future-foundation",
+          "title": "The Future Foundation: official reading guide",
+          "excerpt": "Paraphrased evidence: The Foundation built a survival craft before the final catastrophe. The issue9 section describes Reed, Franklin and Molecule Man restoring the Foundation and creating worlds, with the family helping reconstruct the multiverse.",
+          "checked_at": "2026-11-05T18:22:50.003949+00:00"
+        },
+        {
+          "id": "marvel_maker",
+          "url": "https://www.marvel.com/articles/comics/the-maker-explained-mister-fantastic-doppelganger-ultimate-universe",
+          "title": "Meet the Maker: official explainer",
+          "excerpt": "Paraphrased evidence: In the 2015 event, Molecule Man supplies Doom with his extraordinary power.",
+          "checked_at": "2026-11-05T18:22:50.003949+00:00"
+        },
+        {
+          "id": "marvel_reading",
+          "url": "https://share.marvel.com/comics/discover/508/secret-wars",
+          "title": "Secret Wars: official nine-issue reading list",
+          "excerpt": "Paraphrased evidence: The opening involves a collision of the main and Ultimate universes. The event lists issues1-9 by Jonathan Hickman and Esad Ribic.",
+          "checked_at": "2026-11-05T18:22:50.003949+00:00"
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "text": "The main and Ultimate universes collide during the final incursion.",
+          "source_id": "marvel_reading"
+        },
+        {
+          "id": "c2",
+          "text": "Doom preserves pieces of destroyed realities as Battleworld and rules its survivors.",
+          "source_id": "marvel_collection"
+        },
+        {
+          "id": "c3",
+          "text": "Reed and the Future Foundation prepare a life raft to survive the catastrophe.",
+          "source_id": "marvel_foundation"
+        },
+        {
+          "id": "c4",
+          "text": "Doom imposes worship and suppresses memory of the earlier reality.",
+          "source_id": "marvel_guide"
+        },
+        {
+          "id": "c5",
+          "text": "Molecule Man is the underlying source sustaining Doom’s cosmic power.",
+          "source_id": "marvel_maker"
+        },
+        {
+          "id": "c6",
+          "text": "Miles escapes the collapsing realities in a life raft.",
+          "source_id": "marvel_miles"
+        },
+        {
+          "id": "c7",
+          "text": "Survivors find Molecule Man beneath Doomstadt while investigating Doom’s power.",
+          "source_id": "marvel_miles"
+        },
+        {
+          "id": "c8",
+          "text": "Miles gives the hungry Molecule Man a hamburger and earns his gratitude.",
+          "source_id": "marvel_miles"
+        },
+        {
+          "id": "c9",
+          "text": "Reed confronts Doom and gets him to concede Reed could have saved reality better.",
+          "source_id": "marvel_guide"
+        },
+        {
+          "id": "c10",
+          "text": "Molecule Man transfers the cosmic power from Doom to Reed.",
+          "source_id": "marvel_guide"
+        },
+        {
+          "id": "c11",
+          "text": "Reed’s family and the Future Foundation help rebuild realities using Franklin and Molecule Man’s powers.",
+          "source_id": "marvel_foundation"
+        },
+        {
+          "id": "c12",
+          "text": "Molecule Man rewards Miles with a place in the reconstructed reality and the return of his mother.",
+          "source_id": "marvel_miles"
+        },
+        {
+          "id": "c13",
+          "text": "Some life-raft survivors, including Miles, remember the earlier reality.",
+          "source_id": "marvel_miles"
+        }
+      ],
+      "reuse": "Reuse only the packet’s claim scope; keep 1984 and movie speculation separate.",
+      "missing_details": "Publisher recaps were used. Uncached scene-level motives need an issue check.",
+      "source_review": "examples/lore-series/secret-wars-2015/source-review.json"
+    },
+    {
+      "id": "superman-black-mercy",
+      "title": "For the Man Who Has Everything",
+      "issues": "Superman Annual #11",
+      "medium": "comic",
+      "tags": [
+        "dc",
+        "candidate"
+      ],
+      "evidence_state": "discovery_only",
+      "sources": [
+        {
+          "url": "https://www.dc.com/blog/2016/02/08/the-dctv-secrets-of-supergirl-ep-13-for-the-girl-who-has-everything",
+          "title": "For the Man Who Has Everything"
+        }
+      ],
+      "known_scope": "Superman is trapped by the Black Mercy while his friends confront Mongul.",
+      "claims": [],
+      "missing_details": "Read the dream, the decision to leave it, and the exact transfer of the plant. Some publisher pages conflict on year/annual labeling; verify the cover and bibliography.",
+      "reuse": "Use this as a reading lead, not as a verified ready-to-write plot."
+    },
+    {
+      "id": "mister-miracle-2017",
+      "title": "Mister Miracle",
+      "issues": "Mister Miracle (2017) #1–12",
+      "medium": "comic",
+      "tags": [
+        "dc",
+        "candidate"
+      ],
+      "evidence_state": "discovery_only",
+      "sources": [
+        {
+          "url": "https://www.dc.com/blog/2017/05/12/dc-entertainment-announces-mister-miracle",
+          "title": "Mister Miracle"
+        }
+      ],
+      "known_scope": "A twelve-issue Tom King / Mitch Gerads series involving escape, identity and trauma.",
+      "claims": [],
+      "missing_details": "Select and read a specific arc before scripting; the launch blurb does not verify its ambiguous ending.",
+      "reuse": "Use this as a reading lead, not as a verified ready-to-write plot."
+    },
+    {
+      "id": "invincible-first-issue",
+      "title": "Invincible’s first issue",
+      "issues": "Invincible #1 (2003)",
+      "medium": "comic",
+      "tags": [
+        "image",
+        "candidate"
+      ],
+      "evidence_state": "discovery_only",
+      "sources": [
+        {
+          "url": "https://imagecomics.com/comics/releases/invincible-1",
+          "title": "Invincible’s first issue"
+        }
+      ],
+      "known_scope": "The publisher offers a first-issue reader for this superhero coming-of-age starting point.",
+      "claims": [],
+      "missing_details": "Read the linked issue before extracting scene facts. Later revelations are outside this free issue’s scope.",
+      "reuse": "Use this as a reading lead, not as a verified ready-to-write plot."
+    },
+    {
+      "id": "radiant-black-recap",
+      "title": "Radiant Black: The Story So Far",
+      "issues": "The Story So Far recap / Massive-Verse continuity",
+      "medium": "comic",
+      "tags": [
+        "image",
+        "candidate"
+      ],
+      "evidence_state": "discovery_only",
+      "sources": [
+        {
+          "url": "https://imagecomics.com/comics/releases/radiant-black-the-story-so-far",
+          "title": "Radiant Black: The Story So Far"
+        }
+      ],
+      "known_scope": "A publisher recap provides a starting point for the Catalyst War and Rebuild era.",
+      "claims": [],
+      "missing_details": "Verify which issue and protagonist each proposed episode follows. A recap omits some causal details.",
+      "reuse": "Use this as a reading lead, not as a verified ready-to-write plot."
+    },
+    {
+      "id": "hellboy-seed",
+      "title": "Hellboy: Seed of Destruction",
+      "issues": "Seed of Destruction #1–4",
+      "medium": "comic",
+      "tags": [
+        "dark_horse",
+        "candidate"
+      ],
+      "evidence_state": "discovery_only",
+      "sources": [
+        {
+          "url": "https://images.darkhorse.com/darkhorse/index_images/blog/hellboy_timeline.pdf",
+          "title": "Hellboy: Seed of Destruction"
+        }
+      ],
+      "known_scope": "The official timeline identifies Hellboy’s summoning and the later confrontation around his origin.",
+      "claims": [],
+      "missing_details": "Read the issue/authorized collection for the actual origin confrontation and the ending. The timeline alone is insufficient.",
+      "reuse": "Use this as a reading lead, not as a verified ready-to-write plot."
+    },
+    {
+      "id": "golden-age-mystery",
+      "title": "An original Golden Age mystery adaptation",
+      "issues": "Choose and verify one complete public-domain issue",
+      "medium": "comic",
+      "tags": [
+        "public_domain",
+        "candidate"
+      ],
+      "evidence_state": "discovery_only",
+      "sources": [
+        {
+          "url": "https://digitalcomicmuseum.com/",
+          "title": "An original Golden Age mystery adaptation"
+        }
+      ],
+      "known_scope": "The archive offers full Golden Age issues to inspect, subject to specific issue availability and status.",
+      "claims": [],
+      "missing_details": "Pick a complete story, verify rights/jurisdiction and read its ending. No specific plot has been extracted yet.",
+      "reuse": "Use this as a reading lead, not as a verified ready-to-write plot."
+    }
+  ],
+  "freshness_policy": {
+    "stable_plot": "Reuse a reviewed packet when continuity and claim scope are unchanged.",
+    "recheck": "Refresh reading-service access, links, licensing, current releases and any proposed uncached decisive detail."
+  },
+  "quality_rule": "A source blurb is not a story script. Extract motive, pressure, choice, action and consequence, then verify why one beat causes the next."
+}

@@ -9,21 +9,28 @@
       "url": "https://www.marvel.com/articles/comics/most-impactful-spider-man-stories-by-decade?linkId=178717653",
       "title": "Marvel’s most impactful Spider-Man stories",
       "excerpt": "The stolen ISO-36 serum could save May. Machinery traps Peter in a flooding room. His determination lets him escape.",
-      "checked_at": "2026-11-06T19:00:00+00:00"
+      "checked_at": "2026-11-06T18:54:15.674946+00:00"
     },
     {
       "id": "resolve",
       "url": "https://www.marvel.com/articles/comics/spider-man-s-greatest-moments?linkId=125912694",
       "title": "Marvel’s greatest Spider-Man moments",
       "excerpt": "The article identifies issue #33, his struggle beneath industrial rubble and the importance of Aunt May and Uncle Ben to his resolve.",
-      "checked_at": "2026-11-06T19:00:00+00:00"
+      "checked_at": "2026-11-06T18:54:15.674946+00:00"
     },
     {
       "id": "outcome",
       "url": "https://www.marvel.com/characters/doctor-octopus-otto-octavius/in-comics",
       "title": "Marvel’s Doctor Octopus history",
       "excerpt": "Octavius’s forces hijack the substance. Spider-Man reaches the underwater hideout, recovers the serum and saves May with Dr Connors’s help.",
-      "checked_at": "2026-11-06T19:00:00+00:00"
+      "checked_at": "2026-11-06T18:54:15.674946+00:00"
+    },
+    {
+      "id": "issue",
+      "url": "https://www.marvel.com/comics/issue/6738/amazing_spider-man_1963_33",
+      "title": "Marvel issue catalog and cover",
+      "excerpt": "The Amazing Spider-Man (1963) #33, The Final Chapter, concludes the If This Be My Destiny arc.",
+      "checked_at": "2026-11-06T18:54:15.674946+00:00"
     }
   ],
   "claims": [
@@ -46,6 +53,16 @@
       "id": "c4",
       "source_id": "outcome",
       "text": "Peter recovered the serum and saved Aunt May with Dr Connors’s assistance."
+    },
+    {
+      "id": "c5",
+      "source_id": "outcome",
+      "text": "May became ill because Peter’s radioactive blood was used in a transfusion. The experimental ISO-36 was needed to save her."
+    },
+    {
+      "id": "c6",
+      "source_id": "issue",
+      "text": "The focal story appears in The Amazing Spider-Man #33, published in 1966; the larger arc spans #31–33."
     }
   ],
   "notes": "Marvel Comics’ The Amazing Spider-Man (1963) #31–33, concluding in 1966. This is comic continuity. Modern cutouts illustrate the identity and are not 1966 panels. Recap based on the cited publisher/interview material. Geometric motion is illustrative blocking, not literal footage. The modern character cutouts are illustrative likenesses, not original panels. No continuation or publication is claimed."

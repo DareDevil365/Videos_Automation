@@ -24,3 +24,6 @@ Use original code-drawn diagrams: fractured world tiles, an abstract throne, a s
 Each part should answer a local question before pointing forward. The final part concludes this arc. A next-part link becomes a real link only after that export/publication exists; the manifest currently stores null URLs. The dedicated [comic_lore preset](../../docs/categories/comic-lore/HOW_TO_CREATE.md) supplies local portrait illustrations and measured speech. The raw brief remains unverified by itself; an exact script/brief-bound provided review supports these prototypes only.
 
 Before calling a result good, have a cold audience critic identify its first confusing term, first likely swipe-away moment, whether each part pays off its title, whether the visuals clarify the cause, and whether the serial handoff feels earned. The critic should cite actual timestamps/lines and distinguish its opinion from measured viewer retention.
+
+
+Start new story discovery with the [reusable source library](SOURCE_LIBRARY.md) and local lookup command. It separates six reviewed factual packets from six reading leads and explains how to fill a missing causal detail once, then reuse it.

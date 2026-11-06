@@ -9,21 +9,28 @@
       "url": "https://www.etonline.com/wandavision-series-finale-interview-jac-schaeffer-161951",
       "title": "Head writer Jac Schaeffer on the finale",
       "excerpt": "Schaeffer explains why identical Synthezoids needed a logical resolution and distinguishes the restored data from Wanda’s emotional goodbye.",
-      "checked_at": "2026-11-06T19:00:00+00:00"
+      "checked_at": "2026-11-06T18:54:15.640774+00:00"
     },
     {
       "id": "scene",
       "url": "https://www.gamesradar.com/wandavision-the-comic-book-roots-of-the-finales-ship-of-theseus-scene/",
       "title": "GamesRadar / Newsarama on the two Visions",
       "excerpt": "The rebuilt original and Wanda’s recreation discuss the Ship of Theseus. The conversation leads to restored memories and White Vision leaving.",
-      "checked_at": "2026-11-06T19:00:00+00:00"
+      "checked_at": "2026-11-06T18:54:15.642155+00:00"
     },
     {
       "id": "marvel",
       "url": "https://www.marvel.com/articles/tv-shows/wandavision-paul-bettany-vision-goodbye?linkId=112916480",
       "title": "Marvel on Vision’s goodbye",
       "excerpt": "Wanda cannot maintain her fictional world. Her Vision is a memory made real.",
-      "checked_at": "2026-11-06T19:00:00+00:00"
+      "checked_at": "2026-11-06T18:54:15.642155+00:00"
+    },
+    {
+      "id": "exchange",
+      "url": "https://www.springfieldspringfield.co.uk/view_episode_scripts.php?episode=s01e09&tv-show=wandavision-2021",
+      "title": "Third-party episode transcript, identity exchange",
+      "excerpt": "The exchange names White Vision’s target, compares the replaced ship and a second vessel from the old wood, and distinguishes original material from blocked memory data.",
+      "checked_at": "2026-11-06T18:54:15.642155+00:00"
     }
   ],
   "claims": [
@@ -46,6 +53,26 @@
       "id": "c4",
       "source_id": "scene",
       "text": "Wanda’s Vision unlocks White Vision’s blocked memories. White Vision identifies himself as Vision and flies away."
+    },
+    {
+      "id": "c5",
+      "source_id": "exchange",
+      "text": "White Vision’s directive is to destroy Vision. Wanda’s Vision disputes being the true original, prompting the identity discussion."
+    },
+    {
+      "id": "c6",
+      "source_id": "exchange",
+      "text": "The analogy compares a ship with replaced planks and a second ship made from restored old planks. It is then applied to their bodies and memories."
+    },
+    {
+      "id": "c7",
+      "source_id": "exchange",
+      "text": "White Vision’s memory data was kept from him, not fully erased. He permits access before recognizing himself."
+    },
+    {
+      "id": "c8",
+      "source_id": "creator",
+      "text": "Restoring White Vision’s data does not make him the emotional partner Wanda knew inside the Hex. Her goodbye to that Vision is a real goodbye."
     }
   ],
   "notes": "Marvel Studios’ WandaVision (2021), episode 9. MCU continuity, not a comics event or a recap of later VisionQuest episodes. Recap based on the cited publisher/interview material. Geometric motion is illustrative blocking, not literal footage. The modern character cutouts are illustrative likenesses, not original panels. No continuation or publication is claimed."

@@ -1,9 +1,9 @@
 {
   "reviewer": "Codex, cited publisher/interview source comparison",
   "supported": true,
-  "brief_sha256": "97314f3782da100a3f35bd7bee3b0cf12d7e0f4b8411714ebdecfff863032be4",
+  "brief_sha256": "e4d80d9afae362a0325d44a3b7526f534681ff9775ce16bf65c11357f136bc51",
   "script_sha256": {
-    "part-1.json": "011c43e07c24524a2c69bd833896775ee8040947ba85b01b98759449339841d2"
+    "part-1.json": "e7fed24ed78feb17942401c389c2b32b18d1b893f2d0001086d9eac8c7aa8dc5"
   },
   "limitations": "Public source summaries and creator interview, not a complete issue or shot-for-shot transcription. Cutouts and geometric movements illustrate the source-linked recap. Preview-only image rights."
 }

@@ -9,5 +9,16 @@
     "file": "white_vision.png",
     "page": "https://www.deviantart.com/metropolis-hero1125/art/Wandavision-White-Vision-PNG-889226489",
     "credit": "White Vision fan-prepared cutout by Metropolis-Hero1125, based on Marvel Studios imagery."
+  },
+  "white_vision_full": {
+    "file": "white_vision.png",
+    "page": "https://www.deviantart.com/metropolis-hero1125/art/Wandavision-White-Vision-PNG-889226489",
+    "credit": "White Vision fan-prepared cutout by Metropolis-Hero1125, based on Marvel Studios imagery."
+  },
+  "source_cover": {
+    "file": "vision-poster-hq.jpg",
+    "url": "https://cdn.marvel.com/content/2x/wandavision_poster.jpg",
+    "page": "https://www.marvel.com/articles/tv-shows/wandavision-mid-season-trailer",
+    "credit": "Official WandaVision series poster, Marvel Studios / Disney. Show artwork, not a comic cover."
   }
 }

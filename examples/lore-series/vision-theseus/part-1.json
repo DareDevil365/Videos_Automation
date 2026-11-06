@@ -4,129 +4,148 @@
   "description": "Why does Vision ask his enemy about a boat? The Ship of Theseus conversation in WandaVision turns a fight into a question of identity and memory. This recaps the 2021 finale only.",
   "format": "lesson",
   "fiction": false,
-  "hook": "Vision ended a fight with his own dead body by asking a question about a boat.",
-  "payoff": "He unlocks them. White Vision remembers his life, declares himself Vision, and flies away.",
+  "hook": "In WandaVision's finale, Vision's own dead body comes back with orders to kill him.",
+  "payoff": "White Vision recognizes himself and flies away. But Wanda's Vision is still a separate being, tied to the world she created.",
   "units": [
     {
       "id": "u1",
       "speaker": "Host",
-      "text": "Vision ended a fight with his own dead body by asking a question about a boat.",
-      "onscreen": "A QUESTION ENDED THE FIGHT",
+      "text": "In WandaVision's finale, Vision's own dead body comes back with orders to kill him.",
+      "onscreen": "WANDAVISION · THE SERIES FINALE",
       "kind": "fact",
       "claim_ids": [
         "c1",
-        "c3"
+        "c5"
       ],
       "visual_kind": "image",
-      "visual_query": "A QUESTION ENDED THE FIGHT",
-      "lore_scene": "vision_question",
+      "visual_query": "WANDAVISION · THE SERIES FINALE",
+      "lore_scene": "portrait",
       "lore_camera": "push"
     },
     {
       "id": "u2",
       "speaker": "Narrator",
-      "text": "In WandaVision, White Vision is the original body, rebuilt by SWORD and sent to destroy Wanda’s Vision.",
-      "onscreen": "THE ORIGINAL BODY",
-      "kind": "fact",
-      "claim_ids": [
-        "c1"
-      ],
-      "visual_kind": "image",
-      "visual_query": "THE ORIGINAL BODY",
-      "lore_scene": "vision_bodies",
-      "lore_camera": "pan_left"
-    },
-    {
-      "id": "u3",
-      "speaker": "Narrator",
-      "text": "But Wanda’s Vision is a creation of her magic. He has no original parts. Which one is actually Vision?",
-      "onscreen": "BODY OR MEMORY?",
+      "text": "But his target is Wanda's magical recreation. White Vision has the original body; his opponent has none of the original parts.",
+      "onscreen": "ONE BODY. TWO VISIONS.",
       "kind": "fact",
       "claim_ids": [
         "c1",
         "c2"
       ],
       "visual_kind": "image",
-      "visual_query": "BODY OR MEMORY?",
+      "visual_query": "ONE BODY. TWO VISIONS.",
+      "lore_scene": "vision_bodies",
+      "lore_camera": "push"
+    },
+    {
+      "id": "u3",
+      "speaker": "Narrator",
+      "text": "They are equally matched, so Vision challenges the order itself: which one is the real target?",
+      "onscreen": "WHO IS HE ORDERED TO DESTROY?",
+      "kind": "fact",
+      "claim_ids": [
+        "c3",
+        "c5"
+      ],
+      "visual_kind": "image",
+      "visual_query": "WHO IS HE ORDERED TO DESTROY?",
       "lore_scene": "vision_magic",
       "lore_camera": "wide"
     },
     {
       "id": "u4",
       "speaker": "Narrator",
-      "text": "He asks about a ship. Replace every plank. Is it still the same ship?",
-      "onscreen": "REPLACE EVERY PLANK",
+      "text": "They compare it to a ship. Replace every rotten plank: is it still the original?",
+      "onscreen": "EVERY PLANK GETS REPLACED",
       "kind": "fact",
       "claim_ids": [
-        "c3"
+        "c3",
+        "c6"
       ],
       "visual_kind": "image",
-      "visual_query": "REPLACE EVERY PLANK",
+      "visual_query": "EVERY PLANK GETS REPLACED",
       "lore_scene": "vision_ship",
       "lore_camera": "wide"
     },
     {
       "id": "u5",
       "speaker": "Narrator",
-      "text": "Now rebuild another ship with all the old planks. Which one deserves the original name?",
-      "onscreen": "WHICH SHIP IS ORIGINAL?",
+      "text": "Now rebuild a second ship from the old wood. Both have a claim. Neither is the unchanged original.",
+      "onscreen": "TWO SHIPS CLAIM ONE IDENTITY",
       "kind": "fact",
       "claim_ids": [
-        "c3"
+        "c3",
+        "c6"
       ],
       "visual_kind": "image",
-      "visual_query": "WHICH SHIP IS ORIGINAL?",
+      "visual_query": "TWO SHIPS CLAIM ONE IDENTITY",
       "lore_scene": "vision_two_ships",
       "lore_camera": "wide"
     },
     {
       "id": "u6",
       "speaker": "Narrator",
-      "text": "The fight stops. Wanda’s Vision points out that the original body's memories are still there, just blocked.",
-      "onscreen": "THE MEMORIES ARE STILL THERE",
+      "text": "They fit the same puzzle: the rebuilt body has lost access to its memories, while Wanda's creation has no original material.",
+      "onscreen": "THE SHIP PROBLEM IS THEIR PROBLEM",
       "kind": "fact",
       "claim_ids": [
-        "c3",
-        "c4"
+        "c2",
+        "c6",
+        "c7"
       ],
       "visual_kind": "image",
-      "visual_query": "THE MEMORIES ARE STILL THERE",
-      "lore_scene": "vision_memory",
-      "lore_camera": "pan_left"
+      "visual_query": "THE SHIP PROBLEM IS THEIR PROBLEM",
+      "lore_scene": "vision_mapping",
+      "lore_camera": "push"
     },
     {
       "id": "u7",
       "speaker": "Narrator",
-      "text": "He unlocks them. White Vision remembers his life, declares himself Vision, and flies away.",
-      "onscreen": "THE MEMORIES UNLOCK",
+      "text": "But White Vision's data hasn't been erased. He lets his counterpart unlock it, and his past comes back.",
+      "onscreen": "THE DATA WAS BLOCKED",
       "kind": "fact",
       "claim_ids": [
-        "c4"
+        "c4",
+        "c7"
       ],
       "visual_kind": "image",
-      "visual_query": "THE MEMORIES UNLOCK",
+      "visual_query": "THE DATA WAS BLOCKED",
       "lore_scene": "vision_unlock",
       "lore_camera": "wide"
     },
     {
       "id": "u8",
-      "speaker": "Host",
-      "text": "Same opponent. Same body. One question ended the fight that punches couldn't.",
-      "onscreen": "THE FIGHT IS OVER",
-      "kind": "transition",
+      "speaker": "Narrator",
+      "text": "White Vision recognizes himself and flies away. But Wanda's Vision is still a separate being, tied to the world she created.",
+      "onscreen": "HE LEAVES THE FIGHT",
+      "kind": "fact",
       "claim_ids": [
-        "c3",
-        "c4"
+        "c4",
+        "c8"
       ],
       "visual_kind": "image",
-      "visual_query": "THE FIGHT IS OVER",
-      "lore_scene": "vision_answer",
-      "lore_camera": "pan_left"
+      "visual_query": "HE LEAVES THE FIGHT",
+      "lore_scene": "vision_departure",
+      "lore_camera": "push"
+    },
+    {
+      "id": "u9",
+      "speaker": "Host",
+      "text": "So the original body survives, while the husband Wanda knows still has to say goodbye.",
+      "onscreen": "A BODY SURVIVES. A GOODBYE REMAINS.",
+      "kind": "transition",
+      "claim_ids": [
+        "c8"
+      ],
+      "visual_kind": "image",
+      "visual_query": "THE WEAPON REMEMBERS A LIFE",
+      "lore_scene": "vision_aftermath",
+      "lore_camera": "push"
     }
   ],
   "edit": {
     "effect": "none",
-    "payoff_unit_id": "u7",
+    "payoff_unit_id": "u8",
     "cta": false
   }
 }

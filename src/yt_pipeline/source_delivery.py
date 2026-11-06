@@ -32,7 +32,7 @@ def delivery_for(unit, request, default_pause, *, tight_default=False):
         "linked_phrases": [p for p in phrases if p.casefold() in unit["text"].casefold()],
         "speech_segments": [{
             "text": unit["text"],
-            "speed": number(config.get("speed", 1.10 if tight else 1), .9, 1.15),
+            "speed": number(config.get("speed", 1.10 if tight else 1), .9, 1.25),
             "pause_after": 0,
         }],
     }

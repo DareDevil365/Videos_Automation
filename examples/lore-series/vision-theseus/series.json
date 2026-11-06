@@ -13,13 +13,15 @@
         "mode": "auto",
         "shots": {
           "u1": {
-            "focus": "identity",
+            "focus": "object",
             "motion": "hold",
-            "characters": [
-              "vision",
-              "white_vision"
-            ],
-            "props": []
+            "characters": [],
+            "props": [
+              {
+                "id": "source_cover",
+                "appearance_matters": true
+              }
+            ]
           },
           "u2": {
             "focus": "identity",
@@ -62,9 +64,10 @@
             ]
           },
           "u6": {
-            "focus": "identity",
+            "focus": "mechanism",
             "motion": "hold",
             "characters": [
+              "vision",
               "white_vision"
             ],
             "props": []
@@ -80,21 +83,27 @@
           },
           "u8": {
             "focus": "identity",
-            "motion": "hold",
+            "motion": "gesture",
             "characters": [
               "white_vision"
             ],
+            "props": []
+          },
+          "u9": {
+            "focus": "mechanism",
+            "motion": "hold",
+            "characters": [],
             "props": []
           }
         }
       },
       "source_delivery": {
         "tight_speech": true,
-        "speed": 1.08,
-        "pause_after": 0.06,
+        "speed": 1.24,
+        "pause_after": 0.045,
         "pauses_after": {
-          "u5": 0.11,
-          "u7": 0.13
+          "u5": 0.085,
+          "u7": 0.07
         },
         "linked_phrases": [
           "White Vision",
@@ -102,13 +111,19 @@
           "Aunt May",
           "Doctor Octopus",
           "Uncle Ben",
-          "Ship of Theseus"
+          "Ship of Theseus",
+          "The Amazing Spider-Man",
+          "Doctor Connors"
         ]
       },
       "source_music": {
         "start": 6,
         "volume": 0.075
-      }
+      },
+      "source_duration": [
+        42,
+        50
+      ]
     }
   ]
 }

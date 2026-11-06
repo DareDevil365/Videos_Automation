@@ -91,7 +91,7 @@ class Pipeline:
                         rules=get_playbook(job['request']['playbook'],job['request'])
                         result=synthesize(ws,results['script']['script'],folder/'voice',creative_plan=record['plan'],delivery=rules['voice'])
                         minimum,maximum=rules['seconds']
-                        if result['duration']<minimum and result['duration']>=minimum*.92:
+                        if 'source_duration' not in job['request'] and result['duration']<minimum and result['duration']>=minimum*.92:
                             # A small pace correction changes actual speech, not empty
                             # padding or the story. Only one bounded retry is allowed.
                             delivery={**rules['voice'],'length_scale':min(1.8,rules['voice']['length_scale']*(minimum+.3)/result['duration'])}

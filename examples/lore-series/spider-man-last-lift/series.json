@@ -13,14 +13,30 @@
         "mode": "auto",
         "shots": {
           "u1": {
-            "focus": "identity",
+            "focus": "object",
             "motion": "hold",
-            "characters": [
-              "spider_man"
-            ],
-            "props": []
+            "characters": [],
+            "props": [
+              {
+                "id": "source_cover",
+                "appearance_matters": true
+              }
+            ]
           },
           "u2": {
+            "focus": "mechanism",
+            "motion": "transformation",
+            "characters": [
+              "aunt_may"
+            ],
+            "props": [
+              {
+                "id": "blood",
+                "changes_state": true
+              }
+            ]
+          },
+          "u3": {
             "focus": "object",
             "motion": "contact",
             "characters": [
@@ -29,19 +45,6 @@
             "props": [
               {
                 "id": "serum"
-              }
-            ]
-          },
-          "u3": {
-            "focus": "action",
-            "motion": "contact",
-            "characters": [
-              "spider_man"
-            ],
-            "props": [
-              {
-                "id": "machinery",
-                "changes_state": true
               }
             ]
           },
@@ -91,22 +94,26 @@
             ]
           },
           "u8": {
-            "focus": "identity",
-            "motion": "hold",
+            "focus": "object",
+            "motion": "contact",
             "characters": [
               "spider_man"
             ],
-            "props": []
+            "props": [
+              {
+                "id": "serum"
+              }
+            ]
           }
         }
       },
       "source_delivery": {
         "tight_speech": true,
-        "speed": 1.08,
-        "pause_after": 0.06,
+        "speed": 1.15,
+        "pause_after": 0.045,
         "pauses_after": {
-          "u5": 0.11,
-          "u7": 0.13
+          "u5": 0.085,
+          "u7": 0.07
         },
         "linked_phrases": [
           "White Vision",
@@ -114,13 +121,19 @@
           "Aunt May",
           "Doctor Octopus",
           "Uncle Ben",
-          "Ship of Theseus"
+          "Ship of Theseus",
+          "The Amazing Spider-Man",
+          "Doctor Connors"
         ]
       },
       "source_music": {
         "start": 6,
         "volume": 0.075
-      }
+      },
+      "source_duration": [
+        42,
+        50
+      ]
     }
   ],
   "source_voices": {

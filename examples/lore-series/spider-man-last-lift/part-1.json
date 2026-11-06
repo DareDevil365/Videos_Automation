@@ -4,123 +4,125 @@
   "description": "Spider-Man is trapped beneath machinery while Aunt May’s medicine sits out of reach. A recap of Stan Lee and Steve Ditko’s If This Be My Destiny arc, especially The Amazing Spider-Man #33 (1966).",
   "format": "lesson",
   "fiction": false,
-  "hook": "Spider-Man could save Aunt May. The medicine was right there. He just couldn't reach it.",
-  "payoff": "Peter breaks free, grabs the serum, and gets it to the hospital. Aunt May survives.",
+  "hook": "In The Amazing Spider-Man thirty-three, Peter can see Aunt May's cure. He can't escape the wreckage.",
+  "payoff": "He escapes with the serum. Doctor Connors helps prepare the treatment, and Aunt May gets the medicine that saves her life.",
   "units": [
     {
       "id": "u1",
       "speaker": "Host",
-      "text": "Spider-Man could save Aunt May. The medicine was right there. He just couldn't reach it.",
-      "onscreen": "THE CURE IS RIGHT THERE",
+      "text": "In The Amazing Spider-Man thirty-three, Peter can see Aunt May's cure. He can't escape the wreckage.",
+      "onscreen": "THE AMAZING SPIDER-MAN #33",
       "kind": "fact",
       "claim_ids": [
         "c1",
-        "c2"
+        "c2",
+        "c6"
       ],
       "visual_kind": "image",
-      "visual_query": "THE CURE IS RIGHT THERE",
-      "lore_scene": "spider_question",
+      "visual_query": "THE AMAZING SPIDER-MAN #33",
+      "lore_scene": "portrait",
       "lore_camera": "push"
     },
     {
       "id": "u2",
       "speaker": "Narrator",
-      "text": "In a classic comic, Doctor Octopus steals the serum she needs. Peter tracks him to an underwater base.",
-      "onscreen": "THE MEDICINE IS STOLEN",
+      "text": "May is dying from radiation in Peter's own blood. He tried to help her with a transfusion; now he needs a rare serum to save her.",
+      "onscreen": "PETER’S BLOOD IS HARMING MAY",
       "kind": "fact",
       "claim_ids": [
-        "c1"
+        "c5"
       ],
       "visual_kind": "image",
-      "visual_query": "THE MEDICINE IS STOLEN",
-      "lore_scene": "spider_theft",
+      "visual_query": "PETER’S BLOOD IS HARMING MAY",
+      "lore_scene": "spider_transfusion",
       "lore_camera": "wide"
     },
     {
       "id": "u3",
       "speaker": "Narrator",
-      "text": "Then the machinery comes down. He's trapped under tons of steel as the room starts flooding.",
-      "onscreen": "TRAPPED UNDER THE STEEL",
-      "kind": "fact",
-      "claim_ids": [
-        "c2"
-      ],
-      "visual_kind": "image",
-      "visual_query": "TRAPPED UNDER THE STEEL",
-      "lore_scene": "spider_trapped",
-      "lore_camera": "wide"
-    },
-    {
-      "id": "u4",
-      "speaker": "Narrator",
-      "text": "The serum is only a few feet away. If he stays here, both he and Aunt May die.",
-      "onscreen": "SO CLOSE. STILL OUT OF REACH.",
+      "text": "Doctor Octopus's men steal it. Peter follows them to an underwater base, where a fight brings the machinery down on him.",
+      "onscreen": "THE SEARCH BECOMES A TRAP",
       "kind": "fact",
       "claim_ids": [
         "c1",
         "c2"
       ],
       "visual_kind": "image",
-      "visual_query": "SO CLOSE. STILL OUT OF REACH.",
+      "visual_query": "THE SEARCH BECOMES A TRAP",
+      "lore_scene": "spider_theft",
+      "lore_camera": "wide"
+    },
+    {
+      "id": "u4",
+      "speaker": "Narrator",
+      "text": "The cure lands just beyond his hand. Water keeps rising toward his face. He can see a way to save May, but he can't even free himself.",
+      "onscreen": "HE CAN SEE IT. HE CANNOT REACH IT.",
+      "kind": "fact",
+      "claim_ids": [
+        "c1",
+        "c2"
+      ],
+      "visual_kind": "image",
+      "visual_query": "HE CAN SEE IT. HE CANNOT REACH IT.",
       "lore_scene": "spider_reach",
       "lore_camera": "wide"
     },
     {
       "id": "u5",
       "speaker": "Narrator",
-      "text": "He thinks of Uncle Ben. He already lost one person he loved. He refuses to lose another.",
-      "onscreen": "HE WILL NOT LOSE HER",
+      "text": "For a moment, he almost gives up. Then he thinks of Uncle Ben. He couldn't save Ben. He still has a chance to save May.",
+      "onscreen": "ONE LOSS HE CAN STILL PREVENT",
       "kind": "fact",
       "claim_ids": [
         "c3"
       ],
       "visual_kind": "image",
-      "visual_query": "HE WILL NOT LOSE HER",
+      "visual_query": "ONE LOSS HE CAN STILL PREVENT",
       "lore_scene": "spider_resolve",
       "lore_camera": "wide"
     },
     {
       "id": "u6",
       "speaker": "Narrator",
-      "text": "He plants his feet. The steel begins to rise. Inch by inch, he lifts the wreckage off his back.",
-      "onscreen": "THE WRECKAGE STARTS TO RISE",
+      "text": "So Peter plants his feet and pushes again. His back begins to straighten. He strains until the machinery clears his shoulders, giving him room to crawl out.",
+      "onscreen": "HE TRIES AGAIN — AND IT MOVES",
       "kind": "fact",
       "claim_ids": [
         "c2",
         "c3"
       ],
       "visual_kind": "image",
-      "visual_query": "THE WRECKAGE STARTS TO RISE",
+      "visual_query": "HE TRIES AGAIN — AND IT MOVES",
       "lore_scene": "spider_lift",
       "lore_camera": "wide"
     },
     {
       "id": "u7",
       "speaker": "Narrator",
-      "text": "Peter breaks free, grabs the serum, and gets it to the hospital. Aunt May survives.",
-      "onscreen": "AUNT MAY GETS THE CURE",
+      "text": "He escapes with the serum. Doctor Connors helps prepare the treatment, and Aunt May gets the medicine that saves her life.",
+      "onscreen": "THE BOTTLE REACHES THE HOSPITAL",
       "kind": "fact",
       "claim_ids": [
         "c4"
       ],
       "visual_kind": "image",
-      "visual_query": "AUNT MAY GETS THE CURE",
+      "visual_query": "THE BOTTLE REACHES THE HOSPITAL",
       "lore_scene": "spider_hospital",
       "lore_camera": "push"
     },
     {
       "id": "u8",
       "speaker": "Host",
-      "text": "The villain didn't see this victory. The person who needed it was lying in a hospital bed.",
-      "onscreen": "A VICTORY FOR ONE PERSON",
+      "text": "All that strength, spent bringing one small bottle back to the person who raised him.",
+      "onscreen": "ONE BOTTLE. ONE LIFE.",
       "kind": "transition",
       "claim_ids": [
         "c4"
       ],
       "visual_kind": "image",
-      "visual_query": "A VICTORY FOR ONE PERSON",
-      "lore_scene": "spider_answer",
-      "lore_camera": "pan_left"
+      "visual_query": "ONE BOTTLE. ONE LIFE.",
+      "lore_scene": "spider_serum_return",
+      "lore_camera": "wide"
     }
   ],
   "edit": {

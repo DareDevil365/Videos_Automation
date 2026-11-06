@@ -45,7 +45,7 @@ The script remains clean immutable dialogue. A director scene can optionally con
 }
 ```
 
-This is a delivery fragment, not a complete scene. Joining the segment text must preserve every script word, punctuation and order (whitespace is normalized for coverage checking). At most eight segments, speed multipliers 0.9–1.15, internal pauses up to 1.2s each/2.4s total, and zero pause after the final segment. Existing scene `pause_after` handles the unit ending. Effective speech pace must remain within the existing length-scale limits. Empty segments, nonfinite values, changed text and markup tags hold.
+This is a delivery fragment, not a complete scene. Joining the segment text must preserve every script word, punctuation and order (whitespace is normalized for coverage checking). At most eight segments, speed multipliers 0.9–1.25, internal pauses up to 1.2s each/2.4s total, and zero pause after the final segment. Existing scene `pause_after` handles the unit ending. Effective speech pace must remain within the existing length-scale limits. Empty segments, nonfinite values, changed text and markup tags hold.
 
 Local TTS renders/caches each exact segment and assembles a complete per-unit WAV including its real internal silence. Segment text/speed/model/voice and assembly pause parameters participate in cache identity. Unit timing, complete narration, caption alignment and following scene offsets use the actual assembled file. Accepted preset and cast voices remain selected. `[P]`, `[PP]`, `[PPP]`, `[FAST]` and `[NORMAL]` are not added to dialogue or captions.
 

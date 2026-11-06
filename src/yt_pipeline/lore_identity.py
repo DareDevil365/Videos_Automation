@@ -6,7 +6,7 @@ from shorts_editor.graphics import text_box
 from .lore_style_assets import place_cutout
 
 
-IDENTITY_KINDS=tuple('vision_'+n for n in ('question','bodies','magic','ship','two_ships','memory','unlock','answer'))+tuple('spider_'+n for n in ('question','theft','trapped','reach','resolve','lift','hospital','answer'))
+IDENTITY_KINDS=tuple('vision_'+n for n in ('question','bodies','magic','ship','two_ships','memory','unlock','answer','mapping','departure','aftermath'))+tuple('spider_'+n for n in ('question','theft','trapped','reach','resolve','lift','hospital','answer','transfusion','serum_return'))
 CREAM='#e0d1af'
 INK='#101923'
 
@@ -141,8 +141,15 @@ def identity_art(layer,scene,second,p,glow,images):
                 d.line((223,547,x,y),fill='#d2b274',width=3);d.ellipse((x-14,y-14,x+14,y+14),fill='#b88085',outline=CREAM,width=3)
             d.rounded_rectangle((189,518,257,583),radius=9,fill='#4d6871',outline=CREAM,width=3)
             d.arc((202,495,244,540),180,360,fill=CREAM,width=5)
+        elif kind=='vision_mapping':
+            _actor(layer,scene,images,'vision',(47,311,325,762),(203,497,1.0))
+            _actor(layer,scene,images,'white_vision',(403,311,671,762),(529,497,1.0))
+            d=ImageDraw.Draw(layer)
+            text_box(d,'NO ORIGINAL MATERIAL',(53,799,288,78),CREAM,24,True,'center',minimum=22)
+            text_box(d,'BLOCKED MEMORIES',(391,799,287,78),CREAM,24,True,'center',minimum=22)
+            d.line((355,365,355,866),fill=CREAM,width=3)
         elif kind=='vision_unlock':
-            contact=min(1,max(0,p/.35));fly=max(0,(p-.66)/.34)
+            contact=min(1,max(0,p/.35));fly=0 if scene.get('unit_id')=='u7' else max(0,(p-.66)/.34)
             target=(280+220*contact,608-155*contact)
             _vision(d,'vision',220,580,1.1,hand=target)
             _vision(d,'white_vision',500,537-580*fly,1.1)
@@ -151,6 +158,13 @@ def identity_art(layer,scene,second,p,glow,images):
                 for i in range(7):
                     a=i*.9+second*.4;r=30+75*((p-.35)/.65)
                     x=500+r*math.cos(a);y=453+r*math.sin(a);ImageDraw.Draw(layer).ellipse((x-3,y-3,x+3,y+3),fill=CREAM)
+        elif kind=='vision_departure':
+            shift=round(1000*max(0,(p-.12)/.88)**1.5)
+            cast={**images,'white_vision':images['white_vision_full']} if 'white_vision_full' in images else images
+            _actor(layer,scene,cast,'white_vision',(220,306-shift,531,914-shift),(361,575-shift,1.25))
+        elif kind=='vision_aftermath':
+            # The empty library is the visible consequence of the attacker leaving.
+            d.arc((195,386,518,710),second*32,second*32+205,fill='#617f8a',width=3)
         else:
             _actor(layer,scene,images,'white_vision',(200,270,537,900),(361,575,1.25))
     else:
@@ -160,6 +174,27 @@ def identity_art(layer,scene,second,p,glow,images):
             if 'spider_man' in images and choice.get('representation')!='geometric':place_cutout(layer,images,'spider_man',(75,303,647,888))
             else:_spider(d,360,550)
             if kind=='spider_question':_vial(ImageDraw.Draw(layer),561,315,1.15)
+        elif kind=='spider_transfusion':
+            d.polygon([(183,356),(137,435),(146,487),(181,512),(222,487),(233,435)],fill='#a45053',outline=CREAM,width=4)
+            d.line((240,467,337,467,337,576,412,576),fill='#bd7570',width=6)
+            d.polygon([(423,576),(402,563),(402,589)],fill=CREAM)
+            d.rounded_rectangle((408,558,641,686),radius=13,fill='#71858a',outline=CREAM,width=3)
+            d.ellipse((422,544,480,598),fill='#c0b197',outline=CREAM,width=3)
+            d.arc((418,535,485,598),181,357,fill='#d5d1c0',width=10)
+            d.polygon([(485,568),(623,573),(632,669),(480,669)],fill='#b7c5b6',outline=CREAM,width=3)
+            for angle in (0,120,240):
+                a=math.radians(angle)+second*.07
+                points=[(184,650),(184+65*math.cos(a-.35),650+65*math.sin(a-.35)),(184+65*math.cos(a+.35),650+65*math.sin(a+.35))]
+                d.polygon(points,fill='#d5a968')
+            d.ellipse((174,640,194,660),fill=INK,outline=CREAM,width=2)
+        elif kind=='spider_serum_return':
+            d.polygon([(70,837),(650,837),(673,912),(44,912)],fill='#425963',outline=CREAM,width=3)
+            _vial(d,360,728,3.2)
+            glow(layer,(360,710),125,(109,196,185),70)
+            # A recognizable geometric glove shares the scale and outline of the lift.
+            x=83+110*min(1,p*1.8)
+            d=ImageDraw.Draw(layer);d.polygon([(45,709),(x,709),(x+41,734),(x+111,734),(x+119,754),(x+27,768),(45,759)],fill='#ba484b',outline='#e0b49b',width=4)
+            for y in (722,741):d.line((53,y,x,y+5),fill='#572d3b',width=3)
         elif kind=='spider_theft':
             # Four segmented mechanical arms identify the antagonist in an action shot.
             for side in (-1,1):

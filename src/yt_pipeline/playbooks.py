@@ -224,6 +224,15 @@ def get_playbook(name,request=None):
         rules['visuals']='The SOFTWARE handles editing: portrait 9:16, close-cropped message cards, previous context, typing beats, reaction emphasis, readable holds, stable names/avatars and notification sound. Return ONLY dialogue/content; do not plan timings, camera moves or music. Text must work without a narrator or unseen physical action.'
         rules['sound']='Reading-led chat, no narrator or TTS. Quiet original message pops; interruption/blackout sections stay silent.'
     if name=='illustrated_story' and (request or {}).get('story_canvas')=='portrait':rules.update(seconds=[35,80],words=[100,190],units=[8,14])
+    if name=='comic_lore' and 'source_duration' in (request or {}):
+        bounds=request['source_duration']
+        if not isinstance(bounds,list) or len(bounds)!=2 or any(type(v) not in (int,float) for v in bounds) or not 10<=bounds[0]<bounds[1]<=179:
+            raise Held('playbook_duration','Supply a measured comic duration window within 10–179 seconds.')
+        rules.update(seconds=list(bounds),words=[110,230])
+        rules['writing'] += (' Build a connected causal story with the motive, pressure, decision and consequence intact. '
+            'Identify the actual comic and issue, or the actual show and episode, near the opening. '
+            'Explain why each transition happens; a chain of disconnected plot highlights is insufficient. '
+            'Use the measured delivery window to fit more meaningful story, never padding or chopped speech.')
     return rules
 
 

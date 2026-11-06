@@ -137,6 +137,8 @@ class Pipeline:
                         if job['request'].get('reaction_set'):
                             bar_height=1038
                             caption_options['font_size']=38
+                        if job['request'].get('lore_design'):
+                            caption_options['font_family']=job['request']['lore_design'].get('font','Arial')
                         burn_captions(output,results['voice']['caption_cues'],split=project['format']=='stack',caption_bar=results['voice'].get('caption_style')=='dialogue_bar',
                             bar_height=bar_height,**caption_options)
                     result={"video":str(output),"cover":str(output.with_suffix(".png")),"captions":str(output.with_suffix(".srt")),

@@ -80,3 +80,6 @@ Default output: local-only `Resources/Productions/editorial-rewrite-demo/`, incl
 ```
 
 Photo-head expressions, chat typing overlays and music beat synchronization remain explicitly deferred in the implementation plan. Changing arbitrary shot lengths is not actual synchronization. Existing source/playbook account and audience-validation gaps remain.
+
+
+Comic-lore design requests can select Arial, Trebuchet MS or Georgia through `lore_design.font`; heading and caption rendering share that choice. The caption cache includes the family. The lower audience layout keeps a dark caption band above the theater, so changing scene palettes does not make white captions disappear. Font fallback remains local and must be checked in the actual export.

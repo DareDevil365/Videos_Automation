@@ -21,3 +21,6 @@
 Use Studio to record **Stayed to watch**, engaged views, average view duration, average percentage viewed and the first meaningful retention drop. Compare with similar videos on this channel, at a similar age. Record the hypothesis, the video ID and the next adjustment. Change one major variable when comparing follow-ups if possible. A public view count is useful for discovery research. The channel's own viewing data is what tests whether the opening and payoff worked.
 
 Sources for the metrics and discovery process are [YouTube Shorts search and discovery](https://support.google.com/youtube/answer/11914225?co=YOUTUBE._YTVideoType%3Dshorts&hl=en), [Shorts analytics](https://support.google.com/youtube/answer/12942217?co=YOUTUBE._YTVideoType%3Dshorts&hl=en), and [audience retention](https://support.google.com/youtube/answer/9314415?hl=en).
+
+
+Latest owner priority: audience interest and growth come before convenient sources/assets or a particular movie/comic format. Follow the expanded [topic decision process](TOPIC_SELECTION.md), compare at least five premises, and preserve rejection reasons. A movie recap under a minute is an option when its conflict and payoff justify it. Record choices with evidence; public view counts and model scores cannot establish future retention.

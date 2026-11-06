@@ -1,4 +1,6 @@
 import json
+import hashlib
+import importlib.util
 from pathlib import Path
 import subprocess
 import sys
@@ -38,6 +40,18 @@ def test_library_lookup_works_offline_from_another_directory(tmp_path):
     result=subprocess.run([sys.executable,str(ROOT/'tools/query_comic_library.py'),'Spider Man','--ready-only'],
                           cwd=tmp_path,capture_output=True,text=True,check=True,encoding='utf-8')
     matches=json.loads(result.stdout)['matches']
-    assert len(matches)==1 and matches[0]['id']=='spider-man-last-lift'
-    assert matches[0]['packet_status']=='reviewed_claim_scope'
-    assert matches[0]['claims'] and matches[0]['sources']
+    rescue=next(row for row in matches if row['id']=='spider-man-last-lift')
+    assert rescue['packet_status']=='reviewed_claim_scope'
+    assert rescue['claims'] and rescue['sources']
+    assert all(row['packet_status']=='reviewed_claim_scope' for row in matches)
+
+
+def test_library_accepts_checkout_line_endings_but_not_changed_fact():
+    spec=importlib.util.spec_from_file_location('comic_library',ROOT/'tools/query_comic_library.py')
+    library=importlib.util.module_from_spec(spec);spec.loader.exec_module(library)
+    reviewed=b'{"fact":"Peter escaped."}\r\n'
+    review={'supported':True,'brief_sha256':hashlib.sha256(reviewed).hexdigest()}
+    assert library.review_match(reviewed,review)=='exact'
+    assert library.review_match(reviewed.replace(b'\r\n',b'\n'),review)=='line_endings_only'
+    assert library.review_match(reviewed.replace(b'escaped',b'died'),review) is None
+    assert library.review_match(reviewed,{**review,'supported':False}) is None

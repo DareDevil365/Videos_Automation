@@ -1,0 +1,79 @@
+{
+  "version": 1,
+  "title": "The Hunter Who Buried Spider-Man Alive",
+  "question": "Why bury Spider-Man and take his place?",
+  "kind": "fact",
+  "sources": [
+    {
+      "id": "history",
+      "url": "https://www.marvel.com/characters/kraven-the-hunter-sergei-kravinoff/in-comics",
+      "title": "Marvel: Kraven history",
+      "excerpt": "The hunter impersonates Peter, defeats Vermin, faces the escaped hero, interrupts Vermin, leaves a confession and dies by suicide. The burial causes lingering trauma.",
+      "checked_at": "2026-11-06T20:07:04.553748+00:00"
+    },
+    {
+      "id": "decades",
+      "url": "https://www.marvel.com/articles/comics/most-impactful-spider-man-stories-by-decade?linkId=178717653",
+      "title": "Marvel: Spider-Man stories by decade",
+      "excerpt": "The 1987 six-part Last Hunt has Kraven shoot and bury Peter, wear a cloth black suit and hunt Vermin; Peter emerges after two weeks.",
+      "checked_at": "2026-11-06T20:07:04.553748+00:00"
+    },
+    {
+      "id": "issue",
+      "url": "https://www.marvel.com/comics/issue/12028/web-of-spider-man-1985-32",
+      "title": "Marvel: Web of Spider-Man #32",
+      "excerpt": "The November 1987 issue shows Peter emerging and learning his impersonator has been active for two weeks.",
+      "checked_at": "2026-11-06T20:07:04.553748+00:00"
+    },
+    {
+      "id": "reading",
+      "url": "https://www.marvel.com/comics/guides/784/kravens-last-hunt",
+      "title": "Marvel: Last Hunt reading order",
+      "excerpt": "Web of Spider-Man #31–32, Amazing Spider-Man #293–294 and Spectacular Spider-Man #131–132. The hunter wants to prove his mastery by taking Peter’s place.",
+      "checked_at": "2026-11-06T20:07:04.553748+00:00"
+    }
+  ],
+  "claims": [
+    {
+      "id": "c1",
+      "source_id": "decades",
+      "text": "Kraven shot Peter, buried him alive, and wore a cloth version of the black Spider-Man suit in the 1987 six-part Last Hunt."
+    },
+    {
+      "id": "c2",
+      "source_id": "history",
+      "text": "Peter was buried for two weeks in a state simulating death before climbing free."
+    },
+    {
+      "id": "c3",
+      "source_id": "reading",
+      "text": "Kraven intended to prove his mastery over Spider-Man by taking his place."
+    },
+    {
+      "id": "c4",
+      "source_id": "history",
+      "text": "Kraven became a vicious vigilante; newspapers reported that Spider-Man had gone berserk."
+    },
+    {
+      "id": "c5",
+      "source_id": "history",
+      "text": "Kraven defeated Vermin alone, where Spider-Man had previously needed Captain America’s help."
+    },
+    {
+      "id": "c6",
+      "source_id": "history",
+      "text": "Peter confronted Kraven after escaping. Kraven accepted the assault and claimed victory rather than fighting back."
+    },
+    {
+      "id": "c7",
+      "source_id": "history",
+      "text": "Kraven released Vermin against Peter, then stopped him before he killed Peter. Peter pursued Vermin."
+    },
+    {
+      "id": "c8",
+      "source_id": "history",
+      "text": "Kraven left a confession and died by suicide. Peter’s living burial left lingering trauma."
+    }
+  ],
+  "notes": "1987 comics continuity, not the Kraven film or a game. Indexed official Marvel recaps and issue metadata reviewed; direct character/catalog pages returned 403. Full issues not read. Physical staging is illustrative. No injury, gunshot impact or suicide method is reenacted. Source cover is a local-review copyrighted image."
+}

@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated_at": "2026-11-06T18:57:52.275014+00:00",
+  "updated_at": "2026-11-07",
   "research_method": "Main assistant completed after delegated research hit its usage limit.",
   "purpose": "Reusable source discovery and bounded reviewed facts, not copied scripts or a complete comics archive.",
   "reading_routes": [
@@ -791,6 +791,27 @@
       "claims": [],
       "missing_details": "Pick a complete story, verify rights/jurisdiction and read its ending. No specific plot has been extracted yet.",
       "reuse": "Use this as a reading lead, not as a verified ready-to-write plot."
+    },
+    {
+      "id": "kraven-last-hunt",
+      "title": "Spider-Man Was Buried Alive. Someone Took His Place.",
+      "issues": "Kraven’s Last Hunt (1987), Web of Spider-Man #31–32 / Amazing Spider-Man #293–294 / Spectacular Spider-Man #131–132",
+      "medium": "comic",
+      "tags": [
+        "marvel",
+        "spider-man",
+        "kraven",
+        "burial",
+        "identity theft",
+        "psychological horror"
+      ],
+      "evidence_state": "reviewed_project_packet",
+      "project_brief": "examples/lore-series/kraven-last-hunt/brief.json",
+      "source_review": "examples/lore-series/kraven-last-hunt/source-review.json",
+      "reuse": "Reuse these bounded source-linked facts; choose a fresh angle and write original connected narration.",
+      "missing_details": "Full issues were not read. Indexed official publisher recaps and catalog passages support the recorded claims; unseen dialogue and precise physical staging need additional reading.",
+      "claims": [],
+      "sources": []
     }
   ],
   "freshness_policy": {

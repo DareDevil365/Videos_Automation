@@ -1,18 +1,19 @@
 [
   {
-    "series_id": "books-of-doom-latveria",
+    "series_id": "kraven-last-hunt",
     "channel": "entertainment",
     "playbook": "comic_lore",
-    "topic": "How Doctor Doom took Latveria",
-    "starting_source": "https://www.marvel.com/comics/issue/4033/books_of_doom_2005_-_2006_6",
-    "direction": "Start on a concrete obstacle to taking the throne. Build around a real reversal, and use a different setting and composition from the forge and Battleworld."
+    "topic": "Spider-Man was buried alive while Kraven took his place",
+    "starting_source": "https://www.marvel.com/comics/guides/784/kravens-last-hunt",
+    "direction": "Story-first selected after comparing concrete stakes, escalation, payoff, source support and saturation. Inspect SELECTION_REVIEW.md and the saved color/element/audience rationale before building."
   },
   {
-    "series_id": "doom-strange-triumph-torment",
+    "series_id": "emperor-joker-candidate",
     "channel": "entertainment",
     "playbook": "comic_lore",
-    "topic": "Why Doctor Doom needed Doctor Strange",
-    "direction": "Research Triumph and Torment and build around the specific bargain. A brief geometric magic action can connect two sourced character reveals."
+    "topic": "Joker steals reality-warping power and makes Batman relive his death",
+    "starting_source": "https://www.dc.com/blog/2026-04-23/six-people-who-unsurprisingly-regretted-teaming-up-with-the-joker",
+    "direction": "Candidate only. Verify the specific ending and why the heroes recover before script approval. Select an appropriate DC audience set; do not reuse Marvel cast as canon."
   },
   {
     "series_id": "next-movie-brief",

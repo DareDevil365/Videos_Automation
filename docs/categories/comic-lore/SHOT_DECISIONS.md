@@ -52,3 +52,6 @@ The [Hellboy shot list](../../../examples/lore-series/hellboy-horns/README.md) d
 
 
 For the medium of each layer, use the [script-focus visual decision rules](VISUAL_DECISIONS.md). Record purpose before choosing artwork. A hot-mask fitting can use geometric Doom; a Doom introduction can use a cutout. Complexity and lookalike costumes affect recognition, while the exact contact or material change affects animation. The same guide explains voice rotation and its fixed per-series assignment.
+
+
+For every new production, complete [topic selection](TOPIC_SELECTION.md) and [art direction](ART_DIRECTION.md). The assistant must record a reason for story, cast/prop inclusion, medium, location, palette, font, motion, camera, music and ending. Scene color follows the action/context: rising warm embers for a forge, multicolor energy for a Hex context, rain/earth for a stormy graveyard, or quiet daylight for aftermath. Preserve recognizable costumes and source art; do not apply one tint to everything. Keep the bottom audience explicit and verify it in the exported frames.

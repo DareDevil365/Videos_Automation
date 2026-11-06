@@ -6,8 +6,11 @@ import re
 from PIL import Image, ImageDraw, ImageFont
 
 
-def font(size, bold=False):
-    candidates = [os.environ.get("SHORTS_EDITOR_FONT", ""),
+def font(size, bold=False, family=None):
+    families={'Arial':('arial.ttf','arialbd.ttf'),'Trebuchet MS':('trebuc.ttf','trebucbd.ttf'),'Georgia':('georgia.ttf','georgiab.ttf')}
+    if family is not None and family not in families:raise ValueError('Choose Arial, Trebuchet MS or Georgia.')
+    selected=families.get(family,('arial.ttf','arialbd.ttf'))[bool(bold)]
+    candidates = ([str(Path(os.environ.get('WINDIR','C:/Windows'))/'Fonts'/selected)] if family else []) + [os.environ.get("SHORTS_EDITOR_FONT", ""),
                   str(Path(os.environ.get("WINDIR", "C:/Windows")) / "Fonts" / ("arialbd.ttf" if bold else "arial.ttf")),
                   "/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf" if bold else "/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf"]
     for candidate in candidates:
@@ -35,10 +38,10 @@ def wrapped(draw, text, fnt, width):
     return lines
 
 
-def text_box(draw, value, rect, color="#f7f8f5", size=40, bold=False, align="left", minimum=12):
+def text_box(draw, value, rect, color="#f7f8f5", size=40, bold=False, align="left", minimum=12, *, family=None):
     x,y,w,h = rect
     for point in range(max(minimum,int(size)),minimum-1,-1):
-        fnt=font(point,bold); lines=wrapped(draw,value,fnt,w); step=point*1.24
+        fnt=font(point,bold,family); lines=wrapped(draw,value,fnt,w); step=point*1.24
         if len(lines)*step <= h: break
     if len(lines)*step > h:
         raise ValueError("There is too much text to fit this card. Shorten it or split it into scenes.")

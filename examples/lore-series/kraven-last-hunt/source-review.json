@@ -1,0 +1,9 @@
+{
+  "reviewer": "Codex, indexed official Marvel history/recaps/issue and reading-order comparison",
+  "supported": true,
+  "limitations": "1987 comics continuity, not the Kraven film or a game. Indexed official Marvel recaps and issue metadata reviewed; direct character/catalog pages returned 403. Full issues not read. Physical staging is illustrative. No injury, gunshot impact or suicide method is reenacted. Source cover is a local-review copyrighted image.",
+  "brief_sha256": "054720d72862f08c9a07a4177dbb46dc375bb6268999f2564ca7d0280e7b51c0",
+  "script_sha256": {
+    "part-1.json": "17ba1f470e8663c1d7d485882ac2e7a628ad12f55bc279c104f3e01189b75814"
+  }
+}

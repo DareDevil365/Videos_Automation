@@ -1,0 +1,146 @@
+{
+  "version": 1,
+  "title": "Spider-Man Was Buried Alive. Someone Took His Place.",
+  "description": "Kraven’s Last Hunt (1987): the buried hero, the impostor and the hunter’s final test. This recaps the comic arc, not the Kraven movie. Dark themes; non-graphic illustrations.",
+  "format": "lesson",
+  "fiction": false,
+  "hook": "Spider-Man was buried alive. For two weeks, someone else wore his suit.",
+  "payoff": "He even releases Vermin to test Peter, then stops the creature before it can kill him. Peter goes after Vermin.",
+  "units": [
+    {
+      "id": "u1",
+      "speaker": "Host",
+      "text": "Spider-Man was buried alive. For two weeks, someone else wore his suit.",
+      "onscreen": "BURIED ALIVE. REPLACED.",
+      "kind": "fact",
+      "claim_ids": [
+        "c1",
+        "c2"
+      ],
+      "visual_kind": "image",
+      "visual_query": "BURIED ALIVE. REPLACED.",
+      "lore_scene": "hunt_burial",
+      "lore_camera": "wide"
+    },
+    {
+      "id": "u2",
+      "speaker": "Narrator",
+      "text": "In Kraven's Last Hunt, the hunter wants more than a kill. He wants to prove he can be a better Spider-Man.",
+      "onscreen": "KRAVEN’S LAST HUNT · 1987",
+      "kind": "fact",
+      "claim_ids": [
+        "c1",
+        "c3"
+      ],
+      "visual_kind": "image",
+      "visual_query": "KRAVEN’S LAST HUNT · 1987",
+      "lore_scene": "portrait",
+      "lore_camera": "push"
+    },
+    {
+      "id": "u3",
+      "speaker": "Narrator",
+      "text": "He shoots Peter and buries him, then puts on a copy of his black costume. But Peter isn't dead. He's trapped in a deathlike state.",
+      "onscreen": "THE HUNTER TAKES HIS IDENTITY",
+      "kind": "fact",
+      "claim_ids": [
+        "c1",
+        "c2"
+      ],
+      "visual_kind": "image",
+      "visual_query": "THE HUNTER TAKES HIS IDENTITY",
+      "lore_scene": "hunt_hunter",
+      "lore_camera": "pan_left"
+    },
+    {
+      "id": "u4",
+      "speaker": "Narrator",
+      "text": "Above ground, Kraven savagely attacks criminals. Newspapers say Spider-Man has gone berserk.",
+      "onscreen": "THE CITY SEES THE WRONG SPIDER-MAN",
+      "kind": "fact",
+      "claim_ids": [
+        "c4"
+      ],
+      "visual_kind": "image",
+      "visual_query": "THE CITY SEES THE WRONG SPIDER-MAN",
+      "lore_scene": "hunt_impostor",
+      "lore_camera": "push"
+    },
+    {
+      "id": "u5",
+      "speaker": "Narrator",
+      "text": "Then he captures Vermin alone, a monster Peter once needed Captain America's help to defeat. To Kraven, that proves everything.",
+      "onscreen": "HIS PROOF: A MONSTER CAPTURED ALONE",
+      "kind": "fact",
+      "claim_ids": [
+        "c5",
+        "c3"
+      ],
+      "visual_kind": "image",
+      "visual_query": "HIS PROOF: A MONSTER CAPTURED ALONE",
+      "lore_scene": "hunt_vermin",
+      "lore_camera": "wide"
+    },
+    {
+      "id": "u6",
+      "speaker": "Narrator",
+      "text": "But two weeks later, Peter wakes underground. He claws through the earth and climbs out of his own grave.",
+      "onscreen": "PETER COMES BACK",
+      "kind": "fact",
+      "claim_ids": [
+        "c2"
+      ],
+      "visual_kind": "image",
+      "visual_query": "PETER COMES BACK",
+      "lore_scene": "hunt_rise",
+      "lore_camera": "push"
+    },
+    {
+      "id": "u7",
+      "speaker": "Narrator",
+      "text": "He reaches Kraven, expecting another fight. Kraven refuses. He believes he's already won by becoming the stronger hunter.",
+      "onscreen": "KRAVEN DOES NOT FIGHT BACK",
+      "kind": "fact",
+      "claim_ids": [
+        "c6"
+      ],
+      "visual_kind": "image",
+      "visual_query": "KRAVEN DOES NOT FIGHT BACK",
+      "lore_scene": "hunt_confront",
+      "lore_camera": "wide"
+    },
+    {
+      "id": "u8",
+      "speaker": "Narrator",
+      "text": "He even releases Vermin to test Peter, then stops the creature before it can kill him. Peter goes after Vermin.",
+      "onscreen": "A FINAL, CRUEL TEST",
+      "kind": "fact",
+      "claim_ids": [
+        "c7"
+      ],
+      "visual_kind": "image",
+      "visual_query": "A FINAL, CRUEL TEST",
+      "lore_scene": "hunt_test",
+      "lore_camera": "detail"
+    },
+    {
+      "id": "u9",
+      "speaker": "Host",
+      "text": "Kraven leaves a confession and dies by suicide. Peter survives the hunt, but being buried alive leaves him traumatized.",
+      "onscreen": "SURVIVAL DOES NOT ERASE THE HUNT",
+      "kind": "fact",
+      "claim_ids": [
+        "c8"
+      ],
+      "visual_kind": "image",
+      "visual_query": "SURVIVAL DOES NOT ERASE THE HUNT",
+      "lore_scene": "hunt_confession",
+      "lore_camera": "push"
+    }
+  ],
+  "edit": {
+    "effect": "none",
+    "payoff_unit_id": "u8",
+    "cta": false
+  }
+}

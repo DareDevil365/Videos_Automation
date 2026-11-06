@@ -17,3 +17,6 @@ For a one-off circular face identifier, start with a registered photo and a veri
 ```
 
 Save and reuse the returned local ID. Place the circle through `source_panels` on the actor's head or beside the figure when the viewer needs a label. If the crop has appeared recently, set `repeat_reason` to explain the deliberate identity callback. Inspect the crop and clearances in the finished frame. This preview helper preserves the source reference and usage restrictions. Keep the geometric face as the fallback.
+
+
+The hunter-arc extension adds reusable `kraven-hunter` and `spider-black-cloth` transparent actors. `lore_hunt.py` reuses those drawing functions for the burial, impostor, escape and confrontation. The black costume is a cloth suit in this story; its appearance does not imply Venom/symbiote powers. Theme/background choices remain independent of costume colors.

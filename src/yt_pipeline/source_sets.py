@@ -267,10 +267,6 @@ def move_cutout(source, motion, p):
 def source_painter(paint, placements, reaction, start, *, action=None):
     def frame(scene, second, duration):
         image = paint(scene, second, duration)
-        if reaction:
-            art = image.crop((0, 180, 720, 952)).resize((720, 710), Image.Resampling.LANCZOS)
-            ImageDraw.Draw(image).rectangle((0, 180, 720, 991), fill="#0c121c")
-            image.paste(art, (0, 180))
         for source, (left, top, right, bottom), motion in placements:
             x = left + (right-left-source.width)//2
             y = top + (bottom-top-source.height)//2
@@ -279,13 +275,20 @@ def source_painter(paint, placements, reaction, start, *, action=None):
                 x, y = x+dx, y+dy
             reveal = min(1, .6 + second * 2.5)
             alpha = source.getchannel("A").point(lambda n: round(n * reveal)) if reveal < 1 else source.getchannel("A")
-            safe_top, safe_bottom = max(185, y), min(890 if reaction else 950, y+source.height)
+            safe_top, safe_bottom = max(185, y), min(950, y+source.height)
             if safe_top < safe_bottom:
                 crop = (0, safe_top-y, source.width, safe_bottom-y)
                 image.paste(source.crop(crop), (x, safe_top), alpha.crop(crop))
         if action:
             draw_action(image, action, second, duration)
         if reaction:
+            # Transform the complete story composition once, including photo props
+            # and contact effects, so inserts cannot drift away from their actors.
+            art=image.crop((0,180,720,952)).resize((720,710),Image.Resampling.LANCZOS)
+            ImageDraw.Draw(image).rectangle((0,180,720,991),fill=image.getpixel((2,951)))
+            image.paste(art,(0,180))
+            if scene.get('design'):
+                ImageDraw.Draw(image).rectangle((0,891,720,991),fill='#211b20')
             draw_reaction_set(image, reaction, start + second)
         return image
     return frame

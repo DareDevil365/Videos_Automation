@@ -23,3 +23,6 @@ The builder resumes the initialized plan. Changed input requires another build I
 Validation: **49.966 seconds**, 720×1280, passing technical QA and 14 matching package hashes. Actual role voice IDs were checked in the unit records. Narration silence detection at −42 dB found no interval of 0.3 seconds or longer. Sampled exported frames were inspected. Technical checks do not establish expressive acting, writing quality or audience results.
 
 The packet retains title, description, sources, speech, captions, technical report and video. The cover/poster and sourced character assets are local-preview inputs with attribution in `media-sources.json`; publication readiness is false. Earlier adaptive exports remain historical versions with rejected writing. Reuse [reviewed source facts](../../../research/content-lore/SOURCE_LIBRARY.md), not those earlier scripts, when writing another episode.
+
+
+The saved recipe now includes a required lower theater and contextual art direction. Existing frozen videos/plans are unchanged. To preview the new direction without replacing history, use `--build-suffix context-review-20261107 --prepare-only`; omit `--prepare-only` only when requesting that new render. The owner rejected these prior topic choices; they are visual fixtures, not default next releases.

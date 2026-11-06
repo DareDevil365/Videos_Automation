@@ -1,0 +1,123 @@
+{
+  "version": 1,
+  "series_id": "kraven-last-hunt",
+  "title": "Spider-Man Was Buried Alive. Someone Took His Place.",
+  "structure": "chapter_answers",
+  "canon": "Kraven’s Last Hunt (1987), six-part Marvel Comics arc. Not a film recap.",
+  "source_voices": {
+    "Host": "am_adam",
+    "Narrator": "af_bella"
+  },
+  "parts": [
+    {
+      "part": 1,
+      "script": "part-1.json",
+      "next_part": null,
+      "reaction_preset": "crossover-theater",
+      "source_duration": [
+        42,
+        50
+      ],
+      "source_delivery": {
+        "tight_speech": true,
+        "speed": 1.22,
+        "linked_phrases": [
+          "Kraven's Last Hunt",
+          "Captain America"
+        ],
+        "pause_after": 0.05
+      },
+      "source_music": {
+        "volume": 0.055,
+        "start": 4
+      },
+      "visual_selection": {
+        "mode": "authored"
+      },
+      "lore_design": {
+        "palette": "paper",
+        "font": "Trebuchet MS",
+        "atmosphere": "none",
+        "audience_required": true,
+        "reason": "Gothic pursuit: stone and rain for burial, warm lodge/city light for the impostor, restrained purple for psychological threat, and neutral daylight for aftermath. Trebuchet provides open readable letters; one family keeps labels consistent. The audience theater persists below a protected dark caption band.",
+        "shots": {
+          "u1": {
+            "palette": "concrete",
+            "atmosphere": "rain",
+            "reason": "Begin with the buried hero and an antagonist above him so both halves of the opening promise are visible.",
+            "elements": [
+              "Coffin cross-section makes confinement clear; no claim that the comic shows this camera angle.",
+              "Tombstone and soil establish burial; restrained rain supports the Gothic setting."
+            ]
+          },
+          "u2": {
+            "palette": "plum",
+            "atmosphere": "none",
+            "reason": "The source cover carries recognition; plum echoes its printed title without recoloring the artwork.",
+            "elements": [
+              "Registered publisher cover identifies the actual comic collection; date refers to the original story, not this later collected edition."
+            ]
+          },
+          "u3": {
+            "palette": "paper",
+            "atmosphere": "dust",
+            "reason": "A warm trophy-room diagram explains the hunter’s identity and the stolen costume.",
+            "elements": [
+              "Lion-pattern vest, moustache and broad silhouette identify Kraven.",
+              "Black-and-white suit stays distinct from the red/blue Spider-Man film costume."
+            ]
+          },
+          "u4": {
+            "palette": "ember",
+            "atmosphere": "none",
+            "reason": "Amber city windows establish the impostor’s night patrol; this is warm city light, not a claim of a fire.",
+            "elements": [
+              "Recognizable black suit and a small Kraven identity inset explain who is inside."
+            ]
+          },
+          "u5": {
+            "palette": "concrete",
+            "atmosphere": "dust",
+            "reason": "Concrete and bars explain the captured monster; visual proof replaces another portrait.",
+            "elements": [
+              "Rat-like ears and tail identify Vermin; the containment is illustrative staging."
+            ]
+          },
+          "u6": {
+            "palette": "crimson",
+            "atmosphere": "rain",
+            "reason": "Muted earth and a restrained red field mark danger as the hand and body break the soil plane.",
+            "elements": [
+              "Shared grave geometry links the escape to the opening.",
+              "Body emergence shows a meaningful state change rather than a floating portrait."
+            ]
+          },
+          "u7": {
+            "palette": "paper",
+            "atmosphere": "none",
+            "reason": "Return to the same warm lodge palette, changing the framing to show the unequal confrontation.",
+            "elements": [
+              "Peter reaches toward Kraven while the hunter’s arms remain down."
+            ]
+          },
+          "u8": {
+            "palette": "plum",
+            "atmosphere": "dust",
+            "reason": "A closer purple-toned threat beat separates the final test from the earlier capture.",
+            "elements": [
+              "The same Vermin identity returns for a sourced reason; this is a deliberate story callback, not another episode’s filler."
+            ]
+          },
+          "u9": {
+            "palette": "daylight",
+            "atmosphere": "none",
+            "reason": "A quiet neutral aftermath prevents the ending from celebrating the hunter’s death.",
+            "elements": [
+              "Confession letter and an absent chair suggest the consequence without reenacting a death."
+            ]
+          }
+        }
+      }
+    }
+  ]
+}

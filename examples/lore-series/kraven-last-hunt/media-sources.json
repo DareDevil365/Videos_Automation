@@ -1,0 +1,20 @@
+{
+  "source_cover": {
+    "page": "https://www.marvel.com/comics/series/129/spiderman_kravens_last_hunt_1999",
+    "media_url": "https://cdn.marvel.com/u/prod/marvel/i/mg/a/40/4bc668a38f9e6/clean.jpg",
+    "credit": "Marvel Comics. Collected edition cover; original story 1987. J.M. DeMatteis, Mike Zeck, Bob McLeod.",
+    "usage": "Local preview only; no publication permission inferred."
+  },
+  "audience": {
+    "recipe": "Installed crossover-theater preset with its blue Doom actor replaced by the installed Captain America preset cast. Miles and Iron Man retain their registered source credits.",
+    "scope": "Reusable fictional audience framing, not participants in the comic plot. Asset evidence is packaged by the normal source-set resolver."
+  },
+  "original_geometry": {
+    "recipe": "src/yt_pipeline/lore_hunt.py",
+    "assets": [
+      "kraven-hunter",
+      "spider-black-cloth"
+    ],
+    "scope": "Code-drawn actors and staging, not original comic panels."
+  }
+}

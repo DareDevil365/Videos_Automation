@@ -123,7 +123,33 @@
       "source_duration": [
         42,
         50
-      ]
+      ],
+      "reaction_preset": "crossover-theater",
+      "lore_design": {
+        "palette": "hex",
+        "atmosphere": "hex",
+        "font": "Trebuchet MS",
+        "audience_required": true,
+        "reason": "Keep the reusable theater visible below the story. The magical identity conversation uses restrained multicolor energy, with a warm paper palette for the literal ship diagram.",
+        "shots": {
+          "u4": {
+            "palette": "paper",
+            "atmosphere": "none",
+            "reason": "The literal plank comparison needs a quiet warm diagram so color does not compete with the explanation.",
+            "elements": [
+              "Two ship states demonstrate replaced versus original parts."
+            ]
+          },
+          "u5": {
+            "palette": "paper",
+            "atmosphere": "none",
+            "reason": "The literal plank comparison needs a quiet warm diagram so color does not compete with the explanation.",
+            "elements": [
+              "Two ship states demonstrate replaced versus original parts."
+            ]
+          }
+        }
+      }
     }
   ]
 }

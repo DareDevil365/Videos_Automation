@@ -25,10 +25,12 @@ from .lore_style import attach_styles
 from .lore_voices import validate_voices
 from .lore_style_assets import load_character_cutouts, load_style_layers, place_cutout, validate_execution
 from .lore_identity import IDENTITY_KINDS, identity_art
+from .lore_design import compile_design, paint_atmosphere
+from .lore_hunt import HUNT_KINDS, hunt_art
 
 
 KINDS=('collapse','life_raft','battleworld','throne','control','hidden_power','meal','confrontation','rebuilding','restoration',
-       'dominion','memory','source_closeup','meal_detail','absence','duel','consequence','portrait','street_impact') + FORGE_KINDS + REACTOR_KINDS + THUNDER_KINDS + PACT_KINDS + HELLBOY_KINDS + IDENTITY_KINDS
+       'dominion','memory','source_closeup','meal_detail','absence','duel','consequence','portrait','street_impact') + FORGE_KINDS + REACTOR_KINDS + THUNDER_KINDS + PACT_KINDS + HELLBOY_KINDS + IDENTITY_KINDS + HUNT_KINDS
 CAMERAS = ('wide', 'push', 'pan_left', 'pan_right', 'detail')
 SIZE=(720,1280)
 ART=(20,180,700,950)
@@ -92,11 +94,15 @@ def plan_lore(script,request,brief):
             'label':label,'claim_ids':list(refs),**delivery_for(unit,request,.07, tight_default=True),
             'visible_cast':[],'framing':camera,
             'motion':'panel_reveal','illustration_note':NOTE})
+    design=compile_design(request,units)
+    if design:
+        for scene in scenes:scene['design']=design['shots'][scene['unit_id']]
     styles=attach_styles(scenes,request)
     plan={'version':1,'template':'comic_lore','cast':cast,
         'scenes':scenes,'sources':deepcopy(brief['sources']),'claims':deepcopy(brief['claims']),
         'script_sha256':digest(script),'brief_sha256':digest(brief),'comment_question':'','illustration_note':NOTE}
     if styles:plan['visual_selection']=styles
+    if design:plan['design']=design
     return {'plan':plan,'script_sha256':digest(script),'origin':'compiled_lore_rules_v1',
         'scope':'Finite source-linked illustration rules, not an independent factual or audience-quality verdict.'}
 
@@ -105,7 +111,7 @@ def _ease(value):return 1-(1-max(0,min(1,value)))**3
 
 
 @lru_cache(maxsize=20)
-def _background(kind):
+def _background(kind,theme=None):
     palette={'collapse':('#190e20','#ed6648'),'life_raft':('#101b35','#70dae0'),'battleworld':('#0d2420','#89ce98'),
         'throne':('#0c201b','#bba562'),'control':('#14221d','#d5b36d'),'hidden_power':('#101c25','#6be5d6'),
         'meal':('#272031','#edbd75'),'confrontation':('#141c2d','#a6b7f5'),'rebuilding':('#10232f','#9ed7e5'),
@@ -120,17 +126,22 @@ def _background(kind):
     palette.update({name:('#201a25','#c1907c') for name in PACT_KINDS})
     palette.update({name:('#242029','#c58968') for name in HELLBOY_KINDS})
     palette.update({name:('#18232f','#9cbeb8') for name in IDENTITY_KINDS})
-    base,accent=palette[kind];image=Image.new('RGB',SIZE,'#080e17');d=ImageDraw.Draw(image)
-    d.polygon([(24,202),(693,180),(694,911),(30,947)],fill=base,outline='#d7d1bf',width=4)
-    rng=random.Random(8821)
-    for _ in range(110):
-        x=rng.randrange(40,680);y=rng.randrange(215,920);r=rng.choice([1,1,1,2])
-        d.ellipse((x-r,y-r,x+r,y+r),fill='#819087' if r==1 else accent)
-    for y in range(220,925,18):
-        for x in range(36,694,18):
-            if (x+y)%54==0:d.ellipse((x,y,x+2,y+2),fill='#27343a')
+    palette.update({name:('#382a26','#cba16a') for name in HUNT_KINDS})
+    from .lore_design import PALETTES
+    colors=PALETTES[theme] if theme else None
+    base,accent=(colors['field'],colors['accent']) if colors else palette[kind]
+    image=Image.new('RGB',SIZE,colors['canvas'] if colors else '#080e17');d=ImageDraw.Draw(image)
+    d.polygon([(24,202),(693,180),(694,911),(30,947)],fill=base,outline=colors['edge'] if colors else '#d7d1bf',width=4)
+    if not colors:
+        rng=random.Random(8821)
+        for _ in range(110):
+            x=rng.randrange(40,680);y=rng.randrange(215,920);r=rng.choice([1,1,1,2])
+            d.ellipse((x-r,y-r,x+r,y+r),fill='#819087' if r==1 else accent)
+        for y in range(220,925,18):
+            for x in range(36,694,18):
+                if (x+y)%54==0:d.ellipse((x,y,x+2,y+2),fill='#27343a')
     # Quiet caption-safe area: no characters, labels or decorative banners.
-    for y in range(950,1280):d.line((0,y,720,y),fill=(8,14,23))
+    for y in range(950,1280):d.line((0,y,720,y),fill=colors['canvas'] if colors else (8,14,23))
     return image
 
 
@@ -233,6 +244,8 @@ def _art(scene,second,duration,thunder_cast=None,pact_cast=None,hellboy_media=No
         hellboy_art(layer,kind,second,p,_glow,hellboy_media)
     elif kind in IDENTITY_KINDS:
         identity_art(layer,scene,second,p,_glow,character_cutouts or {})
+    elif kind in HUNT_KINDS:
+        hunt_art(layer,scene,second,p,_glow)
     elif kind=='street_impact':
         settle=max(0,min(1,(p-.46)*5))
         roof=660+52*settle
@@ -393,8 +406,10 @@ def _art(scene,second,duration,thunder_cast=None,pact_cast=None,hellboy_media=No
 def lore_frame(scene,second,duration,*,thunder_cast=None,pact_cast=None,hellboy_media=None,character_cutouts=None,style_backdrops=None):
     if scene.get('kind') not in KINDS:raise Held('lore_scene','Unsupported lore scene kind.')
     if not math.isfinite(duration) or duration<=0 or not math.isfinite(second):raise Held('lore_timing','Use finite measured lore timing.')
-    image=_background(scene['kind']).copy().convert('RGBA')
+    design=scene.get('design',{})
+    image=_background(scene['kind'],design.get('palette')).copy().convert('RGBA')
     if style_backdrops and scene.get('unit_id') in style_backdrops:image.paste(style_backdrops[scene['unit_id']],ART[:2])
+    paint_atmosphere(image,scene,second)
     art=_art(scene,max(0,second),duration,thunder_cast,pact_cast,hellboy_media,character_cutouts)
     image.alpha_composite(art.crop(ART), dest=ART[:2])
     # Camera only moves the illustration viewport, keeping captions and title stable.
@@ -411,7 +426,7 @@ def lore_frame(scene,second,duration,*,thunder_cast=None,pact_cast=None,hellboy_
     cw,ch=w/zoom,h/zoom;left=(w-cw)*center;top=(h-ch)*(.35 if scene['kind']=='hidden_power' else .5)
     image.paste(viewport.crop((round(left),round(top),round(left+cw),round(top+ch))).resize((w,h),Image.Resampling.LANCZOS),(x1,y1))
     label=scene.get('label','')
-    text_box(ImageDraw.Draw(image),label,(42,46,636,125),'#f1ead6',44,True,minimum=29)
+    text_box(ImageDraw.Draw(image),label,(42,46,636,125),design.get('colors',{}).get('ink','#f1ead6'),44,True,minimum=29,family=design.get('font'))
     return image.convert('RGB')
 
 

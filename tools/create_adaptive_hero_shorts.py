@@ -19,7 +19,7 @@ from yt_pipeline.lore_visuals import plan_lore,lore_frame
 from yt_pipeline.lore_style_assets import load_character_cutouts,load_style_layers,validate_execution
 from yt_pipeline.lore_identity import IDENTITY_KINDS
 from yt_pipeline.source_series import create_series_plan
-from yt_pipeline.source_sets import source_painter
+from yt_pipeline.source_sets import source_painter,resolve_source_set,apply_reaction_preset
 from yt_pipeline.lore_voices import choose_series_voices
 from yt_pipeline.voice import synthesize
 from yt_pipeline.playbooks import get_playbook,validate_playbook_script
@@ -93,6 +93,8 @@ def prepare(workspace,key,target,build):
 
 def preview(workspace,target,key):
     request=json.loads(target.read_text(encoding='utf-8'))['items'][0]['request']
+    if request.get('reaction_preset') and not request.get('reaction_set'):apply_reaction_preset(workspace,request)
+    _,reaction,_=resolve_source_set(workspace,request,request['script'])
     record=plan_lore(request['script'],request,request['brief'])
     images,_=load_character_cutouts(workspace,request)
     backdrops,props,_=load_style_layers(workspace,request,request['script'])
@@ -100,7 +102,7 @@ def preview(workspace,target,key):
     for i,scene in enumerate(record['plan']['scenes']):
         validate_execution(scene,request,images,None,IDENTITY_KINDS)
         paint=lambda s,t,d:lore_frame(s,t,d,character_cutouts=images,style_backdrops=backdrops)
-        im=source_painter(paint,props.get(scene['unit_id'],()),None,0)(scene,2.5,4)
+        im=source_painter(paint,props.get(scene['unit_id'],()),reaction,i*4)(scene,2.5,4)
         sheet.paste(im.resize((288,512)),((i%4)*288,(i//4)*512))
     sheet.save(SOURCE/(key+'-storyboard.jpg'),quality=94)
     write_json(SOURCE/(key+'-visual-decisions.json'),record['plan']['visual_selection'])
@@ -124,12 +126,13 @@ def main():
     parser.add_argument('--only',choices=SPECS)
     parser.add_argument('--prepare-only',action='store_true')
     parser.add_argument('--measure-only',action='store_true',help='Measure the draft before freezing a new batch plan.')
+    parser.add_argument('--build-suffix',help='Use a fresh build suffix when changing the saved script or visual direction.')
     args=parser.parse_args();workspace=Workspace(ROOT/'data/pipeline')
     for key in ([args.only] if args.only else SPECS):
         if args.measure_only:
             measure(workspace,key)
             continue
-        folder,_=SPECS[key];build=folder+('-story-revision-final-20261107' if key=='spider' else '-story-revision-20261107')
+        folder,_=SPECS[key];build=folder+('-'+args.build_suffix if args.build_suffix else '-story-revision-final-20261107' if key=='spider' else '-story-revision-20261107')
         target=ROOT/'Resources/Plans'/(build+'.json')
         if not target.exists():prepare(workspace,key,target,build)
         preview(workspace,target,key)

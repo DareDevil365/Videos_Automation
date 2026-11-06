@@ -133,7 +133,41 @@
       "source_duration": [
         42,
         50
-      ]
+      ],
+      "reaction_preset": "crossover-theater",
+      "lore_design": {
+        "palette": "paper",
+        "atmosphere": "none",
+        "font": "Trebuchet MS",
+        "audience_required": true,
+        "reason": "Keep the reusable theater visible below the story. Warm explanatory paper, stone danger and a neutral hospital replace the repeated teal room.",
+        "shots": {
+          "u4": {
+            "palette": "concrete",
+            "atmosphere": "none",
+            "reason": "Neutral concrete supports the physical danger. The existing scene draws rising water; rain is not added inside the flooding base.",
+            "elements": [
+              "The same beam and vial connect the obstacle and goal."
+            ]
+          },
+          "u5": {
+            "palette": "concrete",
+            "atmosphere": "none",
+            "reason": "Neutral concrete supports the physical danger. The existing scene draws rising water; rain is not added inside the flooding base.",
+            "elements": [
+              "The same beam and vial connect the obstacle and goal."
+            ]
+          },
+          "u6": {
+            "palette": "concrete",
+            "atmosphere": "none",
+            "reason": "Neutral concrete supports the physical danger. The existing scene draws rising water; rain is not added inside the flooding base.",
+            "elements": [
+              "The same beam and vial connect the obstacle and goal."
+            ]
+          }
+        }
+      }
     }
   ],
   "source_voices": {

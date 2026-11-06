@@ -11,10 +11,13 @@ CREAM='#e0d1af'
 INK='#101923'
 
 
-def _room(d,second,library=False):
-    d.polygon([(45,910),(45,360),(360,278),(675,360),(675,910)],fill='#182c35',outline='#65838a',width=3)
+def _room(d,second,library=False,colors=None,translucent=False):
+    colors=colors or {}
+    wall=colors.get('wall','#182c35')
+    if translucent:wall=(*bytes.fromhex(wall[1:]),110)
+    d.polygon([(45,910),(45,360),(360,278),(675,360),(675,910)],fill=wall,outline=colors.get('edge','#65838a'),width=3)
     for x in (80,490):
-        d.rectangle((x,360,x+149,745),fill='#15232e',outline='#5a727b',width=3)
+        d.rectangle((x,360,x+149,745),fill=colors.get('recess','#15232e'),outline=colors.get('edge','#5a727b'),width=3)
         for y in range(400,730,72):
             d.line((x,y,x+149,y),fill='#9a8a75',width=3)
             if library:
@@ -111,7 +114,7 @@ def identity_art(layer,scene,second,p,glow,images):
         if kind in ('vision_ship','vision_two_ships'):
             for x in range(75,680,60):d.line((x,245,x,900),fill='#29444e',width=1)
             for y in range(270,920,60):d.line((55,y,675,y),fill='#29444e',width=1)
-        else:_room(d,second,True)
+        else:_room(d,second,True,scene.get('design',{}).get('colors'),scene.get('design',{}).get('atmosphere')=='hex')
         if kind in ('vision_question','vision_bodies'):
             if kind=='vision_question':
                 _actor(layer,scene,images,'vision',(76,275,423,878),(228,585,1.3))
@@ -168,7 +171,7 @@ def identity_art(layer,scene,second,p,glow,images):
         else:
             _actor(layer,scene,images,'white_vision',(200,270,537,900),(361,575,1.25))
     else:
-        _room(d,second)
+        _room(d,second,colors=scene.get('design',{}).get('colors'))
         if kind in ('spider_question','spider_answer'):
             choice=scene.get('visual_style',{}).get('characters',{}).get('spider_man',{})
             if 'spider_man' in images and choice.get('representation')!='geometric':place_cutout(layer,images,'spider_man',(75,303,647,888))

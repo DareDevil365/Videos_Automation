@@ -26,3 +26,6 @@ For independent answers in a series, explicitly choose `structure: "chapter_answ
 
 
 The owner’s latest writing requirements are in [NARRATIVE_WRITING.md](NARRATIVE_WRITING.md). Begin with the [cached source library](../../../research/content-lore/SOURCE_LIBRARY.md), extract the causal chain, identify the issue/show during the opening and show its cover/artwork. Current standalone revisions request `source_duration: [42, 50]` and aim near 50s with fuller writing and brisk measured delivery. Preserve the connective reasoning before optimizing word count.
+
+
+The latest production standard starts with [story-first topic selection](TOPIC_SELECTION.md) and [explicit art direction](ART_DIRECTION.md). Record why the premise, each visual element, scene palette, effect, font and audience set serve the viewer. Do not pick a story because a renderer already exists. New episodes should name their audience set and require it through `lore_design.audience_required`; use per-shot palette/atmosphere choices instead of another unexamined navy/teal default. The [Kraven example](../../../examples/lore-series/kraven-last-hunt/README.md) demonstrates this route.

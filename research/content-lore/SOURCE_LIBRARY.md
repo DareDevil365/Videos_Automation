@@ -1,6 +1,6 @@
 # Reusable comic story sources
 
-Use [source-library.json](source-library.json) before starting topic discovery again. It contains **14 reading/source routes and 12 starter records**. Six records reuse reviewed project evidence; six are reading leads whose full causal story has not yet been extracted. The research agent hit its usage limit; the main assistant completed this library. This is a source index and a cache of bounded facts, not an archive of copied narration or complete copyrighted issues.
+Use [source-library.json](source-library.json) before starting topic discovery again. It contains **14 reading/source routes and 13 starter records**. Seven records reuse reviewed project evidence; six are reading leads whose full causal story has not yet been extracted. The research agent hit its usage limit; the main assistant completed this library. This is a source index and a cache of bounded facts, not an archive of copied narration or complete copyrighted issues.
 
 ```powershell
 .venv\Scripts\python.exe tools/query_comic_library.py doom --ready-only
@@ -42,3 +42,9 @@ Refresh changing reading-service access, releases, URLs, licensing and uncached 
 Reviewed project packets cover the Spider-Man machinery rescue, WandaVision's identity exchange, Beta Ray Bill, Doom/Strange's rescue, Hellboy's refusal and Secret Wars (2015). The remaining leads cover Superman's Black Mercy story, Mister Miracle (2017), Invincible #1, Radiant Black's recap, Seed of Destruction and a Golden Age mystery selection. Their JSON states what is known and what still needs reading. None implies that every Marvel or DC story is ready to script.
 
 For “For the Man Who Has Everything,” preserve **Superman Annual #11** and resolve year/collection metadata before an exact bibliographic announcement. The research found inconsistent publisher wording. This is why publisher status alone does not remove the need to check a specific conflicting fact.
+
+
+The latest reviewed packet adds Kraven’s Last Hunt (1987): burial, impersonation, emergence, the final test and consequence. Its [selection review](../../examples/lore-series/kraven-last-hunt/SELECTION_REVIEW.md) separates why the story was chosen from the factual claim review.
+
+
+The offline lookup accepts an exact reviewed hash or a hash differing only by LF/CRLF line endings after a Git checkout, and records `packet_hash_match`. Changed fact text still requires a new review. Immutable production-plan input hashes remain exact; this portability allowance applies only to the reading cache.

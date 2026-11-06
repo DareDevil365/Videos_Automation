@@ -3,7 +3,7 @@ from .core import Held
 
 BLOCKS={
  'graphic.timer':{'description':'Quiz countdown starts after measured speech during actual 2-6 second thinking silence.','parameters':{'scene.graphic.kind':'timer','labels':'one exact script question','scene.thinking_seconds':[2,6]},'renderers':['ffmpeg']},
- 'audio.segments':{'description':'Preserve exact dialogue with bounded internal silence and speed; no control tags in captions.','parameters':{'scene.speech_segments':'up to 8 ordered text/pause_after/speed segments','internal_pause':[0,1.2],'speed':[.9,1.15]},'renderers':['local_audio']},
+ 'audio.segments':{'description':'Preserve exact dialogue with bounded internal silence and speed; no control tags in captions.','parameters':{'scene.speech_segments':'up to 8 ordered text/pause_after/speed segments','internal_pause':[0,1.2],'speed':[.9,1.25]},'renderers':['local_audio']},
  'graphic.comparison':{'description':'Locally rendered before/after cards with timed reveals.','parameters':{'scene.graphic.kind':'comparison','labels':'two exact script phrases','title':'exact script phrase'},'renderers':['ffmpeg']},
  'graphic.process':{'description':'Two to four numbered steps revealed inside measured narration.','parameters':{'scene.graphic.kind':'process','labels':'2-4 exact script phrases'},'renderers':['ffmpeg']},
  'graphic.callout':{'description':'One large original typographic emphasis card.','parameters':{'scene.graphic.kind':'callout','labels':'one exact script phrase'},'renderers':['ffmpeg']},

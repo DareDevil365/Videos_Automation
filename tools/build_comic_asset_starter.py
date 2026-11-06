@@ -17,6 +17,7 @@ from yt_pipeline.lore_actions import draw_hammer
 from yt_pipeline.lore_forge import mask
 from yt_pipeline.lore_reactor import _reactor
 from yt_pipeline.lore_reactor_cast import HAPPY, PEPPER, STANE, TONY, person, workshop_tony
+from yt_pipeline.lore_hunt import hunter,black_spider
 
 
 PACK = ROOT / "Resources/Templates/ComicLore"
@@ -33,6 +34,10 @@ def export_images():
         if recipe == "person":
             who = {TONY: TONY, PEPPER: PEPPER, STANE: STANE, HAPPY: HAPPY}[item["profile"]]
             person(draw, who, 319, 149, 2, jacket=item.get("jacket"))
+        elif recipe == 'hunt_actor':
+            if item['profile']=='kraven':hunter(draw,320,160,1.45)
+            elif item['profile']=='black_spider':black_spider(draw,320,160,1.8)
+            else:raise ValueError('Choose a supported hunter-arc actor.')
         elif recipe == "workshop":
             image = workshop_tony()
         elif recipe == "mask":

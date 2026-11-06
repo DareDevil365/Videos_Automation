@@ -5,6 +5,7 @@ import math
 from PIL import Image, ImageDraw, ImageOps
 
 from .assets import asset_record
+from .cinema_set import draw_theater, light_actor
 from .core import Held
 
 
@@ -105,9 +106,12 @@ def resolve_source_set(workspace, request, script):
                 raise Held("reaction_set", "Cast and props require transparent cutout images.")
             return ImageOps.contain(image.crop(alpha.getbbox()), size)
 
+        setting = reaction["setting"]
+        size = (465, 204) if backdrop is not None else (210, 212 if setting == "cinema" else 255)
+        actors = [cutout(asset_id, size) for asset_id in cast]
         set_data = (
-            reaction["setting"],
-            [cutout(asset_id, (465, 204) if backdrop is not None else (210, 255)) for asset_id in cast],
+            setting,
+            [light_actor(actor) for actor in actors] if setting == "cinema" else actors,
             [cutout(asset_id, (112, 186)) for asset_id in props],
             backdrop,
             foreground,
@@ -117,6 +121,9 @@ def resolve_source_set(workspace, request, script):
 
 def draw_reaction_set(frame, setup, time):
     setting, cast, props, backdrop, foreground = setup
+    if setting == "cinema":
+        draw_theater(frame, cast, props, time)
+        return
     if backdrop is not None:
         # Small independent movement on the room and sofa gives the plate depth.
         x = 20 + round(9 * math.sin(time * .85))
@@ -133,10 +140,7 @@ def draw_reaction_set(frame, setup, time):
     draw.rectangle((0, 992, 720, 1280), fill=SETTINGS[setting])
     draw.line((30, 1000, 690, 1000), fill="#936b5e", width=3)
     centers = [round(720 * (index + .5) / len(cast)) for index in range(len(cast))]
-    if setting == "cinema":
-        for x in range(-40, 760, 97):
-            draw.rounded_rectangle((x, 1044, x + 85, 1175), 21, fill="#302333", outline="#493249", width=3)
-    elif setting == "city":
+    if setting == "city":
         for index, x in enumerate(range(0, 720, 76)):
             top = 1060 + (index * 37) % 85
             draw.rectangle((x, top, x + 69, 1280), fill="#101b2c", outline="#33475e", width=2)
@@ -170,26 +174,8 @@ def draw_reaction_set(frame, setup, time):
             draw.line((center + 18, 1001, x, y + 83), fill="#ccdce6", width=2)
             frame.paste(actor, (x - actor.width // 2, y + round(17 * abs(swing))), actor)
             continue
-        if setting == "cinema":
-            draw.rounded_rectangle((center - 106, 1100, center + 106, 1268), 26,
-                                   fill="#572d40", outline="#814e5f", width=4)
         frame.paste(actor, (center - actor.width // 2, y), actor)
-        if setting == "cinema":
-            draw.rounded_rectangle((center - 108, 1224, center + 108, 1289), 20, fill="#482333")
-            x = center + 36
-            draw.polygon([(x-27, 1194), (x+26, 1194), (x+17, 1251), (x-18, 1251)], fill="#e2ad79")
-            for stripe in (-13, 1, 15):
-                draw.line((x+stripe, 1198, x+stripe*.6, 1249), fill="#9e4946", width=5)
-            for k in range(5):
-                px = x - 19 + 9*k
-                draw.ellipse((px, 1186 - k % 2 * 3, px + 12, 1199), fill="#ffe4aa")
-            progress = (time / 3.1 + index * .25) % 1
-            if progress < .58:
-                move = progress / .58
-                px = x + (center - x)*move
-                py = 1190 - 57*move - 26*math.sin(math.pi*move)
-                draw.ellipse((px - 4, py - 4, px + 4, py + 4), fill="#ffeac0")
-        elif setting in ("workshop", "living_room"):
+        if setting in ("workshop", "living_room"):
             x = center + 56
             cushion = "#274245" if setting == "workshop" else "#553541"
             draw.rounded_rectangle((center - 108, 1224, center + 108, 1289), 20, fill=cushion)

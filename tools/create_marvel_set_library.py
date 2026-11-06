@@ -28,8 +28,13 @@ LAYERS = {
                                 "Sofa arms and cushion rail drawn by the editor."),
 }
 
+THEATER_CROPS = {
+    "doom-seated.png": ("doom-cutout.png", (.25, 0, 1, .52)),
+    "iron-seated.png": ("iron-red-cutout.png", (.16, 0, .84, .53)),
+}
+
 PRESETS = {
-    "crossover-theater": ("cinema", ["doom-cutout", "miles-theater", "iron-red-cutout"], []),
+    "crossover-theater": ("cinema", ["doom-seated", "miles-theater", "iron-seated"], []),
     "iron-man-workshop": ("workshop", ["tony-gauntlet-cutout"], []),
     "spider-man-city": ("city", ["miles-cutout"], []),
     "captain-america-and-bucky": ("living_room", ["cap-cutout", "bucky-cutout"], []),
@@ -65,9 +70,20 @@ def build(workspace, source, destination):
     if manifest_path.exists():
         raise FileExistsError("Choose a new library folder to preserve existing preset IDs.")
     assets = {}
-    for name, (source_ref, license_name, credit) in LAYERS.items():
+    records = dict(LAYERS)
+    for name, (original, _) in THEATER_CROPS.items():
+        url, license_name, credit = LAYERS[original]
+        records[name] = (url, license_name, credit + " Reframed to show a seated bust.")
+    for name, (source_ref, license_name, credit) in records.items():
         target = layers / name
-        shutil.copyfile(source / name, target)
+        if name in THEATER_CROPS:
+            original, (left, top, right, bottom) = THEATER_CROPS[name]
+            with Image.open(source / original) as cutout:
+                box = (round(left*cutout.width), round(top*cutout.height),
+                       round(right*cutout.width), round(bottom*cutout.height))
+                cutout.crop(box).save(target)
+        else:
+            shutil.copyfile(source / name, target)
         reference_key = "url" if source_ref.startswith("https://") else "recipe"
         evidence = {reference_key: source_ref, "license": license_name}
         record = register_asset(workspace, target, "test", evidence,

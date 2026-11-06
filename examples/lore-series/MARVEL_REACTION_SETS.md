@@ -4,8 +4,8 @@ The story plays in the upper panel, with dialogue captions between that panel an
 
 | Preset | Setting | First local cast and props |
 | --- | --- | --- |
-| `crossover-theater` | `cinema` | Doom, Miles and Iron Man in theater seats with animated popcorn |
-| `iron-man-workshop` | `workshop` | Tony and his gauntlet on an illustrated sofa, with four drawn armor bays, a modern coupe and a flame-painted hot rod |
+| `crossover-theater` | `cinema` | Doom, Miles and Iron Man in an Art Deco theater, with shared projector lighting, tighter crops and animated popcorn |
+| `iron-man-workshop` | `workshop` | Tony and his gauntlet on an illustrated brown leather sofa, with four drawn armor bays, an Audi A8 L sedan and a flame-painted hot rod |
 | `spider-man-city` | `city` | Miles on a swinging web above the skyline |
 | `captain-america-and-bucky` | `living_room` | Cap and Bucky with the shield in a living room |
 | `doctor-strange-sanctum` | `sanctum` | Strange framed by a circular magic motif |

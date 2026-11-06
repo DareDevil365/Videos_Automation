@@ -50,6 +50,7 @@ def test_assistant_plan_requires_review_and_preserves_staging(tmp_path, monkeypa
         (tmp_path/path.name).write_bytes(path.read_bytes())
     part = series['parts'][0]
     part['lore_cameras'] = {'u1':'detail'}
+    part['hellboy_media'] = {'lava':'registered-lava','ruins':'registered-ruins','book':'registered-book'}
     part['lore_actions'] = {'u1':{'kind':'doom_magic','actor':'symbolic','origin':[430,550]}}
     spec = tmp_path/'series.json'
     target = tmp_path/'Plans'/'assistant.json'
@@ -61,6 +62,7 @@ def test_assistant_plan_requires_review_and_preserves_staging(tmp_path, monkeypa
     request = json.loads(target.read_text(encoding='utf-8'))['items'][0]['request']
     assert request['lore_fresh_visuals'] is True
     assert request['lore_cameras'] == part['lore_cameras']
+    assert request['hellboy_media'] == part['hellboy_media']
     assert request['lore_actions'] == part['lore_actions']
     assert request['script']['title'] and request['script']['description']
 

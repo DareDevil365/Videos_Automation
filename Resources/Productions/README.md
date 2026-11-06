@@ -37,4 +37,6 @@ The matching Thor comparison with sourced characters and geometric props is in `
 
 The Doctor Doom rescue Short with source cutouts is in `doom-triumph-torment-final-20261106/part-1/`. Its [episode notes](../../examples/lore-series/doom-triumph-torment/README.md) identify the 1989 canon, source limitations and shot choices.
 
+The standalone Hellboy Short is in `hellboy-horns-geometric-final-20261106/part-1/`. It uses geometric characters with sourced lava, ruins and a photographed book cutout. The [episode notes](../../examples/lore-series/hellboy-horns/README.md) explain the research and eight shots. It has a complete ending with no subscription line.
+
 The five original toolbox examples are in `assistant-five-20261105/`. Its three chat entries are the voiced recuts, including the older-teen voice adjustment on The Blue Backpack. See [comic series setup](../../docs/categories/comic-lore/HOW_TO_CREATE.md), [movie context](../../docs/categories/movies/HOW_TO_CREATE.md), [current affairs](../../docs/categories/current-affairs/HOW_TO_CREATE.md), and [the content roadmap](../../docs/CONTENT_ROADMAP.md).

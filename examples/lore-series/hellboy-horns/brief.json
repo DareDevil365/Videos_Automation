@@ -1,0 +1,52 @@
+{
+  "version": 1,
+  "title": "Hellboy Rejects His Apocalyptic Destiny",
+  "question": "Why does Hellboy break his own horns?",
+  "kind": "fact",
+  "sources": [
+    {
+      "id": "timeline",
+      "url": "https://images.darkhorse.com/darkhorse/index_images/blog/hellboy_timeline.pdf",
+      "title": "Dark Horse’s official Hellboy timeline",
+      "excerpt": "The timeline identifies the 1944 summoning, Professor Bruttenholm as his adoptive father, and the 1997 Hecate encounter in Wake the Devil.",
+      "checked_at": "2026-11-06T17:00:00+00:00"
+    },
+    {
+      "id": "rpg",
+      "url": "https://d1vzi28wh99zvq.cloudfront.net/pdf_previews/353222-sample.pdf",
+      "title": "Official licensed Hellboy RPG sample",
+      "excerpt": "The character introduction describes a demon investigator who rejects his apocalyptic destiny. The Right Hand of Doom can release the Ogdru Jahad.",
+      "checked_at": "2026-11-06T17:00:00+00:00"
+    },
+    {
+      "id": "horns",
+      "url": "https://scifi.stackexchange.com/questions/215873/why-does-hellboy-file-down-his-horns/215896",
+      "title": "Horn-breaking discussion identifying Wake the Devil #5",
+      "excerpt": "The answer identifies Wake the Devil part five, where Hecate invokes his destiny, his horns grow, and he breaks them in rejection. Movie filing scenes are distinguished from this event.",
+      "checked_at": "2026-11-06T17:00:00+00:00"
+    }
+  ],
+  "claims": [
+    {
+      "id": "c1",
+      "source_id": "rpg",
+      "text": "Hellboy is a demon and paranormal investigator who refuses an apocalyptic destiny."
+    },
+    {
+      "id": "c2",
+      "source_id": "timeline",
+      "text": "An occult ritual brought Hellboy to Earth as a child. Professor Bruttenholm, known as Broom, became his adoptive father."
+    },
+    {
+      "id": "c3",
+      "source_id": "rpg",
+      "text": "His stone right hand is the key that can release the Ogdru Jahad and bring destruction."
+    },
+    {
+      "id": "c4",
+      "source_id": "horns",
+      "text": "In Wake the Devil #5, Hecate invokes his apocalyptic destiny. His horns grow and he breaks them off to reject it."
+    }
+  ],
+  "notes": "The short explains the classic character premise and one Wake the Devil event. It does not claim this settles the entire later saga. The final line and choice language are original interpretation. Lava, real-world ruins and a historical book are illustrative scenery and props, not canonical locations or evidence. Geometric Hecate is a symbolic silhouette. No invented spoken character dialogue."
+}

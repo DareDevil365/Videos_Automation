@@ -1,0 +1,132 @@
+{
+  "version": 1,
+  "title": "Why Hellboy Breaks His Own Horns",
+  "description": "Hellboy was meant to bring the apocalypse. He chose another job. A short comic-lore explanation of his stone right hand and the horn-breaking scene in Wake the Devil. This follows Mike Mignola’s original comics, not a movie adaptation.",
+  "format": "lesson",
+  "fiction": false,
+  "hook": "Hellboy was born to end the world. His response was to break off his own horns.",
+  "payoff": "He breaks them off. He's been told what he was born to do. He chooses who he wants to be.",
+  "units": [
+    {
+      "id": "u1",
+      "speaker": "Host",
+      "text": "Hellboy was born to end the world. His response was to break off his own horns.",
+      "kind": "fact",
+      "claim_ids": [
+        "c1",
+        "c4"
+      ],
+      "onscreen": "BORN TO END THE WORLD",
+      "visual_kind": "image",
+      "visual_query": "BORN TO END THE WORLD",
+      "lore_scene": "hellboy_question",
+      "lore_camera": "push"
+    },
+    {
+      "id": "u2",
+      "speaker": "Narrator",
+      "text": "An occult ritual brought him to Earth as a child. Professor Broom took him in and raised him.",
+      "kind": "fact",
+      "claim_ids": [
+        "c2"
+      ],
+      "onscreen": "RAISED BY A HUMAN",
+      "visual_kind": "image",
+      "visual_query": "RAISED BY A HUMAN",
+      "lore_scene": "hellboy_child",
+      "lore_camera": "wide"
+    },
+    {
+      "id": "u3",
+      "speaker": "Narrator",
+      "text": "He grew up protecting people from monsters. Then he learned what that huge right hand was made for.",
+      "kind": "fact",
+      "claim_ids": [
+        "c1",
+        "c3"
+      ],
+      "onscreen": "THE INVESTIGATOR’S SECRET",
+      "visual_kind": "image",
+      "visual_query": "THE INVESTIGATOR’S SECRET",
+      "lore_scene": "hellboy_case",
+      "lore_camera": "pan_left"
+    },
+    {
+      "id": "u4",
+      "speaker": "Narrator",
+      "text": "That stone hand is the key to freeing the Ogdru Jahad, ancient monsters that could destroy the world.",
+      "kind": "fact",
+      "claim_ids": [
+        "c3"
+      ],
+      "onscreen": "HIS HAND IS THE KEY",
+      "visual_kind": "image",
+      "visual_query": "HIS HAND IS THE KEY",
+      "lore_scene": "hellboy_key",
+      "lore_camera": "wide"
+    },
+    {
+      "id": "u5",
+      "speaker": "Narrator",
+      "text": "In Wake the Devil, Hecate calls him the Beast of the Apocalypse. His horns grow back.",
+      "kind": "fact",
+      "claim_ids": [
+        "c4"
+      ],
+      "onscreen": "THE HORNS GROW BACK",
+      "visual_kind": "image",
+      "visual_query": "THE HORNS GROW BACK",
+      "lore_scene": "hellboy_destiny",
+      "lore_camera": "push"
+    },
+    {
+      "id": "u6",
+      "speaker": "Narrator",
+      "text": "Accepting that destiny would mean turning on the people who raised him. The monster hunter would become their destroyer.",
+      "kind": "fact",
+      "claim_ids": [
+        "c1",
+        "c4"
+      ],
+      "onscreen": "THE CHOICE HE IS GIVEN",
+      "visual_kind": "image",
+      "visual_query": "THE CHOICE HE IS GIVEN",
+      "lore_scene": "hellboy_choice",
+      "lore_camera": "pan_right"
+    },
+    {
+      "id": "u7",
+      "speaker": "Narrator",
+      "text": "He breaks them off. He's been told what he was born to do. He chooses who he wants to be.",
+      "kind": "fact",
+      "claim_ids": [
+        "c4"
+      ],
+      "onscreen": "HE REFUSES THE CROWN",
+      "visual_kind": "image",
+      "visual_query": "HE REFUSES THE CROWN",
+      "lore_scene": "hellboy_refusal",
+      "lore_camera": "wide"
+    },
+    {
+      "id": "u8",
+      "speaker": "Host",
+      "text": "Hell wanted a king. It got a monster hunter.",
+      "kind": "transition",
+      "claim_ids": [
+        "c1",
+        "c4"
+      ],
+      "onscreen": "HELL WANTED A KING",
+      "visual_kind": "image",
+      "visual_query": "HELL WANTED A KING",
+      "lore_scene": "hellboy_hunter",
+      "lore_camera": "push"
+    }
+  ],
+  "edit": {
+    "effect": "none",
+    "payoff_unit_id": "u7",
+    "cta": false
+  }
+}

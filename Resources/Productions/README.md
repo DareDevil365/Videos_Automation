@@ -33,4 +33,6 @@ The geometric Books of Doom forge recut is in `books-of-doom-forge-recut/part-1/
 
 The updated Iron Man film-continuity short is in `iron-man-reactor-geometric-cast-20261106/part-1/`. The [episode notes](../../examples/lore-series/iron-man-reactor/README.md) record the topic research, gift and theft shots, exact script and source review. The fresh Beta Ray Bill preview is in `thor-beta-ray-bill-recut-20261106/part-1/`. Its [episode notes](../../examples/lore-series/thor-beta-ray-bill/README.md) explain the choice of story and how it uses the starter pack.
 
+The matching Thor comparison with sourced characters and geometric props is in `thor-beta-ray-bill-source-cutouts-20261106/part-1/`. The geometric cast version is available in its earlier folder for comparison.
+
 The five original toolbox examples are in `assistant-five-20261105/`. Its three chat entries are the voiced recuts, including the older-teen voice adjustment on The Blue Backpack. See [comic series setup](../../docs/categories/comic-lore/HOW_TO_CREATE.md), [movie context](../../docs/categories/movies/HOW_TO_CREATE.md), [current affairs](../../docs/categories/current-affairs/HOW_TO_CREATE.md), and [the content roadmap](../../docs/CONTENT_ROADMAP.md).

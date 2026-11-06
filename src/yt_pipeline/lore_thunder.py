@@ -1,4 +1,5 @@
 """Geometric scene recipes for the first Beta Ray Bill arc."""
+from functools import partial
 import math
 
 from PIL import ImageDraw
@@ -81,24 +82,26 @@ def bolt(d, x, y, second, length):
     d.line(points,fill="#daedfd",width=4,joint="curve")
 
 
-def thunder_art(layer, kind, second, p, glow):
+def thunder_art(layer, kind, second, p, glow, cast=None):
     d=ImageDraw.Draw(layer)
+    draw_actor = partial(cast.warrior, layer) if cast else partial(warrior, d)
+    draw_arm = partial(cast.reach, layer) if cast else partial(reach, d)
     if kind=="thor_hammer_hook":
         # Read the mystery immediately as a tight portrait and an oversized prop.
         # The later lift uses a medium view so the viewer can see the whole action.
         grip=(211+14*p,655-27*p)
         glow(layer,grip,141,(94,161,233),135)
         d.arc((77,280,635,814),194,348,fill="#426784",width=4)
-        bill=warrior(d,"bill",525,567,2.1,-1)
-        reach(d,bill,(342,760),grip,1.62)
+        bill=draw_actor("bill",525,567,2.1,-1)
+        draw_arm(bill,(342,760),grip,1.62)
         draw_hammer(d,*grip,3.75)
         bolt(d,grip[0],grip[1]-153,second,133)
         return
     if kind=="bill_lifts":
         grip=(289,640-196*min(1,p*1.48))
         glow(layer,grip,115,(94,161,233),115)
-        bill=warrior(d,"bill",451,507,1.42,-1)
-        reach(d,bill,(338,609),grip,1.25)
+        bill=draw_actor("bill",451,507,1.42,-1)
+        draw_arm(bill,(338,609),grip,1.25)
         draw_hammer(d,*grip,2.35)
         if p>.34:
             bolt(d,grip[0],grip[1]-94,second,111)
@@ -109,7 +112,9 @@ def thunder_art(layer, kind, second, p, glow):
             d.polygon([(x-39,y+18),(x-27,y-10),(x+36,y-25),(x+51,y+1),(x+17,y+19)],
                       fill="#364e60",outline=SILVER,width=3)
             d.line((x-58,y+16,x-39,y+14),fill="#91cfe2",width=3)
-        warrior(d,"bill",396,563,1.5,1)
+        bill=draw_actor("bill",396,563,1.5,1)
+        if cast:
+            draw_arm(bill,(486,728),(474,781),1.32)
         d.polygon([(54,796),(633,778),(671,818),(55,839)],fill="#263b49",outline="#627c86",width=3)
         return
     if kind in ("thor_duel","thor_ledge","thor_rescue"):
@@ -118,23 +123,23 @@ def thunder_art(layer, kind, second, p, glow):
         d.polygon([(357,855),(418,727),(527,698),(666,709),(676,855)],fill="#382d3a",outline="#986653",width=4)
         if kind=="thor_duel":
             approach=min(1,p*1.3)
-            thor=warrior(d,"thor",154+53*approach,493,1.12,1)
-            bill=warrior(d,"bill",565-57*approach,475,1.19,-1)
-            reach(d,thor,(253,592),(265+84*approach,544),1.05)
-            reach(d,bill,(466,563),(459-104*approach,544),1.1)
+            thor=draw_actor("thor",154+53*approach,493,1.12,1)
+            bill=draw_actor("bill",565-57*approach,475,1.19,-1)
+            draw_arm(thor,(253,592),(265+84*approach,544),1.05)
+            draw_arm(bill,(466,563),(459-104*approach,544),1.1)
             if p>.63:
                 d.line([(338,521),(359,546),(372,512)],fill="#ffe0a4",width=5)
             return
         rescued=kind=="thor_rescue"
         lift=min(1,p*1.42) if rescued else 0
-        bill=warrior(d,"bill",530,474,1.29,-1)
-        thor=warrior(d,"thor",224+51*lift,669-123*lift+16*math.sin(second*3)*(1-lift),.92,1)
+        bill=draw_actor("bill",530,474,1.29,-1)
+        thor=draw_actor("thor",224+51*lift,669-123*lift+16*math.sin(second*3)*(1-lift),.92,1)
         hand=(351+32*lift,691-91*lift)
-        reach(d,thor,(287+40*lift,704-75*lift),hand,.92)
+        draw_arm(thor,(287+40*lift,704-75*lift),hand,.92)
         if rescued:
-            reach(d,bill,(446,628),(hand[0]+6,hand[1]-4),1.17)
+            draw_arm(bill,(446,628),(hand[0]+6,hand[1]-4),1.17)
         else:
-            reach(d,bill,(454,626),(396-23*p,652+19*p),1.17)
+            draw_arm(bill,(454,626),(396-23*p,652+19*p),1.17)
         return
     if kind=="stormbreaker_forged":
         glow(layer,(362,554),162,(255,147,65),120)
@@ -148,9 +153,9 @@ def thunder_art(layer, kind, second, p, glow):
         return
     for index,(who,x,dx) in enumerate((("thor",182,1),("bill",535,-1))):
         y=507+round(8*math.sin(second*2+index))
-        actor=warrior(d,who,x,y,1.42,dx)
+        actor=draw_actor(who,x,y,1.42,dx)
         hand=(x+95*dx,552-30*p)
-        reach(d,actor,(x+67*dx,620),hand,1.35)
+        draw_arm(actor,(x+67*dx,620),hand,1.35)
         if who=="thor":
             draw_hammer(d,*hand,1.62)
         else:

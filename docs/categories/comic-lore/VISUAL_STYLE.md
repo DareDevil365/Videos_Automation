@@ -24,4 +24,6 @@ Supply these fields on a part of the series. Beat IDs come from its exact script
 | `lore_actions` | Pair an action with `actor: symbolic` for a drawn performer or `actor: effect_only` to layer it on a cutout. Choose `optic_blast`, `repulsor`, `hammer_lightning`, `doom_magic`, `sorcerer_rings`, or `ground_impact`. Give the action an `origin` and, for a directed effect, an optional `target` in portrait pixels. |
 | `reaction_preset` | Choose an installed lower set. Cinema can use a registered crowd plate. |
 
+When an episode calls for sourced characters over geometric props, keep the original scene layout and substitute the cast layers. The [Thor comparison](../../../examples/lore-series/thor-beta-ray-bill/README.md) is a worked example. Its `thunder_cast` field attaches Bill and Thor's registered body, upper arm and forearm layers to the existing shot anchors. Both hammers, the refugee ships, lava and lightning are drawn by the editor.
+
 Anchor each effect to the hand, tool, or object that causes it. Show anticipation, the moment of contact, and a visible consequence. Keep effects away from the title and captions. Check early, contact, and late frames to ensure motion reads on a phone. The built-in movements are deliberate geometric cues and simple cutout transforms. Plan a different scene if a shot depends on realistic character acting.

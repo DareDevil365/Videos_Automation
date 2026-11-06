@@ -5,13 +5,14 @@ import shutil
 import subprocess
 
 import pytest
-from PIL import Image,ImageChops
+from PIL import Image,ImageChops,ImageDraw
 
 from yt_pipeline.core import Held,Workspace,digest
 from yt_pipeline.lore_visuals import KINDS,plan_lore,lore_frame,render_lore_shot,build_lore_visuals
 from yt_pipeline.lore_actions import COLORS, resolve_actions
 from yt_pipeline.source_sets import check_lore_reuse, source_painter
 from yt_pipeline.contracts import script_contract
+from yt_pipeline.lore_thunder_cutouts import Sprite, ThunderCutouts
 
 
 ROOT=Path(__file__).resolve().parents[1]
@@ -48,6 +49,20 @@ def test_authored_beat_visual_choices_are_validated_and_can_be_overridden():
     script['units'][0]['lore_scene'] = 'unsupported-animation'
     with pytest.raises(Held, match='supported lore_scene'):
         script_contract(script, brief, 'lesson')
+
+
+@pytest.mark.parametrize("facing", [1, -1])
+def test_sourced_arm_keeps_shoulder_and_grip_anchors_when_rotated(facing):
+    part = Image.new("RGBA", (104,42))
+    draw = ImageDraw.Draw(part)
+    draw.rectangle((3,7,100,35), fill="#677a8c")
+    draw.ellipse((10,14,23,28), fill="#eb5838")
+    draw.ellipse((77,14,92,28), fill="#5edd80")
+    output = Image.new("RGBA", (330,350))
+    ThunderCutouts._limb(output, Sprite(part,(16,21),(85,21)), (114,107), (204,237), facing, 1)
+    assert output.getpixel((114,107))[:3] == (235,88,56)
+    assert output.getpixel((204,237))[:3] == (94,221,128)
+    assert output.getpixel((0,0))[3] == 0
 
 
 def test_scene_art_changes_and_moves_without_intruding_on_caption_safe_area():

@@ -232,8 +232,10 @@ def validate_playbook_script(script,name,request=None):
     value=get_playbook(name,request)
     if script['format']!=value['format']:raise Held('playbook_script','Script format differs from its selected playbook')
     if name in ('documentary_chapter','comic_lore','movie_brief','current_affairs'):
-        if script['fiction'] or len({u['speaker'] for u in script['units']})!=1 or any(len(u['onscreen'])>85 for u in script['units']):
-            raise Held('playbook_script','Use one factual narrator and concise diagram headings of at most 85 characters.')
+        speakers = [unit['speaker'] for unit in script['units']]
+        hosted = name == 'comic_lore' and speakers == ['Host', *(['Narrator'] * (len(speakers)-2)), 'Host']
+        if script['fiction'] or (len(set(speakers)) != 1 and not hosted) or any(len(u['onscreen'])>85 for u in script['units']):
+            raise Held('playbook_script','Use one narrator or a comic host who opens and closes around the storyteller.')
     if name=='server_chat':
         maximum=6 if (request or {}).get('phone_story') else 3
         if not 2<=len({u['speaker'] for u in script['units']})<=maximum or any(u['speaker'].strip().lower()=='narrator' for u in script['units']):

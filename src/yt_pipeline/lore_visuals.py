@@ -12,10 +12,12 @@ from shorts_editor.store import write_json
 from .assets import register_asset
 from .core import Held, digest
 from .transcripts import write_srt
+from .source_delivery import delivery_for
+from .source_sets import resolve_source_set, source_painter
 
 
 KINDS=('collapse','life_raft','battleworld','throne','control','hidden_power','meal','confrontation','rebuilding','restoration',
-       'dominion','memory','source_closeup','meal_detail','absence','duel','consequence')
+       'dominion','memory','source_closeup','meal_detail','absence','duel','consequence','portrait')
 SIZE=(720,1280)
 ART=(20,180,700,950)
 NOTE='Original symbolic code-drawn illustration, not an official comic panel, movie frame, literal character performance or additional evidence.'
@@ -40,8 +42,13 @@ def plan_lore(script,request,brief):
     if not isinstance(overrides,dict) or set(overrides)-ids or any(v not in KINDS for v in overrides.values()):
         raise Held('lore_scene','Map known message IDs to a supported original lore scene kind.')
     claims={c['id']:c for c in brief['claims']};sources={s['id'] for s in brief['sources']}
-    speakers={u['speaker'] for u in units}
-    if len(speakers)!=1:raise Held('lore_voice','This lore format uses one consistent voice-only narrator.')
+    speakers = list(dict.fromkeys(u['speaker'] for u in units))
+    if len(speakers) != 1 and [u['speaker'] for u in units] != ['Host', *(['Narrator'] * (len(units)-2)), 'Host']:
+        raise Held('lore_voice','Use the host only for the first and last beat.')
+    cast = [{'id': 'narrator' if len(speakers) == 1 else f'voice-{index}', 'speaker': speaker,
+             'voice_id': 'am_adam' if speaker == 'Host' and len(speakers)>1 else 'bm_george',
+             'avatar_kind': 'narrator', 'role': 'voice-only narrator'} for index, speaker in enumerate(speakers)]
+    cast_ids = {actor['speaker']: actor['id'] for actor in cast}
     scenes=[]
     for index,unit in enumerate(units):
         refs=unit.get('claim_ids',[])
@@ -50,10 +57,10 @@ def plan_lore(script,request,brief):
         label=unit['onscreen']
         if not isinstance(label,str) or not label.strip() or len(label)>70:
             raise Held('lore_label','Use an exact short onscreen phrase, at most 70 characters.')
-        scenes.append({'unit_id':unit['id'],'text':unit['text'],'speaker_id':'narrator','kind':overrides.get(unit['id'],_kind(unit['text'])),
-            'label':label,'claim_ids':list(refs),'pause_after':.28 if index==len(units)-1 else .18,
+        scenes.append({'unit_id':unit['id'],'text':unit['text'],'speaker_id':cast_ids[unit['speaker']],'kind':overrides.get(unit['id'],_kind(unit['text'])),
+            'label':label,'claim_ids':list(refs),**delivery_for(unit,request,.28 if index==len(units)-1 else .18),
             'visible_cast':[],'framing':'wide','motion':'panel_reveal','illustration_note':NOTE})
-    plan={'version':1,'template':'comic_lore','cast':[{'id':'narrator','speaker':next(iter(speakers)),'voice_id':'bm_george','avatar_kind':'narrator','role':'voice-only narrator'}],
+    plan={'version':1,'template':'comic_lore','cast':cast,
         'scenes':scenes,'sources':deepcopy(brief['sources']),'claims':deepcopy(brief['claims']),
         'script_sha256':digest(script),'brief_sha256':digest(brief),'comment_question':'','illustration_note':NOTE}
     return {'plan':plan,'script_sha256':digest(script),'origin':'compiled_lore_rules_v1',
@@ -70,7 +77,8 @@ def _background(kind):
         'meal':('#272031','#edbd75'),'confrontation':('#141c2d','#a6b7f5'),'rebuilding':('#10232f','#9ed7e5'),
         'restoration':('#2c2120','#f0cba1'),'dominion':('#12201b','#b6a364'),'memory':('#182432','#9ccedb'),
         'source_closeup':('#10292b','#a2fcde'),'meal_detail':('#33231f','#f7c785'),
-        'absence':('#222331','#9e9cc2'),'duel':('#141e2d','#bbc6eb'),'consequence':('#272723','#dbca89')}
+        'absence':('#222331','#9e9cc2'),'duel':('#141e2d','#bbc6eb'),'consequence':('#272723','#dbca89'),
+        'portrait':('#182329','#9ccedb')}
     base,accent=palette[kind];image=Image.new('RGB',SIZE,'#080e17');d=ImageDraw.Draw(image)
     d.polygon([(24,202),(693,180),(694,911),(30,947)],fill=base,outline='#d7d1bf',width=4)
     rng=random.Random(8821)
@@ -172,7 +180,12 @@ def _burger(d,x,y,scale=1):
 def _art(scene,second,duration):
     kind=scene['kind'];p=max(0,min(1,second/duration));reveal=_ease(second/.65)
     layer=Image.new('RGBA',SIZE);d=ImageDraw.Draw(layer)
-    if kind=='dominion':
+    if kind=='portrait':
+        _glow(layer,(360,490),220,(133,191,175),90)
+        for i in range(4):
+            radius=140+i*45
+            d.arc((360-radius,540-radius,360+radius,540+radius),second*45+i*80,second*45+i*80+155,fill='#48726f',width=3)
+    elif kind=='dominion':
         _glow(layer,(360,525),230,(100,149,98),105)
         _world(layer,189,696,115,'#395951',patchwork=True);_world(layer,550,698,104,'#6b5b67')
         d=ImageDraw.Draw(layer)
@@ -339,14 +352,17 @@ def build_lore_visuals(ws,job,script,timing,folder,record):
     if record['script_sha256']!=digest(script) or plan.get('script_sha256')!=digest(script):raise Held('creative_rewrite','Lore scene plan differs from the frozen script.')
     if [s['unit_id'] for s in plan['scenes']]!=[u['id'] for u in timing['units']]:raise Held('lore_timing','Lore scenes must match measured speech in order.')
     units={u['id']:u for u in script['units']};claims={c['id']:c for c in plan['claims']};sources={s['id']:s for s in plan['sources']}
-    rows=[];bindings=[];provenance=[]
+    placements,reaction,provenance = resolve_source_set(ws,job['request'],script)
+    rows=[];bindings=[]
     for scene,spoken in zip(plan['scenes'],timing['units']):
         unit=units[scene['unit_id']]
         if scene['text']!=unit['text'] or scene['label']!=unit['onscreen'] or scene['claim_ids']!=unit['claim_ids'] or scene['kind'] not in KINDS:
             raise Held('creative_rewrite','A lore illustration changed frozen text, labels or claim references.')
         refs=list(dict.fromkeys(claims[c]['source_id'] for c in scene['claim_ids']))
         urls=[sources[ref]['url'] for ref in refs]
-        output=folder/(scene['unit_id']+'-lore.mp4');render_lore_shot(scene,spoken['duration'],output)
+        output=folder/(scene['unit_id']+'-lore.mp4')
+        painter = source_painter(lore_frame, placements.get(unit['id'],()), reaction, spoken['start']) if placements or reaction else None
+        render_lore_shot(scene,spoken['duration'],output,paint=painter)
         made=register_asset(ws,output,'original_graphic',{'generator':'original-comic-lore-v1','unit_id':scene['unit_id'],
             'scene_kind':scene['kind'],'claim_ids':scene['claim_ids'],'source_urls':urls,'illustration_note':NOTE},test_only=job['request'].get('test_only',False))
         provenance.append(made)

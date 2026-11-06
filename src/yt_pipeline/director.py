@@ -24,7 +24,7 @@ def direct(workspace, job, script, timing, visuals):
         if bottom_kind!='none' and not bottom_id:raise Held('background_missing','Select a registered lower-panel asset for this template')
         bottom=asset_record(workspace,bottom_id) if bottom_id else None
         if bottom and bottom['kind']!='video':raise Held('background_missing','A lower-panel recording must be a real video file')
-        provenance.extend(asset_record(workspace,a['id']) for a in visuals['planned_provenance'])
+        provenance.extend(asset_record(workspace,a['id'],allow_preview=request.get('test_only') is True) for a in visuals['planned_provenance'])
         if bottom:provenance.append(bottom)
         rows=[]
         for unit,frame in zip(timing['units'],visuals['frames']):

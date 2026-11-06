@@ -38,8 +38,28 @@ def exact_words(text,alignment,duration):
     return result
 
 
-def progressive_cues(words):
+def progressive_cues(words, linked_phrases=()):
     """Reveal every original word in small accumulating phrases, with no summaries."""
+    if linked_phrases:
+        # Show the full name/title together in its own cue.
+        cues = []
+        cursor = 0
+        index = 0
+        while index < len(words):
+            for phrase in linked_phrases:
+                size = len(phrase.split())
+                span = words[index:index + size]
+                visible = ' '.join(word['text'] for word in span)
+                if visible.rstrip('.,?!;:').casefold() == phrase.casefold():
+                    cues.extend(progressive_cues(words[cursor:index]))
+                    cues.append({'start': span[0]['start'], 'end': span[-1]['end'], 'text': visible})
+                    index += size
+                    cursor = index
+                    break
+            else:
+                index += 1
+        cues.extend(progressive_cues(words[cursor:]))
+        return cues
     groups=[];group=[]
     for word in words:
         if group and (len(group)>=5 or len(' '.join([r['text'] for r in group]+[word['text']]))>42):groups.append(group);group=[]
@@ -80,6 +100,6 @@ def align_dialogue(ws,timing,model='tiny.en'):
             rows=exact_words(unit['text'],aligned,unit['metrics']['duration'])
             write_json(path,{'words':rows,'model':model,'method':'forced alignment of original script tokens'})
         global_words=[{**r,'start':r['start']+unit['start'],'end':r['end']+unit['start'],'unit_id':unit['id']} for r in rows]
-        all_words.extend(global_words);cues.extend(progressive_cues(global_words))
+        all_words.extend(global_words);cues.extend(progressive_cues(global_words,unit.get('linked_phrases',())))
     return {**timing,'word_timings':all_words,'caption_cues':cues,'caption_style':'dialogue_bar',
         'caption_alignment':'Exact supplied dialogue forced-aligned with local faster-whisper; timings remain model estimates, not transcription replacements.'}

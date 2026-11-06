@@ -5,12 +5,14 @@ import math
 import re
 
 from PIL import Image,ImageDraw
-from shorts_editor.graphics import text_box
+from shorts_editor.graphics import font, text_box
 from shorts_editor.store import write_json
 from .assets import register_asset
 from .core import Held,digest
 from .scene_blocks import validate_block
 from .transcripts import write_srt
+from .source_delivery import delivery_for
+from .source_sets import resolve_source_set, source_painter
 
 
 MODES={'movie_brief':('masks','role','film','powers','ensemble','ticket','film','books'),
@@ -25,14 +27,14 @@ def plan_brief(script,request,brief):
     preset=request.get('playbook')
     if preset not in MODES:raise Held('brief_graphic','Choose the movie or current-affairs brief format.')
     motifs=request.get('brief_motifs',{})
-    if not isinstance(motifs,dict) or set(motifs)-{u['id'] for u in script['units']} or any(v not in ('headline',*MODES[preset]) for v in motifs.values()):
+    if not isinstance(motifs,dict) or set(motifs)-{u['id'] for u in script['units']} or any(v not in ('headline','media',*MODES[preset]) for v in motifs.values()):
         raise Held('brief_graphic','Use a supported motif for an actual script unit.')
     scenes=[]
     for i,unit in enumerate(script['units']):
         block=deepcopy(choices.get(unit['id'],{'kind':'callout','title':'','labels':[unit['onscreen']]}))
         validate_block(block,unit,script)
         if block['kind'] not in ('callout','comparison','process'):raise Held('brief_graphic','Choose a concise callout, comparison or process graphic.')
-        scenes.append({'unit_id':unit['id'],'text':unit['text'],'speaker_id':'n','pause_after':.18,
+        scenes.append({'unit_id':unit['id'],'text':unit['text'],'speaker_id':'n',**delivery_for(unit,request,.18),
             'visible_cast':[],'focus_id':'','framing':'wide','motion':'hold','graphic':block,'rank':0,
             'claim_ids':unit['claim_ids'],'background_query':'','visual_query':'','asset_id':'',
             'headline':unit['onscreen'],'visual_mode':motifs.get(unit['id'],'headline'),'preset':preset,
@@ -44,13 +46,20 @@ def plan_brief(script,request,brief):
 
 
 def brief_frame(scene,second,duration):
-    """Sparse source labels and original pictograms; no faces, photos or fake charts."""
+    """Draw the labels and pictograms beneath any separately registered media."""
     movie=scene['preset']=='movie_brief';bg='#111825' if movie else '#102521'
     accent='#f5c86e' if movie else '#9ce0b4';ink='#f8f2dd';muted='#95aab6' if movie else '#84b9aa'
     im=Image.new('RGB',(720,1280),bg);d=ImageDraw.Draw(im)
     mode=scene['visual_mode'];p=1-(1-max(0,min(1,second/.8)))**3;phase=second*.85
     d.line((48,200,672,200),fill=accent,width=3)
-    text_box(d,scene['headline'],(48,47,624,133),ink,50,True,minimum=34)
+    headline = scene['headline']
+    if headline.casefold() in {phrase.casefold() for phrase in scene.get('linked_phrases', ())}:
+        size = next((point for point in range(50, 25, -1) if d.textlength(headline, font=font(point, True)) <= 624), None)
+        if size is None:
+            raise Held('brief_graphic', 'The connected title is too long for a single line.')
+        d.text((48, 47), headline, fill=ink, font=font(size, True))
+    else:
+        text_box(d,headline,(48,47,624,133),ink,50,True,minimum=34)
     def label(text,box,size=31,color=ink):text_box(d,text,box,color,size,True,'center',minimum=23)
     def mask(x,y,scale,fill):
         pts=[(-97,-78),(0,-107),(97,-78),(83,42),(30,107),(-30,107),(-83,42)]
@@ -157,16 +166,19 @@ def build_brief_visuals(ws,job,script,timing,folder,record):
     if record['script_sha256']!=digest(script) or [s['unit_id'] for s in plan['scenes']]!=[u['id'] for u in timing['units']]:
         raise Held('brief_timing','Source graphics must preserve the exact frozen script and timing.')
     claims={c['id']:c['source_id'] for c in plan['claims']};sources={s['id']:s['url'] for s in plan['sources']};units={u['id']:u for u in script['units']}
+    placements,reaction,provenance = resolve_source_set(ws,job['request'],script)
     rows=[];bindings=[]
     for scene,spoken in zip(plan['scenes'],timing['units']):
         unit=units[spoken['id']];validate_block(scene['graphic'],unit,script)
         if (scene['text'],scene['headline'],scene['claim_ids'])!=(unit['text'],unit['onscreen'],unit['claim_ids']):raise Held('brief_graphic','Compiled graphic changed its spoken evidence.')
         urls=list(dict.fromkeys(sources[claims[c]] for c in unit['claim_ids']))
-        output=folder/(unit['id']+'-brief.mp4');render_lore_shot(scene,spoken['duration'],output,paint=brief_frame)
+        output=folder/(unit['id']+'-brief.mp4')
+        painter = source_painter(brief_frame, placements.get(unit['id'],()), reaction, spoken['start']) if placements or reaction else brief_frame
+        render_lore_shot(scene,spoken['duration'],output,paint=painter)
         made=register_asset(ws,output,'original_graphic',{'generator':'source-brief-symbols-v1','unit_id':unit['id'],'source_urls':urls,'note':'Illustration, not a photo, screen capture or additional evidence.'},test_only=job['request'].get('test_only',False))
         rows.append({'unit_id':unit['id'],'file':str(output),'media_id':made['id'],'duration':spoken['duration'],'kind':'source_brief','resolved_scene':scene})
         bindings.append({'unit_id':unit['id'],'claim_ids':unit['claim_ids'],'source_urls':urls})
     captions=folder/'captions.srt';write_srt([{'start':u['start'],'end':u['speech_end'],'text':u['text']} for u in timing['units']],captions)
     result={'version':1,'format':'lesson','frames':rows,'captions':str(captions),'planned_template':'source_brief',
-        'planned_provenance':[],'selected_media':[],'source_bindings':bindings,'creative_plan_sha256':digest(plan)}
+        'planned_provenance':provenance,'selected_media':[],'source_bindings':bindings,'creative_plan_sha256':digest(plan)}
     write_json(folder/'visuals.json',result);return result

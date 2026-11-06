@@ -134,6 +134,9 @@ class Workspace:
         if not isinstance(request,dict): raise ValueError("Job request must be an object")
         job_id = uuid.uuid4().hex
         request = json.loads(json.dumps(request))
+        if "reaction_preset" in request:
+            from .source_sets import apply_reaction_preset
+            apply_reaction_preset(self, request)
         with self.connect() as db:
             db.execute("INSERT INTO jobs(id,channel,request,created_at,updated_at,version) VALUES(?,?,?,?,?,?)",
                        (job_id,channel,json.dumps(request),now(),now(),digest(request)))

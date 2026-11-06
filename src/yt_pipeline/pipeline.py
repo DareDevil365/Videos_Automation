@@ -101,6 +101,9 @@ class Pipeline:
                         if not minimum<=result['duration']<=maximum:
                             raise Held('playbook_duration',f'Measured voice is {result["duration"]:.1f}s; this format requires {minimum}-{maximum}s. Revise the script rather than pad it with empty silence.')
                     else:result=self.voice_fn(ws,results['script']['script'],folder/'voice')
+                    if job['request'].get('source_cues') and job['request'].get('playbook') in ('comic_lore','movie_brief','current_affairs'):
+                        from .source_delivery import add_source_cues
+                        result=add_source_cues(ws,result,job['request']['source_cues'],folder/'voice')
                     if job['request'].get('playbook') in ('cutout_ensemble','documentary_chapter','illustrated_story') or job['request'].get('motion_graphics') is True:
                         from .dialogue_captions import align_dialogue
                         result=align_dialogue(ws,result)
@@ -130,8 +133,12 @@ class Pipeline:
                     if results['voice'].get('caption_cues'):
                         caption_options={'canvas':(1280,720) if project['resolution']=='720p' else (1920,1080)} if project.get('profile')=='documentary' else {}
                         if job['request'].get('story_canvas')=='portrait' or job['request'].get('playbook') in ('comic_lore','movie_brief','current_affairs'):caption_options['font_size']=48
+                        bar_height=round(1280*job['request'].get('top_fraction',.65)/2)*2 if job['request'].get('bottom_asset_id') else 1280
+                        if job['request'].get('reaction_set'):
+                            bar_height=1038
+                            caption_options['font_size']=38
                         burn_captions(output,results['voice']['caption_cues'],split=project['format']=='stack',caption_bar=results['voice'].get('caption_style')=='dialogue_bar',
-                            bar_height=round(1280*job['request'].get('top_fraction',.65)/2)*2 if job['request'].get('bottom_asset_id') else 1280,**caption_options)
+                            bar_height=bar_height,**caption_options)
                     result={"video":str(output),"cover":str(output.with_suffix(".png")),"captions":str(output.with_suffix(".srt")),
                             "manifest":str(output.with_suffix(".manifest.json")),"duration":manifest["duration"]}
                     result['visual_review']=review_render(ws,job,results['script'],results['voice'],result,self.provider,folder/'visual-review'/'finished')

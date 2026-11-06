@@ -146,13 +146,19 @@ def synthesize(workspace, script, folder, pause=.16, fps=30,creative_plan=None,d
         if thinking and ((scene or {}).get('graphic',{}).get('kind')!='timer' or thinking<2):
             raise Held('voice_pause','Thinking silence needs a timer scene and 2-6 seconds.')
         if engine=='kokoro' and voice_id not in voice.get_voices():raise Held('voice_id','A cast voice is not installed')
-        parts=[cached_segment(s['text'],voice_id,s['speed']) for s in segments]
+        from .source_delivery import connected_text
+        linked_phrases = (scene or {}).get('linked_phrases', [])
+        spoken_texts = [connected_text(s['text'], linked_phrases) for s in segments]
+        parts=[cached_segment(text,voice_id,s['speed']) for text,s in zip(spoken_texts,segments)]
         spans=[]
         if len(parts)==1 and segments[0]['pause_after']==0:
             path=parts[0]
         else:
-            path=cache/(digest(['measured-tts-assembly-v1',engine,voice_id,model_sha,config_sha,
-                               settings.get('length_scale',1),segments])+'.wav')
+            assembly_key = ['measured-tts-assembly-v1',engine,voice_id,model_sha,config_sha,
+                            settings.get('length_scale',1),segments]
+            if spoken_texts != [s['text'] for s in segments]:
+                assembly_key.append(spoken_texts)
+            path=cache/(digest(assembly_key)+'.wav')
             chunks=[];segment_rate=None;cursor=0
             for segment,part in zip(segments,parts):
                 with wave.open(str(part),'rb') as wav:
@@ -178,6 +184,7 @@ def synthesize(workspace, script, folder, pause=.16, fps=30,creative_plan=None,d
         rows.append({"id":unit["id"],"speaker":unit["speaker"],"text":unit["text"],"file":str(path),
                      "start":elapsed,"speech_end":elapsed+metrics["duration"],"end":elapsed+duration,"duration":duration,"metrics":metrics,
                      'voice_id':voice_id,'pause_after':unit_pause,'delivery_length_scale':settings.get('length_scale',1),
+                     **({'linked_phrases': linked_phrases, 'speech_engine_text': ' '.join(spoken_texts)} if linked_phrases else {}),
                      'speech_segments':segments,'segment_timings':spans,'thinking_seconds':thinking})
         pcm_parts.extend([pcm,b"\0\0"*padding])
         elapsed+=duration

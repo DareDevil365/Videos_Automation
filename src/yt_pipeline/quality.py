@@ -31,7 +31,7 @@ def inspect_render(workspace, job, brief, written, timing, directed, rendered):
     stale=source_freshness(brief,int(job["request"].get("max_source_age_days",30)))
     if stale:raise Held("stale_sources"," ".join(stale))
     if not written["review"].get("supported"):raise Held("editorial_review","The script has not passed its evidence review.")
-    assets=[asset_record(workspace,a["id"]) for a in directed["provenance"]]
+    assets=[asset_record(workspace,a["id"],allow_preview=job["request"].get("test_only") is True) for a in directed["provenance"]]
     test_only=bool(job["request"].get("test_only")) or any(a.get("test_only") for a in assets)
     full_text=" ".join(unit["text"] for unit in written["script"]["units"]).lower()
     flags=[]

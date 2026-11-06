@@ -22,7 +22,7 @@ def register_asset(workspace, path, source_type, evidence, commercial=True, edit
     return record
 
 
-def asset_record(workspace, asset_id):
+def asset_record(workspace, asset_id, *, allow_preview=False):
     with workspace.connect() as db:row=db.execute("SELECT data FROM assets WHERE id=?",(asset_id,)).fetchone()
     if not row:raise Held("asset_missing","The configured asset is not registered with provenance.")
     record=json.loads(row[0]);meta=Store(workspace.root/"media").asset(asset_id)
@@ -31,7 +31,8 @@ def asset_record(workspace, asset_id):
         if not isinstance(source_id,str) or not source_id.replace('_','').replace('-','').isalnum():raise Held('source_changed','Asset source profile ID is invalid.')
         profile=workspace.root/'sources'/(source_id+'.json')
         if not profile.is_file() or file_hash(profile)!=record['evidence'].get('profile_sha256'):raise Held('source_changed','The source permission/profile changed after asset registration.')
-    if not record["commercial"] or not record["editing"]:raise Held("asset_not_eligible","The asset is not marked eligible for commercial edited use.")
+    preview = allow_preview and record["source_type"] == "test" and record["test_only"]
+    if not preview and (not record["commercial"] or not record["editing"]):raise Held("asset_not_eligible","The asset is not marked eligible for commercial edited use.")
     if record.get("expires_at"):
         expiry=datetime.fromisoformat(record["expires_at"].replace("Z","+00:00"))
         if expiry.tzinfo is None:expiry=expiry.replace(tzinfo=timezone.utc)

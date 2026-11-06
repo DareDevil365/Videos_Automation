@@ -1,0 +1,9 @@
+{
+  "reviewer": "Codex, publisher and source comparison",
+  "supported": true,
+  "brief_sha256": "a5804c755f2e2f04d93545427af059c74bf629f17928668cb74c905e2622664c",
+  "script_sha256": {
+    "part-1.json": "b4481af5fdb8453b364676a394076fd982736a411e3c733aac65a97b5086bce8"
+  },
+  "limitations": "Public publisher recaps and corroborating summaries. The device, contract and movement are original illustration. Doom's intent remains a question."
+}

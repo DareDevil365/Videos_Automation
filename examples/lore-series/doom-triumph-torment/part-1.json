@@ -1,0 +1,132 @@
+{
+  "version": 1,
+  "title": "Why Doom Offered Doctor Strange to Mephisto",
+  "description": "In Marvel’s Triumph and Torment (1989), Doctor Doom enlists Doctor Strange to free Cynthia von Doom from Mephisto. The rescue turns on a bargain Cynthia refuses and a device Doom hides.",
+  "format": "lesson",
+  "fiction": false,
+  "hook": "Doctor Doom offered Mephisto a trade. His own mother was the one who turned it down.",
+  "payoff": "Cynthia's refusal had redeemed her soul. When Strange broke free and they fought Mephisto, she finally escaped to a better afterlife.",
+  "units": [
+    {
+      "id": "u1",
+      "speaker": "Host",
+      "text": "Doctor Doom offered Mephisto a trade. His own mother was the one who turned it down.",
+      "kind": "fact",
+      "claim_ids": [
+        "c3",
+        "c4"
+      ],
+      "onscreen": "DOOM OFFERED A TRADE",
+      "visual_kind": "image",
+      "visual_query": "DOOM OFFERED A TRADE",
+      "lore_scene": "pact_hook",
+      "lore_camera": "detail"
+    },
+    {
+      "id": "u2",
+      "speaker": "Narrator",
+      "text": "Years earlier, Cynthia von Doom made a pact with Mephisto. He took her soul, and Victor couldn't get her out.",
+      "kind": "fact",
+      "claim_ids": [
+        "c1"
+      ],
+      "onscreen": "THE PACT THAT TOOK HER SOUL",
+      "visual_kind": "image",
+      "visual_query": "THE PACT THAT TOOK HER SOUL",
+      "lore_scene": "pact_signed",
+      "lore_camera": "pan_left"
+    },
+    {
+      "id": "u3",
+      "speaker": "Narrator",
+      "text": "Then Doctor Strange became Sorcerer Supreme and owed Doom a favor. Doom asked him to help bring his mother back.",
+      "kind": "fact",
+      "claim_ids": [
+        "c2"
+      ],
+      "onscreen": "DOOM CALLS IN A FAVOR",
+      "visual_kind": "image",
+      "visual_query": "DOOM CALLS IN A FAVOR",
+      "lore_scene": "pact_favor",
+      "lore_camera": "wide"
+    },
+    {
+      "id": "u4",
+      "speaker": "Narrator",
+      "text": "They entered Mephisto's realm together. Then Doom offered the demon a trade. He could take Strange instead.",
+      "kind": "fact",
+      "claim_ids": [
+        "c2",
+        "c3"
+      ],
+      "onscreen": "TAKE STRANGE INSTEAD",
+      "visual_kind": "image",
+      "visual_query": "TAKE STRANGE INSTEAD",
+      "lore_scene": "pact_gate",
+      "lore_camera": "push"
+    },
+    {
+      "id": "u5",
+      "speaker": "Narrator",
+      "text": "Cynthia saw what her son had done. She refused to go free if it meant leaving Strange behind, and disowned her son.",
+      "kind": "fact",
+      "claim_ids": [
+        "c4"
+      ],
+      "onscreen": "CYNTHIA REFUSES THE DEAL",
+      "visual_kind": "image",
+      "visual_query": "CYNTHIA REFUSES THE DEAL",
+      "lore_scene": "pact_refused",
+      "lore_camera": "pan_right"
+    },
+    {
+      "id": "u6",
+      "speaker": "Narrator",
+      "text": "But Doom had already slipped Strange a device. When Strange was bound, that device gave him a way out.",
+      "kind": "fact",
+      "claim_ids": [
+        "c5"
+      ],
+      "onscreen": "THE DEVICE DOOM HID",
+      "visual_kind": "image",
+      "visual_query": "THE DEVICE DOOM HID",
+      "lore_scene": "pact_device",
+      "lore_camera": "detail"
+    },
+    {
+      "id": "u7",
+      "speaker": "Narrator",
+      "text": "Cynthia's refusal had redeemed her soul. When Strange broke free and they fought Mephisto, she finally escaped to a better afterlife.",
+      "kind": "fact",
+      "claim_ids": [
+        "c5",
+        "c6"
+      ],
+      "onscreen": "CYNTHIA GOES FREE",
+      "visual_kind": "image",
+      "visual_query": "CYNTHIA GOES FREE",
+      "lore_scene": "pact_release",
+      "lore_camera": "push"
+    },
+    {
+      "id": "u8",
+      "speaker": "Host",
+      "text": "Doom got his mother out. Strange was left wondering if Doom had planned even her rejection.",
+      "kind": "transition",
+      "claim_ids": [
+        "c4",
+        "c6"
+      ],
+      "onscreen": "WHAT DID DOOM KNOW?",
+      "visual_kind": "image",
+      "visual_query": "WHAT DID DOOM KNOW?",
+      "lore_scene": "pact_aftermath",
+      "lore_camera": "detail"
+    }
+  ],
+  "edit": {
+    "effect": "none",
+    "payoff_unit_id": "u7",
+    "cta": false
+  }
+}

@@ -1,0 +1,69 @@
+{
+  "version": 1,
+  "title": "Doctor Doom Offered Mephisto a Trade",
+  "question": "How did Doom free his mother after offering Doctor Strange to Mephisto?",
+  "kind": "fact",
+  "sources": [
+    {
+      "id": "marvel",
+      "url": "https://www.marvel.com/amp/articles/comics/the-8-most-influential-doctor-strange-stories",
+      "title": "Marvel’s Doctor Strange story guide",
+      "excerpt": "Strange owed Doom a favor after becoming Sorcerer Supreme. They entered Mephisto’s realm to free Doom’s mother. Strange’s apparent betrayal was part of a larger plan.",
+      "checked_at": "2026-11-06T17:00:00+00:00"
+    },
+    {
+      "id": "cynthia",
+      "url": "https://www.marvel.com/comics/guides/2448/the_witches_of_the_marvel_universe",
+      "title": "Marvel’s Cynthia von Doom entry",
+      "excerpt": "Cynthia made a pact for power and Mephisto took her soul. Doom and Strange freed it and she reached a better afterlife.",
+      "checked_at": "2026-11-06T17:00:00+00:00"
+    },
+    {
+      "id": "deal",
+      "url": "https://comicbookclub.pages.wm.edu/2024/02/21/doomed/",
+      "title": "William & Mary Comics Studies Club recap",
+      "excerpt": "Doom offers Strange in exchange for Cynthia. Cynthia refuses freedom at the cost of betrayal. A device Doom planted helps Strange escape.",
+      "checked_at": "2026-11-06T17:00:00+00:00"
+    },
+    {
+      "id": "ending",
+      "url": "https://www.slashfilm.com/1594511/fantastic-four-doctor-doom-comics-marvel-fans-should-read/",
+      "title": "Slashfilm’s reading guide, with panel from the graphic novel",
+      "excerpt": "Cynthia rejects Doom’s bargain and disavows him. Doom had given Strange a way to free himself.",
+      "checked_at": "2026-11-06T17:00:00+00:00"
+    }
+  ],
+  "claims": [
+    {
+      "id": "c1",
+      "text": "Cynthia made a pact with Mephisto. He took her soul.",
+      "source_id": "cynthia"
+    },
+    {
+      "id": "c2",
+      "text": "Strange owed Doom a favor after becoming Sorcerer Supreme and helped him enter Mephisto’s realm.",
+      "source_id": "marvel"
+    },
+    {
+      "id": "c3",
+      "text": "Doom offered Strange to Mephisto in exchange for Cynthia’s soul.",
+      "source_id": "deal"
+    },
+    {
+      "id": "c4",
+      "text": "Cynthia rejected the exchange and disavowed her son.",
+      "source_id": "ending"
+    },
+    {
+      "id": "c5",
+      "text": "Doom had planted a device that helped Strange break free.",
+      "source_id": "deal"
+    },
+    {
+      "id": "c6",
+      "text": "Cynthia’s refusal redeemed her soul. Doom and Strange’s battle with Mephisto ended with her release to a better afterlife.",
+      "source_id": "deal"
+    }
+  ],
+  "notes": "Retells Roger Stern and Mike Mignola’s 1989 graphic novel Triumph and Torment. The case uses public Marvel recaps and corroborating coverage. The contract scroll, device geometry and movements are illustrative. Doom’s full intent is interpreted by Strange and remains a question."
+}

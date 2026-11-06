@@ -1,0 +1,38 @@
+{
+  "version": 1,
+  "series_id": "doom-strange-triumph-torment",
+  "title": "Why Doom Offered Doctor Strange to Mephisto",
+  "structure": "serial_cliffhanger",
+  "canon": "Marvel Comics’ Doctor Strange and Doctor Doom: Triumph and Torment (1989).",
+  "parts": [
+    {
+      "part": 1,
+      "script": "part-1.json",
+      "next_part": null,
+      "source_delivery": {
+        "tight_speech": true,
+        "speed": 1.08,
+        "pause_after": 0.06,
+        "pauses_after": {
+          "u4": 0.13,
+          "u5": 0.12,
+          "u7": 0.105
+        },
+        "linked_phrases": [
+          "Doctor Doom",
+          "Doctor Strange",
+          "Cynthia von Doom",
+          "Sorcerer Supreme"
+        ]
+      },
+      "source_music": {
+        "start": 7,
+        "volume": 0.08
+      },
+      "source_cues": {
+        "u5": "impact",
+        "u7": "reveal"
+      }
+    }
+  ]
+}

@@ -49,3 +49,6 @@ For a shot plan, record the beat ID, viewer takeaway, claim IDs, scene and camer
 The [animation reference notes](ANIMATION_REFERENCE_NOTES.md) record three sampled examples supplied by the owner and how to apply their staging to this format.
 
 The [Hellboy shot list](../../../examples/lore-series/hellboy-horns/README.md) demonstrates the reverse hybrid arrangement. Keep all living actors geometric, including NPCs, while registered photographs supply scenery and the book prop. Its horn action shows reach, contact, separation and the remaining stubs. Different framing and a changed state make the return to lava a purposeful callback. The scene-specific `hellboy_media` control supplies the three photographic layers; it does not automatically choose settings or draw a new cast. The assistant must still specify and inspect those choices.
+
+
+For the medium of each layer, use the [script-focus visual decision rules](VISUAL_DECISIONS.md). Record purpose before choosing artwork. A hot-mask fitting can use geometric Doom; a Doom introduction can use a cutout. Complexity and lookalike costumes affect recognition, while the exact contact or material change affects animation. The same guide explains voice rotation and its fixed per-series assignment.

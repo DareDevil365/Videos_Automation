@@ -1,0 +1,114 @@
+{
+  "version": 1,
+  "series_id": "vision-theseus",
+  "title": "Vision Beat Himself With a Question",
+  "structure": "chapter_answers",
+  "canon": "Marvel Studios’ WandaVision (2021), episode 9. MCU continuity, not a comics event or a recap of later VisionQuest episodes.",
+  "parts": [
+    {
+      "part": 1,
+      "script": "part-1.json",
+      "next_part": null,
+      "visual_selection": {
+        "mode": "auto",
+        "shots": {
+          "u1": {
+            "focus": "identity",
+            "motion": "hold",
+            "characters": [
+              "vision",
+              "white_vision"
+            ],
+            "props": []
+          },
+          "u2": {
+            "focus": "identity",
+            "motion": "hold",
+            "characters": [
+              "vision",
+              "white_vision"
+            ],
+            "props": []
+          },
+          "u3": {
+            "focus": "mechanism",
+            "motion": "transformation",
+            "characters": [
+              "vision",
+              "white_vision"
+            ],
+            "props": []
+          },
+          "u4": {
+            "focus": "mechanism",
+            "motion": "transformation",
+            "characters": [],
+            "props": [
+              {
+                "id": "ship",
+                "changes_state": true
+              }
+            ]
+          },
+          "u5": {
+            "focus": "mechanism",
+            "motion": "transformation",
+            "characters": [],
+            "props": [
+              {
+                "id": "two_ships",
+                "changes_state": true
+              }
+            ]
+          },
+          "u6": {
+            "focus": "identity",
+            "motion": "hold",
+            "characters": [
+              "white_vision"
+            ],
+            "props": []
+          },
+          "u7": {
+            "focus": "action",
+            "motion": "contact",
+            "characters": [
+              "vision",
+              "white_vision"
+            ],
+            "props": []
+          },
+          "u8": {
+            "focus": "identity",
+            "motion": "hold",
+            "characters": [
+              "white_vision"
+            ],
+            "props": []
+          }
+        }
+      },
+      "source_delivery": {
+        "tight_speech": true,
+        "speed": 1.08,
+        "pause_after": 0.06,
+        "pauses_after": {
+          "u5": 0.11,
+          "u7": 0.13
+        },
+        "linked_phrases": [
+          "White Vision",
+          "Wanda’s Vision",
+          "Aunt May",
+          "Doctor Octopus",
+          "Uncle Ben",
+          "Ship of Theseus"
+        ]
+      },
+      "source_music": {
+        "start": 6,
+        "volume": 0.075
+      }
+    }
+  ]
+}

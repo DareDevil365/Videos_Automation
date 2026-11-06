@@ -63,6 +63,9 @@ def test_assistant_plan_requires_review_and_preserves_staging(tmp_path, monkeypa
     assert request['lore_fresh_visuals'] is True
     assert request['lore_cameras'] == part['lore_cameras']
     assert request['hellboy_media'] == part['hellboy_media']
+    assert request['visual_selection']['mode']=='auto'
+    assert set(request['source_voices'])=={'Host','Narrator'}
+    assert request['source_voices']['Host']!=request['source_voices']['Narrator']
     assert request['lore_actions'] == part['lore_actions']
     assert request['script']['title'] and request['script']['description']
 

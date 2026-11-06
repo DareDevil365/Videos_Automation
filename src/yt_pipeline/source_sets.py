@@ -42,8 +42,16 @@ def check_lore_reuse(workspace, job):
         panels = request.get("source_panels") or {}
         if not isinstance(panels, dict):
             return []
-        return [row for placements in panels.values() if isinstance(placements, list) for row in placements
+        result=[row for placements in panels.values() if isinstance(placements, list) for row in placements
                 if isinstance(row, dict) and isinstance(row.get("asset_id"), str)]
+        selection=request.get('visual_selection') or {}
+        for layer in selection.get('layers',{}).values():
+            if not isinstance(layer,dict):continue
+            if isinstance(layer.get('setting'),str):
+                result.append({'asset_id':layer['setting'],'repeat_reason':layer.get('setting_repeat_reason')})
+            props=layer.get('props',{})
+            if isinstance(props,dict):result.extend(p for p in props.values() if isinstance(p,dict) and isinstance(p.get('asset_id'),str))
+        return result
 
     with workspace.connect() as db:
         previous = db.execute(

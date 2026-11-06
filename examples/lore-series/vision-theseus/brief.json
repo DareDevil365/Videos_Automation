@@ -1,0 +1,52 @@
+{
+  "version": 1,
+  "title": "Vision Beat Himself With a Question",
+  "question": "Vision Beat Himself With a Question",
+  "kind": "fact",
+  "sources": [
+    {
+      "id": "creator",
+      "url": "https://www.etonline.com/wandavision-series-finale-interview-jac-schaeffer-161951",
+      "title": "Head writer Jac Schaeffer on the finale",
+      "excerpt": "Schaeffer explains why identical Synthezoids needed a logical resolution and distinguishes the restored data from Wanda’s emotional goodbye.",
+      "checked_at": "2026-11-06T19:00:00+00:00"
+    },
+    {
+      "id": "scene",
+      "url": "https://www.gamesradar.com/wandavision-the-comic-book-roots-of-the-finales-ship-of-theseus-scene/",
+      "title": "GamesRadar / Newsarama on the two Visions",
+      "excerpt": "The rebuilt original and Wanda’s recreation discuss the Ship of Theseus. The conversation leads to restored memories and White Vision leaving.",
+      "checked_at": "2026-11-06T19:00:00+00:00"
+    },
+    {
+      "id": "marvel",
+      "url": "https://www.marvel.com/articles/tv-shows/wandavision-paul-bettany-vision-goodbye?linkId=112916480",
+      "title": "Marvel on Vision’s goodbye",
+      "excerpt": "Wanda cannot maintain her fictional world. Her Vision is a memory made real.",
+      "checked_at": "2026-11-06T19:00:00+00:00"
+    }
+  ],
+  "claims": [
+    {
+      "id": "c1",
+      "source_id": "scene",
+      "text": "SWORD rebuilt the original body as White Vision. He fought Wanda’s magically created Vision."
+    },
+    {
+      "id": "c2",
+      "source_id": "marvel",
+      "text": "Wanda’s Vision was a magical creation rather than the original physical body."
+    },
+    {
+      "id": "c3",
+      "source_id": "creator",
+      "text": "The fight becomes an identity argument using the Ship of Theseus thought experiment."
+    },
+    {
+      "id": "c4",
+      "source_id": "scene",
+      "text": "Wanda’s Vision unlocks White Vision’s blocked memories. White Vision identifies himself as Vision and flies away."
+    }
+  ],
+  "notes": "Marvel Studios’ WandaVision (2021), episode 9. MCU continuity, not a comics event or a recap of later VisionQuest episodes. Recap based on the cited publisher/interview material. Geometric motion is illustrative blocking, not literal footage. The modern character cutouts are illustrative likenesses, not original panels. No continuation or publication is claimed."
+}

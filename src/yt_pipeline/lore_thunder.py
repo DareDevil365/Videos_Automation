@@ -1,5 +1,4 @@
 """Geometric scene recipes for the first Beta Ray Bill arc."""
-from functools import partial
 import math
 
 from PIL import ImageDraw
@@ -82,10 +81,14 @@ def bolt(d, x, y, second, length):
     d.line(points,fill="#daedfd",width=4,joint="curve")
 
 
-def thunder_art(layer, kind, second, p, glow, cast=None):
+def thunder_art(layer, kind, second, p, glow, cast=None, styles=None):
     d=ImageDraw.Draw(layer)
-    draw_actor = partial(cast.warrior, layer) if cast else partial(warrior, d)
-    draw_arm = partial(cast.reach, layer) if cast else partial(reach, d)
+    def draw_actor(who,*args):
+        sourced=cast and (not styles or styles[who]['representation']=='cutout')
+        return (bool(sourced),cast.warrior(layer,who,*args) if sourced else warrior(d,who,*args))
+    def draw_arm(actor,*args):
+        sourced,body=actor
+        return cast.reach(layer,body,*args) if sourced else reach(d,body,*args)
     if kind=="thor_hammer_hook":
         # Read the mystery immediately as a tight portrait and an oversized prop.
         # The later lift uses a medium view so the viewer can see the whole action.

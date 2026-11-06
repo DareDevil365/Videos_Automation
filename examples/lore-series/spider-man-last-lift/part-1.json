@@ -1,0 +1,131 @@
+{
+  "version": 1,
+  "title": "Spider-Man Could See the Cure. He Couldn’t Reach It.",
+  "description": "Spider-Man is trapped beneath machinery while Aunt May’s medicine sits out of reach. A recap of Stan Lee and Steve Ditko’s If This Be My Destiny arc, especially The Amazing Spider-Man #33 (1966).",
+  "format": "lesson",
+  "fiction": false,
+  "hook": "Spider-Man could save Aunt May. The medicine was right there. He just couldn't reach it.",
+  "payoff": "Peter breaks free, grabs the serum, and gets it to the hospital. Aunt May survives.",
+  "units": [
+    {
+      "id": "u1",
+      "speaker": "Host",
+      "text": "Spider-Man could save Aunt May. The medicine was right there. He just couldn't reach it.",
+      "onscreen": "THE CURE IS RIGHT THERE",
+      "kind": "fact",
+      "claim_ids": [
+        "c1",
+        "c2"
+      ],
+      "visual_kind": "image",
+      "visual_query": "THE CURE IS RIGHT THERE",
+      "lore_scene": "spider_question",
+      "lore_camera": "push"
+    },
+    {
+      "id": "u2",
+      "speaker": "Narrator",
+      "text": "In a classic comic, Doctor Octopus steals the serum she needs. Peter tracks him to an underwater base.",
+      "onscreen": "THE MEDICINE IS STOLEN",
+      "kind": "fact",
+      "claim_ids": [
+        "c1"
+      ],
+      "visual_kind": "image",
+      "visual_query": "THE MEDICINE IS STOLEN",
+      "lore_scene": "spider_theft",
+      "lore_camera": "wide"
+    },
+    {
+      "id": "u3",
+      "speaker": "Narrator",
+      "text": "Then the machinery comes down. He's trapped under tons of steel as the room starts flooding.",
+      "onscreen": "TRAPPED UNDER THE STEEL",
+      "kind": "fact",
+      "claim_ids": [
+        "c2"
+      ],
+      "visual_kind": "image",
+      "visual_query": "TRAPPED UNDER THE STEEL",
+      "lore_scene": "spider_trapped",
+      "lore_camera": "wide"
+    },
+    {
+      "id": "u4",
+      "speaker": "Narrator",
+      "text": "The serum is only a few feet away. If he stays here, both he and Aunt May die.",
+      "onscreen": "SO CLOSE. STILL OUT OF REACH.",
+      "kind": "fact",
+      "claim_ids": [
+        "c1",
+        "c2"
+      ],
+      "visual_kind": "image",
+      "visual_query": "SO CLOSE. STILL OUT OF REACH.",
+      "lore_scene": "spider_reach",
+      "lore_camera": "wide"
+    },
+    {
+      "id": "u5",
+      "speaker": "Narrator",
+      "text": "He thinks of Uncle Ben. He already lost one person he loved. He refuses to lose another.",
+      "onscreen": "HE WILL NOT LOSE HER",
+      "kind": "fact",
+      "claim_ids": [
+        "c3"
+      ],
+      "visual_kind": "image",
+      "visual_query": "HE WILL NOT LOSE HER",
+      "lore_scene": "spider_resolve",
+      "lore_camera": "wide"
+    },
+    {
+      "id": "u6",
+      "speaker": "Narrator",
+      "text": "He plants his feet. The steel begins to rise. Inch by inch, he lifts the wreckage off his back.",
+      "onscreen": "THE WRECKAGE STARTS TO RISE",
+      "kind": "fact",
+      "claim_ids": [
+        "c2",
+        "c3"
+      ],
+      "visual_kind": "image",
+      "visual_query": "THE WRECKAGE STARTS TO RISE",
+      "lore_scene": "spider_lift",
+      "lore_camera": "wide"
+    },
+    {
+      "id": "u7",
+      "speaker": "Narrator",
+      "text": "Peter breaks free, grabs the serum, and gets it to the hospital. Aunt May survives.",
+      "onscreen": "AUNT MAY GETS THE CURE",
+      "kind": "fact",
+      "claim_ids": [
+        "c4"
+      ],
+      "visual_kind": "image",
+      "visual_query": "AUNT MAY GETS THE CURE",
+      "lore_scene": "spider_hospital",
+      "lore_camera": "push"
+    },
+    {
+      "id": "u8",
+      "speaker": "Host",
+      "text": "The villain didn't see this victory. The person who needed it was lying in a hospital bed.",
+      "onscreen": "A VICTORY FOR ONE PERSON",
+      "kind": "transition",
+      "claim_ids": [
+        "c4"
+      ],
+      "visual_kind": "image",
+      "visual_query": "A VICTORY FOR ONE PERSON",
+      "lore_scene": "spider_answer",
+      "lore_camera": "pan_left"
+    }
+  ],
+  "edit": {
+    "effect": "none",
+    "payoff_unit_id": "u7",
+    "cta": false
+  }
+}

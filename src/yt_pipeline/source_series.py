@@ -7,6 +7,7 @@ from shorts_editor.store import write_json
 from .contracts import brief_contract,script_contract
 from .core import Held,file_hash,now
 from .playbooks import validate_playbook_script
+from .lore_voices import choose_series_voices
 
 
 def create_series_plan(workspace,series_file,brief_file,output_file,source_review=None,*,build_id=None,revise_batch=None,
@@ -47,16 +48,18 @@ def create_series_plan(workspace,series_file,brief_file,output_file,source_revie
                     raise Held('series_contract','Revision ancestors must be test-only jobs from this same series.')
                 ancestors[item['id']]=old['id']
     items=[]
+    voices=choose_series_voices(workspace,identifier,series.get('source_voices'))
     for index,part in enumerate(parts):
         if part.get('next_part')!=(index+2 if index+1<len(parts) else None):raise Held('series_contract','Each part must lead to the actual next part; the final part concludes.')
         if part.get('publication_url'):raise Held('series_contract','New local series plans do not invent or import publication links.')
         request={'playbook':'comic_lore','fiction':False,'test_only':True,'auto_publish':False,'brief':brief,
             'hook_options':False,'editorial_review':'off','visual_review':'off','bottom_kind':'none','require_music':True,
-            'music_id':music['id'],'motion_graphics':True,
+            'music_id':music['id'],'motion_graphics':True,'source_voices':voices,
+            'visual_selection':{'mode':'auto'},
             'series':{'id':identifier,'structure':structure,'part':part['part'],'total':len(parts),'next_part':part.get('next_part'),'canon':str(series.get('canon',''))[:240]},
             'source_review':review,'creative_brief':('Build one continuing story. End earlier parts on a concrete cliffhanger and conclude the arc in the final part. ' if structure == 'serial_cliffhanger' else 'Deliver the chapter answer before its next-part lead. ')+'Preserve the supplied canon/source distinction.'}
         for key in ('lore_scenes','lore_cameras','lore_actions','source_panels','reaction_preset','source_delivery',
-                    'source_cues','source_music','music_id','thunder_cast','pact_cast','hellboy_media'):
+                    'source_cues','source_music','music_id','thunder_cast','pact_cast','hellboy_media','visual_selection','character_cutouts'):
             if key in part:
                 request[key]=part[key]
         if assistant_authored:

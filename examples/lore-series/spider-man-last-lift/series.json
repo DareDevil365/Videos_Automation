@@ -1,0 +1,130 @@
+{
+  "version": 1,
+  "series_id": "spider-man-last-lift",
+  "title": "Spider-Man Could See the Cure. He Couldn’t Reach It.",
+  "structure": "chapter_answers",
+  "canon": "Marvel Comics’ The Amazing Spider-Man (1963) #31–33, concluding in 1966. This is comic continuity. Modern cutouts illustrate the identity and are not 1966 panels.",
+  "parts": [
+    {
+      "part": 1,
+      "script": "part-1.json",
+      "next_part": null,
+      "visual_selection": {
+        "mode": "auto",
+        "shots": {
+          "u1": {
+            "focus": "identity",
+            "motion": "hold",
+            "characters": [
+              "spider_man"
+            ],
+            "props": []
+          },
+          "u2": {
+            "focus": "object",
+            "motion": "contact",
+            "characters": [
+              "doc_ock"
+            ],
+            "props": [
+              {
+                "id": "serum"
+              }
+            ]
+          },
+          "u3": {
+            "focus": "action",
+            "motion": "contact",
+            "characters": [
+              "spider_man"
+            ],
+            "props": [
+              {
+                "id": "machinery",
+                "changes_state": true
+              }
+            ]
+          },
+          "u4": {
+            "focus": "object",
+            "motion": "contact",
+            "characters": [
+              "spider_man"
+            ],
+            "props": [
+              {
+                "id": "serum"
+              }
+            ]
+          },
+          "u5": {
+            "focus": "action",
+            "motion": "contact",
+            "characters": [
+              "spider_man"
+            ],
+            "props": []
+          },
+          "u6": {
+            "focus": "action",
+            "motion": "contact",
+            "characters": [
+              "spider_man"
+            ],
+            "props": [
+              {
+                "id": "machinery",
+                "changes_state": true
+              }
+            ]
+          },
+          "u7": {
+            "focus": "object",
+            "motion": "hold",
+            "characters": [
+              "aunt_may"
+            ],
+            "props": [
+              {
+                "id": "serum"
+              }
+            ]
+          },
+          "u8": {
+            "focus": "identity",
+            "motion": "hold",
+            "characters": [
+              "spider_man"
+            ],
+            "props": []
+          }
+        }
+      },
+      "source_delivery": {
+        "tight_speech": true,
+        "speed": 1.08,
+        "pause_after": 0.06,
+        "pauses_after": {
+          "u5": 0.11,
+          "u7": 0.13
+        },
+        "linked_phrases": [
+          "White Vision",
+          "Wanda’s Vision",
+          "Aunt May",
+          "Doctor Octopus",
+          "Uncle Ben",
+          "Ship of Theseus"
+        ]
+      },
+      "source_music": {
+        "start": 6,
+        "volume": 0.075
+      }
+    }
+  ],
+  "source_voices": {
+    "Host": "am_adam",
+    "Narrator": "af_bella"
+  }
+}

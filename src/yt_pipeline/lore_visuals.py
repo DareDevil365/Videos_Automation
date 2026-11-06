@@ -21,10 +21,14 @@ from .lore_thunder import THUNDER_KINDS, thunder_art
 from .lore_thunder_cutouts import load_thunder_cast
 from .lore_doom_pact import PACT_KINDS, load_pact_cast, pact_art
 from .lore_hellboy import HELLBOY_KINDS, load_hellboy_media, hellboy_art
+from .lore_style import attach_styles
+from .lore_voices import validate_voices
+from .lore_style_assets import load_character_cutouts, load_style_layers, place_cutout, validate_execution
+from .lore_identity import IDENTITY_KINDS, identity_art
 
 
 KINDS=('collapse','life_raft','battleworld','throne','control','hidden_power','meal','confrontation','rebuilding','restoration',
-       'dominion','memory','source_closeup','meal_detail','absence','duel','consequence','portrait','street_impact') + FORGE_KINDS + REACTOR_KINDS + THUNDER_KINDS + PACT_KINDS + HELLBOY_KINDS
+       'dominion','memory','source_closeup','meal_detail','absence','duel','consequence','portrait','street_impact') + FORGE_KINDS + REACTOR_KINDS + THUNDER_KINDS + PACT_KINDS + HELLBOY_KINDS + IDENTITY_KINDS
 CAMERAS = ('wide', 'push', 'pan_left', 'pan_right', 'detail')
 SIZE=(720,1280)
 ART=(20,180,700,950)
@@ -67,8 +71,9 @@ def plan_lore(script,request,brief):
     speakers = list(dict.fromkeys(u['speaker'] for u in units))
     if len(speakers) != 1 and [u['speaker'] for u in units] != ['Host', *(['Narrator'] * (len(units)-2)), 'Host']:
         raise Held('lore_voice','Use the host only for the first and last beat.')
+    voice_choices=validate_voices(request['source_voices']) if 'source_voices' in request else {'Host':'am_adam','Narrator':'bm_george'}
     cast = [{'id': 'narrator' if len(speakers) == 1 else f'voice-{index}', 'speaker': speaker,
-             'voice_id': 'am_adam' if speaker == 'Host' and len(speakers)>1 else 'bm_george',
+             'voice_id': voice_choices.get(speaker,'bm_george'),
              'avatar_kind': 'narrator', 'role': 'voice-only narrator'} for index, speaker in enumerate(speakers)]
     cast_ids = {actor['speaker']: actor['id'] for actor in cast}
     scenes=[]
@@ -87,9 +92,11 @@ def plan_lore(script,request,brief):
             'label':label,'claim_ids':list(refs),**delivery_for(unit,request,.07, tight_default=True),
             'visible_cast':[],'framing':camera,
             'motion':'panel_reveal','illustration_note':NOTE})
+    styles=attach_styles(scenes,request)
     plan={'version':1,'template':'comic_lore','cast':cast,
         'scenes':scenes,'sources':deepcopy(brief['sources']),'claims':deepcopy(brief['claims']),
         'script_sha256':digest(script),'brief_sha256':digest(brief),'comment_question':'','illustration_note':NOTE}
+    if styles:plan['visual_selection']=styles
     return {'plan':plan,'script_sha256':digest(script),'origin':'compiled_lore_rules_v1',
         'scope':'Finite source-linked illustration rules, not an independent factual or audience-quality verdict.'}
 
@@ -112,6 +119,7 @@ def _background(kind):
     palette.update({name:('#151e31','#91badc') for name in THUNDER_KINDS})
     palette.update({name:('#201a25','#c1907c') for name in PACT_KINDS})
     palette.update({name:('#242029','#c58968') for name in HELLBOY_KINDS})
+    palette.update({name:('#18232f','#9cbeb8') for name in IDENTITY_KINDS})
     base,accent=palette[kind];image=Image.new('RGB',SIZE,'#080e17');d=ImageDraw.Draw(image)
     d.polygon([(24,202),(693,180),(694,911),(30,947)],fill=base,outline='#d7d1bf',width=4)
     rng=random.Random(8821)
@@ -210,7 +218,7 @@ def _burger(d,x,y,scale=1):
     d.line((x-91*scale,y+44*scale,x+91*scale,y+44*scale),fill='#cedbd3',width=max(2,round(8*scale)))
 
 
-def _art(scene,second,duration,thunder_cast=None,pact_cast=None,hellboy_media=None):
+def _art(scene,second,duration,thunder_cast=None,pact_cast=None,hellboy_media=None,character_cutouts=None):
     kind=scene['kind'];p=max(0,min(1,second/duration));reveal=_ease(second/.65)
     layer=Image.new('RGBA',SIZE);d=ImageDraw.Draw(layer)
     if kind in FORGE_KINDS:
@@ -218,11 +226,13 @@ def _art(scene,second,duration,thunder_cast=None,pact_cast=None,hellboy_media=No
     elif kind in REACTOR_KINDS:
         reactor_art(layer,kind,second,p,_glow)
     elif kind in THUNDER_KINDS:
-        thunder_art(layer,kind,second,p,_glow,thunder_cast)
+        thunder_art(layer,kind,second,p,_glow,thunder_cast,scene.get('visual_style',{}).get('characters'))
     elif kind in PACT_KINDS:
         pact_art(layer,kind,second,p,_glow,pact_cast)
     elif kind in HELLBOY_KINDS:
         hellboy_art(layer,kind,second,p,_glow,hellboy_media)
+    elif kind in IDENTITY_KINDS:
+        identity_art(layer,scene,second,p,_glow,character_cutouts or {})
     elif kind=='street_impact':
         settle=max(0,min(1,(p-.46)*5))
         roof=660+52*settle
@@ -242,6 +252,17 @@ def _art(scene,second,duration,thunder_cast=None,pact_cast=None,hellboy_media=No
         for i in range(4):
             radius=140+i*45
             d.arc((360-radius,540-radius,360+radius,540+radius),second*45+i*80,second*45+i*80+155,fill='#48726f',width=3)
+        for who,choice in scene.get('visual_style',{}).get('characters',{}).items():
+            if choice['representation']=='cutout':
+                place_cutout(layer,character_cutouts or {},who,(150,280,570,905))
+            elif who=='doom':
+                _figure(d,360,620,2.3,'#235343',hood=True)
+            elif who=='hellboy':
+                from .lore_hellboy import _body
+                _body(d,360,578,1.36)
+            elif who=='spider_man':
+                from .lore_identity import _spider
+                _spider(d,360,550)
     elif kind=='dominion':
         _glow(layer,(360,525),230,(100,149,98),105)
         _world(layer,189,696,115,'#395951',patchwork=True);_world(layer,550,698,104,'#6b5b67')
@@ -369,10 +390,12 @@ def _art(scene,second,duration,thunder_cast=None,pact_cast=None,hellboy_media=No
     return layer
 
 
-def lore_frame(scene,second,duration,*,thunder_cast=None,pact_cast=None,hellboy_media=None):
+def lore_frame(scene,second,duration,*,thunder_cast=None,pact_cast=None,hellboy_media=None,character_cutouts=None,style_backdrops=None):
     if scene.get('kind') not in KINDS:raise Held('lore_scene','Unsupported lore scene kind.')
     if not math.isfinite(duration) or duration<=0 or not math.isfinite(second):raise Held('lore_timing','Use finite measured lore timing.')
-    image=_background(scene['kind']).copy().convert('RGBA');art=_art(scene,max(0,second),duration,thunder_cast,pact_cast,hellboy_media)
+    image=_background(scene['kind']).copy().convert('RGBA')
+    if style_backdrops and scene.get('unit_id') in style_backdrops:image.paste(style_backdrops[scene['unit_id']],ART[:2])
+    art=_art(scene,max(0,second),duration,thunder_cast,pact_cast,hellboy_media,character_cutouts)
     image.alpha_composite(art.crop(ART), dest=ART[:2])
     # Camera only moves the illustration viewport, keeping captions and title stable.
     progress=max(0,min(1,second/duration))
@@ -424,7 +447,14 @@ def build_lore_visuals(ws,job,script,timing,folder,record):
     provenance.extend(pact_assets)
     hellboy_media, setting_assets = load_hellboy_media(ws, job['request'])
     provenance.extend(setting_assets)
-    frame = partial(lore_frame, thunder_cast=thunder_cast, pact_cast=pact_cast, hellboy_media=hellboy_media)
+    character_cutouts, selected_assets = load_character_cutouts(ws,job['request'])
+    provenance.extend(selected_assets)
+    style_backdrops,style_props,layer_assets=load_style_layers(ws,job['request'],script)
+    provenance.extend(layer_assets)
+    for uid,props in style_props.items():placements.setdefault(uid,[]).extend(props)
+    for scene in plan['scenes']:
+        validate_execution(scene,job['request'],character_cutouts,thunder_cast,IDENTITY_KINDS)
+    frame = partial(lore_frame, thunder_cast=thunder_cast, pact_cast=pact_cast, hellboy_media=hellboy_media, character_cutouts=character_cutouts,style_backdrops=style_backdrops)
     if job['request'].get('lore_fresh_visuals'):
         check_lore_reuse(ws,job)
     actions = resolve_actions(job['request'], script)
@@ -441,12 +471,15 @@ def build_lore_visuals(ws,job,script,timing,folder,record):
         render_lore_shot(scene,spoken['duration'],output,paint=painter)
         sourced = bool((thunder_cast and scene['kind'] in THUNDER_KINDS and scene['kind']!='stormbreaker_forged')
                        or (pact_cast and scene['kind'] in PACT_KINDS))
-        photo_setting = bool(hellboy_media and scene['kind'] in HELLBOY_KINDS)
+        styles={p['representation'] for p in scene.get('visual_style',{}).get('characters',{}).values()}
+        sourced=('cutout' in styles) if styles else sourced
+        photo_setting = bool((hellboy_media and scene['kind'] in HELLBOY_KINDS) or scene['unit_id'] in style_backdrops)
         illustration_note = SOURCE_CAST_NOTE if sourced else SOURCE_SETTING_NOTE if photo_setting else NOTE
         made=register_asset(ws,output,'original_graphic',{'generator':'original-comic-lore-v1','unit_id':scene['unit_id'],
             'scene_kind':scene['kind'],'camera':scene['framing'],
-            'cast_style':'source_cutout' if sourced else 'geometric',
+            'cast_style':'mixed' if len(styles)>1 else 'source_cutout' if sourced else 'geometric',
             'setting_style':'photographic' if photo_setting else 'geometric',
+            'visual_selection':scene.get('visual_style'),
             'action':actions.get(unit['id']), 'claim_ids':scene['claim_ids'],
             'source_urls':urls,'illustration_note':illustration_note},test_only=job['request'].get('test_only',False))
         provenance.append(made)
@@ -455,5 +488,5 @@ def build_lore_visuals(ws,job,script,timing,folder,record):
     captions=folder/'captions.srt';write_srt([{'start':u['start'],'end':u['speech_end'],'text':u['text']} for u in timing['units']],captions)
     result={'version':1,'format':'lesson','frames':rows,'captions':str(captions),'planned_template':'comic_lore',
         'planned_provenance':provenance,'selected_media':[],'source_bindings':bindings,'creative_plan_sha256':digest(plan),
-        'limits':[SOURCE_CAST_NOTE if thunder_cast or pact_cast else SOURCE_SETTING_NOTE if hellboy_media else NOTE,'Finite source-linked diagrams, not model visual review, full comic adaptation, rigged acting or lip sync.']}
+        'limits':[SOURCE_CAST_NOTE if thunder_cast or pact_cast or character_cutouts else SOURCE_SETTING_NOTE if hellboy_media or layer_assets else NOTE,'Finite source-linked diagrams, not model visual review, full comic adaptation, rigged acting or lip sync.']}
     write_json(folder/'visuals.json',result);return result

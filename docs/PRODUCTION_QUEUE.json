@@ -1,5 +1,21 @@
 [
   {
+    "series_id": "deadpool-dracula-delivery-candidate",
+    "channel": "entertainment",
+    "playbook": "comic_lore",
+    "topic": "Deadpool is hired to deliver Dracula’s intended bride and ruins the plan by falling in love",
+    "starting_source": "https://www.marvel.com/comics/collection/47227/deadpool_draculas_gauntlet_hardcover",
+    "direction": "Next story candidate for an adventure/comedy contrast after the completed horror reel. Read the exact chase, wedding and resolution before writing; compare alternatives and do not copy existing creator narration. No reach forecast."
+  },
+  {
+    "series_id": "deadpool-thanos-curse-candidate",
+    "channel": "entertainment",
+    "playbook": "comic_lore",
+    "topic": "Thanos gives Deadpool immortality as a jealous punishment rather than a favor",
+    "starting_source": "https://www.marvel.com/comics/issue/53721",
+    "direction": "Candidate only. Verify Funeral for a Freak / Deadpool #64 and the later curse removal. Do not claim permanent present-day immortality, confuse Death with Vanessa or combine comics with the MCU."
+  },
+  {
     "series_id": "kraven-last-hunt",
     "channel": "entertainment",
     "playbook": "comic_lore",

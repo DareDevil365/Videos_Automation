@@ -1,0 +1,78 @@
+{
+  "version": 1,
+  "title": "The X-Men Were Rescuing Their Friends. The Island Wanted Seconds.",
+  "question": "What drives the central conflict, and what decision resolves it?",
+  "kind": "fact",
+  "sources": [
+    {
+      "id": "loc",
+      "url": "https://blogs.loc.gov/headlinesandheroes/2023/04/x-men-60-uncanny-years/",
+      "title": "Library of Congress: X-Men history and issue images",
+      "excerpt": "The 1975 rescue assembles an international cast, including Storm, Colossus and Nightcrawler, to save the originals from the living island.",
+      "checked_at": "2026-11-07T10:54:18.963941+00:00"
+    },
+    {
+      "id": "publisher",
+      "url": "https://www.marvel.com/comics/issue/75186/giant-size_x-men_1_facsimile_edition",
+      "title": "Marvel: facsimile of Giant-Size X-Men #1",
+      "excerpt": "Indexed publisher description identifies the classic cast and Krakoa, the island that walks like a man.",
+      "checked_at": "2026-11-07T10:54:18.963941+00:00"
+    },
+    {
+      "id": "ux",
+      "url": "https://uncannyxmen.net/comics/issue/giant-size-x-men-1",
+      "title": "UncannyXMen: original issue plot",
+      "excerpt": "Indexed synopsis explicitly says Krakoa fed on the X-Men and released Cyclops to bring more mutants; direct page 403.",
+      "checked_at": "2026-11-07T10:54:18.963941+00:00"
+    },
+    {
+      "id": "aipt",
+      "url": "https://aiptcomics.com/2025/01/24/giant-size-x-men-physics-gravity-polaris/",
+      "title": "AIPT: the original Krakoa finale",
+      "excerpt": "Storm charges Polaris; Cyclops and Havok add blasts; a magnetic release launches the island. This is fictional comic physics.",
+      "checked_at": "2026-11-07T10:54:18.963941+00:00"
+    },
+    {
+      "id": "wiki",
+      "url": "https://en.wikipedia.org/wiki/Giant-Size_X-Men",
+      "title": "Giant-Size X-Men issue and original plot",
+      "excerpt": "The original-team rescue, combined force, space launch and thirteen-member aftermath.",
+      "checked_at": "2026-11-07T10:54:18.963941+00:00"
+    },
+    {
+      "id": "cv",
+      "url": "https://comicvine.gamespot.com/giant-size-x-men-1-deadly-genesis/4000-14890/",
+      "title": "Comic Vine: Giant-Size X-Men #1",
+      "excerpt": "Indexed story synopsis confirms the post-launch whirlpool and danger to the X-Men.",
+      "checked_at": "2026-11-07T10:54:18.963941+00:00"
+    }
+  ],
+  "claims": [
+    {
+      "id": "x1",
+      "source_id": "ux",
+      "text": "Krakoa captures the original team, feeds on their mutant energy and deliberately lets Cyclops escape to lure more mutants."
+    },
+    {
+      "id": "x2",
+      "source_id": "loc",
+      "text": "The 1975 issue has Xavier recruit an international rescue team including Storm, Wolverine and Nightcrawler; it establishes the new X-Men."
+    },
+    {
+      "id": "x3",
+      "source_id": "ux",
+      "text": "The new team finds captives on Krakoa; the island itself is the mutant and its apparent escape was bait."
+    },
+    {
+      "id": "x4",
+      "source_id": "aipt",
+      "text": "Xavier helps identify the plan: Storm channels lightning to Polaris, Cyclops and Havok add blasts, and Polaris launches the island into space."
+    },
+    {
+      "id": "x5",
+      "source_id": "cv",
+      "text": "The departed island leaves a whirlpool that threatens the team; rescuers and rescued escape together."
+    }
+  ],
+  "notes": "Giant-Size X-Men #1 (1975), original Second Genesis account. Later Deadly Genesis retcons are outside this short. Reviewed publisher/archival metadata and compared bounded secondary plot accounts. The complete original film/issue was not watched/read. Geometry illustrates actions rather than reproducing literal frames. Subplots/minor exchanges are compressed; the coverage ledger lists scope. Artwork and audience assets remain local-review-only. Technical QA does not certify voice performance, audience retention, reach or publication clearance."
+}

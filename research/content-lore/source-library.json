@@ -812,6 +812,82 @@
       "missing_details": "Full issues were not read. Indexed official publisher recaps and catalog passages support the recorded claims; unseen dialogue and precise physical staging need additional reading.",
       "claims": [],
       "sources": []
+    },
+    {
+      "id": "deadpool-fourth-wall",
+      "title": "Deadpool’s real target",
+      "issues": "Deadpool Kills the Marvel Universe #1–4 (2012)",
+      "medium": "comic",
+      "tags": [
+        "marvel",
+        "deadpool",
+        "metafiction",
+        "horror"
+      ],
+      "evidence_state": "reviewed_project_packet",
+      "project_brief": "examples/lore-series/deadpool-fourth-wall/brief.json",
+      "source_review": "examples/lore-series/deadpool-fourth-wall/source-review.json",
+      "reuse": "Reuse only these bounded reviewed claims, preserving continuity. Write original narration and a fresh shot plan.",
+      "missing_details": "Full film/issues were not watched/read. Uncached subplots, exact physical staging and new interpretations need source review; technical acceptance is not audience approval.",
+      "claims": [],
+      "sources": []
+    },
+    {
+      "id": "x-men-krakoa-rescue",
+      "title": "The rescue team is bait",
+      "issues": "Giant-Size X-Men #1 (1975), original account",
+      "medium": "comic",
+      "tags": [
+        "marvel",
+        "x-men",
+        "krakoa",
+        "rescue"
+      ],
+      "evidence_state": "reviewed_project_packet",
+      "project_brief": "examples/lore-series/x-men-krakoa-rescue/brief.json",
+      "source_review": "examples/lore-series/x-men-krakoa-rescue/source-review.json",
+      "reuse": "Reuse only these bounded reviewed claims, preserving continuity. Write original narration and a fresh shot plan.",
+      "missing_details": "Full film/issues were not watched/read. Uncached subplots, exact physical staging and new interpretations need source review; technical acceptance is not audience approval.",
+      "claims": [],
+      "sources": []
+    },
+    {
+      "id": "deadpool-wolverine-recap",
+      "title": "Deadpool & Wolverine main-story recap",
+      "issues": "Deadpool & Wolverine (2024)",
+      "medium": "film",
+      "tags": [
+        "marvel",
+        "deadpool",
+        "wolverine",
+        "timeline"
+      ],
+      "evidence_state": "reviewed_project_packet",
+      "project_brief": "examples/screen-recaps/deadpool-wolverine-recap/brief.json",
+      "source_review": "examples/screen-recaps/deadpool-wolverine-recap/source-review.json",
+      "reuse": "Reuse only these bounded reviewed claims, preserving continuity. Write original narration and a fresh shot plan.",
+      "missing_details": "Full film/issues were not watched/read. Uncached subplots, exact physical staging and new interpretations need source review; technical acceptance is not audience approval.",
+      "claims": [],
+      "sources": []
+    },
+    {
+      "id": "fantastic-four-first-steps-recap",
+      "title": "The baby Galactus wanted",
+      "issues": "The Fantastic Four: First Steps (2025)",
+      "medium": "film",
+      "tags": [
+        "marvel",
+        "fantastic-four",
+        "galactus",
+        "family"
+      ],
+      "evidence_state": "reviewed_project_packet",
+      "project_brief": "examples/screen-recaps/fantastic-four-first-steps-recap/brief.json",
+      "source_review": "examples/screen-recaps/fantastic-four-first-steps-recap/source-review.json",
+      "reuse": "Reuse only these bounded reviewed claims, preserving continuity. Write original narration and a fresh shot plan.",
+      "missing_details": "Full film/issues were not watched/read. Uncached subplots, exact physical staging and new interpretations need source review; technical acceptance is not audience approval.",
+      "claims": [],
+      "sources": []
     }
   ],
   "freshness_policy": {

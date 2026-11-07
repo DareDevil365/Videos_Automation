@@ -1,0 +1,89 @@
+{
+  "version": 1,
+  "title": "Deadpool & Wolverine: How Two Failures Saved a Timeline",
+  "question": "What drives the central conflict, and what decision resolves it?",
+  "kind": "fact",
+  "sources": [
+    {
+      "id": "wiki",
+      "url": "https://en.wikipedia.org/wiki/Deadpool_%26_Wolverine",
+      "title": "Deadpool & Wolverine plot and continuity",
+      "excerpt": "2024 film plot: retired Wade, replacement Logan, Paradox, Void allies and the causal sequence through the Time Ripper and reunion.",
+      "checked_at": "2026-11-07T10:52:57.045312+00:00"
+    },
+    {
+      "id": "gr",
+      "url": "https://www.gamesradar.com/entertainment/marvel-movies/deadpool-and-wolverine-ending-explained/",
+      "title": "GamesRadar: Deadpool & Wolverine ending",
+      "excerpt": "The matter/antimatter circuit, combined sacrifice, Cassandra destruction and home reunion.",
+      "checked_at": "2026-11-07T10:52:57.045312+00:00"
+    },
+    {
+      "id": "rt",
+      "url": "https://www.radiotimes.com/movies/scifi/deadpool-wolverine-ending-explained-spoilers/",
+      "title": "Radio Times: film ending and resistance",
+      "excerpt": "Variant Logan, Cassandra, the Void resistance and return.",
+      "checked_at": "2026-11-07T10:52:57.045312+00:00"
+    },
+    {
+      "id": "screenplay",
+      "url": "https://assets.debut.disney.com/documents/Deadpool_Book_Single_Pages.pdf",
+      "title": "Disney screenplay source route",
+      "excerpt": "Official screenplay route indexed with Paradox, the Time Ripper and the final sequence; full document not read.",
+      "checked_at": "2026-11-07T10:52:57.045312+00:00"
+    }
+  ],
+  "claims": [
+    {
+      "id": "d1",
+      "source_id": "wiki",
+      "text": "Paradox plans to accelerate the decay of Wade’s timeline after anchor Logan died; replacing Logan is not a valid fix."
+    },
+    {
+      "id": "d2",
+      "source_id": "wiki",
+      "text": "Happy rejects Wade’s Avengers application; later Wade is retired and separated from Vanessa."
+    },
+    {
+      "id": "d3",
+      "source_id": "wiki",
+      "text": "Wade fails to revive the buried Logan, uses his bones against TVA agents and finds a different Logan who failed his X-Men."
+    },
+    {
+      "id": "d4",
+      "source_id": "rt",
+      "text": "Paradox prunes them to the Void; Cassandra, Xavier’s twin, kills Johnny and they escape Alioth."
+    },
+    {
+      "id": "d5",
+      "source_id": "wiki",
+      "text": "Wade admits he cannot promise to change Logan’s history; they fight in a car and the resistance finds them."
+    },
+    {
+      "id": "d6",
+      "source_id": "rt",
+      "text": "Laura, Blade, Elektra and Gambit help attack Cassandra; a helmet blocks her powers and Pyro betrays her for Paradox."
+    },
+    {
+      "id": "d7",
+      "source_id": "wiki",
+      "text": "They save Cassandra; she opens their way home, learns about the machine and follows to destroy timelines."
+    },
+    {
+      "id": "d8",
+      "source_id": "wiki",
+      "text": "The Deadpool variants kill Nicepool; Peter distracts the variants after Wade and Logan fight them."
+    },
+    {
+      "id": "d9",
+      "source_id": "gr",
+      "text": "Wade first tries the lethal power bridge alone; Logan joins him and the two overload it, kill Cassandra and survive together, stabilizing the timeline."
+    },
+    {
+      "id": "d10",
+      "source_id": "gr",
+      "text": "B-15 arrests Paradox; Logan stays with Wade, Laura is rescued and Wade reconnects with Vanessa without rewriting Logan’s past."
+    }
+  ],
+  "notes": "Deadpool & Wolverine (2024), MCU film; this Logan is a variant, not the resurrected Logan from the grave. Reviewed publisher/archival metadata and compared bounded secondary plot accounts. The complete original film/issue was not watched/read. Geometry illustrates actions rather than reproducing literal frames. Subplots/minor exchanges are compressed; the coverage ledger lists scope. Artwork and audience assets remain local-review-only. Technical QA does not certify voice performance, audience retention, reach or publication clearance."
+}

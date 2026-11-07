@@ -1,0 +1,9 @@
+{
+  "reviewer": "Codex, compared the cited continuity/plot sources and exact supplied narration",
+  "supported": true,
+  "limitations": "Giant-Size X-Men #1 (1975), original Second Genesis account. Later Deadly Genesis retcons are outside this short. Reviewed publisher/archival metadata and compared bounded secondary plot accounts. The complete original film/issue was not watched/read. Geometry illustrates actions rather than reproducing literal frames. Subplots/minor exchanges are compressed; the coverage ledger lists scope. Artwork and audience assets remain local-review-only. Technical QA does not certify voice performance, audience retention, reach or publication clearance.",
+  "brief_sha256": "bad3652061f28127500b7b27e6f6300990afda063b21a482a4bef097552d76cd",
+  "script_sha256": {
+    "part-1.json": "8242a5b3a966db2fabb9378a0a6c3be5bfa70a801caca28fb388f4077e5c4d22"
+  }
+}

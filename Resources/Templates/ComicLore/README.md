@@ -1,5 +1,7 @@
 # Geometric comic starter assets
 
+For the new ensemble stories, also reuse the code-native profiles in [lore_screen_cast.py](../../../src/yt_pipeline/lore_screen_cast.py). These preserve Deadpool's mask/swords, Wolverine's mask/claws, the Four's matching suits and individual powers, and the X-Men's identifying features. They are supported drawing profiles, not additional registered PNG files. Use their supplied hand anchor for contact and draw an action through the finite [ensemble scenes](../../../src/yt_pipeline/lore_ensemble.py); a static PNG alone does not animate a claw strike or energy transfer. [Worked examples](../../../examples/screen-recaps/ENSEMBLE_BATCH.md) explain the reuse/variation boundary.
+
 The [catalog](catalog.json) lists transparent actor and prop layers by stable name. The PNGs are ready to place. They are drawn by the local editor's Python helpers. Use the existing actor body and change the head, hair and clothing when appropriate. Happy and Stane share a broad suit silhouette and have different faces, hair and wardrobe. Doom's mask keeps its shape across heat states. The Mark I helmet has its own blocky visor and cheek geometry.
 
 ```powershell

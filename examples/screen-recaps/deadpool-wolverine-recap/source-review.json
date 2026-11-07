@@ -1,0 +1,9 @@
+{
+  "reviewer": "Codex, compared the cited continuity/plot sources and exact supplied narration",
+  "supported": true,
+  "limitations": "Deadpool & Wolverine (2024), MCU film; this Logan is a variant, not the resurrected Logan from the grave. Reviewed publisher/archival metadata and compared bounded secondary plot accounts. The complete original film/issue was not watched/read. Geometry illustrates actions rather than reproducing literal frames. Subplots/minor exchanges are compressed; the coverage ledger lists scope. Artwork and audience assets remain local-review-only. Technical QA does not certify voice performance, audience retention, reach or publication clearance.",
+  "brief_sha256": "6aee31835178213d13515b81640ba4043ed2aefa3d7628fcb2e9f858233069e0",
+  "script_sha256": {
+    "part-1.json": "2a94d6c176d10a982f7a17d46559ad193fbf6aee55095c98cb4d575f4afb9a5f"
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "reviewer": "Codex, compared the cited continuity/plot sources and exact supplied narration",
+  "supported": true,
+  "limitations": "Original 2012 miniseries, Earth-12101, later called Dreadpool. Not the 2017 Again series, 2025 One Last Time series, or MCU. Compared publisher copy, a creator interview and secondary plot recap; full issues were not read and indexed Marvel access is limited. Illustrative geometry does not reproduce exact panels. Killing is described without graphic injury. The end is fictional metafiction, not an actual threat. Local source-cover/audience review assets do not establish publication clearance. No reach or retention results are known.",
+  "brief_sha256": "6c48780839349d4b6c3fb15db97feb5bc81ee76510910cb096aec1511fc007e0",
+  "script_sha256": {
+    "part-1.json": "2711535069add2f20652d5e2c47ed5b46dfe76e99d02075189ab996802826a24"
+  }
+}

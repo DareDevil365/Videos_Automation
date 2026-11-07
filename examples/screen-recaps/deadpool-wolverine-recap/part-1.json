@@ -1,0 +1,184 @@
+{
+  "version": 1,
+  "title": "Deadpool & Wolverine: How Two Failures Saved a Timeline",
+  "description": "Deadpool & Wolverine (2024), MCU film; this Logan is a variant, not the resurrected Logan from the grave. A connected, source-reviewed illustrated recap with the central reversal reserved for the final act.",
+  "format": "lesson",
+  "fiction": false,
+  "hook": "Deadpool's world is being erased. His plan is to steal another Wolverine.",
+  "payoff": "Paradox is arrested. Logan and Laura join Wade's family, and Wade reconnects with Vanessa. He couldn't undo Logan's past, but gave him a future. For more stories like this, subscribe.",
+  "units": [
+    {
+      "id": "u1",
+      "speaker": "Host",
+      "text": "Deadpool's world is being erased. His plan is to steal another Wolverine.",
+      "onscreen": "ONE WORLD IS RUNNING OUT OF TIME",
+      "kind": "fact",
+      "claim_ids": [
+        "d1"
+      ],
+      "visual_kind": "image",
+      "visual_query": "ONE WORLD IS RUNNING OUT OF TIME",
+      "lore_scene": "dw_ripper",
+      "lore_camera": "push"
+    },
+    {
+      "id": "u2",
+      "speaker": "Narrator",
+      "text": "In Deadpool and Wolverine, Wade has quit hero work after the Avengers reject him and his relationship with Vanessa falls apart.",
+      "onscreen": "DEADPOOL & WOLVERINE · 2024",
+      "kind": "fact",
+      "claim_ids": [
+        "d2"
+      ],
+      "visual_kind": "image",
+      "visual_query": "DEADPOOL & WOLVERINE · 2024",
+      "lore_scene": "portrait",
+      "lore_camera": "wide"
+    },
+    {
+      "id": "u3",
+      "speaker": "Narrator",
+      "text": "TVA agent Paradox offers him a new life, then reveals his universe is dying because its anchor, Logan, is dead. Paradox plans to erase it faster.",
+      "onscreen": "A NEW LIFE — AT HIS WORLD’S EXPENSE",
+      "kind": "fact",
+      "claim_ids": [
+        "d1"
+      ],
+      "visual_kind": "image",
+      "visual_query": "A NEW LIFE — AT HIS WORLD’S EXPENSE",
+      "lore_scene": "dw_tva",
+      "lore_camera": "push"
+    },
+    {
+      "id": "u4",
+      "speaker": "Narrator",
+      "text": "Wade digs up Logan, fights agents with the adamantium bones, then searches other realities. He returns with a Wolverine haunted by failing his X-Men.",
+      "onscreen": "A DIFFERENT WOLVERINE",
+      "kind": "fact",
+      "claim_ids": [
+        "d3"
+      ],
+      "visual_kind": "image",
+      "visual_query": "A DIFFERENT WOLVERINE",
+      "lore_scene": "dw_grave",
+      "lore_camera": "push"
+    },
+    {
+      "id": "u5",
+      "speaker": "Narrator",
+      "text": "Paradox says a replacement won't work and dumps them in the Void. Cassandra Nova, Xavier's twin, kills their companion Johnny Storm. They escape Alioth.",
+      "onscreen": "THE VOID HAS A RULER",
+      "kind": "fact",
+      "claim_ids": [
+        "d4"
+      ],
+      "visual_kind": "image",
+      "visual_query": "THE VOID HAS A RULER",
+      "lore_scene": "dw_void",
+      "lore_camera": "wide"
+    },
+    {
+      "id": "u6",
+      "speaker": "Narrator",
+      "text": "Wade admits he can't promise to repair Logan's past. Their partnership becomes a brutal car fight, until Laura and the resistance find them.",
+      "onscreen": "THE PARTNERSHIP BREAKS DOWN",
+      "kind": "fact",
+      "claim_ids": [
+        "d5"
+      ],
+      "visual_kind": "image",
+      "visual_query": "THE PARTNERSHIP BREAKS DOWN",
+      "lore_scene": "dw_car",
+      "lore_camera": "push"
+    },
+    {
+      "id": "u7",
+      "speaker": "Narrator",
+      "text": "Blade, Elektra, Gambit and Laura help storm Cassandra's base. Juggernaut's helmet blocks her powers, but Paradox's agent Pyro shoots her.",
+      "onscreen": "AN ALLIANCE AGAINST CASSANDRA",
+      "kind": "fact",
+      "claim_ids": [
+        "d6"
+      ],
+      "visual_kind": "image",
+      "visual_query": "AN ALLIANCE AGAINST CASSANDRA",
+      "lore_scene": "dw_resistance",
+      "lore_camera": "push"
+    },
+    {
+      "id": "u8",
+      "speaker": "Narrator",
+      "text": "Logan insists they save her. Cassandra opens a portal home, then learns about the Time Ripper and follows them, planning to destroy every timeline.",
+      "onscreen": "SAVING HER CREATES A BIGGER THREAT",
+      "kind": "fact",
+      "claim_ids": [
+        "d7"
+      ],
+      "visual_kind": "image",
+      "visual_query": "SAVING HER CREATES A BIGGER THREAT",
+      "lore_scene": "dw_mercy",
+      "lore_camera": "wide"
+    },
+    {
+      "id": "u9",
+      "speaker": "Narrator",
+      "text": "Her Deadpool army kills Nicepool and blocks the street. Wade and Logan fight through, until Peter arrives and charms the variants.",
+      "onscreen": "AN ARMY OF DEADPOOLS",
+      "kind": "fact",
+      "claim_ids": [
+        "d8"
+      ],
+      "visual_kind": "image",
+      "visual_query": "AN ARMY OF DEADPOOLS",
+      "lore_scene": "dw_army",
+      "lore_camera": "push"
+    },
+    {
+      "id": "u10",
+      "speaker": "Narrator",
+      "text": "To stop the machine, someone must bridge matter and antimatter. Paradox says they'll die. Wade locks Logan out and takes both power lines.",
+      "onscreen": "THE MACHINE DEMANDS A SACRIFICE",
+      "kind": "fact",
+      "claim_ids": [
+        "d9"
+      ],
+      "visual_kind": "image",
+      "visual_query": "THE MACHINE DEMANDS A SACRIFICE",
+      "lore_scene": "dw_ripper",
+      "lore_camera": "push"
+    },
+    {
+      "id": "u11",
+      "speaker": "Narrator",
+      "text": "Logan breaks in and grabs Wade. Together they overload the machine, destroy Cassandra and survive by sharing the burden. Their timeline stabilizes.",
+      "onscreen": "THEY TAKE THE BURDEN TOGETHER",
+      "kind": "fact",
+      "claim_ids": [
+        "d9"
+      ],
+      "visual_kind": "image",
+      "visual_query": "THEY TAKE THE BURDEN TOGETHER",
+      "lore_scene": "dw_wires",
+      "lore_camera": "wide"
+    },
+    {
+      "id": "u12",
+      "speaker": "Host",
+      "text": "Paradox is arrested. Logan and Laura join Wade's family, and Wade reconnects with Vanessa. He couldn't undo Logan's past, but gave him a future. For more stories like this, subscribe.",
+      "onscreen": "A FUTURE, EVEN WITH THE SAME PAST",
+      "kind": "fact",
+      "claim_ids": [
+        "d10"
+      ],
+      "visual_kind": "image",
+      "visual_query": "A FUTURE, EVEN WITH THE SAME PAST",
+      "lore_scene": "dw_home",
+      "lore_camera": "push"
+    }
+  ],
+  "edit": {
+    "effect": "none",
+    "payoff_unit_id": "u11",
+    "cta": true
+  }
+}

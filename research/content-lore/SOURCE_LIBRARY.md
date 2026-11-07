@@ -1,6 +1,6 @@
 # Reusable comic story sources
 
-Use [source-library.json](source-library.json) before starting topic discovery again. It contains **14 reading/source routes and 13 starter records**. Seven records reuse reviewed project evidence; six are reading leads whose full causal story has not yet been extracted. The research agent hit its usage limit; the main assistant completed this library. This is a source index and a cache of bounded facts, not an archive of copied narration or complete copyrighted issues.
+Use [source-library.json](source-library.json) before starting topic discovery again. It contains **14 reading/source routes and 17 story records**. Eleven records reuse reviewed project evidence; six are reading leads whose full causal story has not yet been extracted. The research agent hit its usage limit; the main assistant completed this library. This is a source index and a cache of bounded facts, not an archive of copied narration or complete copyrighted issues.
 
 ```powershell
 .venv\Scripts\python.exe tools/query_comic_library.py doom --ready-only
@@ -48,3 +48,6 @@ The latest reviewed packet adds Kraven’s Last Hunt (1987): burial, impersonati
 
 
 The offline lookup accepts an exact reviewed hash or a hash differing only by LF/CRLF line endings after a Git checkout, and records `packet_hash_match`. Changed fact text still requires a new review. Immutable production-plan input hashes remain exact; this portability allowance applies only to the reading cache.
+
+
+The ensemble batch adds the original 2012 Deadpool creator/reader story, the original 1975 Krakoa rescue, and the two 2024/2025 movie recap packets. Film and comic records are labeled separately. Reuse their bounded source facts without conflating variants, later retcons or adaptations. The actual narration and sampled exports remain separate creative work.

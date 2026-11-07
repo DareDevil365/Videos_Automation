@@ -1,0 +1,9 @@
+{
+  "reviewer": "Codex, compared the cited continuity/plot sources and exact supplied narration",
+  "supported": true,
+  "limitations": "The Fantastic Four: First Steps (2025), Earth-828 film continuity; not the 2005, 2007 or 2015 adaptations. Reviewed publisher/archival metadata and compared bounded secondary plot accounts. The complete original film/issue was not watched/read. Geometry illustrates actions rather than reproducing literal frames. Subplots/minor exchanges are compressed; the coverage ledger lists scope. Artwork and audience assets remain local-review-only. Technical QA does not certify voice performance, audience retention, reach or publication clearance.",
+  "brief_sha256": "8db96939c8759c3880777203b6b6c06fdaab91261045b1532f25aecc369487b5",
+  "script_sha256": {
+    "part-1.json": "222e6be8ea1cbf28d95f61f9693c1f950572254f20ad3775590eca1989c30cda"
+  }
+}

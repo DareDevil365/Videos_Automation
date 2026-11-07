@@ -1,0 +1,144 @@
+{
+  "version": 1,
+  "title": "The X-Men Were Rescuing Their Friends. The Island Wanted Seconds.",
+  "description": "Giant-Size X-Men #1 (1975), original Second Genesis account. Later Deadly Genesis retcons are outside this short. A connected, source-reviewed illustrated recap with the central reversal reserved for the final act.",
+  "format": "lesson",
+  "fiction": false,
+  "hook": "An island captured the X-Men. Cyclops escaped, and brought it a second team.",
+  "payoff": "Xavier needed strangers to save his students. They came back as the new X-Men. For more stories like this, subscribe.",
+  "units": [
+    {
+      "id": "u1",
+      "speaker": "Host",
+      "text": "An island captured the X-Men. Cyclops escaped, and brought it a second team.",
+      "onscreen": "THE RESCUE TEAM IS ALSO THE BAIT",
+      "kind": "fact",
+      "claim_ids": [
+        "x1"
+      ],
+      "visual_kind": "image",
+      "visual_query": "THE RESCUE TEAM IS ALSO THE BAIT",
+      "lore_scene": "xm_missing",
+      "lore_camera": "push"
+    },
+    {
+      "id": "u2",
+      "speaker": "Narrator",
+      "text": "In Giant-Size X-Men number one, from 1975, Professor Xavier recruits new mutants to rescue his missing students.",
+      "onscreen": "GIANT-SIZE X-MEN #1 · 1975",
+      "kind": "fact",
+      "claim_ids": [
+        "x2"
+      ],
+      "visual_kind": "image",
+      "visual_query": "GIANT-SIZE X-MEN #1 · 1975",
+      "lore_scene": "portrait",
+      "lore_camera": "wide"
+    },
+    {
+      "id": "u3",
+      "speaker": "Narrator",
+      "text": "Storm, Wolverine and Nightcrawler join the rescue. They barely know each other, and Krakoa's jungle fights back.",
+      "onscreen": "STRANGERS WALK INTO THE TRAP",
+      "kind": "fact",
+      "claim_ids": [
+        "x2",
+        "x3"
+      ],
+      "visual_kind": "image",
+      "visual_query": "STRANGERS WALK INTO THE TRAP",
+      "lore_scene": "xm_recruits",
+      "lore_camera": "push"
+    },
+    {
+      "id": "u4",
+      "speaker": "Narrator",
+      "text": "They find the missing team trapped inside. The monster isn't hiding on the island. It is the island.",
+      "onscreen": "KRAKOA IS THE MUTANT",
+      "kind": "fact",
+      "claim_ids": [
+        "x3"
+      ],
+      "visual_kind": "image",
+      "visual_query": "KRAKOA IS THE MUTANT",
+      "lore_scene": "xm_prison",
+      "lore_camera": "push"
+    },
+    {
+      "id": "u5",
+      "speaker": "Narrator",
+      "text": "Krakoa feeds on mutant energy. It let Cyclops escape so he'd bring back more food. The rescue was another delivery.",
+      "onscreen": "CYCLOPS WAS ALLOWED TO ESCAPE",
+      "kind": "fact",
+      "claim_ids": [
+        "x3"
+      ],
+      "visual_kind": "image",
+      "visual_query": "CYCLOPS WAS ALLOWED TO ESCAPE",
+      "lore_scene": "xm_island",
+      "lore_camera": "wide"
+    },
+    {
+      "id": "u6",
+      "speaker": "Narrator",
+      "text": "The captives are freed, but attacks can't defeat a whole landmass. Xavier tells them to combine their powers.",
+      "onscreen": "THEY NEED TO FIGHT AS ONE",
+      "kind": "fact",
+      "claim_ids": [
+        "x4"
+      ],
+      "visual_kind": "image",
+      "visual_query": "THEY NEED TO FIGHT AS ONE",
+      "lore_scene": "xm_jungle",
+      "lore_camera": "push"
+    },
+    {
+      "id": "u7",
+      "speaker": "Narrator",
+      "text": "Storm charges Polaris with lightning. Cyclops and Havok add their blasts, until Polaris can hurl Krakoa off the planet.",
+      "onscreen": "LIGHTNING + BLASTS + MAGNETISM",
+      "kind": "fact",
+      "claim_ids": [
+        "x4"
+      ],
+      "visual_kind": "image",
+      "visual_query": "LIGHTNING + BLASTS + MAGNETISM",
+      "lore_scene": "xm_energy",
+      "lore_camera": "push"
+    },
+    {
+      "id": "u8",
+      "speaker": "Narrator",
+      "text": "The island leaves a deadly whirlpool. The mutants escape together, rescuers and rescued now one team.",
+      "onscreen": "THEY STILL HAVE TO GET AWAY",
+      "kind": "fact",
+      "claim_ids": [
+        "x5"
+      ],
+      "visual_kind": "image",
+      "visual_query": "THEY STILL HAVE TO GET AWAY",
+      "lore_scene": "xm_escape",
+      "lore_camera": "wide"
+    },
+    {
+      "id": "u9",
+      "speaker": "Host",
+      "text": "Xavier needed strangers to save his students. They came back as the new X-Men. For more stories like this, subscribe.",
+      "onscreen": "THE RESCUE CHANGED THE TEAM",
+      "kind": "fact",
+      "claim_ids": [
+        "x2",
+        "x5"
+      ],
+      "visual_kind": "image",
+      "visual_query": "THE RESCUE CHANGED THE TEAM",
+      "lore_scene": "xm_team",
+      "lore_camera": "push"
+    }
+  ],
+  "edit": {
+    "effect": "none",
+    "payoff_unit_id": "u8",
+    "cta": true
+  }
+}

@@ -1,0 +1,288 @@
+{
+  "version": 1,
+  "series_id": "fantastic-four-first-steps-recap",
+  "title": "Fantastic Four: The Baby Galactus Wanted",
+  "structure": "chapter_answers",
+  "canon": "The Fantastic Four: First Steps (2025), Earth-828 film continuity; not the 2005, 2007 or 2015 adaptations.",
+  "source_voices": {
+    "Host": "am_michael",
+    "Narrator": "af_bella"
+  },
+  "parts": [
+    {
+      "part": 1,
+      "script": "part-1.json",
+      "next_part": null,
+      "reaction_preset": "crossover-theater",
+      "source_duration": [
+        75,
+        115
+      ],
+      "source_delivery": {
+        "tight_speech": true,
+        "speed": 1.2,
+        "pause_after": 0.05,
+        "linked_phrases": [
+          "The Fantastic Four: First Steps",
+          "Silver Surfer",
+          "Doctor Doom"
+        ]
+      },
+      "source_music": {
+        "start": 4,
+        "volume": 0.055
+      },
+      "visual_selection": {
+        "mode": "authored"
+      },
+      "lore_cuts": {
+        "u3": [
+          {
+            "on": "",
+            "kind": "ff_herald",
+            "camera": "wide",
+            "reason": "Show the silver figure on her board above the city."
+          },
+          {
+            "on": "flies into space",
+            "kind": "ff_worldship",
+            "camera": "wide",
+            "reason": "Scale the small ship against Galactus’s vessel and doomed planet."
+          }
+        ],
+        "u5": [
+          {
+            "on": "",
+            "kind": "ff_chase",
+            "camera": "wide",
+            "reason": "Move the Four’s ship around a bright neutron star while the board follows."
+          },
+          {
+            "on": "Sue gives birth",
+            "kind": "ff_baby",
+            "camera": "wide",
+            "reason": "A supported, non-graphic family shot introduces Franklin."
+          }
+        ],
+        "u6": [
+          {
+            "on": "",
+            "kind": "ff_protest",
+            "camera": "wide",
+            "reason": "Protest signs and Sue holding Franklin connect the public pressure to the choice."
+          },
+          {
+            "on": "Reed plans",
+            "kind": "ff_bridges",
+            "camera": "wide",
+            "reason": "Earth and several gate structures make the escape plan legible."
+          }
+        ],
+        "u7": [
+          {
+            "on": "",
+            "kind": "ff_bridges",
+            "camera": "wide",
+            "reason": "Crossed damaged gates leave a single route."
+          },
+          {
+            "on": "confronts Shalla-Bal",
+            "kind": "ff_language",
+            "camera": "wide",
+            "reason": "The transmission device links Johnny’s discovery to the herald’s past."
+          }
+        ],
+        "u8": [
+          {
+            "on": "",
+            "kind": "ff_language",
+            "camera": "wide",
+            "reason": "Keep the recordings and the two characters visible as her allegiance is challenged."
+          },
+          {
+            "on": "lure Galactus",
+            "kind": "ff_bridges",
+            "camera": "wide",
+            "reason": "Return to the remaining gate when the plan changes its target."
+          }
+        ],
+        "u9": [
+          {
+            "on": "",
+            "kind": "ff_evacuate",
+            "camera": "wide",
+            "reason": "Show civilians moving into the underground evacuation route."
+          },
+          {
+            "on": "Galactus finds",
+            "kind": "ff_galactus",
+            "camera": "wide",
+            "reason": "The giant reaches the baby instead of falling directly into the gate."
+          },
+          {
+            "on": "Ben rescues",
+            "kind": "ff_stretch",
+            "camera": "wide",
+            "reason": "Ben rises toward Galactus while Reed’s arm is stretched between them."
+          }
+        ],
+        "u10": [
+          {
+            "on": "",
+            "kind": "ff_push",
+            "camera": "wide",
+            "reason": "Sue’s force-field arc moves Galactus toward the portal while Reed retrieves the baby."
+          },
+          {
+            "on": "Shalla-Bal takes",
+            "kind": "ff_surfer",
+            "camera": "wide",
+            "reason": "The silver board and anchored hand deliver the final push."
+          }
+        ],
+        "u12": [
+          {
+            "on": "",
+            "kind": "ff_doom",
+            "camera": "wide",
+            "reason": "A green hood and metal mask identify the actual mid-credit visitor, without inventing a plan."
+          },
+          {
+            "on": "For more stories",
+            "kind": "end_subscribe",
+            "camera": "wide",
+            "reason": "The short request follows the film ending and post-credit beat."
+          }
+        ],
+        "u11": [
+          {
+            "on": "",
+            "kind": "ff_loss",
+            "camera": "wide",
+            "reason": "Sue has collapsed; hold the loss without telegraphing revival."
+          },
+          {
+            "on": "Then Franklin",
+            "kind": "ff_revive",
+            "camera": "wide",
+            "reason": "Begin the baby’s light and Sue’s recovery only when the narration reaches it."
+          }
+        ]
+      },
+      "lore_design": {
+        "palette": "paper",
+        "font": "Trebuchet MS",
+        "atmosphere": "none",
+        "audience_required": true,
+        "reason": "Keep the established flat geometric outline, identifiable costume features and quiet photographic Marvel audience. Change palette for material, location and the narrative turn; retain a dark caption band. Trebuchet has familiar open shapes for fast phone reading. Exact source art identifies the work; geometry controls contact, transformations and energy.",
+        "shots": {
+          "u1": {
+            "palette": "plum",
+            "atmosphere": "none",
+            "reason": "The cosmic bargain needs scale and restrained tension.",
+            "elements": [
+              "Show the stated action or consequence with recognizable actors; retain costume and object continuity."
+            ]
+          },
+          "u2": {
+            "palette": "paper",
+            "atmosphere": "none",
+            "reason": "Source art introduces the actual 2025 film rather than a different Fantastic Four adaptation.",
+            "elements": [
+              "Show the stated action or consequence with recognizable actors; retain costume and object continuity."
+            ]
+          },
+          "u3": {
+            "palette": "daylight",
+            "atmosphere": "none",
+            "reason": "Optimistic retro city light precedes the dark scale of the worldship.",
+            "elements": [
+              "Show the silver figure on her board above the city.",
+              "Scale the small ship against Galactus’s vessel and doomed planet."
+            ]
+          },
+          "u4": {
+            "palette": "plum",
+            "atmosphere": "none",
+            "reason": "Return to the same cosmic audience with Galactus for the bargain.",
+            "elements": [
+              "Show the stated action or consequence with recognizable actors; retain costume and object continuity."
+            ]
+          },
+          "u5": {
+            "palette": "plum",
+            "atmosphere": "none",
+            "reason": "The neutron star provides motivated light within space; no generic starfield.",
+            "elements": [
+              "Move the Four’s ship around a bright neutron star while the board follows.",
+              "A supported, non-graphic family shot introduces Franklin."
+            ]
+          },
+          "u6": {
+            "palette": "paper",
+            "atmosphere": "none",
+            "reason": "Public pressure is grounded in a warm city, with Franklin visibly protected.",
+            "elements": [
+              "Protest signs and Sue holding Franklin connect the public pressure to the choice.",
+              "Earth and several gate structures make the escape plan legible."
+            ]
+          },
+          "u7": {
+            "palette": "daylight",
+            "atmosphere": "none",
+            "reason": "The global infrastructure and silver figure remain readable against daylight.",
+            "elements": [
+              "Crossed damaged gates leave a single route.",
+              "The transmission device links Johnny’s discovery to the herald’s past."
+            ]
+          },
+          "u8": {
+            "palette": "daylight",
+            "atmosphere": "none",
+            "reason": "The same setting connects the moral revelation to the replacement plan.",
+            "elements": [
+              "Keep the recordings and the two characters visible as her allegiance is challenged.",
+              "Return to the remaining gate when the plan changes its target."
+            ]
+          },
+          "u9": {
+            "palette": "concrete",
+            "atmosphere": "dust",
+            "reason": "Urban destruction and underground refuge use stone and restrained dust.",
+            "elements": [
+              "Show civilians moving into the underground evacuation route.",
+              "The giant reaches the baby instead of falling directly into the gate.",
+              "Ben rises toward Galactus while Reed’s arm is stretched between them."
+            ]
+          },
+          "u10": {
+            "palette": "plum",
+            "atmosphere": "none",
+            "reason": "The portal and force-field are the focal light sources in the climax.",
+            "elements": [
+              "Sue’s force-field arc moves Galactus toward the portal while Reed retrieves the baby.",
+              "The silver board and anchored hand deliver the final push."
+            ]
+          },
+          "u11": {
+            "palette": "paper",
+            "atmosphere": "none",
+            "reason": "Quiet family staging supports the loss and reversal without a celebratory early reveal.",
+            "elements": [
+              "Show the stated action or consequence with recognizable actors; retain costume and object continuity."
+            ]
+          },
+          "u12": {
+            "palette": "daylight",
+            "atmosphere": "none",
+            "reason": "The domestic room establishes the later intrusion and preserves the source’s time jump.",
+            "elements": [
+              "A green hood and metal mask identify the actual mid-credit visitor, without inventing a plan.",
+              "The short request follows the film ending and post-credit beat."
+            ]
+          }
+        }
+      }
+    }
+  ]
+}

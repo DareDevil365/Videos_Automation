@@ -1,0 +1,11 @@
+# Selecting the X-Men reel
+
+The user requested an X-Men story in addition to the movie recaps. Compare a trapped team on a living island, Wolverine’s metal removal, the Dark Phoenix trial, Magneto’s changing alliances and a Days of Future Past timeline rescue. Krakoa was selected for one immediately understandable trap, a deliberate false escape, a combined-power solution and the beginning of a recognizable team. The alternatives need more character/continuity setup; they remain candidates rather than researched scripts.
+
+The original 1975 Giant-Size X-Men #1 account is the source. Later Deadly Genesis changes to the rescue history are outside this telling and are not silently combined with it. Library of Congress reproduces the cover/interiors and discusses the recruits; its image caption sometimes says 1976 while the issue heading and checked bibliography say 1975. Use 1975. Indexed Marvel facsimile copy confirms the roster and living island. The bounded UncannyXMen synopsis describes Cyclops as bait; direct page access returned 403. The AIPT discussion explains the combined-force launch and labels its physics as comic logic.
+
+Opening alternatives: “How did the new X-Men form?” is informational but weak; “Their island was alive” gives the central discovery immediately; “An island captured the X-Men. Cyclops escaped, and brought it a second team” establishes the trap while leaving the deliberate-release explanation for later. The selected script connects recruitment, hostile jungle, captives, revelation, feeding motive, coordinated powers and escape.
+
+The roster and headline team create familiar entry points; no verified public viewing data establishes future traction. Existing long-form issue discussions establish accessible competition, not an underserved opportunity. No creator’s narration is copied. Source routes and limitations are saved in brief.json. The source comic was not read in full.
+
+Geometry is used for the island face, root bindings, lightning-to-Polaris circuit and launch, where controlled transformation matters. The actual 1975 cover supplies source recognition. Earth/olive vegetation, daylight and restrained magnetic violet distinguish the scenes; no generic navy starfield. A quiet Marvel theater retains the channel’s lower audience framing. The subscribe request follows the rescued team’s return.

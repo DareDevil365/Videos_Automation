@@ -1,0 +1,185 @@
+{
+  "version": 1,
+  "title": "Fantastic Four: The Baby Galactus Wanted",
+  "description": "The Fantastic Four: First Steps (2025), Earth-828 film continuity; not the 2005, 2007 or 2015 adaptations. A connected, source-reviewed illustrated recap with the central reversal reserved for the final act.",
+  "format": "lesson",
+  "fiction": false,
+  "hook": "A planet-eater offers to spare Earth. His price is one family's baby.",
+  "payoff": "Four years later, Sue finds a green-cloaked stranger beside Franklin: Doctor Doom. The film leaves his plan unanswered. For more stories like this, subscribe.",
+  "units": [
+    {
+      "id": "u1",
+      "speaker": "Host",
+      "text": "A planet-eater offers to spare Earth. His price is one family's baby.",
+      "onscreen": "A CHILD — OR AN ENTIRE PLANET",
+      "kind": "fact",
+      "claim_ids": [
+        "f1"
+      ],
+      "visual_kind": "image",
+      "visual_query": "A CHILD — OR AN ENTIRE PLANET",
+      "lore_scene": "ff_bargain",
+      "lore_camera": "push"
+    },
+    {
+      "id": "u2",
+      "speaker": "Narrator",
+      "text": "In The Fantastic Four: First Steps, four astronauts are already celebrated heroes. Reed and Sue are expecting their first child.",
+      "onscreen": "THE FANTASTIC FOUR: FIRST STEPS · 2025",
+      "kind": "fact",
+      "claim_ids": [
+        "f2"
+      ],
+      "visual_kind": "image",
+      "visual_query": "THE FANTASTIC FOUR: FIRST STEPS · 2025",
+      "lore_scene": "portrait",
+      "lore_camera": "wide"
+    },
+    {
+      "id": "u3",
+      "speaker": "Narrator",
+      "text": "The Silver Surfer warns that Galactus is coming. The team flies into space and watches him destroy another world before he brings them aboard.",
+      "onscreen": "THE WARNING IS REAL",
+      "kind": "fact",
+      "claim_ids": [
+        "f3"
+      ],
+      "visual_kind": "image",
+      "visual_query": "THE WARNING IS REAL",
+      "lore_scene": "ff_herald",
+      "lore_camera": "push"
+    },
+    {
+      "id": "u4",
+      "speaker": "Narrator",
+      "text": "Galactus senses their unborn son's cosmic power. He offers Earth for the child, who could inherit his hunger. The family refuses and runs.",
+      "onscreen": "THE FAMILY REFUSES THE BARGAIN",
+      "kind": "fact",
+      "claim_ids": [
+        "f1"
+      ],
+      "visual_kind": "image",
+      "visual_query": "THE FAMILY REFUSES THE BARGAIN",
+      "lore_scene": "ff_bargain",
+      "lore_camera": "push"
+    },
+    {
+      "id": "u5",
+      "speaker": "Narrator",
+      "text": "The Surfer pursues their ship. Reed slingshots around a neutron star, buying their escape. During the chase, Sue gives birth to Franklin.",
+      "onscreen": "A BIRTH DURING A COSMIC CHASE",
+      "kind": "fact",
+      "claim_ids": [
+        "f4"
+      ],
+      "visual_kind": "image",
+      "visual_query": "A BIRTH DURING A COSMIC CHASE",
+      "lore_scene": "ff_chase",
+      "lore_camera": "wide"
+    },
+    {
+      "id": "u6",
+      "speaker": "Narrator",
+      "text": "Back on Earth, crowds demand the baby be surrendered. Sue refuses to sacrifice Franklin or abandon humanity. Reed plans to teleport the whole planet away.",
+      "onscreen": "SAVE THEIR CHILD. SAVE EVERYONE.",
+      "kind": "fact",
+      "claim_ids": [
+        "f5"
+      ],
+      "visual_kind": "image",
+      "visual_query": "SAVE THEIR CHILD. SAVE EVERYONE.",
+      "lore_scene": "ff_protest",
+      "lore_camera": "push"
+    },
+    {
+      "id": "u7",
+      "speaker": "Narrator",
+      "text": "The world builds the bridges, but the Surfer destroys them. Johnny saves the last one and confronts Shalla-Bal: she serves Galactus to protect her own world.",
+      "onscreen": "THE HERALD ONCE HAD THE SAME CHOICE",
+      "kind": "fact",
+      "claim_ids": [
+        "f6"
+      ],
+      "visual_kind": "image",
+      "visual_query": "THE HERALD ONCE HAD THE SAME CHOICE",
+      "lore_scene": "ff_bridges",
+      "lore_camera": "push"
+    },
+    {
+      "id": "u8",
+      "speaker": "Narrator",
+      "text": "Recordings of the worlds she helped destroy break through her resolve. She flees. The family changes the plan: lure Galactus through the remaining bridge instead.",
+      "onscreen": "ONE BRIDGE LEFT. A DIFFERENT PLAN.",
+      "kind": "fact",
+      "claim_ids": [
+        "f6",
+        "f7"
+      ],
+      "visual_kind": "image",
+      "visual_query": "ONE BRIDGE LEFT. A DIFFERENT PLAN.",
+      "lore_scene": "ff_language",
+      "lore_camera": "wide"
+    },
+    {
+      "id": "u9",
+      "speaker": "Narrator",
+      "text": "New York evacuates underground through Mole Man's city. Franklin becomes the bait, but Galactus finds the real baby. Ben rescues the stretched Reed.",
+      "onscreen": "THE TRAP DOES NOT GO TO PLAN",
+      "kind": "fact",
+      "claim_ids": [
+        "f7"
+      ],
+      "visual_kind": "image",
+      "visual_query": "THE TRAP DOES NOT GO TO PLAN",
+      "lore_scene": "ff_evacuate",
+      "lore_camera": "push"
+    },
+    {
+      "id": "u10",
+      "speaker": "Narrator",
+      "text": "Reed retrieves Franklin while Sue pushes Galactus toward the portal. Johnny prepares a final sacrifice, but Shalla-Bal takes his place and drives her master through.",
+      "onscreen": "THE FINAL PUSH COMES FROM HIS HERALD",
+      "kind": "fact",
+      "claim_ids": [
+        "f8"
+      ],
+      "visual_kind": "image",
+      "visual_query": "THE FINAL PUSH COMES FROM HIS HERALD",
+      "lore_scene": "ff_push",
+      "lore_camera": "push"
+    },
+    {
+      "id": "u11",
+      "speaker": "Narrator",
+      "text": "Sue collapses and dies from the effort. Then Franklin revives her. The family that refused to surrender one child has saved the world.",
+      "onscreen": "FRANKLIN CHANGES THE ENDING",
+      "kind": "fact",
+      "claim_ids": [
+        "f8"
+      ],
+      "visual_kind": "image",
+      "visual_query": "FRANKLIN CHANGES THE ENDING",
+      "lore_scene": "ff_loss",
+      "lore_camera": "wide"
+    },
+    {
+      "id": "u12",
+      "speaker": "Host",
+      "text": "Four years later, Sue finds a green-cloaked stranger beside Franklin: Doctor Doom. The film leaves his plan unanswered. For more stories like this, subscribe.",
+      "onscreen": "FOUR YEARS LATER: A DIFFERENT DANGER",
+      "kind": "fact",
+      "claim_ids": [
+        "f9"
+      ],
+      "visual_kind": "image",
+      "visual_query": "FOUR YEARS LATER: A DIFFERENT DANGER",
+      "lore_scene": "ff_doom",
+      "lore_camera": "push"
+    }
+  ],
+  "edit": {
+    "effect": "none",
+    "payoff_unit_id": "u11",
+    "cta": true
+  }
+}

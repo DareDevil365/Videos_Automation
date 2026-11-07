@@ -1,0 +1,282 @@
+{
+  "version": 1,
+  "series_id": "deadpool-wolverine-recap",
+  "title": "Deadpool & Wolverine: How Two Failures Saved a Timeline",
+  "structure": "chapter_answers",
+  "canon": "Deadpool & Wolverine (2024), MCU film; this Logan is a variant, not the resurrected Logan from the grave.",
+  "source_voices": {
+    "Host": "af_heart",
+    "Narrator": "am_michael"
+  },
+  "parts": [
+    {
+      "part": 1,
+      "script": "part-1.json",
+      "next_part": null,
+      "reaction_preset": "crossover-theater",
+      "source_duration": [
+        75,
+        115
+      ],
+      "source_delivery": {
+        "tight_speech": true,
+        "speed": 1.2,
+        "pause_after": 0.05,
+        "linked_phrases": [
+          "Deadpool and Wolverine",
+          "Cassandra Nova",
+          "Johnny Storm",
+          "Time Ripper"
+        ]
+      },
+      "source_music": {
+        "start": 4,
+        "volume": 0.045
+      },
+      "visual_selection": {
+        "mode": "authored"
+      },
+      "lore_cuts": {
+        "u4": [
+          {
+            "on": "",
+            "kind": "dw_grave",
+            "camera": "wide",
+            "reason": "Show the failed grave visit and recognizable adamantium claws without gore."
+          },
+          {
+            "on": "then searches",
+            "kind": "dw_variants",
+            "camera": "wide",
+            "reason": "Portals contain distinct Logan variants before selecting the new partner."
+          }
+        ],
+        "u5": [
+          {
+            "on": "",
+            "kind": "dw_void",
+            "camera": "wide",
+            "reason": "Desert scale establishes where Paradox discarded the partners."
+          },
+          {
+            "on": "Cassandra Nova",
+            "kind": "dw_johnny",
+            "camera": "wide",
+            "reason": "Introduce the bald antagonist and Johnny’s flame signature; no graphic killing."
+          }
+        ],
+        "u6": [
+          {
+            "on": "",
+            "kind": "dw_car",
+            "camera": "wide",
+            "reason": "Opposing anchored hands inside the car show the partnership turning into a fight."
+          },
+          {
+            "on": "Laura and the resistance",
+            "kind": "dw_resistance",
+            "camera": "wide",
+            "reason": "Show the group that finds them."
+          }
+        ],
+        "u7": [
+          {
+            "on": "",
+            "kind": "dw_resistance",
+            "camera": "wide",
+            "reason": "Name the four resistance members while their costumes are visible."
+          },
+          {
+            "on": "Juggernaut's helmet",
+            "kind": "dw_helmet",
+            "camera": "wide",
+            "reason": "Both partners anchor the power-blocking helmet onto Cassandra."
+          },
+          {
+            "on": "Paradox's agent",
+            "kind": "dw_pyro",
+            "camera": "wide",
+            "reason": "The betrayal connects back to the TVA instead of introducing a random attacker."
+          }
+        ],
+        "u8": [
+          {
+            "on": "",
+            "kind": "dw_mercy",
+            "camera": "wide",
+            "reason": "Saving Cassandra follows the choice to remove the blocking helmet."
+          },
+          {
+            "on": "opens a portal",
+            "kind": "dw_portal",
+            "camera": "wide",
+            "reason": "Show the return route she grants them."
+          },
+          {
+            "on": "then learns",
+            "kind": "dw_ripper",
+            "camera": "wide",
+            "reason": "Return to the device as her objective changes."
+          }
+        ],
+        "u9": [
+          {
+            "on": "",
+            "kind": "dw_army",
+            "camera": "wide",
+            "reason": "Multiple masked red variants fill the street around the two leads."
+          },
+          {
+            "on": "until Peter",
+            "kind": "dw_peter",
+            "camera": "wide",
+            "reason": "The civilian friend interrupts the army’s aggression."
+          }
+        ],
+        "u10": [
+          {
+            "on": "",
+            "kind": "dw_ripper",
+            "camera": "wide",
+            "reason": "Separate power columns explain the dangerous bridge."
+          },
+          {
+            "on": "Wade locks Logan out",
+            "kind": "dw_alone",
+            "camera": "wide",
+            "reason": "Show the electrical contact leading to the shared sacrifice."
+          }
+        ],
+        "u12": [
+          {
+            "on": "",
+            "kind": "dw_home",
+            "camera": "wide",
+            "reason": "The dinner, Laura and dog restore the relationships after the threat."
+          },
+          {
+            "on": "For more stories",
+            "kind": "end_subscribe",
+            "camera": "wide",
+            "reason": "The subscribe line follows the complete aftermath."
+          }
+        ]
+      },
+      "lore_design": {
+        "palette": "paper",
+        "font": "Trebuchet MS",
+        "atmosphere": "none",
+        "audience_required": true,
+        "reason": "Keep the established flat geometric outline, identifiable costume features and quiet photographic Marvel audience. Change palette for material, location and the narrative turn; retain a dark caption band. Trebuchet has familiar open shapes for fast phone reading. Exact source art identifies the work; geometry controls contact, transformations and energy.",
+        "shots": {
+          "u1": {
+            "palette": "crimson",
+            "atmosphere": "none",
+            "reason": "Red establishes the threatened timeline without spoiling the way it is saved.",
+            "elements": [
+              "Show the stated action or consequence with recognizable actors; retain costume and object continuity."
+            ]
+          },
+          "u2": {
+            "palette": "paper",
+            "atmosphere": "none",
+            "reason": "A warm source poster identifies the 2024 film during the setup.",
+            "elements": [
+              "Show the stated action or consequence with recognizable actors; retain costume and object continuity."
+            ]
+          },
+          "u3": {
+            "palette": "paper",
+            "atmosphere": "none",
+            "reason": "TVA bureaucracy uses amber/neutral light rather than cosmic blue.",
+            "elements": [
+              "Show the stated action or consequence with recognizable actors; retain costume and object continuity."
+            ]
+          },
+          "u4": {
+            "palette": "concrete",
+            "atmosphere": "dust",
+            "reason": "Stone and dust identify the grave, then portals distinguish alternate Logans.",
+            "elements": [
+              "Show the failed grave visit and recognizable adamantium claws without gore.",
+              "Portals contain distinct Logan variants before selecting the new partner."
+            ]
+          },
+          "u5": {
+            "palette": "ember",
+            "atmosphere": "dust",
+            "reason": "Dry sand and earthy light establish the Void wasteland.",
+            "elements": [
+              "Desert scale establishes where Paradox discarded the partners.",
+              "Introduce the bald antagonist and Johnny’s flame signature; no graphic killing."
+            ]
+          },
+          "u6": {
+            "palette": "concrete",
+            "atmosphere": "none",
+            "reason": "The car interior is a confined physical conflict.",
+            "elements": [
+              "Opposing anchored hands inside the car show the partnership turning into a fight.",
+              "Show the group that finds them."
+            ]
+          },
+          "u7": {
+            "palette": "ember",
+            "atmosphere": "dust",
+            "reason": "Returning to the Void preserves location continuity through the assault.",
+            "elements": [
+              "Name the four resistance members while their costumes are visible.",
+              "Both partners anchor the power-blocking helmet onto Cassandra.",
+              "The betrayal connects back to the TVA instead of introducing a random attacker."
+            ]
+          },
+          "u8": {
+            "palette": "plum",
+            "atmosphere": "none",
+            "reason": "Portal/mind-power space marks the transition from the Void to a larger threat.",
+            "elements": [
+              "Saving Cassandra follows the choice to remove the blocking helmet.",
+              "Show the return route she grants them.",
+              "Return to the device as her objective changes."
+            ]
+          },
+          "u9": {
+            "palette": "daylight",
+            "atmosphere": "none",
+            "reason": "City daylight makes the army’s red costumes readable.",
+            "elements": [
+              "Multiple masked red variants fill the street around the two leads.",
+              "The civilian friend interrupts the army’s aggression."
+            ]
+          },
+          "u10": {
+            "palette": "crimson",
+            "atmosphere": "none",
+            "reason": "The threatened circuit receives restrained emergency red.",
+            "elements": [
+              "Separate power columns explain the dangerous bridge.",
+              "Show the electrical contact leading to the shared sacrifice."
+            ]
+          },
+          "u11": {
+            "palette": "crimson",
+            "atmosphere": "none",
+            "reason": "Keep the same machine lighting through the payoff; sparks belong to the live circuit.",
+            "elements": [
+              "Show the stated action or consequence with recognizable actors; retain costume and object continuity."
+            ]
+          },
+          "u12": {
+            "palette": "daylight",
+            "atmosphere": "none",
+            "reason": "Warm domestic light marks the restored family and quiet ending.",
+            "elements": [
+              "The dinner, Laura and dog restore the relationships after the threat.",
+              "The subscribe line follows the complete aftermath."
+            ]
+          }
+        }
+      }
+    }
+  ]
+}

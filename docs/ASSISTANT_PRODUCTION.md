@@ -4,6 +4,10 @@ Open this project folder in Antigravity. Its workspace instructions are in [AGEN
 
 For film/episode stories, read the [recap and timed-cut workflow](categories/movies/FILM_RECAPS.md). Build a main-plot/visual coverage table before shortening a whole movie. Keep the decisive reveal in its final act. Use exact spoken anchors for multiple shots within a narrated unit, select music by emotional fit, and preserve required lower audience framing. The latest ending preference is a brief spoken and visible subscribe request **after** the story payoff; earlier no-CTA examples are historical. The [screen recap examples](../examples/screen-recaps/README.md) include both source-specific scripts and reusable execution commands.
 
+The [ensemble batch notes](../examples/screen-recaps/ENSEMBLE_BATCH.md) add worked Deadpool, Wolverine, First Steps and X-Men examples. Keep solo and joint action states separate when the joint action is the payoff. Do not show a revival before its spoken reveal. Source-cover layers persist across a complete unit, so give the cover a separate unit before action cuts that it would obscure. Reuse reviewed facts and cast rigs; reuse a main composition only for an intentional callback rather than every new story.
+
+Use the shared actor's independent `hand` and `off_hand` anchors when both hands must touch different objects or another person. Review those coordinates after the camera/audience transform. A nearby beam does not establish physical contact. Inspect small identity details at actual export scale: the Four's emblem requires dark lettering against its pale disk, while costume colors stay consistent across lighting changes.
+
 ## Start with what happened last
 
 ```powershell
@@ -12,7 +16,7 @@ For film/episode stories, read the [recap and timed-cut workflow](categories/mov
 
 - `latest_made` lists completed previews with their title, package, video, and recent visual choices. `uploaded_through_app` uses the YouTube IDs already saved by the upload workflow. An unfinished transfer is tracked separately so it can be reconciled. Studio uploads made outside the app need a separate Studio check.
 - `recent_unfinished` shows the stage and failure code for work that may be resumable. If the user meant a particular job, use the original plan and `batch-status --plan ...` to verify it. Batch plans are immutable once initialized. Use a new build ID for a changed script or shot list.
-- `next_to_make` is a starting idea from [the production queue](PRODUCTION_QUEUE.json). Check the latest request and current evidence. As of the forge recut, the suggested comic is **How Doctor Doom took Latveria**. Comic lore comes first, then movie coverage and current affairs.
+- `next_to_make` is a starting idea from [the production queue](PRODUCTION_QUEUE.json). Check the latest request and current evidence. After the ensemble batch, candidates include Deadpool’s Dracula delivery and the Thanos/Death curse. These need the missing story details reviewed before scripting; they are not automatically approved productions or forecasts of reach. Comic lore comes first, then movie coverage and current affairs.
 
 ## Make one reviewable result
 

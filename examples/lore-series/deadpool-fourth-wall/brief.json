@@ -1,0 +1,74 @@
+{
+  "version": 1,
+  "title": "Deadpool Killed the Avengers. They Weren't His Real Target.",
+  "question": "If Deadpool destroys the heroes, who is he really trying to reach?",
+  "kind": "fact",
+  "sources": [
+    {
+      "id": "publisher",
+      "url": "https://www.penguinrandomhouse.com/books/693632/deadpool-kills-the-marvel-universe-by-cullen-bunn/",
+      "title": "Penguin Random House / Marvel collection listing",
+      "excerpt": "2012 collection of #1–4; alternate horror Deadpool sees his existence as fiction, targets heroes, villains and ultimately readers.",
+      "checked_at": "2026-11-06T23:09:53.213479+00:00"
+    },
+    {
+      "id": "creator",
+      "url": "https://www.thenewestrant.com/2013/01/interview-time-cullen-bunn.html",
+      "title": "Cullen Bunn interview, January 23, 2013",
+      "excerpt": "Bunn explains that this villain believes the characters are fictional playthings and thinks he is doing them a favor; his intended progression breaches the Nexus and reaches the creators.",
+      "checked_at": "2026-11-06T23:09:53.213479+00:00"
+    },
+    {
+      "id": "recap",
+      "url": "https://www.comicbasics.com/deadpool-kills-the-marvel-universe/",
+      "title": "Comic Basics: original 2012 miniseries recap",
+      "excerpt": "The disguised Psycho-Man treatment introduces a new voice. Wade survives Hulk, targets Banner after transformation, reaches Man-Thing and the Nexus, and finds creators planning the ending before addressing readers.",
+      "checked_at": "2026-11-06T23:09:53.213479+00:00"
+    },
+    {
+      "id": "issue",
+      "url": "https://www.marvel.com/comics/issue/41554/deadpool_kills_the_marvel_universe_2011_4",
+      "title": "Marvel: Deadpool Kills the Marvel Universe #4",
+      "excerpt": "Indexed publisher listing dates issue four August 22, 2012 and credits Cullen Bunn. Catalog run label says 2011 despite the issue publication date; narration uses 2012.",
+      "checked_at": "2026-11-06T23:09:53.213479+00:00"
+    }
+  ],
+  "claims": [
+    {
+      "id": "c1",
+      "source_id": "publisher",
+      "text": "This alternate-universe horror story has Deadpool attack the Avengers and other heroes and villains; they are not his ultimate targets."
+    },
+    {
+      "id": "c2",
+      "source_id": "recap",
+      "text": "A villain, Psycho-Man, masquerades as a doctor and attempts to brainwash Wade; instead the treatment brings a new guiding voice."
+    },
+    {
+      "id": "c3",
+      "source_id": "creator",
+      "text": "Wade believes the characters are fictional constructs suffering for creators and imagines killing them will free them; he aims beyond the cast to the creators."
+    },
+    {
+      "id": "c4",
+      "source_id": "recap",
+      "text": "Hulk tears Wade apart; Wade regenerates and kills Hulk after he changes back into vulnerable Bruce Banner."
+    },
+    {
+      "id": "c5",
+      "source_id": "recap",
+      "text": "At the Nexus of All Realities, Man-Thing opens the route Wade uses to leave for other realities; the comic depicts Man-Thing sacrificing himself, omitted from the non-graphic short."
+    },
+    {
+      "id": "c6",
+      "source_id": "recap",
+      "text": "Wade arrives where writers and illustrators plan the comic ending and then addresses the reader as another intended target."
+    },
+    {
+      "id": "c7",
+      "source_id": "recap",
+      "text": "Deadpool steals Pym particles, uses miniaturized explosives against the Avengers, and later uses size-changing particles against Thor."
+    }
+  ],
+  "notes": "Original 2012 miniseries, Earth-12101, later called Dreadpool. Not the 2017 Again series, 2025 One Last Time series, or MCU. Compared publisher copy, a creator interview and secondary plot recap; full issues were not read and indexed Marvel access is limited. Illustrative geometry does not reproduce exact panels. Killing is described without graphic injury. The end is fictional metafiction, not an actual threat. Local source-cover/audience review assets do not establish publication clearance. No reach or retention results are known."
+}

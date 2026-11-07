@@ -1,0 +1,182 @@
+{
+  "version": 1,
+  "series_id": "x-men-krakoa-rescue",
+  "title": "The X-Men Were Rescuing Their Friends. The Island Wanted Seconds.",
+  "structure": "chapter_answers",
+  "canon": "Giant-Size X-Men #1 (1975), original Second Genesis account. Later Deadly Genesis retcons are outside this short.",
+  "source_voices": {
+    "Host": "am_adam",
+    "Narrator": "af_heart"
+  },
+  "parts": [
+    {
+      "part": 1,
+      "script": "part-1.json",
+      "next_part": null,
+      "reaction_preset": "crossover-theater",
+      "source_duration": [
+        45,
+        60
+      ],
+      "source_delivery": {
+        "tight_speech": true,
+        "speed": 1.22,
+        "pause_after": 0.05,
+        "linked_phrases": [
+          "Giant-Size X-Men",
+          "Professor Xavier"
+        ]
+      },
+      "source_music": {
+        "start": 4,
+        "volume": 0.055
+      },
+      "visual_selection": {
+        "mode": "authored"
+      },
+      "lore_cuts": {
+        "u3": [
+          {
+            "on": "",
+            "kind": "xm_recruits",
+            "camera": "wide",
+            "reason": "Introduce the distinct costumes of the seven recruits without an alias-list narration."
+          },
+          {
+            "on": "jungle fights back",
+            "kind": "xm_jungle",
+            "camera": "wide",
+            "reason": "Move into a hostile forest with a teleporting Nightcrawler and Wolverine’s claws."
+          }
+        ],
+        "u4": [
+          {
+            "on": "",
+            "kind": "xm_prison",
+            "camera": "wide",
+            "reason": "Jean, Polaris and Iceman are bound by roots, making the rescue objective visible."
+          },
+          {
+            "on": "It is the island",
+            "kind": "xm_island",
+            "camera": "wide",
+            "reason": "The landscape gains a face when the story identifies it as the captor."
+          }
+        ],
+        "u7": [
+          {
+            "on": "",
+            "kind": "xm_energy",
+            "camera": "wide",
+            "reason": "Lightning flows to Polaris, with a red visor beam reinforcing the shared effort."
+          },
+          {
+            "on": "hurl Krakoa",
+            "kind": "xm_launch",
+            "camera": "wide",
+            "reason": "The small island rises from Earth instead of a generic energy burst."
+          }
+        ],
+        "u9": [
+          {
+            "on": "",
+            "kind": "xm_team",
+            "camera": "wide",
+            "reason": "A new mixed team shares one frame after the escape."
+          },
+          {
+            "on": "For more stories",
+            "kind": "end_subscribe",
+            "camera": "wide",
+            "reason": "The subscribe card comes after the team’s changed situation."
+          }
+        ]
+      },
+      "lore_design": {
+        "palette": "paper",
+        "font": "Trebuchet MS",
+        "atmosphere": "none",
+        "audience_required": true,
+        "reason": "Keep the established flat geometric outline, identifiable costume features and quiet photographic Marvel audience. Change palette for material, location and the narrative turn; retain a dark caption band. Trebuchet has familiar open shapes for fast phone reading. Exact source art identifies the work; geometry controls contact, transformations and energy.",
+        "shots": {
+          "u1": {
+            "palette": "ember",
+            "atmosphere": "none",
+            "reason": "Earthy island material and red costume markers establish the failed rescue.",
+            "elements": [
+              "Show the stated action or consequence with recognizable actors; retain costume and object continuity."
+            ]
+          },
+          "u2": {
+            "palette": "paper",
+            "atmosphere": "none",
+            "reason": "The actual 1975 cover identifies the source during the publication line.",
+            "elements": [
+              "Show the stated action or consequence with recognizable actors; retain costume and object continuity."
+            ]
+          },
+          "u3": {
+            "palette": "daylight",
+            "atmosphere": "none",
+            "reason": "International recruits are distinct before the jungle changes their surroundings.",
+            "elements": [
+              "Introduce the distinct costumes of the seven recruits without an alias-list narration.",
+              "Move into a hostile forest with a teleporting Nightcrawler and Wolverine’s claws."
+            ]
+          },
+          "u4": {
+            "palette": "ember",
+            "atmosphere": "none",
+            "reason": "Root bindings and earthy greens connect prisoners to the living island.",
+            "elements": [
+              "Jean, Polaris and Iceman are bound by roots, making the rescue objective visible.",
+              "The landscape gains a face when the story identifies it as the captor."
+            ]
+          },
+          "u5": {
+            "palette": "ember",
+            "atmosphere": "none",
+            "reason": "Return to the landscape at larger scale as its deliberate trap becomes clear.",
+            "elements": [
+              "Show the stated action or consequence with recognizable actors; retain costume and object continuity."
+            ]
+          },
+          "u6": {
+            "palette": "concrete",
+            "atmosphere": "dust",
+            "reason": "The threatened rescuers need coordinated action, not more decorative weather.",
+            "elements": [
+              "Show the stated action or consequence with recognizable actors; retain costume and object continuity."
+            ]
+          },
+          "u7": {
+            "palette": "plum",
+            "atmosphere": "none",
+            "reason": "The combined lightning and magnetic field are the meaningful light sources.",
+            "elements": [
+              "Lightning flows to Polaris, with a red visor beam reinforcing the shared effort.",
+              "The small island rises from Earth instead of a generic energy burst."
+            ]
+          },
+          "u8": {
+            "palette": "daylight",
+            "atmosphere": "none",
+            "reason": "Ocean rings and a departing aircraft make the final physical danger legible.",
+            "elements": [
+              "Show the stated action or consequence with recognizable actors; retain costume and object continuity."
+            ]
+          },
+          "u9": {
+            "palette": "paper",
+            "atmosphere": "none",
+            "reason": "A calm group portrait closes the rescue and introduces the changed team.",
+            "elements": [
+              "A new mixed team shares one frame after the escape.",
+              "The subscribe card comes after the team’s changed situation."
+            ]
+          }
+        }
+      }
+    }
+  ]
+}

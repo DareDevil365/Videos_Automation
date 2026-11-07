@@ -2,6 +2,20 @@
 
 Read this from top to bottom once, then use the tables to locate the code you need. This describes the implementation inspected on 2 November 2026. [Project status](PROJECT_STATUS.md) separates code that exists from live integrations and content quality still needing validation. [PROJECT_GUIDE.md](../PROJECT_GUIDE.md) preserves architecture decisions and detailed operating history.
 
+## Comic and ensemble editor additions (7 November 2026)
+
+| File | What it does and where it fits |
+| --- | --- |
+| [lore_cuts.py](../src/yt_pipeline/lore_cuts.py) | Validates explicit subshots within full narrated units and schedules them from actual aligned words. |
+| [lore_screen_cast.py](../src/yt_pipeline/lore_screen_cast.py) | Shared geometric actor profiles, fixed hand contacts, costume identifiers and anchored Wolverine claws. |
+| [lore_screen.py](../src/yt_pipeline/lore_screen.py) | Finite Civil War/Doctor Strange action staging and the post-payoff subscribe card. |
+| [lore_deadpool.py](../src/yt_pipeline/lore_deadpool.py) | The 2012 comic's clinic, changed voice, fictional world, attacks, regeneration and creators/reader staging. |
+| [lore_ensemble.py](../src/yt_pipeline/lore_ensemble.py) | The requested Deadpool & Wolverine/First Steps recaps and original Krakoa rescue, including separate setup/payoff action states. |
+| [create_screen_recaps.py](../tools/create_screen_recaps.py) | Loads reviewed exact recipes, measures speech, freezes source inputs, makes storyboards and invokes the normal local pipeline. It also supports the comic recipes by explicit `--only` selection. |
+| [review_lore_export.py](../tools/review_lore_export.py) | Checks completed package hashes, samples each actual cut, verifies the closing CTA anchor and measures narration silence. It prepares evidence for visual inspection rather than certifying creativity. |
+
+These adapters are called from the existing lore planner/visuals stage and reuse local Kokoro, exact-word alignment, Pillow, FFmpeg, registered assets, captions and the lower audience compositor. They are code-backed finite illustrations, not arbitrary scenes inferred from a sentence. The assistant supplies the script and reasons separately. [Batch rationale and limits](../examples/screen-recaps/ENSEMBLE_BATCH.md).
+
 ## Phone-screen editor update (5 November 2026)
 
 The new `src/yt_pipeline/phone_editor/` package separates contract/compiler, themes, chrome, message layout, phone screens, story state and writing checks. `chat_editing.py` connects these trusted components to existing timing, assets and FFmpeg stages; `text_provider.py` selects Gemini or the optional OpenAI API adapter. Read the [module map and data flow](PHONE_STORY_IMPLEMENTATION.md), [creation guide](categories/phone-story/HOW_TO_CREATE.md) and [provider setup](TEXT_PROVIDERS.md) for current behavior. This extends the entertainment channel format; it is not an independent model editing service.

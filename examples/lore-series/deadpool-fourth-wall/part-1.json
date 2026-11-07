@@ -1,0 +1,146 @@
+{
+  "version": 1,
+  "title": "Deadpool Killed the Avengers. They Weren't His Real Target.",
+  "description": "Why the heroes were not Deadpool’s final targets in Deadpool Kills the Marvel Universe #1–4 (2012), an alternate comic reality. Dark, non-graphic illustrated recap; not MCU continuity.",
+  "format": "lesson",
+  "fiction": false,
+  "hook": "Deadpool killed the Avengers. But they weren't his real target.",
+  "payoff": "Then he turns toward the reader. After the heroes and their creators, we're next. For more stories like this, subscribe.",
+  "units": [
+    {
+      "id": "u1",
+      "speaker": "Host",
+      "text": "Deadpool killed the Avengers. But they weren't his real target.",
+      "onscreen": "THE HEROES WERE NOT THE FINAL TARGET",
+      "kind": "fact",
+      "claim_ids": [
+        "c1"
+      ],
+      "visual_kind": "image",
+      "visual_query": "THE HEROES WERE NOT THE FINAL TARGET",
+      "lore_scene": "dp_targets",
+      "lore_camera": "push"
+    },
+    {
+      "id": "u2",
+      "speaker": "Narrator",
+      "text": "In Deadpool Kills the Marvel Universe, from 2012, Wade's mission starts with an attempt to control him.",
+      "onscreen": "DEADPOOL KILLS THE MARVEL UNIVERSE · 2012",
+      "kind": "fact",
+      "claim_ids": [
+        "c2"
+      ],
+      "visual_kind": "image",
+      "visual_query": "DEADPOOL KILLS THE MARVEL UNIVERSE · 2012",
+      "lore_scene": "portrait",
+      "lore_camera": "push"
+    },
+    {
+      "id": "u3",
+      "speaker": "Narrator",
+      "text": "Psycho-Man poses as a doctor and tries to brainwash him. Instead, a new voice convinces Wade his world is fiction, and everyone's suffering is entertainment.",
+      "onscreen": "A NEW VOICE CHANGES THE MISSION",
+      "kind": "fact",
+      "claim_ids": [
+        "c2",
+        "c3"
+      ],
+      "visual_kind": "image",
+      "visual_query": "A NEW VOICE CHANGES THE MISSION",
+      "lore_scene": "dp_clinic",
+      "lore_camera": "push"
+    },
+    {
+      "id": "u4",
+      "speaker": "Narrator",
+      "text": "Wade decides killing the characters will free them. Stolen shrinking technology lets him smuggle explosives into the Avengers' headquarters.",
+      "onscreen": "HE BELIEVES HE IS FREEING THEM",
+      "kind": "fact",
+      "claim_ids": [
+        "c3",
+        "c1",
+        "c7"
+      ],
+      "visual_kind": "image",
+      "visual_query": "HE BELIEVES HE IS FREEING THEM",
+      "lore_scene": "dp_panels",
+      "lore_camera": "wide"
+    },
+    {
+      "id": "u5",
+      "speaker": "Narrator",
+      "text": "Hulk tears him apart. Wade regenerates, waits for Hulk to become Bruce Banner, then kills him.",
+      "onscreen": "THE HULK FIGHT DOES NOT END THERE",
+      "kind": "fact",
+      "claim_ids": [
+        "c4"
+      ],
+      "visual_kind": "image",
+      "visual_query": "THE HULK FIGHT DOES NOT END THERE",
+      "lore_scene": "dp_hulk",
+      "lore_camera": "wide"
+    },
+    {
+      "id": "u6",
+      "speaker": "Narrator",
+      "text": "But killing everyone only destroys the cast. It doesn't touch whoever controls their lives, so Wade needs a way outside the story.",
+      "onscreen": "THE CAST IS NOT WHO CONTROLS THE STORY",
+      "kind": "fact",
+      "claim_ids": [
+        "c3",
+        "c5"
+      ],
+      "visual_kind": "image",
+      "visual_query": "THE CAST IS NOT WHO CONTROLS THE STORY",
+      "lore_scene": "dp_boundary",
+      "lore_camera": "push"
+    },
+    {
+      "id": "u7",
+      "speaker": "Narrator",
+      "text": "At the Nexus of All Realities, a gateway between worlds, Wade reaches Man-Thing. The creature opens a portal, and Wade steps through.",
+      "onscreen": "THE WAY OUT IS THROUGH THE NEXUS",
+      "kind": "fact",
+      "claim_ids": [
+        "c5"
+      ],
+      "visual_kind": "image",
+      "visual_query": "THE WAY OUT IS THROUGH THE NEXUS",
+      "lore_scene": "dp_swamp",
+      "lore_camera": "wide"
+    },
+    {
+      "id": "u8",
+      "speaker": "Narrator",
+      "text": "On the other side, he finds people planning the very comic we're reading. His next targets are its writers and artists.",
+      "onscreen": "THEY ARE PLANNING THIS VERY ENDING",
+      "kind": "fact",
+      "claim_ids": [
+        "c6"
+      ],
+      "visual_kind": "image",
+      "visual_query": "THEY ARE PLANNING THIS VERY ENDING",
+      "lore_scene": "dp_studio",
+      "lore_camera": "wide"
+    },
+    {
+      "id": "u9",
+      "speaker": "Host",
+      "text": "Then he turns toward the reader. After the heroes and their creators, we're next. For more stories like this, subscribe.",
+      "onscreen": "THE FINAL TARGET IS OUTSIDE THE PANEL",
+      "kind": "fact",
+      "claim_ids": [
+        "c6"
+      ],
+      "visual_kind": "image",
+      "visual_query": "THE FINAL TARGET IS OUTSIDE THE PANEL",
+      "lore_scene": "dp_reader",
+      "lore_camera": "push"
+    }
+  ],
+  "edit": {
+    "effect": "none",
+    "payoff_unit_id": "u8",
+    "cta": true
+  }
+}

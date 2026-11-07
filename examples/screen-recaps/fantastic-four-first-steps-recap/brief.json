@@ -1,0 +1,84 @@
+{
+  "version": 1,
+  "title": "Fantastic Four: The Baby Galactus Wanted",
+  "question": "What drives the central conflict, and what decision resolves it?",
+  "kind": "fact",
+  "sources": [
+    {
+      "id": "wiki",
+      "url": "https://en.wikipedia.org/wiki/The_Fantastic_Four:_First_Steps",
+      "title": "First Steps plot and continuity",
+      "excerpt": "Earth-828, established team, neutron-star escape/birth, world bridges, underground evacuation and ending.",
+      "checked_at": "2026-11-07T10:53:41.552563+00:00"
+    },
+    {
+      "id": "rt",
+      "url": "https://www.radiotimes.com/movies/scifi/fantastic-four-first-steps-ending-explained-spoilers/",
+      "title": "Radio Times: First Steps full ending",
+      "excerpt": "The impossible bargain, damaged bridge plan, Shalla-Bal’s past, final trap, family battle and payoff.",
+      "checked_at": "2026-11-07T10:53:41.552563+00:00"
+    },
+    {
+      "id": "gr",
+      "url": "https://www.gamesradar.com/entertainment/marvel-movies/fantastic-four-first-steps-ending-galactus-franklin-power-cosmic-doomsday/",
+      "title": "GamesRadar: Galactus, Franklin and ending",
+      "excerpt": "Galactus’s hunger, the final intervention, Sue’s death/revival and Doom post-credit encounter.",
+      "checked_at": "2026-11-07T10:53:41.552563+00:00"
+    },
+    {
+      "id": "disney",
+      "url": "https://movies.disney.com/the-fantastic-four-first-steps",
+      "title": "Disney: First Steps official film page",
+      "excerpt": "Official 2025 identity, cast, retro-futuristic family premise and checked poster source.",
+      "checked_at": "2026-11-07T10:53:41.552563+00:00"
+    }
+  ],
+  "claims": [
+    {
+      "id": "f1",
+      "source_id": "rt",
+      "text": "Galactus offers to spare Earth for Reed and Sue’s child, whose cosmic power could take on his hunger; they refuse."
+    },
+    {
+      "id": "f2",
+      "source_id": "disney",
+      "text": "The 2025 film introduces an established Fantastic Four in a retro-futuristic world; Reed and Sue expect a baby."
+    },
+    {
+      "id": "f3",
+      "source_id": "wiki",
+      "text": "The Silver Surfer warns Earth; the team follows to space, witnesses another planet’s destruction and meets Galactus."
+    },
+    {
+      "id": "f4",
+      "source_id": "wiki",
+      "text": "The team flees the Surfer via a neutron-star slingshot; Sue gives birth to Franklin during their return."
+    },
+    {
+      "id": "f5",
+      "source_id": "rt",
+      "text": "The public demands Franklin; Sue maintains support for saving humanity and the baby while Reed plans to teleport Earth."
+    },
+    {
+      "id": "f6",
+      "source_id": "rt",
+      "text": "The Surfer destroys the bridges except the one Johnny protects; he identifies her as Shalla-Bal, who served Galactus to save Zenn-La, and plays victims’ recordings."
+    },
+    {
+      "id": "f7",
+      "source_id": "wiki",
+      "text": "They evacuate New York underground and try baiting Galactus at the remaining bridge; he finds Franklin, and Ben helps free the stretched Reed."
+    },
+    {
+      "id": "f8",
+      "source_id": "gr",
+      "text": "Sue pushes Galactus; the Surfer stops Johnny’s sacrifice and pushes her master through. Sue dies and Franklin revives her."
+    },
+    {
+      "id": "f9",
+      "source_id": "gr",
+      "text": "The mid-credit scene four years later shows Doom beside Franklin; his purpose is not resolved in this film."
+    }
+  ],
+  "notes": "The Fantastic Four: First Steps (2025), Earth-828 film continuity; not the 2005, 2007 or 2015 adaptations. Reviewed publisher/archival metadata and compared bounded secondary plot accounts. The complete original film/issue was not watched/read. Geometry illustrates actions rather than reproducing literal frames. Subplots/minor exchanges are compressed; the coverage ledger lists scope. Artwork and audience assets remain local-review-only. Technical QA does not certify voice performance, audience retention, reach or publication clearance."
+}

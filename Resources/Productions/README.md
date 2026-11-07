@@ -1,5 +1,19 @@
 # Review exports
 
+## Completed ensemble previews — 7 November 2026
+
+| Video | Final duration | Directed shots | Local production folder |
+| --- | --- | --- | --- |
+| Deadpool comic | 51.366s | 16 | `deadpool-fourth-wall-polished-20261107/part-1/` |
+| Deadpool & Wolverine recap | 98.066s | 22 | `deadpool-wolverine-recap-contact-final-20261107/part-1/` |
+| First Steps recap | 89.833s | 22 | `fantastic-four-first-steps-recap-logo-final-20261107/part-1/` |
+| X-Men Krakoa rescue | 49.500s | 13 | `x-men-krakoa-rescue-polished-20261107/part-1/` |
+
+All four current exports passed technical QA; all 56 recorded package hashes matched. All 73 directed cuts were sampled from the actual MP4s, with larger grip/emblem/action inspection. Narration had no detected ≥0.3-second quiet interval at −42 dB and mixed clipping was zero. Spoken/visible subscribe requests follow the story payoffs. Different local voice pairs and checked genre-fit tracks are frozen in the records. Supplied-script builds recorded no extra text-provider usage.
+
+Twenty-six focused tests passed across scene motion, caption clearance, dual hand anchors, late-reveal order and source planning/revision. New documentation links resolve; the checker still reports the existing separate `docs/index.md` target `privacy`. Local `finished-review.json`, `export-review.jpg`, `REVIEW.md`, metadata, descriptions and source evidence accompany each video. Full human audiovisual approval and actual audience response remain unverified. Older review versions remain available and are labeled superseded.
+
+
 Latest screen-story exports: `strange-supreme-heart-final-20261107/part-1/` (**55.033s**, 19 shots), `civil-war-complete-final-20261107/part-1/` (**95.233s**, 33 shots), and `kraven-last-hunt-subscribe-final-20261107/part-1/` (**50.766s**, 10 shots). Each ends with the newly requested spoken and visible subscribe line after its story payoff. All three passed technical QA, all 42 package hashes matched, and actual exported cuts were sampled. Their local `export-review.jpg`, `finished-review.json` and `REVIEW.md` record the checks and limits. No extra text-provider calls were used. [Screen recap scripts and workflow](../../examples/screen-recaps/README.md).
 
 These are technical and creative review artifacts. A playable file or passing technical report is not owner approval of the story/style. Private original job state lives under `data/pipeline/jobs/`; copied evidence here keeps its recorded paths/hashes.

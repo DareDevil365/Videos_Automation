@@ -1,5 +1,7 @@
 # Screen-story Shorts
 
+The [ensemble batch](ENSEMBLE_BATCH.md) adds **Deadpool & Wolverine (2024)** and **The Fantastic Four: First Steps (2025)** recaps, plus [Deadpool's comic story](../lore-series/deadpool-fourth-wall/README.md) and the [1975 X-Men rescue](../lore-series/x-men-krakoa-rescue/README.md). Select them with `--only dw`, `--only ff`, `--only deadpool` or `--only xm`; their own READMEs specify the current build suffix. The default command below continues to select the earlier Doctor Strange and Civil War examples, preserving its previous behavior.
+
 Two assistant-authored original recaps use the existing local comic-style editor. Doctor Strange is What If…? season 1 episode 4 (2021); Civil War is the 2016 film, not the comic event. The owner prioritizes connected explanation, iconic scenes and a late payoff over a forced runtime. YouTube’s [current portrait/square Shorts limit](https://support.google.com/youtube/answer/15424877) is three minutes. These drafts measure about 55 and 95 seconds with their subscribe lines.
 
 Read each SCRIPT.md, source brief, selection/coverage record and series.json. The series keeps per-beat palette/element reasons and speech-anchored visual cuts. The lower Marvel theater is present throughout. The spoken and graphic subscribe card comes after the ending under the owner’s latest preference.

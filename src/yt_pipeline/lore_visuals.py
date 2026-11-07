@@ -29,10 +29,12 @@ from .lore_design import compile_design, paint_atmosphere
 from .lore_hunt import HUNT_KINDS, hunt_art
 from .lore_cuts import compile_cuts,cut_schedule,cut_painter
 from .lore_screen import SCREEN_KINDS,screen_art
+from .lore_deadpool import DEADPOOL_KINDS,deadpool_art
+from .lore_ensemble import ENSEMBLE_KINDS,ensemble_art
 
 
 KINDS=('collapse','life_raft','battleworld','throne','control','hidden_power','meal','confrontation','rebuilding','restoration',
-       'dominion','memory','source_closeup','meal_detail','absence','duel','consequence','portrait','street_impact') + FORGE_KINDS + REACTOR_KINDS + THUNDER_KINDS + PACT_KINDS + HELLBOY_KINDS + IDENTITY_KINDS + HUNT_KINDS + SCREEN_KINDS
+       'dominion','memory','source_closeup','meal_detail','absence','duel','consequence','portrait','street_impact') + FORGE_KINDS + REACTOR_KINDS + THUNDER_KINDS + PACT_KINDS + HELLBOY_KINDS + IDENTITY_KINDS + HUNT_KINDS + SCREEN_KINDS + DEADPOOL_KINDS + ENSEMBLE_KINDS
 CAMERAS = ('wide', 'push', 'pan_left', 'pan_right', 'detail')
 SIZE=(720,1280)
 ART=(20,180,700,950)
@@ -131,6 +133,8 @@ def _background(kind,theme=None):
     palette.update({name:('#18232f','#9cbeb8') for name in IDENTITY_KINDS})
     palette.update({name:('#382a26','#cba16a') for name in HUNT_KINDS})
     palette.update({name:('#453349','#d5ad78') for name in SCREEN_KINDS})
+    palette.update({name:('#3d2928','#d5ad78') for name in DEADPOOL_KINDS})
+    palette.update({name:('#4d4539','#d5ad78') for name in ENSEMBLE_KINDS})
     from .lore_design import PALETTES
     colors=PALETTES[theme] if theme else None
     base,accent=(colors['field'],colors['accent']) if colors else palette[kind]
@@ -252,6 +256,10 @@ def _art(scene,second,duration,thunder_cast=None,pact_cast=None,hellboy_media=No
         hunt_art(layer,scene,second,p,_glow)
     elif kind in SCREEN_KINDS:
         screen_art(layer,scene,second,p,_glow)
+    elif kind in DEADPOOL_KINDS:
+        deadpool_art(layer,scene,second,p,_glow)
+    elif kind in ENSEMBLE_KINDS:
+        ensemble_art(layer,scene,second,p,_glow)
     elif kind=='street_impact':
         settle=max(0,min(1,(p-.46)*5))
         roof=660+52*settle

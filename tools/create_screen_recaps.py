@@ -1,4 +1,4 @@
-"""Build the supplied Doctor Strange story and complete Civil War recap locally."""
+"""Build supplied, source-reviewed comic/film/episode recaps with local tools."""
 from argparse import ArgumentParser
 import json
 from pathlib import Path
@@ -24,11 +24,19 @@ from yt_pipeline.dialogue_captions import align_dialogue
 
 SPECS={
  'strange':('strange-supreme-heart','strange-poster.jpg','https://www.syfy.com/syfy-wire/marvel-what-if-dr-strange-heartbreaking-episode-recap','https://www.syfy.com/sites/syfy/files/styles/scale_600/public/what-if-dr.-strange-poster.jpg','u2'),
- 'civil':('civil-war-complete','civil-war-poster.jpg','https://www.posterpalace.com/products/copy-of-the-lone-ranger','https://www.posterpalace.com/cdn/shop/products/civil-war-posterpalacecom-491535.jpg?v=1671584717','u1')}
+ 'civil':('civil-war-complete','civil-war-poster.jpg','https://www.posterpalace.com/products/copy-of-the-lone-ranger','https://www.posterpalace.com/cdn/shop/products/civil-war-posterpalacecom-491535.jpg?v=1671584717','u1'),
+ 'deadpool':('deadpool-fourth-wall','deadpool-cover.jpg','https://www.penguinrandomhouse.com/books/693632/deadpool-kills-the-marvel-universe-by-cullen-bunn/','https://images2.penguinrandomhouse.com/cover/9780785164036','u2'),
+ 'dw':('deadpool-wolverine-recap','dw-poster.jpg','https://en.wikipedia.org/wiki/Deadpool_%26_Wolverine','https://upload.wikimedia.org/wikipedia/en/4/4c/Deadpool_%26_Wolverine_poster.jpg','u2'),
+ 'ff':('fantastic-four-first-steps-recap','ff-poster.jpg','https://movies.disney.com/the-fantastic-four-first-steps','https://lumiere-a.akamaihd.net/v1/images/p_studios_fantasticfourfirststeps_pay1sunrise_poster_9d183368.jpeg?region=0%2C0%2C540%2C810','u2'),
+ 'xm':('x-men-krakoa-rescue','xm-poster.jpg','https://blogs.loc.gov/headlinesandheroes/2023/04/x-men-60-uncanny-years/','https://blogs.loc.gov/headlinesandheroes/files/2023/04/giantxmen_cover.jpg','u2')}
 DRAFT=ROOT/'Resources/Drafts/screen-recaps'
 MUSIC={
  'civil':('mixkit-565','Dark tension supports the escalating split and personal trap; avoid an uplifting resolution bed.'),
- 'strange':('mixkit-671','Sparse ominous piano supports the repeated loss and escalating supernatural threat.')}
+ 'strange':('mixkit-671','Sparse ominous piano supports the repeated loss and escalating supernatural threat.'),
+ 'deadpool':('mixkit-188','Sparse mystery atmosphere leaves room for the narration and the late creator/reader reveal; avoid treating the killing spree as a comedy montage.'),
+ 'dw':('mixkit-370','A restrained energetic pulse supports the pursuit and reluctant team-up; keep the montage track below complete narration.'),
+ 'ff':('mixkit-565','Dark cinematic pressure supports the impossible family-versus-planet bargain and rising cosmic threat.'),
+ 'xm':('mixkit-188','Sparse mystery leaves the island discovery room to land before the combined-power escape.')}
 
 
 def story_music(workspace,key):
@@ -42,7 +50,7 @@ def story_music(workspace,key):
 
 
 def inputs(key):
-    folder,*_=SPECS[key];recipe=ROOT/'examples/screen-recaps'/folder
+    folder,*_=SPECS[key];recipe=ROOT/('examples/lore-series' if key in ('deadpool','xm') else 'examples/screen-recaps')/folder
     script=json.loads((recipe/'part-1.json').read_text(encoding='utf8'))
     brief=json.loads((recipe/'brief.json').read_text(encoding='utf8'))
     series=json.loads((recipe/'series.json').read_text(encoding='utf8'))
@@ -56,15 +64,18 @@ def prepare(workspace,key,build,target):
     folder,filename,page,url,uid=SPECS[key];local=DRAFT/folder/build;local.mkdir(parents=True,exist_ok=True)
     path=DRAFT/filename
     if not path.is_file():raise FileNotFoundError(f'Prepare and inspect the source poster first: {path}')
-    cover=register_asset(workspace,path,'test',{'url':page,'media_url':url},commercial=False,editing=False,test_only=True,
-                         attribution='Marvel Studios / Disney publicity poster, via the linked source. Local review only; no publication clearance inferred.')
+    credit=('Marvel Comics. Deadpool Kills the Marvel Universe collected-edition cover, Kaare Andrews; story by Cullen Bunn and Dalibor Talajic (2012), via Penguin Random House. Local review only.' if key=='deadpool' else
+            'Marvel Comics. Giant-Size X-Men #1 (1975) cover, Gil Kane and Dave Cockrum, via the Library of Congress article. Local review only.' if key=='xm' else
+            'Marvel Studios / Disney publicity poster, via the linked source. Local review only; no publication clearance inferred.')
+    cover=register_asset(workspace,path,'test',{'url':page,'media_url':url},commercial=False,editing=False,test_only=True,attribution=credit)
     presets=json.loads((workspace.root/'reaction-presets.json').read_text())
     cast=([presets['captain-america-and-bucky']['cast'][0],presets['captain-america-and-bucky']['cast'][1],presets['crossover-theater']['cast'][2]] if key=='civil' else
+          [presets['captain-america-and-bucky']['cast'][0],*presets['crossover-theater']['cast'][1:]] if key in ('deadpool','dw','ff','xm') else
           [presets['doctor-strange-sanctum']['cast'][0],*presets['crossover-theater']['cast'][1:]])
     part=series['parts'][0];part.pop('reaction_preset',None)
     part['reaction_set']={**presets['crossover-theater'],'cast':cast}
     # The smaller source poster remains below the native-pixel guard.
-    box=[155,217,565,832] if key=='strange' else [136,204,584,923]
+    box=[200,254,520,747] if key=='deadpool' else [205,270,515,729] if key=='dw' else [155,217,565,832] if key in ('strange','xm') else [136,204,584,876] if key=='ff' else [136,204,584,923]
     part['visual_selection']['layers']={uid:{'props':{'source_cover':{'asset_id':cover['id'],'box':box,
         'repeat_reason':'An explicit revision of this same recap retains its source-identifying poster.'}}}}
     music=story_music(workspace,key)
@@ -109,7 +120,7 @@ def main():
     parser.add_argument('--measure-only',action='store_true');parser.add_argument('--render',action='store_true')
     parser.add_argument('--build-suffix',default='final-20261107');args=parser.parse_args()
     workspace=Workspace(ROOT/'data/pipeline')
-    for key in ([args.only] if args.only else SPECS):
+    for key in ([args.only] if args.only else ('strange','civil')):
         recipe,script,brief,series,request=inputs(key)
         if args.measure_only:
             plan=plan_lore(script,request,brief)['plan']
